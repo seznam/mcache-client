@@ -24,19 +24,18 @@
 
 #include <mcache/error.h>
 #include <mcache/proto/opts.h>
-#include <mcache/proto/response.h>
 
 namespace mc {
 
 // push options into mc namespace
 using proto::opts_t;
-// push server response into mc namespace
 
 /** Template of class for memcache clients.
  */
 template <
     typename pool_t,
-    typename server_proxy_t
+    typename server_proxy_t,
+    typename impl
 > class client_template_t: public boost::noncopyable {
 public:
     // will be template arg that wraps key and data and base64 it due to
@@ -74,7 +73,7 @@ public:
              const std::string &data,
              const opts_t &opts = opts_t()) const
     {
-        run(cmd::set_t(key, data, opts));
+        run(impl::set(key, data, opts));
     }
 
     /** Call 'get' command on appropriate memcache server.
@@ -82,7 +81,7 @@ public:
      * @return data for given key.
      */
     const std::string &get(const safe_string_t &key) const {
-        return run(cmd::get_t(key)).data;
+        return run(impl::get_t(key)).data;
     }
 
 protected:
@@ -91,7 +90,7 @@ protected:
      * @return memcache server response.
      */
     template <typename command_t>
-    const response_t &run(const command_t &command) const {
+    typename command_t::response_t run(const command_t &command) const {
         for (typename pool_t::const_iterator
                 iidx = pool.choose(command.key()),
                 eidx = pool.end();
@@ -102,7 +101,7 @@ protected:
             if (!server.callable()) continue;
 
             // send command to server and wait till response arrive
-            response_t response = server.send(command);
+            typename command_t::response_t response = server.send(command);
             // TODO(burlog): consistent hashing pool distribute keys after fail
             // TODO(burlog): so we can handle 404 as one `continue'
             // TODO(burlog): maybe solo fallback function will look better

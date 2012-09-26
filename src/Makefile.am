@@ -31,6 +31,8 @@ SRC = mcache.cc logger.cc error.cc init.cc                                     \
                                                                                \
       io/connection.cc                                                         \
                                                                                \
+      proto/txt.cc proto/binary.cc                                             \
+                                                                               \
       hash/city.cc hash/jenkins.cc hash/murmur3.cc hash/spooky.cc
 
 libmcache_la_LIBADD =

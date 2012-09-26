@@ -19,7 +19,6 @@
 #define MCACHE_SRC_ERROR_H
 
 #include <string>
-#include <serr/format.h>
 
 #include "mcache/error.h"
 #include "mcache/logger.h"
@@ -70,6 +69,31 @@ namespace mc {
 #define DBG3   0x03000000
 #define DBG4   0x01000000
 
+namespace log {
+
+/** Converts character to hex number stored in string.
+ */
+inline std::string hexize(const unsigned char ch) {
+    static const char *HEX = "0123456789abcdef";
+    return "%" + std::string(1, HEX[ch >> 4]).append(1, HEX[ch & 0x0f]);
+}
+
+/** Converts binary characters in string to hex numbers.
+ */
+inline std::string escape(const std::string &str) {
+    std::string res;
+    for (std::string::const_iterator
+            istr = str.begin(),
+            estr = str.end();
+            istr != estr; ++istr)
+    {
+        if (::isprint(*istr)) res.append(1, *istr);
+        else res.append(hexize(static_cast<unsigned char>(*istr)));
+    }
+    return res;
+}
+
+} // namespace log
 } // namespace mc
 
 #endif /* MCACHE_SRC_ERROR_H */

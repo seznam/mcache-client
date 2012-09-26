@@ -55,28 +55,6 @@ std::pair<std::string, std::string> parse_address(const std::string &addr) {
     return std::make_pair(parts[0], parts[1]);
 }
 
-/** Converts character to hex number stored in string.
- */
-inline std::string hexize(const unsigned char ch) {
-    static const char *HEX = "0123456789abcdef";
-    return "%" + std::string(1, HEX[ch >> 4]).append(1, HEX[ch & 0x0f]);
-}
-
-/** Converts binary characters in string to hex numbers.
- */
-inline std::string escape(const std::string &str) {
-    std::string res;
-    for (std::string::const_iterator
-            istr = str.begin(),
-            estr = str.end();
-            istr != estr; ++istr)
-    {
-        if (::isprint(*istr)) res.append(1, *istr);
-        else res.append(hexize(static_cast<unsigned char>(*istr)));
-    }
-    return res;
-}
-
 } // namespace 
 
 namespace udp {
@@ -126,7 +104,8 @@ public:
         // check whether socket is connected
         if (ec || !socket.is_open()) {
             if (!timeouted) throw io::error_t(err::io_error, ec.message());
-            throw io::error_t(err::timeout, "can't connect due to timeout");
+            throw io::error_t(err::timeout, "can't connect due to timeout"
+                              ": dst=" + addr);
         }
         DBG(DBG3, "Connected to memcache server: server=%s, address=%s",
                   addr.c_str(),
@@ -138,7 +117,7 @@ public:
      */
     void write(const std::string &data) {
         DBG(DBG1, "Send buffer with data to server: buffer=%s, size=%zd",
-                  escape(data).c_str(), data.size());
+                  log::escape(data).c_str(), data.size());
 
         // launch async write
         set_deadline(3000);
@@ -149,7 +128,8 @@ public:
         // check whether data was written
         if (ec) {
             if (!timeouted) throw io::error_t(err::io_error, ec.message());
-            throw io::error_t(err::timeout, "can't write due to timeout");
+            throw io::error_t(err::timeout, "can't write due to timeout"
+                              ": dst=" + addr);
         }
         DBG(DBG3, "Buffer has been written to server");
     }
@@ -161,7 +141,7 @@ public:
      */
     std::string read_until(const std::string &delimiter) {
         DBG(DBG1, "Schedule receiving buffer of data from server: delimiter=%s",
-                  escape(delimiter).c_str());
+                  log::escape(delimiter).c_str());
 
         // launch async read
         std::size_t size;
@@ -174,7 +154,8 @@ public:
         // check whether data was read
         if (ec) {
             if (!timeouted) throw io::error_t(err::io_error, ec.message());
-            throw io::error_t(err::timeout, "can't read due to timeout");
+            throw io::error_t(err::timeout, "can't read due to timeout"
+                              ": dst=" + addr);
         }
         DBG(DBG3, "New buffer with data has been read from server: size=%zd",
                   input.size());
@@ -185,26 +166,31 @@ public:
      * next async read operation.
      */
     std::string read(std::size_t count) {
-        DBG(DBG1, "Schedule receiving buffer of data from server: count=%zd",
-                  count);
+        DBG(DBG1, "Schedule receiving buffer of data from server: "
+                  "count=%zd, buffered-size=%zd, buffered=%s",
+                  count, input.size(),
+                  log::escape(std::string(asio::buffer_cast<const char *>(input.data()), input.size())).c_str());
+
+        // if there is sufficient bytes in buffer return immediately
+        if (count <= input.size()) return copy_n(input, count);
 
         // launch async read
-        std::size_t size;
         set_deadline(3000);
+        std::size_t transfer = count - input.size();
         boost::system::error_code ec = asio::error::would_block;
-        asio::async_read(socket, input, asio::transfer_exactly(count),
-                         (var(ec) = _1, var(size) = _2));
+        asio::async_read(socket, input, asio::transfer_at_least(transfer),
+                         var(ec) = _1);
         do { ios.run_one();} while (ec == asio::error::would_block);
-        if (size != count) ec = asio::error::message_size;
 
         // check whether data was read
         if (ec) {
             if (!timeouted) throw io::error_t(err::io_error, ec.message());
-            throw io::error_t(err::timeout, "can't read due to timeout");
+            throw io::error_t(err::timeout, "can't read due to timeout"
+                              ": dst=" + addr);
         }
         DBG(DBG3, "New buffer with data has been read from server: size=%zd",
                   input.size());
-        return copy_n(input, size);
+        return copy_n(input, count);
     }
 
 private:
@@ -212,7 +198,11 @@ private:
      */
     std::string copy_n(asio::streambuf &stream, std::size_t count) const {
          const char *ptr = asio::buffer_cast<const char *>(stream.data());
-         return std::string(ptr, ptr + count);
+         std::string result(ptr, ptr + count);
+         stream.consume(count);
+         DBG(DBG1, "Read data from input stream: count=%zd, buffer=%s",
+                   count, log::escape(result).c_str());
+         return result;
     }
 
     /** Set new deadline timeout.

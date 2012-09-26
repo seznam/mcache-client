@@ -25,12 +25,8 @@
 
 #include <mcache/lock.h>
 #include <mcache/io/error.h>
-#include <mcache/command/response.h>
 
 namespace mc {
-
-// push response into mc namespace
-using cmd::response_t;
 
 /** Configuration object for server proxy and connection objects.
  */
@@ -87,16 +83,19 @@ public:
      * @return parsed command response.
      */
     template <typename command_t>
-    response_t send(const command_t &command) {
+    typename command_t::response_t send(const command_t &command) {
         // pick connection from pool of connections
+        typedef typename command_t::response_t response_t;
         connection_ptr_t connection = connections.pick();
         try {
             // if command was finished successfuly then make server alive
             response_t response = connection->send(command);
             dead = false;
 
-            // return connection to pool of connections
-            connections.push_back(connection);
+            // if command does not understand repsonse does not return the
+            // connection to pool (the connection will be closed)
+            if (response.code() != proto::resp::unrecognized)
+                connections.push_back(connection);
             return response;
 
         } catch (const io::error_t &e) {
@@ -110,7 +109,7 @@ public:
                 dead = true;
             }
         }
-        return response_t("connection failed");
+        return response_t(proto::resp::io_error, "connection failed");
     }
 
     // TODO(burlog): make dead and restoration shared through processes...
