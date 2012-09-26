@@ -114,7 +114,7 @@ public:
 };
 
 template <typename command_t>
-class inc_dec_t {
+class incr_decr_t {
 public:
     bool operator()(mc::io::tcp::connection_t &connection,
                     const std::string &line)
@@ -132,6 +132,22 @@ public:
         std::cout << "response = {" << std::endl
                   << "    status = " << response.code() << std::endl
                   << "    new-value = " << response.data() << std::endl
+                  << "}" << std::endl;
+        return false;
+    }
+};
+
+template <typename command_t>
+class delete_t {
+public:
+    bool operator()(mc::io::tcp::connection_t &connection,
+                    const std::string &line)
+    {
+        typename command_t::response_t
+            response = connection.send(command_t(boost::trim_copy(line)));
+        if (!response) throw response.exception();
+        std::cout << "response = {" << std::endl
+                  << "    status = " << response.code() << std::endl
                   << "}" << std::endl;
         return false;
     }
@@ -188,8 +204,10 @@ int main(int argc, char **argv) {
     dispatcher.insert("append", storage_t<api::append_t>());
     dispatcher.insert("prepend", storage_t<api::prepend_t>());
     dispatcher.insert("cas", storage_t<api::cas_t>());
-    dispatcher.insert("incr", inc_dec_t<api::inc_t>());
-    dispatcher.insert("decr", inc_dec_t<api::dec_t>());
+    dispatcher.insert("incr", incr_decr_t<api::incr_t>());
+    dispatcher.insert("decr", incr_decr_t<api::decr_t>());
+    dispatcher.insert("del", delete_t<api::delete_t>());
+    dispatcher.insert("touch", incr_decr_t<api::touch_t>());
 
     // establish connection to server
     mc::io::tcp::connection_t connection(dst, mc::io::opts_t());

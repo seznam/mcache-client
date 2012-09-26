@@ -158,29 +158,73 @@ std::string storage_command_t::serialize(const char *name) const {
     return os.str();
 }
 
-inc_dec_command_t::response_t
-inc_dec_command_t::deserialize_header(const std::string &header) const {
-    // <value>\r\n - ok response
-    std::istringstream is(header);
-    uint64_t value;
-    if (is >> value)
-        return response_t(resp::ok, boost::trim_copy(header));
+incr_decr_command_t::response_t
+incr_decr_command_t::deserialize_header(const std::string &header) const {
+    // reject empty response
+    if (header.empty()) return response_t(resp::empty, "empty response");
 
-    // fail response
-    if (boost::starts_with(header, "NOT_FOUND"))
-        return response_t(resp::not_found, "key does not exist");
+    // try parse retrieve responses
+    switch (header[0]) {
+    case 'T':
+        // fail response
+        if (boost::starts_with(header, "TOUCHED"))
+            return response_t(resp::touched);
+        break;
+    case 'N':
+        if (boost::starts_with(header, "NOT_FOUND"))
+            return response_t(resp::not_found, "key does not exist");
+        break;
+    case '0'...'9': {
+        // <value>\r\n - ok response
+        std::istringstream is(header);
+        uint64_t value;
+        if (is >> value)
+            return response_t(resp::ok, boost::trim_copy(header));
+        break;
+        }
+    default: break;
+    }
 
     // header does not recognized, try global errors
     return command_t::deserialize_header(header);
 
 }
 
-std::string inc_dec_command_t::serialize(const char *name) const {
+std::string incr_decr_command_t::serialize(const char *name) const {
     // <command name> <key> <value> [noreply]\r\n
     // TODO(burlog): check whether key fulfil protocol constraints
     std::ostringstream os;
     os << name << ' ' << key << ' ' << value << header_delimiter();
     return os.str();
+}
+
+delete_command_t::response_t
+delete_command_t::deserialize_header(const std::string &header) const {
+    // reject empty response
+    if (header.empty()) return response_t(resp::empty, "empty response");
+
+    // try parse retrieve responses
+    switch (header[0]) {
+    case 'D':
+        if (boost::starts_with(header, "DELETED"))
+            return response_t(resp::deleted);
+        break;
+    case 'N':
+        if (boost::starts_with(header, "NOT_FOUND"))
+            return response_t(resp::not_found, "key does not exist");
+        break;
+    default: break;
+    }
+
+    // header does not recognized, try global errors
+    return response_t(command_t::deserialize_header(header));
+
+}
+
+std::string delete_command_t::serialize() const {
+    std::string result;
+    result.append("delete ").append(key).append(header_delimiter());
+    return result;
 }
 
 // command names
@@ -194,6 +238,7 @@ const char *api::prepend_name = "prepend";
 const char *api::cas_name = "cas";
 const char *api::incr_name = "incr";
 const char *api::decr_name = "decr";
+const char *api::touch_name = "touch";
 
 } // namespace txt
 } // namespace proto

@@ -97,11 +97,11 @@ protected:
 
 /** Base class for incr and decr commands.
  */
-class inc_dec_command_t: public command_t {
+class incr_decr_command_t: public command_t {
 public:
     /** C'tor.
      */
-    explicit inc_dec_command_t(const std::string &key, uint64_t value)
+    explicit incr_decr_command_t(const std::string &key, uint64_t value)
         : key(key), value(value)
     {}
 
@@ -116,6 +116,26 @@ protected:
 
     std::string key; //!< for which key data should be retrieved
     uint64_t value;  //!< amount by which the client wants to increase/decrease
+};
+
+/** Base class for incr and decr commands.
+ */
+class delete_command_t: public command_t {
+public:
+    /** C'tor.
+     */
+    explicit delete_command_t(const std::string &key): key(key) {}
+
+    /** Deserialize responses for get and gets retrieve commands.
+     */
+    response_t deserialize_header(const std::string &header) const;
+
+    /** Serialize retrieve command.
+     */
+    std::string serialize() const;
+
+protected:
+    std::string key; //!< for which key data should be retrieved
 };
 
 /** Injects name to particular command class.
@@ -162,6 +182,7 @@ private:
     static const char *cas_name;
     static const char *incr_name;
     static const char *decr_name;
+    static const char *touch_name;
 
 public:
     // protocol api table
@@ -173,10 +194,10 @@ public:
     typedef name_injector<storage_command_t, &append_name> append_t;
     typedef name_injector<storage_command_t, &prepend_name> prepend_t;
     typedef name_injector<storage_command_t, &cas_name> cas_t;
-    typedef name_injector<inc_dec_command_t, &incr_name> inc_t;
-    typedef name_injector<inc_dec_command_t, &decr_name> dec_t;
-    //typedef delete_command_t delete_t;
-    //typedef touch_command_t touch_t;
+    typedef name_injector<incr_decr_command_t, &incr_name> incr_t;
+    typedef name_injector<incr_decr_command_t, &decr_name> decr_t;
+    typedef name_injector<incr_decr_command_t, &touch_name> touch_t;
+    typedef delete_command_t delete_t;
 };
 
 } // namespace txt
