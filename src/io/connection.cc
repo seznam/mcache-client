@@ -55,6 +55,13 @@ std::pair<std::string, std::string> parse_address(const std::string &addr) {
     return std::make_pair(parts[0], parts[1]);
 }
 
+/** Dumps buffer data and escape nonprinable characters.
+ */
+std::string dump(const asio::streambuf &buf) {
+    std::string result(asio::buffer_cast<const char *>(buf.data()), buf.size());
+    return log::escape(result);
+}
+
 } // namespace 
 
 namespace udp {
@@ -96,7 +103,7 @@ public:
                   iendpoint->endpoint().address().to_string().c_str());
 
         // launch async connect
-        set_deadline(1000);
+        set_deadline(opts.timeouts.connect);
         boost::system::error_code ec = asio::error::would_block;
         asio::async_connect(socket, iendpoint, var(ec) = _1);
         do { ios.run_one();} while (ec == asio::error::would_block);
@@ -116,11 +123,11 @@ public:
      * @param data some data to sent to remote server.
      */
     void write(const std::string &data) {
-        DBG(DBG1, "Send buffer with data to server: buffer=%s, size=%zd",
-                  log::escape(data).c_str(), data.size());
+        DBG(DBG1, "Send buffer with data to server: size=%zd, buffer=%s",
+                  data.size(), log::escape(data).c_str());
 
         // launch async write
-        set_deadline(3000);
+        set_deadline(opts.timeouts.write);
         boost::system::error_code ec = asio::error::would_block;
         asio::async_write(socket, asio::buffer(data), var(ec) = _1);
         do { ios.run_one();} while (ec == asio::error::would_block);
@@ -140,12 +147,14 @@ public:
      * @return read data (delimiter is included).
      */
     std::string read_until(const std::string &delimiter) {
-        DBG(DBG1, "Schedule receiving buffer of data from server: delimiter=%s",
-                  log::escape(delimiter).c_str());
+        DBG(DBG1, "Schedule receiving buffer of data from server: "
+                  "delimiter=%s, buffered-size=%zd, buffered=%s",
+                  log::escape(delimiter).c_str(),
+                  input.size(), dump(input).c_str());
 
         // launch async read
         std::size_t size;
-        set_deadline(3000);
+        set_deadline(opts.timeouts.read);
         boost::system::error_code ec = asio::error::would_block;
         asio::async_read_until(socket, input, delimiter,
                                (var(ec) = _1, var(size) = _2));
@@ -168,14 +177,13 @@ public:
     std::string read(std::size_t count) {
         DBG(DBG1, "Schedule receiving buffer of data from server: "
                   "count=%zd, buffered-size=%zd, buffered=%s",
-                  count, input.size(),
-                  log::escape(std::string(asio::buffer_cast<const char *>(input.data()), input.size())).c_str());
+                  count, input.size(), dump(input).c_str());
 
         // if there is sufficient bytes in buffer return immediately
         if (count <= input.size()) return copy_n(input, count);
 
         // launch async read
-        set_deadline(3000);
+        set_deadline(opts.timeouts.read);
         std::size_t transfer = count - input.size();
         boost::system::error_code ec = asio::error::would_block;
         asio::async_read(socket, input, asio::transfer_at_least(transfer),
@@ -219,6 +227,8 @@ private:
     void handle_deadline() {
         // check whether timeout expired
         if (deadline.expires_at() <= asio::deadline_timer::traits_type::now()) {
+            DBG(DBG3, "Connection timeouted: server=%s", addr.c_str());
+
             // close the socket due to timeout
             boost::system::error_code ec;
             socket.close(ec);
@@ -241,6 +251,7 @@ private:
     asio::deadline_timer deadline; //!< timeout timer
     asio::streambuf input;         //!< input buffer for incoming data
     bool timeouted;                //!< true if socket timeouted
+    opts_t opts;                   //!< connection options
 };
 
 connection_t::connection_t(const std::string &addr, opts_t opts)

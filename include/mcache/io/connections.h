@@ -20,6 +20,9 @@
 
 #include <inttypes.h>
 #include <boost/shared_ptr.hpp>
+#include <boost/make_shared.hpp>
+
+#include <mcache/io/error.h>
 
 namespace mc {
 namespace io {
@@ -47,7 +50,7 @@ public:
      */
     connection_ptr_t pick() {
         if (connection.empty())
-            throw error_t(INTERNAL_ERROR, "pool of connections exhausted");
+            throw error_t(err::internal_error, "pool of connections exhausted");
         connection_ptr_t tmp = connection;
         connection.reset();
         return tmp;

@@ -25,6 +25,7 @@
 
 #include <mcache/lock.h>
 #include <mcache/io/error.h>
+#include <mcache/proto/response.h>
 
 namespace mc {
 

@@ -24,17 +24,10 @@
 #include <boost/mpl/has_xxx.hpp>
 
 #include <mcache/error.h>
+#include <mcache/io/opts.h>
 
 namespace mc {
 namespace io {
-
-/** Socket options.
- */
-class opts_t {
-public:
-    // TODO(burlog): add socket options
-};
-
 namespace tcp {
 namespace aux {
 
@@ -87,7 +80,7 @@ protected:
         aux::has_multi_response_tag<command_t>,
         typename command_t::response_t
     >::type deserialize_response(const command_t &command) {
-        // TODO(burlog): add support for multiget (here should be cycle)
+        // TODO(burlog): add support for multiget
     }
 
     /** Deserializes server response for single response commands.
@@ -103,7 +96,7 @@ protected:
         response_t response = command.deserialize_header(header);
 
         // if response contains body fetch it and return response
-        deserialize_body(response);
+        if (response) deserialize_body(response);
         return response;
     }
 

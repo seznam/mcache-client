@@ -40,7 +40,7 @@ libmcache_la_LDFLAGS = @VERSION_INFO@
 libmcache_la_SOURCES = $(SRC)
 
 EXTRA_PROGRAMS = test-mcache test-pool test-consistent-hashing                 \
-		 test-server-proxy test-connections test-connection
+		 test-server-proxy test-connections test-connection test-txt
 
 test_mcache_SOURCES = test-mcache.cc
 test_mcache_LDADD = libmcache.la @BOOST_SYSTEM@
@@ -59,6 +59,9 @@ test_connections_LDADD = libmcache.la @BOOST_SYSTEM@
 
 test_connection_SOURCES = io/test-connection.cc
 test_connection_LDADD = libmcache.la @BOOST_SYSTEM@ @READLINE_LIB@
+
+test_txt_SOURCES = proto/test-txt.cc
+test_txt_LDADD = libmcache.la @BOOST_SYSTEM@ @READLINE_LIB@
 
 AM_COLOR_TESTS = always
 

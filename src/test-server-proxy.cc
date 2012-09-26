@@ -27,11 +27,16 @@
 
 namespace test {
 
+class fake_command_t {
+public:
+    typedef mc::proto::single_response_t response_t;
+};
+
 class always_fail_connection_t {
 public:
     template <typename type_t>
-    mc::response_t send(type_t) {
-        throw mc::io::error_t(mc::io::INTERNAL_ERROR, "fake");
+    typename type_t::response_t send(type_t) {
+        throw mc::io::error_t(mc::io::err::internal_error, "fake");
     }
 };
 
@@ -58,7 +63,7 @@ bool server_proxy_mark_dead() {
     server_proxy_t proxy("server1:11211", cfg);
     // first call should return true
     if (!proxy.callable()) return false;
-    proxy.send(3);
+    proxy.send(fake_command_t());
     // after bad send server should be dead
     return proxy.is_dead();
 }
@@ -71,7 +76,7 @@ bool server_proxy_raise_zombie() {
     server_proxy_t proxy("server1:11211", cfg);
     // first call should return true
     if (!proxy.callable()) return false;
-    proxy.send(3);
+    proxy.send(fake_command_t());
     // after bad send shouldn't be callable
     if (proxy.callable()) return false;
     ::sleep(1);
