@@ -57,8 +57,8 @@ public:
     /** C'tor.
      */
     explicit single_response_t(int status,
-                               const std::string &data = std::string())
-        : status(status), data(data)
+                               const std::string &aux = std::string())
+        : status(status), aux(aux)
     {}
 
     /** Returns true if not error occurred.
@@ -67,15 +67,19 @@ public:
 
     /** Creates new exceptions value from response code and response message.
      */
-    inline error_t exception() const { return error_t(status, data);}
+    inline error_t exception() const { return error_t(status, aux);}
 
     /** Returns status code.
      */
     inline int code() const { return status;}
 
+    /** Returns error message or other additional data related to status.
+     */
+    const std::string &data() const { return aux;}
+
 protected:
-    int status;       //!< status code
-    std::string data; //!< response body/message
+    int status;      //!< status code
+    std::string aux; //!< response body/message
 };
 
 /** Response for single retrieval commands.
@@ -84,8 +88,8 @@ class single_retrival_response_t: public single_response_t {
 public:
     /** C'tor.
      */
-    single_retrival_response_t(int status, const std::string &data)
-        : single_response_t(status, data),
+    single_retrival_response_t(int status, const std::string &aux)
+        : single_response_t(status, aux),
           flags(), cas(), bytes()
     {}
 
@@ -106,15 +110,15 @@ public:
     // mark that this response expects body
     class body_tag;
 
-    /** Returns retrieval commands response data.
+    /** Returns retrieval commands response body.
      */
-    inline const std::string &body() const { return data;}
+    inline const std::string &body() const { return aux;}
 
     /** Sets new retrieval commands body response.
      */
     inline void set_body(const std::string &body) {
-        data = body;
-        data.resize(data.size() - foother_size);
+        aux = body;
+        aux.resize(aux.size() - foother_size);
     }
 
     /** Retutns retrieval commands expected body size.
@@ -125,6 +129,9 @@ public:
     const uint64_t cas;   //!< retrieval commands cas attribute
 
 protected:
+    // hide useless accessor
+    using single_response_t::data;
+
     std::size_t bytes;    //!< expected response body size
     static const std::size_t foother_size = 7; //!< sizeof("\r\nEND\r\n")
 };

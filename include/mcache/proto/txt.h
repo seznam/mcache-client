@@ -95,6 +95,29 @@ protected:
     opts_t opts;      //!< command options
 };
 
+/** Base class for incr and decr commands.
+ */
+class inc_dec_command_t: public command_t {
+public:
+    /** C'tor.
+     */
+    explicit inc_dec_command_t(const std::string &key, uint64_t value)
+        : key(key), value(value)
+    {}
+
+    /** Deserialize responses for get and gets retrieve commands.
+     */
+    response_t deserialize_header(const std::string &header) const;
+
+protected:
+    /** Serialize retrieve command.
+     */
+    std::string serialize(const char *name) const;
+
+    std::string key; //!< for which key data should be retrieved
+    uint64_t value;  //!< amount by which the client wants to increase/decrease
+};
+
 /** Injects name to particular command class.
  */
 template <typename parent_t, const char **name>
@@ -150,8 +173,8 @@ public:
     typedef name_injector<storage_command_t, &append_name> append_t;
     typedef name_injector<storage_command_t, &prepend_name> prepend_t;
     typedef name_injector<storage_command_t, &cas_name> cas_t;
-    //typedef name_injector<inc_command_t, &inc_name> inc_t;
-    //typedef name_injector<dec_command_t, &dec_name> dec_t;
+    typedef name_injector<inc_dec_command_t, &incr_name> inc_t;
+    typedef name_injector<inc_dec_command_t, &decr_name> dec_t;
     //typedef delete_command_t delete_t;
     //typedef touch_command_t touch_t;
 };

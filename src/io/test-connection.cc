@@ -113,6 +113,30 @@ public:
     }
 };
 
+template <typename command_t>
+class inc_dec_t {
+public:
+    bool operator()(mc::io::tcp::connection_t &connection,
+                    const std::string &line)
+    {
+        // parse
+        std::istringstream is(line);
+        std::string key;
+        uint64_t value = 0;
+        is >> key >> value;
+
+        // run
+        typename command_t::response_t
+            response = connection.send(command_t(key, value));
+        if (!response) throw response.exception();
+        std::cout << "response = {" << std::endl
+                  << "    status = " << response.code() << std::endl
+                  << "    new-value = " << response.data() << std::endl
+                  << "}" << std::endl;
+        return false;
+    }
+};
+
 std::pair<std::string, std::string> split(const std::string &line) {
     std::string word;
     std::istringstream is(line);
@@ -138,8 +162,8 @@ int main(int argc, char **argv) {
     using boost::lambda::constant;
 
     // we are using text protocol
-    //typedef mc::proto::txt::api api;
-    typedef mc::proto::bin::api api;
+    typedef mc::proto::txt::api api;
+    //typedef mc::proto::bin::api api;
 
     // read destionation address
     if (argc != 2) {
@@ -157,13 +181,15 @@ int main(int argc, char **argv) {
     dispatcher.insert("exit", constant(true));
     dispatcher.insert("help", (std::cout << constant(HELP), constant(false)));
     dispatcher.insert("get", retrieve_t<api::get_t>());
-    //dispatcher.insert("gets", retrieve_t<api::gets_t>());
-    //dispatcher.insert("set", storage_t<api::set_t>());
-    //dispatcher.insert("add", storage_t<api::add_t>());
-    //dispatcher.insert("replace", storage_t<api::replace_t>());
-    //dispatcher.insert("append", storage_t<api::append_t>());
-    //dispatcher.insert("prepend", storage_t<api::prepend_t>());
-    //dispatcher.insert("cas", storage_t<api::cas_t>());
+    dispatcher.insert("gets", retrieve_t<api::gets_t>());
+    dispatcher.insert("set", storage_t<api::set_t>());
+    dispatcher.insert("add", storage_t<api::add_t>());
+    dispatcher.insert("replace", storage_t<api::replace_t>());
+    dispatcher.insert("append", storage_t<api::append_t>());
+    dispatcher.insert("prepend", storage_t<api::prepend_t>());
+    dispatcher.insert("cas", storage_t<api::cas_t>());
+    dispatcher.insert("incr", inc_dec_t<api::inc_t>());
+    dispatcher.insert("decr", inc_dec_t<api::dec_t>());
 
     // establish connection to server
     mc::io::tcp::connection_t connection(dst, mc::io::opts_t());

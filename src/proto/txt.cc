@@ -146,6 +146,7 @@ storage_command_t::deserialize_header(const std::string &header) const {
 std::string storage_command_t::serialize(const char *name) const {
     // <command name> <key> <flags> <exptime> <bytes> [noreply]\r\n
     // cas <key> <flags> <exptime> <bytes> <cas unique> [noreply]\r\n
+    // TODO(burlog): check whether key fulfil protocol constraints
     std::ostringstream os;
     os << name << ' '
        << key << ' '
@@ -154,6 +155,31 @@ std::string storage_command_t::serialize(const char *name) const {
        << data.size();
     if (opts.cas) os << ' ' << opts.cas;
     os << header_delimiter() << data << header_delimiter();
+    return os.str();
+}
+
+inc_dec_command_t::response_t
+inc_dec_command_t::deserialize_header(const std::string &header) const {
+    // <value>\r\n - ok response
+    std::istringstream is(header);
+    uint64_t value;
+    if (is >> value)
+        return response_t(resp::ok, boost::trim_copy(header));
+
+    // fail response
+    if (boost::starts_with(header, "NOT_FOUND"))
+        return response_t(resp::not_found, "key does not exist");
+
+    // header does not recognized, try global errors
+    return command_t::deserialize_header(header);
+
+}
+
+std::string inc_dec_command_t::serialize(const char *name) const {
+    // <command name> <key> <value> [noreply]\r\n
+    // TODO(burlog): check whether key fulfil protocol constraints
+    std::ostringstream os;
+    os << name << ' ' << key << ' ' << value << header_delimiter();
     return os.str();
 }
 
