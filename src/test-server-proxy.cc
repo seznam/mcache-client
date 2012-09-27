@@ -51,7 +51,7 @@ public:
 };
 
 typedef mc::server_proxy_t<
-            mc::none::lock_t,
+            mc::thread::lock_t,
             connections_t<always_fail_connection_t>
         > server_proxy_t;
 
