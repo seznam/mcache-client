@@ -50,17 +50,6 @@ public:
      */
     connection_t(const std::string &addr, opts_t opts);
 
-    /** Sends command to memcache server.
-     */
-    template <typename command_t>
-    typename command_t::response_t send(const command_t &command) {
-        // send serialized command to server
-        write(command.serialize());
-        // deserialize server command response
-        return deserialize_response(command);
-    }
-
-protected:
     /** Sends all data to server.
      */
     void write(const std::string &data);
@@ -73,47 +62,7 @@ protected:
      */
     std::string read(std::size_t bytes);
 
-    /** Deserializes server response for multi response commands.
-     */
-    template <typename command_t>
-    typename boost::enable_if<
-        aux::has_multi_response_tag<command_t>,
-        typename command_t::response_t
-    >::type deserialize_response(const command_t &command) {
-        // TODO(burlog): add support for multiget
-    }
-
-    /** Deserializes server response for single response commands.
-     */
-    template <typename command_t>
-    typename boost::disable_if<
-        aux::has_multi_response_tag<command_t>,
-        typename command_t::response_t
-    >::type deserialize_response(const command_t &command) {
-        // fetch response header (txt: first line of response)
-        typedef typename command_t::response_t response_t;
-        std::string header = read(command.header_delimiter());
-        response_t response = command.deserialize_header(header);
-
-        // if response contains body fetch it and return response
-        if (response) deserialize_body(response);
-        return response;
-    }
-
-    /** Response expects body so retrieve and parse it.
-     */
-    template <typename response_t>
-    typename boost::enable_if<aux::has_body_tag<response_t>, void>::type
-    deserialize_body(response_t &response) {
-        response.set_body(read(response.expected_body_size()));
-    }
-
-    /** Does nothing.
-     */
-    template <typename response_t>
-    typename boost::disable_if<aux::has_body_tag<response_t>, void>::type
-    deserialize_body(response_t &) {}
-
+protected:
     /** Pimple class.
      */
     class pimple_connection_t;

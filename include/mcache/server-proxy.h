@@ -26,6 +26,7 @@
 #include <mcache/lock.h>
 #include <mcache/io/error.h>
 #include <mcache/proto/response.h>
+#include <mcache/proto/parser.h>
 
 namespace mc {
 
@@ -46,6 +47,7 @@ template <
 public:
     // shortcuts
     typedef typename connections_t::connection_ptr_t connection_ptr_t;
+    typedef typename connection_ptr_t::value_type connection_t;
 
     /** C'tor.
      */
@@ -90,7 +92,8 @@ public:
         connection_ptr_t connection = connections.pick();
         try {
             // if command was finished successfuly then make server alive
-            response_t response = connection->send(command);
+            proto::command_parser_t<connection_t> parser(*connection);
+            response_t response = parser.send(command);
             dead = false;
 
             // if command does not understand repsonse does not return the

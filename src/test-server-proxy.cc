@@ -30,12 +30,21 @@ namespace test {
 class fake_command_t {
 public:
     typedef mc::proto::single_response_t response_t;
+    std::string serialize() const { return std::string();}
+    std::string header_delimiter() const { return std::string();}
+    response_t deserialize_header(const std::string &) const {
+        return response_t(mc::err::internal_error);
+    }
 };
 
 class always_fail_connection_t {
 public:
     template <typename type_t>
-    typename type_t::response_t send(type_t) {
+    void write(type_t) {
+        throw mc::io::error_t(mc::io::err::internal_error, "fake");
+    }
+    template <typename type_t>
+    std::string read(type_t) {
         throw mc::io::error_t(mc::io::err::internal_error, "fake");
     }
 };
