@@ -65,5 +65,5 @@ test_txt_LDADD = libmcache.la @BOOST_SYSTEM@ @READLINE_LIB@
 
 AM_COLOR_TESTS = always
 
-TESTS = test-pool test-server-proxy test-connections
+TESTS = test-pool test-server-proxy test-connections test-txt
 

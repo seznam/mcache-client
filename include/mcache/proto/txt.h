@@ -77,7 +77,7 @@ public:
      */
     storage_command_t(const std::string &key,
                       const std::string &data,
-                      const opts_t &opts)
+                      const opts_t &opts = opts_t())
         : key(key), data(data), opts(opts)
     {}
 

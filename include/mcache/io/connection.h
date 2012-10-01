@@ -20,8 +20,6 @@
 
 #include <string>
 #include <boost/shared_ptr.hpp>
-#include <boost/utility/enable_if.hpp>
-#include <boost/mpl/has_xxx.hpp>
 
 #include <mcache/error.h>
 #include <mcache/io/opts.h>
@@ -29,17 +27,6 @@
 namespace mc {
 namespace io {
 namespace tcp {
-namespace aux {
-
-/** Defines metafunction that recognize classes with multi_response tag.
- */
-BOOST_MPL_HAS_XXX_TRAIT_DEF(multi_response_tag);
-
-/** Defines metafunction that recognize classes with body tag.
- */
-BOOST_MPL_HAS_XXX_TRAIT_DEF(body_tag);
-
-} // namespace aux
 
 /** I/O object that holds one tcp socket to memcache server and provides
  * interface for sending messages to them.

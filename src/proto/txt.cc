@@ -46,8 +46,8 @@ std::string error_desc(const std::string &header) {
  */
 retrieve_command_t::response_t
 deserialize_value_resp(const std::string &header) {
-
     // prepare response storage
+    typedef retrieve_command_t::response_t response_t;
     std::string unused;
     uint32_t flags = 0;
     std::size_t bytes = 0;
@@ -57,8 +57,11 @@ deserialize_value_resp(const std::string &header) {
 
     // parse and return
     std::istringstream is(header);
-    is >> unused >> unused >> flags >> bytes >> cas;
-    return retrieve_command_t::response_t(flags, bytes, cas);
+    if ((is >> unused) && (is >> unused) && (is >> flags) && (is >> bytes)) {
+        is >> cas;
+        return retrieve_command_t::response_t(flags, bytes, cas);
+    }
+    return response_t(resp::syntax, "invalid response: " + header);
 }
 
 } // namespace
@@ -187,7 +190,6 @@ incr_decr_command_t::deserialize_header(const std::string &header) const {
 
     // header does not recognized, try global errors
     return command_t::deserialize_header(header);
-
 }
 
 std::string incr_decr_command_t::serialize(const char *name) const {
