@@ -58,7 +58,8 @@ deserialize_value_resp(const std::string &header) {
     // parse and return
     std::istringstream is(header);
     is >> unused >> unused >> flags >> bytes >> cas;
-    return retrieve_command_t::response_t(flags, bytes, cas);
+    return retrieve_command_t::response_t(flags, bytes, cas,
+                                          retrieve_command_t::footer_size);
 }
 
 } // namespace

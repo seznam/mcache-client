@@ -82,6 +82,7 @@ protected:
     std::string aux; //!< response body/message
 };
 
+
 /** Response for single retrieval commands.
  */
 class single_retrival_response_t: public single_response_t {
@@ -90,21 +91,23 @@ public:
      */
     single_retrival_response_t(int status, const std::string &aux)
         : single_response_t(status, aux),
-          flags(), cas(), bytes()
+          flags(), cas(), bytes(), footer_size()
     {}
 
     /** C'tor.
      */
-    single_retrival_response_t(uint32_t flags, std::size_t bytes, uint64_t cas)
+    single_retrival_response_t(uint32_t flags, std::size_t bytes, uint64_t cas,
+                               std::size_t footer_size)
         : single_response_t(resp::ok, std::string()),
-          flags(flags), cas(cas), bytes(bytes + foother_size)
+          flags(flags), cas(cas), bytes(bytes + footer_size),
+          footer_size(footer_size)
     {}
 
     /** C'tor.
      */
     explicit single_retrival_response_t(const single_response_t &resp)
         : single_response_t(resp),
-          flags(), cas(), bytes()
+          flags(), cas(), bytes(), footer_size()
     {}
 
     // mark that this response expects body
@@ -118,7 +121,7 @@ public:
      */
     inline void set_body(const std::string &body) {
         aux = body;
-        aux.resize(aux.size() - foother_size);
+        aux.resize(aux.size() - footer_size);
     }
 
     /** Retutns retrieval commands expected body size.
@@ -133,7 +136,7 @@ protected:
     using single_response_t::data;
 
     std::size_t bytes;    //!< expected response body size
-    static const std::size_t foother_size = 7; //!< sizeof("\r\nEND\r\n")
+    std::size_t footer_size;
 };
 
 // TODO(burlog): add support for multi-get
