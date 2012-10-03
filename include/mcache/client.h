@@ -34,7 +34,7 @@ using proto::opts_t;
  */
 template <
     typename pool_t,
-    typename server_proxy_t,
+    typename server_proxies_t,
     typename impl
 > class client_template_t: public boost::noncopyable {
 public:
@@ -44,23 +44,13 @@ public:
     typedef std::string safe_string_t;
 
     /** C'tor.
-     * @param pool pool of indexes.
-     * @param addresses addresses of memcache servers.
      */
     template <typename pool_config_t, typename server_proxy_config_t>
     client_template_t(const std::vector<std::string> &addresses,
                       const pool_config_t &pcfg,
                       const server_proxy_config_t &scfg)
-        : pool(addresses, pcfg), proxies()
-    {
-        for (std::vector<std::string>::const_iterator
-                iaddr = addresses.begin(),
-                eaddr = addresses.end();
-                iaddr != eaddr; ++iaddr)
-        {
-            proxies.push_back(server_proxy_t(*iaddr, scfg));
-        }
-    }
+        : pool(addresses, pcfg), proxies(addresses, scfg)
+    {}
 
     // there should be interface for storing ints, pod, frpc, protobuf, ...
 
@@ -97,6 +87,7 @@ protected:
                 iidx != eidx; ++iidx)
         {
             // check if choosed server node is dead
+            typedef typename server_proxies_t::server_proxy_t server_proxy_t;
             const server_proxy_t &server = proxies[*iidx];
             if (!server.callable()) continue;
 
@@ -111,9 +102,6 @@ protected:
         }
         throw Error_t(ErrorCategory_t::INTERNAL_ERROR, "out of servers");
     }
-
-    // shortcuts
-    typedef std::vector<server_proxy_t> server_proxies_t;
 
     pool_t pool;                      //!< idxs that represents key distribution
     mutable server_proxies_t proxies; //!< i/o objects for memcache servers
