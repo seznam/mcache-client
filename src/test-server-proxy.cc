@@ -69,7 +69,8 @@ bool server_proxy_mark_dead() {
     mc::server_proxy_config_t cfg;
     cfg.restoration_interval = 3;
     cfg.timeout = 1000;
-    server_proxy_t proxy("server1:11211", cfg);
+    server_proxy_t::shared_t shared;
+    server_proxy_t proxy("server1:11211", &shared, cfg);
     // first call should return true
     if (!proxy.callable()) return false;
     proxy.send(fake_command_t());
@@ -82,7 +83,8 @@ bool server_proxy_raise_zombie() {
     mc::server_proxy_config_t cfg;
     cfg.restoration_interval = 1;
     cfg.timeout = 1000;
-    server_proxy_t proxy("server1:11211", cfg);
+    server_proxy_t::shared_t shared;
+    server_proxy_t proxy("server1:11211", &shared, cfg);
     // first call should return true
     if (!proxy.callable()) return false;
     proxy.send(fake_command_t());

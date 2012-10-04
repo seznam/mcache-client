@@ -19,7 +19,9 @@ gitver = $(shell git describe --all --dirty --long --abbrev=40)
 
 AM_CPPFLAGS = -DGIT_REVISION="\"Configure=@GIT_REVISION@,Make=$(gitver)\""     \
               -DGIT_REVISION_N="\"$(gitver)\""                                 \
-              -I@top_builddir@ -I@top_srcdir@/src -I$(top_srcdir)/include
+              -I@top_builddir@ -I@top_srcdir@/src -I$(top_srcdir)/include      \
+	      @LIBTBB_CFLAGS@
+
 
 AUTOMAKE_OPTIONS = subdir-objects
 
@@ -35,7 +37,7 @@ SRC = mcache.cc logger.cc error.cc init.cc                                     \
                                                                                \
       hash/city.cc hash/jenkins.cc hash/murmur3.cc hash/spooky.cc
 
-libmcache_la_LIBADD =
+libmcache_la_LIBADD = @LIBTBB_LIBS@
 libmcache_la_LDFLAGS = @VERSION_INFO@
 libmcache_la_SOURCES = $(SRC)
 
@@ -69,5 +71,6 @@ test_synchronization_LDADD = libmcache.la @BOOST_SYSTEM@
 
 AM_COLOR_TESTS = always
 
-TESTS = test-pool test-server-proxy test-connections test-txt
+TESTS = test-pool test-server-proxy test-connections test-txt                  \
+	test-synchronization
 

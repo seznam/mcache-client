@@ -59,7 +59,7 @@ deserialize_value_resp(const std::string &header) {
     std::istringstream is(header);
     if ((is >> unused) && (is >> unused) && (is >> flags) && (is >> bytes)) {
         is >> cas;
-        return response_t(flags, bytes, cas, footer_size);
+        return response_t(flags, bytes, cas, retrieve_command_t::footer_size);
     }
     return response_t(resp::syntax, "invalid response: " + header);
 }
