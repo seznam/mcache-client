@@ -63,9 +63,14 @@ namespace bip = boost::interprocess;
 template <typename type_t>
 class shared_array_t  {
 public:
+    /** C'tor.
+     */
     shared_array_t(std::size_t count)
         : region(bip::anonymous_shared_memory(sizeof(type_t) * count))
-    {}
+    {
+        // placement new: initialize all entries in array
+        new (array()) type_t[count]();
+    }
 
     /** Const element access operator.
      */

@@ -24,7 +24,6 @@
 #include <sys/types.h>
 #include <sys/wait.h>
 
-
 #include <mcache/lock.h>
 #include <mcache/error.h>
 #include <mcache/io/error.h>

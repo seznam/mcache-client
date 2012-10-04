@@ -144,6 +144,17 @@ AC_LANG_C
 AC_CHECK_HEADER([readline/readline.h], [AC_DEFINE([HAVE_READLINE_H], [1])], [])
 AC_CHECK_LIB(readline, main, [READLINE_LIB="-lreadline"], [])
 
+## Check for LIBTBB
+AC_LANG_CPLUSPLUS
+PKG_CHECK_MODULES([LIBTBB], [tbb >= 2.0], [has_tbb=yes AC_DEFINE([HAVE_LIBTBB])], [has_tbb=no])
+# for debian system with older tbb which does not support pkg_config
+AS_IF([test "x$has_tbb" = "xno"], [
+       AC_CHECK_HEADERS([tbb/concurrent_queue.h], [has_tbb_include=yes], [])
+       AS_IF([test "x$has_tbb_include" = "xyes"], [
+           AC_CHECK_LIB(tbb, main, [AC_DEFINE([HAVE_LIBTBB])], [])
+       ], [])
+], [])
+
 GIT_REVISION="`git describe --all --dirty --long --abbrev=40`"
 
 AC_SUBST(GIT_REVISION)
