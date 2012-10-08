@@ -198,7 +198,6 @@ int main(int argc, char **argv) {
     dispatcher.insert("help", (std::cout << constant(HELP), constant(false)));
     dispatcher.insert("get", retrieve_t<api::get_t>());
     dispatcher.insert("getb", retrieve_t<mc::proto::bin::api::get_t>());
-    dispatcher.insert("getbt", retrieve_t<mc::proto::bin::testapi::get_t>());
     dispatcher.insert("gets", retrieve_t<api::gets_t>());
     dispatcher.insert("set", storage_t<api::set_t>());
     dispatcher.insert("add", storage_t<api::add_t>());
