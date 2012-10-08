@@ -63,7 +63,7 @@ public:
              const std::string &data,
              const opts_t &opts = opts_t()) const
     {
-        run(impl::set(key, data, opts));
+        run(typename impl::set_t(key, data, opts));
     }
 
     /** Call 'get' command on appropriate memcache server.
@@ -71,7 +71,7 @@ public:
      * @return data for given key.
      */
     const std::string &get(const safe_string_t &key) const {
-        return run(impl::get_t(key)).data;
+        return run(typename impl::get_t(key)).body();
     }
 
 protected:
@@ -100,35 +100,14 @@ protected:
             if (!response) throw response.exception();
             return response;
         }
-        throw Error_t(ErrorCategory_t::INTERNAL_ERROR, "out of servers");
+        throw error_t(err::internal_error, "out of servers");
     }
 
     pool_t pool;                      //!< idxs that represents key distribution
     mutable server_proxies_t proxies; //!< i/o objects for memcache servers
 };
 
-//typedef client_template_t<mc::ch_t, mc::thread_proxy> thread_client_t;
-//
-//class thread_client_t: public client_template_t<mc::ch_t, mc::thread_proxy>{
-//    thread_client_t(x, y, z): 
-//}
-
 } // namespace mc
-
-//int x() {
-//    mc::client_t c(a, c1, c2);
-//
-//    c.response_storage = xy;
-//    const response_t &r1 = c.get(100);
-//    if (response_t::wait_for_response != r1) throw 1;
-//    if (response_t::wait_for_response != c.get(101)) throw 1;
-//    if (response_t::wait_for_response != c.get(102)) throw 1;
-//    if (response_t::wait_for_response != c.get(103)) throw 1;
-//    if (response_t::wait_for_response != c.get(104)) throw 1;
-//    if (response_t::wait_for_response != c.get(105)) throw 1;
-//    c.wait_for_response();
-//
-//}
 
 #endif /* MCACHE_CLIENT_H */
 

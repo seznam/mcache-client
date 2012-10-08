@@ -25,8 +25,6 @@
 
 namespace mc {
 
-// TODO(burlog): move single hash function to Hash_t class?
-
 /// type of builtin hash functions
 typedef uint32_t (* hash_function_t )(const std::string &);
 

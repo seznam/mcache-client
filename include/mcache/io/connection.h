@@ -15,8 +15,8 @@
  *                  First draft.
  */
 
-#ifndef MCACHE_IO_CONNECTIONS_H
-#define MCACHE_IO_CONNECTIONS_H
+#ifndef MCACHE_IO_CONNECTION_H
+#define MCACHE_IO_CONNECTION_H
 
 #include <string>
 #include <boost/shared_ptr.hpp>
@@ -71,5 +71,5 @@ namespace udp {
 } // namespace io
 } // namespace mc
 
-#endif /* MCACHE_IO_CONNECTIONS_H */
+#endif /* MCACHE_IO_CONNECTION_H */
 
