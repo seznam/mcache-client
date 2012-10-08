@@ -61,9 +61,14 @@ public:
      */
     response_t deserialize_header(const std::string &header) const;
 
-    /** The size of response footer */
-    static const std::size_t footer_size = 7; //!< sizeof("\r\nEND\r\n")
+    /** The method for setting the body of response. */
+    static void set_body(uint32_t &flags,
+                         std::string &body,
+                         const std::string &data);
 
+    /** The size of response footer */
+    static const std::size_t footer_size = 7; //!<
+                                              //!sizeof("\r\nEND\r\n")
 protected:
     /** Serialize retrieve command.
      */

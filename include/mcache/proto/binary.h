@@ -110,12 +110,16 @@ public:
 
     /** Returns txt protocol header delimiter.
      */
-    std::size_t header_delimiter() const { return 28;}
+    std::size_t header_delimiter() const { return 24;}
 
     /** Deserialize responses for get and gets retrieve commands.
      */
     response_t deserialize_header(const std::string &header) const;
 
+    /** The method for setting the body of response. */
+    static void set_body(uint32_t &flags,
+                         std::string &body,
+                         const std::string &data);
 protected:
     /** Serialize retrieve command.
      */
@@ -246,71 +250,6 @@ public:
     //typedef op_code_injector<dec_command_t, dec_code> dec_t;
     //typedef delete_command_t delete_t;
     //typedef touch_command_t touch_t;
-};
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-/**
- */
-class test_t {
-public:
-    typedef single_retrival_response_t response_t;
-
-    test_t(const std::string &key): key(key) {}
-
-    std::size_t header_delimiter() const { return 28;}
-
-    std::string serialize() const;
-
-    response_t deserialize_header(const std::string &) const;
-
-    std::string key;
-};
-
-/** Used as namespace with class behaviour for protocol api.
- */
-class testapi {
-public:
-    // protocol api table
-    typedef test_t get_t;
 };
 
 } // namespace bin

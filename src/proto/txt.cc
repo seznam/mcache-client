@@ -58,8 +58,10 @@ deserialize_value_resp(const std::string &header) {
     // parse and return
     std::istringstream is(header);
     is >> unused >> unused >> flags >> bytes >> cas;
-    return retrieve_command_t::response_t(flags, bytes, cas,
-                                          retrieve_command_t::footer_size);
+    return retrieve_command_t::response_t(flags,
+                                          bytes + retrieve_command_t::footer_size,
+                                          cas,
+                                          retrieve_command_t::set_body);
 }
 
 } // namespace
@@ -115,6 +117,14 @@ std::string retrieve_command_t::serialize(const char *name) const {
     result.append(name).append(1, ' ').append(key).append(header_delimiter());
     return result;
 }
+
+void retrieve_command_t::set_body(uint32_t &,
+                                  std::string &body,
+                                  const std::string &data) {
+    body = data;
+    body.resize(body.size() - footer_size);
+}
+
 
 storage_command_t::response_t
 storage_command_t::deserialize_header(const std::string &header) const {

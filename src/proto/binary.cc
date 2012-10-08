@@ -27,47 +27,6 @@ namespace mc {
 namespace proto {
 namespace bin {
 
-test_t::response_t
-test_t::deserialize_header(const std::string &header) const {
-    std::size_t extra_len = header[4];
-    std::size_t body_len = ::ntohl(reinterpret_cast<const uint32_t *>
-            (header.data())[2]);
-    LOG(INFO3, "LEN.... %zd %zd", extra_len , body_len);
-    return response_t(0, body_len - extra_len, 0, 0);
-}
-
-std::string test_t::serialize() const {
-    header_t hdr;
-    hdr.magic = 0x80;
-    hdr.opcode = 0x00;
-    hdr.key_len = 5;
-    hdr.extras_len = 0;
-    hdr.data_type = 0;
-    hdr.reserved = 0;
-    hdr.body_len = 5;
-    hdr.opaque = 0;
-    hdr.cas = 0;
-    hdr.prepare_serialization();
-
-    std::string hdrs(reinterpret_cast<char *>(&hdr), sizeof(hdr));
-    std::ostringstream os;
-    os
-       // << char(0x80) << char(0x00) << char(0x00) << char(0x05)
-       // << char(0x00) << char(0x00) << char(0x00) << char(0x00)
-       // << char(0x00) << char(0x00) << char(0x00) << char(0x05)
-       // << char(0x00) << char(0x00) << char(0x00) << char(0x00)
-       // << char(0x00) << char(0x00) << char(0x00) << char(0x00)
-       // << char(0x00) << char(0x00) << char(0x00) << char(0x00)
-       << char(0x48) << char(0x65) << char(0x6c) << char(0x6c)
-       << char(0x6f);
-    return hdrs +
-        os.str();
-}
-
-
-
-
-
 // TODO (Lubos) Pokud by se melo pouzivat na solarisu, tak je potreba
 // tyhle funkce vytahnout z glibc (htobe atp.
 void header_t::prepare_serialization() {
@@ -85,9 +44,6 @@ void header_t::prepare_deserialization() {
     opaque = be32toh(opaque);
     cas = be64toh(cas);
 }
-
-
-
 
 command_t::response_t
 command_t::deserialize_header(const std::string &header) const {
@@ -120,38 +76,19 @@ retrieve_command_t::deserialize_header(const std::string &header) const {
     header_t hdr;
     std::copy(header.begin(), header.begin() + sizeof(header_t),
               reinterpret_cast<char *>(&hdr));
-    uint32_t flags;
-    std::copy(header.begin() + sizeof(header_t), header.end(),
-              reinterpret_cast<char *>(&flags));
-    flags = be32toh(flags);
+
     hdr.prepare_deserialization();
-
-    // try parse retrieve responses
-    // switch (header[0]) {
-    // case 'E':
-    //     if (boost::starts_with(header, "END"))
-    //         return response_t(resp::not_found, "not found");
-    //     break;
-    // case 'V':
-    //     if (boost::starts_with(header, "VALUE"))
-    //         return deserialize_value_resp(header);
-    //     break;
-    // default: break;
-    // }
-
-    // header does not recognized, try global errors
 
 #warning tady pridat vyhozeni chyby, az asi pridam tu chybu.
     // if (hdrp->magic != header_t::response_magic) throw error_t
     // if (hdrp->extras_len != 4) throw error_t
 
     if (!hdr.status)
-        return retrieve_command_t::response_t
-            (flags,
-             hdr.body_len - hdr.extras_len,
-             hdr.cas, footer_size);
+        return retrieve_command_t::response_t(0, hdr.body_len,
+                                              hdr.cas,
+                                              retrieve_command_t::set_body);
 
-    return response_t(command_t::deserialize_header(header));
+    return retrieve_command_t::response_t(resp::not_found, hdr.body_len);
 }
 
 std::string retrieve_command_t::serialize(uint8_t code) const {
@@ -161,6 +98,15 @@ std::string retrieve_command_t::serialize(uint8_t code) const {
     std::string result(reinterpret_cast<char *>(&hdr), sizeof(hdr));
     result.append(key);
     return result;
+}
+
+void retrieve_command_t::set_body(uint32_t &flags,
+                                  std::string &body,
+                                  const std::string &data) {
+    std::copy(data.begin(), data.begin() + sizeof(flags),
+              reinterpret_cast<char *>(&flags));
+    flags = be32toh(flags);
+    body = data.substr(sizeof(flags));
 }
 
 storage_command_t::response_t
