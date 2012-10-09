@@ -199,7 +199,9 @@ int main(int argc, char **argv) {
     dispatcher.insert("get", retrieve_t<api::get_t>());
     dispatcher.insert("getb", retrieve_t<mc::proto::bin::api::get_t>());
     dispatcher.insert("gets", retrieve_t<api::gets_t>());
+    dispatcher.insert("getsb", retrieve_t<mc::proto::bin::api::gets_t>());
     dispatcher.insert("set", storage_t<api::set_t>());
+    dispatcher.insert("setb", storage_t<mc::proto::bin::api::set_t>());
     dispatcher.insert("add", storage_t<api::add_t>());
     dispatcher.insert("replace", storage_t<api::replace_t>());
     dispatcher.insert("append", storage_t<api::append_t>());
@@ -208,6 +210,7 @@ int main(int argc, char **argv) {
     dispatcher.insert("incr", incr_decr_t<api::incr_t>());
     dispatcher.insert("decr", incr_decr_t<api::decr_t>());
     dispatcher.insert("del", delete_t<api::delete_t>());
+    dispatcher.insert("delb", delete_t<mc::proto::bin::api::delete_t>());
     dispatcher.insert("touch", incr_decr_t<api::touch_t>());
 
     // establish connection to server

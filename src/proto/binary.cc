@@ -114,43 +114,40 @@ storage_command_t::deserialize_header(const std::string &header) const {
     // reject empty response
     if (header.empty()) return response_t(resp::empty, "empty response");
 
-    // // try parse retrieve responses
-    // switch (header[0]) {
-    // case 'E':
-    //     if (boost::starts_with(header, "EXISTS"))
-    //         return response_t(resp::exists, "cas id expired");
-    //     break;
-    // case 'N':
-    //     if (boost::starts_with(header, "NOT_FOUND"))
-    //         return response_t(resp::not_found, "cas id is invalid");
-    //     if (boost::starts_with(header, "NOT_STORED"))
-    //         return response_t(resp::not_stored, "key (does not) exist");
-    //     break;
-    // case 'S':
-    //     if (boost::starts_with(header, "STORED"))
-    //         return response_t(resp::stored);
-    //     break;
-    // default: break;
-    // }
+    header_t hdr;
+    std::copy(header.begin(), header.begin() + sizeof(header_t),
+              reinterpret_cast<char *>(&hdr));
 
-    // header does not recognized, try global errors
-    return command_t::deserialize_header(header);
+    hdr.prepare_deserialization();
+
+#warning tady pridat vyhozeni chyby, az asi pridam tu chybu.
+    // if (hdrp->magic != header_t::response_magic) throw error_t
+
+    if (!hdr.status)
+        return response_t(resp::stored);
+
+#warning poladit chyby
+    return response_t(resp::not_stored, "key (does not) exist");
 }
 
 std::string storage_command_t::serialize(uint8_t code) const {
-    // <command name> <key> <flags> <exptime> <bytes> [noreply]\r\n
-    // cas <key> <flags> <exptime> <bytes> <cas unique> [noreply]\r\n
     // TODO(burlog): check whether key fulfil protocol constraints
-    // std::ostringstream os;
-    // os << name << ' '
-    //    << key << ' '
-    //    << opts.flags << ' '
-    //    << opts.expiration << ' '
-    //    << data.size();
-    // if (opts.cas) os << ' ' << opts.cas;
-    // os << header_delimiter() << data << header_delimiter();
-    // return os.str();
-    return "";
+    hdr.opcode = code;
+    if (opts.cas) hdr.cas = opts.cas;
+    hdr.prepare_serialization();
+    std::string result(reinterpret_cast<char *>(&hdr), sizeof(hdr));
+
+
+    uint32_t flags;
+    flags = htobe32(opts.flags);
+    result += std::string (reinterpret_cast<char *>(&flags), sizeof(flags));
+    // We use flags for exporation too.
+    flags = htobe32(opts.expiration);
+    result += std::string (reinterpret_cast<char *>(&flags), sizeof(flags));
+
+    result.append(key);
+    result.append(data);
+    return result;
 }
 
 // incr_decr_command_t::response_t
@@ -193,64 +190,35 @@ std::string storage_command_t::serialize(uint8_t code) const {
 //     return os.str();
 // }
 
-// delete_command_t::response_t
-// delete_command_t::deserialize_header(const std::string &header) const {
-//     // reject empty response
-//     if (header.empty()) return response_t(resp::empty, "empty response");
+delete_command_t::response_t
+delete_command_t::deserialize_header(const std::string &header) const {
+    // reject empty response
+    if (header.empty()) return response_t(resp::empty, "empty response");
 
-//     // try parse retrieve responses
-//     switch (header[0]) {
-//     case 'D':
-//         if (boost::starts_with(header, "DELETED"))
-//             return response_t(resp::deleted);
-//         break;
-//     case 'N':
-//         if (boost::starts_with(header, "NOT_FOUND"))
-//             return response_t(resp::not_found, "key does not exist");
-//         break;
-//     default: break;
-//     }
+    header_t hdr;
+    std::copy(header.begin(), header.begin() + sizeof(header_t),
+              reinterpret_cast<char *>(&hdr));
 
-//     // header does not recognized, try global errors
-//     return response_t(command_t::deserialize_header(header));
+    hdr.prepare_deserialization();
 
-// }
+#warning tady pridat vyhozeni chyby, az asi pridam tu chybu.
+    // if (hdrp->magic != header_t::response_magic) throw error_t
 
-// std::string delete_command_t::serialize() const {
-//     std::string result;
-//     result.append("delete ").append(key).append(header_delimiter());
-//     return result;
-// }
+    if (!hdr.status)
+        return response_t(resp::deleted);
 
-// command Operation codes
-// const uint8_t api::get_code = 0x00;
-// const uint8_t api::gets_code = 0x00;
-// const uint8_t api::set_code = 0x01;
-// const uint8_t api::add_code = 0x02;
-// const uint8_t api::replace_code = 0x03;
-// const uint8_t api::delete_code = 0x04;
-// const uint8_t api::increment_code = 0x05;
-// const uint8_t api::decrement_code = 0x06;
-// const uint8_t api::quit_code = 0x07;
-// const uint8_t api::flush_code = 0x08;
-// const uint8_t api::getq_code = 0x09;
-// const uint8_t api::noop_code = 0x0A;
-// const uint8_t api::version_code = 0x0B;
-// const uint8_t api::getk_code = 0x0C;
-// const uint8_t api::getkq_code = 0x0D;
-// const uint8_t api::append_code = 0x0E;
-// const uint8_t api::prepend_code = 0x0F;
-// const uint8_t api::stat_code = 0x10;
-// const uint8_t api::setq_code = 0x11;
-// const uint8_t api::addq_code = 0x12;
-// const uint8_t api::replaceq_code = 0x13;
-// const uint8_t api::deleteq_code = 0x14;
-// const uint8_t api::incrementq_code = 0x15;
-// const uint8_t api::decrementq_code = 0x16;
-// const uint8_t api::quitq_code = 0x17;
-// const uint8_t api::flushq_code = 0x18;
-// const uint8_t api::appendq_code = 0x19;
-// const uint8_t api::prependq_code = 0x1A;
+#warning poladit chyby
+    return response_t(resp::not_found, "key (does not) exist");
+}
+
+std::string delete_command_t::serialize() const {
+    // TODO(burlog): check whether key fulfil protocol constraints
+    hdr.opcode = api::delete_code;
+    hdr.prepare_serialization();
+    std::string result(reinterpret_cast<char *>(&hdr), sizeof(hdr));
+    result.append(key);
+    return result;
+}
 
 } // namespace bin
 } // namespace proto
