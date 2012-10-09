@@ -109,8 +109,9 @@ void retrieve_command_t::set_body(uint32_t &flags,
     body = data.substr(sizeof(flags));
 }
 
-storage_command_t::response_t
-storage_command_t::deserialize_header(const std::string &header) const {
+template<bool has_extras>
+typename storage_command_t<has_extras>::response_t
+storage_command_t<has_extras>::deserialize_header(const std::string &header) const {
     // reject empty response
     if (header.empty()) return response_t(resp::empty, "empty response");
 
@@ -130,7 +131,8 @@ storage_command_t::deserialize_header(const std::string &header) const {
     return response_t(resp::not_stored, "key (does not) exist");
 }
 
-std::string storage_command_t::serialize(uint8_t code) const {
+template<>
+std::string storage_command_t<true>::serialize(uint8_t code) const {
     // TODO(burlog): check whether key fulfil protocol constraints
     hdr.opcode = code;
     if (opts.cas) hdr.cas = opts.cas;
@@ -149,6 +151,23 @@ std::string storage_command_t::serialize(uint8_t code) const {
     result.append(data);
     return result;
 }
+
+
+template<>
+std::string storage_command_t<false>::serialize(uint8_t code) const {
+    // TODO(burlog): check whether key fulfil protocol constraints
+    hdr.opcode = code;
+    if (opts.cas) hdr.cas = opts.cas;
+    hdr.prepare_serialization();
+    std::string result(reinterpret_cast<char *>(&hdr), sizeof(hdr));
+
+    result.append(key);
+    result.append(data);
+    return result;
+}
+
+template class storage_command_t<true>;
+template class storage_command_t<false>;
 
 // incr_decr_command_t::response_t
 // incr_decr_command_t::deserialize_header(const std::string &header) const {
@@ -188,6 +207,12 @@ std::string storage_command_t::serialize(uint8_t code) const {
 //     std::ostringstream os;
 //     os << name << ' ' << key << ' ' << value << header_delimiter();
 //     return os.str();
+//     // TODO(burlog): check whether key fulfil protocol constraints
+//     hdr.opcode = api::delete_code;
+//     hdr.prepare_serialization();
+//     std::string result(reinterpret_cast<char *>(&hdr), sizeof(hdr));
+//     result.append(key);
+//     return result;
 // }
 
 delete_command_t::response_t

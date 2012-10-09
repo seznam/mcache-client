@@ -130,6 +130,7 @@ protected:
 
 /** Base class for all storage commands.
  */
+template<bool has_extras = true>
 class storage_command_t: public command_t {
 public:
     /** C'tor.
@@ -139,8 +140,8 @@ public:
                       const opts_t &opts)
         :command_t(static_cast <uint16_t>(key.length()),
                    static_cast <uint32_t>(key.length() + data.length() +
-                                          extras_length),
-                   static_cast <uint8_t>(extras_length)),
+                                          (has_extras ? extras_length : 0)),
+                   static_cast <uint8_t>(has_extras ? extras_length : 0)),
         key(key), data(data), opts(opts)
     {}
 
@@ -251,11 +252,11 @@ static const uint8_t prependq_code = 0x1A;
     // protocol api table
     typedef op_code_injector<retrieve_command_t, get_code> get_t;
     typedef op_code_injector<retrieve_command_t, gets_code> gets_t;
-    typedef op_code_injector<storage_command_t, set_code> set_t;
-    // typedef op_code_injector<storage_command_t, add_code> add_t;
-    // typedef op_code_injector<storage_command_t, replace_code> replace_t;
-    // typedef op_code_injector<storage_command_t, append_code> append_t;
-    // typedef op_code_injector<storage_command_t, prepend_code> prepend_t;
+    typedef op_code_injector<storage_command_t<true>, set_code> set_t;
+    typedef op_code_injector<storage_command_t<true>, add_code> add_t;
+    typedef op_code_injector<storage_command_t<true>, replace_code> replace_t;
+    typedef op_code_injector<storage_command_t<false>, append_code> append_t;
+    typedef op_code_injector<storage_command_t<false>, prepend_code> prepend_t;
     // typedef op_code_injector<storage_command_t, cas_code> cas_t;
 
 

@@ -203,9 +203,13 @@ int main(int argc, char **argv) {
     dispatcher.insert("set", storage_t<api::set_t>());
     dispatcher.insert("setb", storage_t<mc::proto::bin::api::set_t>());
     dispatcher.insert("add", storage_t<api::add_t>());
+    dispatcher.insert("addb", storage_t<mc::proto::bin::api::add_t>());
     dispatcher.insert("replace", storage_t<api::replace_t>());
+    dispatcher.insert("replaceb", storage_t<mc::proto::bin::api::replace_t>());
     dispatcher.insert("append", storage_t<api::append_t>());
+    dispatcher.insert("appendb", storage_t<mc::proto::bin::api::append_t>());
     dispatcher.insert("prepend", storage_t<api::prepend_t>());
+    dispatcher.insert("prependb", storage_t<mc::proto::bin::api::prepend_t>());
     dispatcher.insert("cas", storage_t<api::cas_t>());
     dispatcher.insert("incr", incr_decr_t<api::incr_t>());
     dispatcher.insert("decr", incr_decr_t<api::decr_t>());
