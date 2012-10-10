@@ -32,18 +32,18 @@ namespace bin {
 // TODO (Lubos) Pokud by se melo pouzivat na solarisu, tak je potreba
 // tyhle funkce vytahnout z glibc (htobe atp.
 void header_t::prepare_serialization() {
-    key_len = htobe16(key_len);
-    reserved = htobe16(reserved);
-    body_len = htobe32(body_len);
-    opaque = htobe32(opaque);
+    key_len = htons(key_len);
+    reserved = htons(reserved);
+    body_len = htonl(body_len);
+    opaque = htonl(opaque);
     cas = htobe64(cas);
 }
 
 void header_t::prepare_deserialization() {
-    key_len = be16toh(key_len);
-    reserved = be16toh(reserved);
-    body_len = be32toh(body_len);
-    opaque = be32toh(opaque);
+    key_len = ntohs(key_len);
+    reserved = ntohs(reserved);
+    body_len = ntohl(body_len);
+    opaque = ntohl(opaque);
     cas = be64toh(cas);
 }
 
@@ -109,7 +109,7 @@ void retrieve_command_t::set_body(uint32_t &flags,
                                   const std::string &data) {
     std::copy(data.begin(), data.begin() + sizeof(flags),
               reinterpret_cast<char *>(&flags));
-    flags = be32toh(flags);
+    flags = ntohl(flags);
     body = data.substr(sizeof(flags));
 }
 
@@ -144,10 +144,10 @@ std::string storage_command_t<true>::serialize(uint8_t code) const {
 
 
     uint32_t flags;
-    flags = htobe32(opts.flags);
+    flags = htonl(opts.flags);
     result += std::string (reinterpret_cast<char *>(&flags), sizeof(flags));
     // We use flags for exporation too.
-    flags = htobe32(static_cast<uint32_t>(opts.expiration));
+    flags = htonl(static_cast<uint32_t>(opts.expiration));
     result += std::string (reinterpret_cast<char *>(&flags), sizeof(flags));
 
     result.append(key);
@@ -208,7 +208,7 @@ std::string incr_decr_command_t::serialize(uint8_t code) const {
     val = htobe64(opts.initial);
     result += std::string (reinterpret_cast<char *>(&val),
                            sizeof(val));
-    uint32_t expire = htobe32(static_cast<uint32_t>(opts.expiration));
+    uint32_t expire = htonl(static_cast<uint32_t>(opts.expiration));
     result += std::string (reinterpret_cast<char *>(&expire), sizeof(expire));
 
     result.append(key);
