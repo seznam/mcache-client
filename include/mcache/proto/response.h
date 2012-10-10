@@ -126,10 +126,6 @@ public:
     // mark that this response expects body
     class body_tag;
 
-    /** Returns retrieval commands response body.
-     */
-    inline const std::string &body() const { return aux;}
-
     /** Sets new retrieval commands body response.
      */
     inline void set_body(const std::string &body) {
@@ -144,9 +140,6 @@ public:
     const uint64_t cas;   //!< retrieval commands cas attribute
 
 protected:
-    // hide useless accessor
-    using single_response_t::data;
-
     std::size_t bytes;    //!< expected response body size
 
     /** The callback for setting the body */

@@ -79,8 +79,8 @@ public:
                   << "    status = " << response.code() << std::endl
                   << "    flags = " << response.flags << std::endl
                   << "    cas = " << response.cas << std::endl
-                  << "    data-size = " << response.body().size() << std::endl
-                  << "    data = \"" << response.body() << "\"" << std::endl
+                  << "    data-size = " << response.data().size() << std::endl
+                  << "    data = \"" << response.data() << "\"" << std::endl
                   << "}" << std::endl;
         return false;
     }
@@ -127,7 +127,8 @@ public:
 
         // run
         typename command_t::response_t
-            response = connection.send(command_t(key, value));
+            response = connection.send(command_t(key, value,
+                                                 mc::proto::opts_t()));
         if (!response) throw response.exception();
         std::cout << "response = {" << std::endl
                   << "    status = " << response.code() << std::endl
@@ -211,8 +212,11 @@ int main(int argc, char **argv) {
     dispatcher.insert("prepend", storage_t<api::prepend_t>());
     dispatcher.insert("prependb", storage_t<mc::proto::bin::api::prepend_t>());
     dispatcher.insert("cas", storage_t<api::cas_t>());
+    dispatcher.insert("casb", storage_t<mc::proto::bin::api::cas_t>());
     dispatcher.insert("incr", incr_decr_t<api::incr_t>());
+    dispatcher.insert("incrb", incr_decr_t<mc::proto::bin::api::incr_t>());
     dispatcher.insert("decr", incr_decr_t<api::decr_t>());
+    dispatcher.insert("decrb", incr_decr_t<mc::proto::bin::api::decr_t>());
     dispatcher.insert("del", delete_t<api::delete_t>());
     dispatcher.insert("delb", delete_t<mc::proto::bin::api::delete_t>());
     dispatcher.insert("touch", incr_decr_t<api::touch_t>());

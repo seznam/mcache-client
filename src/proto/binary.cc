@@ -20,6 +20,8 @@
 #include <sstream>
 #include <arpa/inet.h>
 
+#include <boost/lexical_cast.hpp>
+
 #include "error.h"
 #include "mcache/proto/binary.h"
 
@@ -169,51 +171,60 @@ std::string storage_command_t<false>::serialize(uint8_t code) const {
 template class storage_command_t<true>;
 template class storage_command_t<false>;
 
-// incr_decr_command_t::response_t
-// incr_decr_command_t::deserialize_header(const std::string &header) const {
-//     // reject empty response
-//     if (header.empty()) return response_t(resp::empty, "empty response");
+incr_decr_command_t::response_t
+incr_decr_command_t::deserialize_header(const std::string &header) const {
+    // reject empty response
+    if (header.empty()) return response_t(resp::empty, "empty response");
 
-//     // try parse retrieve responses
-//     switch (header[0]) {
-//     case 'T':
-//         // fail response
-//         if (boost::starts_with(header, "TOUCHED"))
-//             return response_t(resp::touched);
-//         break;
-//     case 'N':
-//         if (boost::starts_with(header, "NOT_FOUND"))
-//             return response_t(resp::not_found, "key does not exist");
-//         break;
-//     case '0'...'9': {
-//         // <value>\r\n - ok response
-//         std::istringstream is(header);
-//         uint64_t value;
-//         if (is >> value)
-//             return response_t(resp::ok, boost::trim_copy(header));
-//         break;
-//         }
-//     default: break;
-//     }
 
-//     // header does not recognized, try global errors
-//     return command_t::deserialize_header(header);
+    header_t hdr;
+    std::copy(header.begin(), header.begin() + sizeof(header_t),
+              reinterpret_cast<char *>(&hdr));
 
-// }
+    hdr.prepare_deserialization();
 
-// std::string incr_decr_command_t::serialize(const char *name) const {
-//     // <command name> <key> <value> [noreply]\r\n
-//     // TODO(burlog): check whether key fulfil protocol constraints
-//     std::ostringstream os;
-//     os << name << ' ' << key << ' ' << value << header_delimiter();
-//     return os.str();
-//     // TODO(burlog): check whether key fulfil protocol constraints
-//     hdr.opcode = api::delete_code;
-//     hdr.prepare_serialization();
-//     std::string result(reinterpret_cast<char *>(&hdr), sizeof(hdr));
-//     result.append(key);
-//     return result;
-// }
+#warning tady pridat vyhozeni chyby, az asi pridam tu chybu.
+    // if (hdrp->magic != header_t::response_magic) throw error_t
+    // if (hdrp->extras_len != 4) throw error_t
+
+    if (!hdr.status)
+        return incr_decr_command_t::response_t(0, hdr.body_len,
+                                              hdr.cas,
+                                              incr_decr_command_t::set_body);
+
+    return incr_decr_command_t::response_t(resp::not_found, hdr.body_len);
+}
+
+std::string incr_decr_command_t::serialize(uint8_t code) const {
+    // TODO(burlog): check whether key fulfil protocol constraints
+    hdr.opcode = code;
+    hdr.prepare_serialization();
+    std::string result(reinterpret_cast<char *>(&hdr), sizeof(hdr));
+
+    //Extras
+    uint64_t val = htobe64(value);
+    result += std::string (reinterpret_cast<char *>(&val), sizeof(val));
+    val = htobe64(opts.initial);
+    result += std::string (reinterpret_cast<char *>(&val),
+                           sizeof(val));
+    uint32_t expire = htobe32(static_cast<uint32_t>(opts.expiration));
+    result += std::string (reinterpret_cast<char *>(&expire), sizeof(expire));
+
+    result.append(key);
+    return result;
+
+}
+
+void incr_decr_command_t::set_body(uint32_t &,
+                                   std::string &body,
+                                   const std::string &data) {
+#warning poladit chybu.
+    //    if (data.length() != sizeof(uint64_t)) throw error_t()
+    uint64_t value;
+    std::copy(data.begin(), data.end(), reinterpret_cast<char *>(&value));
+    value = be64toh(value);
+    body = boost::lexical_cast<std::string>(value);
+}
 
 delete_command_t::response_t
 delete_command_t::deserialize_header(const std::string &header) const {

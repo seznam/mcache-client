@@ -163,6 +163,45 @@ private:
     static const std::size_t extras_length = 8;
 };
 
+/** Base class for incr and decr commands.
+ */
+class incr_decr_command_t: public command_t {
+public:
+    // retrieval commands responses contains useless foother
+    typedef single_retrival_response_t response_t;
+
+    /** C'tor.
+     */
+    explicit incr_decr_command_t(const std::string &key, uint64_t value,
+                                 const opts_t &opts)
+        : command_t(static_cast <uint16_t>(key.length()),
+                    static_cast <uint32_t>(key.length() + extras_length),
+                    static_cast <uint8_t>(extras_length)),
+          key(key), value(value), opts(opts)
+    {}
+
+    /** Deserialize responses for get and gets retrieve commands.
+     */
+    response_t deserialize_header(const std::string &header) const;
+
+    /** The method for setting the body of response. */
+    static void set_body(uint32_t &flags,
+                         std::string &body,
+                         const std::string &data);
+protected:
+    /** Serialize retrieve command.
+     */
+    std::string serialize(uint8_t code) const;
+
+    std::string key; //!< for which key data should be retrieved
+    uint64_t value;  //!< amount by which the client wants to
+                     //!increase/decrease
+    opts_t opts;     //!< command options
+private:
+    /** The length of extras. */
+    static const std::size_t extras_length = 20;
+};
+
 /** class for delete command
  */
 class delete_command_t: public command_t {
@@ -206,7 +245,8 @@ public:
     /** C'tor.
      */
     template <typename type0_t, typename type1_t, typename type2_t>
-    op_code_injector(const type0_t &val0, const type1_t &val1, const type2_t &val2)
+    op_code_injector(const type0_t &val0, const type1_t &val1,
+                     const type2_t &val2)
         : parent_t(val0, val1, val2)
     {}
 
@@ -223,6 +263,7 @@ public:
 static const uint8_t get_code = 0x00;
 static const uint8_t gets_code = 0x00;
 static const uint8_t set_code = 0x01;
+static const uint8_t cas_code = 0x01;
 static const uint8_t add_code = 0x02;
 static const uint8_t replace_code = 0x03;
 static const uint8_t delete_code = 0x04;
@@ -257,11 +298,11 @@ static const uint8_t prependq_code = 0x1A;
     typedef op_code_injector<storage_command_t<true>, replace_code> replace_t;
     typedef op_code_injector<storage_command_t<false>, append_code> append_t;
     typedef op_code_injector<storage_command_t<false>, prepend_code> prepend_t;
-    // typedef op_code_injector<storage_command_t, cas_code> cas_t;
+    typedef op_code_injector<storage_command_t<true>, cas_code> cas_t;
 
 
-    //typedef op_code_injector<inc_command_t, inc_code> inc_t;
-    //typedef op_code_injector<dec_command_t, dec_code> dec_t;
+    typedef op_code_injector<incr_decr_command_t, increment_code> incr_t;
+    typedef op_code_injector<incr_decr_command_t, decrement_code> decr_t;
     typedef delete_command_t delete_t;
     //typedef touch_command_t touch_t;
 };
