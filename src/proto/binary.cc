@@ -81,9 +81,11 @@ retrieve_command_t::deserialize_header(const std::string &header) const {
 
     hdr.prepare_deserialization();
 
-#warning tady pridat vyhozeni chyby, az asi pridam tu chybu.
-    // if (hdrp->magic != header_t::response_magic) throw error_t
-    // if (hdrp->extras_len != 4) throw error_t
+    if (hdr.magic != header_t::response_magic)
+        throw error_t(mc::err::internal_error, "Bad magic in response.");
+    // The response should have uint32_t flags in extras.
+    if (hdr.extras_len != sizeof(uint32_t))
+        throw error_t(mc::err::internal_error, "Bad extras length.");
 
     if (!hdr.status)
         return retrieve_command_t::response_t(0, hdr.body_len,
@@ -123,13 +125,12 @@ storage_command_t<has_extras>::deserialize_header(const std::string &header) con
 
     hdr.prepare_deserialization();
 
-#warning tady pridat vyhozeni chyby, az asi pridam tu chybu.
-    // if (hdrp->magic != header_t::response_magic) throw error_t
+    if (hdr.magic != header_t::response_magic)
+        throw error_t(mc::err::internal_error, "Bad magic in response.");
 
     if (!hdr.status)
         return response_t(resp::stored);
 
-#warning poladit chyby
     return response_t(resp::not_stored, "key (does not) exist");
 }
 
@@ -146,7 +147,7 @@ std::string storage_command_t<true>::serialize(uint8_t code) const {
     flags = htobe32(opts.flags);
     result += std::string (reinterpret_cast<char *>(&flags), sizeof(flags));
     // We use flags for exporation too.
-    flags = htobe32(opts.expiration);
+    flags = htobe32(static_cast<uint32_t>(opts.expiration));
     result += std::string (reinterpret_cast<char *>(&flags), sizeof(flags));
 
     result.append(key);
@@ -176,16 +177,16 @@ incr_decr_command_t::deserialize_header(const std::string &header) const {
     // reject empty response
     if (header.empty()) return response_t(resp::empty, "empty response");
 
-
     header_t hdr;
     std::copy(header.begin(), header.begin() + sizeof(header_t),
               reinterpret_cast<char *>(&hdr));
 
     hdr.prepare_deserialization();
 
-#warning tady pridat vyhozeni chyby, az asi pridam tu chybu.
-    // if (hdrp->magic != header_t::response_magic) throw error_t
-    // if (hdrp->extras_len != 4) throw error_t
+    if (hdr.magic != header_t::response_magic)
+        throw error_t(mc::err::internal_error, "Bad magic in response.");
+    if (hdr.body_len != sizeof(uint64_t))
+        throw error_t(mc::err::internal_error, "Bad body length.");
 
     if (!hdr.status)
         return incr_decr_command_t::response_t(0, hdr.body_len,
@@ -218,8 +219,6 @@ std::string incr_decr_command_t::serialize(uint8_t code) const {
 void incr_decr_command_t::set_body(uint32_t &,
                                    std::string &body,
                                    const std::string &data) {
-#warning poladit chybu.
-    //    if (data.length() != sizeof(uint64_t)) throw error_t()
     uint64_t value;
     std::copy(data.begin(), data.end(), reinterpret_cast<char *>(&value));
     value = be64toh(value);
@@ -237,13 +236,12 @@ delete_command_t::deserialize_header(const std::string &header) const {
 
     hdr.prepare_deserialization();
 
-#warning tady pridat vyhozeni chyby, az asi pridam tu chybu.
-    // if (hdrp->magic != header_t::response_magic) throw error_t
+    if (hdr.magic != header_t::response_magic)
+        throw error_t(mc::err::internal_error, "Bad magic in response.");
 
     if (!hdr.status)
         return response_t(resp::deleted);
 
-#warning poladit chyby
     return response_t(resp::not_found, "key (does not) exist");
 }
 

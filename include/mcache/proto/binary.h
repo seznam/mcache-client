@@ -225,6 +225,32 @@ protected:
     std::string key; //!< for which key data should be retrieved
 };
 
+/** class for delete command
+ */
+class touch_command_t: public command_t {
+public:
+    /** C'tor.
+     */
+    explicit touch_command_t(const std::string &, uint64_t ,
+                             const opts_t &): command_t(0) {
+        throw error_t(mc::err::method_not_allowed,
+                      "Touch command not supported with binary protocol.");
+    }
+
+    /** Deserialize responses for get and gets retrieve commands.
+     */
+    response_t deserialize_header(const std::string &) const {
+        return response_t(resp::error, "!!! Impossible !!!");
+    }
+
+    /** Serialize retrieve command.
+     */
+    std::string serialize() const { return std::string(); }
+
+protected:
+    std::string key; //!< for which key data should be retrieved
+};
+
 /** Injects name to particular command class.
  */
 template <typename parent_t, uint8_t code>
@@ -259,36 +285,36 @@ public:
  */
 class api {
 public:
-    // commands name
-static const uint8_t get_code = 0x00;
-static const uint8_t gets_code = 0x00;
-static const uint8_t set_code = 0x01;
-static const uint8_t cas_code = 0x01;
-static const uint8_t add_code = 0x02;
-static const uint8_t replace_code = 0x03;
-static const uint8_t delete_code = 0x04;
-static const uint8_t increment_code = 0x05;
-static const uint8_t decrement_code = 0x06;
-static const uint8_t quit_code = 0x07;
-static const uint8_t flush_code = 0x08;
-static const uint8_t getq_code = 0x09;
-static const uint8_t noop_code = 0x0A;
-static const uint8_t version_code = 0x0B;
-static const uint8_t getk_code = 0x0C;
-static const uint8_t getkq_code = 0x0D;
-static const uint8_t append_code = 0x0E;
-static const uint8_t prepend_code = 0x0F;
-static const uint8_t stat_code = 0x10;
-static const uint8_t setq_code = 0x11;
-static const uint8_t addq_code = 0x12;
-static const uint8_t replaceq_code = 0x13;
-static const uint8_t deleteq_code = 0x14;
-static const uint8_t incrementq_code = 0x15;
-static const uint8_t decrementq_code = 0x16;
-static const uint8_t quitq_code = 0x17;
-static const uint8_t flushq_code = 0x18;
-static const uint8_t appendq_code = 0x19;
-static const uint8_t prependq_code = 0x1A;
+    // commands opcodes
+    static const uint8_t get_code = 0x00;
+    static const uint8_t gets_code = 0x00;
+    static const uint8_t set_code = 0x01;
+    static const uint8_t cas_code = 0x01;
+    static const uint8_t add_code = 0x02;
+    static const uint8_t replace_code = 0x03;
+    static const uint8_t delete_code = 0x04;
+    static const uint8_t increment_code = 0x05;
+    static const uint8_t decrement_code = 0x06;
+    static const uint8_t quit_code = 0x07;
+    static const uint8_t flush_code = 0x08;
+    static const uint8_t getq_code = 0x09;
+    static const uint8_t noop_code = 0x0A;
+    static const uint8_t version_code = 0x0B;
+    static const uint8_t getk_code = 0x0C;
+    static const uint8_t getkq_code = 0x0D;
+    static const uint8_t append_code = 0x0E;
+    static const uint8_t prepend_code = 0x0F;
+    static const uint8_t stat_code = 0x10;
+    static const uint8_t setq_code = 0x11;
+    static const uint8_t addq_code = 0x12;
+    static const uint8_t replaceq_code = 0x13;
+    static const uint8_t deleteq_code = 0x14;
+    static const uint8_t incrementq_code = 0x15;
+    static const uint8_t decrementq_code = 0x16;
+    static const uint8_t quitq_code = 0x17;
+    static const uint8_t flushq_code = 0x18;
+    static const uint8_t appendq_code = 0x19;
+    static const uint8_t prependq_code = 0x1A;
 
     // protocol api table
     typedef op_code_injector<retrieve_command_t, get_code> get_t;
@@ -299,12 +325,10 @@ static const uint8_t prependq_code = 0x1A;
     typedef op_code_injector<storage_command_t<false>, append_code> append_t;
     typedef op_code_injector<storage_command_t<false>, prepend_code> prepend_t;
     typedef op_code_injector<storage_command_t<true>, cas_code> cas_t;
-
-
     typedef op_code_injector<incr_decr_command_t, increment_code> incr_t;
     typedef op_code_injector<incr_decr_command_t, decrement_code> decr_t;
     typedef delete_command_t delete_t;
-    //typedef touch_command_t touch_t;
+    typedef touch_command_t touch_t;
 };
 
 } // namespace bin

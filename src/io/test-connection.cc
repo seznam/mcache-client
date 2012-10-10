@@ -220,6 +220,7 @@ int main(int argc, char **argv) {
     dispatcher.insert("del", delete_t<api::delete_t>());
     dispatcher.insert("delb", delete_t<mc::proto::bin::api::delete_t>());
     dispatcher.insert("touch", incr_decr_t<api::touch_t>());
+    dispatcher.insert("touchb", incr_decr_t<mc::proto::bin::api::touch_t>());
 
     // establish connection to server
     mc::io::tcp::connection_t connection(dst, mc::io::opts_t());

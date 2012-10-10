@@ -55,7 +55,7 @@ std::pair<std::string, std::string> parse_address(const std::string &addr) {
     return std::make_pair(parts[0], parts[1]);
 }
 
-} // namespace 
+} // namespace
 
 namespace udp {
 } // namespace udp
@@ -76,7 +76,7 @@ public:
 
     /** C'tor: connect the socket to server.
      */
-    pimple_connection_t(const std::string &addr, opts_t opts)
+    pimple_connection_t(const std::string &addr, opts_t)
         : addr(addr), ios(), socket(ios), deadline(ios), input(),
           timeouted(false)
     {

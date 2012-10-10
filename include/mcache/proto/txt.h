@@ -113,8 +113,9 @@ public:
                                  const opts_t &opts)
         : key(key), value(value)
     {
-#warning poladit chybu.
-        // if (opt.expiration | opts.initial) throw error_t();
+        if (opts.expiration | opts.initial)
+            throw error_t(mc::err::bad_argument,
+                          "Optional arguments not allowed with textual protocol.");
     }
 
     /** Deserialize responses for get and gets retrieve commands.
