@@ -36,6 +36,7 @@
 #include <mcache/io/connection.h>
 #include <mcache/proto/txt.h>
 #include <mcache/proto/binary.h>
+#include <mcache/proto/parser.h>
 
 namespace {
 
@@ -72,8 +73,9 @@ public:
     bool operator()(mc::io::tcp::connection_t &connection,
                     const std::string &line)
     {
-        typename command_t::response_t
-            response = connection.send(command_t(boost::trim_copy(line)));
+        mc::proto::command_parser_t<mc::io::tcp::connection_t> parser(connection);
+        typename command_t::response_t response =
+            parser.send(command_t(boost::trim_copy(line)));
         if (!response) throw response.exception();
         std::cout << "response = {" << std::endl
                   << "    status = " << response.code() << std::endl
@@ -103,8 +105,9 @@ public:
         mc::proto::opts_t opts(expiration, flags, cas);
 
         // run
-        typename command_t::response_t
-            response = connection.send(command_t(key, data, opts));
+        mc::proto::command_parser_t<mc::io::tcp::connection_t> parser(connection);
+        typename command_t::response_t response =
+            parser.send(command_t(key, data, opts));
         if (!response) throw response.exception();
         std::cout << "response = {" << std::endl
                   << "    status = " << response.code() << std::endl
@@ -126,9 +129,9 @@ public:
         is >> key >> value;
 
         // run
-        typename command_t::response_t
-            response = connection.send(command_t(key, value,
-                                                 mc::proto::opts_t()));
+        mc::proto::command_parser_t<mc::io::tcp::connection_t> parser(connection);
+        typename command_t::response_t response =
+            parser.send(command_t(key, value, mc::proto::opts_t()));
         if (!response) throw response.exception();
         std::cout << "response = {" << std::endl
                   << "    status = " << response.code() << std::endl
@@ -151,8 +154,9 @@ public:
         is >> key >> value;
 
         // run
-        typename command_t::response_t
-            response = connection.send(command_t(key, value));
+        mc::proto::command_parser_t<mc::io::tcp::connection_t> parser(connection);
+        typename command_t::response_t response =
+            parser.send(command_t(key, value));
         if (!response) throw response.exception();
         std::cout << "response = {" << std::endl
                   << "    status = " << response.code() << std::endl
@@ -167,8 +171,9 @@ public:
     bool operator()(mc::io::tcp::connection_t &connection,
                     const std::string &line)
     {
-        typename command_t::response_t
-            response = connection.send(command_t(boost::trim_copy(line)));
+        mc::proto::command_parser_t<mc::io::tcp::connection_t> parser(connection);
+        typename command_t::response_t response =
+            parser.send(command_t(boost::trim_copy(line)));
         if (!response) throw response.exception();
         std::cout << "response = {" << std::endl
                   << "    status = " << response.code() << std::endl
