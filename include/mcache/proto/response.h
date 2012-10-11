@@ -111,6 +111,14 @@ public:
 
     /** C'tor.
      */
+    single_retrival_response_t(int status, uint32_t flags, std::size_t bytes,
+                               uint64_t cas, set_body_callback_t set_body)
+        : single_response_t(status, std::string()),
+          flags(flags), cas(cas), bytes(bytes), set_body_callback(set_body)
+    {}
+
+    /** C'tor.
+     */
     single_retrival_response_t(int status, std::size_t bytes)
         : single_response_t(status, std::string()),
           flags(), cas(), bytes(bytes),

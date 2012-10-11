@@ -290,7 +290,8 @@ touch_command_t::deserialize_header(const std::string &header) const {
         throw error_t(mc::err::internal_error, "Bad magic in response.");
 
     if (!hdr.status)
-        return response_t(resp::touched, "");
+        return response_t(resp::touched, 0, hdr.body_len, hdr.cas,
+                          retrieve_command_t::set_body);
 
     return response_t(translate_status_to_response(hdr.status), hdr.body_len);
 }

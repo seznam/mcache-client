@@ -160,6 +160,7 @@ public:
         if (!response) throw response.exception();
         std::cout << "response = {" << std::endl
                   << "    status = " << response.code() << std::endl
+                  << "    flags = " << response.flags << std::endl
                   << "}" << std::endl;
         return false;
     }
