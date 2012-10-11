@@ -17,9 +17,9 @@
  */
 
 #include <endian.h>
-#include <sstream>
 #include <arpa/inet.h>
-
+#include <sstream>
+#include <map>
 #include <boost/lexical_cast.hpp>
 
 #include "error.h"
@@ -28,6 +28,36 @@
 namespace mc {
 namespace proto {
 namespace bin {
+
+namespace {
+enum status_code_t {
+    ok = 0x0000,  // No error
+    not_found = 0x0001,  // Key not found
+    exists = 0x0002,  // Key exists
+    value_too_large = 0x0003,  // Value too large
+    invalid_arguments = 0x0004,  // Invalid arguments
+    not_stored = 0x0005,  // Item not stored
+    non_numerci_value = 0x0006,  // Incr/Decr on non-numeric value.
+    unknown_command = 0x0081,  // Unknown command
+    out_of_memory = 0x0082,  // Out of memory
+};
+
+std::map<int, int> code_mapping;
+
+void initialize_map () {
+    code_mapping[0x0000] = mc::proto::resp::ok;
+    code_mapping[0x0001] = mc::proto::resp::not_found;
+    code_mapping[0x0002] = mc::proto::resp::exists;
+    code_mapping[0x0003] = mc::proto::resp::server_error;
+    code_mapping[0x0004] = mc::proto::resp::client_error;
+    code_mapping[0x0005] = mc::proto::resp::not_stored;
+    code_mapping[0x0006] = mc::proto::resp::client_error;
+    code_mapping[0x0081] = mc::proto::resp::error;
+    code_mapping[0x0082] = mc::proto::resp::server_error;
+}
+
+
+}
 
 // TODO (Lubos) Pokud by se melo pouzivat na solarisu, tak je potreba
 // tyhle funkce vytahnout z glibc (htobe atp.
@@ -49,23 +79,6 @@ void header_t::prepare_deserialization() {
 
 command_t::response_t
 command_t::deserialize_header(const std::string &header) const {
-    // // try parse general errors (my childs ensures that header is not empty)
-    // switch (header[0]) {
-    // case 'E':
-    //     if (boost::starts_with(header, "ERROR"))
-    //         return response_t(resp::error, "syntax error");
-    //     break;
-    // case 'C':
-    //     if (boost::starts_with(header, "CLIENT_ERROR"))
-    //         return response_t(resp::client_error, error_desc(header));
-    //     break;
-    // case 'S':
-    //     if (boost::starts_with(header, "SERVER_ERROR"))
-    //         return response_t(resp::server_error, error_desc(header));
-    //     break;
-    // default: break;
-    // }
-
     // header does not recognized, return unrecognized
     return response_t(resp::unrecognized, header);
 }
@@ -253,6 +266,44 @@ std::string delete_command_t::serialize() const {
     result.append(key);
     return result;
 }
+
+
+touch_command_t::response_t
+touch_command_t::deserialize_header(const std::string &header) const {
+    // reject empty response
+    if (header.empty()) return response_t(resp::empty, "empty response");
+
+    header_t hdr;
+    std::copy(header.begin(), header.begin() + sizeof(header_t),
+              reinterpret_cast<char *>(&hdr));
+
+    hdr.prepare_deserialization();
+
+    if (hdr.magic != header_t::response_magic)
+        throw error_t(mc::err::internal_error, "Bad magic in response.");
+
+    if (!hdr.status)
+        return response_t(resp::touched);
+
+    return response_t(resp::not_found, "key (does not) exist");
+}
+
+std::string touch_command_t::serialize(uint8_t code) const {
+    // TODO(burlog): check whether key fulfil protocol constraints
+    hdr.opcode = code;
+    hdr.prepare_serialization();
+    std::string result(reinterpret_cast<char *>(&hdr), sizeof(hdr));
+
+    //Extras
+    uint32_t expire = htonl(static_cast<uint32_t>(expiration));
+    result += std::string (reinterpret_cast<char *>(&expire), sizeof(expire));
+
+    result.append(key);
+    return result;
+
+}
+
+
 
 } // namespace bin
 } // namespace proto

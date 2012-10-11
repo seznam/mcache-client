@@ -139,6 +139,29 @@ public:
 };
 
 template <typename command_t>
+class touch_t {
+public:
+    bool operator()(mc::io::tcp::connection_t &connection,
+                    const std::string &line)
+    {
+        // parse
+        std::istringstream is(line);
+        std::string key;
+        time_t value = 0;
+        is >> key >> value;
+
+        // run
+        typename command_t::response_t
+            response = connection.send(command_t(key, value));
+        if (!response) throw response.exception();
+        std::cout << "response = {" << std::endl
+                  << "    status = " << response.code() << std::endl
+                  << "}" << std::endl;
+        return false;
+    }
+};
+
+template <typename command_t>
 class delete_t {
 public:
     bool operator()(mc::io::tcp::connection_t &connection,
@@ -220,7 +243,7 @@ int main(int argc, char **argv) {
     dispatcher.insert("del", delete_t<api::delete_t>());
     dispatcher.insert("delb", delete_t<mc::proto::bin::api::delete_t>());
     dispatcher.insert("touch", incr_decr_t<api::touch_t>());
-    dispatcher.insert("touchb", incr_decr_t<mc::proto::bin::api::touch_t>());
+    dispatcher.insert("touchb", touch_t<mc::proto::bin::api::touch_t>());
 
     // establish connection to server
     mc::io::tcp::connection_t connection(dst, mc::io::opts_t());

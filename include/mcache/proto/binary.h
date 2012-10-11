@@ -231,24 +231,26 @@ class touch_command_t: public command_t {
 public:
     /** C'tor.
      */
-    explicit touch_command_t(const std::string &, uint64_t ,
-                             const opts_t &): command_t(0) {
-        throw error_t(mc::err::method_not_allowed,
-                      "Touch command not supported with binary protocol.");
-    }
+    explicit touch_command_t(const std::string &key, time_t expiration) :
+        command_t(static_cast <uint16_t>(key.length()),
+                  static_cast <uint32_t>(key.length() + extras_length),
+                  static_cast <uint8_t>(extras_length)),
+        key(key), expiration(expiration) {}
 
     /** Deserialize responses for get and gets retrieve commands.
      */
-    response_t deserialize_header(const std::string &) const {
-        return response_t(resp::error, "!!! Impossible !!!");
-    }
+    response_t deserialize_header(const std::string &) const;
 
     /** Serialize retrieve command.
      */
-    std::string serialize() const { return std::string(); }
+    std::string serialize(uint8_t code) const;
 
 protected:
-    std::string key; //!< for which key data should be retrieved
+    std::string key; //!< for which key the expiration should be changed
+    time_t expiration;  //!< new expiration value
+private:
+    /** The length of extras. */
+    static const std::size_t extras_length = 4;
 };
 
 /** Injects name to particular command class.
@@ -315,6 +317,7 @@ public:
     static const uint8_t flushq_code = 0x18;
     static const uint8_t appendq_code = 0x19;
     static const uint8_t prependq_code = 0x1A;
+    static const uint8_t touch_code = 0x1C;
 
     // protocol api table
     typedef op_code_injector<retrieve_command_t, get_code> get_t;
@@ -328,7 +331,7 @@ public:
     typedef op_code_injector<incr_decr_command_t, increment_code> incr_t;
     typedef op_code_injector<incr_decr_command_t, decrement_code> decr_t;
     typedef delete_command_t delete_t;
-    typedef touch_command_t touch_t;
+    typedef op_code_injector<touch_command_t, touch_code> touch_t;
 };
 
 } // namespace bin
