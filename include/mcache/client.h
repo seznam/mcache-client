@@ -34,7 +34,7 @@ using proto::opts_t;
  */
 template <
     typename pool_t,
-    typename server_proxy_t,
+    typename server_proxies_t,
     typename impl
 > class client_template_t: public boost::noncopyable {
 public:
@@ -44,23 +44,13 @@ public:
     typedef std::string safe_string_t;
 
     /** C'tor.
-     * @param pool pool of indexes.
-     * @param addresses addresses of memcache servers.
      */
     template <typename pool_config_t, typename server_proxy_config_t>
     client_template_t(const std::vector<std::string> &addresses,
                       const pool_config_t &pcfg,
                       const server_proxy_config_t &scfg)
-        : pool(addresses, pcfg), proxies()
-    {
-        for (std::vector<std::string>::const_iterator
-                iaddr = addresses.begin(),
-                eaddr = addresses.end();
-                iaddr != eaddr; ++iaddr)
-        {
-            proxies.push_back(server_proxy_t(*iaddr, scfg));
-        }
-    }
+        : pool(addresses, pcfg), proxies(addresses, scfg)
+    {}
 
     // there should be interface for storing ints, pod, frpc, protobuf, ...
 
@@ -73,7 +63,7 @@ public:
              const std::string &data,
              const opts_t &opts = opts_t()) const
     {
-        run(impl::set(key, data, opts));
+        run(typename impl::set_t(key, data, opts));
     }
 
     /** Call 'get' command on appropriate memcache server.
@@ -81,7 +71,7 @@ public:
      * @return data for given key.
      */
     const std::string &get(const safe_string_t &key) const {
-        return run(impl::get_t(key)).data;
+        return run(typename impl::get_t(key)).body();
     }
 
 protected:
@@ -97,6 +87,7 @@ protected:
                 iidx != eidx; ++iidx)
         {
             // check if choosed server node is dead
+            typedef typename server_proxies_t::server_proxy_t server_proxy_t;
             const server_proxy_t &server = proxies[*iidx];
             if (!server.callable()) continue;
 
@@ -109,38 +100,14 @@ protected:
             if (!response) throw response.exception();
             return response;
         }
-        throw Error_t(ErrorCategory_t::INTERNAL_ERROR, "out of servers");
+        throw error_t(err::internal_error, "out of servers");
     }
-
-    // shortcuts
-    typedef std::vector<server_proxy_t> server_proxies_t;
 
     pool_t pool;                      //!< idxs that represents key distribution
     mutable server_proxies_t proxies; //!< i/o objects for memcache servers
 };
 
-//typedef client_template_t<mc::ch_t, mc::thread_proxy> thread_client_t;
-//
-//class thread_client_t: public client_template_t<mc::ch_t, mc::thread_proxy>{
-//    thread_client_t(x, y, z): 
-//}
-
 } // namespace mc
-
-//int x() {
-//    mc::client_t c(a, c1, c2);
-//
-//    c.response_storage = xy;
-//    const response_t &r1 = c.get(100);
-//    if (response_t::wait_for_response != r1) throw 1;
-//    if (response_t::wait_for_response != c.get(101)) throw 1;
-//    if (response_t::wait_for_response != c.get(102)) throw 1;
-//    if (response_t::wait_for_response != c.get(103)) throw 1;
-//    if (response_t::wait_for_response != c.get(104)) throw 1;
-//    if (response_t::wait_for_response != c.get(105)) throw 1;
-//    c.wait_for_response();
-//
-//}
 
 #endif /* MCACHE_CLIENT_H */
 

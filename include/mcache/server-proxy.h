@@ -25,6 +25,8 @@
 
 #include <mcache/lock.h>
 #include <mcache/io/error.h>
+#include <mcache/proto/response.h>
+#include <mcache/proto/parser.h>
 
 namespace mc {
 
@@ -45,17 +47,33 @@ template <
 public:
     // shortcuts
     typedef typename connections_t::connection_ptr_t connection_ptr_t;
+    typedef typename connection_ptr_t::value_type connection_t;
+
+    /** Shared data with other threads/processes.
+     */
+    class shared_t {
+    public:
+        /** C'tor.
+         */
+        shared_t(): restoration(), dead(false), lock() {}
+
+        volatile time_t restoration; //!< time when reconnect is scheduled
+        volatile int dead;           //!< true if server is dead
+        lock_t lock;                 //!< lock for reconnect critical sections
+    };
 
     /** C'tor.
      */
-    server_proxy_t(const std::string &address, const server_proxy_config_t &cfg)
-        : restoration_interval(cfg.restoration_interval), restoration(),
-          dead(false), connections(address, cfg.timeout), lock()
+    server_proxy_t(const std::string &address,
+                   shared_t *shared,
+                   const server_proxy_config_t &cfg)
+        : restoration_interval(cfg.restoration_interval), shared(shared),
+          connections(address, cfg.timeout)
     {}
 
     /** Returns true if server is dead.
      */
-    bool is_dead() const { return dead;}
+    bool is_dead() const { return shared->dead;}
 
     /** Returns true if server isn't dead or if we should try make server
      * alive. It is expected that caller call send() method immediately after
@@ -63,18 +81,18 @@ public:
      */
     bool callable() {
         // if server is not marked dead return immediately
-        if (!dead) return true;
+        if (!shared->dead) return true;
 
         // check wether we shloud try make dead server alive
         time_t now = ::time(0x0);
-        if (now < restoration) return false;
+        if (now < shared->restoration) return false;
 
         // if we don't get lock returns immediately
-        scope_guard_t<lock_t> guard(lock);
+        scope_guard_t<lock_t> guard(shared->lock);
         if (!guard.try_lock()) return false;
 
         // we got lock, enlarge dead timeout and return true
-        restoration = now + restoration_interval;
+        shared->restoration = now + restoration_interval;
         return true;
     }
 
@@ -89,10 +107,11 @@ public:
         connection_ptr_t connection = connections.pick();
         try {
             // if command was finished successfuly then make server alive
-            response_t response = connection->send(command);
-            dead = false;
+            proto::command_parser_t<connection_t> parser(*connection);
+            response_t response = parser.send(command);
+            shared->dead = false;
 
-            // if command does not understand repsonse does not return the
+            // if command does not understand repsonse then does not return the
             // connection to pool (the connection will be closed)
             if (response.code() != proto::resp::unrecognized)
                 connections.push_back(connection);
@@ -100,26 +119,22 @@ public:
 
         } catch (const io::error_t &e) {
             // lock, destroy whole pool of connections and mark server as dead
-            scope_guard_t<lock_t> guard(lock);
+            scope_guard_t<lock_t> guard(shared->lock);
             if (guard.try_lock()) {
                 // TODO(burlog): add limit for count of errors that make server
                 // TODO(burlog): dead
                 connections.reset();
-                restoration = ::time(0x0) + restoration_interval;
-                dead = true;
+                shared->restoration = ::time(0x0) + restoration_interval;
+                shared->dead = true;
             }
         }
         return response_t(proto::resp::io_error, "connection failed");
     }
 
-    // TODO(burlog): make dead and restoration shared through processes...
-
 protected:
-    time_t restoration_interval; //!< timeout for dead server
-    volatile time_t restoration; //!< time when reconnect is scheduled
-    volatile int dead;           //!< true if server is dead
-    connections_t connections;   //!< connections pool
-    lock_t lock;                 //!< lock for reconnect critical sections
+    time_t restoration_interval;    //!< timeout for dead server
+    shared_t *shared;               //!< shared data with other threads
+    connections_t connections;      //!< connections pool
 };
 
 } // namespace mc

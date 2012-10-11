@@ -15,38 +15,18 @@
  *                  First draft.
  */
 
-#ifndef MCACHE_IO_CONNECTIONS_H
-#define MCACHE_IO_CONNECTIONS_H
+#ifndef MCACHE_IO_CONNECTION_H
+#define MCACHE_IO_CONNECTION_H
 
 #include <string>
 #include <boost/shared_ptr.hpp>
-#include <boost/utility/enable_if.hpp>
-#include <boost/mpl/has_xxx.hpp>
 
 #include <mcache/error.h>
+#include <mcache/io/opts.h>
 
 namespace mc {
 namespace io {
-
-/** Socket options.
- */
-class opts_t {
-public:
-    // TODO(burlog): add socket options
-};
-
 namespace tcp {
-namespace aux {
-
-/** Defines metafunction that recognize classes with multi_response tag.
- */
-BOOST_MPL_HAS_XXX_TRAIT_DEF(multi_response_tag);
-
-/** Defines metafunction that recognize classes with body tag.
- */
-BOOST_MPL_HAS_XXX_TRAIT_DEF(body_tag);
-
-} // namespace aux
 
 /** I/O object that holds one tcp socket to memcache server and provides
  * interface for sending messages to them.
@@ -57,17 +37,6 @@ public:
      */
     connection_t(const std::string &addr, opts_t opts);
 
-    /** Sends command to memcache server.
-     */
-    template <typename command_t>
-    typename command_t::response_t send(const command_t &command) {
-        // send serialized command to server
-        write(command.serialize());
-        // deserialize server command response
-        return deserialize_response(command);
-    }
-
-protected:
     /** Sends all data to server.
      */
     void write(const std::string &data);
@@ -80,47 +49,7 @@ protected:
      */
     std::string read(std::size_t bytes);
 
-    /** Deserializes server response for multi response commands.
-     */
-    template <typename command_t>
-    typename boost::enable_if<
-        aux::has_multi_response_tag<command_t>,
-        typename command_t::response_t
-    >::type deserialize_response(const command_t &command) {
-        // TODO(burlog): add support for multiget (here should be cycle)
-    }
-
-    /** Deserializes server response for single response commands.
-     */
-    template <typename command_t>
-    typename boost::disable_if<
-        aux::has_multi_response_tag<command_t>,
-        typename command_t::response_t
-    >::type deserialize_response(const command_t &command) {
-        // fetch response header (txt: first line of response)
-        typedef typename command_t::response_t response_t;
-        std::string header = read(command.header_delimiter());
-        response_t response = command.deserialize_header(header);
-
-        // if response contains body fetch it and return response
-        deserialize_body(response);
-        return response;
-    }
-
-    /** Response expects body so retrieve and parse it.
-     */
-    template <typename response_t>
-    typename boost::enable_if<aux::has_body_tag<response_t>, void>::type
-    deserialize_body(response_t &response) {
-        response.set_body(read(response.expected_body_size()));
-    }
-
-    /** Does nothing.
-     */
-    template <typename response_t>
-    typename boost::disable_if<aux::has_body_tag<response_t>, void>::type
-    deserialize_body(response_t &) {}
-
+protected:
     /** Pimple class.
      */
     class pimple_connection_t;
@@ -142,5 +71,5 @@ namespace udp {
 } // namespace io
 } // namespace mc
 
-#endif /* MCACHE_IO_CONNECTIONS_H */
+#endif /* MCACHE_IO_CONNECTION_H */
 

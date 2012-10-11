@@ -45,6 +45,7 @@ enum response_code_t {
     server_error = 502,
     empty        = 503,
     io_error     = 504,
+    syntax       = 505,
 
     unrecognized = 1000,
 };

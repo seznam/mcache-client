@@ -1,7 +1,7 @@
 /*
  * FILE             $Id: $
  *
- * DESCRIPTION      Atomic counters.
+ * DESCRIPTION      Locking primitives.
  *
  * PROJECT          Seznam memcache client.
  *
@@ -18,16 +18,19 @@
 #ifndef MCACHE_LOCK_H
 #define MCACHE_LOCK_H
 
+#include <boost/thread/mutex.hpp>
+#include <boost/interprocess/sync/interprocess_mutex.hpp>
+
 namespace mc {
 
-/** Scoped guard for lock.
+/** Scope guard for lock.
  */
 template <typename lock_t>
 class scope_guard_t {
 public:
     /** C'tor.
      */
-    explicit inline scope_guard_t(const lock_t &lock): lock(&lock) {}
+    explicit inline scope_guard_t(lock_t &lock): lock(&lock) {}
 
     /** D'tor.
      */
@@ -38,7 +41,7 @@ public:
     inline bool try_lock() { return lock->try_lock();}
 
 private:
-    const lock_t *lock; //!< pointer to lock structure
+    lock_t *lock; //!< pointer to lock structure
 };
 
 namespace none {
@@ -47,17 +50,23 @@ namespace none {
  */
 class lock_t {
 public:
-    inline bool try_lock() const { return true;}
-    inline void unlock() const {}
+    inline bool try_lock() { return true;}
+    inline void unlock() {}
 };
 
 } // namespace none
 
 namespace thread {
 
+/// boost thread mutex is suitable itself
+typedef boost::mutex lock_t;
+
 } // namespace thread
 
 namespace ipc {
+
+/// boost interprocess mutex is suitable itself
+typedef boost::interprocess::interprocess_mutex lock_t;
 
 } // namespace ipc
 } // namespace mc

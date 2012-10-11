@@ -66,9 +66,10 @@ public:
                          std::string &body,
                          const std::string &data);
 
-    /** The size of response footer */
-    static const std::size_t footer_size = 7; //!<
-                                              //!sizeof("\r\nEND\r\n")
+    /** The size of response useless footer.
+     */
+    static const std::size_t footer_size = 7; //!< sizeof("\r\nEND\r\n")
+
 protected:
     /** Serialize retrieve command.
      */
@@ -85,7 +86,7 @@ public:
      */
     storage_command_t(const std::string &key,
                       const std::string &data,
-                      const opts_t &opts)
+                      const opts_t &opts = opts_t())
         : key(key), data(data), opts(opts)
     {}
 

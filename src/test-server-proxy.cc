@@ -27,11 +27,25 @@
 
 namespace test {
 
+class fake_command_t {
+public:
+    typedef mc::proto::single_response_t response_t;
+    std::string serialize() const { return std::string();}
+    std::string header_delimiter() const { return std::string();}
+    response_t deserialize_header(const std::string &) const {
+        return response_t(mc::err::internal_error);
+    }
+};
+
 class always_fail_connection_t {
 public:
     template <typename type_t>
-    mc::response_t send(type_t) {
-        throw mc::io::error_t(mc::io::INTERNAL_ERROR, "fake");
+    void write(type_t) {
+        throw mc::io::error_t(mc::io::err::internal_error, "fake");
+    }
+    template <typename type_t>
+    std::string read(type_t) {
+        throw mc::io::error_t(mc::io::err::internal_error, "fake");
     }
 };
 
@@ -55,10 +69,11 @@ bool server_proxy_mark_dead() {
     mc::server_proxy_config_t cfg;
     cfg.restoration_interval = 3;
     cfg.timeout = 1000;
-    server_proxy_t proxy("server1:11211", cfg);
+    server_proxy_t::shared_t shared;
+    server_proxy_t proxy("server1:11211", &shared, cfg);
     // first call should return true
     if (!proxy.callable()) return false;
-    proxy.send(3);
+    proxy.send(fake_command_t());
     // after bad send server should be dead
     return proxy.is_dead();
 }
@@ -68,10 +83,11 @@ bool server_proxy_raise_zombie() {
     mc::server_proxy_config_t cfg;
     cfg.restoration_interval = 1;
     cfg.timeout = 1000;
-    server_proxy_t proxy("server1:11211", cfg);
+    server_proxy_t::shared_t shared;
+    server_proxy_t proxy("server1:11211", &shared, cfg);
     // first call should return true
     if (!proxy.callable()) return false;
-    proxy.send(3);
+    proxy.send(fake_command_t());
     // after bad send shouldn't be callable
     if (proxy.callable()) return false;
     ::sleep(1);
