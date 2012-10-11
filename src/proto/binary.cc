@@ -56,6 +56,13 @@ void initialize_map () {
     code_mapping[0x0082] = mc::proto::resp::server_error;
 }
 
+int translate_status_to_response(int code) {
+    const std::map<int, int>::const_iterator it = code_mapping.find(code);
+    if (it == code_mapping.end()) return mc::proto::resp::error;
+    return it->second;
+}
+
+const char dummy = (initialize_map(), '\0');
 
 }
 
@@ -96,16 +103,17 @@ retrieve_command_t::deserialize_header(const std::string &header) const {
 
     if (hdr.magic != header_t::response_magic)
         throw error_t(mc::err::internal_error, "Bad magic in response.");
-    // The response should have uint32_t flags in extras.
-    if (hdr.extras_len != sizeof(uint32_t))
-        throw error_t(mc::err::internal_error, "Bad extras length.");
 
-    if (!hdr.status)
-        return retrieve_command_t::response_t(0, hdr.body_len,
-                                              hdr.cas,
-                                              retrieve_command_t::set_body);
+    if (!hdr.status) {
+        // The response should have uint32_t flags in extras.
+        if (hdr.extras_len != sizeof(uint32_t))
+            throw error_t(mc::err::internal_error, "Bad extras length.");
 
-    return retrieve_command_t::response_t(resp::not_found, hdr.body_len);
+        return response_t(0, hdr.body_len, hdr.cas,
+                          retrieve_command_t::set_body);
+    }
+
+    return response_t(translate_status_to_response(hdr.status), hdr.body_len);
 }
 
 std::string retrieve_command_t::serialize(uint8_t code) const {
@@ -142,9 +150,9 @@ storage_command_t<has_extras>::deserialize_header(const std::string &header) con
         throw error_t(mc::err::internal_error, "Bad magic in response.");
 
     if (!hdr.status)
-        return response_t(resp::stored);
+        return response_t(resp::stored, "");
 
-    return response_t(resp::not_stored, "key (does not) exist");
+    return response_t(translate_status_to_response(hdr.status), hdr.body_len);
 }
 
 template<>
@@ -202,11 +210,10 @@ incr_decr_command_t::deserialize_header(const std::string &header) const {
         throw error_t(mc::err::internal_error, "Bad body length.");
 
     if (!hdr.status)
-        return incr_decr_command_t::response_t(0, hdr.body_len,
-                                              hdr.cas,
-                                              incr_decr_command_t::set_body);
+        return response_t(0, hdr.body_len, hdr.cas,
+                          incr_decr_command_t::set_body);
 
-    return incr_decr_command_t::response_t(resp::not_found, hdr.body_len);
+    return response_t(translate_status_to_response(hdr.status), hdr.body_len);
 }
 
 std::string incr_decr_command_t::serialize(uint8_t code) const {
@@ -253,9 +260,9 @@ delete_command_t::deserialize_header(const std::string &header) const {
         throw error_t(mc::err::internal_error, "Bad magic in response.");
 
     if (!hdr.status)
-        return response_t(resp::deleted);
+        return response_t(resp::deleted, "");
 
-    return response_t(resp::not_found, "key (does not) exist");
+    return response_t(translate_status_to_response(hdr.status), hdr.body_len);
 }
 
 std::string delete_command_t::serialize() const {
@@ -283,9 +290,9 @@ touch_command_t::deserialize_header(const std::string &header) const {
         throw error_t(mc::err::internal_error, "Bad magic in response.");
 
     if (!hdr.status)
-        return response_t(resp::touched);
+        return response_t(resp::touched, "");
 
-    return response_t(resp::not_found, "key (does not) exist");
+    return response_t(translate_status_to_response(hdr.status), hdr.body_len);
 }
 
 std::string touch_command_t::serialize(uint8_t code) const {

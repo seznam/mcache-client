@@ -133,6 +133,9 @@ protected:
 template<bool has_extras = true>
 class storage_command_t: public command_t {
 public:
+    // retrieval commands responses contains useless foother
+    typedef single_retrival_response_t response_t;
+
     /** C'tor.
      */
     storage_command_t(const std::string &key,
@@ -206,6 +209,9 @@ private:
  */
 class delete_command_t: public command_t {
 public:
+    // retrieval commands responses contains useless foother
+    typedef single_retrival_response_t response_t;
+
     /** C'tor.
      */
     explicit delete_command_t(const std::string &key):
@@ -229,6 +235,9 @@ protected:
  */
 class touch_command_t: public command_t {
 public:
+    // retrieval commands responses contains useless foother
+    typedef single_retrival_response_t response_t;
+
     /** C'tor.
      */
     explicit touch_command_t(const std::string &key, time_t expiration) :
