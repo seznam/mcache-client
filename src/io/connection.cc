@@ -62,7 +62,7 @@ std::string dump(const asio::streambuf &buf) {
     return log::escape(result);
 }
 
-} // namespace 
+} // namespace
 
 namespace udp {
 } // namespace udp
@@ -83,7 +83,7 @@ public:
 
     /** C'tor: connect the socket to server.
      */
-    pimple_connection_t(const std::string &addr, opts_t opts)
+    pimple_connection_t(const std::string &addr, opts_t)
         : addr(addr), ios(), socket(ios), deadline(ios), input(),
           timeouted(false)
     {

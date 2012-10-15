@@ -110,34 +110,41 @@ public:
 
     /** Returns txt protocol header delimiter.
      */
-    std::size_t header_delimiter() const { return 28;}
+    std::size_t header_delimiter() const { return 24;}
 
     /** Deserialize responses for get and gets retrieve commands.
      */
     response_t deserialize_header(const std::string &header) const;
 
+    /** The method for setting the body of response. */
+    static void set_body(uint32_t &flags,
+                         std::string &body,
+                         const std::string &data);
 protected:
     /** Serialize retrieve command.
      */
     std::string serialize(uint8_t code) const;
 
     std::string key; //!< for which key data should be retrieved
-
-    /** The size of response footer */
-    static const std::size_t footer_size = 0; //!< Binary has no footer
 };
 
 /** Base class for all storage commands.
  */
+template<bool has_extras = true>
 class storage_command_t: public command_t {
 public:
+    // retrieval commands responses contains useless foother
+    typedef single_retrival_response_t response_t;
+
     /** C'tor.
      */
     storage_command_t(const std::string &key,
                       const std::string &data,
                       const opts_t &opts)
         :command_t(static_cast <uint16_t>(key.length()),
-                   static_cast <uint32_t>(/*body.length()*/0)),
+                   static_cast <uint32_t>(key.length() + data.length() +
+                                          (has_extras ? extras_length : 0)),
+                   static_cast <uint8_t>(has_extras ? extras_length : 0)),
         key(key), data(data), opts(opts)
     {}
 
@@ -153,6 +160,106 @@ protected:
     std::string key;  //!< for which key data should be retrieved
     std::string data; //!< data to store
     opts_t opts;      //!< command options
+
+private:
+    /** The length of extras. */
+    static const std::size_t extras_length = 8;
+};
+
+/** Base class for incr and decr commands.
+ */
+class incr_decr_command_t: public command_t {
+public:
+    // retrieval commands responses contains useless foother
+    typedef single_retrival_response_t response_t;
+
+    /** C'tor.
+     */
+    explicit incr_decr_command_t(const std::string &key, uint64_t value,
+                                 const opts_t &opts)
+        : command_t(static_cast <uint16_t>(key.length()),
+                    static_cast <uint32_t>(key.length() + extras_length),
+                    static_cast <uint8_t>(extras_length)),
+          key(key), value(value), opts(opts)
+    {}
+
+    /** Deserialize responses for get and gets retrieve commands.
+     */
+    response_t deserialize_header(const std::string &header) const;
+
+    /** The method for setting the body of response. */
+    static void set_body(uint32_t &flags,
+                         std::string &body,
+                         const std::string &data);
+protected:
+    /** Serialize retrieve command.
+     */
+    std::string serialize(uint8_t code) const;
+
+    std::string key; //!< for which key data should be retrieved
+    uint64_t value;  //!< amount by which the client wants to
+                     //!increase/decrease
+    opts_t opts;     //!< command options
+private:
+    /** The length of extras. */
+    static const std::size_t extras_length = 20;
+};
+
+/** class for delete command
+ */
+class delete_command_t: public command_t {
+public:
+    // retrieval commands responses contains useless foother
+    typedef single_retrival_response_t response_t;
+
+    /** C'tor.
+     */
+    explicit delete_command_t(const std::string &key):
+        command_t(static_cast <uint16_t>(key.length()),
+                  static_cast <uint32_t>(key.length())),
+        key(key) {}
+
+    /** Deserialize responses for get and gets retrieve commands.
+     */
+    response_t deserialize_header(const std::string &header) const;
+
+    /** Serialize retrieve command.
+     */
+    std::string serialize() const;
+
+protected:
+    std::string key; //!< for which key data should be retrieved
+};
+
+/** class for delete command
+ */
+class touch_command_t: public command_t {
+public:
+    // retrieval commands responses contains useless foother
+    typedef single_retrival_response_t response_t;
+
+    /** C'tor.
+     */
+    explicit touch_command_t(const std::string &key, time_t expiration) :
+        command_t(static_cast <uint16_t>(key.length()),
+                  static_cast <uint32_t>(key.length() + extras_length),
+                  static_cast <uint8_t>(extras_length)),
+        key(key), expiration(expiration) {}
+
+    /** Deserialize responses for get and gets retrieve commands.
+     */
+    response_t deserialize_header(const std::string &) const;
+
+    /** Serialize retrieve command.
+     */
+    std::string serialize(uint8_t code) const;
+
+protected:
+    std::string key; //!< for which key the expiration should be changed
+    time_t expiration;  //!< new expiration value
+private:
+    /** The length of extras. */
+    static const std::size_t extras_length = 4;
 };
 
 /** Injects name to particular command class.
@@ -175,7 +282,8 @@ public:
     /** C'tor.
      */
     template <typename type0_t, typename type1_t, typename type2_t>
-    op_code_injector(const type0_t &val0, const type1_t &val1, const type2_t &val2)
+    op_code_injector(const type0_t &val0, const type1_t &val1,
+                     const type2_t &val2)
         : parent_t(val0, val1, val2)
     {}
 
@@ -187,130 +295,52 @@ public:
 /** Used as namespace with class behaviour for protocol api.
  */
 class api {
-private:
-    // commands name
-static const uint8_t get_code = 0x00;
-static const uint8_t gets_code = 0x00;
-static const uint8_t set_code = 0x01;
-static const uint8_t add_code = 0x02;
-static const uint8_t replace_code = 0x03;
-static const uint8_t delete_code = 0x04;
-static const uint8_t increment_code = 0x05;
-static const uint8_t decrement_code = 0x06;
-static const uint8_t quit_code = 0x07;
-static const uint8_t flush_code = 0x08;
-static const uint8_t getq_code = 0x09;
-static const uint8_t noop_code = 0x0A;
-static const uint8_t version_code = 0x0B;
-static const uint8_t getk_code = 0x0C;
-static const uint8_t getkq_code = 0x0D;
-static const uint8_t append_code = 0x0E;
-static const uint8_t prepend_code = 0x0F;
-static const uint8_t stat_code = 0x10;
-static const uint8_t setq_code = 0x11;
-static const uint8_t addq_code = 0x12;
-static const uint8_t replaceq_code = 0x13;
-static const uint8_t deleteq_code = 0x14;
-static const uint8_t incrementq_code = 0x15;
-static const uint8_t decrementq_code = 0x16;
-static const uint8_t quitq_code = 0x17;
-static const uint8_t flushq_code = 0x18;
-static const uint8_t appendq_code = 0x19;
-static const uint8_t prependq_code = 0x1A;
-
-
-    // static const uint8_t get_code;
-    // static const uint8_t gets_code;
-    // static const uint8_t set_code;
-    // static const uint8_t add_code;
-    // static const uint8_t replace_code;
-    // static const uint8_t append_code;
-    // static const uint8_t prepend_code;
-    // static const uint8_t cas_code;
-    // static const uint8_t incr_code;
-    // static const uint8_t decr_code;
-
 public:
+    // commands opcodes
+    static const uint8_t get_code = 0x00;
+    static const uint8_t gets_code = 0x00;
+    static const uint8_t set_code = 0x01;
+    static const uint8_t cas_code = 0x01;
+    static const uint8_t add_code = 0x02;
+    static const uint8_t replace_code = 0x03;
+    static const uint8_t delete_code = 0x04;
+    static const uint8_t increment_code = 0x05;
+    static const uint8_t decrement_code = 0x06;
+    static const uint8_t quit_code = 0x07;
+    static const uint8_t flush_code = 0x08;
+    static const uint8_t getq_code = 0x09;
+    static const uint8_t noop_code = 0x0A;
+    static const uint8_t version_code = 0x0B;
+    static const uint8_t getk_code = 0x0C;
+    static const uint8_t getkq_code = 0x0D;
+    static const uint8_t append_code = 0x0E;
+    static const uint8_t prepend_code = 0x0F;
+    static const uint8_t stat_code = 0x10;
+    static const uint8_t setq_code = 0x11;
+    static const uint8_t addq_code = 0x12;
+    static const uint8_t replaceq_code = 0x13;
+    static const uint8_t deleteq_code = 0x14;
+    static const uint8_t incrementq_code = 0x15;
+    static const uint8_t decrementq_code = 0x16;
+    static const uint8_t quitq_code = 0x17;
+    static const uint8_t flushq_code = 0x18;
+    static const uint8_t appendq_code = 0x19;
+    static const uint8_t prependq_code = 0x1A;
+    static const uint8_t touch_code = 0x1C;
+
     // protocol api table
     typedef op_code_injector<retrieve_command_t, get_code> get_t;
-    // typedef op_code_injector<retrieve_command_t, gets_code> gets_t;
-    // typedef op_code_injector<storage_command_t, set_code> set_t;
-    // typedef op_code_injector<storage_command_t, add_code> add_t;
-    // typedef op_code_injector<storage_command_t, replace_code> replace_t;
-    // typedef op_code_injector<storage_command_t, append_code> append_t;
-    // typedef op_code_injector<storage_command_t, prepend_code> prepend_t;
-    // typedef op_code_injector<storage_command_t, cas_code> cas_t;
-
-
-    //typedef op_code_injector<inc_command_t, inc_code> inc_t;
-    //typedef op_code_injector<dec_command_t, dec_code> dec_t;
-    //typedef delete_command_t delete_t;
-    //typedef touch_command_t touch_t;
-};
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-/**
- */
-class test_t {
-public:
-    typedef single_retrival_response_t response_t;
-
-    test_t(const std::string &key): key(key) {}
-
-    std::size_t header_delimiter() const { return 28;}
-
-    std::string serialize() const;
-
-    response_t deserialize_header(const std::string &) const;
-
-    std::string key;
-};
-
-/** Used as namespace with class behaviour for protocol api.
- */
-class testapi {
-public:
-    // protocol api table
-    typedef test_t get_t;
+    typedef op_code_injector<retrieve_command_t, gets_code> gets_t;
+    typedef op_code_injector<storage_command_t<true>, set_code> set_t;
+    typedef op_code_injector<storage_command_t<true>, add_code> add_t;
+    typedef op_code_injector<storage_command_t<true>, replace_code> replace_t;
+    typedef op_code_injector<storage_command_t<false>, append_code> append_t;
+    typedef op_code_injector<storage_command_t<false>, prepend_code> prepend_t;
+    typedef op_code_injector<storage_command_t<true>, cas_code> cas_t;
+    typedef op_code_injector<incr_decr_command_t, increment_code> incr_t;
+    typedef op_code_injector<incr_decr_command_t, decrement_code> decr_t;
+    typedef delete_command_t delete_t;
+    typedef op_code_injector<touch_command_t, touch_code> touch_t;
 };
 
 } // namespace bin

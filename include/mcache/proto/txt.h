@@ -61,6 +61,11 @@ public:
      */
     response_t deserialize_header(const std::string &header) const;
 
+    /** The method for setting the body of response. */
+    static void set_body(uint32_t &flags,
+                         std::string &body,
+                         const std::string &data);
+
     /** The size of response useless footer.
      */
     static const std::size_t footer_size = 7; //!< sizeof("\r\nEND\r\n")
@@ -105,9 +110,14 @@ class incr_decr_command_t: public command_t {
 public:
     /** C'tor.
      */
-    explicit incr_decr_command_t(const std::string &key, uint64_t value)
+    explicit incr_decr_command_t(const std::string &key, uint64_t value,
+                                 const opts_t &opts)
         : key(key), value(value)
-    {}
+    {
+        if (opts.expiration | opts.initial)
+            throw error_t(mc::err::bad_argument,
+                          "Optional arguments not allowed with textual protocol.");
+    }
 
     /** Deserialize responses for get and gets retrieve commands.
      */

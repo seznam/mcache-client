@@ -81,7 +81,7 @@ protected:
         response_t response = command.deserialize_header(header);
 
         // if response contains body fetch it and return response
-        if (response) deserialize_body(response);
+        deserialize_body(response);
         return response;
     }
 
@@ -90,7 +90,9 @@ protected:
     template <typename response_t>
     typename boost::enable_if<aux::has_body_tag<response_t>, void>::type
     deserialize_body(response_t &response) {
-        response.set_body(connection->read(response.expected_body_size()));
+        std::size_t body_size = response.expected_body_size();
+        if (body_size)
+            response.set_body(connection->read(body_size));
     }
 
     /** Does nothing.

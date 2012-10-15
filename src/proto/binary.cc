@@ -17,8 +17,10 @@
  */
 
 #include <endian.h>
-#include <sstream>
 #include <arpa/inet.h>
+#include <sstream>
+#include <map>
+#include <boost/lexical_cast.hpp>
 
 #include "error.h"
 #include "mcache/proto/binary.h"
@@ -27,87 +29,63 @@ namespace mc {
 namespace proto {
 namespace bin {
 
-test_t::response_t
-test_t::deserialize_header(const std::string &header) const {
-    std::size_t extra_len = header[4];
-    std::size_t body_len = ::ntohl(reinterpret_cast<const uint32_t *>
-            (header.data())[2]);
-    LOG(INFO3, "LEN.... %zd %zd", extra_len , body_len);
-    return response_t(0, body_len - extra_len, 0, 0);
+namespace {
+enum status_code_t {
+    ok = 0x0000,  // No error
+    not_found = 0x0001,  // Key not found
+    exists = 0x0002,  // Key exists
+    value_too_large = 0x0003,  // Value too large
+    invalid_arguments = 0x0004,  // Invalid arguments
+    not_stored = 0x0005,  // Item not stored
+    non_numerci_value = 0x0006,  // Incr/Decr on non-numeric value.
+    unknown_command = 0x0081,  // Unknown command
+    out_of_memory = 0x0082,  // Out of memory
+};
+
+std::map<int, int> code_mapping;
+
+void initialize_map () {
+    code_mapping[0x0000] = mc::proto::resp::ok;
+    code_mapping[0x0001] = mc::proto::resp::not_found;
+    code_mapping[0x0002] = mc::proto::resp::exists;
+    code_mapping[0x0003] = mc::proto::resp::server_error;
+    code_mapping[0x0004] = mc::proto::resp::client_error;
+    code_mapping[0x0005] = mc::proto::resp::not_stored;
+    code_mapping[0x0006] = mc::proto::resp::client_error;
+    code_mapping[0x0081] = mc::proto::resp::error;
+    code_mapping[0x0082] = mc::proto::resp::server_error;
 }
 
-std::string test_t::serialize() const {
-    header_t hdr;
-    hdr.magic = 0x80;
-    hdr.opcode = 0x00;
-    hdr.key_len = 5;
-    hdr.extras_len = 0;
-    hdr.data_type = 0;
-    hdr.reserved = 0;
-    hdr.body_len = 5;
-    hdr.opaque = 0;
-    hdr.cas = 0;
-    hdr.prepare_serialization();
-
-    std::string hdrs(reinterpret_cast<char *>(&hdr), sizeof(hdr));
-    std::ostringstream os;
-    os
-       // << char(0x80) << char(0x00) << char(0x00) << char(0x05)
-       // << char(0x00) << char(0x00) << char(0x00) << char(0x00)
-       // << char(0x00) << char(0x00) << char(0x00) << char(0x05)
-       // << char(0x00) << char(0x00) << char(0x00) << char(0x00)
-       // << char(0x00) << char(0x00) << char(0x00) << char(0x00)
-       // << char(0x00) << char(0x00) << char(0x00) << char(0x00)
-       << char(0x48) << char(0x65) << char(0x6c) << char(0x6c)
-       << char(0x6f);
-    return hdrs +
-        os.str();
+int translate_status_to_response(int code) {
+    const std::map<int, int>::const_iterator it = code_mapping.find(code);
+    if (it == code_mapping.end()) return mc::proto::resp::error;
+    return it->second;
 }
 
+const char dummy = (initialize_map(), '\0');
 
-
-
+}
 
 // TODO (Lubos) Pokud by se melo pouzivat na solarisu, tak je potreba
 // tyhle funkce vytahnout z glibc (htobe atp.
 void header_t::prepare_serialization() {
-    key_len = htobe16(key_len);
-    reserved = htobe16(reserved);
-    body_len = htobe32(body_len);
-    opaque = htobe32(opaque);
+    key_len = htons(key_len);
+    reserved = htons(reserved);
+    body_len = htonl(body_len);
+    opaque = htonl(opaque);
     cas = htobe64(cas);
 }
 
 void header_t::prepare_deserialization() {
-    key_len = be16toh(key_len);
-    reserved = be16toh(reserved);
-    body_len = be32toh(body_len);
-    opaque = be32toh(opaque);
+    key_len = ntohs(key_len);
+    reserved = ntohs(reserved);
+    body_len = ntohl(body_len);
+    opaque = ntohl(opaque);
     cas = be64toh(cas);
 }
 
-
-
-
 command_t::response_t
 command_t::deserialize_header(const std::string &header) const {
-    // // try parse general errors (my childs ensures that header is not empty)
-    // switch (header[0]) {
-    // case 'E':
-    //     if (boost::starts_with(header, "ERROR"))
-    //         return response_t(resp::error, "syntax error");
-    //     break;
-    // case 'C':
-    //     if (boost::starts_with(header, "CLIENT_ERROR"))
-    //         return response_t(resp::client_error, error_desc(header));
-    //     break;
-    // case 'S':
-    //     if (boost::starts_with(header, "SERVER_ERROR"))
-    //         return response_t(resp::server_error, error_desc(header));
-    //     break;
-    // default: break;
-    // }
-
     // header does not recognized, return unrecognized
     return response_t(resp::unrecognized, header);
 }
@@ -120,38 +98,22 @@ retrieve_command_t::deserialize_header(const std::string &header) const {
     header_t hdr;
     std::copy(header.begin(), header.begin() + sizeof(header_t),
               reinterpret_cast<char *>(&hdr));
-    uint32_t flags;
-    std::copy(header.begin() + sizeof(header_t), header.end(),
-              reinterpret_cast<char *>(&flags));
-    flags = be32toh(flags);
+
     hdr.prepare_deserialization();
 
-    // try parse retrieve responses
-    // switch (header[0]) {
-    // case 'E':
-    //     if (boost::starts_with(header, "END"))
-    //         return response_t(resp::not_found, "not found");
-    //     break;
-    // case 'V':
-    //     if (boost::starts_with(header, "VALUE"))
-    //         return deserialize_value_resp(header);
-    //     break;
-    // default: break;
-    // }
+    if (hdr.magic != header_t::response_magic)
+        throw error_t(mc::err::internal_error, "Bad magic in response.");
 
-    // header does not recognized, try global errors
+    if (!hdr.status) {
+        // The response should have uint32_t flags in extras.
+        if (hdr.extras_len != sizeof(uint32_t))
+            throw error_t(mc::err::internal_error, "Bad extras length.");
 
-#warning tady pridat vyhozeni chyby, az asi pridam tu chybu.
-    // if (hdrp->magic != header_t::response_magic) throw error_t
-    // if (hdrp->extras_len != 4) throw error_t
+        return response_t(0, hdr.body_len, hdr.cas,
+                          retrieve_command_t::set_body);
+    }
 
-    if (!hdr.status)
-        return retrieve_command_t::response_t
-            (flags,
-             hdr.body_len - hdr.extras_len,
-             hdr.cas, footer_size);
-
-    return response_t(command_t::deserialize_header(header));
+    return response_t(translate_status_to_response(hdr.status), hdr.body_len);
 }
 
 std::string retrieve_command_t::serialize(uint8_t code) const {
@@ -163,148 +125,193 @@ std::string retrieve_command_t::serialize(uint8_t code) const {
     return result;
 }
 
-storage_command_t::response_t
-storage_command_t::deserialize_header(const std::string &header) const {
+void retrieve_command_t::set_body(uint32_t &flags,
+                                  std::string &body,
+                                  const std::string &data) {
+    std::copy(data.begin(), data.begin() + sizeof(flags),
+              reinterpret_cast<char *>(&flags));
+    flags = ntohl(flags);
+    body = data.substr(sizeof(flags));
+}
+
+template<bool has_extras>
+typename storage_command_t<has_extras>::response_t
+storage_command_t<has_extras>::deserialize_header(const std::string &header) const {
     // reject empty response
     if (header.empty()) return response_t(resp::empty, "empty response");
 
-    // // try parse retrieve responses
-    // switch (header[0]) {
-    // case 'E':
-    //     if (boost::starts_with(header, "EXISTS"))
-    //         return response_t(resp::exists, "cas id expired");
-    //     break;
-    // case 'N':
-    //     if (boost::starts_with(header, "NOT_FOUND"))
-    //         return response_t(resp::not_found, "cas id is invalid");
-    //     if (boost::starts_with(header, "NOT_STORED"))
-    //         return response_t(resp::not_stored, "key (does not) exist");
-    //     break;
-    // case 'S':
-    //     if (boost::starts_with(header, "STORED"))
-    //         return response_t(resp::stored);
-    //     break;
-    // default: break;
-    // }
+    header_t hdr;
+    std::copy(header.begin(), header.begin() + sizeof(header_t),
+              reinterpret_cast<char *>(&hdr));
 
-    // header does not recognized, try global errors
-    return command_t::deserialize_header(header);
+    hdr.prepare_deserialization();
+
+    if (hdr.magic != header_t::response_magic)
+        throw error_t(mc::err::internal_error, "Bad magic in response.");
+
+    if (!hdr.status)
+        return response_t(resp::stored, "");
+
+    return response_t(translate_status_to_response(hdr.status), hdr.body_len);
 }
 
-std::string storage_command_t::serialize(uint8_t code) const {
-    // <command name> <key> <flags> <exptime> <bytes> [noreply]\r\n
-    // cas <key> <flags> <exptime> <bytes> <cas unique> [noreply]\r\n
+template<>
+std::string storage_command_t<true>::serialize(uint8_t code) const {
     // TODO(burlog): check whether key fulfil protocol constraints
-    // std::ostringstream os;
-    // os << name << ' '
-    //    << key << ' '
-    //    << opts.flags << ' '
-    //    << opts.expiration << ' '
-    //    << data.size();
-    // if (opts.cas) os << ' ' << opts.cas;
-    // os << header_delimiter() << data << header_delimiter();
-    // return os.str();
-    return "";
+    hdr.opcode = code;
+    if (opts.cas) hdr.cas = opts.cas;
+    hdr.prepare_serialization();
+    std::string result(reinterpret_cast<char *>(&hdr), sizeof(hdr));
+
+
+    uint32_t flags;
+    flags = htonl(opts.flags);
+    result += std::string (reinterpret_cast<char *>(&flags), sizeof(flags));
+    // We use flags for exporation too.
+    flags = htonl(static_cast<uint32_t>(opts.expiration));
+    result += std::string (reinterpret_cast<char *>(&flags), sizeof(flags));
+
+    result.append(key);
+    result.append(data);
+    return result;
 }
 
-// incr_decr_command_t::response_t
-// incr_decr_command_t::deserialize_header(const std::string &header) const {
-//     // reject empty response
-//     if (header.empty()) return response_t(resp::empty, "empty response");
 
-//     // try parse retrieve responses
-//     switch (header[0]) {
-//     case 'T':
-//         // fail response
-//         if (boost::starts_with(header, "TOUCHED"))
-//             return response_t(resp::touched);
-//         break;
-//     case 'N':
-//         if (boost::starts_with(header, "NOT_FOUND"))
-//             return response_t(resp::not_found, "key does not exist");
-//         break;
-//     case '0'...'9': {
-//         // <value>\r\n - ok response
-//         std::istringstream is(header);
-//         uint64_t value;
-//         if (is >> value)
-//             return response_t(resp::ok, boost::trim_copy(header));
-//         break;
-//         }
-//     default: break;
-//     }
+template<>
+std::string storage_command_t<false>::serialize(uint8_t code) const {
+    // TODO(burlog): check whether key fulfil protocol constraints
+    hdr.opcode = code;
+    if (opts.cas) hdr.cas = opts.cas;
+    hdr.prepare_serialization();
+    std::string result(reinterpret_cast<char *>(&hdr), sizeof(hdr));
 
-//     // header does not recognized, try global errors
-//     return command_t::deserialize_header(header);
+    result.append(key);
+    result.append(data);
+    return result;
+}
 
-// }
+template class storage_command_t<true>;
+template class storage_command_t<false>;
 
-// std::string incr_decr_command_t::serialize(const char *name) const {
-//     // <command name> <key> <value> [noreply]\r\n
-//     // TODO(burlog): check whether key fulfil protocol constraints
-//     std::ostringstream os;
-//     os << name << ' ' << key << ' ' << value << header_delimiter();
-//     return os.str();
-// }
+incr_decr_command_t::response_t
+incr_decr_command_t::deserialize_header(const std::string &header) const {
+    // reject empty response
+    if (header.empty()) return response_t(resp::empty, "empty response");
 
-// delete_command_t::response_t
-// delete_command_t::deserialize_header(const std::string &header) const {
-//     // reject empty response
-//     if (header.empty()) return response_t(resp::empty, "empty response");
+    header_t hdr;
+    std::copy(header.begin(), header.begin() + sizeof(header_t),
+              reinterpret_cast<char *>(&hdr));
 
-//     // try parse retrieve responses
-//     switch (header[0]) {
-//     case 'D':
-//         if (boost::starts_with(header, "DELETED"))
-//             return response_t(resp::deleted);
-//         break;
-//     case 'N':
-//         if (boost::starts_with(header, "NOT_FOUND"))
-//             return response_t(resp::not_found, "key does not exist");
-//         break;
-//     default: break;
-//     }
+    hdr.prepare_deserialization();
 
-//     // header does not recognized, try global errors
-//     return response_t(command_t::deserialize_header(header));
+    if (hdr.magic != header_t::response_magic)
+        throw error_t(mc::err::internal_error, "Bad magic in response.");
+    if (hdr.body_len != sizeof(uint64_t))
+        throw error_t(mc::err::internal_error, "Bad body length.");
 
-// }
+    if (!hdr.status)
+        return response_t(0, hdr.body_len, hdr.cas,
+                          incr_decr_command_t::set_body);
 
-// std::string delete_command_t::serialize() const {
-//     std::string result;
-//     result.append("delete ").append(key).append(header_delimiter());
-//     return result;
-// }
+    return response_t(translate_status_to_response(hdr.status), hdr.body_len);
+}
 
-// command Operation codes
-// const uint8_t api::get_code = 0x00;
-// const uint8_t api::gets_code = 0x00;
-// const uint8_t api::set_code = 0x01;
-// const uint8_t api::add_code = 0x02;
-// const uint8_t api::replace_code = 0x03;
-// const uint8_t api::delete_code = 0x04;
-// const uint8_t api::increment_code = 0x05;
-// const uint8_t api::decrement_code = 0x06;
-// const uint8_t api::quit_code = 0x07;
-// const uint8_t api::flush_code = 0x08;
-// const uint8_t api::getq_code = 0x09;
-// const uint8_t api::noop_code = 0x0A;
-// const uint8_t api::version_code = 0x0B;
-// const uint8_t api::getk_code = 0x0C;
-// const uint8_t api::getkq_code = 0x0D;
-// const uint8_t api::append_code = 0x0E;
-// const uint8_t api::prepend_code = 0x0F;
-// const uint8_t api::stat_code = 0x10;
-// const uint8_t api::setq_code = 0x11;
-// const uint8_t api::addq_code = 0x12;
-// const uint8_t api::replaceq_code = 0x13;
-// const uint8_t api::deleteq_code = 0x14;
-// const uint8_t api::incrementq_code = 0x15;
-// const uint8_t api::decrementq_code = 0x16;
-// const uint8_t api::quitq_code = 0x17;
-// const uint8_t api::flushq_code = 0x18;
-// const uint8_t api::appendq_code = 0x19;
-// const uint8_t api::prependq_code = 0x1A;
+std::string incr_decr_command_t::serialize(uint8_t code) const {
+    // TODO(burlog): check whether key fulfil protocol constraints
+    hdr.opcode = code;
+    hdr.prepare_serialization();
+    std::string result(reinterpret_cast<char *>(&hdr), sizeof(hdr));
+
+    //Extras
+    uint64_t val = htobe64(value);
+    result += std::string (reinterpret_cast<char *>(&val), sizeof(val));
+    val = htobe64(opts.initial);
+    result += std::string (reinterpret_cast<char *>(&val),
+                           sizeof(val));
+    uint32_t expire = htonl(static_cast<uint32_t>(opts.expiration));
+    result += std::string (reinterpret_cast<char *>(&expire), sizeof(expire));
+
+    result.append(key);
+    return result;
+
+}
+
+void incr_decr_command_t::set_body(uint32_t &,
+                                   std::string &body,
+                                   const std::string &data) {
+    uint64_t value;
+    std::copy(data.begin(), data.end(), reinterpret_cast<char *>(&value));
+    value = be64toh(value);
+    body = boost::lexical_cast<std::string>(value);
+}
+
+delete_command_t::response_t
+delete_command_t::deserialize_header(const std::string &header) const {
+    // reject empty response
+    if (header.empty()) return response_t(resp::empty, "empty response");
+
+    header_t hdr;
+    std::copy(header.begin(), header.begin() + sizeof(header_t),
+              reinterpret_cast<char *>(&hdr));
+
+    hdr.prepare_deserialization();
+
+    if (hdr.magic != header_t::response_magic)
+        throw error_t(mc::err::internal_error, "Bad magic in response.");
+
+    if (!hdr.status)
+        return response_t(resp::deleted, "");
+
+    return response_t(translate_status_to_response(hdr.status), hdr.body_len);
+}
+
+std::string delete_command_t::serialize() const {
+    // TODO(burlog): check whether key fulfil protocol constraints
+    hdr.opcode = api::delete_code;
+    hdr.prepare_serialization();
+    std::string result(reinterpret_cast<char *>(&hdr), sizeof(hdr));
+    result.append(key);
+    return result;
+}
+
+
+touch_command_t::response_t
+touch_command_t::deserialize_header(const std::string &header) const {
+    // reject empty response
+    if (header.empty()) return response_t(resp::empty, "empty response");
+
+    header_t hdr;
+    std::copy(header.begin(), header.begin() + sizeof(header_t),
+              reinterpret_cast<char *>(&hdr));
+
+    hdr.prepare_deserialization();
+
+    if (hdr.magic != header_t::response_magic)
+        throw error_t(mc::err::internal_error, "Bad magic in response.");
+
+    if (!hdr.status)
+        return response_t(resp::touched, 0, hdr.body_len, hdr.cas,
+                          retrieve_command_t::set_body);
+
+    return response_t(translate_status_to_response(hdr.status), hdr.body_len);
+}
+
+std::string touch_command_t::serialize(uint8_t code) const {
+    // TODO(burlog): check whether key fulfil protocol constraints
+    hdr.opcode = code;
+    hdr.prepare_serialization();
+    std::string result(reinterpret_cast<char *>(&hdr), sizeof(hdr));
+
+    //Extras
+    uint32_t expire = htonl(static_cast<uint32_t>(expiration));
+    result += std::string (reinterpret_cast<char *>(&expire), sizeof(expire));
+
+    result.append(key);
+    return result;
+
+}
+
+
 
 } // namespace bin
 } // namespace proto

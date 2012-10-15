@@ -20,6 +20,7 @@
 
 #include <string>
 #include <inttypes.h>
+#include <boost/function.hpp>
 
 #include <mcache/error.h>
 
@@ -87,56 +88,78 @@ protected:
  */
 class single_retrival_response_t: public single_response_t {
 public:
+    /** Type of callback for setting the body (and flags sometimes). */
+    typedef boost::function<void (uint32_t &,
+                                  std::string &,
+                                  const std::string &)> set_body_callback_t;
+
     /** C'tor.
      */
     single_retrival_response_t(int status, const std::string &aux)
         : single_response_t(status, aux),
-          flags(), cas(), bytes(), footer_size()
+          flags(), cas(), bytes(), set_body_callback(set_body_default)
     {}
 
     /** C'tor.
      */
     single_retrival_response_t(uint32_t flags, std::size_t bytes, uint64_t cas,
-                               std::size_t footer_size)
+                               set_body_callback_t set_body)
         : single_response_t(resp::ok, std::string()),
-          flags(flags), cas(cas), bytes(bytes + footer_size),
-          footer_size(footer_size)
+          flags(flags), cas(cas), bytes(bytes), set_body_callback(set_body)
+    {}
+
+    /** C'tor.
+     */
+    single_retrival_response_t(int status, uint32_t flags, std::size_t bytes,
+                               uint64_t cas, set_body_callback_t set_body)
+        : single_response_t(status, std::string()),
+          flags(flags), cas(cas), bytes(bytes), set_body_callback(set_body)
+    {}
+
+    /** C'tor.
+     */
+    single_retrival_response_t(int status, std::size_t bytes)
+        : single_response_t(status, std::string()),
+          flags(), cas(), bytes(bytes),
+          set_body_callback(set_body_default)
     {}
 
     /** C'tor.
      */
     explicit single_retrival_response_t(const single_response_t &resp)
         : single_response_t(resp),
-          flags(), cas(), bytes(), footer_size()
+          flags(), cas(), bytes(), set_body_callback(set_body_default)
     {}
 
     // mark that this response expects body
     class body_tag;
 
-    /** Returns retrieval commands response body.
-     */
-    inline const std::string &body() const { return aux;}
-
     /** Sets new retrieval commands body response.
      */
     inline void set_body(const std::string &body) {
-        aux = body;
-        aux.resize(aux.size() - footer_size);
+        set_body_callback(flags, aux, body);
     }
 
     /** Retutns retrieval commands expected body size.
      */
     inline std::size_t expected_body_size() const { return bytes;}
 
-    const uint32_t flags; //!< retrieval commands response flags
+    uint32_t flags; //!< retrieval commands response flags
     const uint64_t cas;   //!< retrieval commands cas attribute
 
 protected:
-    // hide useless accessor
-    using single_response_t::data;
+    std::size_t bytes;    //!< expected response body size
 
-    std::size_t bytes;       //!< expected response body size
-    std::size_t footer_size; //!< size of usless footer in txt proto
+    /** The callback for setting the body */
+    set_body_callback_t set_body_callback;
+
+private:
+    /** The default callback for setting the body */
+    static void set_body_default(uint32_t &,
+                                 std::string &body,
+                                 const std::string &data) {
+        body = data;
+    }
 };
 
 // TODO(burlog): add support for multi-get

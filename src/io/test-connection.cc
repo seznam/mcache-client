@@ -81,8 +81,8 @@ public:
                   << "    status = " << response.code() << std::endl
                   << "    flags = " << response.flags << std::endl
                   << "    cas = " << response.cas << std::endl
-                  << "    data-size = " << response.body().size() << std::endl
-                  << "    data = \"" << response.body() << "\"" << std::endl
+                  << "    data-size = " << response.data().size() << std::endl
+                  << "    data = \"" << response.data() << "\"" << std::endl
                   << "}" << std::endl;
         return false;
     }
@@ -131,11 +131,36 @@ public:
         // run
         mc::proto::command_parser_t<mc::io::tcp::connection_t> parser(connection);
         typename command_t::response_t response =
-            parser.send(command_t(key, value));
+            parser.send(command_t(key, value, mc::proto::opts_t()));
         if (!response) throw response.exception();
         std::cout << "response = {" << std::endl
                   << "    status = " << response.code() << std::endl
                   << "    new-value = " << response.data() << std::endl
+                  << "}" << std::endl;
+        return false;
+    }
+};
+
+template <typename command_t>
+class touch_t {
+public:
+    bool operator()(mc::io::tcp::connection_t &connection,
+                    const std::string &line)
+    {
+        // parse
+        std::istringstream is(line);
+        std::string key;
+        time_t value = 0;
+        is >> key >> value;
+
+        // run
+        mc::proto::command_parser_t<mc::io::tcp::connection_t> parser(connection);
+        typename command_t::response_t response =
+            parser.send(command_t(key, value));
+        if (!response) throw response.exception();
+        std::cout << "response = {" << std::endl
+                  << "    status = " << response.code() << std::endl
+                  << "    flags = " << response.flags << std::endl
                   << "}" << std::endl;
         return false;
     }
@@ -203,18 +228,28 @@ int main(int argc, char **argv) {
     dispatcher.insert("help", (std::cout << constant(HELP), constant(false)));
     dispatcher.insert("get", retrieve_t<api::get_t>());
     dispatcher.insert("getb", retrieve_t<mc::proto::bin::api::get_t>());
-    dispatcher.insert("getbt", retrieve_t<mc::proto::bin::testapi::get_t>());
     dispatcher.insert("gets", retrieve_t<api::gets_t>());
+    dispatcher.insert("getsb", retrieve_t<mc::proto::bin::api::gets_t>());
     dispatcher.insert("set", storage_t<api::set_t>());
+    dispatcher.insert("setb", storage_t<mc::proto::bin::api::set_t>());
     dispatcher.insert("add", storage_t<api::add_t>());
+    dispatcher.insert("addb", storage_t<mc::proto::bin::api::add_t>());
     dispatcher.insert("replace", storage_t<api::replace_t>());
+    dispatcher.insert("replaceb", storage_t<mc::proto::bin::api::replace_t>());
     dispatcher.insert("append", storage_t<api::append_t>());
+    dispatcher.insert("appendb", storage_t<mc::proto::bin::api::append_t>());
     dispatcher.insert("prepend", storage_t<api::prepend_t>());
+    dispatcher.insert("prependb", storage_t<mc::proto::bin::api::prepend_t>());
     dispatcher.insert("cas", storage_t<api::cas_t>());
+    dispatcher.insert("casb", storage_t<mc::proto::bin::api::cas_t>());
     dispatcher.insert("incr", incr_decr_t<api::incr_t>());
+    dispatcher.insert("incrb", incr_decr_t<mc::proto::bin::api::incr_t>());
     dispatcher.insert("decr", incr_decr_t<api::decr_t>());
+    dispatcher.insert("decrb", incr_decr_t<mc::proto::bin::api::decr_t>());
     dispatcher.insert("del", delete_t<api::delete_t>());
+    dispatcher.insert("delb", delete_t<mc::proto::bin::api::delete_t>());
     dispatcher.insert("touch", incr_decr_t<api::touch_t>());
+    dispatcher.insert("touchb", touch_t<mc::proto::bin::api::touch_t>());
 
     // establish connection to server
     mc::io::tcp::connection_t connection(dst, mc::io::opts_t());

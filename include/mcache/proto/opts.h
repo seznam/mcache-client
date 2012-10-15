@@ -1,7 +1,7 @@
 /*
  * FILE             $Id: $
  *
- * DESCRIPTION      Command serialization/deserialization: storage 
+ * DESCRIPTION      Command serialization/deserialization: storage
  *                  command options.
  *
  * PROJECT          Seznam memcache client.
@@ -62,7 +62,12 @@ public:
 
     const time_t expiration; //!< expiration time (seconds from now at server)
     const uint32_t flags;    //!< flags for held value on server
-    const uint64_t cas;      //!< unique identifier retrieved from gets command
+    union {
+        const uint64_t cas;      //!< unique identifier retrieved from
+                                 //!gets command
+        uint64_t initial;        //!< The initial value for
+                                 //!increment/decrement
+    };
 };
 
 } // namespace proto
