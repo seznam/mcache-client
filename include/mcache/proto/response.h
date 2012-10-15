@@ -83,7 +83,6 @@ protected:
     std::string aux; //!< response body/message
 };
 
-
 /** Response for single retrieval commands.
  */
 class single_retrival_response_t: public single_response_t {
