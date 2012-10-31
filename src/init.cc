@@ -18,8 +18,16 @@
 #include "mime/init.h"
 
 namespace mc {
+namespace proto {
+namespace bin {
+
+void init();
+
+} // namespace bin
+} // namespace proto
 
 void init() {
+    proto::bin::init();
 }
 
 } // namespace mc

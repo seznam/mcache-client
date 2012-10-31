@@ -29,46 +29,50 @@ namespace mc {
 namespace proto {
 namespace bin {
 
-/** The structure representing binary protocol header. */
+/** The structure representing binary protocol header.
+ */
 struct header_t {
 public:
+    // magic constants
     static const uint8_t request_magic = 0x80;
     static const uint8_t response_magic = 0x81;
 
-    header_t() {}
-    header_t(uint16_t key_len,
-             uint32_t body_len = 0,
-             uint8_t extras_len = 0):
-        magic(request_magic),
-        opcode(0x00),
-        key_len(key_len),
-        extras_len(extras_len),
-        data_type(0x00),reserved(0x00),
-        body_len(body_len),
-        opaque(0x00), cas(0x00) {}
+    /** C'tor.
+     */
+    header_t(const std::string &data);
 
-    uint8_t magic;
-    uint8_t opcode;
-    uint16_t key_len;
-    uint8_t extras_len;
-    uint8_t data_type;
+    /** C'tor.
+     */
+    header_t(uint16_t key_len, uint32_t body_len = 0, uint8_t extras_len = 0)
+        : magic(request_magic),
+          opcode(0x00),
+          key_len(key_len),
+          extras_len(extras_len),
+          data_type(0x00),
+          reserved(0x00),
+          body_len(body_len),
+          opaque(0x00),
+          cas(0x00)
+    {}
+
+    uint8_t magic;         //!< protocol magic
+    uint8_t opcode;        //!< command code
+    uint16_t key_len;      //!< the length of the key
+    uint8_t extras_len;    //!< the length of extra info in packet
+    uint8_t data_type;     //!< reserved for future usage
     union {
-        uint16_t reserved;
-        uint16_t status;
+        uint16_t reserved; //!< response for future usage
+        uint16_t status;   //!< status of the response
     };
-    uint32_t body_len;
-    uint32_t opaque;
-    uint64_t cas;
+    uint32_t body_len;     //!< length in bytes of extra + key + value
+    uint32_t opaque;       //!< will be copied back to you in the response
+    uint64_t cas;          //!< unique identifier of data(data version)
 
     /** Method for preparing serialization of header. It switches the
-        endianity for every member. (hton)*/
+     * endianity for every member. (hton)
+     */
     void prepare_serialization();
-
-    /** Method for deserialization preprocessing. It switches the
-        endianity for every member. (ntoh)*/
-    void prepare_deserialization();
 };
-
 
 /** Base class of all commands.
  */
@@ -81,17 +85,14 @@ public:
      */
     std::size_t header_delimiter() const { return 24;}
 
-    /** Deserialize server error strings. If response is not general error
-     * resp::unrecognized response is returned. Method should be overloaded by
-     * paricular commands.
-     */
-    response_t deserialize_header(const std::string &header) const;
-
 protected:
-    command_t(uint16_t key_len, uint32_t body_len = 0, uint8_t extras_len = 0):
-        hdr(key_len, body_len, extras_len) {}
-    /** The header of command. */
-    mutable header_t hdr;
+    /** C'tor.
+     */
+    command_t(uint16_t key_len, uint32_t body_len = 0, uint8_t extras_len = 0)
+        : hdr(key_len, body_len, extras_len)
+    {}
+
+    mutable header_t hdr; //!< the header of each command (request)
 };
 
 /** Base class for all retrieve commands.
@@ -103,20 +104,18 @@ public:
 
     /** C'tor.
      */
-    explicit retrieve_command_t(const std::string &key):
-        command_t(static_cast <uint16_t>(key.length()),
-                  static_cast <uint32_t>(key.length())),
-        key(key) {}
-
-    /** Returns txt protocol header delimiter.
-     */
-    std::size_t header_delimiter() const { return 24;}
+    explicit retrieve_command_t(const std::string &key)
+        : command_t(static_cast <uint16_t>(key.length()),
+                    static_cast <uint32_t>(key.length())),
+          key(key)
+    {}
 
     /** Deserialize responses for get and gets retrieve commands.
      */
     response_t deserialize_header(const std::string &header) const;
 
-    /** The method for setting the body of response. */
+    /** The method for setting the body of response.
+     */
     static void set_body(uint32_t &flags,
                          std::string &body,
                          const std::string &data);
@@ -197,9 +196,9 @@ protected:
     std::string serialize(uint8_t code) const;
 
     std::string key; //!< for which key data should be retrieved
-    uint64_t value;  //!< amount by which the client wants to
-                     //!increase/decrease
+    uint64_t value;  //!< amount by which the client wants to incr/decr
     opts_t opts;     //!< command options
+
 private:
     /** The length of extras. */
     static const std::size_t extras_length = 20;
@@ -231,7 +230,7 @@ protected:
     std::string key; //!< for which key data should be retrieved
 };
 
-/** class for delete command
+/** Class for delete command.
  */
 class touch_command_t: public command_t {
 public:
@@ -240,11 +239,12 @@ public:
 
     /** C'tor.
      */
-    explicit touch_command_t(const std::string &key, time_t expiration) :
-        command_t(static_cast <uint16_t>(key.length()),
-                  static_cast <uint32_t>(key.length() + extras_length),
-                  static_cast <uint8_t>(extras_length)),
-        key(key), expiration(expiration) {}
+    touch_command_t(const std::string &key, time_t expiration)
+        : command_t(static_cast <uint16_t>(key.length()),
+                    static_cast <uint32_t>(key.length() + extras_length),
+                    static_cast <uint8_t>(extras_length)),
+          key(key), expiration(expiration)
+    {}
 
     /** Deserialize responses for get and gets retrieve commands.
      */
@@ -255,11 +255,13 @@ public:
     std::string serialize(uint8_t code) const;
 
 protected:
-    std::string key; //!< for which key the expiration should be changed
+    std::string key;    //!< for which key the expiration should be changed
     time_t expiration;  //!< new expiration value
+
 private:
     /** The length of extras. */
     static const std::size_t extras_length = 4;
+    static single_retrival_response_t::set_body_callback_t set_body;
 };
 
 /** Injects name to particular command class.

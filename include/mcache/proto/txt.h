@@ -110,13 +110,12 @@ class incr_decr_command_t: public command_t {
 public:
     /** C'tor.
      */
-    explicit incr_decr_command_t(const std::string &key, uint64_t value,
-                                 const opts_t &opts)
+    incr_decr_command_t(const std::string &key, uint64_t value,
+                        const opts_t &opts = opts_t())
         : key(key), value(value)
     {
-        if (opts.expiration | opts.initial)
-            throw error_t(mc::err::bad_argument,
-                          "Optional arguments not allowed with textual protocol.");
+        if (opts.initial)
+            throw error_t(err::bad_argument, "initial not allowed with txt");
     }
 
     /** Deserialize responses for get and gets retrieve commands.

@@ -46,6 +46,7 @@ enum response_code_t {
     empty        = 503,
     io_error     = 504,
     syntax       = 505,
+    invalid      = 506,
 
     unrecognized = 1000,
 };
@@ -89,20 +90,25 @@ protected:
 class single_retrival_response_t: public single_response_t {
 public:
     /** Type of callback for setting the body (and flags sometimes). */
-    typedef boost::function<void (uint32_t &,
-                                  std::string &,
-                                  const std::string &)> set_body_callback_t;
+    typedef boost::function<
+                void (uint32_t &,
+                std::string &,
+                const std::string &)
+            > set_body_callback_t;
 
     /** C'tor.
      */
-    single_retrival_response_t(int status, const std::string &aux)
+    single_retrival_response_t(int status,
+                               const std::string &aux = std::string())
         : single_response_t(status, aux),
           flags(), cas(), bytes(), set_body_callback(set_body_default)
     {}
 
     /** C'tor.
      */
-    single_retrival_response_t(uint32_t flags, std::size_t bytes, uint64_t cas,
+    single_retrival_response_t(uint32_t flags,
+                               std::size_t bytes,
+                               uint64_t cas,
                                set_body_callback_t set_body)
         : single_response_t(resp::ok, std::string()),
           flags(flags), cas(cas), bytes(bytes), set_body_callback(set_body)
@@ -110,8 +116,11 @@ public:
 
     /** C'tor.
      */
-    single_retrival_response_t(int status, uint32_t flags, std::size_t bytes,
-                               uint64_t cas, set_body_callback_t set_body)
+    single_retrival_response_t(int status,
+                               uint32_t flags,
+                               std::size_t bytes,
+                               uint64_t cas,
+                               set_body_callback_t set_body)
         : single_response_t(status, std::string()),
           flags(flags), cas(cas), bytes(bytes), set_body_callback(set_body)
     {}
@@ -157,7 +166,8 @@ private:
     /** The default callback for setting the body */
     static void set_body_default(uint32_t &,
                                  std::string &body,
-                                 const std::string &data) {
+                                 const std::string &data)
+    {
         body = data;
     }
 };

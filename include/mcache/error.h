@@ -28,10 +28,10 @@ namespace err {
  */
 enum error_code_t {
     bad_request        = 400,
-    not_found      = 404,
+    not_found          = 404,
     method_not_allowed = 405,
-    bad_argument      = 406,
-    internal_error = 500,
+    bad_argument       = 406,
+    internal_error     = 500,
 };
 
 } // namespace err

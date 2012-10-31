@@ -73,7 +73,8 @@ public:
     bool operator()(mc::io::tcp::connection_t &connection,
                     const std::string &line)
     {
-        mc::proto::command_parser_t<mc::io::tcp::connection_t> parser(connection);
+        typedef mc::proto::command_parser_t<mc::io::tcp::connection_t> parser_t;
+        parser_t parser(connection);
         typename command_t::response_t response =
             parser.send(command_t(boost::trim_copy(line)));
         if (!response) throw response.exception();
@@ -105,7 +106,8 @@ public:
         mc::proto::opts_t opts(expiration, flags, cas);
 
         // run
-        mc::proto::command_parser_t<mc::io::tcp::connection_t> parser(connection);
+        typedef mc::proto::command_parser_t<mc::io::tcp::connection_t> parser_t;
+        parser_t parser(connection);
         typename command_t::response_t response =
             parser.send(command_t(key, data, opts));
         if (!response) throw response.exception();
@@ -125,13 +127,16 @@ public:
         // parse
         std::istringstream is(line);
         std::string key;
-        uint64_t value = 0;
-        is >> key >> value;
+        uint64_t value = 1;
+        uint64_t initial = 0;
+        is >> key >> value >> initial;
 
         // run
-        mc::proto::command_parser_t<mc::io::tcp::connection_t> parser(connection);
-        typename command_t::response_t response =
-            parser.send(command_t(key, value, mc::proto::opts_t()));
+        typedef mc::proto::command_parser_t<mc::io::tcp::connection_t> parser_t;
+        parser_t parser(connection);
+        mc::proto::opts_t opts(0, 0, initial);
+        typename command_t::response_t
+            response = parser.send(command_t(key, value, opts));
         if (!response) throw response.exception();
         std::cout << "response = {" << std::endl
                   << "    status = " << response.code() << std::endl
@@ -141,8 +146,8 @@ public:
     }
 };
 
-template <typename command_t>
-class touch_t {
+template <>
+class incr_decr_t<mc::proto::bin::api::touch_t> {
 public:
     bool operator()(mc::io::tcp::connection_t &connection,
                     const std::string &line)
@@ -154,7 +159,9 @@ public:
         is >> key >> value;
 
         // run
-        mc::proto::command_parser_t<mc::io::tcp::connection_t> parser(connection);
+        typedef mc::proto::bin::api::touch_t command_t;
+        typedef mc::proto::command_parser_t<mc::io::tcp::connection_t> parser_t;
+        parser_t parser(connection);
         typename command_t::response_t response =
             parser.send(command_t(key, value));
         if (!response) throw response.exception();
@@ -172,7 +179,8 @@ public:
     bool operator()(mc::io::tcp::connection_t &connection,
                     const std::string &line)
     {
-        mc::proto::command_parser_t<mc::io::tcp::connection_t> parser(connection);
+        typedef mc::proto::command_parser_t<mc::io::tcp::connection_t> parser_t;
+        parser_t parser(connection);
         typename command_t::response_t response =
             parser.send(command_t(boost::trim_copy(line)));
         if (!response) throw response.exception();
@@ -190,14 +198,41 @@ std::pair<std::string, std::string> split(const std::string &line) {
     return std::make_pair(word, line.substr(word.size()));
 }
 
+template <typename api>
+void register_methods(dispatcher_t &dispatcher) {
+    dispatcher.insert("get", retrieve_t<typename api::get_t>());
+    dispatcher.insert("gets", retrieve_t<typename api::gets_t>());
+    dispatcher.insert("set", storage_t<typename api::set_t>());
+    dispatcher.insert("add", storage_t<typename api::add_t>());
+    dispatcher.insert("replace", storage_t<typename api::replace_t>());
+    dispatcher.insert("append", storage_t<typename api::append_t>());
+    dispatcher.insert("prepend", storage_t<typename api::prepend_t>());
+    dispatcher.insert("cas", storage_t<typename api::cas_t>());
+    dispatcher.insert("incr", incr_decr_t<typename api::incr_t>());
+    dispatcher.insert("decr", incr_decr_t<typename api::decr_t>());
+    dispatcher.insert("del", delete_t<typename api::delete_t>());
+    dispatcher.insert("touch", incr_decr_t<typename api::touch_t>());
+}
+
 static const char
 HELP[] = "help\t\t\t\t\tprints this help\n"
          "quit,q\t\t\t\t\texit the program\n"
-         "get <key>\t\t\t\tget value by key\n"
-         "set <key> <value> <exp> <flags>\t\tset value by key\n"
-         "set <key> <value> <exp>\t\t\tset value by key\n"
-         "set <key> <value>\t\t\tset value by key\n"
-         "";
+         "get <key>\t\t\t\tget value\n"
+         "set <key> <value> <exp> <flags>\t\tset value\n"
+         "set <key> <value> <exp>\t\t\tset value\n"
+         "set <key> <value>\t\t\tset value\n"
+         "add <key> <value>\t\t\tset value\n"
+         "replace <key> <value>\t\t\tset value\n"
+         "append <key> <value>\t\t\tappend the value after stored value\n"
+         "prepend <key> <value>\t\t\tprepend the value before stored value\n"
+         "cas <key> <value> <exp> <flags> <cas>\tset value and check CAS id\n"
+         "incr <key> <value> <initial>\t\tincrement value by value\n"
+         "incr <key> <value>\t\t\tincrement value by value\n"
+         "incr <key>\t\t\t\tincrement value\n"
+         "decr <key> <value>\t\t\tdecrement value by value\n"
+         "decr <key>\t\t\t\tdecrement value\n"
+         "del <key>\t\t\t\tdelete value\n"
+         "touch <key> <value>\t\t\ttouch value timestamp\n";
 
 } // namespace
 
@@ -207,18 +242,36 @@ int main(int argc, char **argv) {
     using boost::lambda::_2;
     using boost::lambda::constant;
 
-    // we are using text protocol
-    typedef mc::proto::txt::api api;
-    //typedef mc::proto::bin::api api;
-
     // read destionation address
-    if (argc != 2) {
+    std::string dst;
+    bool binary = false;
+    if (argc == 3) {
+        if (strcmp(argv[1], "-b") == 0) {
+            binary = true;
+            dst = argv[2];
+
+        } else if (strcmp(argv[2], "-b") == 0) {
+            binary = true;
+            dst = argv[1];
+
+        } else if (strcmp(argv[1], "-t") == 0) {
+            binary = false;
+            dst = argv[2];
+
+        } else if (strcmp(argv[2], "-t") == 0) {
+            binary = false;
+            dst = argv[1];
+        }
+
+    } else if (argc == 2) dst = argv[1];
+
+    // is destionation server set properly
+    if (dst.empty()) {
         std::cerr << "Usage: " << argv[0] << " dest-server:port\n\n"
                   << "\tMichal Bukovsky <michal.bukovsky@firma.seznam.cz>\n"
                   << "\tCopyright (C) Seznam.cz a.s. 2012\n";
         return EXIT_FAILURE;
     }
-    std::string dst = argv[1];
 
     // prepare dispatch table
     dispatcher_t dispatcher;
@@ -226,30 +279,8 @@ int main(int argc, char **argv) {
     dispatcher.insert("q", constant(true));
     dispatcher.insert("exit", constant(true));
     dispatcher.insert("help", (std::cout << constant(HELP), constant(false)));
-    dispatcher.insert("get", retrieve_t<api::get_t>());
-    dispatcher.insert("getb", retrieve_t<mc::proto::bin::api::get_t>());
-    dispatcher.insert("gets", retrieve_t<api::gets_t>());
-    dispatcher.insert("getsb", retrieve_t<mc::proto::bin::api::gets_t>());
-    dispatcher.insert("set", storage_t<api::set_t>());
-    dispatcher.insert("setb", storage_t<mc::proto::bin::api::set_t>());
-    dispatcher.insert("add", storage_t<api::add_t>());
-    dispatcher.insert("addb", storage_t<mc::proto::bin::api::add_t>());
-    dispatcher.insert("replace", storage_t<api::replace_t>());
-    dispatcher.insert("replaceb", storage_t<mc::proto::bin::api::replace_t>());
-    dispatcher.insert("append", storage_t<api::append_t>());
-    dispatcher.insert("appendb", storage_t<mc::proto::bin::api::append_t>());
-    dispatcher.insert("prepend", storage_t<api::prepend_t>());
-    dispatcher.insert("prependb", storage_t<mc::proto::bin::api::prepend_t>());
-    dispatcher.insert("cas", storage_t<api::cas_t>());
-    dispatcher.insert("casb", storage_t<mc::proto::bin::api::cas_t>());
-    dispatcher.insert("incr", incr_decr_t<api::incr_t>());
-    dispatcher.insert("incrb", incr_decr_t<mc::proto::bin::api::incr_t>());
-    dispatcher.insert("decr", incr_decr_t<api::decr_t>());
-    dispatcher.insert("decrb", incr_decr_t<mc::proto::bin::api::decr_t>());
-    dispatcher.insert("del", delete_t<api::delete_t>());
-    dispatcher.insert("delb", delete_t<mc::proto::bin::api::delete_t>());
-    dispatcher.insert("touch", incr_decr_t<api::touch_t>());
-    dispatcher.insert("touchb", touch_t<mc::proto::bin::api::touch_t>());
+    if (binary) register_methods<mc::proto::bin::api>(dispatcher);
+    else register_methods<mc::proto::txt::api>(dispatcher);
 
     // establish connection to server
     mc::io::tcp::connection_t connection(dst, mc::io::opts_t());
