@@ -15,6 +15,7 @@
 #                  First version
 #
 
-includedir = @includedir@/mcache/pool
+includedir = @includedir@/mcache/proto
 
-include_HEADERS = consistent-hashing.h mod.h
+include_HEADERS = binary.h error.h opts.h parser.h response.h txt.h
+

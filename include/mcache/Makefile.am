@@ -17,5 +17,5 @@
 
 includedir = @includedir@/mcache
 
-include_HEADERS = logger.h error.h init.h
-
+include_HEADERS = client.h error.h hash.h init.h lock.h logger.h mcache.h      \
+		  server-proxies.h server-proxy.h

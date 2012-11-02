@@ -14,7 +14,12 @@
 #       2012-09-16 (bukovsky)
 #                  First version
 
-SUBDIRS = src include/mcache/pool include/mcache/hash include/mcache
+SUBDIRS = src                                                                  \
+          include/mcache/pool                                                  \
+	  include/mcache/hash                                                  \
+	  include/mcache/io                                                    \
+	  include/mcache/proto                                                 \
+	  include/mcache
 
 pkgconfigdir = @libdir@/pkgconfig
 pkgconfig_DATA = libmcache.pc

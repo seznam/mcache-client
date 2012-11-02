@@ -15,6 +15,7 @@
 #                  First version
 #
 
-includedir = @includedir@/mcache/pool
+includedir = @includedir@/mcache/io
 
-include_HEADERS = consistent-hashing.h mod.h
+include_HEADERS = connection.h connections.h error.h opts.h tcp.h udp.h
+
