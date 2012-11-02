@@ -9,5 +9,5 @@ Standards-Version: 3.8.4
 Package: szn-libmcache-dev
 Section: libdevel
 Architecture: any
-Description: libszn
- Universal email library
+Description: libmcache
+ Memcache client library.

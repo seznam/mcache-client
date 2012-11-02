@@ -64,7 +64,11 @@ public:
     const uint32_t flags;    //!< flags for held value on server
     union {
         const uint64_t cas;     //!< unique identifier retrieved from gets
+#if __GNUC__ == 4 && __GNUC_MINOR__ == 6
         const uint64_t initial; //!< the initial value for incr/decr
+#else
+        uint64_t initial; //!< the initial value for incr/decr
+#endif
     };
 };
 
