@@ -16,10 +16,13 @@
  *                  First draft.
  */
 
+#include <sstream>
+
 #include "error.h"
 #include "mcache/server-proxy.h"
 
 namespace mc {
+namespace aux {
 
 void log_server_raise_zombie(const std::string &srv, time_t restoration) {
     LOG(INFO3, "Restoration timeout expired - trying connect to server: "
@@ -35,5 +38,21 @@ void log_server_is_dead(const std::string &srv, uint32_t fail_limit,
                srv.c_str(), fail_limit, restoration);
 }
 
+std::string make_state_string(const std::string &srv,
+                              std::size_t connections,
+                              time_t restoration,
+                              uint32_t fails,
+                              uint32_t dead)
+{
+    std::ostringstream os;
+    os << srv
+       << " [connections-in-pool=" << connections
+       << ", new-restoration-attempt=" << restoration
+       << ", fails=" << fails
+       << ", dead=" << dead << "]";
+    return os.str();
+}
+
+} // namespace aux
 } // namespace mc
 

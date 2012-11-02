@@ -56,10 +56,14 @@ public:
         return boost::make_shared<connection_t>(addr, opts);
     }
 
-    /** 'Push connection back to pool'.
+    /** Push connection back to pool.
      * XXX: Given ptr is invalid (empty) after the call.
      */
     void push_back(connection_ptr_t &tmp) { tmp.reset();}
+
+    /** Just returns zero.
+     */
+    std::size_t size() const { return 0;}
 
     /** Does nothing.
      */
@@ -113,6 +117,10 @@ public:
         connection = tmp;
         tmp.reset();
     }
+
+    /** Returns count of connections in pool.
+     */
+    std::size_t size() const { return connection;}
 
     /** Destroy held connection.
      */
@@ -170,9 +178,16 @@ public:
         tmp.reset();
     }
 
+    /** Returns count of connections in pool.
+     */
+    std::size_t size() const { return std::size_t(std::max(queue.size(), 0l));}
+
     /** Destroys all connection found at queue.
      */
-    void clear() { queue.clear();}
+    void clear() {
+        boost::mutex::scoped_lock guard(mutex);
+        queue.clear();
+    }
 
     /** Returns server address.
      */
@@ -182,9 +197,10 @@ protected:
     // shortcut
     typedef tbb::concurrent_bounded_queue<connection_ptr_t> queue_t;
 
-    std::string addr; //!< destination address
-    opts_t opts;      //!< io options
-    queue_t queue;    //!< queue of available connections
+    boost::mutex mutex; //!< pool mutex
+    std::string addr;   //!< destination address
+    opts_t opts;        //!< io options
+    queue_t queue;      //!< queue of available connections
 };
 #endif /* HAVE_LIBTBB */
 
@@ -227,6 +243,13 @@ public:
         boost::mutex::scoped_lock guard(mutex);
         if (stack.size() < opts.max_connections_in_pool) stack.push(tmp);
         tmp.reset();
+    }
+
+    /** Returns count of connections in pool.
+     */
+    std::size_t size() const {
+        boost::mutex::scoped_lock guard(mutex);
+        return stack.size();
     }
 
     /** Destroys all connection found at stack.

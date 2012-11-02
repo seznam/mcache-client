@@ -30,6 +30,27 @@
 #include <mcache/proto/parser.h>
 
 namespace mc {
+namespace aux {
+
+/** Just push line to log.
+ */
+void log_server_raise_zombie(const std::string &srv, time_t restoration);
+
+/** Just push line to log.
+ */
+void log_server_is_dead(const std::string &srv,
+                        uint32_t fail_limit,
+                        time_t restoration);
+
+/** Composes string with info about current server proxy state.
+ */
+std::string make_state_string(const std::string &srv,
+                              std::size_t connections,
+                              time_t restoration,
+                              uint32_t fails,
+                              uint32_t dead);
+
+} // namespace aux
 
 /** Configuration object for server proxy and connection objects.
  */
@@ -48,15 +69,6 @@ public:
     uint32_t fail_limit;         //!< count of fails after that srv become dead
     io::opts_t io_opts;          //!< io options
 };
-
-/** Just push line to log.
- */
-void log_server_raise_zombie(const std::string &srv, time_t restoration);
-
-/** Just push line to log.
- */
-void log_server_is_dead(const std::string &srv, uint32_t fail_limit,
-                        time_t restoration);
 
 /** Memcache server proxy responsible for handling dead servers.
  */
@@ -115,8 +127,8 @@ public:
 
         // we got lock, enlarge dead timeout and return true
         shared->restoration = now + restoration_interval;
-        log_server_raise_zombie(connections.server_name(),
-                                restoration_interval);
+        aux::log_server_raise_zombie(connections.server_name(),
+                                     restoration_interval);
         return true;
     }
 
@@ -150,8 +162,9 @@ public:
                     connections.clear();
                     shared->restoration = ::time(0x0) + restoration_interval;
                     shared->dead = true;
-                    log_server_is_dead(connections.server_name(), fail_limit,
-                                       restoration_interval);
+                    aux::log_server_is_dead(connections.server_name(),
+                                            fail_limit,
+                                            restoration_interval);
                 }
             }
             return response_t(proto::resp::io_error,
@@ -159,6 +172,16 @@ public:
         }
         // never reached
         throw std::runtime_error(__PRETTY_FUNCTION__);
+    }
+
+    /** Returns current state of server proxy.
+     */
+    std::string state() const {
+        return aux::make_state_string(connections.server_name(),
+                                      connections.size(),
+                                      shared->restoration,
+                                      shared->fails,
+                                      shared->dead);
     }
 
 protected:

@@ -70,7 +70,7 @@ int main(int argc, char **argv) {
     client.del("tzhree");
 
     if (client.get("three")) throw 3;
-    //std::cout << client.get("three").data << std::endl;
+    std::cout << client.dump() << std::endl;
     return EXIT_SUCCESS;
 }
 

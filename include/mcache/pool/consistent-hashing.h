@@ -53,7 +53,8 @@ public:
 
     /** Dumps ring to string.
      */
-    std::string dump(const ring_t &ring) const;
+    std::string dump(const ring_t &ring,
+                     const std::vector<std::string> &states) const;
 };
 
 /** Parent type for const iterator of the consistent_hashing_pool_t.
@@ -201,8 +202,10 @@ public:
 
     /** Dumps ring to string.
      */
-    std::string dump() const {
-        return consistent_hashing_pool_base_t::dump(ring);
+    std::string dump(const std::vector<std::string> &
+                     states = std::vector<std::string>()) const
+    {
+        return consistent_hashing_pool_base_t::dump(ring, states);
     }
 
 protected:

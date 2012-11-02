@@ -20,7 +20,10 @@
 
 #include <string>
 #include <vector>
+#include <iterator>
+#include <algorithm>
 #include <boost/noncopyable.hpp>
+#include <boost/bind.hpp>
 
 #include <mcache/error.h>
 #include <mcache/proto/opts.h>
@@ -79,7 +82,7 @@ public:
         : pool(addresses, pcfg), proxies(addresses, scfg)
     {}
 
-    ///////////////////// STANDARD MEMCACHE CLIENT API \\\\\\\\\\\\\\\\\\\\\\\
+    ///////////////////// STANDARD MEMCACHE CLIENT API ////////////////////////
 
     /** Call 'set' command on appropriate memcache server.
      * @param key key for data.
@@ -344,7 +347,7 @@ public:
         }
     }
 
-    //////////////// AUTO SERIALIZATION MEMCACHE CLIENT API \\\\\\\\\\\\\\\\\\\
+    //////////////// AUTO SERIALIZATION MEMCACHE CLIENT API ///////////////////
 
     // this code uses template magic so if you are confused with it you can
     // disabel it by MCACHE_DISABLE_SERIALIZATION_API macro
@@ -353,6 +356,19 @@ public:
 
 
 #endif // MCACHE_DISABLE_SERIALIZATION_API
+
+    /////////////////////////// SUPPORT CLIENT API ////////////////////////////
+
+    /** Dumps current state of pool to string.
+     */
+    std::string dump() const {
+        typedef typename server_proxies_t::server_proxy_t server_proxy_t;
+        std::vector<std::string> proxies_state;
+        std::transform(proxies.begin(), proxies.end(),
+                       std::back_inserter(proxies_state),
+                       boost::bind(&server_proxy_t::state, _1));
+        return pool.dump(proxies_state);
+    }
 
 protected:
     /** Serialize command and send it to appropriate server.
