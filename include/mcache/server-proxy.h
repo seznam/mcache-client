@@ -37,7 +37,7 @@ class server_proxy_config_t {
 public:
     /** C'tor.
      */
-    server_proxy_config_t(time_t restoration_interval = 60000,
+    server_proxy_config_t(time_t restoration_interval = 60,
                           uint32_t fail_limit = 1,
                           io::opts_t io_opts = io::opts_t())
         : restoration_interval(restoration_interval), fail_limit(fail_limit),
@@ -48,6 +48,15 @@ public:
     uint32_t fail_limit;         //!< count of fails after that srv become dead
     io::opts_t io_opts;          //!< io options
 };
+
+/** Just push line to log.
+ */
+void log_server_raise_zombie(const std::string &srv, time_t restoration);
+
+/** Just push line to log.
+ */
+void log_server_is_dead(const std::string &srv, uint32_t fail_limit,
+                        time_t restoration);
 
 /** Memcache server proxy responsible for handling dead servers.
  */
@@ -106,6 +115,8 @@ public:
 
         // we got lock, enlarge dead timeout and return true
         shared->restoration = now + restoration_interval;
+        log_server_raise_zombie(connections.server_name(),
+                                restoration_interval);
         return true;
     }
 
@@ -139,6 +150,8 @@ public:
                     connections.clear();
                     shared->restoration = ::time(0x0) + restoration_interval;
                     shared->dead = true;
+                    log_server_is_dead(connections.server_name(), fail_limit,
+                                       restoration_interval);
                 }
             }
             return response_t(proto::resp::io_error,

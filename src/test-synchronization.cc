@@ -62,6 +62,7 @@ public:
     connection_ptr_t pick() { return connection_ptr_t(new connection_t());}
     void push_back(connection_ptr_t) {}
     void clear() {}
+    std::string server_name() const { return "fake-server:11211";}
 };
 
 bool sharing_dead_server_thread() {

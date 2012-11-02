@@ -65,6 +65,10 @@ public:
      */
     void clear() {}
 
+    /** Returns server address.
+     */
+    const std::string &server_name() const { return addr;}
+
 protected:
     std::string addr; //!< destination address
     opts_t opts;      //!< io options
@@ -117,6 +121,10 @@ public:
         connection.reset();
     }
 
+    /** Returns server address.
+     */
+    const std::string &server_name() const { return addr;}
+
 protected:
     std::string addr;            //!< destination address
     opts_t opts;                 //!< io options
@@ -165,6 +173,10 @@ public:
     /** Destroys all connection found at queue.
      */
     void clear() { queue.clear();}
+
+    /** Returns server address.
+     */
+    const std::string &server_name() const { return addr;}
 
 protected:
     // shortcut
@@ -220,6 +232,10 @@ public:
     /** Destroys all connection found at stack.
      */
     void clear() { stack.clear();}
+
+    /** Returns server address.
+     */
+    const std::string &server_name() const { return addr;}
 
 protected:
     std::string addr;                   //!< destination address

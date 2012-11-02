@@ -27,7 +27,7 @@ AUTOMAKE_OPTIONS = subdir-objects
 
 lib_LTLIBRARIES = libmcache.la
 
-SRC = mcache.cc logger.cc error.cc init.cc                                     \
+SRC = mcache.cc logger.cc error.cc init.cc server-proxy.cc                     \
                                                                                \
       pool/consistent-hashing.cc                                               \
                                                                                \
