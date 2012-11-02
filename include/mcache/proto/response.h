@@ -59,15 +59,65 @@ protected:
     std::string aux;              //!< response body/message
 };
 
+/** Response for simple commands with body.
+ */
+class single_body_response_t: public single_response_t {
+public:
+    /** Type of callback for setting the body. */
+    typedef boost::function<
+                void (std::string &, const std::string &)
+            > set_body_callback_t;
+
+    /** C'tor.
+     */
+    single_body_response_t(resp::response_code_t status,
+                           const std::string &aux = std::string())
+        : single_response_t(status, aux),
+          bytes(), set_body_callback(set_body_default)
+    {}
+
+    /** C'tor.
+     */
+    single_body_response_t(resp::response_code_t status,
+                           std::size_t bytes,
+                           set_body_callback_t
+                           set_body_callback = set_body_default)
+        : single_response_t(status, std::string()),
+          bytes(bytes), set_body_callback(set_body_callback)
+    {}
+
+    // mark that this response expects body
+    class body_tag;
+
+    /** Sets new commands body response.
+     */
+    inline void set_body(const std::string &body) {
+        set_body_callback(aux, body);
+    }
+
+    /** Retutns command expected body size.
+     */
+    inline std::size_t expected_body_size() const { return bytes;}
+
+protected:
+    std::size_t bytes;  //!< expected response body size
+    set_body_callback_t set_body_callback; //!< callback for setting the body
+
+private:
+    /** The default callback for setting the body.
+     */
+    static void set_body_default(std::string &body, const std::string &data) {
+        body = data;
+    }
+};
+
 /** Response for single retrieval commands.
  */
 class single_retrival_response_t: public single_response_t {
 public:
-    /** Type of callback for setting the body (and flags sometimes). */
+    /** Type of callback for setting the body and flags sometimes. */
     typedef boost::function<
-                void (uint32_t &,
-                std::string &,
-                const std::string &)
+                void (uint32_t &, std::string &, const std::string &)
             > set_body_callback_t;
 
     /** C'tor.
@@ -85,17 +135,6 @@ public:
                                uint64_t cas,
                                set_body_callback_t set_body)
         : single_response_t(resp::ok, std::string()),
-          flags(flags), cas(cas), bytes(bytes), set_body_callback(set_body)
-    {}
-
-    /** C'tor.
-     */
-    single_retrival_response_t(resp::response_code_t status,
-                               uint32_t flags,
-                               std::size_t bytes,
-                               uint64_t cas,
-                               set_body_callback_t set_body)
-        : single_response_t(status, std::string()),
           flags(flags), cas(cas), bytes(bytes), set_body_callback(set_body)
     {}
 

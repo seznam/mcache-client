@@ -150,7 +150,7 @@ public:
 
             // if command does not understand repsonse then does not return the
             // connection to pool (the connection will be closed)
-            if (response.code() != proto::resp::unrecognized)
+            if (response.code() >= proto::resp::error)
                 connections.push_back(connection);
             return response;
 

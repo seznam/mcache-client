@@ -33,8 +33,8 @@ namespace bin {
  */
 class command_t {
 public:
-    // majority of commands use single response
-    typedef single_response_t response_t;
+    // majority of commands use single body response
+    typedef single_body_response_t response_t;
 
     /** Returns txt protocol header delimiter.
      */
@@ -62,8 +62,8 @@ public:
     /** C'tor.
      */
     explicit retrieve_command_t(const std::string &key)
-        : command_t(static_cast <uint16_t>(key.length()),
-                    static_cast <uint32_t>(key.length())),
+        : command_t(static_cast <uint16_t>(key.size()),
+                    static_cast <uint32_t>(key.size())),
           key(key)
     {}
 
@@ -90,18 +90,15 @@ protected:
 template <bool has_extras = true>
 class storage_command_t: public command_t {
 public:
-    // retrieval commands responses contains useless foother
-    typedef single_retrival_response_t response_t;
-
     /** C'tor.
      */
     storage_command_t(const std::string &key,
                       const std::string &data,
                       const opts_t &opts)
-        : command_t(static_cast <uint16_t>(key.length()),
-                    static_cast <uint32_t>(key.length() + data.length() +
-                                           (has_extras ? extras_length : 0)),
-                    static_cast <uint8_t>(has_extras ? extras_length : 0)),
+        : command_t(static_cast <uint16_t>(key.size()),
+                    static_cast <uint32_t>(key.size() + data.size()
+                                           + (has_extras? extras_length: 0)),
+                    static_cast <uint8_t>(has_extras? extras_length: 0)),
         key(key), data(data), opts(opts)
     {}
 
@@ -128,15 +125,12 @@ private:
  */
 class incr_decr_command_t: public command_t {
 public:
-    // retrieval commands responses contains useless foother
-    typedef single_retrival_response_t response_t;
-
     /** C'tor.
      */
     explicit incr_decr_command_t(const std::string &key, uint64_t value,
                                  const opts_t &opts)
-        : command_t(static_cast <uint16_t>(key.length()),
-                    static_cast <uint32_t>(key.length() + extras_length),
+        : command_t(static_cast <uint16_t>(key.size()),
+                    static_cast <uint32_t>(key.size() + extras_length),
                     static_cast <uint8_t>(extras_length)),
           key(key), value(value), opts(opts)
     {}
@@ -146,9 +140,7 @@ public:
     response_t deserialize_header(const std::string &header) const;
 
     /** The method for setting the body of response. */
-    static void set_body(uint32_t &flags,
-                         std::string &body,
-                         const std::string &data);
+    static void set_body(std::string &body, const std::string &data);
 
     const std::string key; //!< for which key data should be retrieved
 
@@ -169,14 +161,11 @@ private:
  */
 class delete_command_t: public command_t {
 public:
-    // retrieval commands responses contains useless foother
-    typedef single_retrival_response_t response_t;
-
     /** C'tor.
      */
     explicit delete_command_t(const std::string &key):
-        command_t(static_cast <uint16_t>(key.length()),
-                  static_cast <uint32_t>(key.length())),
+        command_t(static_cast <uint16_t>(key.size()),
+                  static_cast <uint32_t>(key.size())),
         key(key) {}
 
     /** Deserialize responses for get and gets retrieve commands.
@@ -194,14 +183,11 @@ public:
  */
 class touch_command_t: public command_t {
 public:
-    // retrieval commands responses contains useless foother
-    typedef single_retrival_response_t response_t;
-
     /** C'tor.
      */
     touch_command_t(const std::string &key, time_t expiration)
-        : command_t(static_cast <uint16_t>(key.length()),
-                    static_cast <uint32_t>(key.length() + extras_length),
+        : command_t(static_cast <uint16_t>(key.size()),
+                    static_cast <uint32_t>(key.size() + extras_length),
                     static_cast <uint8_t>(extras_length)),
           key(key), expiration(expiration)
     {}
@@ -222,7 +208,7 @@ protected:
 private:
     /** The length of extras. */
     static const std::size_t extras_length = 4;
-    static single_retrival_response_t::set_body_callback_t set_body;
+    static response_t::set_body_callback_t set_body;
 };
 
 /** Injects name to particular command class.
@@ -302,8 +288,8 @@ public:
     typedef op_code_injector<storage_command_t<true>, cas_code> cas_t;
     typedef op_code_injector<incr_decr_command_t, increment_code> incr_t;
     typedef op_code_injector<incr_decr_command_t, decrement_code> decr_t;
-    typedef delete_command_t delete_t;
     typedef op_code_injector<touch_command_t, touch_code> touch_t;
+    typedef delete_command_t delete_t;
 };
 
 } // namespace bin

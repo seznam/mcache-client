@@ -272,7 +272,7 @@ incr_decr_command_t::deserialize_header(const std::string &header) const {
     if (!hdr.status) {
         if (hdr.body_len != sizeof(uint64_t))
             return response_t(resp::invalid, "bad body length");
-        return response_t(0, hdr.body_len, hdr.cas, set_body);
+        return response_t(resp::ok, hdr.body_len, set_body);
     }
     return response_t(translate_status_to_response(hdr.status), hdr.body_len);
 }
@@ -298,10 +298,7 @@ std::string incr_decr_command_t::serialize(uint8_t code) const {
 
 }
 
-void incr_decr_command_t::set_body(uint32_t &,
-                                   std::string &body,
-                                   const std::string &data)
-{
+void incr_decr_command_t::set_body(std::string &body, const std::string &data) {
     uint64_t value;
     std::copy(data.begin(), data.end(), reinterpret_cast<char *>(&value));
     value = be64toh(value);
@@ -332,7 +329,7 @@ std::string delete_command_t::serialize() const {
     return result;
 }
 
-single_retrival_response_t::set_body_callback_t
+touch_command_t::response_t::set_body_callback_t
 touch_command_t::set_body = incr_decr_command_t::set_body;
 
 touch_command_t::response_t
@@ -347,7 +344,7 @@ touch_command_t::deserialize_header(const std::string &header) const {
 
     // check status
     if (!hdr.status)
-        return response_t(resp::touched, 0, hdr.body_len, hdr.cas, set_body);
+        return response_t(resp::touched, hdr.body_len, set_body);
     return response_t(translate_status_to_response(hdr.status), hdr.body_len);
 }
 
