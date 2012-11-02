@@ -33,7 +33,7 @@ public:
     std::string serialize() const { return std::string();}
     std::string header_delimiter() const { return std::string();}
     response_t deserialize_header(const std::string &) const {
-        return response_t(mc::err::internal_error);
+        return response_t(mc::proto::resp::error);
     }
 };
 
@@ -74,6 +74,27 @@ bool server_proxy_mark_dead() {
     server_proxy_t::shared_t shared;
     server_proxy_t proxy("server1:11211", &shared, cfg);
     // first call should return true
+    if (!proxy.callable()) return false;
+    proxy.send(fake_command_t());
+    // after bad send server should be dead
+    return proxy.is_dead();
+}
+
+bool server_proxy_fail_limit() {
+    std::cout << __PRETTY_FUNCTION__ << ": ";
+    mc::server_proxy_config_t cfg;
+    cfg.restoration_interval = 3;
+    cfg.fail_limit = 3;
+    cfg.io_opts.timeouts.connect = 300;
+    cfg.io_opts.timeouts.read = 300;
+    cfg.io_opts.timeouts.write = 400;
+    server_proxy_t::shared_t shared;
+    server_proxy_t proxy("server1:11211", &shared, cfg);
+    // first call should return true
+    if (!proxy.callable()) return false;
+    proxy.send(fake_command_t());
+    if (!proxy.callable()) return false;
+    proxy.send(fake_command_t());
     if (!proxy.callable()) return false;
     proxy.send(fake_command_t());
     // after bad send server should be dead
@@ -122,6 +143,7 @@ int main(int, char **) {
     mc::init();
     test::Checker_t check;
     check(test::server_proxy_mark_dead());
+    check(test::server_proxy_fail_limit());
     check(test::server_proxy_raise_zombie());
     return check.fails;
 }

@@ -38,7 +38,7 @@ public:
     std::string serialize() const { return std::string();}
     std::string header_delimiter() const { return std::string();}
     response_t deserialize_header(const std::string &) const {
-        return response_t(mc::err::internal_error);
+        return response_t(mc::proto::resp::error);
     }
 };
 

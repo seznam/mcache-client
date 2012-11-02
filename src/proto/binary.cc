@@ -33,8 +33,7 @@ namespace proto {
 namespace bin {
 namespace {
 
-// TODO(Lubos): Pokud by se melo pouzivat na solarisu, tak je potreba
-// tyhle funkce vytahnout z glibc htobe atp.
+// TODO(Lubos): On solaris we must define htobe, ntohs, ...
 
 // forward
 class header_t;
@@ -185,7 +184,6 @@ retrieve_command_t::deserialize_header(const std::string &header) const {
 }
 
 std::string retrieve_command_t::serialize(uint8_t code) const {
-    // TODO(burlog): check whether key fulfil protocol constraints
     header_t hdr(key_len, body_len, extras_len);
     hdr.opcode = code;
     hdr.prepare_serialization();
@@ -223,7 +221,6 @@ storage_command_t<has_extras>
 
 template <>
 std::string storage_command_t<true>::serialize(uint8_t code) const {
-    // TODO(burlog): check whether key fulfil protocol constraints
     // prepare request
     header_t hdr(key_len, body_len, extras_len);
     hdr.opcode = code;
@@ -248,7 +245,6 @@ std::string storage_command_t<true>::serialize(uint8_t code) const {
 
 template <>
 std::string storage_command_t<false>::serialize(uint8_t code) const {
-    // TODO(burlog): check whether key fulfil protocol constraints
     header_t hdr(key_len, body_len, extras_len);
     hdr.opcode = code;
     if (opts.cas) hdr.cas = opts.cas;
@@ -282,7 +278,6 @@ incr_decr_command_t::deserialize_header(const std::string &header) const {
 }
 
 std::string incr_decr_command_t::serialize(uint8_t code) const {
-    // TODO(burlog): check whether key fulfil protocol constraints
     // prepare request
     header_t hdr(key_len, body_len, extras_len);
     hdr.opcode = code;
@@ -329,7 +324,6 @@ delete_command_t::deserialize_header(const std::string &header) const {
 }
 
 std::string delete_command_t::serialize() const {
-    // TODO(burlog): check whether key fulfil protocol constraints
     header_t hdr(key_len, body_len, extras_len);
     hdr.opcode = api::delete_code;
     hdr.prepare_serialization();
@@ -358,7 +352,6 @@ touch_command_t::deserialize_header(const std::string &header) const {
 }
 
 std::string touch_command_t::serialize(uint8_t code) const {
-    // TODO(burlog): check whether key fulfil protocol constraints
     // prepare request
     header_t hdr(key_len, body_len, extras_len);
     hdr.opcode = code;
@@ -372,7 +365,6 @@ std::string touch_command_t::serialize(uint8_t code) const {
     // accomplish request
     result.append(key);
     return result;
-
 }
 
 } // namespace bin

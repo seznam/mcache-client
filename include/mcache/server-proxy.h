@@ -35,7 +35,17 @@ namespace mc {
  */
 class server_proxy_config_t {
 public:
+    /** C'tor.
+     */
+    server_proxy_config_t(time_t restoration_interval = 60000,
+                          uint32_t fail_limit = 1,
+                          io::opts_t io_opts = io::opts_t())
+        : restoration_interval(restoration_interval), fail_limit(fail_limit),
+          io_opts(io_opts)
+    {}
+
     time_t restoration_interval; //!< time when reconnect is scheduled
+    uint32_t fail_limit;         //!< count of fails after that srv become dead
     io::opts_t io_opts;          //!< io options
 };
 
@@ -56,10 +66,11 @@ public:
     public:
         /** C'tor.
          */
-        shared_t(): restoration(), dead(false), lock() {}
+        shared_t(): restoration(), dead(false), fails(), lock() {}
 
         volatile time_t restoration; //!< time when reconnect is scheduled
-        volatile int dead;           //!< true if server is dead
+        volatile uint32_t dead;      //!< true if server is dead
+        volatile uint32_t fails;     //!< current count of fails
         lock_t lock;                 //!< lock for reconnect critical sections
     };
 
@@ -68,7 +79,8 @@ public:
     server_proxy_t(const std::string &address,
                    shared_t *shared,
                    const server_proxy_config_t &cfg)
-        : restoration_interval(cfg.restoration_interval), shared(shared),
+        : restoration_interval(cfg.restoration_interval),
+          fail_limit(cfg.fail_limit), shared(shared),
           connections(address, cfg.io_opts)
     {}
 
@@ -111,6 +123,7 @@ public:
             proto::command_parser_t<connection_t> parser(*connection);
             response_t response = parser.send(command);
             shared->dead = false;
+            shared->fails = 0;
 
             // if command does not understand repsonse then does not return the
             // connection to pool (the connection will be closed)
@@ -122,22 +135,24 @@ public:
             // lock, destroy whole pool of connections and mark server as dead
             scope_guard_t<lock_t> guard(shared->lock);
             if (guard.try_lock()) {
-                // TODO(burlog): add limit for count of errors that make server
-                // TODO(burlog): dead
-                connections.clear();
-                shared->restoration = ::time(0x0) + restoration_interval;
-                shared->dead = true;
+                if (++shared->fails >= fail_limit) {
+                    connections.clear();
+                    shared->restoration = ::time(0x0) + restoration_interval;
+                    shared->dead = true;
+                }
             }
             return response_t(proto::resp::io_error,
                               std::string("connection failed: ") + e.what());
         }
         // never reached
+        throw std::runtime_error(__PRETTY_FUNCTION__);
     }
 
 protected:
-    time_t restoration_interval;    //!< timeout for dead server
-    shared_t *shared;               //!< shared data with other threads
-    connections_t connections;      //!< connections pool
+    time_t restoration_interval; //!< timeout for dead server
+    uint32_t fail_limit;         //!< count of fails after that srv become dead
+    shared_t *shared;            //!< shared data with other threads
+    connections_t connections;   //!< connections pool
 };
 
 } // namespace mc

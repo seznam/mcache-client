@@ -145,8 +145,6 @@ private:
     }
 };
 
-#warning pro bin dalsi response bez flags
-
 // TODO(burlog): add support for multi-get
 // here should be vector of single and api for geting data by key
 
