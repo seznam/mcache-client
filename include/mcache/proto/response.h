@@ -22,36 +22,10 @@
 #include <inttypes.h>
 #include <boost/function.hpp>
 
-#include <mcache/error.h>
+#include <mcache/proto/error.h>
 
 namespace mc {
 namespace proto {
-namespace resp {
-
-/** Server response codes.
- */
-enum response_code_t {
-    ok           = 200,
-    stored       = 201,
-    deleted      = 202,
-    touched      = 203,
-
-    not_stored   = 400,
-    exists       = 401,
-    not_found    = 404,
-
-    error        = 500,
-    client_error = 501,
-    server_error = 502,
-    empty        = 503,
-    io_error     = 504,
-    syntax       = 505,
-    invalid      = 506,
-
-    unrecognized = 1000,
-};
-
-} // namespace resp
 
 /** Memcache server response holder.
  */
@@ -59,7 +33,7 @@ class single_response_t {
 public:
     /** C'tor.
      */
-    explicit single_response_t(int status,
+    explicit single_response_t(resp::response_code_t status,
                                const std::string &aux = std::string())
         : status(status), aux(aux)
     {}
@@ -81,8 +55,8 @@ public:
     const std::string &data() const { return aux;}
 
 protected:
-    int status;      //!< status code
-    std::string aux; //!< response body/message
+    resp::response_code_t status; //!< status code
+    std::string aux;              //!< response body/message
 };
 
 /** Response for single retrieval commands.
@@ -98,7 +72,7 @@ public:
 
     /** C'tor.
      */
-    single_retrival_response_t(int status,
+    single_retrival_response_t(resp::response_code_t status,
                                const std::string &aux = std::string())
         : single_response_t(status, aux),
           flags(), cas(), bytes(), set_body_callback(set_body_default)
@@ -116,7 +90,7 @@ public:
 
     /** C'tor.
      */
-    single_retrival_response_t(int status,
+    single_retrival_response_t(resp::response_code_t status,
                                uint32_t flags,
                                std::size_t bytes,
                                uint64_t cas,
@@ -127,7 +101,7 @@ public:
 
     /** C'tor.
      */
-    single_retrival_response_t(int status, std::size_t bytes)
+    single_retrival_response_t(resp::response_code_t status, std::size_t bytes)
         : single_response_t(status, std::string()),
           flags(), cas(), bytes(bytes),
           set_body_callback(set_body_default)
@@ -153,17 +127,16 @@ public:
      */
     inline std::size_t expected_body_size() const { return bytes;}
 
-    uint32_t flags; //!< retrieval commands response flags
-    const uint64_t cas;   //!< retrieval commands cas attribute
+    uint32_t flags;     //!< retrieval commands response flags
+    const uint64_t cas; //!< retrieval commands cas attribute
 
 protected:
-    std::size_t bytes;    //!< expected response body size
-
-    /** The callback for setting the body */
-    set_body_callback_t set_body_callback;
+    std::size_t bytes;  //!< expected response body size
+    set_body_callback_t set_body_callback; //!< callback for setting the body
 
 private:
-    /** The default callback for setting the body */
+    /** The default callback for setting the body.
+     */
     static void set_body_default(uint32_t &,
                                  std::string &body,
                                  const std::string &data)
@@ -171,6 +144,8 @@ private:
         body = data;
     }
 };
+
+#warning pro bin dalsi response bez flags
 
 // TODO(burlog): add support for multi-get
 // here should be vector of single and api for geting data by key

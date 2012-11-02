@@ -21,6 +21,7 @@
 
 #include <string>
 
+#include <mcache/error.h>
 #include <mcache/proto/opts.h>
 #include <mcache/proto/response.h>
 
@@ -66,16 +67,13 @@ public:
                          std::string &body,
                          const std::string &data);
 
-    /** The size of response useless footer.
-     */
+    const std::string key; //!< for which key data should be retrieved
     static const std::size_t footer_size = 7; //!< sizeof("\r\nEND\r\n")
 
 protected:
     /** Serialize retrieve command.
      */
     std::string serialize(const char *name) const;
-
-    std::string key; //!< for which key data should be retrieved
 };
 
 /** Base class for all storage commands.
@@ -94,12 +92,13 @@ public:
      */
     response_t deserialize_header(const std::string &header) const;
 
+    const std::string key; //!< for which key data should be retrieved
+
 protected:
     /** Serialize retrieve command.
      */
     std::string serialize(const char *name) const;
 
-    std::string key;  //!< for which key data should be retrieved
     std::string data; //!< data to store
     opts_t opts;      //!< command options
 };
@@ -115,19 +114,20 @@ public:
         : key(key), value(value)
     {
         if (opts.initial)
-            throw error_t(err::bad_argument, "initial not allowed with txt");
+            throw mc::error_t(err::bad_argument, "initial not allowed for txt");
     }
 
     /** Deserialize responses for get and gets retrieve commands.
      */
     response_t deserialize_header(const std::string &header) const;
 
+    const std::string key; //!< for which key data should be retrieved
+
 protected:
     /** Serialize retrieve command.
      */
     std::string serialize(const char *name) const;
 
-    std::string key; //!< for which key data should be retrieved
     uint64_t value;  //!< amount by which the client wants to increase/decrease
 };
 
@@ -147,8 +147,7 @@ public:
      */
     std::string serialize() const;
 
-protected:
-    std::string key; //!< for which key data should be retrieved
+    const std::string key; //!< for which key data should be retrieved
 };
 
 /** Injects name to particular command class.

@@ -22,7 +22,6 @@
 #include <vector>
 #include <inttypes.h>
 #include <boost/noncopyable.hpp>
-#include <boost/shared_array.hpp>
 #include <boost/interprocess/anonymous_shared_memory.hpp>
 
 #include <mcache/error.h>
@@ -30,7 +29,7 @@
 namespace mc {
 namespace thread {
 
-/** Wrapper around boost::shared_array.
+/** Simple RTTI wrapper for array.
  */
 template <typename type_t>
 class shared_array_t {
@@ -38,6 +37,10 @@ public:
     /** C'tor.
      */
     shared_array_t(std::size_t count): array(new type_t[count]()) {}
+
+    /** D'tor.
+     */
+    ~shared_array_t() { delete [] array;}
 
     /** Const element access operator.
      */
@@ -48,7 +51,7 @@ public:
     type_t &operator[](std::size_t i) { return array[i];}
 
 private:
-    boost::shared_array<type_t> array; //!< array of elements
+    type_t *array; //!< pointer to memory pool
 };
 
 } // namespace thread
@@ -96,19 +99,54 @@ private:
 
 } // namespace ipc
 
+namespace aux {
+
+/** Array of unitialized values.
+ */
+template <typename type_t>
+class unitialized_array_t {
+public:
+    /** C'tor.
+     */
+    unitialized_array_t(std::size_t count)
+        : array(reinterpret_cast<type_t *>(::malloc(count * sizeof(type_t))))
+    {}
+
+    /** D'tor.
+     */
+    ~unitialized_array_t() { ::free(array);}
+
+    /** Const element access operator.
+     */
+    const type_t &operator[](std::size_t i) const { return array[i];}
+
+    /** Non-const element access operator.
+     */
+    type_t &operator[](std::size_t i) { return array[i];}
+
+private:
+    type_t *array;     //!< pointer to memory pool
+};
+
+} // namespace aux
+
 /** Vector of server proxies.
  */
 template <
     template <typename> class shared_templ_t,
-    typename server_proxy_t
+    typename server_proxy_type
 > class server_proxies_t: public boost::noncopyable {
 public:
+    // publish server proxy type
+    typedef server_proxy_type server_proxy_t;
+
     /** C'tor.
      */
     template <typename server_proxy_config_t>
     server_proxies_t(const std::vector<std::string> &addresses,
                      const server_proxy_config_t &cfg)
-        : shared(addresses.size()), proxies()
+        : shared(addresses.size()), proxies(addresses.size()),
+          count(addresses.size())
     {
         for (std::vector<std::string>::const_iterator
                 iaddr = addresses.begin(),
@@ -116,9 +154,17 @@ public:
                 eaddr = addresses.end();
                 iaddr != eaddr; ++iaddr)
         {
+            // initialize server proxy inplace via placement new operator
             std::size_t i = std::distance(saddr, iaddr);
-            proxies.push_back(server_proxy_t(*iaddr, &shared[i], cfg));
+            new (&proxies[i]) server_proxy_t(*iaddr, &shared[i], cfg);
         }
+    }
+
+    /** D'tor.
+     */
+    ~server_proxies_t() {
+        // if server_proxy_t throws than bad things can happen...
+        for (std::size_t i = 0; i < count; ++i) proxies[i].~server_proxy_t();
     }
 
     /** Returns server proxy at index i.
@@ -127,11 +173,12 @@ public:
 
 private:
     // shortcuts
-    typedef std::vector<server_proxy_t> proxies_t;
+    typedef aux::unitialized_array_t<server_proxy_t> proxies_t;
     typedef shared_templ_t<typename server_proxy_t::shared_t> shared_array_t;
 
     shared_array_t shared; //!< shared data for proxies
     proxies_t proxies;     //!< server proxies vector
+    std::size_t count;     //!< count of servers
 };
 
 } // namespace mc

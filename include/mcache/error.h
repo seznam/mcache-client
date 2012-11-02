@@ -42,7 +42,9 @@ class error_t: public std::exception {
 public:
     /** C'tor.
      */
-    error_t(int value, const std::string &msg): value(value), msg(msg) {}
+    error_t(err::error_code_t value, const std::string &msg)
+        : value(value), msg(msg)
+    {}
 
     /** D'tor.
      */
@@ -57,6 +59,10 @@ public:
     int code() const { return value;}
 
 protected:
+    /** C'tor.
+     */
+    error_t(int value, const std::string &msg): value(value), msg(msg) {}
+
     int value;       //!< error code
     std::string msg; //!< error description
 };

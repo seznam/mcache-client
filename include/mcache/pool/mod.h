@@ -105,7 +105,7 @@ protected:
 };
 
 /** Pool that using mod without key traveling. If some server is dead, than
- * theese keys is not cached.
+ * theese keys are not cached.
  */
 template <typename hash_function_t>
 class mod_pool_t: public mod_pool_base_t {
@@ -117,7 +117,7 @@ public:
 
     /** C'tor.
      */
-    mod_pool_t(const std::vector<std::string> &addresses, uint32_t)
+    mod_pool_t(const std::vector<std::string> &addresses)
         : max(static_cast<uint32_t>(addresses.size())), hashf()
     {
         // at least one address must be supplied

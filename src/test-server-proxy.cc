@@ -53,10 +53,10 @@ template <typename connection_t>
 class connections_t {
 public:
     typedef boost::shared_ptr<connection_t> connection_ptr_t;
-    connections_t(const std::string &, uint64_t) {}
+    connections_t(const std::string &, const mc::io::opts_t &) {}
     connection_ptr_t pick() { return connection_ptr_t(new connection_t());}
     void push_back(connection_ptr_t) {}
-    void reset() {}
+    void clear() {}
 };
 
 typedef mc::server_proxy_t<
@@ -68,7 +68,9 @@ bool server_proxy_mark_dead() {
     std::cout << __PRETTY_FUNCTION__ << ": ";
     mc::server_proxy_config_t cfg;
     cfg.restoration_interval = 3;
-    cfg.timeout = 1000;
+    cfg.io_opts.timeouts.connect = 300;
+    cfg.io_opts.timeouts.read = 300;
+    cfg.io_opts.timeouts.write = 400;
     server_proxy_t::shared_t shared;
     server_proxy_t proxy("server1:11211", &shared, cfg);
     // first call should return true
@@ -82,7 +84,9 @@ bool server_proxy_raise_zombie() {
     std::cout << __PRETTY_FUNCTION__ << ": ";
     mc::server_proxy_config_t cfg;
     cfg.restoration_interval = 1;
-    cfg.timeout = 1000;
+    cfg.io_opts.timeouts.connect = 300;
+    cfg.io_opts.timeouts.read = 300;
+    cfg.io_opts.timeouts.write = 400;
     server_proxy_t::shared_t shared;
     server_proxy_t proxy("server1:11211", &shared, cfg);
     // first call should return true

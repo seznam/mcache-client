@@ -24,6 +24,7 @@
 #include <inttypes.h>
 
 #include <mcache/lock.h>
+#include <mcache/io/opts.h>
 #include <mcache/io/error.h>
 #include <mcache/proto/response.h>
 #include <mcache/proto/parser.h>
@@ -35,7 +36,7 @@ namespace mc {
 class server_proxy_config_t {
 public:
     time_t restoration_interval; //!< time when reconnect is scheduled
-    uint64_t timeout;            //!< whole call timeout
+    io::opts_t io_opts;          //!< io options
 };
 
 /** Memcache server proxy responsible for handling dead servers.
@@ -68,7 +69,7 @@ public:
                    shared_t *shared,
                    const server_proxy_config_t &cfg)
         : restoration_interval(cfg.restoration_interval), shared(shared),
-          connections(address, cfg.timeout)
+          connections(address, cfg.io_opts)
     {}
 
     /** Returns true if server is dead.
@@ -104,9 +105,9 @@ public:
     typename command_t::response_t send(const command_t &command) {
         // pick connection from pool of connections
         typedef typename command_t::response_t response_t;
-        connection_ptr_t connection = connections.pick();
         try {
             // if command was finished successfuly then make server alive
+            connection_ptr_t connection = connections.pick();
             proto::command_parser_t<connection_t> parser(*connection);
             response_t response = parser.send(command);
             shared->dead = false;
@@ -123,12 +124,14 @@ public:
             if (guard.try_lock()) {
                 // TODO(burlog): add limit for count of errors that make server
                 // TODO(burlog): dead
-                connections.reset();
+                connections.clear();
                 shared->restoration = ::time(0x0) + restoration_interval;
                 shared->dead = true;
             }
+            return response_t(proto::resp::io_error,
+                              std::string("connection failed: ") + e.what());
         }
-        return response_t(proto::resp::io_error, "connection failed");
+        // never reached
     }
 
 protected:

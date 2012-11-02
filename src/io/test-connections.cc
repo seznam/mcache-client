@@ -31,7 +31,7 @@ namespace test {
 
 class connection_t {
 public:
-    connection_t(const std::string &, uint64_t) {}
+    connection_t(const std::string &, const mc::io::opts_t &) {}
 };
 
 template <typename connections_t, typename output_iterator_t>
@@ -61,7 +61,7 @@ bool connections_get() {
     // run
     typedef typename connections_t::connection_ptr_t connection_ptr_t;
     try {
-        connections_t connections("localhost:11211", 3);
+        connections_t connections("localhost:11211", mc::io::opts_t());
         connection_ptr_t first = connections.pick();
         connection_t *pfirst = &*first;
         connections.push_back(first);
@@ -80,7 +80,7 @@ bool connections_capacity() {
     // run
     typedef typename connections_t::connection_ptr_t connection_ptr_t;
     try {
-        connections_t connections("localhost:11211", 3);
+        connections_t connections("localhost:11211", mc::io::opts_t());
         std::vector<connection_ptr_t> tmp;
 
         // pick first portion of connections from pool and store bare pointers
@@ -115,7 +115,7 @@ bool single_connection_throw() {
 
     try {
         typedef s_connections_t connections_t;
-        connections_t connections("localhost:11211", 3);
+        connections_t connections("localhost:11211", mc::io::opts_t());
         connections.pick();
         try {
             connections.pick();

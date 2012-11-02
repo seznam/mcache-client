@@ -28,6 +28,7 @@
 #include <tbb/concurrent_queue.h>
 #endif /* HAVE_LIBTBB */
 
+#include <mcache/io/opts.h>
 #include <mcache/io/error.h>
 
 namespace mc {
@@ -45,14 +46,14 @@ public:
     /** C'tor.
      */
     explicit inline
-    create_new_connection_pool_t(const std::string &addr, uint64_t timeout)
-        : addr(addr), timeout(timeout)
+    create_new_connection_pool_t(const std::string &addr, opts_t opts)
+        : addr(addr), opts(opts)
     {}
 
     /** Creates new connection.
      */
     connection_ptr_t pick() {
-        return boost::make_shared<connection_t>(addr, timeout);
+        return boost::make_shared<connection_t>(addr, opts);
     }
 
     /** 'Push connection back to pool'.
@@ -60,9 +61,13 @@ public:
      */
     void push_back(connection_ptr_t &tmp) { tmp.reset();}
 
+    /** Does nothing.
+     */
+    void clear() {}
+
 protected:
     std::string addr; //!< destination address
-    uint64_t timeout; //!< 
+    opts_t opts;      //!< io options
 };
 
 /** Cripled pool of connections with single connection. If someone ask for
@@ -78,8 +83,8 @@ public:
     /** C'tor.
      */
     explicit inline
-    single_connection_pool_t(const std::string &addr, uint64_t timeout)
-        : connection(boost::make_shared<connection_t>(addr, timeout))
+    single_connection_pool_t(const std::string &addr, opts_t opts)
+        : addr(addr), opts(opts), empty(true), connection()
     {}
 
     /** Removes connection from pool or creates new one and gives it to caller.
@@ -87,8 +92,11 @@ public:
      * soon as he stops using it.
      */
     connection_ptr_t pick() {
-        if (!connection)
-            throw error_t(err::internal_error, "pool of connections exhausted");
+        if (!connection) {
+            if (!empty) throw error_t(err::internal_error, "pool exhausted");
+            empty = false;
+            return boost::make_shared<connection_t>(addr, opts);
+        }
         connection_ptr_t tmp = connection;
         connection.reset();
         return tmp;
@@ -102,7 +110,17 @@ public:
         tmp.reset();
     }
 
+    /** Destroy held connection.
+     */
+    void clear() {
+        empty = false;
+        connection.reset();
+    }
+
 protected:
+    std::string addr;            //!< destination address
+    opts_t opts;                 //!< io options
+    bool empty;                  //!< true if pool is "empty"
     connection_ptr_t connection; //!< current connection
 };
 
@@ -120,10 +138,10 @@ public:
     /** C'tor.
      */
     explicit inline
-    caching_connection_pool_t(const std::string &addr, uint64_t timeout)
-        : addr(addr), timeout(timeout), queue()
+    caching_connection_pool_t(const std::string &addr, opts_t opts)
+        : addr(addr), opts(opts), queue()
     {
-        queue.set_capacity(3);
+        queue.set_capacity(opts.max_connections_in_pool);
     }
 
     /** Removes connection from pool or creates new one and gives it to caller.
@@ -133,7 +151,7 @@ public:
     connection_ptr_t pick() {
         connection_ptr_t tmp;
         if (queue.try_pop(tmp)) return tmp;
-        return boost::make_shared<connection_t>(addr, timeout);
+        return boost::make_shared<connection_t>(addr, opts);
     }
 
     /** Push connection back to pool.
@@ -144,12 +162,16 @@ public:
         tmp.reset();
     }
 
+    /** Destroys all connection found at queue.
+     */
+    void clear() { queue.clear();}
+
 protected:
     // shortcut
     typedef tbb::concurrent_bounded_queue<connection_ptr_t> queue_t;
 
     std::string addr; //!< destination address
-    uint64_t timeout; //!< 
+    opts_t opts;      //!< io options
     queue_t queue;    //!< queue of available connections
 };
 #endif /* HAVE_LIBTBB */
@@ -169,8 +191,8 @@ public:
     /** C'tor.
      */
     explicit inline
-    caching_connection_pool_t(const std::string &addr, uint64_t timeout)
-        : addr(addr), timeout(timeout), max(3)
+    caching_connection_pool_t(const std::string &addr, opts_t opts)
+        : addr(addr), opts(opts)
     {}
 
     /** Removes connection from pool or creates new one and gives it to caller.
@@ -180,7 +202,7 @@ public:
     connection_ptr_t pick() {
         boost::mutex::scoped_lock guard(mutex);
         if (stack.empty())
-            return boost::make_shared<connection_t>(addr, timeout);
+            return boost::make_shared<connection_t>(addr, opts);
         connection_ptr_t tmp = stack.top();
         stack.pop();
         return tmp;
@@ -191,16 +213,19 @@ public:
      */
     void push_back(connection_ptr_t &tmp) {
         boost::mutex::scoped_lock guard(mutex);
-        if (stack.size() < max) stack.push(tmp);
+        if (stack.size() < opts.max_connections_in_pool) stack.push(tmp);
         tmp.reset();
     }
 
+    /** Destroys all connection found at stack.
+     */
+    void clear() { stack.clear();}
+
 protected:
     std::string addr;                   //!< destination address
-    uint64_t timeout;                   //!< 
-    std::size_t max;                    //!< 
-    boost::mutex mutex;                 //!<
-    std::stack<connection_ptr_t> stack; //!<
+    opts_t opts;                        //!< io options
+    boost::mutex mutex;                 //!< pool mutex
+    std::stack<connection_ptr_t> stack; //!< stack of available connections
 };
 
 } // namespace lock

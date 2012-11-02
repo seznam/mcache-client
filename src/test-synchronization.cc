@@ -58,10 +58,10 @@ template <typename connection_t>
 class connections_t {
 public:
     typedef boost::shared_ptr<connection_t> connection_ptr_t;
-    connections_t(const std::string &, uint64_t) {}
+    connections_t(const std::string &, const mc::io::opts_t &) {}
     connection_ptr_t pick() { return connection_ptr_t(new connection_t());}
     void push_back(connection_ptr_t) {}
-    void reset() {}
+    void clear() {}
 };
 
 bool sharing_dead_server_thread() {

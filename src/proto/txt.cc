@@ -17,6 +17,7 @@
  */
 
 #include <sstream>
+#include <boost/bind.hpp>
 #include <boost/algorithm/string/trim.hpp>
 #include <boost/algorithm/string/predicate.hpp>
 
@@ -63,6 +64,20 @@ deserialize_value_resp(const std::string &header) {
                           retrieve_command_t::set_body);
     }
     return response_t(resp::syntax, "invalid response: " + header);
+}
+
+/** Throws if key does not match constraints:
+ * The length limit of a key is set at 250 characters (of course, normally
+ * clients wouldn't need to use such long keys); the key must not include
+ * control characters or whitespace.
+ */
+void check_key(const std::string &key) {
+    std::string::const_iterator
+        ierr = std::find_if(key.begin(), key.end(),
+                            boost::bind(::isspace, _1)
+                            || boost::bind(::iscntrl, _1));
+    if (ierr != key.end())
+        throw mc::error_t(err::bad_argument, "key contains invalid chars");
 }
 
 } // namespace
@@ -113,7 +128,8 @@ retrieve_command_t::deserialize_header(const std::string &header) const {
 }
 
 std::string retrieve_command_t::serialize(const char *name) const {
-    // TODO(burlog): check whether key fulfil protocol constraints
+    check_key(key);
+    // get <key> \r\n
     std::string result;
     result.append(name).append(1, ' ').append(key).append(header_delimiter());
     return result;
@@ -156,9 +172,9 @@ storage_command_t::deserialize_header(const std::string &header) const {
 }
 
 std::string storage_command_t::serialize(const char *name) const {
+    check_key(key);
     // <command name> <key> <flags> <exptime> <bytes> [noreply]\r\n
     // cas <key> <flags> <exptime> <bytes> <cas unique> [noreply]\r\n
-    // TODO(burlog): check whether key fulfil protocol constraints
     std::ostringstream os;
     os << name << ' '
        << key << ' '
@@ -202,8 +218,8 @@ incr_decr_command_t::deserialize_header(const std::string &header) const {
 }
 
 std::string incr_decr_command_t::serialize(const char *name) const {
+    check_key(key);
     // <command name> <key> <value> [noreply]\r\n
-    // TODO(burlog): check whether key fulfil protocol constraints
     std::ostringstream os;
     os << name << ' ' << key << ' ' << value << header_delimiter();
     return os.str();
@@ -233,6 +249,8 @@ delete_command_t::deserialize_header(const std::string &header) const {
 }
 
 std::string delete_command_t::serialize() const {
+    check_key(key);
+    // delete <key>\r\n
     std::string result;
     result.append("delete ").append(key).append(header_delimiter());
     return result;

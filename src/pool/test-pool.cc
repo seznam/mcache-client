@@ -48,13 +48,13 @@ typedef mc::mod_pool_t<mc::murmur3_t> mod_pool_t;
 typedef mc::consistent_hashing_pool_t<mc::murmur3_t> consistent_hashing_pool_t;
 typedef mc::consistent_hashing_pool_t<fake_t> fake_consistent_hashing_pool_t;
 
-template <typename pool_t, typename config_t>
-bool throws_if_empty_addresses(const config_t &cfg) {
+template <typename pool_t>
+bool throws_if_empty_addresses() {
     std::cout << __PRETTY_FUNCTION__ << ": ";
     std::vector<std::string> servers;
     try {
         // check whether empty pool throws
-        pool_t(servers, cfg);
+        pool_t p(servers);
     } catch (const std::out_of_range &) { return true;}
     return false;
 }
@@ -65,7 +65,7 @@ bool mod_pool_iteration() {
     servers.push_back("server1:11211");
     servers.push_back("server2:11211");
     servers.push_back("server3:11211");
-    mod_pool_t pool(servers, 0);
+    mod_pool_t pool(servers);
     // checks whether choose() doesn't return end and if ++ operator returns end
     return pool.choose("b") != pool.end() && ++pool.choose("b") == pool.end();
 }
@@ -75,12 +75,13 @@ bool consistent_hashing_pool_iteration() {
     using boost::lambda::_1;
     using boost::lambda::var;
     using boost::lambda::if_then;
-    const uint32_t virtual_nodes = 20;
+    mc::consistent_hashing_pool_config_t cfg;
+    cfg.virtual_nodes = 20;
     std::vector<std::string> servers;
     servers.push_back("server1:11211");
     servers.push_back("server2:11211");
     servers.push_back("server3:11211");
-    consistent_hashing_pool_t pool(servers, virtual_nodes);
+    consistent_hashing_pool_t pool(servers, cfg);
     std::size_t exp = 0;
     std::size_t cnt = 0;
     std::size_t cnt1 = 0;
@@ -111,12 +112,13 @@ bool consistent_hashing_pool_iteration() {
 
 bool consistent_hashing_pool_distribution() {
     std::cout << __PRETTY_FUNCTION__ << ": ";
-    const uint32_t virtual_nodes = 3;
+    mc::consistent_hashing_pool_config_t cfg;
+    cfg.virtual_nodes = 3;
     std::vector<std::string> servers;
     servers.push_back("server1:11211");
     servers.push_back("server2:11211");
     servers.push_back("server3:11211");
-    fake_consistent_hashing_pool_t pool(servers, virtual_nodes);
+    fake_consistent_hashing_pool_t pool(servers, cfg);
     // checks whether key distribution with fake hash functor is like:
     // [1000] -> 0
     // [2000] -> 0
@@ -156,8 +158,8 @@ public:
 int main(int, char **) {
     mc::init();
     test::Checker_t check;
-    check(test::throws_if_empty_addresses<test::consistent_hashing_pool_t>(3));
-    check(test::throws_if_empty_addresses<test::mod_pool_t>(0));
+    check(test::throws_if_empty_addresses<test::consistent_hashing_pool_t>());
+    check(test::throws_if_empty_addresses<test::mod_pool_t>());
     check(test::mod_pool_iteration());
     check(test::consistent_hashing_pool_iteration());
     check(test::consistent_hashing_pool_distribution());

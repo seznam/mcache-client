@@ -22,6 +22,7 @@
 #include <mcache/hash.h>
 #include <mcache/client.h>
 #include <mcache/proto/txt.h>
+#include <mcache/proto/binary.h>
 #include <mcache/server-proxy.h>
 #include <mcache/server-proxies.h>
 #include <mcache/pool/consistent-hashing.h>
@@ -31,21 +32,31 @@
 namespace mc {
 namespace thread {
 
-using proto::txt::api;
-typedef consistent_hashing_pool_t<murmur3_t> pool_t;
+// configuration classes
+typedef mc::consistent_hashing_pool_config_t pool_config_t;
+typedef mc::server_proxy_config_t server_proxy_config_t;
+
+// defines types for client template
+using proto::bin::api;
+typedef mc::consistent_hashing_pool_t<murmur3_t> pool_t;
 typedef io::caching_connection_pool_t<io::tcp::connection_t> connections_t;
 typedef mc::server_proxy_t<lock_t, connections_t> server_proxy_t;
 typedef mc::server_proxies_t<shared_array_t, server_proxy_t> server_proxies_t;
 
-/// Defines default instantiation of the client template for uthread enviroment.
+/// Defines default instantiation of the client template for thread enviroment.
 typedef mc::client_template_t<pool_t, server_proxies_t, api> client_t;
 
 } // namespace thread
 
 namespace ipc {
 
-using proto::txt::api;
-typedef consistent_hashing_pool_t<murmur3_t> pool_t;
+// configuration classes
+typedef mc::consistent_hashing_pool_config_t pool_config_t;
+typedef mc::server_proxy_config_t server_proxy_config_t;
+
+// defines types for client template
+using proto::bin::api;
+typedef mc::consistent_hashing_pool_t<murmur3_t> pool_t;
 typedef io::single_connection_pool_t<io::tcp::connection_t> connections_t;
 typedef mc::server_proxy_t<lock_t, connections_t> server_proxy_t;
 typedef mc::server_proxies_t<shared_array_t, server_proxy_t> server_proxies_t;

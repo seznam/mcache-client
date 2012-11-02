@@ -29,51 +29,6 @@ namespace mc {
 namespace proto {
 namespace bin {
 
-/** The structure representing binary protocol header.
- */
-struct header_t {
-public:
-    // magic constants
-    static const uint8_t request_magic = 0x80;
-    static const uint8_t response_magic = 0x81;
-
-    /** C'tor.
-     */
-    header_t(const std::string &data);
-
-    /** C'tor.
-     */
-    header_t(uint16_t key_len, uint32_t body_len = 0, uint8_t extras_len = 0)
-        : magic(request_magic),
-          opcode(0x00),
-          key_len(key_len),
-          extras_len(extras_len),
-          data_type(0x00),
-          reserved(0x00),
-          body_len(body_len),
-          opaque(0x00),
-          cas(0x00)
-    {}
-
-    uint8_t magic;         //!< protocol magic
-    uint8_t opcode;        //!< command code
-    uint16_t key_len;      //!< the length of the key
-    uint8_t extras_len;    //!< the length of extra info in packet
-    uint8_t data_type;     //!< reserved for future usage
-    union {
-        uint16_t reserved; //!< response for future usage
-        uint16_t status;   //!< status of the response
-    };
-    uint32_t body_len;     //!< length in bytes of extra + key + value
-    uint32_t opaque;       //!< will be copied back to you in the response
-    uint64_t cas;          //!< unique identifier of data(data version)
-
-    /** Method for preparing serialization of header. It switches the
-     * endianity for every member. (hton)
-     */
-    void prepare_serialization();
-};
-
 /** Base class of all commands.
  */
 class command_t {
@@ -89,10 +44,12 @@ protected:
     /** C'tor.
      */
     command_t(uint16_t key_len, uint32_t body_len = 0, uint8_t extras_len = 0)
-        : hdr(key_len, body_len, extras_len)
+        : extras_len(extras_len), key_len(key_len), body_len(body_len)
     {}
 
-    mutable header_t hdr; //!< the header of each command (request)
+    uint8_t extras_len; //!< the length of extra info in packet
+    uint16_t key_len;   //!< the length of the key
+    uint32_t body_len;  //!< length in bytes of extra + key + value
 };
 
 /** Base class for all retrieve commands.
@@ -119,17 +76,18 @@ public:
     static void set_body(uint32_t &flags,
                          std::string &body,
                          const std::string &data);
+
+    const std::string key; //!< for which key data should be retrieved
+
 protected:
     /** Serialize retrieve command.
      */
     std::string serialize(uint8_t code) const;
-
-    std::string key; //!< for which key data should be retrieved
 };
 
 /** Base class for all storage commands.
  */
-template<bool has_extras = true>
+template <bool has_extras = true>
 class storage_command_t: public command_t {
 public:
     // retrieval commands responses contains useless foother
@@ -140,10 +98,10 @@ public:
     storage_command_t(const std::string &key,
                       const std::string &data,
                       const opts_t &opts)
-        :command_t(static_cast <uint16_t>(key.length()),
-                   static_cast <uint32_t>(key.length() + data.length() +
-                                          (has_extras ? extras_length : 0)),
-                   static_cast <uint8_t>(has_extras ? extras_length : 0)),
+        : command_t(static_cast <uint16_t>(key.length()),
+                    static_cast <uint32_t>(key.length() + data.length() +
+                                           (has_extras ? extras_length : 0)),
+                    static_cast <uint8_t>(has_extras ? extras_length : 0)),
         key(key), data(data), opts(opts)
     {}
 
@@ -151,12 +109,13 @@ public:
      */
     response_t deserialize_header(const std::string &header) const;
 
+    const std::string key; //!< for which key data should be retrieved
+
 protected:
     /** Serialize retrieve command.
      */
     std::string serialize(uint8_t code) const;
 
-    std::string key;  //!< for which key data should be retrieved
     std::string data; //!< data to store
     opts_t opts;      //!< command options
 
@@ -190,12 +149,14 @@ public:
     static void set_body(uint32_t &flags,
                          std::string &body,
                          const std::string &data);
+
+    const std::string key; //!< for which key data should be retrieved
+
 protected:
     /** Serialize retrieve command.
      */
     std::string serialize(uint8_t code) const;
 
-    std::string key; //!< for which key data should be retrieved
     uint64_t value;  //!< amount by which the client wants to incr/decr
     opts_t opts;     //!< command options
 
@@ -226,8 +187,7 @@ public:
      */
     std::string serialize() const;
 
-protected:
-    std::string key; //!< for which key data should be retrieved
+    const std::string key; //!< for which key data should be retrieved
 };
 
 /** Class for delete command.
@@ -254,8 +214,9 @@ public:
      */
     std::string serialize(uint8_t code) const;
 
+    const std::string key; //!< for which key the expiration should be changed
+
 protected:
-    std::string key;    //!< for which key the expiration should be changed
     time_t expiration;  //!< new expiration value
 
 private:

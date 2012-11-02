@@ -25,11 +25,22 @@
 #include <stdint.h>
 #include <stdexcept>
 
-#include <iostream>
-
 #include <mcache/error.h>
 
 namespace mc {
+
+/** Configuration for consistent hashing pool.
+ */
+class consistent_hashing_pool_config_t {
+public:
+    /** C'tor.
+     */
+    consistent_hashing_pool_config_t()
+        : virtual_nodes(200)
+    {}
+
+    uint32_t virtual_nodes; //!< count of virtual nodes in ring
+};
 
 /** Non template base class for consistent hashing pool.
  */
@@ -147,7 +158,8 @@ public:
      * @param addresses list of server addresses.
      */
     consistent_hashing_pool_t(const std::vector<std::string> &addresses,
-                              uint32_t virtual_nodes = 200)
+                              const consistent_hashing_pool_config_t &
+                              cfg = consistent_hashing_pool_config_t())
         : ring(), hashf()
     {
         // at least one address must be supplied
@@ -165,7 +177,7 @@ public:
             uint32_t idx = static_cast<uint32_t>(std::distance(saddr, iaddr));
 
             // push server into namespace ring
-            for (uint32_t i = 0; i < virtual_nodes; ++i)
+            for (uint32_t i = 0; i < cfg.virtual_nodes; ++i)
                 ring.insert(std::make_pair(hash = hashf(*iaddr, hash), idx));
         }
     }

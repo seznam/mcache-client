@@ -36,12 +36,41 @@ int main(int argc, char **argv) {
 
     // prepare client params
     std::vector<std::string> servers;
-    std::copy(argv + 1, argv + argc - 1, std::back_inserter(servers));
+    std::copy(argv + 1, argv + argc, std::back_inserter(servers));
 
     // client
-    mc::thread::client_t client;
+    mc::thread::pool_config_t pcfg;
+    mc::thread::server_proxy_config_t scfg;
+    mc::thread::client_t client(servers, pcfg, scfg);
+    //std::cout << client.pool.dump() << std::endl;
     client.set("three", "3");
-    std::cout << client.get("three") << std::endl;
+
+    client.add("three", "3");
+    client.add("tyhree", "3");
+
+    client.prepend("three", "3");
+    client.prepend("txhree", "3");
+    client.append("three", "3");
+    client.append("txhree", "3");
+
+    mc::result_t res = client.gets("three");
+    client.cas("txhree", "3", res.cas);
+    client.cas("three", "3", res.cas);
+    try {
+        client.cas("three", "3", res.cas - 1);
+        throw 3;
+    } catch (const mc::proto::error_t &e) {
+        if (e.code() != mc::proto::resp::exists) throw;
+    }
+
+    client.incr("three");
+    client.decr("three");
+
+    client.del("three");
+    client.del("tzhree");
+
+    if (client.get("three")) throw 3;
+    //std::cout << client.get("three").data << std::endl;
     return EXIT_SUCCESS;
 }
 

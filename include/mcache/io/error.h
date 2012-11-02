@@ -43,7 +43,9 @@ class error_t: public mc::error_t {
 public:
     /** C'tor.
      */
-    error_t(int value, const std::string &msg): mc::error_t(value, msg) {}
+    error_t(err::error_code_t value, const std::string &msg)
+        : mc::error_t(value, msg)
+    {}
 };
 
 } // namespace io

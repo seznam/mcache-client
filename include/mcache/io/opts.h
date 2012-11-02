@@ -46,7 +46,7 @@ public:
 
     /** C'tor.
      */
-    opts_t(): timeouts() {}
+    opts_t(): timeouts(), max_connections_in_pool() {}
 
     /** C'tor.
      */
@@ -54,7 +54,8 @@ public:
         : timeouts(connect, read, write)
     {}
 
-    timeouts_t timeouts; //!< connection timeouts
+    timeouts_t timeouts;              //!< connection timeouts
+    uint64_t max_connections_in_pool; //!< max count of connections in pool
 };
 
 } // namespace io

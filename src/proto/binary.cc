@@ -25,10 +25,86 @@
 #include "error.h"
 #include "mcache/proto/binary.h"
 
+// for protocol details:
+// @see https://github.com/memcached/memcached/blob/master/doc/protocol-binary.xml
+
 namespace mc {
 namespace proto {
 namespace bin {
 namespace {
+
+// TODO(Lubos): Pokud by se melo pouzivat na solarisu, tak je potreba
+// tyhle funkce vytahnout z glibc htobe atp.
+
+// forward
+class header_t;
+
+/** Cast string to pointer to header.
+ */
+const header_t *as_header(const std::string &data) {
+    return reinterpret_cast<const header_t *>(&data[0]);
+}
+
+/** The structure representing binary protocol header.
+ */
+struct header_t {
+public:
+    // magic constants
+    static const uint8_t request_magic = 0x80;
+    static const uint8_t response_magic = 0x81;
+
+    /** C'tor.
+     */
+    header_t(const std::string &data)
+        : magic(as_header(data)->magic),
+          opcode(as_header(data)->opcode),
+          key_len(ntohs(as_header(data)->key_len)),
+          extras_len(as_header(data)->extras_len),
+          data_type(as_header(data)->data_type),
+          reserved(ntohs(as_header(data)->reserved)),
+          body_len(ntohl(as_header(data)->body_len)),
+          opaque(ntohl(as_header(data)->opaque)),
+          cas(be64toh(as_header(data)->cas))
+    {}
+
+    /** C'tor.
+     */
+    header_t(uint16_t key_len, uint32_t body_len = 0, uint8_t extras_len = 0)
+        : magic(request_magic),
+          opcode(0x00),
+          key_len(key_len),
+          extras_len(extras_len),
+          data_type(0x00),
+          reserved(0x00),
+          body_len(body_len),
+          opaque(0x00),
+          cas(0x00)
+    {}
+
+    /** Method for preparing serialization of header. It switches the
+     * endianity for every member. (hton)
+     */
+    void prepare_serialization() {
+        key_len = htons(key_len);
+        reserved = htons(reserved);
+        body_len = htonl(body_len);
+        opaque = htonl(opaque);
+        cas = htobe64(cas);
+    }
+
+    uint8_t magic;         //!< protocol magic
+    uint8_t opcode;        //!< command code
+    uint16_t key_len;      //!< the length of the key
+    uint8_t extras_len;    //!< the length of extra info in packet
+    uint8_t data_type;     //!< reserved for future usage
+    union {
+        uint16_t reserved; //!< response for future usage
+        uint16_t status;   //!< status of the response
+    };
+    uint32_t body_len;     //!< length in bytes of extra + key + value
+    uint32_t opaque;       //!< will be copied back to you in the response
+    uint64_t cas;          //!< unique identifier of data(data version)
+};
 
 enum status_code_t {
     ok = 0x0000,                // No error
@@ -42,7 +118,7 @@ enum status_code_t {
     out_of_memory = 0x0082,     // Out of memory
 };
 
-std::map<int, int> code_mapping;
+std::map<int, resp::response_code_t> code_mapping;
 
 void initialize_map() {
     code_mapping[0x0000] = mc::proto::resp::ok;
@@ -56,16 +132,17 @@ void initialize_map() {
     code_mapping[0x0082] = mc::proto::resp::server_error;
 }
 
-int translate_status_to_response(int code) {
-    const std::map<int, int>::const_iterator it = code_mapping.find(code);
+/** Translate binary status codes into txt response codes.
+ */
+resp::response_code_t translate_status_to_response(int code) {
+    const std::map<int, resp::response_code_t>::const_iterator
+        it = code_mapping.find(code);
     if (it == code_mapping.end()) return mc::proto::resp::error;
     return it->second;
 }
 
-const header_t *as_header(const std::string &data) {
-    return reinterpret_cast<const header_t *>(&data[0]);
-}
-
+/** Dump operator.
+ */
 std::ostream &operator<<(std::ostream &os, const header_t &h) {
     os << "magic: " << (int)h.magic << std::endl;
     os << "opcode: " << (int)h.opcode << std::endl;
@@ -85,29 +162,6 @@ std::ostream &operator<<(std::ostream &os, const header_t &h) {
  */
 void init() {
     initialize_map();
-}
-
-// TODO(Lubos): Pokud by se melo pouzivat na solarisu, tak je potreba
-// tyhle funkce vytahnout z glibc htobe atp.
-
-header_t::header_t(const std::string &data)
-    : magic(as_header(data)->magic),
-      opcode(as_header(data)->opcode),
-      key_len(ntohs(as_header(data)->key_len)),
-      extras_len(as_header(data)->extras_len),
-      data_type(as_header(data)->data_type),
-      reserved(ntohs(as_header(data)->reserved)),
-      body_len(ntohl(as_header(data)->body_len)),
-      opaque(ntohl(as_header(data)->opaque)),
-      cas(be64toh(as_header(data)->cas))
-{}
-
-void header_t::prepare_serialization() {
-    key_len = htons(key_len);
-    reserved = htons(reserved);
-    body_len = htonl(body_len);
-    opaque = htonl(opaque);
-    cas = htobe64(cas);
 }
 
 retrieve_command_t::response_t
@@ -132,6 +186,7 @@ retrieve_command_t::deserialize_header(const std::string &header) const {
 
 std::string retrieve_command_t::serialize(uint8_t code) const {
     // TODO(burlog): check whether key fulfil protocol constraints
+    header_t hdr(key_len, body_len, extras_len);
     hdr.opcode = code;
     hdr.prepare_serialization();
     std::string result(reinterpret_cast<char *>(&hdr), sizeof(hdr));
@@ -170,6 +225,7 @@ template <>
 std::string storage_command_t<true>::serialize(uint8_t code) const {
     // TODO(burlog): check whether key fulfil protocol constraints
     // prepare request
+    header_t hdr(key_len, body_len, extras_len);
     hdr.opcode = code;
     if (opts.cas) hdr.cas = opts.cas;
     hdr.prepare_serialization();
@@ -193,6 +249,7 @@ std::string storage_command_t<true>::serialize(uint8_t code) const {
 template <>
 std::string storage_command_t<false>::serialize(uint8_t code) const {
     // TODO(burlog): check whether key fulfil protocol constraints
+    header_t hdr(key_len, body_len, extras_len);
     hdr.opcode = code;
     if (opts.cas) hdr.cas = opts.cas;
     hdr.prepare_serialization();
@@ -227,6 +284,7 @@ incr_decr_command_t::deserialize_header(const std::string &header) const {
 std::string incr_decr_command_t::serialize(uint8_t code) const {
     // TODO(burlog): check whether key fulfil protocol constraints
     // prepare request
+    header_t hdr(key_len, body_len, extras_len);
     hdr.opcode = code;
     hdr.prepare_serialization();
     std::string result(reinterpret_cast<char *>(&hdr), sizeof(hdr));
@@ -272,6 +330,7 @@ delete_command_t::deserialize_header(const std::string &header) const {
 
 std::string delete_command_t::serialize() const {
     // TODO(burlog): check whether key fulfil protocol constraints
+    header_t hdr(key_len, body_len, extras_len);
     hdr.opcode = api::delete_code;
     hdr.prepare_serialization();
     std::string result(reinterpret_cast<char *>(&hdr), sizeof(hdr));
@@ -301,6 +360,7 @@ touch_command_t::deserialize_header(const std::string &header) const {
 std::string touch_command_t::serialize(uint8_t code) const {
     // TODO(burlog): check whether key fulfil protocol constraints
     // prepare request
+    header_t hdr(key_len, body_len, extras_len);
     hdr.opcode = code;
     hdr.prepare_serialization();
     std::string result(reinterpret_cast<char *>(&hdr), sizeof(hdr));
