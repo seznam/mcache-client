@@ -35,7 +35,7 @@ namespace {
 
 /** Extracts error description from response header.
  */
-std::string error_desc(const std::string &header) {
+static std::string error_desc(const std::string &header) {
     std::string::size_type space = header.find(' ');
     if (space == std::string::npos) return std::string();
     return boost::trim_copy(header.substr(space));
@@ -45,7 +45,7 @@ std::string error_desc(const std::string &header) {
  *
  *  VALUE <key> <flags> <bytes> [<cas unique>]\r\n
  */
-retrieve_command_t::response_t
+static retrieve_command_t::response_t
 deserialize_value_resp(const std::string &header) {
     // prepare response storage
     typedef retrieve_command_t::response_t response_t;

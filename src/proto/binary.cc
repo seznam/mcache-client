@@ -40,7 +40,7 @@ class header_t;
 
 /** Cast string to pointer to header.
  */
-const header_t *as_header(const std::string &data) {
+static const header_t *as_header(const std::string &data) {
     return reinterpret_cast<const header_t *>(&data[0]);
 }
 
@@ -119,7 +119,7 @@ enum status_code_t {
 
 std::map<int, resp::response_code_t> code_mapping;
 
-void initialize_map() {
+static void initialize_map() {
     code_mapping[0x0000] = mc::proto::resp::ok;
     code_mapping[0x0001] = mc::proto::resp::not_found;
     code_mapping[0x0002] = mc::proto::resp::exists;
@@ -133,26 +133,11 @@ void initialize_map() {
 
 /** Translate binary status codes into txt response codes.
  */
-resp::response_code_t translate_status_to_response(int code) {
+static resp::response_code_t translate_status_to_response(int code) {
     const std::map<int, resp::response_code_t>::const_iterator
         it = code_mapping.find(code);
     if (it == code_mapping.end()) return mc::proto::resp::error;
     return it->second;
-}
-
-/** Dump operator.
- */
-std::ostream &operator<<(std::ostream &os, const header_t &h) {
-    os << "magic: " << (int)h.magic << std::endl;
-    os << "opcode: " << (int)h.opcode << std::endl;
-    os << "key_len: " << (int)h.key_len << std::endl;
-    os << "extras_len: " << (int)h.extras_len << std::endl;
-    os << "data_type: " << (int)h.data_type << std::endl;
-    os << "status: " << (int)h.status << std::endl;
-    os << "body_len: " << (int)h.body_len << std::endl;
-    os << "opaque: " << (int)h.opaque << std::endl;
-    os << "cas: " << (int)h.cas << std::endl;
-    return os;
 }
 
 } // namespace

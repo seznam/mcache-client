@@ -46,20 +46,14 @@ namespace {
 
 /** Splits address string to server, port pair.
  */
-std::pair<std::string, std::string> parse_address(const std::string &addr) {
+static std::pair<std::string, std::string>
+parse_address(const std::string &addr) {
     using boost::lambda::_1;
     std::vector<std::string> parts;
     boost::split(parts, addr, _1 == ':');
     if (parts.size() != 2)
         throw error_t(err::argument, "invalid destination address: " + addr);
     return std::make_pair(parts[0], parts[1]);
-}
-
-/** Dumps buffer data and escape nonprinable characters.
- */
-std::string dump(const asio::streambuf &buf) {
-    std::string result(asio::buffer_cast<const char *>(buf.data()), buf.size());
-    return log::escape(result);
 }
 
 } // namespace
