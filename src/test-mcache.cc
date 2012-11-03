@@ -42,35 +42,44 @@ int main(int argc, char **argv) {
     mc::thread::pool_config_t pcfg;
     mc::thread::server_proxy_config_t scfg;
     mc::thread::client_t client(servers, pcfg, scfg);
-    //std::cout << client.pool.dump() << std::endl;
-    client.set("three", "3");
 
-    client.add("three", "3");
-    client.add("tyhree", "3");
-
-    client.prepend("three", "3");
-    client.prepend("txhree", "3");
-    client.append("three", "3");
-    client.append("txhree", "3");
-
-    mc::result_t res = client.gets("three");
-    client.cas("txhree", "3", res.cas);
-    client.cas("three", "3", res.cas);
     try {
-        client.cas("three", "3", res.cas - 1);
-        throw 3;
-    } catch (const mc::proto::error_t &e) {
-        if (e.code() != mc::proto::resp::exists) throw;
+        client.set("three", "3");
+
+        client.add("three", "3");
+        client.add("tyhree", "3");
+
+        client.prepend("three", "3");
+        client.prepend("txhree", "3");
+        client.append("three", "3");
+        client.append("txhree", "3");
+
+        mc::result_t res = client.gets("three");
+        client.cas("txhree", "3", res.cas);
+        client.cas("three", "3", res.cas);
+        try {
+            client.cas("three", "3", res.cas - 1);
+            throw 3;
+        } catch (const mc::proto::error_t &e) {
+            if (e.code() != mc::proto::resp::exists) throw;
+        }
+
+        client.incr("three");
+        client.decr("three");
+
+        client.del("three");
+        client.del("tzhree");
+
+        if (client.get("three")) throw 3;
+        //std::cout << client.dump() << std::endl;
+
+    } catch (const std::exception &e) {
+        std::cerr << "ERROR: " << e.what() << std::endl;
+
+    } catch (...) {
+        std::cerr << "ERROR: unknown exception" << std::endl;
+        return EXIT_FAILURE;
     }
-
-    client.incr("three");
-    client.decr("three");
-
-    client.del("three");
-    client.del("tzhree");
-
-    if (client.get("three")) throw 3;
-    //std::cout << client.dump() << std::endl;
     return EXIT_SUCCESS;
 }
 

@@ -148,6 +148,54 @@ bool error_server_error() {
     return connection.empty();
 }
 
+bool error_too_long_key() {
+    std::cout << __PRETTY_FUNCTION__ << ": ";
+
+    // prepare request and response
+    api::get_t command(std::string(251, '3'));
+    const char request[] = "-";
+    const char header[] = "-";
+    validation_connection_t connection(request, header);
+
+    // execute command
+    try {
+        command_parser_t parser(connection);
+        parser.send(command);
+        return false;
+
+    } catch (const mc::error_t &e) {
+        return e.code() == mc::err::bad_argument;
+
+    } catch (const std::exception &e) {
+        return false;
+    }
+    return false;
+}
+
+bool error_invalid_char_in_key() {
+    std::cout << __PRETTY_FUNCTION__ << ": ";
+
+    // prepare request and response
+    api::get_t command("3 3");
+    const char request[] = "-";
+    const char header[] = "-";
+    validation_connection_t connection(request, header);
+
+    // execute command
+    try {
+        command_parser_t parser(connection);
+        parser.send(command);
+        return false;
+
+    } catch (const mc::error_t &e) {
+        return e.code() == mc::err::bad_argument;
+
+    } catch (const std::exception &e) {
+        return false;
+    }
+    return false;
+}
+
 bool get_command_empty() {
     std::cout << __PRETTY_FUNCTION__ << ": ";
 
@@ -679,6 +727,8 @@ int main(int, char **) {
     check(test::error_error());
     check(test::error_client_error());
     check(test::error_server_error());
+    check(test::error_too_long_key());
+    check(test::error_invalid_char_in_key());
 
     // retrieval
     check(test::get_command_empty());

@@ -17,5 +17,5 @@
 
 includedir = @includedir@/mcache/io
 
-include_HEADERS = connection.h connections.h error.h opts.h tcp.h udp.h
+include_HEADERS = connection.h connections.h error.h opts.h
 

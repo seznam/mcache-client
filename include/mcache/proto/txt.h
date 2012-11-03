@@ -99,8 +99,8 @@ protected:
      */
     std::string serialize(const char *name) const;
 
-    std::string data; //!< data to store
-    opts_t opts;      //!< command options
+    const std::string data; //!< data to store
+    const opts_t opts;      //!< command options
 };
 
 /** Base class for incr and decr commands.

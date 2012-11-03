@@ -59,10 +59,10 @@ public:
         return found? &result_t::unspecified_bool_method: 0x0;
     }
 
-    bool found;       //!< true if data was found on server
-    std::string data; //!< result data
-    uint32_t flags;   //!< flags for data stored on server
-    uint64_t cas;     //!< cas identifier of data
+    const bool found;       //!< true if data was found on server
+    const std::string data; //!< result data
+    const uint32_t flags;   //!< flags for data stored on server
+    const uint64_t cas;     //!< cas identifier of data
 };
 
 /** Template of class for memcache clients.

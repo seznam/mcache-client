@@ -113,8 +113,8 @@ protected:
      */
     std::string serialize(uint8_t code) const;
 
-    std::string data; //!< data to store
-    opts_t opts;      //!< command options
+    const std::string data; //!< data to store
+    const opts_t opts;      //!< command options
 
 private:
     /** The length of extras. */
@@ -149,8 +149,8 @@ protected:
      */
     std::string serialize(uint8_t code) const;
 
-    uint64_t value;  //!< amount by which the client wants to incr/decr
-    opts_t opts;     //!< command options
+    uint64_t value;    //!< amount by which the client wants to incr/decr
+    const opts_t opts; //!< command options
 
 private:
     /** The length of extras. */

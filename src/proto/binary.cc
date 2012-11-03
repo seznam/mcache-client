@@ -20,9 +20,9 @@
 #include <arpa/inet.h>
 #include <sstream>
 #include <map>
-#include <boost/lexical_cast.hpp>
 
 #include "error.h"
+#include "proto/aux.h"
 #include "mcache/proto/binary.h"
 
 // for protocol details:
@@ -184,6 +184,7 @@ retrieve_command_t::deserialize_header(const std::string &header) const {
 }
 
 std::string retrieve_command_t::serialize(uint8_t code) const {
+    aux::check_key(key);
     header_t hdr(key_len, body_len, extras_len);
     hdr.opcode = code;
     hdr.prepare_serialization();
@@ -222,6 +223,7 @@ storage_command_t<has_extras>
 template <>
 std::string storage_command_t<true>::serialize(uint8_t code) const {
     // prepare request
+    aux::check_key(key);
     header_t hdr(key_len, body_len, extras_len);
     hdr.opcode = code;
     if (opts.cas) hdr.cas = opts.cas;
@@ -245,6 +247,7 @@ std::string storage_command_t<true>::serialize(uint8_t code) const {
 
 template <>
 std::string storage_command_t<false>::serialize(uint8_t code) const {
+    aux::check_key(key);
     header_t hdr(key_len, body_len, extras_len);
     hdr.opcode = code;
     if (opts.cas) hdr.cas = opts.cas;
@@ -279,6 +282,7 @@ incr_decr_command_t::deserialize_header(const std::string &header) const {
 
 std::string incr_decr_command_t::serialize(uint8_t code) const {
     // prepare request
+    aux::check_key(key);
     header_t hdr(key_len, body_len, extras_len);
     hdr.opcode = code;
     hdr.prepare_serialization();
@@ -299,10 +303,12 @@ std::string incr_decr_command_t::serialize(uint8_t code) const {
 }
 
 void incr_decr_command_t::set_body(std::string &body, const std::string &data) {
-    uint64_t value;
+    uint64_t value = 0;
     std::copy(data.begin(), data.end(), reinterpret_cast<char *>(&value));
     value = be64toh(value);
-    body = boost::lexical_cast<std::string>(value);
+    std::ostringstream os;
+    os << value;
+    body = os.str();
 }
 
 delete_command_t::response_t
@@ -321,6 +327,7 @@ delete_command_t::deserialize_header(const std::string &header) const {
 }
 
 std::string delete_command_t::serialize() const {
+    aux::check_key(key);
     header_t hdr(key_len, body_len, extras_len);
     hdr.opcode = api::delete_code;
     hdr.prepare_serialization();
@@ -350,6 +357,7 @@ touch_command_t::deserialize_header(const std::string &header) const {
 
 std::string touch_command_t::serialize(uint8_t code) const {
     // prepare request
+    aux::check_key(key);
     header_t hdr(key_len, body_len, extras_len);
     hdr.opcode = code;
     hdr.prepare_serialization();
