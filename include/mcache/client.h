@@ -23,11 +23,14 @@
 #include <iterator>
 #include <algorithm>
 #include <boost/noncopyable.hpp>
+#include <boost/utility/enable_if.hpp>
+#include <boost/type_traits/remove_cv.hpp>
 #include <boost/bind.hpp>
 
 #include <mcache/error.h>
 #include <mcache/proto/opts.h>
 #include <mcache/proto/response.h>
+#include <mcache/conversion.h>
 
 namespace mc {
 
@@ -53,6 +56,24 @@ public:
         : found(true), data(data), flags(flags), cas(cas)
     {}
 
+    //////////////// AUTO SERIALIZATION MEMCACHE CLIENT API ///////////////////
+
+#ifndef MCACHE_DISABLE_SERIALIZATION_API
+
+    /** Converts data to given type.
+     */
+    template <typename type_t>
+    type_t as() const { return aux::cnv<type_t>::as(data);}
+
+    /** Converts data to given type.
+     */
+    template <typename type_t, typename aux_t>
+    type_t as(aux_t aux) const { return aux::cnv<type_t>::as(aux, data);}
+
+#endif // MCACHE_DISABLE_SERIALIZATION_API
+
+    ///////////////////// STANDARD MEMCACHE CLIENT API ////////////////////////
+
     /** Returns true if data was found on server.
      */
     operator unspecified_bool_type() const {
@@ -64,6 +85,14 @@ public:
     const uint32_t flags;   //!< flags for data stored on server
     const uint64_t cas;     //!< cas identifier of data
 };
+
+#ifndef MCACHE_DISABLE_SERIALIZATION_API
+
+/** Specialization for string.
+ */
+template <> std::string result_t::as<std::string>() const { return data;}
+
+#endif // MCACHE_DISABLE_SERIALIZATION_API
 
 /** Template of class for memcache clients.
  */
@@ -213,6 +242,8 @@ public:
      * @param data data to store.
      * @param opts storage commands options.
      * @return true if value was set, false if value was not found.
+     * @throws mc::proto::error_t with code == mc::proto::resp::exists if cas
+     * @throws identifier is invalid.
      */
     bool cas(const std::string &key,
              const std::string &data,
@@ -228,7 +259,9 @@ public:
         }
     }
 
-    /** Call 'cas' command on appropriate memcache server.
+    /** Call 'cas' command on appropriate memcache server. For more complex
+     * description see string version of this method.
+     *
      * @param key key for data.
      * @param data data to store.
      * @param id cas identifier.
@@ -284,8 +317,8 @@ public:
         typename impl::incr_t::response_t
             response = run(typename impl::incr_t(key, inc, opts));
         switch (response.code()) {
-        //case proto::resp::ok: return std::make_pair(response.data(), true);
-        case proto::resp::ok: return std::make_pair(3, true);
+        case proto::resp::ok:
+            return std::make_pair(aux::cnv<uint64_t>::as(response.data()), 1);
         case proto::resp::not_found: return std::make_pair(0, false);
         default: throw response.exception();
         }
@@ -304,8 +337,8 @@ public:
         typename impl::decr_t::response_t
             response = run(typename impl::decr_t(key, dec, opts));
         switch (response.code()) {
-        //case proto::resp::ok: return std::make_pair(response.data(), true);
-        case proto::resp::ok: return std::make_pair(3, true);
+        case proto::resp::ok:
+            return std::make_pair(aux::cnv<uint64_t>::as(response.data()), 1);
         case proto::resp::not_found: return std::make_pair(0, false);
         default: throw response.exception();
         }
@@ -347,13 +380,143 @@ public:
         }
     }
 
-    //////////////// AUTO SERIALIZATION MEMCACHE CLIENT API ///////////////////
+    //////////////// AUTO DESERIALIZATION MEMCACHE CLIENT API /////////////////
 
     // this code uses template magic so if you are confused with it you can
     // disabel it by MCACHE_DISABLE_SERIALIZATION_API macro
 
 #ifndef MCACHE_DISABLE_SERIALIZATION_API
 
+    /** Call 'set' command on appropriate memcache server.
+     * @param key key for data.
+     * @param data data to store.
+     * @param opts storage commands options.
+     */
+    template <typename type_t>
+    typename boost::enable_if_c<
+        aux::has_as<aux::cnv<type_t> >::value,
+        void
+    >::type set(const std::string &key,
+                const type_t &data,
+                const opts_t &opts = opts_t())
+    {
+        typedef typename boost::remove_cv<type_t>::type bare_type_t;
+        set(key, aux::cnv<bare_type_t>::as(data), opts);
+    }
+
+    /** Call 'add' command on appropriate memcache server.
+     * @param key key for data.
+     * @param data data to store.
+     * @param opts storage commands options.
+     * @return true if value was added.
+     */
+    template <typename type_t>
+    typename boost::enable_if_c<
+        aux::has_as<aux::cnv<type_t> >::value,
+        bool
+    >::type add(const std::string &key,
+                const type_t &data,
+                const opts_t &opts = opts_t())
+    {
+        typedef typename boost::remove_cv<type_t>::type bare_type_t;
+        return add(key, aux::cnv<bare_type_t>::as(data), opts);
+    }
+
+    /** Call 'replace' command on appropriate memcache server.
+     * @param key key for data.
+     * @param data data to store.
+     * @param opts storage commands options.
+     * @return true if value was replaced.
+     */
+    template <typename type_t>
+    typename boost::enable_if_c<
+        aux::has_as<aux::cnv<type_t> >::value,
+        bool
+    >::type replace(const std::string &key,
+                    const type_t &data,
+                    const opts_t &opts = opts_t())
+    {
+        typedef typename boost::remove_cv<type_t>::type bare_type_t;
+        return replace(key, aux::cnv<bare_type_t>::as(data), opts);
+    }
+
+    /** Call 'prepend' command on appropriate memcache server.
+     * @param key key for data.
+     * @param data data to store.
+     * @param opts storage commands options.
+     * @return true if value was prepended.
+     */
+    template <typename type_t>
+    typename boost::enable_if_c<
+        aux::has_as<aux::cnv<type_t> >::value,
+        bool
+    >::type prepend(const std::string &key,
+                    const type_t &data,
+                    const opts_t &opts = opts_t())
+    {
+        typedef typename boost::remove_cv<type_t>::type bare_type_t;
+        return prepend(key, aux::cnv<bare_type_t>::as(data), opts);
+    }
+
+    /** Call 'append' command on appropriate memcache server.
+     * @param key key for data.
+     * @param data data to store.
+     * @param opts storage commands options.
+     * @return true if value was appended.
+     */
+    template <typename type_t>
+    typename boost::enable_if_c<
+        aux::has_as<aux::cnv<type_t> >::value,
+        bool
+    >::type append(const std::string &key,
+                   const type_t &data,
+                   const opts_t &opts = opts_t())
+    {
+        typedef typename boost::remove_cv<type_t>::type bare_type_t;
+        return append(key, aux::cnv<bare_type_t>::as(data), opts);
+    }
+
+    /** Call 'cas' command on appropriate memcache server. For more complex
+     * description see string version of this method.
+     *
+     * @param key key for data.
+     * @param data data to store.
+     * @param opts storage commands options.
+     * @return true if value was set, false if value was not found.
+     * @throws mc::proto::error_t with code == mc::proto::resp::exists if cas
+     * @throws identifier is invalid.
+     */
+    template <typename type_t>
+    typename boost::enable_if_c<
+        aux::has_as<aux::cnv<type_t> >::value,
+        bool
+    >::type cas(const std::string &key,
+                const type_t &data,
+                const opts_t &opts = opts_t())
+    {
+        typedef typename boost::remove_cv<type_t>::type bare_type_t;
+        return cas(key, aux::cnv<bare_type_t>::as(data), opts);
+    }
+
+    /** Call 'cas' command on appropriate memcache server. For more complex
+     * description see string version of this method.
+     *
+     * @param key key for data.
+     * @param data data to store.
+     * @param id cas identifier.
+     * @return true if value was set - cas identifier was valid.
+     */
+    template <typename type_t>
+    typename boost::enable_if_c<
+        aux::has_as<aux::cnv<type_t> >::value,
+        bool
+    >::type cas(const std::string &key,
+                const type_t &data,
+                uint64_t id)
+    {
+        typedef typename boost::remove_cv<type_t>::type bare_type_t;
+        return cas(key, aux::cnv<bare_type_t>::as(data), opts_t(0, 0, id));
+    }
 
 #endif // MCACHE_DISABLE_SERIALIZATION_API
 
