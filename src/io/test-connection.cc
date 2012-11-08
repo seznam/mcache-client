@@ -167,7 +167,6 @@ public:
         if (!response) throw response.exception();
         std::cout << "response = {" << std::endl
                   << "    status = " << response.code() << std::endl
-                  << "    flags = " << response.flags << std::endl
                   << "}" << std::endl;
         return false;
     }
@@ -299,7 +298,10 @@ int main(int argc, char **argv) {
                 cmd = split(boost::trim_copy(std::string(line)));
             ::add_history((cmd.first + cmd.second).c_str());
             if (dispatcher[cmd.first](connection, cmd.second)) break;
-        } catch (const std::exception &e) { std::cout << e.what() << std::endl;}
+        } catch (const std::exception &e) {
+            connection = mc::io::tcp::connection_t(dst, mc::io::opts_t());
+            std::cout << e.what() << std::endl;
+        }
         ::free(line);
     }
     ::write_history(histfile.c_str());

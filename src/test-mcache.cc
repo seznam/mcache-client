@@ -77,51 +77,51 @@ int main(int argc, char **argv) {
     mc::thread::client_t client(servers, pcfg, scfg);
 
     try {
-        //client.set("three", (char)3);
-        //client.set("three", (wchar_t)3);
-        //client.set("three", (unsigned wchar_t)3);
-        //client.set("three", (unsigned char)3);
-        //client.set("three", (signed int)3);
-        //client.set("three", (bool)3);
-        //client.set("three", (int8_t)3);
-        //client.set("three", (int16_t)3);
-        //client.set("three", (int32_t)3);
-        //client.set("three", (int64_t)3);
-        //client.set("three", (uint8_t)3);
-        //client.set("three", (uint16_t)3);
-        //client.set("three", (uint32_t)3);
-        //client.set("three", (uint64_t)3);
+        client.set("three", (char)3);
+        client.set("three", (wchar_t)3);
+        client.set("three", (unsigned wchar_t)3);
+        client.set("three", (unsigned char)3);
+        client.set("three", (signed int)3);
+        client.set("three", (bool)3);
+        client.set("three", (int8_t)3);
+        client.set("three", (int16_t)3);
+        client.set("three", (int32_t)3);
+        client.set("three", (int64_t)3);
+        client.set("three", (uint8_t)3);
+        client.set("three", (uint16_t)3);
+        client.set("three", (uint32_t)3);
+        client.set("three", (uint64_t)3);
 
-        //client.set("three", (unsigned long long int)3);
-        //client.set("three", (long long int)3);
+        client.set("three", (unsigned long long int)3);
+        client.set("three", (long long int)3);
 
-        //client.set("three", (float)3);
-        //client.set("three", (double)3);
-        //client.set("three", (long double)3);
+        client.set("three", (float)3);
+        client.set("three", (double)3);
+        client.set("three", (long double)3);
 
-        //fake_protobuf_t protobuf;
-        //protobuf.value = "three";
-        //client.set("three", protobuf);
-        //client.get("three").as<fake_protobuf_t>();
+        fake_protobuf_t protobuf;
+        protobuf.value = "three";
+        client.set("three", protobuf);
+        client.get("three").as<fake_protobuf_t>();
 
-        //client.get("three").as<std::string>();
+        client.get("three").as<std::string>();
 
-        //frpc_pool_t pool;
-        //frpc_value_t fvalue;
-        //client.set("three", fvalue);
-        //client.get("three").as<frpc_value_t>(pool);
+        frpc_pool_t pool;
+        frpc_value_t fvalue;
+        client.set("three", fvalue);
+        client.get("three").as<frpc_value_t>(pool);
 
-        ////bad_t bad;
-        ////client.set("three", bad);
+        //bad_t bad;
+        //client.set("three", bad);
 
-        //char x[3];
-        //client.set("three", x);
+        char x[3];
+        client.set("three", x);
 
-        //volatile int prdel = 3;
-        //client.set("three", prdel);
+        volatile int prdel = 3;
+        client.set("three", prdel);
 
-        //const int prdel1 = 3;
-        //client.set("three", prdel1);
+        const int prdel1 = 3;
+        client.set("three", prdel1);
 
         client.add("three", "3");
         client.add("tyhree", "3");

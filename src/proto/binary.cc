@@ -17,6 +17,7 @@
  */
 
 #include <endian.h>
+#include <boost/bind.hpp>
 #include <arpa/inet.h>
 #include <sstream>
 #include <map>
@@ -156,14 +157,15 @@ retrieve_command_t::deserialize_header(const std::string &header) const {
     // parse header && check protocol magic
     header_t hdr(header);
     if (hdr.magic != header_t::response_magic)
-        return response_t(resp::syntax, "bad magic in response");
+        return response_t(resp::unrecognized, "bad magic in response");
 
     // check response status
     if (!hdr.status) {
         // the response should have uint32_t flags in extras.
         if (hdr.extras_len != sizeof(uint32_t))
             return response_t(resp::invalid, "bad extras length");
-        return response_t(0, hdr.body_len, hdr.cas, set_body);
+        return response_t(0, hdr.body_len, hdr.cas,
+                          boost::bind(set_body, _1, _2, _3, hdr.key_len));
     }
     return response_t(translate_status_to_response(hdr.status), hdr.body_len);
 }
@@ -180,12 +182,13 @@ std::string retrieve_command_t::serialize(uint8_t code) const {
 
 void retrieve_command_t::set_body(uint32_t &flags,
                                   std::string &body,
-                                  const std::string &data)
+                                  const std::string &data,
+                                  uint16_t key_len)
 {
     std::copy(data.begin(), data.begin() + sizeof(flags),
               reinterpret_cast<char *>(&flags));
     flags = ntohl(flags);
-    body = data.substr(sizeof(flags));
+    body = data.substr(sizeof(flags) + key_len);
 }
 
 template <bool has_extras>
@@ -198,7 +201,7 @@ storage_command_t<has_extras>
     // parse header && check protocol magic
     header_t hdr(header);
     if (hdr.magic != header_t::response_magic)
-        return response_t(resp::syntax, "bad magic in response");
+        return response_t(resp::unrecognized, "bad magic in response");
 
     // check response status
     if (!hdr.status) return response_t(resp::stored);
@@ -254,7 +257,7 @@ incr_decr_command_t::deserialize_header(const std::string &header) const {
     // parse header && check protocol magic
     header_t hdr(header);
     if (hdr.magic != header_t::response_magic)
-        return response_t(resp::syntax, "bad magic in response");
+        return response_t(resp::unrecognized, "bad magic in response");
 
     // check status
     if (!hdr.status) {
@@ -304,7 +307,7 @@ delete_command_t::deserialize_header(const std::string &header) const {
     // parse header && check protocol magic
     header_t hdr(header);
     if (hdr.magic != header_t::response_magic)
-        return response_t(resp::syntax, "bad magic in response");
+        return response_t(resp::unrecognized, "bad magic in response");
 
     // check status
     if (!hdr.status) return response_t(resp::deleted);
@@ -332,7 +335,7 @@ touch_command_t::deserialize_header(const std::string &header) const {
     // parse header && check protocol magic
     header_t hdr(header);
     if (hdr.magic != header_t::response_magic)
-        return response_t(resp::syntax, "bad magic in response");
+        return response_t(resp::unrecognized, "bad magic in response");
 
     // check status
     if (!hdr.status)

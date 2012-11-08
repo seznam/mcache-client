@@ -43,7 +43,7 @@ libmcache_la_SOURCES = $(SRC)
 
 EXTRA_PROGRAMS = test-mcache test-pool test-consistent-hashing                 \
 		 test-server-proxy test-connections test-connection test-txt   \
-		 test-synchronization
+		 test-synchronization test-binary
 
 test_mcache_SOURCES = test-mcache.cc
 test_mcache_LDADD = libmcache.la @BOOST_SYSTEM@
@@ -69,8 +69,11 @@ test_txt_LDADD = libmcache.la @BOOST_SYSTEM@
 test_synchronization_SOURCES = test-synchronization.cc
 test_synchronization_LDADD = libmcache.la @BOOST_SYSTEM@
 
+test_binary_SOURCES = proto/test-binary.cc
+test_binary_LDADD = libmcache.la @BOOST_SYSTEM@
+
 AM_COLOR_TESTS = always
 
 TESTS = test-pool test-server-proxy test-connections test-txt                  \
-	test-synchronization
+	test-synchronization test-binary
 

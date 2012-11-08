@@ -56,6 +56,15 @@ parse_address(const std::string &addr) {
     return std::make_pair(parts[0], parts[1]);
 }
 
+#ifdef DEBUG
+/** Dumps buffer data and escape nonprinable characters.
+ */
+static std::string dump(const asio::streambuf &buf) {
+    std::string result(asio::buffer_cast<const char *>(buf.data()), buf.size());
+    return log::escape(result);
+}
+#endif
+
 } // namespace
 
 namespace udp {

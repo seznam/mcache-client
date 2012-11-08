@@ -259,21 +259,6 @@ public:
         }
     }
 
-    /** Call 'cas' command on appropriate memcache server. For more complex
-     * description see string version of this method.
-     *
-     * @param key key for data.
-     * @param data data to store.
-     * @param id cas identifier.
-     * @return true if value was set - cas identifier was valid.
-     */
-    bool cas(const std::string &key,
-             const std::string &data,
-             uint64_t id)
-    {
-        return cas(key, data, opts_t(0, 0, id));
-    }
-
     /** Call 'get' command on appropriate memcache server.
      * @param key key for data.
      * @return data for given key.
@@ -496,26 +481,6 @@ public:
     {
         typedef typename boost::remove_cv<type_t>::type bare_type_t;
         return cas(key, aux::cnv<bare_type_t>::as(data), opts);
-    }
-
-    /** Call 'cas' command on appropriate memcache server. For more complex
-     * description see string version of this method.
-     *
-     * @param key key for data.
-     * @param data data to store.
-     * @param id cas identifier.
-     * @return true if value was set - cas identifier was valid.
-     */
-    template <typename type_t>
-    typename boost::enable_if_c<
-        aux::has_as<aux::cnv<type_t> >::value,
-        bool
-    >::type cas(const std::string &key,
-                const type_t &data,
-                uint64_t id)
-    {
-        typedef typename boost::remove_cv<type_t>::type bare_type_t;
-        return cas(key, aux::cnv<bare_type_t>::as(data), opts_t(0, 0, id));
     }
 
 #endif // MCACHE_DISABLE_SERIALIZATION_API

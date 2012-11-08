@@ -281,7 +281,9 @@ bool get_command_found() {
     // execute command
     try {
         command_parser_t parser(connection);
-        if (!parser.send(command)) return false;
+        api::get_t::response_t response = parser.send(command);
+        if (!response) return false;
+        if (response.data() != "abc") return false;
     } catch (const std::exception &) { return false;}
     return connection.empty();
 }
@@ -317,7 +319,10 @@ bool get_command_gets() {
     // execute command
     try {
         command_parser_t parser(connection);
-        if (parser.send(command).cas != 333) return false;
+        api::get_t::response_t response = parser.send(command);
+        if (!response) return false;
+        if (response.data() != "abc") return false;
+        if (response.cas != 333) return false;
     } catch (const std::exception &) { return false;}
     return connection.empty();
 }

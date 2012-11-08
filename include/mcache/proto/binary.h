@@ -75,7 +75,8 @@ public:
      */
     static void set_body(uint32_t &flags,
                          std::string &body,
-                         const std::string &data);
+                         const std::string &data,
+                         uint16_t key_len);
 
     const std::string key; //!< for which key data should be retrieved
 
@@ -94,7 +95,7 @@ public:
      */
     storage_command_t(const std::string &key,
                       const std::string &data,
-                      const opts_t &opts)
+                      const opts_t &opts = opts_t())
         : command_t(static_cast <uint16_t>(key.size()),
                     static_cast <uint32_t>(key.size() + data.size()
                                            + (has_extras? extras_length: 0)),

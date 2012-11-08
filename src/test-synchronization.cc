@@ -25,6 +25,7 @@
 #include <sys/wait.h>
 
 #include <mcache/lock.h>
+#include <mcache/init.h>
 #include <mcache/error.h>
 #include <mcache/io/error.h>
 #include <mcache/server-proxy.h>
@@ -195,6 +196,7 @@ public:
 } // namespace test
 
 int main(int, char **) {
+    mc::init();
     test::Checker_t check;
     check(test::sharing_dead_server_thread());
     check(test::sharing_lock_thread());
