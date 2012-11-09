@@ -20,6 +20,7 @@
 
 #include <string>
 #include <vector>
+#include <limits>
 #include <iterator>
 #include <algorithm>
 #include <boost/noncopyable.hpp>
@@ -94,6 +95,18 @@ template <> std::string result_t::as<std::string>() const { return data;}
 
 #endif // MCACHE_DISABLE_SERIALIZATION_API
 
+/** Configuration of the client class.
+ */
+class client_config_t {
+public:
+    client_config_t(uint32_t max_continues = 3, int64_t h404_duration = 300)
+        : max_continues(max_continues), h404_duration(h404_duration)
+    {}
+
+    const uint32_t max_continues; //!< max continues in client loop
+    const int64_t h404_duration;  //!< duration limit for handlig 404 for get
+};
+
 /** Template of class for memcache clients.
  */
 template <
@@ -104,11 +117,31 @@ template <
 public:
     /** C'tor.
      */
-    template <typename pool_config_t, typename server_proxy_config_t>
     client_template_t(const std::vector<std::string> &addresses,
+                      const client_config_t ccfg = client_config_t())
+        : pool(addresses), proxies(addresses),
+          max_continues(ccfg.max_continues), h404_duration(ccfg.h404_duration)
+    {}
+
+    /** C'tor.
+     */
+    template <typename server_proxy_config_t>
+    client_template_t(const std::vector<std::string> &addresses,
+                      const server_proxy_config_t &scfg,
+                      const client_config_t ccfg = client_config_t())
+        : pool(addresses), proxies(addresses, scfg),
+          max_continues(ccfg.max_continues), h404_duration(ccfg.h404_duration)
+    {}
+
+    /** C'tor.
+     */
+    template <typename server_proxy_config_t, typename pool_config_t>
+    client_template_t(const std::vector<std::string> &addresses,
+                      const server_proxy_config_t &scfg,
                       const pool_config_t &pcfg,
-                      const server_proxy_config_t &scfg)
-        : pool(addresses, pcfg), proxies(addresses, scfg)
+                      const client_config_t ccfg = client_config_t())
+        : pool(addresses, pcfg), proxies(addresses, scfg),
+          max_continues(ccfg.max_continues), h404_duration(ccfg.h404_duration)
     {}
 
     ///////////////////// STANDARD MEMCACHE CLIENT API ////////////////////////
@@ -249,6 +282,7 @@ public:
              const std::string &data,
              const opts_t &opts)
     {
+        if (!opts.cas) throw error_t(err::bad_argument, "invalid cas");
         typename impl::cas_t::response_t
             response = run(typename impl::cas_t(key, data, opts));
         switch (response.code()) {
@@ -265,7 +299,7 @@ public:
      */
     result_t get(const std::string &key) {
         typename impl::get_t::response_t
-            response = run(typename impl::get_t(key));
+            response = run(typename impl::get_t(key), true);
         switch (response.code()) {
         case proto::resp::ok:
             return result_t(response.data(), response.flags);
@@ -280,7 +314,7 @@ public:
      */
     result_t gets(const std::string &key) {
         typename impl::gets_t::response_t
-            response = run(typename impl::gets_t(key));
+            response = run(typename impl::gets_t(key), true);
         switch (response.code()) {
         case proto::resp::ok:
             return result_t(response.data(), response.flags, response.cas);
@@ -504,39 +538,53 @@ protected:
      * @return memcache server response.
      */
     template <typename command_t>
-    typename command_t::response_t run(const command_t &command) {
+    typename command_t::response_t
+    run(const command_t &command, bool h404 = false) {
+        // we will never have this count of servers
+        typename pool_t::value_type
+            prev = std::numeric_limits<typename pool_t::value_type>::max();
+        // count of consequently continues
+        uint32_t conts = 0;
+
+        // find callable server for given key
         for (typename pool_t::const_iterator
                 iidx = pool.choose(command.key),
                 eidx = pool.end();
-                iidx != eidx; ++iidx)
+                (iidx != eidx) && (conts < max_continues); ++iidx)
         {
-            // TODO(burlog): iterator should not return two same values
-            // TODO(burlog): consecutively
+            // skip previous key
+            if (*iidx == prev) continue;
+            prev = *iidx;
 
-            std::cout << command.key << ": " << *iidx << std::endl;
             // check if choosed server node is dead
             typedef typename server_proxies_t::server_proxy_t server_proxy_t;
             server_proxy_t &server = proxies[*iidx];
-            if (!server.callable()) continue;
+            if (server.callable()) {
+                // send command to server and wait till response arrive
+                typename command_t::response_t response = server.send(command);
+                switch (response.code()) {
+                case proto::resp::io_error: break;
+                case proto::resp::not_found:
+                    // if we got 404 for get command and we ask first server in
+                    // the consistent hash ring and server have been recently
+                    // restored so we can ask neighbour server for the data...
+                    if (h404 && !conts && (server.lifespan() < h404_duration))
+                        break;
+                    // pass
+                default: return response;
+                }
+            }
 
-            // TODO(burlog): max continue
-
-            // send command to server and wait till response arrive
-            typename command_t::response_t response = server.send(command);
-            // TODO(burlog): consistent hashing pool distribute keys after fail
-            // TODO(burlog): so we can handle 404 as one `continue'
-            // TODO(burlog): maybe solo fallback function will look better
-            // TODO(burlog): if (404) fallback_get(++iidx);
-            // TODO(burlog): continue for 404 only if server is fresh live?
-            // TODO(burlog): and for get and gets commands
-            if (response.code() == proto::resp::io_error) continue;
-            return response;
+            // can't be in for statement due to "skip previous key" continue
+            ++conts;
         }
         throw error_t(err::internal_error, "out of servers");
     }
 
-    pool_t pool;              //!< idxs that represents key distribution
-    server_proxies_t proxies; //!< i/o objects for memcache servers
+    pool_t pool;                  //!< idxs that represents key distribution
+    server_proxies_t proxies;     //!< i/o objects for memcache servers
+    const uint32_t max_continues; //!< max continues in client loop
+    const int64_t h404_duration;  //!< duration limit for handlig 404 for get
 };
 
 } // namespace mc

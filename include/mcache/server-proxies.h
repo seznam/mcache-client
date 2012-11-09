@@ -141,12 +141,14 @@ public:
     typedef server_proxy_type server_proxy_t;
     // publish server proxy iterator
     typedef const server_proxy_t *const_iterator;
+    // publish server proxy type
+    typedef typename server_proxy_t::server_proxy_config_type
+            server_proxy_config_t;
 
     /** C'tor.
      */
-    template <typename server_proxy_config_t>
     server_proxies_t(const std::vector<std::string> &addresses,
-                     const server_proxy_config_t &cfg)
+                     const server_proxy_config_t &cfg = server_proxy_config_t())
         : shared(addresses.size()), proxies(addresses.size()),
           count(addresses.size())
     {

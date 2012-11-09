@@ -22,7 +22,6 @@
 #include <algorithm>
 #include <boost/lambda/lambda.hpp>
 
-#define MCACHE_DISABLE_SERIALIZATION_API
 #include <mcache/mcache.h>
 
 class fake_protobuf_t {
@@ -72,11 +71,10 @@ int main(int argc, char **argv) {
     std::copy(argv + 1, argv + argc, std::back_inserter(servers));
 
     // client
-    mc::thread::pool_config_t pcfg;
-    mc::thread::server_proxy_config_t scfg;
-    mc::thread::client_t client(servers, pcfg, scfg);
+    mc::thread::client_t client(servers);
 
     try {
+
         client.set("three", (char)3);
         client.set("three", (wchar_t)3);
         client.set("three", (unsigned wchar_t)3);
@@ -114,7 +112,7 @@ int main(int argc, char **argv) {
         //bad_t bad;
         //client.set("three", bad);
 
-        char x[3];
+        char x[3] = {'b', 'b', '\0'};
         client.set("three", x);
 
         volatile int prdel = 3;
@@ -132,10 +130,10 @@ int main(int argc, char **argv) {
         client.append("txhree", "3");
 
         mc::result_t res = client.gets("three");
-        client.cas("txhree", "3", res.cas);
-        client.cas("three", "3", res.cas);
+        client.del("txhree");
+        client.cas("txhree", "3", mc::opts_t(0, 0, res.cas));
         try {
-            client.cas("three", "3", res.cas - 1);
+            client.cas("three", "3", mc::opts_t(0, 0, res.cas - 1));
             throw 3;
         } catch (const mc::proto::error_t &e) {
             if (e.code() != mc::proto::resp::exists) throw;

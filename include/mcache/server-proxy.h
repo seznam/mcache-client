@@ -80,6 +80,7 @@ public:
     // shortcuts
     typedef typename connections_t::connection_ptr_t connection_ptr_t;
     typedef typename connection_ptr_t::value_type connection_t;
+    typedef server_proxy_config_t server_proxy_config_type;
 
     /** Shared data with other threads/processes.
      */
@@ -130,6 +131,14 @@ public:
         aux::log_server_raise_zombie(connections.server_name(),
                                      restoration_interval);
         return true;
+    }
+
+    /** Returns time duration since last dead mark.
+     */
+    time_t lifespan() const {
+        time_t now = ::time(0x0);
+        if (!shared->restoration) return now;
+        return std::max(now - (shared->restoration - restoration_interval), 0l);
     }
 
     /** Call command on server and process server connection errors.

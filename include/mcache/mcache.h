@@ -33,8 +33,9 @@ namespace mc {
 namespace thread {
 
 // configuration classes
-typedef mc::consistent_hashing_pool_config_t pool_config_t;
 typedef mc::server_proxy_config_t server_proxy_config_t;
+typedef mc::consistent_hashing_pool_config_t pool_config_t;
+typedef mc::client_config_t client_config_t;
 
 // defines types for client template
 using proto::bin::api;
@@ -51,8 +52,9 @@ typedef mc::client_template_t<pool_t, server_proxies_t, api> client_t;
 namespace ipc {
 
 // configuration classes
-typedef mc::consistent_hashing_pool_config_t pool_config_t;
 typedef mc::server_proxy_config_t server_proxy_config_t;
+typedef mc::consistent_hashing_pool_config_t pool_config_t;
+typedef mc::client_config_t client_config_t;
 
 // defines types for client template
 using proto::bin::api;
