@@ -1,0 +1,437 @@
+/**
+
+        \mainpage Klient pro memcached server
+
+#Kompilátor Google protobuferů
+#http://code.google.com/intl/cs-CZ/apis/protocolbuffers/docs/overview.html
+#podporuje pluginy. Čehož využívá utilita p2f, která dokáže automaticky generovat
+#konvertory z protobuferu do FastRPC struktur a zpět přímo z .proto souborů.
+#Není tedy třeba tuto konverzi psát, ani se starat o update rozhraní, pokud
+#změníte .proto soubor. Psaní metod na rozhraní se tedy smrskne například do:
+#
+#\code
+##include "person.pb.h"
+##include "person.protobuf2fastrpc.h"
+##include "person.fastrpc2protobuf.h"
+#
+#FRPC::Value_t &user_listPersons(FRPC::Pool_t &pool, FRPC::Array_t &params) {
+#    uint64_t uid = FRPC::Int(params[0]);
+#    return MetaServer::FastRPC::OK(pool)
+#           .append("persons", p2f::make_array(pool, core.getUser(uid).persons()));
+#
+#}
+#
+#FRPC::Value_t &user_person_getAttributes(FRPC::Pool_t &pool, FRPC::Array_t &params) {
+#    uint64_t uid = FRPC::Int(params[0]);
+#    uint32_t id = FRPC::Int(params[1]);
+#    return MetaServer::FastRPC::OK(pool)
+#           .append("person", p2f::make_value(pool, core.getUser(uid).persons().get(id)));
+#}
+#
+#FRPC::Value_t &user_person_setAttributes(FRPC::Pool_t &pool, FRPC::Array_t &params) {
+#    uint64_t uid = FRPC::Int(params[0]);
+#    uint32_t id = FRPC::Int(params[1]);
+#    Person_t person = core.getUser(uid).persons().get(id);
+#    f2p::fill_value(FRPC::Struct(params[2]), person);
+#    core.getUser(uid).persons().set(id, person);
+#    return MetaServer::FastRPC::OK(pool);
+#}
+#\endcode
+#
+#Dokonce v nynější generické impementaci konvertorů pro C++ ani není potřeba, aby
+#konvertované objekty byly protobufery, úplně stačí když budou mít některé části
+#jejich rozhraní, které si jistě zvídavý čtenář v případě potřeby zjistí sám :).
+#
+#\section sec-teng P2F protoc plugin
+#
+#Pluginy kompilátoru protoc se nastavují pomocí parametru --xxx_out na příkazové
+#řádce, kde xxx je název pluginu. Plugin jako takový, hledá protoc jako
+#spustitelný soubor v cestách specifikovaných proměnou $PATH, a to s názvem
+#protoc-gen-xxx.
+#
+#Pro p2f plugin pak vypadá příkaz takto
+#
+#\code
+#protoc -I/usr/include -I/usr/local/include --p2f_out=/tmp/ test.proto
+#\endcode
+#
+#a nebo takto:
+#
+#\code
+#protoc -I/usr/include -I/usr/local/include
+#    --plugin=protoc-gen-p2f=/path/to/protoc-gen-p2f --p2f_out=/tmp/ test.proto
+#\endcode
+#
+#v případě, že p2f je naistalováno někde lokálně.
+#
+#Nakonec také můžete spouštět p2f plugin najednou s cpp pluginem:
+#\code
+#protoc -I/usr/include -I/usr/local/include
+#    --plugin=protoc-gen-p2f=/path/to/protoc-gen-p2f
+#    --cpp_out=/tmp/ --p2f_out=/tmp/ test.proto
+#\endcode
+#
+#P2F plugin pro protoc kompilátor nemusí jen generovat C++ konvertory, ale
+#cokoliv co koho napadne. Tento plugin totiž nedělá nic jiného než, že vezme
+#některá dostupná data o popisovaných objektech a nasype je do Tengu, pomocí
+#kterého se vygenerují naspecifikované šablony. Není tedy problém si napsat
+#vlastní šablonu a jednoduše ji použít.
+#
+#Zkrácený výpis dat z Teng debugu pro testovací .proto soubor \ref test-proto
+#následuje:
+#
+#\code
+#name: "TEST_PROTO"
+#namespace: "test"
+#
+#message[0]:
+#    name: "Test_t"
+#    nested: "0"
+#    enum[0]:
+#        name: "Corpus_t"
+#        value[0]:
+#            name: "IMAGES"
+#            name_lower: "images"
+#            number: "2"
+#
+#    field[0]:
+#        label: "optional"
+#        mutable: "1"
+#        name: "test"
+#        name_lower: "test"
+#        null_f2p: "0"
+#        null_p2f: "0"
+#        required_f2p: "1"
+#        required_p2f: "1"
+#        type: "std::string"
+#        type_cpp: "std::string"
+#        type_name: ""
+#
+#    message[1]:
+#        name: "SubTest_t"
+#        nested: "1"
+#        field[0]:
+#            label: "optional"
+#            mutable: "0"
+#            name: "unixtime"
+#            name_lower: "unixtime"
+#            null_f2p: "0"
+#            null_p2f: "0"
+#            required_f2p: "0"
+#            required_p2f: "0"
+#            type: "unixtime"
+#            type_cpp: "int64_t"
+#            type_name: ""
+#
+#message[1]:
+#    name: "Test_t_SubTest_t"
+#    nested: "1"
+#    field[0]:
+#        label: "optional"
+#        mutable: "0"
+#        name: "unixtime"
+#        name_lower: "unixtime"
+#        null_f2p: "0"
+#        null_p2f: "0"
+#        required_f2p: "0"
+#        required_p2f: "0"
+#        type: "unixtime"
+#        type_cpp: "int64_t"
+#        type_name: ""
+#
+#package[0]:
+#    name: "test"
+#\endcode
+#
+#Hlavním fragmentem je message frag, odpovídající stejně pojmenovanému
+#protobuferu. Message fragy mohou být zanořené, jak ukazuje i příklad, ale
+#zaroveň se každá, jakkoliv zanořená message, objeví v rootu se jménem prefixnutým
+#obalovanou message a nastaveným flagem nested na 1.
+#
+#Každá message se skládá z field fragů, které obsahují data o jednotlivých
+#atributech message, podrobnější popis je ponechán na konzultaci s kódem či
+#autorem.
+#
+#Pro každý výčtový typ je generován frag enum s fragy value popisující jednotlivé
+#hodnoty tohoto typu.
+#
+#Nakonec je generovanán frag package pro každou část definované package v .proto
+#souboru.
+#
+#P2F plugin a teng v něm se dá konfigurovat pomocí parametrů, které jsou asi
+#dostatečně popisné a předávají se takto:
+#
+#\code
+#protoc -I/usr/include -I/usr/local/include
+#    --p2f_out=teng-root=/path/to/teng/root/,teng-conf=/path/to/teng.conf,template=templ1.h,template=templ2.h:/tmp/
+#    test.proto
+#\endcode
+#
+#\section sec-default-cpp Defaultní C++ šablony s konvertory
+#
+#V případě, že nespecifikujete vlastní šablony, použijí se standardní, a to
+#fastrpc2protobuf.h a protobuf2fastrpc.h. Pro tyto jsou vygenerovány soubory
+#xxx.fastrpc2protobuf.h a xxx.protobuf2fastrpc.h(xxx je název proto souboru),
+#které obsahují konvertory pro veškeré message definované v daném souboru. První
+#tedy co je potřeba, je includovat tyto soubory:
+#
+#\code
+##include "test.protobuf2fastrpc.h"
+##include "test.fastrpc2protobuf.h"
+#\endcode
+#
+#Vygenerovaný konvertor se jmenuje stejně jako daná message v proto souboru a je
+#zanořen do namespace p2f resp. f2p a tento je v namespace definovaném v proto
+#souboru pomocí "package". Jeho použití je pomot velmi jednoduché:
+#
+#\code
+#int main(int argc, char *argv[]) {
+#    FRPC::Pool_t pool;
+#    test::Test_t t;
+#
+#    // konverze z protobuf objektu do fastrpc
+#    FRPC::Value_t &value = p2f::make_value(pool, t, test::p2f::Test_t());
+#    FRPC::printValue(value);
+#
+#    // konverze z fastrpc do protobuf objektu
+#    test::Test_t tt;
+#    f2p::fill_value(value, tt, test::f2p::Test_t());
+#}
+#\endcode
+#
+#V případě, že vám postačují čistě vygenerované konvertory, pak lze zápis ještě o
+#něco zkrátit:
+#
+#\code
+#int main(int argc, char *argv[]) {
+#    FRPC::Pool_t pool;
+#    test::Test_t t;
+#
+#    // konverze z protobuf objektu do fastrpc
+#    FRPC::Value_t &value = p2f::make_value(pool, t);
+#    FRPC::printValue(value);
+#
+#    // konverze z fastrpc do protobuf objektu
+#    test::Test_t tt;
+#    f2p::fill_value(value, tt);
+#}
+#\endcode
+#
+#Kromě převodu vlastních hodnot, lze také převádět pole těchto objektů, a to
+#třeba takto:
+#
+#\code
+#int main(int argc, char *argv[]) {
+#    FRPC::Pool_t pool;
+#    std::vector<test::Test_t> t;
+#
+#    // konverze z protobuf objektu do fastrpc
+#    FRPC::Value_t &value = p2f::make_array(pool, t);
+#    FRPC::printValue(value);
+#
+#    // konverze z fastrpc do protobuf objektu
+#    std::vector<test::Test_t> tt;
+#    f2p::fill_array(value, tt);
+#}
+#\endcode
+#
+#Funkcím make_array a fill_array lze podobně jako u make_value resp. fill_value
+#předat vlastní konvertory.
+#
+#Při převodu čísel se zkontrolují meze, a pokud přesahují rozsah, který daný typ
+#pojme, pak je vyhozena vyjímka FRPC::TypeError_t (FastRPC zná jen int64_t
+#čísla...).
+#
+#\code
+#    int32_t x = f2p::number_cast<int32_t>(FRPC::Int(X));
+#\endcode
+#
+#\subsection sec-sub-custom-conv Vlastní konvertory
+#
+#Pokud vám z nějakého důvodu vygenerovaný kovnertor nevyhovuje, lze jeho
+#schopnosti změnit resp. rozšířit tak, že vlastní volání zabalíte do svého
+#konvertoru. Pro konverzi z protobuferu do fastrpc takto:
+#
+#\dontinclude test.cc
+#\skip class CustomConv_t
+#\until };
+#
+#a pro konverzi z fastrpc do protobuferu takto:
+#
+#\skip class CustomConv_t
+#\until };
+#
+#V tomto případě je dobré schovat daný atribut před p2f pluginem pomocí parametru
+#hidden (viz. \ref sec-sub-param) přidaného do proto souboru:
+#
+#\anchor hidden
+#\dontinclude test.proto
+#\skip custom
+#\until ;
+#
+#Jejich použití je pak obdobné:
+#
+#\code
+#int main(int argc, char *argv[]) {
+#    FRPC::Pool_t pool;
+#    std::vector<test::Test_t> t;
+#
+#    // konverze z protobuf objektu do fastrpc
+#    FRPC::Value_t &value = p2f::make_array(pool, t, test::p2f::CustomConv_t());
+#    FRPC::printValue(value);
+#
+#    // konverze z fastrpc do protobuf objektu
+#    std::vector<test::Test_t> tt;
+#    f2p::fill_array(value, tt, test::f2p::CustomConv_t());
+#}
+#\endcode
+#
+#Pokud se vám nehodí ani celý kovenvertor, pak z něj lze použít pouze kousky pro
+#každý atribut dané message.
+#
+#\code
+#template <typename ProtoBuf_t> inline
+#ProtoBuf_t &operator()(const FRPC::Value_t &params, ProtoBuf_t &p) const {
+#    f2p::Test_t cnvt;
+#    cnvt.convert_xyz(params, p);
+#    cnvt.convert_abc(params, p);
+#    cnvt.convert_tuw(params, p);
+#    return p;
+#}
+#\endcode
+#
+#\subsection sec-sub-enum Výčtové typy
+#
+#Pro každý výčtový typ je vygenerována převodní "tabulka" z číslené reprezentace na
+#string odpovídající jeho názvu převedého na malá písmena. Tyto tabulky jsou pak
+#využívány pro převod hodnot na fastrpc rozhraní. Tedy atribut takovéhoto
+#výčtového typu:
+#
+#\dontinclude test.proto
+#\skip Corpus_t
+#\until }
+#
+#bude na rozhraní vypadat takto:
+#
+#\code
+#{
+#    "corpus": "web",
+#    "corpuses": ("web", "universal", "local"),
+#}
+#\endcode
+#
+#\subsection sec-sub-param Parametry atributů
+#
+#Ve FastRPC je vice hodnot, které protobufery neumí, předně null, binary a
+#datetime. Podpora pro ně je realizována pomocí parametrů atributů v .proto
+#souboru resp. rozšířením standardních parametrů. Proto je také potřeba, pokud je
+#chcete využívat importnout p2f.proto pomocí direktivi import:
+#
+#\code
+#import "p2f.proto"
+#
+#package test;
+#
+#message Test_t {
+#...
+#}
+#\endcode
+#
+#Podporovány jsou tyto atributy:
+#
+#- binary - na fastrpc rozhraní se s atributem zachází jako s FRPC::Binary_t,
+#  vhodný protobuf typ je bytes
+#- null_p2f - povoluje null pri konverzi z protobuf do fastrpc,
+#- null_f2p - povoluje null pri konverzi z fastrpc do protobuf,
+#- null - povoluje null oboustraně,
+#- hidden - plugin tento atribut ignoruje (nedavá se ani do tengu),
+#- required_p2f - pri konverzi z protobuf do fastrpc je tento atribut poviný,
+#- required_f2p - pri konverzi z fastrpc do protobuf je tento atribut poviný,
+#- required - atribut je poviný,
+#- unixtime - na fastrpc rozhraní se s atributem zachází jako s FRPC::DateTime_t,
+#  a do protobuferu je ukládán jako timestamp - je tedy vhodné pro takový atribut
+#  zvolit vhodný protobuf typ, jako je například int64,
+#- datetime - na fastrpc rozhraní se s atributem zachází jako s FRPC::DateTime_t
+#  a do protobuferu je ukládán ošklivým reinterpret_castem z
+#  boost::posix_time::ptime
+#  (http://www.boost.org/doc/libs/1_45_0/doc/html/date_time.html) je proto nutné
+#  zvolit protobuf typ, který je veliký alespoň 8 bytů. Zároveň je potřeba k
+#  tomuto atributu přistupovat přes zpětný reinterpret_cast na
+#  boost::posix_time::ptime.
+#
+#Syntaxe jejich zápisu do proto souboru byla vidět na parametru hidden \ref
+#hidden.
+#
+#\subsection sec-sub-compile Překlad
+#
+#Přestože se jedná čistě o háčka, je potřeba vzhledem k rozšíření defaultních
+#parametrů, s vaším projektem slinkovat knihovnu libp2f.so. Lze to například
+#udělat pomocí PKG_CONFIG makra do configure.in.
+#
+#\code
+## check for fastrpc
+#AC_LANG_CPLUSPLUS
+#PKG_CHECK_MODULES([LIBP2F], [libp2f >= 1.1.0])
+#\endcode
+#
+#\section sec-other Další šablony?
+#
+#Je snad libo generovat xmlrpc.help nebo něco jiného? Fantazii se meze nekladou a generovat lze
+#prakticky cokoliv, mimo xmlrpc.helpu lze tak například napsat specializaci
+#šablony operatorů >>, používaných v SQLWrapperu a ušetřit si tak trochu psaní:
+#
+#\code
+#namespace SqlWrapper {
+#<?teng frag message?>
+#template <> inline
+#RowStream_t operator>><${name}>(RowStream_t rs, ${name} &obj) {
+#    rs
+#    <?teng frag field?>
+#       >> obj.${name}
+#    <?teng endfrag?>;
+#    return rs;
+#}
+#<?teng endfrag?>
+#} // namespace SQLWrapper
+#...
+#    SqlWrapper::DBResult_t result(core::db);
+#    for (size_t i = result.size(); i; --i) {
+#        Rule_t rule;
+#        result >> rule;
+#        do_something_with_rule(rule);
+#    }
+#...
+#}
+#\endcode
+#
+#Vyzkoušené nové šablony jsou vítány :).
+#
+#\section sec-ins Vkladání kódu do insertion_points
+#
+#Soubory pb.cc a pb.h obsahují na různých místech tzv. vkládací body, kde může
+#plugin vložit nějaký kód. Balíček p2f obsahuje plugin protoc-gen-ins, který umí
+#na tyto místa vkládat kód a lze ho ovládat přes jeho parametry.
+#
+#\dontinclude Makefile.am
+#\skip ins_params
+#\until $<
+#
+#Uvedený příklad říká, že se budou pluginem protoc-gen-ins pouze soubory
+#*.pb.cc, což způsobí zadání parametrů ext. Za druhé na každý insertion point
+#"includes" se vloží uvedený include. Insertion points je více druhů, např.
+#include, namespace_scope, global_scope, ... (Více viz. *.pb.* soubory.)
+#
+#\section sec-example Přiklad
+#
+#Zdrojový proto soubor.
+#
+#\anchor test-proto
+#\includelineno test.proto
+#
+#A k němu patřící testovací soubor, který zkouší různé možnosti převodů. Oboje
+#lze nalézt v adresáři test.
+#
+#\anchor test-cc
+#\includelineno test.cc
+
+*/

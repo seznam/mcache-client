@@ -14,7 +14,7 @@
 #       2012-09-16 (bukovsky)
 #                  First version
 
-SUBDIRS = src                                                                  \
+SUBDIRS = src doc                                                              \
           include/mcache/pool                                                  \
 	  include/mcache/hash                                                  \
 	  include/mcache/io                                                    \
@@ -23,4 +23,7 @@ SUBDIRS = src                                                                  \
 
 pkgconfigdir = @libdir@/pkgconfig
 pkgconfig_DATA = libmcache.pc
+
+doxygen:
+	$(MAKE) --directory=doc doxygen-doc
 
