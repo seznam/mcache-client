@@ -29,7 +29,7 @@ namespace io {
 namespace tcp {
 
 /** I/O object that holds one tcp socket to memcache server and provides
- * interface for sending messages to them.
+ * interface for sending and retrieving messages to/from them.
  */
 class connection_t {
 public:
@@ -64,10 +64,45 @@ protected:
 
 namespace udp {
 
-// TODO(burlog): add support for udp protocol
+/** I/O object that holds one udp socket to memcache server and provides
+ * interface for sending and retrieving messages to/from them.
+ */
+class connection_t {
+public:
+    /** C'tor.
+     */
+    connection_t(const std::string &addr, opts_t opts);
+
+    /** Sends all data to server.
+     */
+    void write(const std::string &data);
+
+    /** Reads data till delimiter and returns it.
+     */
+    std::string read(const std::string &delimiter);
+
+    /** Reads bytes count data and returns it.
+     */
+    std::string read(std::size_t bytes);
+
+protected:
+    /** Fill buffer from datagrams.
+     */
+    void fill();
+
+    /** Pimple class.
+     */
+    class pimple_connection_t;
+
+    // shortcut
+    typedef boost::shared_ptr<pimple_connection_t> pimple_connection_ptr_t;
+
+    pimple_connection_ptr_t socket; //!< hides i/o implementation
+    std::string buffer;             //!< buffer for incoming dat
+    uint16_t id;                    //!< dgram identifier
+};
 
 } // namespace udp
-
 } // namespace io
 } // namespace mc
 
