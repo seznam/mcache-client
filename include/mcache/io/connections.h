@@ -78,8 +78,7 @@ protected:
     opts_t opts;      //!< io options
 };
 
-/** Cripled pool of connections with single connection. If someone ask for
- * second connection the exception is raised. It is not suitable for
+/** Cripled pool of connections with single connection. It is not suitable for
  * interthread usage.
  */
 template <typename connection_t>
@@ -92,7 +91,7 @@ public:
      */
     explicit inline
     single_connection_pool_t(const std::string &addr, opts_t opts)
-        : addr(addr), opts(opts), empty(true), connection()
+        : addr(addr), opts(opts), connection()
     {}
 
     /** Removes connection from pool or creates new one and gives it to caller.
@@ -100,11 +99,7 @@ public:
      * soon as he stops using it.
      */
     connection_ptr_t pick() {
-        if (!connection) {
-            if (!empty) throw error_t(err::internal_error, "pool exhausted");
-            empty = false;
-            return boost::make_shared<connection_t>(addr, opts);
-        }
+        if (!connection) return boost::make_shared<connection_t>(addr, opts);
         connection_ptr_t tmp = connection;
         connection.reset();
         return tmp;
@@ -124,10 +119,7 @@ public:
 
     /** Destroy held connection.
      */
-    void clear() {
-        empty = false;
-        connection.reset();
-    }
+    void clear() { connection.reset();}
 
     /** Returns server address.
      */
@@ -136,7 +128,6 @@ public:
 protected:
     std::string addr;            //!< destination address
     opts_t opts;                 //!< io options
-    bool empty;                  //!< true if pool is "empty"
     connection_ptr_t connection; //!< current connection
 };
 

@@ -40,7 +40,8 @@ void log_server_raise_zombie(const std::string &srv, time_t restoration);
  */
 void log_server_is_dead(const std::string &srv,
                         uint32_t fail_limit,
-                        time_t restoration);
+                        time_t restoration,
+                        const std::string &reason);
 
 /** Composes string with info about current server proxy state.
  */
@@ -159,7 +160,7 @@ public:
 
             // if command does not understand repsonse then does not return the
             // connection to pool (the connection will be closed)
-            if (response.code() >= proto::resp::error)
+            if (response.code() < proto::resp::error)
                 connections.push_back(connection);
             return response;
 
@@ -173,7 +174,8 @@ public:
                     shared->dead = true;
                     aux::log_server_is_dead(connections.server_name(),
                                             fail_limit,
-                                            restoration_interval);
+                                            restoration_interval,
+                                            e.what());
                 }
             }
             return response_t(proto::resp::io_error,

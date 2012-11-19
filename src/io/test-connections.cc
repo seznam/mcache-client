@@ -110,20 +110,19 @@ bool connections_capacity() {
     return false;
 }
 
-bool single_connection_throw() {
+bool single_connection_multi_get() {
     std::cout << __PRETTY_FUNCTION__ << ": ";
 
     try {
         typedef s_connections_t connections_t;
         connections_t connections("localhost:11211", mc::io::opts_t());
+        connections_t::connection_ptr_t ptr = connections.pick();
         connections.pick();
-        try {
-            connections.pick();
-        } catch (const mc::io::error_t &e) {
-            if (e.code() == mc::io::err::internal_error) return true;
-        }
+        connections.push_back(ptr);
+        connections.pick();
+        return true;
 
-    } catch (const std::exception &) {}
+    } catch (const std::exception &e) { std::cerr << e.what() << std::endl;}
     return false;
 }
 
@@ -154,7 +153,7 @@ int main(int, char **) {
     check(test::connections_get<test::l_connections_t>());
     check(test::connections_capacity<test::tbb_connections_t>());
     check(test::connections_capacity<test::l_connections_t>());
-    check(test::single_connection_throw());
+    check(test::single_connection_multi_get());
     return check.fails;
 }
 
