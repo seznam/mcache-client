@@ -18,4 +18,4 @@
 includedir = @includedir@/mcache
 
 include_HEADERS = client.h error.h hash.h init.h lock.h logger.h mcache.h      \
-		  server-proxies.h server-proxy.h
+		  server-proxies.h server-proxy.h conversion.h has-member.h

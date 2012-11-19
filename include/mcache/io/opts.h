@@ -46,7 +46,7 @@ public:
 
     /** C'tor.
      */
-    opts_t(): timeouts(), max_connections_in_pool() {}
+    opts_t(): timeouts(), max_connections_in_pool(30) {}
 
     /** C'tor.
      */
