@@ -103,8 +103,8 @@ public:
         : max_continues(max_continues), h404_duration(h404_duration)
     {}
 
-    const uint32_t max_continues; //!< max continues in client loop
-    const int64_t h404_duration;  //!< duration limit for handlig 404 for get
+    uint32_t max_continues; //!< max continues in client loop
+    int64_t h404_duration;  //!< duration limit for handlig 404 for get
 };
 
 /** Template of class for memcache clients.

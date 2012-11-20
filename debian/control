@@ -2,12 +2,19 @@ Source: szn-libmcache
 Priority: extra
 Maintainer: Michal Bukovsky <michal.bukovsky@firma.seznam.cz>
 Build-Depends: debhelper (>= 7.0.50), autotools-dev, pkg-config,
-               libboost1.50-dev, dh-autoreconf, git
+               libboost1.50-dev, dh-autoreconf, git, python-support (>= 0.6),
+               python-all-dev
 Standards-Version: 3.8.4
-
 
 Package: szn-libmcache-dev
 Section: libdevel
 Architecture: any
-Description: libmcache
+Description:
  Memcache client library.
+
+Package: szn-libmcache-python
+Architecture: all
+XB-Python-Version: ${python:Versions}
+Depends: ${misc:Depends}, ${python:Depends}
+Description: 
+ Memcache client library python wrapper.
