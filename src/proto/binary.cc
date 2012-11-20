@@ -47,7 +47,7 @@ static const header_t *as_header(const std::string &data) {
 
 /** The structure representing binary protocol header.
  */
-struct header_t {
+class header_t {
 public:
     // magic constants
     static const uint8_t request_magic = 0x80;

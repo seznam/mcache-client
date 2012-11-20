@@ -17,6 +17,8 @@ Příklad použití libmcache v multiprocesovém prostředí (např. MetaServer)
 #include <mcache/mcache.h>
 
 int main(int, char *[]) {
+    mc::init();
+
     // příprava seznamu adres serverů
     std::vector<std::string> servers;
     servers.push_back("memcache1:11211");
@@ -56,6 +58,8 @@ Příklad použití libmcache v multithreadovém prostředí (např. MTD):
 #include <mcache/mcache.h>
 
 int main(int, char *[]) {
+    mc::init();
+
     // příprava seznamu adres serverů
     std::vector<std::string> servers;
     servers.push_back("memcache1:11211");
