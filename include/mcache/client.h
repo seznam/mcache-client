@@ -366,15 +366,11 @@ public:
     /** Call 'touch' command on appropriate memcache server.
      * @param key key for data.
      * @param exp new expiration time.
-     * @param opts touch commands options.
      * @return true if value was touched.
      */
-    bool touch(const std::string &key,
-               uint64_t exp,
-               const opts_t &opts = opts_t())
-    {
+    bool touch(const std::string &key, uint64_t exp) {
         typename impl::touch_t::response_t
-            response = run(typename impl::touch_t(key, exp, opts));
+            response = run(typename impl::touch_t(key, exp));
         switch (response.code()) {
         case proto::resp::ok: return true;
         case proto::resp::not_found: return false;
