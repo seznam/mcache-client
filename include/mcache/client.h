@@ -91,7 +91,7 @@ public:
 
 /** Specialization for string.
  */
-template <> std::string result_t::as<std::string>() const { return data;}
+template <> inline std::string result_t::as<std::string>() const { return data;}
 
 #endif // MCACHE_DISABLE_SERIALIZATION_API
 
@@ -256,10 +256,10 @@ public:
      *              if (!client.add(3, init)) continue;
      *              return;
      *         }
-     *    
+     *
      *         // some magic code modifying res.data
      *         ndata = magic(res.data);
-     *    
+     *
      *         if (!client.cas(3, ndata, res.cas)) {
      *             if (!client.add(3, init)) continue;
      *             return;
