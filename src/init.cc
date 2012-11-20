@@ -18,6 +18,10 @@
 #include "mime/init.h"
 
 namespace mc {
+namespace {
+bool initialized = false;
+}
+
 namespace proto {
 namespace bin {
 
@@ -27,7 +31,10 @@ void init();
 } // namespace proto
 
 void init() {
+    if (initialized) return;
+
     proto::bin::init();
+    initialized = true;
 }
 
 } // namespace mc
