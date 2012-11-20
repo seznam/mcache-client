@@ -219,7 +219,7 @@ public:
             response = run(typename impl::prepend_t(key, data, opts));
         switch (response.code()) {
         case proto::resp::ok:
-        case proto::resp::stored:
+        case proto::resp::stored: return true;
         case proto::resp::not_stored: return false;
         default: throw response.exception();
         }
