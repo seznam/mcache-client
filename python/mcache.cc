@@ -49,6 +49,16 @@ namespace {
 #define MC_PyString_Check(O) (PyString_Check(O))
 #endif /* PY_VERSION_HEX */
 
+#if PY_VERSION_HEX >= 0x02060000
+#define MC_PyBytes_FromStringAndSize(A, B) (PyBytes_FromStringAndSize(A, B))
+#define MC_PyBytes_AsStringAndSize(O, A, B) PyBytes_AsStringAndSize(O, A, B)
+#define MC_PyBytes_Check(O) PyBytes_Check(O)
+#else /* PY_VERSION_HEX */
+#define MC_PyBytes_FromStringAndSize(A, B) (PyString_FromStringAndSize(A, B))
+#define MC_PyBytes_AsStringAndSize(O, A, B) PyString_AsStringAndSize(O, A, B)
+#define MC_PyBytes_Check(O) PyString_Check(O)
+#endif /* PY_VERSION_HEX */
+
 /** Tries import module and if module was not found then None is returned.
  */
 static boost::python::object try_import(const char *module) {
@@ -66,7 +76,7 @@ static boost::python::object try_import(const char *module) {
  */
 static boost::python::object as_python_bytes(const std::string &bytes) {
     boost::python::handle<>
-        handle(PyBytes_FromStringAndSize(bytes.data(), bytes.size()));
+        handle(MC_PyBytes_FromStringAndSize(bytes.data(), bytes.size()));
     return boost::python::object(handle);
 }
 
@@ -375,7 +385,7 @@ public:
 
     /** Return non NULL if o matches 'bytes' type.
      */
-    static void *convertible(PyObject *o) { return PyBytes_Check(o)? o: NULL;}
+    static void *convertible(PyObject *o) { return MC_PyBytes_Check(o)? o: 0x0;}
 
     /** Converts object into a std::string.
      */
@@ -386,7 +396,7 @@ public:
         // extract the bytes data from the python
         char *buffer = 0x0;
         Py_ssize_t size = 0;
-        if (PyBytes_AsStringAndSize(o, &buffer, &size) == -1)
+        if (MC_PyBytes_AsStringAndSize(o, &buffer, &size) == -1)
             throw boost::python::error_already_set();
 
         new char[111];
@@ -419,7 +429,7 @@ public:
 
     /** Return non NULL if o matches dict type.
      */
-    static void *convertible(PyObject *o) { return PyDict_Check(o)? o: NULL;}
+    static void *convertible(PyObject *o) { return PyDict_Check(o)? o: 0x0;}
 
     /** Converts object into a std::string.
      */
