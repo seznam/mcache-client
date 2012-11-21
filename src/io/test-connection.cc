@@ -44,7 +44,7 @@ class dispatcher_t {
 public:
     typedef std::map<
                 std::string,
-                boost::function<bool (mc::io::udp::connection_t &,
+                boost::function<bool (mc::io::tcp::connection_t &,
                                       const std::string &)>
             > handlers_t;
 
@@ -70,10 +70,10 @@ public:
 template <typename command_t>
 class retrieve_t {
 public:
-    bool operator()(mc::io::udp::connection_t &connection,
+    bool operator()(mc::io::tcp::connection_t &connection,
                     const std::string &line)
     {
-        typedef mc::proto::command_parser_t<mc::io::udp::connection_t> parser_t;
+        typedef mc::proto::command_parser_t<mc::io::tcp::connection_t> parser_t;
         parser_t parser(connection);
         typename command_t::response_t response =
             parser.send(command_t(boost::trim_copy(line)));
@@ -92,7 +92,7 @@ public:
 template <typename command_t>
 class storage_t {
 public:
-    bool operator()(mc::io::udp::connection_t &connection,
+    bool operator()(mc::io::tcp::connection_t &connection,
                     const std::string &line)
     {
         // parse
@@ -106,7 +106,7 @@ public:
         mc::proto::opts_t opts(expiration, flags, cas);
 
         // run
-        typedef mc::proto::command_parser_t<mc::io::udp::connection_t> parser_t;
+        typedef mc::proto::command_parser_t<mc::io::tcp::connection_t> parser_t;
         parser_t parser(connection);
         typename command_t::response_t response =
             parser.send(command_t(key, data, opts));
@@ -121,7 +121,7 @@ public:
 template <typename command_t>
 class incr_decr_t {
 public:
-    bool operator()(mc::io::udp::connection_t &connection,
+    bool operator()(mc::io::tcp::connection_t &connection,
                     const std::string &line)
     {
         // parse
@@ -132,7 +132,7 @@ public:
         is >> key >> value >> initial;
 
         // run
-        typedef mc::proto::command_parser_t<mc::io::udp::connection_t> parser_t;
+        typedef mc::proto::command_parser_t<mc::io::tcp::connection_t> parser_t;
         parser_t parser(connection);
         mc::proto::opts_t opts(0, 0, initial);
         typename command_t::response_t
@@ -149,7 +149,7 @@ public:
 template <>
 class incr_decr_t<mc::proto::bin::api::touch_t> {
 public:
-    bool operator()(mc::io::udp::connection_t &connection,
+    bool operator()(mc::io::tcp::connection_t &connection,
                     const std::string &line)
     {
         // parse
@@ -160,7 +160,7 @@ public:
 
         // run
         typedef mc::proto::bin::api::touch_t command_t;
-        typedef mc::proto::command_parser_t<mc::io::udp::connection_t> parser_t;
+        typedef mc::proto::command_parser_t<mc::io::tcp::connection_t> parser_t;
         parser_t parser(connection);
         typename command_t::response_t response =
             parser.send(command_t(key, value));
@@ -175,10 +175,10 @@ public:
 template <typename command_t>
 class delete_t {
 public:
-    bool operator()(mc::io::udp::connection_t &connection,
+    bool operator()(mc::io::tcp::connection_t &connection,
                     const std::string &line)
     {
-        typedef mc::proto::command_parser_t<mc::io::udp::connection_t> parser_t;
+        typedef mc::proto::command_parser_t<mc::io::tcp::connection_t> parser_t;
         parser_t parser(connection);
         typename command_t::response_t response =
             parser.send(command_t(boost::trim_copy(line)));
@@ -244,7 +244,6 @@ int main(int argc, char **argv) {
     // read destionation address
     std::string dst;
     bool binary = false;
-    bool udp = false;
     if (argc == 3) {
         if (strcmp(argv[1], "-b") == 0) {
             binary = true;
@@ -261,12 +260,6 @@ int main(int argc, char **argv) {
         } else if (strcmp(argv[2], "-t") == 0) {
             binary = false;
             dst = argv[1];
-
-        } else if (strcmp(argv[1], "-u") == 0) {
-            udp = true;
-            binary = false;
-            dst = argv[2];
-        }
 
     } else if (argc == 2) dst = argv[1];
 
@@ -288,7 +281,7 @@ int main(int argc, char **argv) {
     else register_methods<mc::proto::txt::api>(dispatcher);
 
     // establish connection to server
-    mc::io::udp::connection_t connection(dst, mc::io::opts_t());
+    mc::io::tcp::connection_t connection(dst, mc::io::opts_t());
 
     // main loop
     std::string prompt = dst + "> ";
@@ -305,7 +298,7 @@ int main(int argc, char **argv) {
             ::add_history((cmd.first + cmd.second).c_str());
             if (dispatcher[cmd.first](connection, cmd.second)) break;
         } catch (const std::exception &e) {
-            connection = mc::io::udp::connection_t(dst, mc::io::opts_t());
+            connection = mc::io::tcp::connection_t(dst, mc::io::opts_t());
             std::cout << e.what() << std::endl;
         }
         ::free(line);
