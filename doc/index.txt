@@ -251,9 +251,9 @@ strukturami a mutexy.
 
 \subsection public_api_other Ostatní
 
-Kromě těchto věcí si lze sestavit vlastní instanci šablony, do které můžete
-zahrnout knihovnou implementovanou podporu UDP či hloupějšího poolu memcache
-serverů, který nepodporuje předávání práce na sousední.
+Kromě těchto věcí si lze sestavit vlastní instanci šablony client_t, do které
+můžete zahrnout knihovnou implementovanou podporu UDP či hloupějšího poolu
+memcache serverů, který nepodporuje předávání práce na sousední.
 
 Clienta ostatně můžete rozšířit jakkoliv budete potřebovat viz. \ref
 private_api.
