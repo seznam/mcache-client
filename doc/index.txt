@@ -4,7 +4,7 @@
 
 \section quick V rychlosti
 
-\subsection quick-ipc Multiprocesové prostředí
+\subsection quick_ipc Multiprocesové prostředí
 
 Příklad použití libmcache v multiprocesovém prostředí (např. MetaServer):
 
@@ -17,6 +17,7 @@ Příklad použití libmcache v multiprocesovém prostředí (např. MetaServer)
 #include <mcache/mcache.h>
 
 int main(int, char *[]) {
+    // inicializace knihovny (ideálně na začátku běhu)
     mc::init();
 
     // příprava seznamu adres serverů
@@ -26,7 +27,7 @@ int main(int, char *[]) {
     servers.push_back("memcache3:11211");
     servers.push_back("memcache4:11211");
 
-    // vytvoření klienta (po childInit)
+    // vytvoření klienta (před childInit)
     mc::server_proxy_config_t scfg;
     scfg.io_opts.timeouts.connect = 3000;
     scfg.io_opts.timeouts.write = 3000;
@@ -34,7 +35,9 @@ int main(int, char *[]) {
     mc::ipc::client_t client(servers, scfg);
 
     // použití
-    client.set("szn", "http://seznam.cz/");
+    client.set("szn", "seznam.cz");
+    if (!client.prepend("szn", "http://")) throw std::runtime_error("prepend");
+    if (!client.append("szn", "/")) throw std::runtime_error("append");
     std::cout << client.get("szn").data << std::endl;
 }
 
@@ -45,7 +48,26 @@ hashováním a persistetním spojením na každý memcache server, které se zav
 první io chybě. Pro komunikaci se bude používat binární protokol, který memcache
 podporuje od verze 1.3.
 
-\subsection quick-thread Multithreadové prostředí
+Velice podobně se používá i python obal, který má to samé chování:
+
+\code
+
+import mcache
+
+# vytvoření klienta
+servers = ["memcache1:11211", "memcache2:11211", "memcache3:11211", "memcache4:11211"]
+opts = {"connect_timeout": 3000, "read_timeout": 3000, "write_timeout": 3000}
+client = mcache.Client(servers, opts)
+
+# použití
+client.set("szn", "www.seznam.cz")
+if not client.prepend("szn", "http://"): raise RuntimeError("prepend")
+if not client.append("szn", "/"): raise RuntimeError("append")
+print(client.get("szn")["data"])
+
+\endcode
+
+\subsection quick_thread Multithreadové prostředí
 
 Příklad použití libmcache v multithreadovém prostředí (např. MTD):
 
@@ -74,7 +96,9 @@ int main(int, char *[]) {
     mc::thread::client_t client(servers, scfg);
 
     // použití
-    client.set("szn", "http://seznam.cz/");
+    client.set("szn", "seznam.cz");
+    if (!client.prepend("szn", "http://")) throw std::runtime_error("prepend");
+    if (!client.append("szn", "/")) throw std::runtime_error("append");
     std::cout << client.get("szn").data << std::endl;
 }
 
@@ -85,7 +109,228 @@ hashováním a cachí persistetních spojení na každý memcache server. Tyto s
 jsou udržovány otevření do první io chyby.  Pro komunikaci se bude používat
 binární protokol, který memcache podporuje od verze 1.3.
 
-\section public-api Veřejné ale i interní API
+\section public_api Veřejné API
+
+Knihovna obsahuje šablonu třídy mc::client_t jejíž defaultní instance pro obě
+používané prostředí (multiproceové a multithreadové), najdete v souboru
+mcache/mcache.h, kde jsou také natypedefovány veškeré konfigurační objekty a
+případné další typy, které by měli stačit pro běžné použití.
+
+Standardní instance nabízí tyto hlavní vlastnosti:
+
+ - consistent hashing ring
+ - sdílení informací o dead server srz procesy/thready
+ - automatickou obnovu dead serverů
+ - automatickou serializaci jak C++ tak i v pythonu
+ - binární protokol
+ - cachování socketů (multithread)
+
+Není podporován multiget z důvodů velice obtížné definice toho, jak by se měl
+choavt v případě výpadku jedno (či více) serverů z poolu.
+
+\subsection public_api_chr Konsistetní hashování
+
+Konsistetní hashování je popsáno např. zde:
+http://en.wikipedia.org/wiki/Consistent_hashing
+
+Obecně se jedná o to, že v případě výpadku jednoho serveru převezmou jeho práci
+do jeho obnovy ostatní servery v poolu. Implementaci lze nalézt v
+include/mcache/pool/consistent-hashing.h.
+
+\subsection public_api_dead Označování serverů za mrtvé a jejich obnova
+
+Standardní implementace server_proxy_t obsahuje sdílenou mapu serverů, do které
+se client před každým voláním dívá, a pokud je server v této mapě označen za
+mrtvý, pak se přeskakuje na další. Maximální počet těchto hopů je limitován
+počtem serverů v poolu. Zárověn však jde i omezit konfigurační proměnou
+max_continues.
+
+Server je označen za mrtvý pokud dojde k síťové chybě a nebo chybě na úrovni
+protokolu, v tento okamžik je u něj i nasteven okamžik obnovy. Jakmile uplyne
+timeout pro obnovu, pak je náhodně jeden thread/proces vybrán, který provede na
+tento server požadavek, jako by normálně běžel, pokud projde server je označen
+jako živý. Pokud tento požadavek neprojde, pak je server pořád mrtvý a opět se
+za nakonfigurovaný interval zkusí jeho obnova. Tento systém lze ovlivňovat
+konfigurací \ref config.
+
+\subsection public_api_proto Podporované protokoly
+
+Memcache obsahuje binární protokol, který je o něco bezpečnější a prý i
+rychlejší (na straně serveru
+http://www.slideshare.net/tmaesaka/memcached-binary-protocol-in-a-nutshell-presentation).
+Tato implementace obsahuje oba jak textový tak i binárná a tento se používá ve
+standardní instanci memcache clienta. Přepínat protokoly nelze za běhu.
+
+\subsection public_api_serial Automatická serializace
+
+\subsubsection public_api_serial_cpp C++
+
+C++ šablona třídy client_t podporuje automatickou serializaci hodnot pro všechny
+numerické typy, google protobuf objekty a do budoucna by měla přibýt i
+serializace pro FastRPC hodnoty. Použití je jednoduché:
+
+\code
+
+mc::ipc::client_t client(addresses);
+
+// protobuf
+Protobuf_t proto;
+client.set("3", proto);
+mc::result_t res = client.get("3");
+if (res) proto = res.as<Protobuf_t>();
+
+// numeric
+client.set("3", 3);
+int i = client.get("3").as<int>();
+
+\endcode
+
+Pokud chcete přidat podporu pro nějaký váš typ, je potřeba vytvořit specializaci
+šablony třídy mc::aux::cnv třeba takto:
+
+\code
+namespace ex {
+
+class some_class_t {};
+
+} // namespace ex
+
+namespace mc {
+namespace aux {
+
+struct cnv<ex::some_class_t> {
+    static ex::some_class_t as(const std::string &data) {
+        return ...;
+    }
+    static std::string as(const ex::some_class_t &data) {
+        return ...;
+    }
+};
+
+} // namespace aux
+} // namespace mc
+\endcode
+
+\subsubsection public_api_serial_py Python
+
+V pythonu také funguje automatická serializace py objektů:
+
+\code
+
+Client client(["memcache:11211"])
+
+// objekty obecne
+data = {"three": 3}
+client.set("three", data)
+data = client.get("three")
+
+// numeric
+client.set("three", 3)
+i = client.get("three")
+
+// str
+client.set("three", "3")
+s = client.get("three")
+
+\endcode
+
+Kde se rozlišují tři možnosti. Za prvé hodnotou může být string, pak se jako
+string uloží na server a tím to končí. Za druhé se může jednat o číslo, pak se
+toto číslo převede na ascii reprezentaci a toto uloží na server. Nakonec se může
+jednat o obecný python objekt, tento se pomocí pickle resp. cPickle modulu
+převede na string a tento uloží na server. Aby knihovna veděla co je na serveru
+uloženo (v jakém typu to má vrátit) zneužívají se horní tři bity flagu hodnot.
+Knihovna si hlídá, zda se je uživatel nesnaží nastavovat.
+
+\subsection public_api_cache_io Cache socketů
+
+V multithreadovém prostředí dochází ke sdílení socketů na memcache servery
+standardně za pomoci lockfree struktury z knihovny tbb, pokud je tato v době
+sestavení knihovny(programu) k dispozici. Jinak se toto řeší standardními
+strukturami a mutexy.
+
+\subsection public_api_other Ostatní
+
+Kromě těchto věcí si lze sestavit vlastní instanci šablony, do které můžete
+zahrnout knihovnou implementovanou podporu UDP či hloupějšího poolu memcache
+serverů, který nepodporuje předávání práce na sousední.
+
+Clienta ostatně můžete rozšířit jakkoliv budete potřebovat viz. \ref
+private_api.
+
+\section config Konfigurace
+
+Konfigurace standardní instance memcache clienta, kterou najdete v
+mcache/mcache.h, se dělí na tři části. Předávají se mu touto formou:
+
+\code
+mc::ipc::pool_config_t pcfg;
+mc::ipc::client_config_t ccfg;
+mc::ipc::server_proxy_config_t scfg;
+
+mc::ipc::client_t client(addresses, scfg, pcfg, ccfg);
+\endcode
+
+První část je vlastní konfigurace
+clienta, která definuje jeho chování v případě chyby:
+
+\dontinclude include/mcache/client.h
+\skip class client_config_t {
+\until };
+
+Proměná max_continues definuje počet pokusů o provedení akce v případě síťové
+chyby na dalších memcache serverech. Proměná h404_duration definuje, jak dlouho
+v sekundách po obnově ze stavu dead primárního memcache serveru se bude zkoušet
+získat hodnotu z dalšího serveru v pořadí, v případě že tato není na primírním
+serveru nalezena.
+
+Další skupina proměných ovlivnuje siťovou vrstvu a je zabalena v této struktuře:
+
+\dontinclude include/mcache/server-proxy.h
+\skip class server_proxy_config_t {
+\until };
+
+Kde proměná fail_limit říká po kolika síťových chybách bude daný memcache server
+prohlášen za mrtvý. Druhá proměná restoration_interval definuje interval za jak
+dlouho v sekundách se vyzkouší zda tento memcache server již opět nefunguje. No
+a vlastní IO proměnené popisuje tato struktura:
+
+\dontinclude include/mcache/io/opts.h
+\skip class opts_t {
+\until };
+\until };
+
+Kde struktura timeouts popisuje standarní nastavení timeoutů v řádu milisekund a
+proměná max_connections_in_pool definuje maximální počet konexí na jeden
+memcache server, které se cachují v io poolu. Tato proměná má význam pouze pro
+multithreadové prostředí, protože multiprocesovém prostředí není nabízen touto
+knihovnou žádný prostředek ke sdílení spojení na memcache server skrz procesy.
+
+Poslední proměné, které ovliňují vlastnosti knihovny jsou dané používaným poolem
+memcache serverů. Standardně je používán consistent hashing ring:
+
+\dontinclude include/mcache/pool/consistent-hashing.h
+\skip class consistent_hashing_pool_config_t {
+\until };
+
+Který obsahuje pouze jednu proměnou, která ovlivňuje počet virtuálních nodů pro
+každý nakonfigurovaný memcache server.
+
+\subsection config_python Nastavení v pythonu
+
+Nastavení v pythonu kopíruje C++ proměné akorát se předává jako druhý parametr
+konstruktoru třídě Client ve formě slovníku, kde jsou hledány tyto položky:
+
+ - connect_timeout
+ - read_timeout
+ - write_timeout
+ - restoration_fail_limit
+ - restoration_interval
+ - virtual_nodes
+ - max_continues
+ - h404_duration
+
+\section private_api Interní API
 
 Celá knihovna se snaží nabídnout co největší flexibilitu, tak aby si každý, kdo
 bude to potřebovat, mohl její chování co nejvíce upravit. Srdcem knihovny je
@@ -99,6 +344,8 @@ template <
 > class client_template_t;
 \endcode
 
+\subsection private_api_pool Memcache pool
+
 První parametr je třída zajišťující výběr správného memcache serveru ze všech
 dostupných. Měla by mít takovéto rozhraní:
 
@@ -107,13 +354,125 @@ struct some_pool_t {
 public:
     using mod_pool_base_t::value_type;
     typedef some_pool_const_iterator const_iterator;
+
     const_iterator choose(const std::string &key) const;
 };
 \endcode
 
 Kde metoda choose() vrací iterátor, který ukazuje na index do pole memcache
 serverů, který vybrala pro tento klíč. Pokud dojde k chybě, a nebo je tento
-memcache server označen jako mrtvý, pak se vrácený iterátor zkusí 
+memcache server označen jako dead, pak se vrácený iterátor zkusí inkrementovat a
+vyzkouší se další server, na který ukazuje tento index.
 
+\subsection private_api_server_proxy Server proxy memcache serveru
+
+Druhý parametr je třída server_proxies_t, která by měla držet vlastní server
+proxy na memcache server a zároveň nabízet sdílenou paměť pro implementaci
+označování serveru za mrtvý. Ve velké většině případů bude stačit standardní
+implementace v include/mcache/server-proxies.h. Třída by měla mít toto rozhraní:
+
+\code
+class some_server_proxies_t
+public:
+    typedef some_server_proxy_t server_proxy_t;
+    typedef some_server_proxy_config_t server_proxy_config_t;
+
+    server_proxies_t(const std::vector<std::string> &addresses,
+                     const server_proxy_config_t &cfg);
+
+    server_proxy_t &operator[](std::size_t i);
+};
+\endcode
+
+O něco více může bát zajímavá výměna vlastní server_proxy_t (server_proxies_t je
+šablona), která je zodpovědná za vypínání, zapínání a vlastní zpracování dotazu
+na memcache server.
+
+\code
+class some_server_proxy_t {
+public:
+    typedef some_connection_ptr_t connection_ptr_t;
+    typedef some_connection_t connection_t;
+    typedef server_proxy_config_t server_proxy_config_type;
+    class shared_t;
+
+    server_proxy_t(const std::string &address,
+                   shared_t *shared,
+                   const server_proxy_config_t &cfg);
+
+    bool is_dead() const;
+
+    bool callable();
+
+    time_t lifespan() const;
+
+    template <typename command_t>
+    typename command_t::response_t send(const command_t &command);
+};
+
+\endcode
+
+Metoda callable() se volá před každým dotazem na daný memcache server. Tato by
+měla vracet true pokud je tento server živý, nebo pokud se tento dotaz má být
+pokusem o znovuoživení serveru. Metoda is_dead() se používá pro statické
+zjištění zda server žije. Metoda lifespan() by měla vracet uplynulou dobu od
+posledního obnovení a nakonec nejdůležitější je metoda send(), která odešle
+dotaz na server.
+
+Standardní server_proxy_t je opět šablona, které jde podstrčit vlastní
+implementaci spojení na server, standardně jsou dvě TCP a UDP implementace
+pomocí knihovny boost::asio. Spojení by mělo mít toto rozhraní:
+
+\code
+class some_connection_t {
+public:
+    connection_t(const std::string &addr, opts_t opts);
+
+    void write(const std::string &data);
+
+    std::string read(const std::string &delimiter);
+
+    std::string read(std::size_t bytes);
+};
+\endcode
+
+Kde metoda write() zapíše požadavek na server. Metody read() čtou data do daného
+delimiteru, a to buď ve formě stringu, a nebo počtu bytů.
+
+Nakonec ji lze podstrčit nejen vlastní spojení, ale i trídu zodpovědnou za cache
+těchto spojení s tímto rozhraním:
+
+\code
+class some_connection_pool_t {
+public:
+    typedef some_connection_ptr_t connection_ptr_t;
+
+    connection_pool_t(const std::string &addr, opts_t opts);
+
+    connection_ptr_t pick();
+
+    void push_back(connection_ptr_t &tmp);
+
+    std::size_t size() const;
+
+    void clear();
+};
+\endcode
+
+Kde je třeba implementovat ústřední metody pick(), která by měla vracet pointer
+na vybrané spojení. Vlastníkem tohoto spojení je buď nějaký chytrý pointer a
+nebo tato cache. Toto spojení nesmí po dobu zpracování dotazu mít k dispozici
+nikdo jiný (ani thread ani proces). Jakmile server_proxy_t přestane s tímto
+spojením pracovat, pak ho vrátí zpět do poolu pomocí metody push_back(). Nakonec
+metoda clear() by měla vyprázdnit celý pool, je volána ve chvíli, kdy je server
+označen za mrtvého a očekává se, že spojení jsou buď rozpadlá a nebo v
+nekonzistetním stavu...
+
+\subsection private_api_impl Protokoly
+
+Posledním parametrem je třída definující implementaci protokolu, zde odkáži do
+souboru include/mcache/proto/txt.h, který definuje třídy pro každý memcache
+příkaz a jeho parametry. 
 
 */
+
