@@ -38,7 +38,7 @@ int main(int, char *[]) {
     client.set("szn", "seznam.cz");
     if (!client.prepend("szn", "http://")) throw std::runtime_error("prepend");
     if (!client.append("szn", "/")) throw std::runtime_error("append");
-    mc::result_t res = client.get("szn").data;
+    mc::result_t res = client.get("szn");
     if (res) std::cout << res.data << std::endl;
 }
 
@@ -100,7 +100,7 @@ int main(int, char *[]) {
     client.set("szn", "seznam.cz");
     if (!client.prepend("szn", "http://")) throw std::runtime_error("prepend");
     if (!client.append("szn", "/")) throw std::runtime_error("append");
-    mc::result_t res = client.get("szn").data;
+    mc::result_t res = client.get("szn");
     if (res) std::cout << res.data << std::endl;
 }
 
