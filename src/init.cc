@@ -20,7 +20,7 @@
 namespace mc {
 namespace {
 bool initialized = false;
-}
+} // namespace
 
 namespace proto {
 namespace bin {
