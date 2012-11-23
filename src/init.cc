@@ -15,7 +15,7 @@
  *                  First draft.
  */
 
-#include "mime/init.h"
+#include "mcache/init.h"
 
 namespace mc {
 namespace {
