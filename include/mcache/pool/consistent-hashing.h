@@ -131,9 +131,10 @@ protected:
     inline void increment() {
         // move to next entry in map or to begin of map
         if (++inode == enode) {
-            if (stop) throw error_t(err::internal_error, "out of servers");
-            inode = snode;
-            stop = true;
+            if (!stop) {
+                inode = snode;
+                stop = true;
+            }
         }
     }
 

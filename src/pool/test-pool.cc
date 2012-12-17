@@ -82,32 +82,21 @@ bool consistent_hashing_pool_iteration() {
     servers.push_back("server2:11211");
     servers.push_back("server3:11211");
     consistent_hashing_pool_t pool(servers, cfg);
-    std::size_t exp = 0;
+    // checks if we go through all ring nodes then pool throws
     std::size_t cnt = 0;
     std::size_t cnt1 = 0;
     std::size_t cnt2 = 0;
     std::size_t cnt3 = 0;
-    // checks if we go through all ring nodes then pool throws
-    try {
-        // checks whether servers distribution over the ring
-        // and whether we const_iterator walks through all nodes double times
-        std::for_each(pool.begin(), pool.end(), ++var(cnt));
-    } catch (...) { ++exp;}
-    try {
-        // checks whether distribution ring contains node with zero index 40x
-        std::for_each(pool.begin(), pool.end(), if_then(_1 == 0, ++var(cnt1)));
-    } catch (...) { ++exp;}
-    try {
-        // dtto
-        std::for_each(pool.begin(), pool.end(), if_then(_1 == 1, ++var(cnt2)));
-    } catch (...) { ++exp;}
-    try {
-        // dtto
-        std::for_each(pool.begin(), pool.end(), if_then(_1 == 2, ++var(cnt3)));
-    } catch (...) { ++exp;}
-    return (exp == 4)
-           && (cnt == 120)
-           && (cnt1 == 40) && (cnt2 == 40) && (cnt3 == 40);
+    // checks whether servers distribution over the ring
+    // and whether we const_iterator walks through all nodes double times
+    std::for_each(pool.begin(), pool.end(), ++var(cnt));
+    // checks whether distribution ring contains node with zero index 40x
+    std::for_each(pool.begin(), pool.end(), if_then(_1 == 0, ++var(cnt1)));
+    // dtto
+    std::for_each(pool.begin(), pool.end(), if_then(_1 == 1, ++var(cnt2)));
+    // dtto
+    std::for_each(pool.begin(), pool.end(), if_then(_1 == 2, ++var(cnt3)));
+    return (cnt == 120) && (cnt1 == 40) && (cnt2 == 40) && (cnt3 == 40);
 }
 
 bool consistent_hashing_pool_distribution() {

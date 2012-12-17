@@ -541,6 +541,7 @@ protected:
             prev = std::numeric_limits<typename pool_t::value_type>::max();
         // count of consequently continues
         uint32_t conts = 0;
+        bool out_of_servers = true;
 
         // find callable server for given key
         for (typename pool_t::const_iterator
@@ -564,8 +565,10 @@ protected:
                     // if we got 404 for get command and we ask first server in
                     // the consistent hash ring and server have been recently
                     // restored so we can ask neighbour server for the data...
-                    if (h404 && !conts && (server.lifespan() < h404_duration))
+                    if (h404 && !conts && (server.lifespan() < h404_duration)) {
+                        out_of_servers = false;
                         break;
+                    }
                     // pass
                 default: return response;
                 }
@@ -574,7 +577,8 @@ protected:
             // can't be in for statement due to "skip previous key" continue
             ++conts;
         }
-        throw error_t(err::internal_error, "out of servers");
+        if (out_of_servers) throw out_of_servers_t();
+        return typename command_t::response_t(proto::resp::not_found);
     }
 
     pool_t pool;                  //!< idxs that represents key distribution

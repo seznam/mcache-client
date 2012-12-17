@@ -67,6 +67,13 @@ protected:
     std::string msg; //!< error description
 };
 
+/** Exception for empty pool of servers.
+ */
+class out_of_servers_t: public error_t {
+public:
+    out_of_servers_t(): error_t(err::internal_error, "out of servers") {}
+};
+
 } // namespace mc
 
 #endif /* MCACHE_ERROR_H */

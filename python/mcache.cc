@@ -142,6 +142,16 @@ public:
         loads = pickle.attr("loads");
     }
 
+    /** Returns dict for not_found result.
+     */
+    boost::python::object not_found(boost::python::object def) {
+        boost::python::dict dict;
+        dict["cas"] = 0;
+        dict["flags"] = 0;
+        dict["data"] = def;
+        return dict;
+    }
+
     /** Converts python object to string that will be stored on memcache server.
      */
     std::string to_string(const boost::python::object &data, opts_t &opts) {
@@ -180,9 +190,12 @@ public:
 
     /** Converts string fetched from memcache server to python object.
      */
-    boost::python::object from_string(mc::result_t result) {
+    boost::python::object
+    from_string(mc::result_t result,
+                boost::python::object def = boost::python::object())
+    {
         // call and solve not found as none
-        if (!result) return boost::python::object();
+        if (!result) return not_found(def);
 
         // extract data
         boost::python::object data;
@@ -287,6 +300,20 @@ public:
         return from_string(client->gets(key));
     }
 
+    boost::python::object
+    getd(const std::string &key, boost::python::object def) {
+        try {
+            return from_string(client->get(key), def);
+        } catch (const mc::out_of_servers_t &) { return  not_found(def);}
+    }
+
+    boost::python::object
+    getsd(const std::string &key, boost::python::object def) {
+        try {
+            return from_string(client->gets(key), def);
+        } catch (const mc::out_of_servers_t &) { return  not_found(def);}
+    }
+
     boost::python::object incr(const std::string &key) {
         return incrio(key, 1, opts_t());
     }
@@ -350,7 +377,9 @@ public:
             .def("append", &client_t::append)
             .def("cas", &client_t::cas)
             .def("get", &client_t::get)
+            .def("get", &client_t::getd)
             .def("gets", &client_t::gets)
+            .def("gets", &client_t::getsd)
             .def("incr", &client_t::incr)
             .def("incr", &client_t::incr)
             .def("incr", &client_t::incri)
@@ -359,7 +388,7 @@ public:
             .def("decr", &client_t::decri)
             .def("decr", &client_t::decrio)
             .def("touch", &client_t::touch)
-            .def("del", &client_t::del);
+            .def("delete", &client_t::del);
     }
 
 private:

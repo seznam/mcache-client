@@ -65,8 +65,14 @@ client.set("szn", "www.seznam.cz")
 if not client.prepend("szn", "http://"): raise RuntimeError("prepend")
 if not client.append("szn", "/"): raise RuntimeError("append")
 print(client.get("szn")["data"])
+print(client.get("email", "http://email.seznam.cz/")["data"])
 
 \endcode
+
+Metoda get() bez defaultní hodnoty vrátí None, a nebo vyhodí vyjímku pokud není
+k dispozici žádný dostupný memcache server. Pokud je zadaná defaultní návratová
+hodnota, pak je jak v případě neexistence hodnoty, tak i v případě nedostupnosti
+serverů vrácena pod klíčem "data".
 
 \subsection quick_thread Multithreadové prostředí
 
@@ -259,6 +265,30 @@ memcache serverů, který nepodporuje předávání práce na sousední.
 
 Clienta ostatně můžete rozšířit jakkoliv budete potřebovat viz. \ref
 private_api.
+
+\subsection public_api_opts Parametry volání
+
+Příkazy, které ukládají informace na serveru, jako jsou set, replace, ...,
+umožňují nastavit například čas expirace, flagy, ... Knihovna poskytuje takovéto
+rozhraní, pro jejich nastavení:
+
+\code
+
+mc::opts_t opts;
+opts.expiration = 300;
+opts.flags = 0x01;
+opts.cas = 1;
+client.set("szn", "seznam.cz", opts);
+
+\endcode
+
+V jazyce python, je použití obdobné, kdy se místo struktury používá slovník:
+
+\code
+
+client.set("szn", "www.seznam.cz", {"flags": 3, expiration: 300, cas: 1})
+
+\endcode
 
 \section config Konfigurace
 
@@ -474,7 +504,7 @@ nekonzistetním stavu...
 
 Posledním parametrem je třída definující implementaci protokolu, zde odkáži do
 souboru include/mcache/proto/txt.h, který definuje třídy pro každý memcache
-příkaz a jeho parametry. 
+příkaz a jeho parametry.
 
 */
 
