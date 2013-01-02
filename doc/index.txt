@@ -240,6 +240,9 @@ i = client.get("three")
 client.set("three", "3")
 s = client.get("three")
 
+// expiration
+client.set("three", "3", {"expiration" : 10})
+
 \endcode
 
 Kde se rozlišují tři možnosti. Za prvé hodnotou může být string, pak se jako
