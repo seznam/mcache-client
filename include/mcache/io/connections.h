@@ -245,7 +245,10 @@ public:
 
     /** Destroys all connection found at stack.
      */
-    void clear() { stack.clear();}
+    void clear() {
+        boost::mutex::scoped_lock guard(mutex);
+        while (!stack.empty()) stack.pop();
+    }
 
     /** Returns server address.
      */
