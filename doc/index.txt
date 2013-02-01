@@ -327,8 +327,8 @@ Další skupina proměných ovlivnuje siťovou vrstvu a je zabalena v této stru
 
 Kde proměná fail_limit říká po kolika síťových chybách bude daný memcache server
 prohlášen za mrtvý. Druhá proměná restoration_interval definuje interval za jak
-dlouho v sekundách se vyzkouší zda tento memcache server již opět nefunguje. No
-a vlastní IO proměnené popisuje tato struktura:
+dlouho v sekundách se vyzkouší zda tento memcache server již funguje. No a
+vlastní IO proměnené popisuje tato struktura:
 
 \dontinclude include/mcache/io/opts.h
 \skip class opts_t {
