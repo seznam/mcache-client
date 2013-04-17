@@ -289,7 +289,7 @@ V jazyce python, je použití obdobné, kdy se místo struktury používá slovn
 
 \code
 
-client.set("szn", "www.seznam.cz", {"flags": 3, expiration: 300, cas: 1})
+client.set("szn", "www.seznam.cz", {"flags": 3, "expiration": 300, "cas": 1})
 
 \endcode
 
