@@ -66,6 +66,24 @@ typedef mc::server_proxies_t<shared_array_t, server_proxy_t> server_proxies_t;
 /// Defines default instantiation of the client template for process enviroment.
 typedef mc::client_template_t<pool_t, server_proxies_t, api> client_t;
 
+namespace udp {
+
+// configuration classes
+typedef mc::server_proxy_config_t server_proxy_config_t;
+typedef mc::consistent_hashing_pool_config_t pool_config_t;
+typedef mc::client_config_t client_config_t;
+
+// defines types for client template
+using proto::bin::api;
+typedef mc::consistent_hashing_pool_t<murmur3_t> pool_t;
+typedef io::single_connection_pool_t<io::udp::connection_t> connections_t;
+typedef mc::server_proxy_t<lock_t, connections_t> server_proxy_t;
+typedef mc::server_proxies_t<shared_array_t, server_proxy_t> server_proxies_t;
+
+/// Defines default instantiation of the client template for process enviroment.
+typedef mc::client_template_t<pool_t, server_proxies_t, api> client_t;
+
+} // namespace udp
 } // namespace ipc
 } // namespace mc
 

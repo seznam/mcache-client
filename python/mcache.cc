@@ -94,6 +94,7 @@ static void set_from(type_t &res,
 
 /** Python wrapper around memcache client.
  */
+template <typename impl_t>
 class client_t {
 public:
     /** Flags that are used as type mark.
@@ -116,10 +117,9 @@ public:
         : client(), loads(), dumps()
     {
         // prepare options
-        namespace ipc = mc::ipc;
-        ipc::server_proxy_config_t scfg;
-        ipc::pool_config_t pcfg;
-        ipc::client_config_t ccfg;
+        mc::server_proxy_config_t scfg;
+        mc::consistent_hashing_pool_config_t pcfg;
+        mc::client_config_t ccfg;
         set_from(scfg.io_opts.timeouts.connect, dict, "connect_timeout");
         set_from(scfg.io_opts.timeouts.read, dict, "read_timeout");
         set_from(scfg.io_opts.timeouts.write, dict, "write_timeout");
@@ -133,7 +133,7 @@ public:
         boost::python::stl_input_iterator<std::string> begin(o);
         boost::python::stl_input_iterator<std::string> end;
         std::vector<std::string> addresses(begin, end);
-        client = boost::make_shared<ipc::client_t>(addresses, scfg, pcfg, ccfg);
+        client = boost::make_shared<impl_t>(addresses, scfg, pcfg, ccfg);
 
         // pickle module
         boost::python::object pickle = try_import("cPickle");
@@ -357,13 +357,13 @@ public:
 
     /** Register client object methods.
      */
-    static void define() {
+    static void define(const char *name) {
         boost::python::class_<client_t>
 
-            ("Client", boost::python::init<
-                           boost::python::object,
-                           boost::python::optional<boost::python::dict>
-                       >())
+            (name, boost::python::init<
+                       boost::python::object,
+                       boost::python::optional<boost::python::dict>
+                   >())
 
             .def("set", &client_t::seto)
             .def("set", &client_t::set)
@@ -392,7 +392,7 @@ public:
     }
 
 private:
-    boost::shared_ptr<mc::ipc::client_t> client; //!< memcache client
+    boost::shared_ptr<impl_t> client; //!< memcache client
     boost::python::object loads;                 //!< pickle.loads function
     boost::python::object dumps;                 //!< pickle.dumps function
 };
@@ -496,6 +496,7 @@ BOOST_PYTHON_MODULE(mcache) {
     mc::init();
     mc::py::std_string_from_python_bytes();
     mc::py::opts_from_python_dict();
-    mc::py::client_t::define();
+    mc::py::client_t<mc::ipc::client_t>::define("Client");
+    mc::py::client_t<mc::ipc::udp::client_t>::define("UDPClient");
 }
 
