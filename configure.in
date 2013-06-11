@@ -173,6 +173,9 @@ AC_SUBST(VERSION_INFO)
 AC_SUBST(BOOST_SYSTEM)
 AC_SUBST(READLINE_LIB)
 
+# for tests
+AC_SEARCH_LIBS(dlopen, dl)
+
 # Write config.status and the Makefile
 AC_CONFIG_FILES([Makefile
                  src/Makefile

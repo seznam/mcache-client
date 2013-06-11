@@ -80,7 +80,7 @@ template <
 public:
     // shortcuts
     typedef typename connections_t::connection_ptr_t connection_ptr_t;
-    typedef typename connection_ptr_t::value_type connection_t;
+    typedef typename connection_ptr_t::element_type connection_t;
     typedef server_proxy_config_t server_proxy_config_type;
 
     /** Shared data with other threads/processes.
