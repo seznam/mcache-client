@@ -1,0 +1,12 @@
+= Memcache client =
+
+You can install client from source by typing:
+
+$ ./configure
+$ make
+$ make install
+
+or build debian package by typing:
+
+$ dpkg-buildpackage -b -uc -us
+
