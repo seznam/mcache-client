@@ -1,0 +1,13 @@
+= Memcache client =
+
+C++ implementation of memcache client that support this features:
+
+* txt and binary application protocol
+* TCP and UDP transport protocol
+* consistent hashing pool of servers
+* thread/process dead servers caching
+* automatic dead servers restoration
+* thread/process socket caching
+* extensively customizable
+* python API
+

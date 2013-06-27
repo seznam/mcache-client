@@ -3,6 +3,8 @@
  *
  * DESCRIPTION      Austin Appleby hash function.
  *
+ * LICENSE          See COPYING
+ *
  * PROJECT          Seznam memcache client.
  *
  * AUTHOR           Michal Bukovsky <michal.bukovsky@firma.seznam.cz>

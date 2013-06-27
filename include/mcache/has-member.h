@@ -5,6 +5,8 @@
  *
  * PROJECT          Seznam memcache client.
  *
+ * LICENSE          See COPYING
+ *
  * AUTHOR           Michal Bukovsky <michal.bukovsky@firma.seznam.cz>
  *
  * Copyright (C) Seznam.cz a.s. 2011

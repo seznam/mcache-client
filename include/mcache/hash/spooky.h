@@ -3,6 +3,8 @@
  *
  * DESCRIPTION      Bob Jenkins spooky V2 hash function.
  *
+ * LICENSE          See COPYING
+ *
  * PROJECT          Seznam memcache client.
  *
  * AUTHOR           Michal Bukovsky <michal.bukovsky@firma.seznam.cz>
