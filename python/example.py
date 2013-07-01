@@ -1,5 +1,23 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
+#
+# FILE             $Id: $
+# 
+# DESCRIPTION      Python module.
+# 
+# PROJECT          Seznam memcache client.
+# 
+# LICENSE          See COPYING
+# 
+# AUTHOR           Michal Bukovsky <michal.bukovsky@firma.seznam.cz>
+# 
+# Copyright (C) Seznam.cz a.s. 2012
+# All Rights Reserved
+# 
+# HISTORY
+#       2012-11-19 (bukovsky)
+#                  First draft.
+# 
 
 import mcache
 

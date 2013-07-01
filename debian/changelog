@@ -2,7 +2,7 @@ szn-libmcache (0.2.1) unstable; urgency=low
 
   * clear method
 
- -- Ondrej Holecek <smrt@mirkwood>  Tue, 05 Mar 2013 09:39:20 +0100
+ -- Ondrej Holecek <ondrej.holecek@firma.seznam.cz>  Tue, 05 Mar 2013 09:39:20 +0100
 
 szn-libmcache (0.2.0) unstable; urgency=low
 
