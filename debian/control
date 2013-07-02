@@ -2,7 +2,8 @@ Source: szn-libmcache
 Priority: extra
 Maintainer: Michal Bukovsky <michal.bukovsky@firma.seznam.cz>
 Build-Depends: debhelper (>= 7.0.50), autotools-dev, pkg-config,
-               libboost1.50-dev, dh-autoreconf, git
+               libboost1.50-dev, dh-autoreconf, git,
+               libboost-thread1.50-dev
 Standards-Version: 3.8.4
 
 Package: szn-libmcache-dev
