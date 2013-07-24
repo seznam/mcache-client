@@ -1,0 +1,5 @@
+<map id="test::consistent_hashing_pool_t" name="test::consistent_hashing_pool_t">
+<area shape="rect" id="node2" href="$classmc_1_1consistent__hashing__pool__t.html" title="mc::consistent_hashing\l_pool_t\&lt; mc::murmur3_t \&gt;" alt="" coords="572,6,751,50"/>
+<area shape="rect" id="node4" href="$classmc_1_1consistent__hashing__pool__base__t.html" title="Non template base class for consistent hashing pool." alt="" coords="7,5,167,49"/>
+<area shape="rect" id="node6" href="$classmc_1_1consistent__hashing__pool__t.html" title="Ketama implementation of consistent hashing." alt="" coords="219,41,403,85"/>
+</map>

@@ -1,0 +1,263 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.3.1"/>
+<title>libmcache-0.2.1: Dokumentace třídy mc::server_proxy_config_t</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript">
+  $(document).ready(initResizable);
+  $(window).load(resizeHeight);
+</script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/search.js"></script>
+<script type="text/javascript">
+  $(document).ready(function() { searchBox.OnSelectItem(0); });
+</script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td style="padding-left: 0.5em;">
+   <div id="projectname">libmcache-0.2.1
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Generováno programem Doxygen 1.8.3.1 -->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "search",false,'Hledat');
+</script>
+  <div id="navrow1" class="tabs">
+    <ul class="tablist">
+      <li><a href="index.html"><span>Hlavní&#160;stránka</span></a></li>
+      <li><a href="namespaces.html"><span>Prostory&#160;jmen</span></a></li>
+      <li class="current"><a href="annotated.html"><span>Třídy</span></a></li>
+      <li><a href="files.html"><span>Soubory</span></a></li>
+      <li>
+        <div id="MSearchBox" class="MSearchBoxInactive">
+        <span class="left">
+          <img id="MSearchSelect" src="search/mag_sel.png"
+               onmouseover="return searchBox.OnSearchSelectShow()"
+               onmouseout="return searchBox.OnSearchSelectHide()"
+               alt=""/>
+          <input type="text" id="MSearchField" value="Hledat" accesskey="S"
+               onfocus="searchBox.OnSearchFieldFocus(true)" 
+               onblur="searchBox.OnSearchFieldFocus(false)" 
+               onkeyup="searchBox.OnSearchFieldChange(event)"/>
+          </span><span class="right">
+            <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><img id="MSearchCloseImg" border="0" src="search/close.png" alt=""/></a>
+          </span>
+        </div>
+      </li>
+    </ul>
+  </div>
+  <div id="navrow2" class="tabs2">
+    <ul class="tablist">
+      <li><a href="annotated.html"><span>Datové&#160;struktury</span></a></li>
+      <li><a href="classes.html"><span>Rejstřík&#160;datových&#160;struktur</span></a></li>
+      <li><a href="inherits.html"><span>Hierarchie&#160;tříd</span></a></li>
+      <li><a href="functions.html"><span>Datové&#160;položky</span></a></li>
+    </ul>
+  </div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+$(document).ready(function(){initNavTree('classmc_1_1server__proxy__config__t.html','');});
+</script>
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>Vše</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Třídy</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Prostory jmen</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Soubory</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Funkce</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Proměnné</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Definice typů</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Výčty</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(8)"><span class="SelectionMark">&#160;</span>Hodnoty výčtu</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(9)"><span class="SelectionMark">&#160;</span>Definice maker</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(10)"><span class="SelectionMark">&#160;</span>Stránky</a></div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div class="header">
+  <div class="summary">
+<a href="#pub-methods">Veřejné metody</a> &#124;
+<a href="#pub-attribs">Datové položky</a>  </div>
+  <div class="headertitle">
+<div class="title">Dokumentace třídy mc::server_proxy_config_t</div>  </div>
+</div><!--header-->
+<div class="contents">
+
+<p>Configuration object for server proxy and connection objects.  
+ <a href="classmc_1_1server__proxy__config__t.html#details">...</a></p>
+
+<p><code>#include &lt;<a class="el" href="server-proxy_8h_source.html">server-proxy.h</a>&gt;</code></p>
+<div class="dynheader">
+Diagram tříd pro mc::server_proxy_config_t:</div>
+<div class="dyncontent">
+<div class="center"><img src="classmc_1_1server__proxy__config__t__coll__graph.png" border="0" usemap="#mc_1_1server__proxy__config__t_coll__map" alt="Collaboration graph"/></div>
+<map name="mc_1_1server__proxy__config__t_coll__map" id="mc_1_1server__proxy__config__t_coll__map">
+<area shape="rect" id="node2" href="classmc_1_1io_1_1opts__t.html" title="Connection options." alt="" coords="44,99,145,127"/><area shape="rect" id="node4" href="classmc_1_1io_1_1opts__t_1_1timeouts__t.html" title="Timeouts collection." alt="" coords="9,6,180,34"/></map>
+<center><span class="legend">[<a target="top" href="graph_legend.html">vysvětlivky</a>]</span></center></div>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
+Veřejné metody</h2></td></tr>
+<tr class="memitem:a3dcc86a4b248f34d657a83998fe48800"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classmc_1_1server__proxy__config__t.html#a3dcc86a4b248f34d657a83998fe48800">server_proxy_config_t</a> (time_t <a class="el" href="classmc_1_1server__proxy__config__t.html#a8392cf49e089d65c47610657ca4cbfc3">restoration_interval</a>=60, uint32_t <a class="el" href="classmc_1_1server__proxy__config__t.html#aae3a9a779d6f53fad0798949f5c25dcb">fail_limit</a>=1, <a class="el" href="classmc_1_1io_1_1opts__t.html">io::opts_t</a> <a class="el" href="classmc_1_1server__proxy__config__t.html#aaf8d4a9df98a49d27818e0e1580d5ddf">io_opts</a>=<a class="el" href="classmc_1_1io_1_1opts__t.html">io::opts_t</a>())</td></tr>
+<tr class="memdesc:a3dcc86a4b248f34d657a83998fe48800"><td class="mdescLeft">&#160;</td><td class="mdescRight">C'tor.  <a href="#a3dcc86a4b248f34d657a83998fe48800">...</a><br/></td></tr>
+<tr class="separator:a3dcc86a4b248f34d657a83998fe48800"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-attribs"></a>
+Datové položky</h2></td></tr>
+<tr class="memitem:a8392cf49e089d65c47610657ca4cbfc3"><td class="memItemLeft" align="right" valign="top">time_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classmc_1_1server__proxy__config__t.html#a8392cf49e089d65c47610657ca4cbfc3">restoration_interval</a></td></tr>
+<tr class="memdesc:a8392cf49e089d65c47610657ca4cbfc3"><td class="mdescLeft">&#160;</td><td class="mdescRight">time when reconnect is scheduled  <a href="#a8392cf49e089d65c47610657ca4cbfc3">...</a><br/></td></tr>
+<tr class="separator:a8392cf49e089d65c47610657ca4cbfc3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aae3a9a779d6f53fad0798949f5c25dcb"><td class="memItemLeft" align="right" valign="top">uint32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classmc_1_1server__proxy__config__t.html#aae3a9a779d6f53fad0798949f5c25dcb">fail_limit</a></td></tr>
+<tr class="memdesc:aae3a9a779d6f53fad0798949f5c25dcb"><td class="mdescLeft">&#160;</td><td class="mdescRight">count of fails after that srv become dead  <a href="#aae3a9a779d6f53fad0798949f5c25dcb">...</a><br/></td></tr>
+<tr class="separator:aae3a9a779d6f53fad0798949f5c25dcb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aaf8d4a9df98a49d27818e0e1580d5ddf"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classmc_1_1io_1_1opts__t.html">io::opts_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classmc_1_1server__proxy__config__t.html#aaf8d4a9df98a49d27818e0e1580d5ddf">io_opts</a></td></tr>
+<tr class="memdesc:aaf8d4a9df98a49d27818e0e1580d5ddf"><td class="mdescLeft">&#160;</td><td class="mdescRight">io options  <a href="#aaf8d4a9df98a49d27818e0e1580d5ddf">...</a><br/></td></tr>
+<tr class="separator:aaf8d4a9df98a49d27818e0e1580d5ddf"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<a name="details" id="details"></a><h2 class="groupheader">Detailní popis</h2>
+<div class="textblock"><p>Configuration object for server proxy and connection objects. </p>
+
+<p>Definice je uvedena na řádku <a class="el" href="server-proxy_8h_source.html#l00060">60</a> v souboru <a class="el" href="server-proxy_8h_source.html">server-proxy.h</a>.</p>
+</div><h2 class="groupheader">Dokumentace konstruktoru a destruktoru</h2>
+<a class="anchor" id="a3dcc86a4b248f34d657a83998fe48800"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">mc::server_proxy_config_t::server_proxy_config_t </td>
+          <td>(</td>
+          <td class="paramtype">time_t&#160;</td>
+          <td class="paramname"><em>restoration_interval</em> = <code>60</code>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint32_t&#160;</td>
+          <td class="paramname"><em>fail_limit</em> = <code>1</code>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classmc_1_1io_1_1opts__t.html">io::opts_t</a>&#160;</td>
+          <td class="paramname"><em>io_opts</em> = <code><a class="el" href="classmc_1_1io_1_1opts__t.html">io::opts_t</a>()</code>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>C'tor. </p>
+
+<p>Definice je uvedena na řádku <a class="el" href="server-proxy_8h_source.html#l00064">64</a> v souboru <a class="el" href="server-proxy_8h_source.html">server-proxy.h</a>.</p>
+
+</div>
+</div>
+<h2 class="groupheader">Dokumentace k položkám</h2>
+<a class="anchor" id="aae3a9a779d6f53fad0798949f5c25dcb"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint32_t mc::server_proxy_config_t::fail_limit</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>count of fails after that srv become dead </p>
+
+<p>Definice je uvedena na řádku <a class="el" href="server-proxy_8h_source.html#l00072">72</a> v souboru <a class="el" href="server-proxy_8h_source.html">server-proxy.h</a>.</p>
+
+<p>Používá se v <a class="el" href="test-server-proxy_8cc_source.html#l00109">test::server_proxy_fail_limit()</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="aaf8d4a9df98a49d27818e0e1580d5ddf"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classmc_1_1io_1_1opts__t.html">io::opts_t</a> mc::server_proxy_config_t::io_opts</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>io options </p>
+
+<p>Definice je uvedena na řádku <a class="el" href="server-proxy_8h_source.html#l00073">73</a> v souboru <a class="el" href="server-proxy_8h_source.html">server-proxy.h</a>.</p>
+
+<p>Používá se v <a class="el" href="test-server-proxy_8cc_source.html#l00109">test::server_proxy_fail_limit()</a>, <a class="el" href="test-server-proxy_8cc_source.html#l00085">test::server_proxy_mark_dead()</a>, <a class="el" href="test-server-proxy_8cc_source.html#l00169">test::server_proxy_not_recover_bad_connection()</a> a <a class="el" href="test-server-proxy_8cc_source.html#l00138">test::server_proxy_raise_zombie()</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a8392cf49e089d65c47610657ca4cbfc3"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">time_t mc::server_proxy_config_t::restoration_interval</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>time when reconnect is scheduled </p>
+
+<p>Definice je uvedena na řádku <a class="el" href="server-proxy_8h_source.html#l00071">71</a> v souboru <a class="el" href="server-proxy_8h_source.html">server-proxy.h</a>.</p>
+
+<p>Používá se v <a class="el" href="test-server-proxy_8cc_source.html#l00109">test::server_proxy_fail_limit()</a>, <a class="el" href="test-server-proxy_8cc_source.html#l00085">test::server_proxy_mark_dead()</a>, <a class="el" href="test-server-proxy_8cc_source.html#l00169">test::server_proxy_not_recover_bad_connection()</a> a <a class="el" href="test-server-proxy_8cc_source.html#l00138">test::server_proxy_raise_zombie()</a>.</p>
+
+</div>
+</div>
+<hr/>Dokumentace pro tuto třídu byla generována z následujícího souboru:<ul>
+<li>include/mcache/<a class="el" href="server-proxy_8h_source.html">server-proxy.h</a></li>
+</ul>
+</div><!-- contents -->
+</div><!-- doc-content -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="namespacemc.html">mc</a></li><li class="navelem"><a class="el" href="classmc_1_1server__proxy__config__t.html">server_proxy_config_t</a></li>
+    <li class="footer">Generováno út 23. čec 2013 13.13:04 pro projekt libmcache-0.2.1 programem
+    <a href="http://www.doxygen.org/index.html">
+    <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.3.1 </li>
+  </ul>
+</div>
+</body>
+</html>

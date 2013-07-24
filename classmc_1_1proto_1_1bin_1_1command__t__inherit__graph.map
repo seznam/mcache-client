@@ -1,0 +1,7 @@
+<map id="mc::proto::bin::command_t" name="mc::proto::bin::command_t">
+<area shape="rect" id="node3" href="$classmc_1_1proto_1_1bin_1_1delete__command__t.html" title="class for delete command" alt="" coords="256,5,403,49"/>
+<area shape="rect" id="node5" href="$classmc_1_1proto_1_1bin_1_1incr__decr__command__t.html" title="Base class for incr and decr commands." alt="" coords="263,71,396,115"/>
+<area shape="rect" id="node7" href="$classmc_1_1proto_1_1bin_1_1retrieve__command__t.html" title="Base class for all retrieve commands." alt="" coords="252,138,407,182"/>
+<area shape="rect" id="node9" href="$classmc_1_1proto_1_1bin_1_1storage__command__t.html" title="Base class for all storage commands." alt="" coords="236,205,423,249"/>
+<area shape="rect" id="node11" href="$classmc_1_1proto_1_1bin_1_1touch__command__t.html" title="Class for delete command." alt="" coords="257,271,401,315"/>
+</map>

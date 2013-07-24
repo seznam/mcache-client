@@ -1,0 +1,6 @@
+<map id="mc::proto::txt::command_t" name="mc::proto::txt::command_t">
+<area shape="rect" id="node3" href="$classmc_1_1proto_1_1txt_1_1delete__command__t.html" title="Base class for incr and decr commands." alt="" coords="236,5,380,49"/>
+<area shape="rect" id="node5" href="$classmc_1_1proto_1_1txt_1_1incr__decr__command__t.html" title="Base class for incr and decr commands." alt="" coords="241,71,375,115"/>
+<area shape="rect" id="node7" href="$classmc_1_1proto_1_1txt_1_1retrieve__command__t.html" title="Base class for all retrieve commands." alt="" coords="232,138,384,182"/>
+<area shape="rect" id="node9" href="$classmc_1_1proto_1_1txt_1_1storage__command__t.html" title="Base class for all storage commands." alt="" coords="232,205,384,249"/>
+</map>

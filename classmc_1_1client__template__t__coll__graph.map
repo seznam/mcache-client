@@ -1,0 +1,7 @@
+<map id="mc::client_template_t&lt; pool_t, server_proxies_t, impl &gt;" name="mc::client_template_t&lt; pool_t, server_proxies_t, impl &gt;">
+<area shape="rect" id="node4" href="$classmc_1_1server__proxies__t.html" title="Vector of server proxies." alt="" coords="865,50,1012,110"/>
+<area shape="rect" id="node7" href="$classmc_1_1aux_1_1unitialized__array__t.html" title="mc::aux::unitialized\l_array_t\&lt; server_proxy_t \&gt;" alt="" coords="585,61,767,105"/>
+<area shape="rect" id="node9" href="$classmc_1_1server__proxy__t.html" title="Memcache server proxy responsible for handling dead servers." alt="" coords="248,22,419,66"/>
+<area shape="rect" id="node11" href="$classmc_1_1server__proxy__t_1_1shared__t.html" title="Shared data with other threads/processes." alt="" coords="5,14,152,74"/>
+<area shape="rect" id="node13" href="$classmc_1_1aux_1_1unitialized__array__t.html" title="Array of unitialized values." alt="" coords="265,89,401,133"/>
+</map>

@@ -1,0 +1,9 @@
+<map id="include/mcache/server&#45;proxy.h" name="include/mcache/server&#45;proxy.h">
+<area shape="rect" id="node9" href="$lock_8h.html" title="mcache/lock.h" alt="" coords="1043,99,1149,127"/>
+<area shape="rect" id="node15" href="$io_2opts_8h.html" title="mcache/io/opts.h" alt="" coords="429,99,552,127"/>
+<area shape="rect" id="node18" href="$include_2mcache_2io_2error_8h.html" title="mcache/io/error.h" alt="" coords="83,99,208,127"/>
+<area shape="rect" id="node25" href="$response_8h.html" title="mcache/proto/response.h" alt="" coords="232,99,405,127"/>
+<area shape="rect" id="node34" href="$parser_8h.html" title="mcache/proto/parser.h" alt="" coords="627,99,781,127"/>
+<area shape="rect" id="node20" href="$include_2mcache_2error_8h.html" title="mcache/error.h" alt="" coords="99,270,208,298"/>
+<area shape="rect" id="node31" href="$include_2mcache_2proto_2error_8h.html" title="mcache/proto/error.h" alt="" coords="81,185,225,213"/>
+</map>

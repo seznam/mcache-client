@@ -1,0 +1,4 @@
+<map id="mc::proto::single_response_t" name="mc::proto::single_response_t">
+<area shape="rect" id="node3" href="$classmc_1_1proto_1_1single__body__response__t.html" title="Response for simple commands with body." alt="" coords="5,83,160,127"/>
+<area shape="rect" id="node5" href="$classmc_1_1proto_1_1single__retrival__response__t.html" title="Response for single retrieval commands." alt="" coords="184,83,352,127"/>
+</map>

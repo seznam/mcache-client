@@ -1,0 +1,26 @@
+<map id="src/test&#45;mcache.cc" name="src/test&#45;mcache.cc">
+<area shape="rect" id="node15" href="$mcache_8h.html" title="mcache/mcache.h" alt="" coords="1800,83,1931,111"/>
+<area shape="rect" id="node17" href="$init_8h.html" title="mcache/init.h" alt="" coords="1815,161,1916,189"/>
+<area shape="rect" id="node19" href="$hash_8h.html" title="mcache/hash.h" alt="" coords="2912,339,3024,367"/>
+<area shape="rect" id="node39" href="$client_8h.html" title="mcache/client.h" alt="" coords="2380,161,2495,189"/>
+<area shape="rect" id="node83" href="$txt_8h.html" title="mcache/proto/txt.h" alt="" coords="1660,161,1791,189"/>
+<area shape="rect" id="node89" href="$binary_8h.html" title="mcache/proto/binary.h" alt="" coords="1940,161,2092,189"/>
+<area shape="rect" id="node96" href="$server-proxy_8h.html" title="mcache/server&#45;proxy.h" alt="" coords="812,161,967,189"/>
+<area shape="rect" id="node116" href="$server-proxies_8h.html" title="mcache/server&#45;proxies.h" alt="" coords="154,246,322,274"/>
+<area shape="rect" id="node125" href="$consistent-hashing_8h.html" title="mcache/pool/consistent\l&#45;hashing.h" alt="" coords="3322,238,3482,282"/>
+<area shape="rect" id="node135" href="$connections_8h.html" title="mcache/io/connections.h" alt="" coords="1282,161,1450,189"/>
+<area shape="rect" id="node147" href="$connection_8h.html" title="mcache/io/connection.h" alt="" coords="388,161,551,189"/>
+<area shape="rect" id="node21" href="$jenkins_8h.html" title="mcache/hash/jenkins.h" alt="" coords="3054,425,3211,453"/>
+<area shape="rect" id="node27" href="$murmur3_8h.html" title="mcache/hash/murmur3.h" alt="" coords="2518,425,2688,453"/>
+<area shape="rect" id="node31" href="$city_8h.html" title="mcache/hash/city.h" alt="" coords="2712,425,2848,453"/>
+<area shape="rect" id="node35" href="$spooky_8h.html" title="mcache/hash/spooky.h" alt="" coords="2872,425,3030,453"/>
+<area shape="rect" id="node56" href="$include_2mcache_2error_8h.html" title="mcache/error.h" alt="" coords="1874,425,1983,453"/>
+<area shape="rect" id="node61" href="$proto_2opts_8h.html" title="mcache/proto/opts.h" alt="" coords="1890,246,2034,274"/>
+<area shape="rect" id="node66" href="$response_8h.html" title="mcache/proto/response.h" alt="" coords="1692,246,1866,274"/>
+<area shape="rect" id="node75" href="$conversion_8h.html" title="mcache/conversion.h" alt="" coords="2420,246,2567,274"/>
+<area shape="rect" id="node72" href="$include_2mcache_2proto_2error_8h.html" title="mcache/proto/error.h" alt="" coords="1847,339,1991,367"/>
+<area shape="rect" id="node101" href="$lock_8h.html" title="mcache/lock.h" alt="" coords="746,246,852,274"/>
+<area shape="rect" id="node105" href="$io_2opts_8h.html" title="mcache/io/opts.h" alt="" coords="927,246,1050,274"/>
+<area shape="rect" id="node108" href="$include_2mcache_2io_2error_8h.html" title="mcache/io/error.h" alt="" coords="1074,246,1199,274"/>
+<area shape="rect" id="node112" href="$parser_8h.html" title="mcache/proto/parser.h" alt="" coords="567,246,722,274"/>
+</map>

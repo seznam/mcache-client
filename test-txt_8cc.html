@@ -1,0 +1,263 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.3.1"/>
+<title>libmcache-0.2.1: Dokumentace souboru src/proto/test-txt.cc</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript">
+  $(document).ready(initResizable);
+  $(window).load(resizeHeight);
+</script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/search.js"></script>
+<script type="text/javascript">
+  $(document).ready(function() { searchBox.OnSelectItem(0); });
+</script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td style="padding-left: 0.5em;">
+   <div id="projectname">libmcache-0.2.1
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Generováno programem Doxygen 1.8.3.1 -->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "search",false,'Hledat');
+</script>
+  <div id="navrow1" class="tabs">
+    <ul class="tablist">
+      <li><a href="index.html"><span>Hlavní&#160;stránka</span></a></li>
+      <li><a href="namespaces.html"><span>Prostory&#160;jmen</span></a></li>
+      <li><a href="annotated.html"><span>Třídy</span></a></li>
+      <li class="current"><a href="files.html"><span>Soubory</span></a></li>
+      <li>
+        <div id="MSearchBox" class="MSearchBoxInactive">
+        <span class="left">
+          <img id="MSearchSelect" src="search/mag_sel.png"
+               onmouseover="return searchBox.OnSearchSelectShow()"
+               onmouseout="return searchBox.OnSearchSelectHide()"
+               alt=""/>
+          <input type="text" id="MSearchField" value="Hledat" accesskey="S"
+               onfocus="searchBox.OnSearchFieldFocus(true)" 
+               onblur="searchBox.OnSearchFieldFocus(false)" 
+               onkeyup="searchBox.OnSearchFieldChange(event)"/>
+          </span><span class="right">
+            <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><img id="MSearchCloseImg" border="0" src="search/close.png" alt=""/></a>
+          </span>
+        </div>
+      </li>
+    </ul>
+  </div>
+  <div id="navrow2" class="tabs2">
+    <ul class="tablist">
+      <li><a href="files.html"><span>Seznam&#160;souborů</span></a></li>
+      <li><a href="globals.html"><span>Globální&#160;symboly</span></a></li>
+    </ul>
+  </div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+$(document).ready(function(){initNavTree('test-txt_8cc.html','');});
+</script>
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>Vše</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Třídy</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Prostory jmen</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Soubory</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Funkce</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Proměnné</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Definice typů</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Výčty</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(8)"><span class="SelectionMark">&#160;</span>Hodnoty výčtu</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(9)"><span class="SelectionMark">&#160;</span>Definice maker</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(10)"><span class="SelectionMark">&#160;</span>Stránky</a></div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div class="header">
+  <div class="summary">
+<a href="#nested-classes">Datové struktry</a> &#124;
+<a href="#namespaces">Prostory jmen</a> &#124;
+<a href="#func-members">Funkce</a>  </div>
+  <div class="headertitle">
+<div class="title">Dokumentace souboru test-txt.cc</div>  </div>
+</div><!--header-->
+<div class="contents">
+<div class="textblock"><code>#include &lt;ctime&gt;</code><br/>
+<code>#include &lt;cstdlib&gt;</code><br/>
+<code>#include &lt;iostream&gt;</code><br/>
+<code>#include &lt;stdexcept&gt;</code><br/>
+<code>#include &lt;algorithm&gt;</code><br/>
+<code>#include &lt;boost/algorithm/string/predicate.hpp&gt;</code><br/>
+<code>#include &lt;boost/lambda/lambda.hpp&gt;</code><br/>
+<code>#include &lt;boost/lambda/if.hpp&gt;</code><br/>
+<code>#include &lt;cxxabi.h&gt;</code><br/>
+<code>#include &lt;<a class="el" href="init_8h_source.html">mcache/init.h</a>&gt;</code><br/>
+<code>#include &lt;<a class="el" href="txt_8h_source.html">mcache/proto/txt.h</a>&gt;</code><br/>
+<code>#include &lt;<a class="el" href="response_8h_source.html">mcache/proto/response.h</a>&gt;</code><br/>
+<code>#include &lt;<a class="el" href="parser_8h_source.html">mcache/proto/parser.h</a>&gt;</code><br/>
+</div><div class="textblock"><div class="dynheader">
+Graf závislostí na vkládaných souborech pro test-txt.cc:</div>
+<div class="dyncontent">
+<div class="center"><img src="test-txt_8cc__incl.png" border="0" usemap="#src_2proto_2test-txt_8cc" alt=""/></div>
+<map name="src_2proto_2test-txt_8cc" id="src_2proto_2test-txt_8cc">
+<area shape="rect" id="node21" href="init_8h.html" title="mcache/init.h" alt="" coords="1561,91,1663,119"/><area shape="rect" id="node23" href="txt_8h.html" title="mcache/proto/txt.h" alt="" coords="497,91,628,119"/><area shape="rect" id="node36" href="response_8h.html" title="mcache/proto/response.h" alt="" coords="424,185,597,213"/><area shape="rect" id="node46" href="parser_8h.html" title="mcache/proto/parser.h" alt="" coords="652,91,807,119"/><area shape="rect" id="node27" href="include_2mcache_2error_8h.html" title="mcache/error.h" alt="" coords="261,347,371,375"/><area shape="rect" id="node31" href="proto_2opts_8h.html" title="mcache/proto/opts.h" alt="" coords="621,185,765,213"/><area shape="rect" id="node42" href="include_2mcache_2proto_2error_8h.html" title="mcache/proto/error.h" alt="" coords="277,270,421,298"/></map>
+</div>
+</div>
+<p><a href="test-txt_8cc_source.html">Zobrazit zdrojový text tohoto souboru.</a></p>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="nested-classes"></a>
+Datové struktry</h2></td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classtest_1_1validation__connection__error__t.html">test::validation_connection_error_t</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classtest_1_1validation__connection__t.html">test::validation_connection_t</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classtest_1_1Checker__t.html">test::Checker_t</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="namespaces"></a>
+Prostory jmen</h2></td></tr>
+<tr class="memitem:namespacetest"><td class="memItemLeft" align="right" valign="top">namespace &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacetest.html">test</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
+Funkce</h2></td></tr>
+<tr class="memitem:a9772a3b341561e9a55ffe4cfd37f5668"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacetest.html#a9772a3b341561e9a55ffe4cfd37f5668">test::error_error</a> ()</td></tr>
+<tr class="separator:a9772a3b341561e9a55ffe4cfd37f5668"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a62e917cc82c9dc2805db3c0b62542a7e"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacetest.html#a62e917cc82c9dc2805db3c0b62542a7e">test::error_client_error</a> ()</td></tr>
+<tr class="separator:a62e917cc82c9dc2805db3c0b62542a7e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1b69629db483210836f6b92cf2968d6a"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacetest.html#a1b69629db483210836f6b92cf2968d6a">test::error_server_error</a> ()</td></tr>
+<tr class="separator:a1b69629db483210836f6b92cf2968d6a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a28b3d1e866a180add02db890c1b66e46"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacetest.html#a28b3d1e866a180add02db890c1b66e46">test::error_too_long_key</a> ()</td></tr>
+<tr class="separator:a28b3d1e866a180add02db890c1b66e46"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a065d010c411cfa008d17716e973bc32d"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacetest.html#a065d010c411cfa008d17716e973bc32d">test::error_invalid_char_in_key</a> ()</td></tr>
+<tr class="separator:a065d010c411cfa008d17716e973bc32d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3d1e8469a8cfa479ff6137cdf5428f42"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacetest.html#a3d1e8469a8cfa479ff6137cdf5428f42">test::get_command_empty</a> ()</td></tr>
+<tr class="separator:a3d1e8469a8cfa479ff6137cdf5428f42"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aff4bd3ed7495ada10aba90725976d274"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacetest.html#aff4bd3ed7495ada10aba90725976d274">test::get_command_unrecognized</a> ()</td></tr>
+<tr class="separator:aff4bd3ed7495ada10aba90725976d274"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4ca735224ce078469e12b34a43e9d67d"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacetest.html#a4ca735224ce078469e12b34a43e9d67d">test::get_command_error</a> ()</td></tr>
+<tr class="separator:a4ca735224ce078469e12b34a43e9d67d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a33fea6850bb97018dbc1a83f86b15f58"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacetest.html#a33fea6850bb97018dbc1a83f86b15f58">test::get_command_not_found</a> ()</td></tr>
+<tr class="separator:a33fea6850bb97018dbc1a83f86b15f58"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae6d439abc56e3a40f78c4bd341323efb"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacetest.html#ae6d439abc56e3a40f78c4bd341323efb">test::get_command_found</a> ()</td></tr>
+<tr class="separator:ae6d439abc56e3a40f78c4bd341323efb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a100caf72019e00110f614953c22fc370"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacetest.html#a100caf72019e00110f614953c22fc370">test::get_command_found_flags</a> ()</td></tr>
+<tr class="separator:a100caf72019e00110f614953c22fc370"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a31338351c9e0eda5ea3e9ffddd4180ff"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacetest.html#a31338351c9e0eda5ea3e9ffddd4180ff">test::get_command_gets</a> ()</td></tr>
+<tr class="separator:a31338351c9e0eda5ea3e9ffddd4180ff"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af39630d9268f97e5a2eafd21cbfafef2"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacetest.html#af39630d9268f97e5a2eafd21cbfafef2">test::get_command_invalid_body</a> ()</td></tr>
+<tr class="separator:af39630d9268f97e5a2eafd21cbfafef2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abd1f24b2caf4440923555c27f6669bbd"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacetest.html#abd1f24b2caf4440923555c27f6669bbd">test::get_command_invalid_flags</a> ()</td></tr>
+<tr class="separator:abd1f24b2caf4440923555c27f6669bbd"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad627e5533009b33e6be052ce186e6c12"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacetest.html#ad627e5533009b33e6be052ce186e6c12">test::get_command_invalid_size</a> ()</td></tr>
+<tr class="separator:ad627e5533009b33e6be052ce186e6c12"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8097dbf05a5377d1551733612cceffcc"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacetest.html#a8097dbf05a5377d1551733612cceffcc">test::set_command_empty</a> ()</td></tr>
+<tr class="separator:a8097dbf05a5377d1551733612cceffcc"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0deb0c35c1a7f0cd9cdbc483e92ea0dd"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacetest.html#a0deb0c35c1a7f0cd9cdbc483e92ea0dd">test::set_command_unrecognized</a> ()</td></tr>
+<tr class="separator:a0deb0c35c1a7f0cd9cdbc483e92ea0dd"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa55c3fc933ac65477075cdc0fea698c2"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacetest.html#aa55c3fc933ac65477075cdc0fea698c2">test::set_command_error</a> ()</td></tr>
+<tr class="separator:aa55c3fc933ac65477075cdc0fea698c2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a64d854e179cc9469ddffff2f61591a0f"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacetest.html#a64d854e179cc9469ddffff2f61591a0f">test::set_command_ok</a> ()</td></tr>
+<tr class="separator:a64d854e179cc9469ddffff2f61591a0f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a620fea4c03a58362ba1811cfff4f0279"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacetest.html#a620fea4c03a58362ba1811cfff4f0279">test::set_command_not_stored</a> ()</td></tr>
+<tr class="separator:a620fea4c03a58362ba1811cfff4f0279"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5358a81140593b8c28866a05a8dd34a0"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacetest.html#a5358a81140593b8c28866a05a8dd34a0">test::set_command_exists</a> ()</td></tr>
+<tr class="separator:a5358a81140593b8c28866a05a8dd34a0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7e947989d791e2698adfb591c51971b8"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacetest.html#a7e947989d791e2698adfb591c51971b8">test::set_command_not_found</a> ()</td></tr>
+<tr class="separator:a7e947989d791e2698adfb591c51971b8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa9d87e0cf4d927dd11fcebe5d86f5404"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacetest.html#aa9d87e0cf4d927dd11fcebe5d86f5404">test::incr_command_empty</a> ()</td></tr>
+<tr class="separator:aa9d87e0cf4d927dd11fcebe5d86f5404"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad38d4b1bf12f8c0cb4283d52231cd57d"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacetest.html#ad38d4b1bf12f8c0cb4283d52231cd57d">test::incr_command_unrecognized</a> ()</td></tr>
+<tr class="separator:ad38d4b1bf12f8c0cb4283d52231cd57d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a018138ede26be0d6a3a4e29f6b38d3bf"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacetest.html#a018138ede26be0d6a3a4e29f6b38d3bf">test::incr_command_error</a> ()</td></tr>
+<tr class="separator:a018138ede26be0d6a3a4e29f6b38d3bf"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:adc19379546c1e73373fc159b14136339"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacetest.html#adc19379546c1e73373fc159b14136339">test::incr_command_ok</a> ()</td></tr>
+<tr class="separator:adc19379546c1e73373fc159b14136339"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a232c41c743d0a7bf9cc02a335ae6acf8"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacetest.html#a232c41c743d0a7bf9cc02a335ae6acf8">test::incr_command_not_found</a> ()</td></tr>
+<tr class="separator:a232c41c743d0a7bf9cc02a335ae6acf8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6e441af88ce5af38cc8ebaa56baa01df"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacetest.html#a6e441af88ce5af38cc8ebaa56baa01df">test::touch_command_ok</a> ()</td></tr>
+<tr class="separator:a6e441af88ce5af38cc8ebaa56baa01df"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a15e7c3b5d2de9f04cc822bf1b775a022"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacetest.html#a15e7c3b5d2de9f04cc822bf1b775a022">test::del_command_empty</a> ()</td></tr>
+<tr class="separator:a15e7c3b5d2de9f04cc822bf1b775a022"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a626251355ba4234946d477edfa8a3be2"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacetest.html#a626251355ba4234946d477edfa8a3be2">test::del_command_unrecognized</a> ()</td></tr>
+<tr class="separator:a626251355ba4234946d477edfa8a3be2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a480b990fcc934a7fcb90635d3f330382"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacetest.html#a480b990fcc934a7fcb90635d3f330382">test::del_command_error</a> ()</td></tr>
+<tr class="separator:a480b990fcc934a7fcb90635d3f330382"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af9c834e8c9724adc4b5dc16f9a98405a"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacetest.html#af9c834e8c9724adc4b5dc16f9a98405a">test::del_command_ok</a> ()</td></tr>
+<tr class="separator:af9c834e8c9724adc4b5dc16f9a98405a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a00283243abb14c885a7f86f4ac4b7682"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacetest.html#a00283243abb14c885a7f86f4ac4b7682">test::del_command_not_found</a> ()</td></tr>
+<tr class="separator:a00283243abb14c885a7f86f4ac4b7682"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2c3f6775325c30275d11c6abee2db6a0"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="test-txt_8cc.html#a2c3f6775325c30275d11c6abee2db6a0">main</a> (int, char **)</td></tr>
+<tr class="separator:a2c3f6775325c30275d11c6abee2db6a0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<h2 class="groupheader">Dokumentace funkcí</h2>
+<a class="anchor" id="a2c3f6775325c30275d11c6abee2db6a0"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int main </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname">, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">char **&#160;</td>
+          <td class="paramname">&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Definice je uvedena na řádku <a class="el" href="test-txt_8cc_source.html#l00729">729</a> v souboru <a class="el" href="test-txt_8cc_source.html">test-txt.cc</a>.</p>
+
+<p>Odkazuje se na <a class="el" href="test-binary_8cc_source.html#l00873">test::del_command_empty()</a>, <a class="el" href="test-binary_8cc_source.html#l00909">test::del_command_error()</a>, <a class="el" href="test-binary_8cc_source.html#l00945">test::del_command_not_found()</a>, <a class="el" href="test-binary_8cc_source.html#l00927">test::del_command_ok()</a>, <a class="el" href="test-binary_8cc_source.html#l00891">test::del_command_unrecognized()</a>, <a class="el" href="test-binary_8cc_source.html#l00311">test::error_client_error()</a>, <a class="el" href="test-binary_8cc_source.html#l00293">test::error_error()</a>, <a class="el" href="test-binary_8cc_source.html#l00371">test::error_invalid_char_in_key()</a>, <a class="el" href="test-binary_8cc_source.html#l00329">test::error_server_error()</a>, <a class="el" href="test-binary_8cc_source.html#l00347">test::error_too_long_key()</a>, <a class="el" href="test-connections_8cc_source.html#l00143">test::Checker_t::fails</a>, <a class="el" href="test-binary_8cc_source.html#l00395">test::get_command_empty()</a>, <a class="el" href="test-binary_8cc_source.html#l00431">test::get_command_error()</a>, <a class="el" href="test-binary_8cc_source.html#l00467">test::get_command_found()</a>, <a class="el" href="test-binary_8cc_source.html#l00523">test::get_command_found_flags()</a>, <a class="el" href="test-binary_8cc_source.html#l00540">test::get_command_gets()</a>, <a class="el" href="test-txt_8cc_source.html#l00332">test::get_command_invalid_body()</a>, <a class="el" href="test-txt_8cc_source.html#l00352">test::get_command_invalid_flags()</a>, <a class="el" href="test-txt_8cc_source.html#l00370">test::get_command_invalid_size()</a>, <a class="el" href="test-binary_8cc_source.html#l00449">test::get_command_not_found()</a>, <a class="el" href="test-binary_8cc_source.html#l00413">test::get_command_unrecognized()</a>, <a class="el" href="test-binary_8cc_source.html#l00741">test::incr_command_empty()</a>, <a class="el" href="test-binary_8cc_source.html#l00785">test::incr_command_error()</a>, <a class="el" href="test-binary_8cc_source.html#l00851">test::incr_command_not_found()</a>, <a class="el" href="test-binary_8cc_source.html#l00829">test::incr_command_ok()</a>, <a class="el" href="test-binary_8cc_source.html#l00763">test::incr_command_unrecognized()</a>, <a class="el" href="init_8cc_source.html#l00035">mc::init()</a>, <a class="el" href="test-binary_8cc_source.html#l00557">test::set_command_empty()</a>, <a class="el" href="test-binary_8cc_source.html#l00593">test::set_command_error()</a>, <a class="el" href="test-binary_8cc_source.html#l00647">test::set_command_exists()</a>, <a class="el" href="test-binary_8cc_source.html#l00665">test::set_command_not_found()</a>, <a class="el" href="test-binary_8cc_source.html#l00629">test::set_command_not_stored()</a>, <a class="el" href="test-binary_8cc_source.html#l00611">test::set_command_ok()</a>, <a class="el" href="test-binary_8cc_source.html#l00575">test::set_command_unrecognized()</a> a <a class="el" href="test-binary_8cc_source.html#l01017">test::touch_command_ok()</a>.</p>
+
+</div>
+</div>
+</div><!-- contents -->
+</div><!-- doc-content -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_51b8ddc8ad9e5a56f13bccf85e770ab4.html">proto</a></li><li class="navelem"><a class="el" href="test-txt_8cc.html">test-txt.cc</a></li>
+    <li class="footer">Generováno út 23. čec 2013 13.13:04 pro projekt libmcache-0.2.1 programem
+    <a href="http://www.doxygen.org/index.html">
+    <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.3.1 </li>
+  </ul>
+</div>
+</body>
+</html>

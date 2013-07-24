@@ -1,0 +1,5 @@
+<map id="mc::consistent_hashing_pool_t&lt; hash_function_t &gt;" name="mc::consistent_hashing_pool_t&lt; hash_function_t &gt;">
+<area shape="rect" id="node5" href="$classmc_1_1consistent__hashing__pool__t.html" title="mc::consistent_hashing\l_pool_t\&lt; mc::murmur3_t \&gt;" alt="" coords="8,211,187,255"/>
+<area shape="rect" id="node2" href="$classmc_1_1consistent__hashing__pool__base__t.html" title="Non template base class for consistent hashing pool." alt="" coords="17,6,177,50"/>
+<area shape="rect" id="node7" href="$classtest_1_1consistent__hashing__pool__t.html" title="test::consistent_hashing\l_pool_t" alt="" coords="16,307,179,351"/>
+</map>

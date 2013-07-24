@@ -1,0 +1,528 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.3.1"/>
+<title>libmcache-0.2.1: Dokumentace třídy test::consistent_hashing_pool_t</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript">
+  $(document).ready(initResizable);
+  $(window).load(resizeHeight);
+</script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/search.js"></script>
+<script type="text/javascript">
+  $(document).ready(function() { searchBox.OnSelectItem(0); });
+</script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td style="padding-left: 0.5em;">
+   <div id="projectname">libmcache-0.2.1
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Generováno programem Doxygen 1.8.3.1 -->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "search",false,'Hledat');
+</script>
+  <div id="navrow1" class="tabs">
+    <ul class="tablist">
+      <li><a href="index.html"><span>Hlavní&#160;stránka</span></a></li>
+      <li><a href="namespaces.html"><span>Prostory&#160;jmen</span></a></li>
+      <li class="current"><a href="annotated.html"><span>Třídy</span></a></li>
+      <li><a href="files.html"><span>Soubory</span></a></li>
+      <li>
+        <div id="MSearchBox" class="MSearchBoxInactive">
+        <span class="left">
+          <img id="MSearchSelect" src="search/mag_sel.png"
+               onmouseover="return searchBox.OnSearchSelectShow()"
+               onmouseout="return searchBox.OnSearchSelectHide()"
+               alt=""/>
+          <input type="text" id="MSearchField" value="Hledat" accesskey="S"
+               onfocus="searchBox.OnSearchFieldFocus(true)" 
+               onblur="searchBox.OnSearchFieldFocus(false)" 
+               onkeyup="searchBox.OnSearchFieldChange(event)"/>
+          </span><span class="right">
+            <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><img id="MSearchCloseImg" border="0" src="search/close.png" alt=""/></a>
+          </span>
+        </div>
+      </li>
+    </ul>
+  </div>
+  <div id="navrow2" class="tabs2">
+    <ul class="tablist">
+      <li><a href="annotated.html"><span>Datové&#160;struktury</span></a></li>
+      <li><a href="classes.html"><span>Rejstřík&#160;datových&#160;struktur</span></a></li>
+      <li><a href="inherits.html"><span>Hierarchie&#160;tříd</span></a></li>
+      <li><a href="functions.html"><span>Datové&#160;položky</span></a></li>
+    </ul>
+  </div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+$(document).ready(function(){initNavTree('classtest_1_1consistent__hashing__pool__t.html','');});
+</script>
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>Vše</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Třídy</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Prostory jmen</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Soubory</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Funkce</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Proměnné</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Definice typů</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Výčty</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(8)"><span class="SelectionMark">&#160;</span>Hodnoty výčtu</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(9)"><span class="SelectionMark">&#160;</span>Definice maker</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(10)"><span class="SelectionMark">&#160;</span>Stránky</a></div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div class="header">
+  <div class="summary">
+<a href="#pub-types">Veřejné typy</a> &#124;
+<a href="#pub-methods">Veřejné metody</a> &#124;
+<a href="#pro-attribs">Chráněné atributy</a>  </div>
+  <div class="headertitle">
+<div class="title">Dokumentace třídy test::consistent_hashing_pool_t</div>  </div>
+</div><!--header-->
+<div class="contents">
+<div class="dynheader">
+Diagram dědičnosti pro třídu test::consistent_hashing_pool_t</div>
+<div class="dyncontent">
+<div class="center"><img src="classtest_1_1consistent__hashing__pool__t__inherit__graph.png" border="0" usemap="#test_1_1consistent__hashing__pool__t_inherit__map" alt="Inheritance graph"/></div>
+<map name="test_1_1consistent__hashing__pool__t_inherit__map" id="test_1_1consistent__hashing__pool__t_inherit__map">
+<area shape="rect" id="node2" href="classmc_1_1consistent__hashing__pool__t.html" title="mc::consistent_hashing\l_pool_t\&lt; mc::murmur3_t \&gt;" alt="" coords="572,6,751,50"/><area shape="rect" id="node4" href="classmc_1_1consistent__hashing__pool__base__t.html" title="Non template base class for consistent hashing pool." alt="" coords="7,5,167,49"/><area shape="rect" id="node6" href="classmc_1_1consistent__hashing__pool__t.html" title="Ketama implementation of consistent hashing." alt="" coords="219,41,403,85"/></map>
+<center><span class="legend">[<a target="top" href="graph_legend.html">vysvětlivky</a>]</span></center></div>
+<div class="dynheader">
+Diagram tříd pro test::consistent_hashing_pool_t:</div>
+<div class="dyncontent">
+<div class="center"><img src="classtest_1_1consistent__hashing__pool__t__coll__graph.png" border="0" usemap="#test_1_1consistent__hashing__pool__t_coll__map" alt="Collaboration graph"/></div>
+<map name="test_1_1consistent__hashing__pool__t_coll__map" id="test_1_1consistent__hashing__pool__t_coll__map">
+<area shape="rect" id="node2" href="classmc_1_1consistent__hashing__pool__t.html" title="mc::consistent_hashing\l_pool_t\&lt; mc::murmur3_t \&gt;" alt="" coords="847,79,1025,123"/><area shape="rect" id="node4" href="classmc_1_1consistent__hashing__pool__base__t.html" title="Non template base class for consistent hashing pool." alt="" coords="244,5,404,49"/><area shape="rect" id="node16" href="classmc_1_1consistent__hashing__pool__t.html" title="Ketama implementation of consistent hashing." alt="" coords="493,45,677,89"/><area shape="rect" id="node6" title="STL class." alt="" coords="264,93,384,121"/><area shape="rect" id="node12" title="STL class." alt="" coords="284,178,364,206"/><area shape="rect" id="node14" title="STL class." alt="" coords="7,170,132,214"/></map>
+<center><span class="legend">[<a target="top" href="graph_legend.html">vysvětlivky</a>]</span></center></div>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-types"></a>
+Veřejné typy</h2></td></tr>
+<tr class="memitem:aa09608d08a297acdd3ecfaa83119c19b"><td class="memItemLeft" align="right" valign="top">typedef <br class="typebreak"/>
+consistent_hashing_pool_const_iterator&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classmc_1_1consistent__hashing__pool__t.html#aa09608d08a297acdd3ecfaa83119c19b">const_iterator</a></td></tr>
+<tr class="memdesc:aa09608d08a297acdd3ecfaa83119c19b"><td class="mdescLeft">&#160;</td><td class="mdescRight">const iterator  <a href="#aa09608d08a297acdd3ecfaa83119c19b">...</a><br/></td></tr>
+<tr class="separator:aa09608d08a297acdd3ecfaa83119c19b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af99537f6ad4f3503c49710119e4c61d9"><td class="memItemLeft" align="right" valign="top">typedef uint32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classmc_1_1consistent__hashing__pool__t.html#af99537f6ad4f3503c49710119e4c61d9">value_type</a></td></tr>
+<tr class="memdesc:af99537f6ad4f3503c49710119e4c61d9"><td class="mdescLeft">&#160;</td><td class="mdescRight">namespace ring value type  <a href="#af99537f6ad4f3503c49710119e4c61d9">...</a><br/></td></tr>
+<tr class="separator:af99537f6ad4f3503c49710119e4c61d9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad869dff2eee2776848417481779c02c8"><td class="memItemLeft" align="right" valign="top">typedef std::map&lt; uint32_t, <br class="typebreak"/>
+<a class="el" href="classmc_1_1consistent__hashing__pool__base__t.html#af99537f6ad4f3503c49710119e4c61d9">value_type</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classmc_1_1consistent__hashing__pool__t.html#ad869dff2eee2776848417481779c02c8">ring_t</a></td></tr>
+<tr class="memdesc:ad869dff2eee2776848417481779c02c8"><td class="mdescLeft">&#160;</td><td class="mdescRight">namespace ring type  <a href="#ad869dff2eee2776848417481779c02c8">...</a><br/></td></tr>
+<tr class="separator:ad869dff2eee2776848417481779c02c8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
+Veřejné metody</h2></td></tr>
+<tr class="memitem:a89dfbada18cfb8df822a77b5e2d9a9a8"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classtest_1_1consistent__hashing__pool__t.html#a89dfbada18cfb8df822a77b5e2d9a9a8">consistent_hashing_pool_t</a> (const std::vector&lt; std::string &gt; &amp;addresses)</td></tr>
+<tr class="separator:a89dfbada18cfb8df822a77b5e2d9a9a8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:acfd0c11d42ef77d7540487de7183ac06"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classtest_1_1consistent__hashing__pool__t.html#acfd0c11d42ef77d7540487de7183ac06">remove</a> (const std::string &amp;addr)</td></tr>
+<tr class="separator:acfd0c11d42ef77d7540487de7183ac06"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1f74f150cc80a6e32f36c980511997da"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classmc_1_1consistent__hashing__pool__t.html#aa09608d08a297acdd3ecfaa83119c19b">const_iterator</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classmc_1_1consistent__hashing__pool__t.html#a1f74f150cc80a6e32f36c980511997da">choose</a> (const std::string &amp;key) const</td></tr>
+<tr class="separator:a1f74f150cc80a6e32f36c980511997da"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab9a39105a8f77389e8eb33d5caab9cac"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classmc_1_1consistent__hashing__pool__t.html#aa09608d08a297acdd3ecfaa83119c19b">const_iterator</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classmc_1_1consistent__hashing__pool__t.html#ab9a39105a8f77389e8eb33d5caab9cac">begin</a> () const</td></tr>
+<tr class="separator:ab9a39105a8f77389e8eb33d5caab9cac"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9c9f6abec331d7aeeb5a6e6d24d6122c"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classmc_1_1consistent__hashing__pool__t.html#aa09608d08a297acdd3ecfaa83119c19b">const_iterator</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classmc_1_1consistent__hashing__pool__t.html#a9c9f6abec331d7aeeb5a6e6d24d6122c">end</a> () const</td></tr>
+<tr class="memdesc:a9c9f6abec331d7aeeb5a6e6d24d6122c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns iterator one past last entry in namespace ring.  <a href="#a9c9f6abec331d7aeeb5a6e6d24d6122c">...</a><br/></td></tr>
+<tr class="separator:a9c9f6abec331d7aeeb5a6e6d24d6122c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aad96113c428c89912b4f51fbdd094673"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classmc_1_1consistent__hashing__pool__t.html#aad96113c428c89912b4f51fbdd094673">dump</a> (const std::vector&lt; std::string &gt; &amp;states=std::vector&lt; std::string &gt;()) const</td></tr>
+<tr class="memdesc:aad96113c428c89912b4f51fbdd094673"><td class="mdescLeft">&#160;</td><td class="mdescRight">Dumps ring to string.  <a href="#aad96113c428c89912b4f51fbdd094673">...</a><br/></td></tr>
+<tr class="separator:aad96113c428c89912b4f51fbdd094673"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a60642ca2a8a1b9336c2b25357a3b3b96"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classmc_1_1consistent__hashing__pool__base__t.html#a60642ca2a8a1b9336c2b25357a3b3b96">dump</a> (const <a class="el" href="classmc_1_1consistent__hashing__pool__base__t.html#ad869dff2eee2776848417481779c02c8">ring_t</a> &amp;<a class="el" href="classmc_1_1consistent__hashing__pool__t.html#a5b925b98d475d9142e43f061ae251dc9">ring</a>, const std::vector&lt; std::string &gt; &amp;states) const </td></tr>
+<tr class="memdesc:a60642ca2a8a1b9336c2b25357a3b3b96"><td class="mdescLeft">&#160;</td><td class="mdescRight">Dumps ring to string.  <a href="#a60642ca2a8a1b9336c2b25357a3b3b96">...</a><br/></td></tr>
+<tr class="separator:a60642ca2a8a1b9336c2b25357a3b3b96"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pro-attribs"></a>
+Chráněné atributy</h2></td></tr>
+<tr class="memitem:a5b925b98d475d9142e43f061ae251dc9"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classmc_1_1consistent__hashing__pool__base__t.html#ad869dff2eee2776848417481779c02c8">ring_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classmc_1_1consistent__hashing__pool__t.html#a5b925b98d475d9142e43f061ae251dc9">ring</a></td></tr>
+<tr class="memdesc:a5b925b98d475d9142e43f061ae251dc9"><td class="mdescLeft">&#160;</td><td class="mdescRight">namespace ring  <a href="#a5b925b98d475d9142e43f061ae251dc9">...</a><br/></td></tr>
+<tr class="separator:a5b925b98d475d9142e43f061ae251dc9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a366df9c4406db1680f9c6d930b10e82f"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classmc_1_1murmur3__t.html">mc::murmur3_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classmc_1_1consistent__hashing__pool__t.html#a366df9c4406db1680f9c6d930b10e82f">hashf</a></td></tr>
+<tr class="memdesc:a366df9c4406db1680f9c6d930b10e82f"><td class="mdescLeft">&#160;</td><td class="mdescRight">hash functor  <a href="#a366df9c4406db1680f9c6d930b10e82f">...</a><br/></td></tr>
+<tr class="separator:a366df9c4406db1680f9c6d930b10e82f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<a name="details" id="details"></a><h2 class="groupheader">Detailní popis</h2>
+<div class="textblock">
+<p>Definice je uvedena na řádku <a class="el" href="test-consistent-hashing_8cc_source.html#l00036">36</a> v souboru <a class="el" href="test-consistent-hashing_8cc_source.html">test-consistent-hashing.cc</a>.</p>
+</div><h2 class="groupheader">Dokumentace k členským typům</h2>
+<a class="anchor" id="aa09608d08a297acdd3ecfaa83119c19b"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef consistent_hashing_pool_const_iterator <a class="el" href="classmc_1_1consistent__hashing__pool__t.html">mc::consistent_hashing_pool_t</a>&lt; <a class="el" href="classmc_1_1murmur3__t.html">mc::murmur3_t</a>  &gt;::<a class="el" href="classmc_1_1consistent__hashing__pool__t.html#aa09608d08a297acdd3ecfaa83119c19b">const_iterator</a></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inherited</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>const iterator </p>
+
+<p>Definice je uvedena na řádku <a class="el" href="consistent-hashing_8h_source.html#l00159">159</a> v souboru <a class="el" href="consistent-hashing_8h_source.html">consistent-hashing.h</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="ad869dff2eee2776848417481779c02c8"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef std::map&lt;uint32_t, <a class="el" href="classmc_1_1consistent__hashing__pool__base__t.html#af99537f6ad4f3503c49710119e4c61d9">value_type</a>&gt; <a class="el" href="classmc_1_1consistent__hashing__pool__base__t.html#ad869dff2eee2776848417481779c02c8">mc::consistent_hashing_pool_base_t::ring_t</a></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inherited</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>namespace ring type </p>
+
+<p>Definice je uvedena na řádku <a class="el" href="consistent-hashing_8h_source.html#l00054">54</a> v souboru <a class="el" href="consistent-hashing_8h_source.html">consistent-hashing.h</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="af99537f6ad4f3503c49710119e4c61d9"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef uint32_t <a class="el" href="classmc_1_1consistent__hashing__pool__base__t.html#af99537f6ad4f3503c49710119e4c61d9">mc::consistent_hashing_pool_base_t::value_type</a></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inherited</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>namespace ring value type </p>
+
+<p>Definice je uvedena na řádku <a class="el" href="consistent-hashing_8h_source.html#l00052">52</a> v souboru <a class="el" href="consistent-hashing_8h_source.html">consistent-hashing.h</a>.</p>
+
+</div>
+</div>
+<h2 class="groupheader">Dokumentace konstruktoru a destruktoru</h2>
+<a class="anchor" id="a89dfbada18cfb8df822a77b5e2d9a9a8"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">test::consistent_hashing_pool_t::consistent_hashing_pool_t </td>
+          <td>(</td>
+          <td class="paramtype">const std::vector&lt; std::string &gt; &amp;&#160;</td>
+          <td class="paramname"><em>addresses</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Definice je uvedena na řádku <a class="el" href="test-consistent-hashing_8cc_source.html#l00040">40</a> v souboru <a class="el" href="test-consistent-hashing_8cc_source.html">test-consistent-hashing.cc</a>.</p>
+
+</div>
+</div>
+<h2 class="groupheader">Dokumentace k metodám</h2>
+<a class="anchor" id="ab9a39105a8f77389e8eb33d5caab9cac"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classmc_1_1consistent__hashing__pool__t.html#aa09608d08a297acdd3ecfaa83119c19b">const_iterator</a> <a class="el" href="classmc_1_1consistent__hashing__pool__t.html">mc::consistent_hashing_pool_t</a>&lt; <a class="el" href="classmc_1_1murmur3__t.html">mc::murmur3_t</a>  &gt;::begin </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">inherited</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Definice je uvedena na řádku <a class="el" href="consistent-hashing_8h_source.html#l00198">198</a> v souboru <a class="el" href="consistent-hashing_8h_source.html">consistent-hashing.h</a>.</p>
+
+<p>Odkazuje se na <a class="el" href="consistent-hashing_8h_source.html#l00215">mc::consistent_hashing_pool_t&lt; hash_function_t &gt;::ring</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a1f74f150cc80a6e32f36c980511997da"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classmc_1_1consistent__hashing__pool__t.html#aa09608d08a297acdd3ecfaa83119c19b">const_iterator</a> <a class="el" href="classmc_1_1consistent__hashing__pool__t.html">mc::consistent_hashing_pool_t</a>&lt; <a class="el" href="classmc_1_1murmur3__t.html">mc::murmur3_t</a>  &gt;::choose </td>
+          <td>(</td>
+          <td class="paramtype">const std::string &amp;&#160;</td>
+          <td class="paramname"><em>key</em></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">inherited</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Definice je uvedena na řádku <a class="el" href="consistent-hashing_8h_source.html#l00191">191</a> v souboru <a class="el" href="consistent-hashing_8h_source.html">consistent-hashing.h</a>.</p>
+
+<p>Odkazuje se na <a class="el" href="consistent-hashing_8h_source.html#l00216">mc::consistent_hashing_pool_t&lt; hash_function_t &gt;::hashf</a> a <a class="el" href="consistent-hashing_8h_source.html#l00215">mc::consistent_hashing_pool_t&lt; hash_function_t &gt;::ring</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a60642ca2a8a1b9336c2b25357a3b3b96"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::string mc::consistent_hashing_pool_base_t::dump </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="classmc_1_1consistent__hashing__pool__base__t.html#ad869dff2eee2776848417481779c02c8">ring_t</a> &amp;&#160;</td>
+          <td class="paramname"><em>ring</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const std::vector&lt; std::string &gt; &amp;&#160;</td>
+          <td class="paramname"><em>states</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inherited</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Dumps ring to string. </p>
+
+<p>Definice je uvedena na řádku <a class="el" href="consistent-hashing_8cc_source.html#l00065">65</a> v souboru <a class="el" href="consistent-hashing_8cc_source.html">consistent-hashing.cc</a>.</p>
+
+<p>Používá se v <a class="el" href="consistent-hashing_8h_source.html#l00208">mc::consistent_hashing_pool_t&lt; mc::murmur3_t &gt;::dump()</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="aad96113c428c89912b4f51fbdd094673"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::string <a class="el" href="classmc_1_1consistent__hashing__pool__t.html">mc::consistent_hashing_pool_t</a>&lt; <a class="el" href="classmc_1_1murmur3__t.html">mc::murmur3_t</a>  &gt;::dump </td>
+          <td>(</td>
+          <td class="paramtype">const std::vector&lt; std::string &gt; &amp;&#160;</td>
+          <td class="paramname"><em>states</em> = <code>std::vector&lt;std::string&gt;()</code></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">inherited</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Dumps ring to string. </p>
+
+<p>Definice je uvedena na řádku <a class="el" href="consistent-hashing_8h_source.html#l00208">208</a> v souboru <a class="el" href="consistent-hashing_8h_source.html">consistent-hashing.h</a>.</p>
+
+<p>Odkazuje se na <a class="el" href="consistent-hashing_8cc_source.html#l00065">mc::consistent_hashing_pool_base_t::dump()</a> a <a class="el" href="consistent-hashing_8h_source.html#l00215">mc::consistent_hashing_pool_t&lt; hash_function_t &gt;::ring</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a9c9f6abec331d7aeeb5a6e6d24d6122c"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classmc_1_1consistent__hashing__pool__t.html#aa09608d08a297acdd3ecfaa83119c19b">const_iterator</a> <a class="el" href="classmc_1_1consistent__hashing__pool__t.html">mc::consistent_hashing_pool_t</a>&lt; <a class="el" href="classmc_1_1murmur3__t.html">mc::murmur3_t</a>  &gt;::end </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">inherited</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Returns iterator one past last entry in namespace ring. </p>
+
+<p>Definice je uvedena na řádku <a class="el" href="consistent-hashing_8h_source.html#l00204">204</a> v souboru <a class="el" href="consistent-hashing_8h_source.html">consistent-hashing.h</a>.</p>
+
+<p>Odkazuje se na <a class="el" href="consistent-hashing_8h_source.html#l00215">mc::consistent_hashing_pool_t&lt; hash_function_t &gt;::ring</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="acfd0c11d42ef77d7540487de7183ac06"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void test::consistent_hashing_pool_t::remove </td>
+          <td>(</td>
+          <td class="paramtype">const std::string &amp;&#160;</td>
+          <td class="paramname"><em>addr</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Definice je uvedena na řádku <a class="el" href="test-consistent-hashing_8cc_source.html#l00044">44</a> v souboru <a class="el" href="test-consistent-hashing_8cc_source.html">test-consistent-hashing.cc</a>.</p>
+
+<p>Odkazuje se na <a class="el" href="consistent-hashing_8h_source.html#l00216">mc::consistent_hashing_pool_t&lt; mc::murmur3_t &gt;::hashf</a> a <a class="el" href="consistent-hashing_8h_source.html#l00215">mc::consistent_hashing_pool_t&lt; mc::murmur3_t &gt;::ring</a>.</p>
+
+<p>Používá se v <a class="el" href="test-consistent-hashing_8cc_source.html#l00062">main()</a>.</p>
+
+</div>
+</div>
+<h2 class="groupheader">Dokumentace k položkám</h2>
+<a class="anchor" id="a366df9c4406db1680f9c6d930b10e82f"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classmc_1_1murmur3__t.html">mc::murmur3_t</a>  <a class="el" href="classmc_1_1consistent__hashing__pool__t.html">mc::consistent_hashing_pool_t</a>&lt; <a class="el" href="classmc_1_1murmur3__t.html">mc::murmur3_t</a>  &gt;::hashf</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span><span class="mlabel">inherited</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>hash functor </p>
+
+<p>Definice je uvedena na řádku <a class="el" href="consistent-hashing_8h_source.html#l00216">216</a> v souboru <a class="el" href="consistent-hashing_8h_source.html">consistent-hashing.h</a>.</p>
+
+<p>Používá se v <a class="el" href="test-consistent-hashing_8cc_source.html#l00044">remove()</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a5b925b98d475d9142e43f061ae251dc9"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classmc_1_1consistent__hashing__pool__base__t.html#ad869dff2eee2776848417481779c02c8">ring_t</a> <a class="el" href="classmc_1_1consistent__hashing__pool__t.html">mc::consistent_hashing_pool_t</a>&lt; <a class="el" href="classmc_1_1murmur3__t.html">mc::murmur3_t</a>  &gt;::ring</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span><span class="mlabel">inherited</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>namespace ring </p>
+
+<p>Definice je uvedena na řádku <a class="el" href="consistent-hashing_8h_source.html#l00215">215</a> v souboru <a class="el" href="consistent-hashing_8h_source.html">consistent-hashing.h</a>.</p>
+
+<p>Používá se v <a class="el" href="test-consistent-hashing_8cc_source.html#l00044">remove()</a>.</p>
+
+</div>
+</div>
+<hr/>Dokumentace pro tuto třídu byla generována z následujícího souboru:<ul>
+<li>src/pool/<a class="el" href="test-consistent-hashing_8cc_source.html">test-consistent-hashing.cc</a></li>
+</ul>
+</div><!-- contents -->
+</div><!-- doc-content -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="namespacetest.html">test</a></li><li class="navelem"><a class="el" href="classtest_1_1consistent__hashing__pool__t.html">consistent_hashing_pool_t</a></li>
+    <li class="footer">Generováno út 23. čec 2013 13.13:04 pro projekt libmcache-0.2.1 programem
+    <a href="http://www.doxygen.org/index.html">
+    <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.3.1 </li>
+  </ul>
+</div>
+</body>
+</html>

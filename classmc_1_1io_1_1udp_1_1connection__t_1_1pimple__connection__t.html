@@ -1,0 +1,577 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.3.1"/>
+<title>libmcache-0.2.1: Dokumentace třídy mc::io::udp::connection_t::pimple_connection_t</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript">
+  $(document).ready(initResizable);
+  $(window).load(resizeHeight);
+</script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/search.js"></script>
+<script type="text/javascript">
+  $(document).ready(function() { searchBox.OnSelectItem(0); });
+</script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td style="padding-left: 0.5em;">
+   <div id="projectname">libmcache-0.2.1
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Generováno programem Doxygen 1.8.3.1 -->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "search",false,'Hledat');
+</script>
+  <div id="navrow1" class="tabs">
+    <ul class="tablist">
+      <li><a href="index.html"><span>Hlavní&#160;stránka</span></a></li>
+      <li><a href="namespaces.html"><span>Prostory&#160;jmen</span></a></li>
+      <li class="current"><a href="annotated.html"><span>Třídy</span></a></li>
+      <li><a href="files.html"><span>Soubory</span></a></li>
+      <li>
+        <div id="MSearchBox" class="MSearchBoxInactive">
+        <span class="left">
+          <img id="MSearchSelect" src="search/mag_sel.png"
+               onmouseover="return searchBox.OnSearchSelectShow()"
+               onmouseout="return searchBox.OnSearchSelectHide()"
+               alt=""/>
+          <input type="text" id="MSearchField" value="Hledat" accesskey="S"
+               onfocus="searchBox.OnSearchFieldFocus(true)" 
+               onblur="searchBox.OnSearchFieldFocus(false)" 
+               onkeyup="searchBox.OnSearchFieldChange(event)"/>
+          </span><span class="right">
+            <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><img id="MSearchCloseImg" border="0" src="search/close.png" alt=""/></a>
+          </span>
+        </div>
+      </li>
+    </ul>
+  </div>
+  <div id="navrow2" class="tabs2">
+    <ul class="tablist">
+      <li><a href="annotated.html"><span>Datové&#160;struktury</span></a></li>
+      <li><a href="classes.html"><span>Rejstřík&#160;datových&#160;struktur</span></a></li>
+      <li><a href="inherits.html"><span>Hierarchie&#160;tříd</span></a></li>
+      <li><a href="functions.html"><span>Datové&#160;položky</span></a></li>
+    </ul>
+  </div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+$(document).ready(function(){initNavTree('classmc_1_1io_1_1udp_1_1connection__t_1_1pimple__connection__t.html','');});
+</script>
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>Vše</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Třídy</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Prostory jmen</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Soubory</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Funkce</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Proměnné</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Definice typů</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Výčty</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(8)"><span class="SelectionMark">&#160;</span>Hodnoty výčtu</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(9)"><span class="SelectionMark">&#160;</span>Definice maker</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(10)"><span class="SelectionMark">&#160;</span>Stránky</a></div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div class="header">
+  <div class="summary">
+<a href="#pub-types">Veřejné typy</a> &#124;
+<a href="#pub-methods">Veřejné metody</a> &#124;
+<a href="#pri-methods">Privátní metody</a> &#124;
+<a href="#pri-attribs">Privátní atributy</a>  </div>
+  <div class="headertitle">
+<div class="title">Dokumentace třídy mc::io::udp::connection_t::pimple_connection_t</div>  </div>
+</div><!--header-->
+<div class="contents">
+
+<p>Pimple class for tcp connection.  
+ <a href="classmc_1_1io_1_1udp_1_1connection__t_1_1pimple__connection__t.html#details">...</a></p>
+<div class="dynheader">
+Diagram dědičnosti pro třídu mc::io::udp::connection_t::pimple_connection_t</div>
+<div class="dyncontent">
+<div class="center"><img src="classmc_1_1io_1_1udp_1_1connection__t_1_1pimple__connection__t__inherit__graph.png" border="0" usemap="#mc_1_1io_1_1udp_1_1connection__t_1_1pimple__connection__t_inherit__map" alt="Inheritance graph"/></div>
+<map name="mc_1_1io_1_1udp_1_1connection__t_1_1pimple__connection__t_inherit__map" id="mc_1_1io_1_1udp_1_1connection__t_1_1pimple__connection__t_inherit__map">
+</map>
+<center><span class="legend">[<a target="top" href="graph_legend.html">vysvětlivky</a>]</span></center></div>
+<div class="dynheader">
+Diagram tříd pro mc::io::udp::connection_t::pimple_connection_t:</div>
+<div class="dyncontent">
+<div class="center"><img src="classmc_1_1io_1_1udp_1_1connection__t_1_1pimple__connection__t__coll__graph.png" border="0" usemap="#mc_1_1io_1_1udp_1_1connection__t_1_1pimple__connection__t_coll__map" alt="Collaboration graph"/></div>
+<map name="mc_1_1io_1_1udp_1_1connection__t_1_1pimple__connection__t_coll__map" id="mc_1_1io_1_1udp_1_1connection__t_1_1pimple__connection__t_coll__map">
+<area shape="rect" id="node4" href="classmc_1_1io_1_1opts__t.html" title="Connection options." alt="" coords="165,115,267,143"/><area shape="rect" id="node6" href="classmc_1_1io_1_1opts__t_1_1timeouts__t.html" title="Timeouts collection." alt="" coords="116,14,287,42"/><area shape="rect" id="node8" title="STL class." alt="" coords="319,115,399,143"/><area shape="rect" id="node10" title="STL class." alt="" coords="311,6,436,50"/></map>
+<center><span class="legend">[<a target="top" href="graph_legend.html">vysvětlivky</a>]</span></center></div>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-types"></a>
+Veřejné typy</h2></td></tr>
+<tr class="memitem:a4f47c97e7ca0b5f3072e65987b7bdf80"><td class="memItemLeft" align="right" valign="top">typedef <a class="el" href="classmc_1_1io_1_1udp_1_1connection__t_1_1pimple__connection__t.html">pimple_connection_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classmc_1_1io_1_1udp_1_1connection__t_1_1pimple__connection__t.html#a4f47c97e7ca0b5f3072e65987b7bdf80">this_t</a></td></tr>
+<tr class="separator:a4f47c97e7ca0b5f3072e65987b7bdf80"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
+Veřejné metody</h2></td></tr>
+<tr class="memitem:a19e9a3bd753ca5fb429f7faced99426a"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classmc_1_1io_1_1udp_1_1connection__t_1_1pimple__connection__t.html#a19e9a3bd753ca5fb429f7faced99426a">pimple_connection_t</a> (const std::string &amp;<a class="el" href="classmc_1_1io_1_1udp_1_1connection__t_1_1pimple__connection__t.html#a83a6cad89df9065510823da8fd899025">addr</a>, const <a class="el" href="classmc_1_1io_1_1opts__t.html">opts_t</a> &amp;<a class="el" href="classmc_1_1io_1_1udp_1_1connection__t_1_1pimple__connection__t.html#ac37fc3909b848ef125b12d0e1492d0db">opts</a>)</td></tr>
+<tr class="memdesc:a19e9a3bd753ca5fb429f7faced99426a"><td class="mdescLeft">&#160;</td><td class="mdescRight">C'tor: connect the socket to server.  <a href="#a19e9a3bd753ca5fb429f7faced99426a">...</a><br/></td></tr>
+<tr class="separator:a19e9a3bd753ca5fb429f7faced99426a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa71d8340997adf7cc4f28ad65c2812b1"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classmc_1_1io_1_1udp_1_1connection__t_1_1pimple__connection__t.html#aa71d8340997adf7cc4f28ad65c2812b1">write</a> (const std::string &amp;data)</td></tr>
+<tr class="memdesc:aa71d8340997adf7cc4f28ad65c2812b1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Writes data to socket.  <a href="#aa71d8340997adf7cc4f28ad65c2812b1">...</a><br/></td></tr>
+<tr class="separator:aa71d8340997adf7cc4f28ad65c2812b1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae73f3c510e325c53545133edce211f49"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classmc_1_1io_1_1udp_1_1packet__t.html">packet_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classmc_1_1io_1_1udp_1_1connection__t_1_1pimple__connection__t.html#ae73f3c510e325c53545133edce211f49">receive</a> (std::string &amp;<a class="el" href="classmc_1_1io_1_1udp_1_1connection__t.html#ab7f9c6927064d9bb64fafd686b6d3ddd">buffer</a>)</td></tr>
+<tr class="memdesc:ae73f3c510e325c53545133edce211f49"><td class="mdescLeft">&#160;</td><td class="mdescRight">Receive one datagram from server.  <a href="#ae73f3c510e325c53545133edce211f49">...</a><br/></td></tr>
+<tr class="separator:ae73f3c510e325c53545133edce211f49"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-methods"></a>
+Privátní metody</h2></td></tr>
+<tr class="memitem:a036725548263639237d7464562208418"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classmc_1_1io_1_1udp_1_1connection__t_1_1pimple__connection__t.html#a036725548263639237d7464562208418">set_deadline</a> (uint64_t milli)</td></tr>
+<tr class="memdesc:a036725548263639237d7464562208418"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set new deadline timeout.  <a href="#a036725548263639237d7464562208418">...</a><br/></td></tr>
+<tr class="separator:a036725548263639237d7464562208418"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5532b91cf9c225366531f6a6fe43e324"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classmc_1_1io_1_1udp_1_1connection__t_1_1pimple__connection__t.html#a5532b91cf9c225366531f6a6fe43e324">handle_deadline</a> ()</td></tr>
+<tr class="memdesc:a5532b91cf9c225366531f6a6fe43e324"><td class="mdescLeft">&#160;</td><td class="mdescRight">Checks whether the deadline has passed and if not schedule new async wait.  <a href="#a5532b91cf9c225366531f6a6fe43e324">...</a><br/></td></tr>
+<tr class="separator:a5532b91cf9c225366531f6a6fe43e324"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-attribs"></a>
+Privátní atributy</h2></td></tr>
+<tr class="memitem:a83a6cad89df9065510823da8fd899025"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classmc_1_1io_1_1udp_1_1connection__t_1_1pimple__connection__t.html#a83a6cad89df9065510823da8fd899025">addr</a></td></tr>
+<tr class="memdesc:a83a6cad89df9065510823da8fd899025"><td class="mdescLeft">&#160;</td><td class="mdescRight">destination address  <a href="#a83a6cad89df9065510823da8fd899025">...</a><br/></td></tr>
+<tr class="separator:a83a6cad89df9065510823da8fd899025"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ace067cf204182ad23295e1a6b96fe8d9"><td class="memItemLeft" align="right" valign="top">asio::io_service&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classmc_1_1io_1_1udp_1_1connection__t_1_1pimple__connection__t.html#ace067cf204182ad23295e1a6b96fe8d9">ios</a></td></tr>
+<tr class="memdesc:ace067cf204182ad23295e1a6b96fe8d9"><td class="mdescLeft">&#160;</td><td class="mdescRight">i/o controller  <a href="#ace067cf204182ad23295e1a6b96fe8d9">...</a><br/></td></tr>
+<tr class="separator:ace067cf204182ad23295e1a6b96fe8d9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:acdf16321fbac881bdfdafc24b3339845"><td class="memItemLeft" align="right" valign="top">asio::ip::udp::socket&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classmc_1_1io_1_1udp_1_1connection__t_1_1pimple__connection__t.html#acdf16321fbac881bdfdafc24b3339845">socket</a></td></tr>
+<tr class="memdesc:acdf16321fbac881bdfdafc24b3339845"><td class="mdescLeft">&#160;</td><td class="mdescRight">i/o socket  <a href="#acdf16321fbac881bdfdafc24b3339845">...</a><br/></td></tr>
+<tr class="separator:acdf16321fbac881bdfdafc24b3339845"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a89aae93ebe0c02c3454b5d1434a21aee"><td class="memItemLeft" align="right" valign="top">asio::deadline_timer&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classmc_1_1io_1_1udp_1_1connection__t_1_1pimple__connection__t.html#a89aae93ebe0c02c3454b5d1434a21aee">deadline</a></td></tr>
+<tr class="memdesc:a89aae93ebe0c02c3454b5d1434a21aee"><td class="mdescLeft">&#160;</td><td class="mdescRight">timeout timer  <a href="#a89aae93ebe0c02c3454b5d1434a21aee">...</a><br/></td></tr>
+<tr class="separator:a89aae93ebe0c02c3454b5d1434a21aee"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0774a1be4eaac6082dc2e730378bf544"><td class="memItemLeft" align="right" valign="top">asio::streambuf&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classmc_1_1io_1_1udp_1_1connection__t_1_1pimple__connection__t.html#a0774a1be4eaac6082dc2e730378bf544">input</a></td></tr>
+<tr class="memdesc:a0774a1be4eaac6082dc2e730378bf544"><td class="mdescLeft">&#160;</td><td class="mdescRight">input buffer for incoming data  <a href="#a0774a1be4eaac6082dc2e730378bf544">...</a><br/></td></tr>
+<tr class="separator:a0774a1be4eaac6082dc2e730378bf544"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae622cd860346edf2a4005078ce0e0034"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classmc_1_1io_1_1udp_1_1connection__t_1_1pimple__connection__t.html#ae622cd860346edf2a4005078ce0e0034">timeouted</a></td></tr>
+<tr class="memdesc:ae622cd860346edf2a4005078ce0e0034"><td class="mdescLeft">&#160;</td><td class="mdescRight">true if socket timeouted  <a href="#ae622cd860346edf2a4005078ce0e0034">...</a><br/></td></tr>
+<tr class="separator:ae622cd860346edf2a4005078ce0e0034"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac37fc3909b848ef125b12d0e1492d0db"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classmc_1_1io_1_1opts__t.html">opts_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classmc_1_1io_1_1udp_1_1connection__t_1_1pimple__connection__t.html#ac37fc3909b848ef125b12d0e1492d0db">opts</a></td></tr>
+<tr class="memdesc:ac37fc3909b848ef125b12d0e1492d0db"><td class="mdescLeft">&#160;</td><td class="mdescRight">connection options  <a href="#ac37fc3909b848ef125b12d0e1492d0db">...</a><br/></td></tr>
+<tr class="separator:ac37fc3909b848ef125b12d0e1492d0db"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<a name="details" id="details"></a><h2 class="groupheader">Detailní popis</h2>
+<div class="textblock"><p>Pimple class for tcp connection. </p>
+
+<p>Definice je uvedena na řádku <a class="el" href="connection_8cc_source.html#l00331">331</a> v souboru <a class="el" href="connection_8cc_source.html">connection.cc</a>.</p>
+</div><h2 class="groupheader">Dokumentace k členským typům</h2>
+<a class="anchor" id="a4f47c97e7ca0b5f3072e65987b7bdf80"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef <a class="el" href="classmc_1_1io_1_1udp_1_1connection__t_1_1pimple__connection__t.html">pimple_connection_t</a> <a class="el" href="classmc_1_1io_1_1udp_1_1connection__t_1_1pimple__connection__t.html#a4f47c97e7ca0b5f3072e65987b7bdf80">mc::io::udp::connection_t::pimple_connection_t::this_t</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Definice je uvedena na řádku <a class="el" href="connection_8cc_source.html#l00334">334</a> v souboru <a class="el" href="connection_8cc_source.html">connection.cc</a>.</p>
+
+</div>
+</div>
+<h2 class="groupheader">Dokumentace konstruktoru a destruktoru</h2>
+<a class="anchor" id="a19e9a3bd753ca5fb429f7faced99426a"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">mc::io::udp::connection_t::pimple_connection_t::pimple_connection_t </td>
+          <td>(</td>
+          <td class="paramtype">const std::string &amp;&#160;</td>
+          <td class="paramname"><em>addr</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="classmc_1_1io_1_1opts__t.html">opts_t</a> &amp;&#160;</td>
+          <td class="paramname"><em>opts</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>C'tor: connect the socket to server. </p>
+
+<p>Definice je uvedena na řádku <a class="el" href="connection_8cc_source.html#l00338">338</a> v souboru <a class="el" href="connection_8cc_source.html">connection.cc</a>.</p>
+
+</div>
+</div>
+<h2 class="groupheader">Dokumentace k metodám</h2>
+<a class="anchor" id="a5532b91cf9c225366531f6a6fe43e324"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void mc::io::udp::connection_t::pimple_connection_t::handle_deadline </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Checks whether the deadline has passed and if not schedule new async wait. </p>
+
+<p>Definice je uvedena na řádku <a class="el" href="connection_8cc_source.html#l00440">440</a> v souboru <a class="el" href="connection_8cc_source.html">connection.cc</a>.</p>
+
+<p>Odkazuje se na <a class="el" href="src_2error_8h_source.html#l00045">DBG</a>, <a class="el" href="src_2error_8h_source.html#l00071">DBG3</a>, <a class="el" href="connection_8cc_source.html#l00464">deadline</a>, <a class="el" href="src_2error_8h_source.html#l00061">ERR3</a>, <a class="el" href="src_2error_8h_source.html#l00030">LOG</a>, <a class="el" href="connection_8cc_source.html#l00463">socket</a> a <a class="el" href="connection_8cc_source.html#l00466">timeouted</a>.</p>
+
+<p>Používá se v <a class="el" href="connection_8cc_source.html#l00338">packet_t()</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="ae73f3c510e325c53545133edce211f49"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classmc_1_1io_1_1udp_1_1packet__t.html">packet_t</a> mc::io::udp::connection_t::pimple_connection_t::receive </td>
+          <td>(</td>
+          <td class="paramtype">std::string &amp;&#160;</td>
+          <td class="paramname"><em>buffer</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Receive one datagram from server. </p>
+<dl class="params"><dt>Parametry</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">buffer</td><td>space for datagram data. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Návratová hodnota</dt><dd>datagram header. </dd></dl>
+
+<p>Definice je uvedena na řádku <a class="el" href="connection_8cc_source.html#l00400">400</a> v souboru <a class="el" href="connection_8cc_source.html">connection.cc</a>.</p>
+
+<p>Odkazuje se na <a class="el" href="connection_8cc_source.html#l00325">mc::io::udp::packet_t::count</a>, <a class="el" href="src_2error_8h_source.html#l00045">DBG</a>, <a class="el" href="src_2error_8h_source.html#l00069">DBG1</a>, <a class="el" href="src_2error_8h_source.html#l00071">DBG3</a>, <a class="el" href="connection_8cc_source.html#l00323">mc::io::udp::packet_t::id</a>, <a class="el" href="include_2mcache_2io_2error_8h_source.html#l00037">mc::io::err::io_error</a>, <a class="el" href="connection_8cc_source.html#l00462">ios</a>, <a class="el" href="connection_8cc_source.html#l00324">mc::io::udp::packet_t::seq</a>, <a class="el" href="connection_8cc_source.html#l00432">set_deadline()</a>, <a class="el" href="connection_8cc_source.html#l00463">socket</a>, <a class="el" href="include_2mcache_2io_2error_8h_source.html#l00034">mc::io::err::timeout</a> a <a class="el" href="connection_8cc_source.html#l00466">timeouted</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a036725548263639237d7464562208418"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void mc::io::udp::connection_t::pimple_connection_t::set_deadline </td>
+          <td>(</td>
+          <td class="paramtype">uint64_t&#160;</td>
+          <td class="paramname"><em>milli</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Set new deadline timeout. </p>
+<dl class="params"><dt>Parametry</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">milli</td><td>timeout in milliseconds. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p>Definice je uvedena na řádku <a class="el" href="connection_8cc_source.html#l00432">432</a> v souboru <a class="el" href="connection_8cc_source.html">connection.cc</a>.</p>
+
+<p>Odkazuje se na <a class="el" href="connection_8cc_source.html#l00464">deadline</a> a <a class="el" href="connection_8cc_source.html#l00466">timeouted</a>.</p>
+
+<p>Používá se v <a class="el" href="connection_8cc_source.html#l00400">receive()</a> a <a class="el" href="connection_8cc_source.html#l00377">write()</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="aa71d8340997adf7cc4f28ad65c2812b1"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void mc::io::udp::connection_t::pimple_connection_t::write </td>
+          <td>(</td>
+          <td class="paramtype">const std::string &amp;&#160;</td>
+          <td class="paramname"><em>data</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Writes data to socket. </p>
+<p>All data has been written when method returns. </p>
+<dl class="params"><dt>Parametry</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">data</td><td>some data to sent to remote server. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p>Definice je uvedena na řádku <a class="el" href="connection_8cc_source.html#l00377">377</a> v souboru <a class="el" href="connection_8cc_source.html">connection.cc</a>.</p>
+
+<p>Odkazuje se na <a class="el" href="src_2error_8h_source.html#l00045">DBG</a>, <a class="el" href="src_2error_8h_source.html#l00069">DBG1</a>, <a class="el" href="src_2error_8h_source.html#l00071">DBG3</a>, <a class="el" href="src_2error_8h_source.html#l00085">mc::log::escape()</a>, <a class="el" href="include_2mcache_2io_2error_8h_source.html#l00037">mc::io::err::io_error</a>, <a class="el" href="connection_8cc_source.html#l00462">ios</a>, <a class="el" href="connection_8cc_source.html#l00432">set_deadline()</a>, <a class="el" href="connection_8cc_source.html#l00463">socket</a>, <a class="el" href="include_2mcache_2io_2error_8h_source.html#l00034">mc::io::err::timeout</a> a <a class="el" href="connection_8cc_source.html#l00466">timeouted</a>.</p>
+
+</div>
+</div>
+<h2 class="groupheader">Dokumentace k položkám</h2>
+<a class="anchor" id="a83a6cad89df9065510823da8fd899025"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::string mc::io::udp::connection_t::pimple_connection_t::addr</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>destination address </p>
+
+<p>Definice je uvedena na řádku <a class="el" href="connection_8cc_source.html#l00461">461</a> v souboru <a class="el" href="connection_8cc_source.html">connection.cc</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a89aae93ebe0c02c3454b5d1434a21aee"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">asio::deadline_timer mc::io::udp::connection_t::pimple_connection_t::deadline</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>timeout timer </p>
+
+<p>Definice je uvedena na řádku <a class="el" href="connection_8cc_source.html#l00464">464</a> v souboru <a class="el" href="connection_8cc_source.html">connection.cc</a>.</p>
+
+<p>Používá se v <a class="el" href="connection_8cc_source.html#l00440">handle_deadline()</a>, <a class="el" href="connection_8cc_source.html#l00338">packet_t()</a> a <a class="el" href="connection_8cc_source.html#l00432">set_deadline()</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a0774a1be4eaac6082dc2e730378bf544"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">asio::streambuf mc::io::udp::connection_t::pimple_connection_t::input</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>input buffer for incoming data </p>
+
+<p>Definice je uvedena na řádku <a class="el" href="connection_8cc_source.html#l00465">465</a> v souboru <a class="el" href="connection_8cc_source.html">connection.cc</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="ace067cf204182ad23295e1a6b96fe8d9"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">asio::io_service mc::io::udp::connection_t::pimple_connection_t::ios</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>i/o controller </p>
+
+<p>Definice je uvedena na řádku <a class="el" href="connection_8cc_source.html#l00462">462</a> v souboru <a class="el" href="connection_8cc_source.html">connection.cc</a>.</p>
+
+<p>Používá se v <a class="el" href="connection_8cc_source.html#l00400">receive()</a> a <a class="el" href="connection_8cc_source.html#l00377">write()</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="ac37fc3909b848ef125b12d0e1492d0db"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classmc_1_1io_1_1opts__t.html">opts_t</a> mc::io::udp::connection_t::pimple_connection_t::opts</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>connection options </p>
+
+<p>Definice je uvedena na řádku <a class="el" href="connection_8cc_source.html#l00467">467</a> v souboru <a class="el" href="connection_8cc_source.html">connection.cc</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="acdf16321fbac881bdfdafc24b3339845"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">asio::ip::udp::socket mc::io::udp::connection_t::pimple_connection_t::socket</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>i/o socket </p>
+
+<p>Definice je uvedena na řádku <a class="el" href="connection_8cc_source.html#l00463">463</a> v souboru <a class="el" href="connection_8cc_source.html">connection.cc</a>.</p>
+
+<p>Používá se v <a class="el" href="connection_8cc_source.html#l00440">handle_deadline()</a>, <a class="el" href="connection_8cc_source.html#l00400">receive()</a> a <a class="el" href="connection_8cc_source.html#l00377">write()</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="ae622cd860346edf2a4005078ce0e0034"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool mc::io::udp::connection_t::pimple_connection_t::timeouted</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>true if socket timeouted </p>
+
+<p>Definice je uvedena na řádku <a class="el" href="connection_8cc_source.html#l00466">466</a> v souboru <a class="el" href="connection_8cc_source.html">connection.cc</a>.</p>
+
+<p>Používá se v <a class="el" href="connection_8cc_source.html#l00440">handle_deadline()</a>, <a class="el" href="connection_8cc_source.html#l00400">receive()</a>, <a class="el" href="connection_8cc_source.html#l00432">set_deadline()</a> a <a class="el" href="connection_8cc_source.html#l00377">write()</a>.</p>
+
+</div>
+</div>
+<hr/>Dokumentace pro tuto třídu byla generována z následujícího souboru:<ul>
+<li>src/io/<a class="el" href="connection_8cc_source.html">connection.cc</a></li>
+</ul>
+</div><!-- contents -->
+</div><!-- doc-content -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="namespacemc.html">mc</a></li><li class="navelem"><a class="el" href="namespacemc_1_1io.html">io</a></li><li class="navelem"><a class="el" href="namespacemc_1_1io_1_1udp.html">udp</a></li><li class="navelem"><a class="el" href="classmc_1_1io_1_1udp_1_1connection__t.html">connection_t</a></li><li class="navelem"><a class="el" href="classmc_1_1io_1_1udp_1_1connection__t_1_1pimple__connection__t.html">pimple_connection_t</a></li>
+    <li class="footer">Generováno út 23. čec 2013 13.13:04 pro projekt libmcache-0.2.1 programem
+    <a href="http://www.doxygen.org/index.html">
+    <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.3.1 </li>
+  </ul>
+</div>
+</body>
+</html>

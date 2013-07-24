@@ -1,0 +1,322 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.3.1"/>
+<title>libmcache-0.2.1: Dokumentace třídy mc::io::tcp::connection_t</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript">
+  $(document).ready(initResizable);
+  $(window).load(resizeHeight);
+</script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/search.js"></script>
+<script type="text/javascript">
+  $(document).ready(function() { searchBox.OnSelectItem(0); });
+</script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td style="padding-left: 0.5em;">
+   <div id="projectname">libmcache-0.2.1
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Generováno programem Doxygen 1.8.3.1 -->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "search",false,'Hledat');
+</script>
+  <div id="navrow1" class="tabs">
+    <ul class="tablist">
+      <li><a href="index.html"><span>Hlavní&#160;stránka</span></a></li>
+      <li><a href="namespaces.html"><span>Prostory&#160;jmen</span></a></li>
+      <li class="current"><a href="annotated.html"><span>Třídy</span></a></li>
+      <li><a href="files.html"><span>Soubory</span></a></li>
+      <li>
+        <div id="MSearchBox" class="MSearchBoxInactive">
+        <span class="left">
+          <img id="MSearchSelect" src="search/mag_sel.png"
+               onmouseover="return searchBox.OnSearchSelectShow()"
+               onmouseout="return searchBox.OnSearchSelectHide()"
+               alt=""/>
+          <input type="text" id="MSearchField" value="Hledat" accesskey="S"
+               onfocus="searchBox.OnSearchFieldFocus(true)" 
+               onblur="searchBox.OnSearchFieldFocus(false)" 
+               onkeyup="searchBox.OnSearchFieldChange(event)"/>
+          </span><span class="right">
+            <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><img id="MSearchCloseImg" border="0" src="search/close.png" alt=""/></a>
+          </span>
+        </div>
+      </li>
+    </ul>
+  </div>
+  <div id="navrow2" class="tabs2">
+    <ul class="tablist">
+      <li><a href="annotated.html"><span>Datové&#160;struktury</span></a></li>
+      <li><a href="classes.html"><span>Rejstřík&#160;datových&#160;struktur</span></a></li>
+      <li><a href="inherits.html"><span>Hierarchie&#160;tříd</span></a></li>
+      <li><a href="functions.html"><span>Datové&#160;položky</span></a></li>
+    </ul>
+  </div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+$(document).ready(function(){initNavTree('classmc_1_1io_1_1tcp_1_1connection__t.html','');});
+</script>
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>Vše</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Třídy</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Prostory jmen</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Soubory</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Funkce</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Proměnné</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Definice typů</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Výčty</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(8)"><span class="SelectionMark">&#160;</span>Hodnoty výčtu</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(9)"><span class="SelectionMark">&#160;</span>Definice maker</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(10)"><span class="SelectionMark">&#160;</span>Stránky</a></div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div class="header">
+  <div class="summary">
+<a href="#nested-classes">Datové struktry</a> &#124;
+<a href="#pub-methods">Veřejné metody</a> &#124;
+<a href="#pro-types">Chráněné typy</a> &#124;
+<a href="#pro-attribs">Chráněné atributy</a>  </div>
+  <div class="headertitle">
+<div class="title">Dokumentace třídy mc::io::tcp::connection_t</div>  </div>
+</div><!--header-->
+<div class="contents">
+
+<p>I/O object that holds one tcp socket to memcache server and provides interface for sending and retrieving messages to/from them.  
+ <a href="classmc_1_1io_1_1tcp_1_1connection__t.html#details">...</a></p>
+
+<p><code>#include &lt;<a class="el" href="connection_8h_source.html">connection.h</a>&gt;</code></p>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="nested-classes"></a>
+Datové struktry</h2></td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classmc_1_1io_1_1tcp_1_1connection__t_1_1pimple__connection__t.html">pimple_connection_t</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Pimple class for tcp connection.  <a href="classmc_1_1io_1_1tcp_1_1connection__t_1_1pimple__connection__t.html#details">...</a><br/></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
+Veřejné metody</h2></td></tr>
+<tr class="memitem:ac3d43edc98a9a19ee21d4a01ee8afaee"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classmc_1_1io_1_1tcp_1_1connection__t.html#ac3d43edc98a9a19ee21d4a01ee8afaee">connection_t</a> (const std::string &amp;addr, <a class="el" href="classmc_1_1io_1_1opts__t.html">opts_t</a> opts)</td></tr>
+<tr class="memdesc:ac3d43edc98a9a19ee21d4a01ee8afaee"><td class="mdescLeft">&#160;</td><td class="mdescRight">C'tor.  <a href="#ac3d43edc98a9a19ee21d4a01ee8afaee">...</a><br/></td></tr>
+<tr class="separator:ac3d43edc98a9a19ee21d4a01ee8afaee"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0588de227ea8df8c67e70e059627c75c"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classmc_1_1io_1_1tcp_1_1connection__t.html#a0588de227ea8df8c67e70e059627c75c">write</a> (const std::string &amp;data)</td></tr>
+<tr class="memdesc:a0588de227ea8df8c67e70e059627c75c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sends all data to server.  <a href="#a0588de227ea8df8c67e70e059627c75c">...</a><br/></td></tr>
+<tr class="separator:a0588de227ea8df8c67e70e059627c75c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9d693058d05444af77af7ff692c2bd16"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classmc_1_1io_1_1tcp_1_1connection__t.html#a9d693058d05444af77af7ff692c2bd16">read</a> (const std::string &amp;delimiter)</td></tr>
+<tr class="memdesc:a9d693058d05444af77af7ff692c2bd16"><td class="mdescLeft">&#160;</td><td class="mdescRight">Reads data till delimiter and returns it.  <a href="#a9d693058d05444af77af7ff692c2bd16">...</a><br/></td></tr>
+<tr class="separator:a9d693058d05444af77af7ff692c2bd16"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae4d447a4fea7537b0db3aa558c74250a"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classmc_1_1io_1_1tcp_1_1connection__t.html#ae4d447a4fea7537b0db3aa558c74250a">read</a> (std::size_t bytes)</td></tr>
+<tr class="memdesc:ae4d447a4fea7537b0db3aa558c74250a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Reads bytes count data and returns it.  <a href="#ae4d447a4fea7537b0db3aa558c74250a">...</a><br/></td></tr>
+<tr class="separator:ae4d447a4fea7537b0db3aa558c74250a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pro-types"></a>
+Chráněné typy</h2></td></tr>
+<tr class="memitem:a5265be571fca93abd6525c8327d83b13"><td class="memItemLeft" align="right" valign="top">typedef boost::shared_ptr<br class="typebreak"/>
+&lt; <a class="el" href="classmc_1_1io_1_1tcp_1_1connection__t_1_1pimple__connection__t.html">pimple_connection_t</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classmc_1_1io_1_1tcp_1_1connection__t.html#a5265be571fca93abd6525c8327d83b13">pimple_connection_ptr_t</a></td></tr>
+<tr class="separator:a5265be571fca93abd6525c8327d83b13"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pro-attribs"></a>
+Chráněné atributy</h2></td></tr>
+<tr class="memitem:adba70507f54b437ecf43ab91a7961efd"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classmc_1_1io_1_1tcp_1_1connection__t.html#a5265be571fca93abd6525c8327d83b13">pimple_connection_ptr_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classmc_1_1io_1_1tcp_1_1connection__t.html#adba70507f54b437ecf43ab91a7961efd">socket</a></td></tr>
+<tr class="memdesc:adba70507f54b437ecf43ab91a7961efd"><td class="mdescLeft">&#160;</td><td class="mdescRight">hides i/o implementation  <a href="#adba70507f54b437ecf43ab91a7961efd">...</a><br/></td></tr>
+<tr class="separator:adba70507f54b437ecf43ab91a7961efd"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<a name="details" id="details"></a><h2 class="groupheader">Detailní popis</h2>
+<div class="textblock"><p>I/O object that holds one tcp socket to memcache server and provides interface for sending and retrieving messages to/from them. </p>
+
+<p>Definice je uvedena na řádku <a class="el" href="connection_8h_source.html#l00036">36</a> v souboru <a class="el" href="connection_8h_source.html">connection.h</a>.</p>
+</div><h2 class="groupheader">Dokumentace k členským typům</h2>
+<a class="anchor" id="a5265be571fca93abd6525c8327d83b13"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef boost::shared_ptr&lt;<a class="el" href="classmc_1_1io_1_1tcp_1_1connection__t_1_1pimple__connection__t.html">pimple_connection_t</a>&gt; <a class="el" href="classmc_1_1io_1_1tcp_1_1connection__t.html#a5265be571fca93abd6525c8327d83b13">mc::io::tcp::connection_t::pimple_connection_ptr_t</a></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Definice je uvedena na řádku <a class="el" href="connection_8h_source.html#l00057">57</a> v souboru <a class="el" href="connection_8h_source.html">connection.h</a>.</p>
+
+</div>
+</div>
+<h2 class="groupheader">Dokumentace konstruktoru a destruktoru</h2>
+<a class="anchor" id="ac3d43edc98a9a19ee21d4a01ee8afaee"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">mc::io::tcp::connection_t::connection_t </td>
+          <td>(</td>
+          <td class="paramtype">const std::string &amp;&#160;</td>
+          <td class="paramname"><em>addr</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classmc_1_1io_1_1opts__t.html">opts_t</a>&#160;</td>
+          <td class="paramname"><em>opts</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>C'tor. </p>
+
+<p>Definice je uvedena na řádku <a class="el" href="connection_8cc_source.html#l00263">263</a> v souboru <a class="el" href="connection_8cc_source.html">connection.cc</a>.</p>
+
+</div>
+</div>
+<h2 class="groupheader">Dokumentace k metodám</h2>
+<a class="anchor" id="a9d693058d05444af77af7ff692c2bd16"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::string mc::io::tcp::connection_t::read </td>
+          <td>(</td>
+          <td class="paramtype">const std::string &amp;&#160;</td>
+          <td class="paramname"><em>delimiter</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Reads data till delimiter and returns it. </p>
+
+<p>Definice je uvedena na řádku <a class="el" href="connection_8cc_source.html#l00271">271</a> v souboru <a class="el" href="connection_8cc_source.html">connection.cc</a>.</p>
+
+<p>Odkazuje se na <a class="el" href="connection_8h_source.html#l00062">socket</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="ae4d447a4fea7537b0db3aa558c74250a"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::string mc::io::tcp::connection_t::read </td>
+          <td>(</td>
+          <td class="paramtype">std::size_t&#160;</td>
+          <td class="paramname"><em>bytes</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Reads bytes count data and returns it. </p>
+
+<p>Definice je uvedena na řádku <a class="el" href="connection_8cc_source.html#l00275">275</a> v souboru <a class="el" href="connection_8cc_source.html">connection.cc</a>.</p>
+
+<p>Odkazuje se na <a class="el" href="connection_8h_source.html#l00062">socket</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a0588de227ea8df8c67e70e059627c75c"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void mc::io::tcp::connection_t::write </td>
+          <td>(</td>
+          <td class="paramtype">const std::string &amp;&#160;</td>
+          <td class="paramname"><em>data</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Sends all data to server. </p>
+
+<p>Definice je uvedena na řádku <a class="el" href="connection_8cc_source.html#l00267">267</a> v souboru <a class="el" href="connection_8cc_source.html">connection.cc</a>.</p>
+
+<p>Odkazuje se na <a class="el" href="connection_8h_source.html#l00062">socket</a>.</p>
+
+</div>
+</div>
+<h2 class="groupheader">Dokumentace k položkám</h2>
+<a class="anchor" id="adba70507f54b437ecf43ab91a7961efd"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classmc_1_1io_1_1tcp_1_1connection__t.html#a5265be571fca93abd6525c8327d83b13">pimple_connection_ptr_t</a> mc::io::tcp::connection_t::socket</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>hides i/o implementation </p>
+
+<p>Definice je uvedena na řádku <a class="el" href="connection_8h_source.html#l00062">62</a> v souboru <a class="el" href="connection_8h_source.html">connection.h</a>.</p>
+
+<p>Používá se v <a class="el" href="connection_8cc_source.html#l00271">read()</a> a <a class="el" href="connection_8cc_source.html#l00267">write()</a>.</p>
+
+</div>
+</div>
+<hr/>Dokumentace pro tuto třídu byla generována z následujících souborů:<ul>
+<li>include/mcache/io/<a class="el" href="connection_8h_source.html">connection.h</a></li>
+<li>src/io/<a class="el" href="connection_8cc_source.html">connection.cc</a></li>
+</ul>
+</div><!-- contents -->
+</div><!-- doc-content -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="namespacemc.html">mc</a></li><li class="navelem"><a class="el" href="namespacemc_1_1io.html">io</a></li><li class="navelem"><a class="el" href="namespacemc_1_1io_1_1tcp.html">tcp</a></li><li class="navelem"><a class="el" href="classmc_1_1io_1_1tcp_1_1connection__t.html">connection_t</a></li>
+    <li class="footer">Generováno út 23. čec 2013 13.13:04 pro projekt libmcache-0.2.1 programem
+    <a href="http://www.doxygen.org/index.html">
+    <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.3.1 </li>
+  </ul>
+</div>
+</body>
+</html>

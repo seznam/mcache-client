@@ -1,0 +1,6 @@
+<map id="mc::error_t" name="mc::error_t">
+<area shape="rect" id="node5" href="$classmc_1_1io_1_1error__t.html" title="Base class for all errors in libmcache." alt="" coords="5,161,109,189"/>
+<area shape="rect" id="node7" href="$classmc_1_1out__of__servers__t.html" title="Exception for empty pool of servers." alt="" coords="133,161,280,189"/>
+<area shape="rect" id="node9" href="$classmc_1_1proto_1_1error__t.html" title="Base class for all errors in libmcache::proto." alt="" coords="304,161,429,189"/>
+<area shape="rect" id="node2" title="STL class." alt="" coords="155,6,259,34"/>
+</map>

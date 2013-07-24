@@ -1,0 +1,415 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.3.1"/>
+<title>libmcache-0.2.1: Dokumentace třídy mc::proto::txt::retrieve_command_t</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript">
+  $(document).ready(initResizable);
+  $(window).load(resizeHeight);
+</script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/search.js"></script>
+<script type="text/javascript">
+  $(document).ready(function() { searchBox.OnSelectItem(0); });
+</script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td style="padding-left: 0.5em;">
+   <div id="projectname">libmcache-0.2.1
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Generováno programem Doxygen 1.8.3.1 -->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "search",false,'Hledat');
+</script>
+  <div id="navrow1" class="tabs">
+    <ul class="tablist">
+      <li><a href="index.html"><span>Hlavní&#160;stránka</span></a></li>
+      <li><a href="namespaces.html"><span>Prostory&#160;jmen</span></a></li>
+      <li class="current"><a href="annotated.html"><span>Třídy</span></a></li>
+      <li><a href="files.html"><span>Soubory</span></a></li>
+      <li>
+        <div id="MSearchBox" class="MSearchBoxInactive">
+        <span class="left">
+          <img id="MSearchSelect" src="search/mag_sel.png"
+               onmouseover="return searchBox.OnSearchSelectShow()"
+               onmouseout="return searchBox.OnSearchSelectHide()"
+               alt=""/>
+          <input type="text" id="MSearchField" value="Hledat" accesskey="S"
+               onfocus="searchBox.OnSearchFieldFocus(true)" 
+               onblur="searchBox.OnSearchFieldFocus(false)" 
+               onkeyup="searchBox.OnSearchFieldChange(event)"/>
+          </span><span class="right">
+            <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><img id="MSearchCloseImg" border="0" src="search/close.png" alt=""/></a>
+          </span>
+        </div>
+      </li>
+    </ul>
+  </div>
+  <div id="navrow2" class="tabs2">
+    <ul class="tablist">
+      <li><a href="annotated.html"><span>Datové&#160;struktury</span></a></li>
+      <li><a href="classes.html"><span>Rejstřík&#160;datových&#160;struktur</span></a></li>
+      <li><a href="inherits.html"><span>Hierarchie&#160;tříd</span></a></li>
+      <li><a href="functions.html"><span>Datové&#160;položky</span></a></li>
+    </ul>
+  </div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+$(document).ready(function(){initNavTree('classmc_1_1proto_1_1txt_1_1retrieve__command__t.html','');});
+</script>
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>Vše</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Třídy</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Prostory jmen</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Soubory</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Funkce</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Proměnné</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Definice typů</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Výčty</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(8)"><span class="SelectionMark">&#160;</span>Hodnoty výčtu</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(9)"><span class="SelectionMark">&#160;</span>Definice maker</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(10)"><span class="SelectionMark">&#160;</span>Stránky</a></div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div class="header">
+  <div class="summary">
+<a href="#pub-types">Veřejné typy</a> &#124;
+<a href="#pub-methods">Veřejné metody</a> &#124;
+<a href="#pub-static-methods">Statické veřejné metody</a> &#124;
+<a href="#pub-attribs">Datové položky</a> &#124;
+<a href="#pub-static-attribs">Statické veřejné atributy</a> &#124;
+<a href="#pro-methods">Chráněné metody</a>  </div>
+  <div class="headertitle">
+<div class="title">Dokumentace třídy mc::proto::txt::retrieve_command_t</div>  </div>
+</div><!--header-->
+<div class="contents">
+
+<p>Base class for all retrieve commands.  
+ <a href="classmc_1_1proto_1_1txt_1_1retrieve__command__t.html#details">...</a></p>
+
+<p><code>#include &lt;<a class="el" href="txt_8h_source.html">txt.h</a>&gt;</code></p>
+<div class="dynheader">
+Diagram dědičnosti pro třídu mc::proto::txt::retrieve_command_t</div>
+<div class="dyncontent">
+<div class="center"><img src="classmc_1_1proto_1_1txt_1_1retrieve__command__t__inherit__graph.png" border="0" usemap="#mc_1_1proto_1_1txt_1_1retrieve__command__t_inherit__map" alt="Inheritance graph"/></div>
+<map name="mc_1_1proto_1_1txt_1_1retrieve__command__t_inherit__map" id="mc_1_1proto_1_1txt_1_1retrieve__command__t_inherit__map">
+<area shape="rect" id="node2" href="classmc_1_1proto_1_1txt_1_1command__t.html" title="Base class of all commands." alt="" coords="5,6,181,34"/></map>
+<center><span class="legend">[<a target="top" href="graph_legend.html">vysvětlivky</a>]</span></center></div>
+<div class="dynheader">
+Diagram tříd pro mc::proto::txt::retrieve_command_t:</div>
+<div class="dyncontent">
+<div class="center"><img src="classmc_1_1proto_1_1txt_1_1retrieve__command__t__coll__graph.png" border="0" usemap="#mc_1_1proto_1_1txt_1_1retrieve__command__t_coll__map" alt="Collaboration graph"/></div>
+<map name="mc_1_1proto_1_1txt_1_1retrieve__command__t_coll__map" id="mc_1_1proto_1_1txt_1_1retrieve__command__t_coll__map">
+<area shape="rect" id="node2" href="classmc_1_1proto_1_1txt_1_1command__t.html" title="Base class of all commands." alt="" coords="5,102,181,130"/><area shape="rect" id="node4" title="STL class." alt="" coords="205,102,285,130"/><area shape="rect" id="node6" title="STL class." alt="" coords="183,6,308,50"/></map>
+<center><span class="legend">[<a target="top" href="graph_legend.html">vysvětlivky</a>]</span></center></div>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-types"></a>
+Veřejné typy</h2></td></tr>
+<tr class="memitem:a7777cd96503e043343aa339e3fe1f955"><td class="memItemLeft" align="right" valign="top">typedef <a class="el" href="classmc_1_1proto_1_1single__retrival__response__t.html">single_retrival_response_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classmc_1_1proto_1_1txt_1_1retrieve__command__t.html#a7777cd96503e043343aa339e3fe1f955">response_t</a></td></tr>
+<tr class="separator:a7777cd96503e043343aa339e3fe1f955"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
+Veřejné metody</h2></td></tr>
+<tr class="memitem:aa3e04609812434fb4adbb458e3d4fe83"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classmc_1_1proto_1_1txt_1_1retrieve__command__t.html#aa3e04609812434fb4adbb458e3d4fe83">retrieve_command_t</a> (const std::string &amp;<a class="el" href="classmc_1_1proto_1_1txt_1_1retrieve__command__t.html#a27fbfc105d8892bb8ec86a35f668328a">key</a>)</td></tr>
+<tr class="memdesc:aa3e04609812434fb4adbb458e3d4fe83"><td class="mdescLeft">&#160;</td><td class="mdescRight">C'tor.  <a href="#aa3e04609812434fb4adbb458e3d4fe83">...</a><br/></td></tr>
+<tr class="separator:aa3e04609812434fb4adbb458e3d4fe83"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aea93716d1e8a467cd62f4d1d11621ace"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classmc_1_1proto_1_1txt_1_1command__t.html#a3f74e5d68ddea2f8b59250d071342c1d">response_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classmc_1_1proto_1_1txt_1_1retrieve__command__t.html#aea93716d1e8a467cd62f4d1d11621ace">deserialize_header</a> (const std::string &amp;header) const </td></tr>
+<tr class="memdesc:aea93716d1e8a467cd62f4d1d11621ace"><td class="mdescLeft">&#160;</td><td class="mdescRight">Deserialize responses for get and gets retrieve commands.  <a href="#aea93716d1e8a467cd62f4d1d11621ace">...</a><br/></td></tr>
+<tr class="separator:aea93716d1e8a467cd62f4d1d11621ace"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa0a55fff010b3686a5a52016f47c0fd3"><td class="memItemLeft" align="right" valign="top">const char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classmc_1_1proto_1_1txt_1_1command__t.html#aa0a55fff010b3686a5a52016f47c0fd3">header_delimiter</a> () const </td></tr>
+<tr class="memdesc:aa0a55fff010b3686a5a52016f47c0fd3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns txt protocol header delimiter.  <a href="#aa0a55fff010b3686a5a52016f47c0fd3">...</a><br/></td></tr>
+<tr class="separator:aa0a55fff010b3686a5a52016f47c0fd3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-static-methods"></a>
+Statické veřejné metody</h2></td></tr>
+<tr class="memitem:a2dbafdb5d683a215d4a00de720027dad"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classmc_1_1proto_1_1txt_1_1retrieve__command__t.html#a2dbafdb5d683a215d4a00de720027dad">set_body</a> (uint32_t &amp;flags, std::string &amp;body, const std::string &amp;data)</td></tr>
+<tr class="memdesc:a2dbafdb5d683a215d4a00de720027dad"><td class="mdescLeft">&#160;</td><td class="mdescRight">The method for setting the body of response.  <a href="#a2dbafdb5d683a215d4a00de720027dad">...</a><br/></td></tr>
+<tr class="separator:a2dbafdb5d683a215d4a00de720027dad"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-attribs"></a>
+Datové položky</h2></td></tr>
+<tr class="memitem:a27fbfc105d8892bb8ec86a35f668328a"><td class="memItemLeft" align="right" valign="top">const std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classmc_1_1proto_1_1txt_1_1retrieve__command__t.html#a27fbfc105d8892bb8ec86a35f668328a">key</a></td></tr>
+<tr class="memdesc:a27fbfc105d8892bb8ec86a35f668328a"><td class="mdescLeft">&#160;</td><td class="mdescRight">for which key data should be retrieved  <a href="#a27fbfc105d8892bb8ec86a35f668328a">...</a><br/></td></tr>
+<tr class="separator:a27fbfc105d8892bb8ec86a35f668328a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-static-attribs"></a>
+Statické veřejné atributy</h2></td></tr>
+<tr class="memitem:a74d2b7afed99006bb6cfe0b96e65249b"><td class="memItemLeft" align="right" valign="top">static const std::size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classmc_1_1proto_1_1txt_1_1retrieve__command__t.html#a74d2b7afed99006bb6cfe0b96e65249b">footer_size</a></td></tr>
+<tr class="memdesc:a74d2b7afed99006bb6cfe0b96e65249b"><td class="mdescLeft">&#160;</td><td class="mdescRight">sizeof("\r\nEND\r\n")  <a href="#a74d2b7afed99006bb6cfe0b96e65249b">...</a><br/></td></tr>
+<tr class="separator:a74d2b7afed99006bb6cfe0b96e65249b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pro-methods"></a>
+Chráněné metody</h2></td></tr>
+<tr class="memitem:af83ba1a2f8782bb63d201be22993feab"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classmc_1_1proto_1_1txt_1_1retrieve__command__t.html#af83ba1a2f8782bb63d201be22993feab">serialize</a> (const char *name) const </td></tr>
+<tr class="memdesc:af83ba1a2f8782bb63d201be22993feab"><td class="mdescLeft">&#160;</td><td class="mdescRight">Serialize retrieve command.  <a href="#af83ba1a2f8782bb63d201be22993feab">...</a><br/></td></tr>
+<tr class="separator:af83ba1a2f8782bb63d201be22993feab"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<a name="details" id="details"></a><h2 class="groupheader">Detailní popis</h2>
+<div class="textblock"><p>Base class for all retrieve commands. </p>
+
+<p>Definice je uvedena na řádku <a class="el" href="txt_8h_source.html#l00054">54</a> v souboru <a class="el" href="txt_8h_source.html">txt.h</a>.</p>
+</div><h2 class="groupheader">Dokumentace k členským typům</h2>
+<a class="anchor" id="a7777cd96503e043343aa339e3fe1f955"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef <a class="el" href="classmc_1_1proto_1_1single__retrival__response__t.html">single_retrival_response_t</a> <a class="el" href="classmc_1_1proto_1_1txt_1_1retrieve__command__t.html#a7777cd96503e043343aa339e3fe1f955">mc::proto::txt::retrieve_command_t::response_t</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Definice je uvedena na řádku <a class="el" href="txt_8h_source.html#l00057">57</a> v souboru <a class="el" href="txt_8h_source.html">txt.h</a>.</p>
+
+</div>
+</div>
+<h2 class="groupheader">Dokumentace konstruktoru a destruktoru</h2>
+<a class="anchor" id="aa3e04609812434fb4adbb458e3d4fe83"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">mc::proto::txt::retrieve_command_t::retrieve_command_t </td>
+          <td>(</td>
+          <td class="paramtype">const std::string &amp;&#160;</td>
+          <td class="paramname"><em>key</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">explicit</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>C'tor. </p>
+
+<p>Definice je uvedena na řádku <a class="el" href="txt_8h_source.html#l00061">61</a> v souboru <a class="el" href="txt_8h_source.html">txt.h</a>.</p>
+
+</div>
+</div>
+<h2 class="groupheader">Dokumentace k metodám</h2>
+<a class="anchor" id="aea93716d1e8a467cd62f4d1d11621ace"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classmc_1_1proto_1_1txt_1_1retrieve__command__t.html#a7777cd96503e043343aa339e3fe1f955">retrieve_command_t::response_t</a> mc::proto::txt::retrieve_command_t::deserialize_header </td>
+          <td>(</td>
+          <td class="paramtype">const std::string &amp;&#160;</td>
+          <td class="paramname"><em>header</em></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Deserialize responses for get and gets retrieve commands. </p>
+
+<p>Definice je uvedena na řádku <a class="el" href="txt_8cc_source.html#l00097">97</a> v souboru <a class="el" href="txt_8cc_source.html">txt.cc</a>.</p>
+
+<p>Odkazuje se na <a class="el" href="txt_8cc_source.html#l00074">mc::proto::txt::command_t::deserialize_header()</a>, <a class="el" href="include_2mcache_2proto_2error_8h_source.html#l00044">mc::proto::resp::empty</a> a <a class="el" href="include_2mcache_2proto_2error_8h_source.html#l00039">mc::proto::resp::not_found</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="aa0a55fff010b3686a5a52016f47c0fd3"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">const char* mc::proto::txt::command_t::header_delimiter </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">inherited</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Returns txt protocol header delimiter. </p>
+
+<p>Definice je uvedena na řádku <a class="el" href="txt_8h_source.html#l00043">43</a> v souboru <a class="el" href="txt_8h_source.html">txt.h</a>.</p>
+
+<p>Používá se v <a class="el" href="txt_8cc_source.html#l00118">serialize()</a>, <a class="el" href="txt_8cc_source.html#l00162">mc::proto::txt::storage_command_t::serialize()</a>, <a class="el" href="txt_8cc_source.html#l00208">mc::proto::txt::incr_decr_command_t::serialize()</a> a <a class="el" href="txt_8cc_source.html#l00239">mc::proto::txt::delete_command_t::serialize()</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="af83ba1a2f8782bb63d201be22993feab"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::string mc::proto::txt::retrieve_command_t::serialize </td>
+          <td>(</td>
+          <td class="paramtype">const char *&#160;</td>
+          <td class="paramname"><em>name</em></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Serialize retrieve command. </p>
+
+<p>Definice je uvedena na řádku <a class="el" href="txt_8cc_source.html#l00118">118</a> v souboru <a class="el" href="txt_8cc_source.html">txt.cc</a>.</p>
+
+<p>Odkazuje se na <a class="el" href="aux_8h_source.html#l00040">mc::proto::aux::check_key()</a>, <a class="el" href="txt_8h_source.html#l00043">mc::proto::txt::command_t::header_delimiter()</a> a <a class="el" href="txt_8h_source.html#l00072">key</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a2dbafdb5d683a215d4a00de720027dad"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void mc::proto::txt::retrieve_command_t::set_body </td>
+          <td>(</td>
+          <td class="paramtype">uint32_t &amp;&#160;</td>
+          <td class="paramname"><em>flags</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">std::string &amp;&#160;</td>
+          <td class="paramname"><em>body</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const std::string &amp;&#160;</td>
+          <td class="paramname"><em>data</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>The method for setting the body of response. </p>
+
+<p>Definice je uvedena na řádku <a class="el" href="txt_8cc_source.html#l00126">126</a> v souboru <a class="el" href="txt_8cc_source.html">txt.cc</a>.</p>
+
+<p>Odkazuje se na <a class="el" href="txt_8h_source.html#l00073">footer_size</a>.</p>
+
+</div>
+</div>
+<h2 class="groupheader">Dokumentace k položkám</h2>
+<a class="anchor" id="a74d2b7afed99006bb6cfe0b96e65249b"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">const std::size_t mc::proto::txt::retrieve_command_t::footer_size</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>sizeof("\r\nEND\r\n") </p>
+
+<p>Definice je uvedena na řádku <a class="el" href="txt_8h_source.html#l00073">73</a> v souboru <a class="el" href="txt_8h_source.html">txt.h</a>.</p>
+
+<p>Používá se v <a class="el" href="txt_8cc_source.html#l00126">set_body()</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a27fbfc105d8892bb8ec86a35f668328a"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">const std::string mc::proto::txt::retrieve_command_t::key</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>for which key data should be retrieved </p>
+
+<p>Definice je uvedena na řádku <a class="el" href="txt_8h_source.html#l00072">72</a> v souboru <a class="el" href="txt_8h_source.html">txt.h</a>.</p>
+
+<p>Používá se v <a class="el" href="txt_8cc_source.html#l00118">serialize()</a>.</p>
+
+</div>
+</div>
+<hr/>Dokumentace pro tuto třídu byla generována z následujících souborů:<ul>
+<li>include/mcache/proto/<a class="el" href="txt_8h_source.html">txt.h</a></li>
+<li>src/proto/<a class="el" href="txt_8cc_source.html">txt.cc</a></li>
+</ul>
+</div><!-- contents -->
+</div><!-- doc-content -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="namespacemc.html">mc</a></li><li class="navelem"><a class="el" href="namespacemc_1_1proto.html">proto</a></li><li class="navelem"><a class="el" href="namespacemc_1_1proto_1_1txt.html">txt</a></li><li class="navelem"><a class="el" href="classmc_1_1proto_1_1txt_1_1retrieve__command__t.html">retrieve_command_t</a></li>
+    <li class="footer">Generováno út 23. čec 2013 13.13:04 pro projekt libmcache-0.2.1 programem
+    <a href="http://www.doxygen.org/index.html">
+    <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.3.1 </li>
+  </ul>
+</div>
+</body>
+</html>

@@ -1,0 +1,6 @@
+<map id="Grafické zobrazení hierarchie tříd" name="Grafické zobrazení hierarchie tříd">
+<area shape="rect" id="node3" href="$classmc_1_1client__template__t.html" title="Template of class for memcache clients." alt="" coords="153,5,329,65"/>
+<area shape="rect" id="node5" href="$classmc_1_1io_1_1tcp_1_1connection__t_1_1pimple__connection__t.html" title="Pimple class for tcp connection." alt="" coords="160,87,323,131"/>
+<area shape="rect" id="node7" href="$classmc_1_1io_1_1udp_1_1connection__t_1_1pimple__connection__t.html" title="Pimple class for tcp connection." alt="" coords="160,154,323,198"/>
+<area shape="rect" id="node9" href="$classmc_1_1server__proxies__t.html" title="Vector of server proxies." alt="" coords="168,221,315,281"/>
+</map>

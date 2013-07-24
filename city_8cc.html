@@ -1,0 +1,347 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.3.1"/>
+<title>libmcache-0.2.1: Dokumentace souboru src/hash/city.cc</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript">
+  $(document).ready(initResizable);
+  $(window).load(resizeHeight);
+</script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/search.js"></script>
+<script type="text/javascript">
+  $(document).ready(function() { searchBox.OnSelectItem(0); });
+</script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td style="padding-left: 0.5em;">
+   <div id="projectname">libmcache-0.2.1
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Generováno programem Doxygen 1.8.3.1 -->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "search",false,'Hledat');
+</script>
+  <div id="navrow1" class="tabs">
+    <ul class="tablist">
+      <li><a href="index.html"><span>Hlavní&#160;stránka</span></a></li>
+      <li><a href="namespaces.html"><span>Prostory&#160;jmen</span></a></li>
+      <li><a href="annotated.html"><span>Třídy</span></a></li>
+      <li class="current"><a href="files.html"><span>Soubory</span></a></li>
+      <li>
+        <div id="MSearchBox" class="MSearchBoxInactive">
+        <span class="left">
+          <img id="MSearchSelect" src="search/mag_sel.png"
+               onmouseover="return searchBox.OnSearchSelectShow()"
+               onmouseout="return searchBox.OnSearchSelectHide()"
+               alt=""/>
+          <input type="text" id="MSearchField" value="Hledat" accesskey="S"
+               onfocus="searchBox.OnSearchFieldFocus(true)" 
+               onblur="searchBox.OnSearchFieldFocus(false)" 
+               onkeyup="searchBox.OnSearchFieldChange(event)"/>
+          </span><span class="right">
+            <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><img id="MSearchCloseImg" border="0" src="search/close.png" alt=""/></a>
+          </span>
+        </div>
+      </li>
+    </ul>
+  </div>
+  <div id="navrow2" class="tabs2">
+    <ul class="tablist">
+      <li><a href="files.html"><span>Seznam&#160;souborů</span></a></li>
+      <li><a href="globals.html"><span>Globální&#160;symboly</span></a></li>
+    </ul>
+  </div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+$(document).ready(function(){initNavTree('city_8cc.html','');});
+</script>
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>Vše</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Třídy</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Prostory jmen</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Soubory</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Funkce</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Proměnné</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Definice typů</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Výčty</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(8)"><span class="SelectionMark">&#160;</span>Hodnoty výčtu</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(9)"><span class="SelectionMark">&#160;</span>Definice maker</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(10)"><span class="SelectionMark">&#160;</span>Stránky</a></div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div class="header">
+  <div class="summary">
+<a href="#namespaces">Prostory jmen</a> &#124;
+<a href="#define-members">Definice maker</a> &#124;
+<a href="#typedef-members">Definice typů</a> &#124;
+<a href="#func-members">Funkce</a> &#124;
+<a href="#var-members">Proměnné</a>  </div>
+  <div class="headertitle">
+<div class="title">Dokumentace souboru city.cc</div>  </div>
+</div><!--header-->
+<div class="contents">
+<div class="textblock"><code>#include &lt;algorithm&gt;</code><br/>
+<code>#include &lt;string.h&gt;</code><br/>
+<code>#include &lt;stdlib.h&gt;</code><br/>
+<code>#include &lt;stdint.h&gt;</code><br/>
+<code>#include &lt;utility&gt;</code><br/>
+<code>#include &quot;<a class="el" href="jenkins_8h_source.html">mcache/hash/jenkins.h</a>&quot;</code><br/>
+<code>#include &lt;iostream&gt;</code><br/>
+</div><div class="textblock"><div class="dynheader">
+Graf závislostí na vkládaných souborech pro city.cc:</div>
+<div class="dyncontent">
+<div class="center"><img src="city_8cc__incl.png" border="0" usemap="#src_2hash_2city_8cc" alt=""/></div>
+<map name="src_2hash_2city_8cc" id="src_2hash_2city_8cc">
+<area shape="rect" id="node13" href="jenkins_8h.html" title="mcache/hash/jenkins.h" alt="" coords="411,83,568,111"/></map>
+</div>
+</div>
+<p><a href="city_8cc_source.html">Zobrazit zdrojový text tohoto souboru.</a></p>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="namespaces"></a>
+Prostory jmen</h2></td></tr>
+<tr class="memitem:namespacemc"><td class="memItemLeft" align="right" valign="top">namespace &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacemc.html">mc</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="define-members"></a>
+Definice maker</h2></td></tr>
+<tr class="memitem:aeaffbeef893240bf17d51c8ccde3c686"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="city_8cc.html#aeaffbeef893240bf17d51c8ccde3c686">uint32_in_expected_order</a>(x)</td></tr>
+<tr class="separator:aeaffbeef893240bf17d51c8ccde3c686"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aebeacf3a6a1c4e278fa1b74f18c08d4a"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="city_8cc.html#aebeacf3a6a1c4e278fa1b74f18c08d4a">uint64_in_expected_order</a>(x)</td></tr>
+<tr class="separator:aebeacf3a6a1c4e278fa1b74f18c08d4a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:affde14445f49f65ff4f5b592e44ee71a"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="city_8cc.html#affde14445f49f65ff4f5b592e44ee71a">LIKELY</a>(x)</td></tr>
+<tr class="separator:affde14445f49f65ff4f5b592e44ee71a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="typedef-members"></a>
+Definice typů</h2></td></tr>
+<tr class="memitem:a33a5e996e7a90acefb8b1c0bea47e365"><td class="memItemLeft" align="right" valign="top">typedef uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="city_8cc.html#a33a5e996e7a90acefb8b1c0bea47e365">uint8</a></td></tr>
+<tr class="separator:a33a5e996e7a90acefb8b1c0bea47e365"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:acbd4acd0d29e2d6c43104827f77d9cd2"><td class="memItemLeft" align="right" valign="top">typedef uint32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="city_8cc.html#acbd4acd0d29e2d6c43104827f77d9cd2">uint32</a></td></tr>
+<tr class="separator:acbd4acd0d29e2d6c43104827f77d9cd2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abc0f5bc07737e498f287334775dff2b6"><td class="memItemLeft" align="right" valign="top">typedef uint64_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="city_8cc.html#abc0f5bc07737e498f287334775dff2b6">uint64</a></td></tr>
+<tr class="separator:abc0f5bc07737e498f287334775dff2b6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a82bf1aedb7323172408d1c2dff88de95"><td class="memItemLeft" align="right" valign="top">typedef std::pair&lt; <a class="el" href="city_8cc.html#abc0f5bc07737e498f287334775dff2b6">uint64</a>, <a class="el" href="city_8cc.html#abc0f5bc07737e498f287334775dff2b6">uint64</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="city_8cc.html#a82bf1aedb7323172408d1c2dff88de95">uint128</a></td></tr>
+<tr class="separator:a82bf1aedb7323172408d1c2dff88de95"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
+Funkce</h2></td></tr>
+<tr class="memitem:a79feec1a532b8bb946971a750f34fe74"><td class="memItemLeft" align="right" valign="top"><a class="el" href="city_8cc.html#abc0f5bc07737e498f287334775dff2b6">uint64</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacemc.html#a79feec1a532b8bb946971a750f34fe74">mc::Uint128Low64</a> (const <a class="el" href="city_8cc.html#a82bf1aedb7323172408d1c2dff88de95">uint128</a> &amp;x)</td></tr>
+<tr class="separator:a79feec1a532b8bb946971a750f34fe74"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abc9f4ea21e6220d0d7d57597ea431f68"><td class="memItemLeft" align="right" valign="top"><a class="el" href="city_8cc.html#abc0f5bc07737e498f287334775dff2b6">uint64</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacemc.html#abc9f4ea21e6220d0d7d57597ea431f68">mc::Uint128High64</a> (const <a class="el" href="city_8cc.html#a82bf1aedb7323172408d1c2dff88de95">uint128</a> &amp;x)</td></tr>
+<tr class="separator:abc9f4ea21e6220d0d7d57597ea431f68"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6a9e24e474764671eedd5f7c17ce7126"><td class="memItemLeft" align="right" valign="top"><a class="el" href="city_8cc.html#abc0f5bc07737e498f287334775dff2b6">uint64</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacemc.html#a6a9e24e474764671eedd5f7c17ce7126">mc::CityHash64</a> (const char *buf, size_t len)</td></tr>
+<tr class="separator:a6a9e24e474764671eedd5f7c17ce7126"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a68e071b6d1272ec8880047c33826e1e6"><td class="memItemLeft" align="right" valign="top"><a class="el" href="city_8cc.html#abc0f5bc07737e498f287334775dff2b6">uint64</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacemc.html#a68e071b6d1272ec8880047c33826e1e6">mc::CityHash64WithSeed</a> (const char *buf, size_t len, <a class="el" href="city_8cc.html#abc0f5bc07737e498f287334775dff2b6">uint64</a> seed)</td></tr>
+<tr class="separator:a68e071b6d1272ec8880047c33826e1e6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0c7d830054eeba56b26761e6de03678f"><td class="memItemLeft" align="right" valign="top"><a class="el" href="city_8cc.html#abc0f5bc07737e498f287334775dff2b6">uint64</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacemc.html#a0c7d830054eeba56b26761e6de03678f">mc::CityHash64WithSeeds</a> (const char *buf, size_t len, <a class="el" href="city_8cc.html#abc0f5bc07737e498f287334775dff2b6">uint64</a> seed0, <a class="el" href="city_8cc.html#abc0f5bc07737e498f287334775dff2b6">uint64</a> seed1)</td></tr>
+<tr class="separator:a0c7d830054eeba56b26761e6de03678f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6ebb9cadab796e8ddd97c63ace7ba074"><td class="memItemLeft" align="right" valign="top"><a class="el" href="city_8cc.html#a82bf1aedb7323172408d1c2dff88de95">uint128</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacemc.html#a6ebb9cadab796e8ddd97c63ace7ba074">mc::CityHash128</a> (const char *s, size_t len)</td></tr>
+<tr class="separator:a6ebb9cadab796e8ddd97c63ace7ba074"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8755ac377e85c7064a5b72ecef54c970"><td class="memItemLeft" align="right" valign="top"><a class="el" href="city_8cc.html#a82bf1aedb7323172408d1c2dff88de95">uint128</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacemc.html#a8755ac377e85c7064a5b72ecef54c970">mc::CityHash128WithSeed</a> (const char *s, size_t len, <a class="el" href="city_8cc.html#a82bf1aedb7323172408d1c2dff88de95">uint128</a> seed)</td></tr>
+<tr class="separator:a8755ac377e85c7064a5b72ecef54c970"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2fb2b9784637b07c47bcbb007b2de008"><td class="memItemLeft" align="right" valign="top"><a class="el" href="city_8cc.html#abc0f5bc07737e498f287334775dff2b6">uint64</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacemc.html#a2fb2b9784637b07c47bcbb007b2de008">mc::Hash128to64</a> (const <a class="el" href="city_8cc.html#a82bf1aedb7323172408d1c2dff88de95">uint128</a> &amp;x)</td></tr>
+<tr class="separator:a2fb2b9784637b07c47bcbb007b2de008"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0cb42c4998142bda4a80666859a7a4ec"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="city_8cc.html#abc0f5bc07737e498f287334775dff2b6">uint64</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacemc.html#a0cb42c4998142bda4a80666859a7a4ec">mc::UNALIGNED_LOAD64</a> (const char *p)</td></tr>
+<tr class="separator:a0cb42c4998142bda4a80666859a7a4ec"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8dd4d5c257544effccfc1db072a58026"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="city_8cc.html#acbd4acd0d29e2d6c43104827f77d9cd2">uint32</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacemc.html#a8dd4d5c257544effccfc1db072a58026">mc::UNALIGNED_LOAD32</a> (const char *p)</td></tr>
+<tr class="separator:a8dd4d5c257544effccfc1db072a58026"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad78365c31953ad94e749e2f233c5c4fb"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="city_8cc.html#abc0f5bc07737e498f287334775dff2b6">uint64</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacemc.html#ad78365c31953ad94e749e2f233c5c4fb">mc::Fetch64</a> (const char *p)</td></tr>
+<tr class="separator:ad78365c31953ad94e749e2f233c5c4fb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7a58f4faec0acbc8a26ecfea177cbd2e"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="city_8cc.html#acbd4acd0d29e2d6c43104827f77d9cd2">uint32</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacemc.html#a7a58f4faec0acbc8a26ecfea177cbd2e">mc::Fetch32</a> (const char *p)</td></tr>
+<tr class="separator:a7a58f4faec0acbc8a26ecfea177cbd2e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a335760b2903742c919c19d677ded3d2a"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="city_8cc.html#abc0f5bc07737e498f287334775dff2b6">uint64</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacemc.html#a335760b2903742c919c19d677ded3d2a">mc::Rotate</a> (<a class="el" href="city_8cc.html#abc0f5bc07737e498f287334775dff2b6">uint64</a> val, int shift)</td></tr>
+<tr class="separator:a335760b2903742c919c19d677ded3d2a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a390a6f619fee6089f7ccbe66526a21c5"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="city_8cc.html#abc0f5bc07737e498f287334775dff2b6">uint64</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacemc.html#a390a6f619fee6089f7ccbe66526a21c5">mc::RotateByAtLeast1</a> (<a class="el" href="city_8cc.html#abc0f5bc07737e498f287334775dff2b6">uint64</a> val, int shift)</td></tr>
+<tr class="separator:a390a6f619fee6089f7ccbe66526a21c5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1b6dad2a28d83ffce102820ff869ab8f"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="city_8cc.html#abc0f5bc07737e498f287334775dff2b6">uint64</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacemc.html#a1b6dad2a28d83ffce102820ff869ab8f">mc::ShiftMix</a> (<a class="el" href="city_8cc.html#abc0f5bc07737e498f287334775dff2b6">uint64</a> val)</td></tr>
+<tr class="separator:a1b6dad2a28d83ffce102820ff869ab8f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9ccbe349ae237dc213cb316f0fe8e855"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="city_8cc.html#abc0f5bc07737e498f287334775dff2b6">uint64</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacemc.html#a9ccbe349ae237dc213cb316f0fe8e855">mc::HashLen16</a> (<a class="el" href="city_8cc.html#abc0f5bc07737e498f287334775dff2b6">uint64</a> u, <a class="el" href="city_8cc.html#abc0f5bc07737e498f287334775dff2b6">uint64</a> v)</td></tr>
+<tr class="separator:a9ccbe349ae237dc213cb316f0fe8e855"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8e8fad03b1a0a4bf90d32e4c4b15202a"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="city_8cc.html#abc0f5bc07737e498f287334775dff2b6">uint64</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacemc.html#a8e8fad03b1a0a4bf90d32e4c4b15202a">mc::HashLen0to16</a> (const char *s, size_t len)</td></tr>
+<tr class="separator:a8e8fad03b1a0a4bf90d32e4c4b15202a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6e3537a2c827c3e318f599a2f3a53a3e"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="city_8cc.html#abc0f5bc07737e498f287334775dff2b6">uint64</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacemc.html#a6e3537a2c827c3e318f599a2f3a53a3e">mc::HashLen17to32</a> (const char *s, size_t len)</td></tr>
+<tr class="separator:a6e3537a2c827c3e318f599a2f3a53a3e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4d9c0a19eb6c7c818c6ed0c481e4f2f1"><td class="memItemLeft" align="right" valign="top">static std::pair&lt; <a class="el" href="city_8cc.html#abc0f5bc07737e498f287334775dff2b6">uint64</a>, <a class="el" href="city_8cc.html#abc0f5bc07737e498f287334775dff2b6">uint64</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacemc.html#a4d9c0a19eb6c7c818c6ed0c481e4f2f1">mc::WeakHashLen32WithSeeds</a> (<a class="el" href="city_8cc.html#abc0f5bc07737e498f287334775dff2b6">uint64</a> w, <a class="el" href="city_8cc.html#abc0f5bc07737e498f287334775dff2b6">uint64</a> x, <a class="el" href="city_8cc.html#abc0f5bc07737e498f287334775dff2b6">uint64</a> y, <a class="el" href="city_8cc.html#abc0f5bc07737e498f287334775dff2b6">uint64</a> z, <a class="el" href="city_8cc.html#abc0f5bc07737e498f287334775dff2b6">uint64</a> a, <a class="el" href="city_8cc.html#abc0f5bc07737e498f287334775dff2b6">uint64</a> b)</td></tr>
+<tr class="separator:a4d9c0a19eb6c7c818c6ed0c481e4f2f1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5675faa13f79ebe21df0670afe9f0a87"><td class="memItemLeft" align="right" valign="top">static std::pair&lt; <a class="el" href="city_8cc.html#abc0f5bc07737e498f287334775dff2b6">uint64</a>, <a class="el" href="city_8cc.html#abc0f5bc07737e498f287334775dff2b6">uint64</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacemc.html#a5675faa13f79ebe21df0670afe9f0a87">mc::WeakHashLen32WithSeeds</a> (const char *s, <a class="el" href="city_8cc.html#abc0f5bc07737e498f287334775dff2b6">uint64</a> a, <a class="el" href="city_8cc.html#abc0f5bc07737e498f287334775dff2b6">uint64</a> b)</td></tr>
+<tr class="separator:a5675faa13f79ebe21df0670afe9f0a87"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:acbb5e52d9614bb4b96b69a7a41c0b847"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="city_8cc.html#abc0f5bc07737e498f287334775dff2b6">uint64</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacemc.html#acbb5e52d9614bb4b96b69a7a41c0b847">mc::HashLen33to64</a> (const char *s, size_t len)</td></tr>
+<tr class="separator:acbb5e52d9614bb4b96b69a7a41c0b847"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a20dd8d15c49950889c3150fd09c61f8f"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="city_8cc.html#a82bf1aedb7323172408d1c2dff88de95">uint128</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacemc.html#a20dd8d15c49950889c3150fd09c61f8f">mc::CityMurmur</a> (const char *s, size_t len, <a class="el" href="city_8cc.html#a82bf1aedb7323172408d1c2dff88de95">uint128</a> seed)</td></tr>
+<tr class="separator:a20dd8d15c49950889c3150fd09c61f8f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aee151f56502a9cea44d4ce485938e3b7"><td class="memItemLeft" align="right" valign="top">uint32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacemc.html#aee151f56502a9cea44d4ce485938e3b7">mc::city</a> (const void *buf, std::size_t size, uint32_t seed=0)</td></tr>
+<tr class="memdesc:aee151f56502a9cea44d4ce485938e3b7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Geoff Pike and Jyrki Alakuijala hash function.  <a href="#aee151f56502a9cea44d4ce485938e3b7">...</a><br/></td></tr>
+<tr class="separator:aee151f56502a9cea44d4ce485938e3b7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="var-members"></a>
+Proměnné</h2></td></tr>
+<tr class="memitem:aeb3c962259cdc5cbd6c21bd195c27fd5"><td class="memItemLeft" align="right" valign="top">static const <a class="el" href="city_8cc.html#abc0f5bc07737e498f287334775dff2b6">uint64</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacemc.html#aeb3c962259cdc5cbd6c21bd195c27fd5">mc::k0</a></td></tr>
+<tr class="separator:aeb3c962259cdc5cbd6c21bd195c27fd5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6ce36d6fc340197fa2f0c4c0e864458c"><td class="memItemLeft" align="right" valign="top">static const <a class="el" href="city_8cc.html#abc0f5bc07737e498f287334775dff2b6">uint64</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacemc.html#a6ce36d6fc340197fa2f0c4c0e864458c">mc::k1</a></td></tr>
+<tr class="separator:a6ce36d6fc340197fa2f0c4c0e864458c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab4472e36885ae23be0b9d2d9efb15581"><td class="memItemLeft" align="right" valign="top">static const <a class="el" href="city_8cc.html#abc0f5bc07737e498f287334775dff2b6">uint64</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacemc.html#ab4472e36885ae23be0b9d2d9efb15581">mc::k2</a></td></tr>
+<tr class="separator:ab4472e36885ae23be0b9d2d9efb15581"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ada4222394df88fccb11ea92e23c0b4f7"><td class="memItemLeft" align="right" valign="top">static const <a class="el" href="city_8cc.html#abc0f5bc07737e498f287334775dff2b6">uint64</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacemc.html#ada4222394df88fccb11ea92e23c0b4f7">mc::k3</a></td></tr>
+<tr class="separator:ada4222394df88fccb11ea92e23c0b4f7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<h2 class="groupheader">Dokumentace k definicím maker</h2>
+<a class="anchor" id="affde14445f49f65ff4f5b592e44ee71a"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define LIKELY</td>
+          <td>(</td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">x</td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Definice je uvedena na řádku <a class="el" href="city_8cc_source.html#l00165">165</a> v souboru <a class="el" href="city_8cc_source.html">city.cc</a>.</p>
+
+<p>Používá se v <a class="el" href="city_8cc_source.html#l00366">mc::CityHash128WithSeed()</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="aeaffbeef893240bf17d51c8ccde3c686"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define uint32_in_expected_order</td>
+          <td>(</td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">x</td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Definice je uvedena na řádku <a class="el" href="city_8cc_source.html#l00137">137</a> v souboru <a class="el" href="city_8cc_source.html">city.cc</a>.</p>
+
+<p>Používá se v <a class="el" href="city_8cc_source.html#l00175">mc::Fetch32()</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="aebeacf3a6a1c4e278fa1b74f18c08d4a"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define uint64_in_expected_order</td>
+          <td>(</td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">x</td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Definice je uvedena na řádku <a class="el" href="city_8cc_source.html#l00138">138</a> v souboru <a class="el" href="city_8cc_source.html">city.cc</a>.</p>
+
+<p>Používá se v <a class="el" href="city_8cc_source.html#l00171">mc::Fetch64()</a>.</p>
+
+</div>
+</div>
+<h2 class="groupheader">Dokumentace definic typů</h2>
+<a class="anchor" id="a82bf1aedb7323172408d1c2dff88de95"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef std::pair&lt;<a class="el" href="city_8cc.html#abc0f5bc07737e498f287334775dff2b6">uint64</a>, <a class="el" href="city_8cc.html#abc0f5bc07737e498f287334775dff2b6">uint64</a>&gt; <a class="el" href="city_8cc.html#a82bf1aedb7323172408d1c2dff88de95">uint128</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Definice je uvedena na řádku <a class="el" href="city_8cc_source.html#l00066">66</a> v souboru <a class="el" href="city_8cc_source.html">city.cc</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="acbd4acd0d29e2d6c43104827f77d9cd2"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef uint32_t <a class="el" href="city_8cc.html#acbd4acd0d29e2d6c43104827f77d9cd2">uint32</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Definice je uvedena na řádku <a class="el" href="city_8cc_source.html#l00064">64</a> v souboru <a class="el" href="city_8cc_source.html">city.cc</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="abc0f5bc07737e498f287334775dff2b6"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef uint64_t <a class="el" href="city_8cc.html#abc0f5bc07737e498f287334775dff2b6">uint64</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Definice je uvedena na řádku <a class="el" href="city_8cc_source.html#l00065">65</a> v souboru <a class="el" href="city_8cc_source.html">city.cc</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a33a5e996e7a90acefb8b1c0bea47e365"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef uint8_t <a class="el" href="city_8cc.html#a33a5e996e7a90acefb8b1c0bea47e365">uint8</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Definice je uvedena na řádku <a class="el" href="city_8cc_source.html#l00063">63</a> v souboru <a class="el" href="city_8cc_source.html">city.cc</a>.</p>
+
+</div>
+</div>
+</div><!-- contents -->
+</div><!-- doc-content -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_81ff9cf00c749aad2228acad00958fb4.html">hash</a></li><li class="navelem"><a class="el" href="city_8cc.html">city.cc</a></li>
+    <li class="footer">Generováno út 23. čec 2013 13.13:04 pro projekt libmcache-0.2.1 programem
+    <a href="http://www.doxygen.org/index.html">
+    <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.3.1 </li>
+  </ul>
+</div>
+</body>
+</html>

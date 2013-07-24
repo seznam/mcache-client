@@ -1,0 +1,8 @@
+<map id="src/error.h" name="src/error.h">
+<area shape="rect" id="node3" href="$connection_8cc.html" title="src/io/connection.cc" alt="" coords="5,83,144,111"/>
+<area shape="rect" id="node5" href="$logger_8cc.html" title="src/logger.cc" alt="" coords="168,83,264,111"/>
+<area shape="rect" id="node7" href="$aux_8h.html" title="src/proto/aux.h" alt="" coords="339,83,448,111"/>
+<area shape="rect" id="node9" href="$binary_8cc.html" title="src/proto/binary.cc" alt="" coords="245,161,376,189"/>
+<area shape="rect" id="node11" href="$txt_8cc.html" title="src/proto/txt.cc" alt="" coords="420,161,529,189"/>
+<area shape="rect" id="node15" href="$server-proxy_8cc.html" title="src/server&#45;proxy.cc" alt="" coords="523,83,656,111"/>
+</map>

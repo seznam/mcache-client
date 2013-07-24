@@ -1,0 +1,249 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.3.1"/>
+<title>libmcache-0.2.1: Zdrojový soubor include/mcache/pool/mod.h</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript">
+  $(document).ready(initResizable);
+  $(window).load(resizeHeight);
+</script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/search.js"></script>
+<script type="text/javascript">
+  $(document).ready(function() { searchBox.OnSelectItem(0); });
+</script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td style="padding-left: 0.5em;">
+   <div id="projectname">libmcache-0.2.1
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Generováno programem Doxygen 1.8.3.1 -->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "search",false,'Hledat');
+</script>
+  <div id="navrow1" class="tabs">
+    <ul class="tablist">
+      <li><a href="index.html"><span>Hlavní&#160;stránka</span></a></li>
+      <li><a href="namespaces.html"><span>Prostory&#160;jmen</span></a></li>
+      <li><a href="annotated.html"><span>Třídy</span></a></li>
+      <li class="current"><a href="files.html"><span>Soubory</span></a></li>
+      <li>
+        <div id="MSearchBox" class="MSearchBoxInactive">
+        <span class="left">
+          <img id="MSearchSelect" src="search/mag_sel.png"
+               onmouseover="return searchBox.OnSearchSelectShow()"
+               onmouseout="return searchBox.OnSearchSelectHide()"
+               alt=""/>
+          <input type="text" id="MSearchField" value="Hledat" accesskey="S"
+               onfocus="searchBox.OnSearchFieldFocus(true)" 
+               onblur="searchBox.OnSearchFieldFocus(false)" 
+               onkeyup="searchBox.OnSearchFieldChange(event)"/>
+          </span><span class="right">
+            <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><img id="MSearchCloseImg" border="0" src="search/close.png" alt=""/></a>
+          </span>
+        </div>
+      </li>
+    </ul>
+  </div>
+  <div id="navrow2" class="tabs2">
+    <ul class="tablist">
+      <li><a href="files.html"><span>Seznam&#160;souborů</span></a></li>
+      <li><a href="globals.html"><span>Globální&#160;symboly</span></a></li>
+    </ul>
+  </div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+$(document).ready(function(){initNavTree('mod_8h_source.html','');});
+</script>
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>Vše</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Třídy</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Prostory jmen</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Soubory</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Funkce</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Proměnné</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Definice typů</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Výčty</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(8)"><span class="SelectionMark">&#160;</span>Hodnoty výčtu</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(9)"><span class="SelectionMark">&#160;</span>Definice maker</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(10)"><span class="SelectionMark">&#160;</span>Stránky</a></div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div class="header">
+  <div class="headertitle">
+<div class="title">mod.h</div>  </div>
+</div><!--header-->
+<div class="contents">
+<a href="mod_8h.html">Zobrazit dokumentaci tohoto souboru.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="comment">/*</span></div>
+<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="comment"> * FILE             $Id: $</span></div>
+<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="comment"> *</span></div>
+<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="comment"> * DESCRIPTION      Simple pool using mod without key traveling.</span></div>
+<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="comment"> *</span></div>
+<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="comment"> * PROJECT          Seznam memcache client.</span></div>
+<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="comment"> *</span></div>
+<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="comment"> * LICENSE          See COPYING</span></div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="comment"> *</span></div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="comment"> * AUTHOR           Michal Bukovsky &lt;michal.bukovsky@firma.seznam.cz&gt;</span></div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="comment"> *</span></div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="comment"> * Copyright (C) Seznam.cz a.s. 2012</span></div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;<span class="comment"> * All Rights Reserved</span></div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;<span class="comment"> *</span></div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;<span class="comment"> * HISTORY</span></div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;<span class="comment"> *       2012-09-17 (bukovsky)</span></div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;<span class="comment"> *                  First draft.</span></div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;<span class="comment"> */</span></div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;</div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;<span class="preprocessor">#ifndef MCACHE_POOL_MOD_H</span></div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;<span class="preprocessor"></span><span class="preprocessor">#define MCACHE_POOL_MOD_H</span></div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;<span class="preprocessor"></span></div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;<span class="preprocessor">#include &lt;vector&gt;</span></div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;<span class="preprocessor">#include &lt;string&gt;</span></div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;<span class="preprocessor">#include &lt;iterator&gt;</span></div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;<span class="preprocessor">#include &lt;stdint.h&gt;</span></div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;</div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;<span class="keyword">namespace </span>mc {</div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;</div>
+<div class="line"><a name="l00032"></a><span class="lineno"><a class="code" href="classmc_1_1mod__pool__base__t.html">   32</a></span>&#160;<span class="keyword">class </span><a class="code" href="classmc_1_1mod__pool__base__t.html" title="Non template base class for mod pool.">mod_pool_base_t</a> {</div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;<span class="keyword">public</span>:</div>
+<div class="line"><a name="l00035"></a><span class="lineno"><a class="code" href="classmc_1_1mod__pool__base__t.html#a8536d3b7b0b7f32a5155702a59888aa8">   35</a></span>&#160;    <span class="keyword">typedef</span> uint32_t <a class="code" href="classmc_1_1mod__pool__base__t.html#a8536d3b7b0b7f32a5155702a59888aa8" title="value type">value_type</a>;</div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;};</div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;</div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;<span class="keyword">typedef</span> std::iterator&lt;</div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;            std::forward_iterator_tag,</div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;            <span class="keyword">const</span> <a class="code" href="classmc_1_1mod__pool__base__t.html#a8536d3b7b0b7f32a5155702a59888aa8" title="value type">mod_pool_base_t::value_type</a></div>
+<div class="line"><a name="l00043"></a><span class="lineno"><a class="code" href="namespacemc.html#a9daa07b6457d67728789d082082cf065">   43</a></span>&#160;        &gt; <a class="code" href="namespacemc.html#a9daa07b6457d67728789d082082cf065" title="Parent type for const iterator of the mod_pool_t.">mod_pool_const_iterator_parent_t</a>;</div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;</div>
+<div class="line"><a name="l00047"></a><span class="lineno"><a class="code" href="classmc_1_1mod__pool__const__iterator.html">   47</a></span>&#160;<span class="keyword">class </span><a class="code" href="classmc_1_1mod__pool__const__iterator.html" title="Const &#39;iterator&#39; that returns only one entry.">mod_pool_const_iterator</a>: <span class="keyword">public</span> <a class="code" href="namespacemc.html#a9daa07b6457d67728789d082082cf065" title="Parent type for const iterator of the mod_pool_t.">mod_pool_const_iterator_parent_t</a> {</div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;<span class="keyword">public</span>:</div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;    <span class="comment">// shortcuts and standard iterators stuff</span></div>
+<div class="line"><a name="l00050"></a><span class="lineno"><a class="code" href="classmc_1_1mod__pool__const__iterator.html#afb8d7eb77c1143539da3e3ceed404195">   50</a></span>&#160;    <span class="keyword">typedef</span> <a class="code" href="namespacemc.html#a9daa07b6457d67728789d082082cf065" title="Parent type for const iterator of the mod_pool_t.">mod_pool_const_iterator_parent_t</a> <a class="code" href="classmc_1_1mod__pool__const__iterator.html#afb8d7eb77c1143539da3e3ceed404195">parent_t</a>;</div>
+<div class="line"><a name="l00051"></a><span class="lineno"><a class="code" href="classmc_1_1mod__pool__const__iterator.html#a59c5c3679e9308555d7b304f51de3894">   51</a></span>&#160;    <span class="keyword">typedef</span> parent_t::reference <a class="code" href="classmc_1_1mod__pool__const__iterator.html#a59c5c3679e9308555d7b304f51de3894">reference</a>;</div>
+<div class="line"><a name="l00052"></a><span class="lineno"><a class="code" href="classmc_1_1mod__pool__const__iterator.html#a9c375208eb44f6f898d9ac5e84f10dfc">   52</a></span>&#160;    <span class="keyword">typedef</span> parent_t::pointer <a class="code" href="classmc_1_1mod__pool__const__iterator.html#a9c375208eb44f6f898d9ac5e84f10dfc">pointer</a>;</div>
+<div class="line"><a name="l00053"></a><span class="lineno"><a class="code" href="classmc_1_1mod__pool__const__iterator.html#ab9ed42930fbf617a692ece41d379f3ab">   53</a></span>&#160;    <span class="keyword">typedef</span> parent_t::value_type <a class="code" href="classmc_1_1mod__pool__const__iterator.html#ab9ed42930fbf617a692ece41d379f3ab">value_type</a>;</div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;</div>
+<div class="line"><a name="l00057"></a><span class="lineno"><a class="code" href="classmc_1_1mod__pool__const__iterator.html#a82fcadcae67dc351aad535de7daa0fa7">   57</a></span>&#160;    <span class="keyword">explicit</span> <span class="keyword">inline</span> <a class="code" href="classmc_1_1mod__pool__const__iterator.html#a5d3f40ecef5354ddc467bd401b305530" title="C&#39;tor.">mod_pool_const_iterator</a>(<a class="code" href="classmc_1_1mod__pool__const__iterator.html#ab9ed42930fbf617a692ece41d379f3ab">value_type</a> <a class="code" href="classmc_1_1mod__pool__const__iterator.html#a62d14ec032ad226f9de06cd0661f17f0" title="iterator value">value</a>)</div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;        : value(value), <a class="code" href="classmc_1_1mod__pool__const__iterator.html#ab784f6a54884be10db893bdad567c87d" title="sentinel">stop</a>(false)</div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;    {}</div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;</div>
+<div class="line"><a name="l00063"></a><span class="lineno"><a class="code" href="classmc_1_1mod__pool__const__iterator.html#a5d3f40ecef5354ddc467bd401b305530">   63</a></span>&#160;    <span class="keyword">inline</span> <a class="code" href="classmc_1_1mod__pool__const__iterator.html#a5d3f40ecef5354ddc467bd401b305530" title="C&#39;tor.">mod_pool_const_iterator</a>(): <a class="code" href="classmc_1_1mod__pool__const__iterator.html#a62d14ec032ad226f9de06cd0661f17f0" title="iterator value">value</a>(), <a class="code" href="classmc_1_1mod__pool__const__iterator.html#ab784f6a54884be10db893bdad567c87d" title="sentinel">stop</a>(true) {}</div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;</div>
+<div class="line"><a name="l00067"></a><span class="lineno"><a class="code" href="classmc_1_1mod__pool__const__iterator.html#a3dfae79aa42159e3c367a3232d88df36">   67</a></span>&#160;    <span class="keyword">inline</span> <a class="code" href="classmc_1_1mod__pool__const__iterator.html#a59c5c3679e9308555d7b304f51de3894">reference</a> <a class="code" href="classmc_1_1mod__pool__const__iterator.html#a3dfae79aa42159e3c367a3232d88df36" title="Returns reference to current value.">operator*</a>()<span class="keyword"> const </span>{ <span class="keywordflow">return</span> <a class="code" href="classmc_1_1mod__pool__const__iterator.html#abfb13646c688f68a73cba20e666b2eec" title="Returns reference to current value.">dereference</a>();}</div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;</div>
+<div class="line"><a name="l00071"></a><span class="lineno"><a class="code" href="classmc_1_1mod__pool__const__iterator.html#aea37556f3d10671eaf5eb8b01fadaa1d">   71</a></span>&#160;    <span class="keyword">inline</span> <a class="code" href="classmc_1_1mod__pool__const__iterator.html#a9c375208eb44f6f898d9ac5e84f10dfc">pointer</a> <a class="code" href="classmc_1_1mod__pool__const__iterator.html#aea37556f3d10671eaf5eb8b01fadaa1d" title="Returns pointer to current value.">operator-&gt;</a>()<span class="keyword"> const </span>{ <span class="keywordflow">return</span> &amp;<a class="code" href="classmc_1_1mod__pool__const__iterator.html#abfb13646c688f68a73cba20e666b2eec" title="Returns reference to current value.">dereference</a>();}</div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;</div>
+<div class="line"><a name="l00075"></a><span class="lineno"><a class="code" href="classmc_1_1mod__pool__const__iterator.html#a7621700c8ca32992dc37165d9389680a">   75</a></span>&#160;    <span class="keyword">inline</span> <a class="code" href="classmc_1_1mod__pool__const__iterator.html" title="Const &#39;iterator&#39; that returns only one entry.">mod_pool_const_iterator</a> &amp;<a class="code" href="classmc_1_1mod__pool__const__iterator.html#a7621700c8ca32992dc37165d9389680a" title="Moves to next item.">operator++</a>() {</div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;        <a class="code" href="classmc_1_1mod__pool__const__iterator.html#a8d2f1e731d2648b5b90129a9f196432f" title="Stops iteration.">increment</a>();</div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;        <span class="keywordflow">return</span> *<span class="keyword">this</span>;</div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;    }</div>
+<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;</div>
+<div class="line"><a name="l00082"></a><span class="lineno"><a class="code" href="classmc_1_1mod__pool__const__iterator.html#aac4430e5c24d94ae5ef42461e80db36a">   82</a></span>&#160;    <span class="keyword">inline</span> <a class="code" href="classmc_1_1mod__pool__const__iterator.html" title="Const &#39;iterator&#39; that returns only one entry.">mod_pool_const_iterator</a> <a class="code" href="classmc_1_1mod__pool__const__iterator.html#aac4430e5c24d94ae5ef42461e80db36a" title="Returns iterator to current item and moves to next one.">operator++</a>(<span class="keywordtype">int</span>) {</div>
+<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;        <a class="code" href="classmc_1_1mod__pool__const__iterator.html" title="Const &#39;iterator&#39; that returns only one entry.">mod_pool_const_iterator</a> tmp(*<span class="keyword">this</span>);</div>
+<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;        ++(*this);</div>
+<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;        <span class="keywordflow">return</span> tmp;</div>
+<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;    }</div>
+<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;</div>
+<div class="line"><a name="l00090"></a><span class="lineno"><a class="code" href="classmc_1_1mod__pool__const__iterator.html#a5ec98998452e33c62c74fa6131d5d55e">   90</a></span>&#160;    <span class="keyword">inline</span> <span class="keywordtype">bool</span> <a class="code" href="classmc_1_1mod__pool__const__iterator.html#a5ec98998452e33c62c74fa6131d5d55e" title="Returns true if iterators points to same place.">equal</a>(<span class="keyword">const</span> <a class="code" href="classmc_1_1mod__pool__const__iterator.html" title="Const &#39;iterator&#39; that returns only one entry.">mod_pool_const_iterator</a> &amp;other)<span class="keyword"> const </span>{</div>
+<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;        <span class="keywordflow">if</span> (<a class="code" href="classmc_1_1mod__pool__const__iterator.html#ab784f6a54884be10db893bdad567c87d" title="sentinel">stop</a> &amp;&amp; other.<a class="code" href="classmc_1_1mod__pool__const__iterator.html#ab784f6a54884be10db893bdad567c87d" title="sentinel">stop</a>) <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
+<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;        <span class="keywordflow">if</span> (other.<a class="code" href="classmc_1_1mod__pool__const__iterator.html#ab784f6a54884be10db893bdad567c87d" title="sentinel">stop</a>) <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
+<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;        <span class="keywordflow">return</span> <a class="code" href="classmc_1_1mod__pool__const__iterator.html#a62d14ec032ad226f9de06cd0661f17f0" title="iterator value">value</a> == other.<a class="code" href="classmc_1_1mod__pool__const__iterator.html#a62d14ec032ad226f9de06cd0661f17f0" title="iterator value">value</a>;</div>
+<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;    }</div>
+<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;</div>
+<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;<span class="keyword">protected</span>:</div>
+<div class="line"><a name="l00099"></a><span class="lineno"><a class="code" href="classmc_1_1mod__pool__const__iterator.html#abfb13646c688f68a73cba20e666b2eec">   99</a></span>&#160;    <span class="keyword">inline</span> <a class="code" href="classmc_1_1mod__pool__const__iterator.html#a59c5c3679e9308555d7b304f51de3894">reference</a> <a class="code" href="classmc_1_1mod__pool__const__iterator.html#abfb13646c688f68a73cba20e666b2eec" title="Returns reference to current value.">dereference</a>()<span class="keyword"> const </span>{ <span class="keywordflow">return</span> <a class="code" href="classmc_1_1mod__pool__const__iterator.html#a62d14ec032ad226f9de06cd0661f17f0" title="iterator value">value</a>;}</div>
+<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;</div>
+<div class="line"><a name="l00103"></a><span class="lineno"><a class="code" href="classmc_1_1mod__pool__const__iterator.html#a8d2f1e731d2648b5b90129a9f196432f">  103</a></span>&#160;    <span class="keyword">inline</span> <span class="keywordtype">void</span> <a class="code" href="classmc_1_1mod__pool__const__iterator.html#a8d2f1e731d2648b5b90129a9f196432f" title="Stops iteration.">increment</a>() { <a class="code" href="classmc_1_1mod__pool__const__iterator.html#ab784f6a54884be10db893bdad567c87d" title="sentinel">stop</a> = <span class="keyword">true</span>;}</div>
+<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;</div>
+<div class="line"><a name="l00105"></a><span class="lineno"><a class="code" href="classmc_1_1mod__pool__const__iterator.html#a62d14ec032ad226f9de06cd0661f17f0">  105</a></span>&#160;    <a class="code" href="classmc_1_1mod__pool__const__iterator.html#ab9ed42930fbf617a692ece41d379f3ab">value_type</a> <a class="code" href="classmc_1_1mod__pool__const__iterator.html#a62d14ec032ad226f9de06cd0661f17f0" title="iterator value">value</a>; </div>
+<div class="line"><a name="l00106"></a><span class="lineno"><a class="code" href="classmc_1_1mod__pool__const__iterator.html#ab784f6a54884be10db893bdad567c87d">  106</a></span>&#160;    <span class="keywordtype">bool</span> <a class="code" href="classmc_1_1mod__pool__const__iterator.html#ab784f6a54884be10db893bdad567c87d" title="sentinel">stop</a>;        </div>
+<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;};</div>
+<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;</div>
+<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;<span class="keyword">template</span> &lt;<span class="keyword">typename</span> hash_function_t&gt;</div>
+<div class="line"><a name="l00113"></a><span class="lineno"><a class="code" href="classmc_1_1mod__pool__t.html">  113</a></span>&#160;<span class="keyword">class </span><a class="code" href="classmc_1_1mod__pool__t.html" title="Pool that using mod without key traveling.">mod_pool_t</a>: <span class="keyword">public</span> <a class="code" href="classmc_1_1mod__pool__base__t.html" title="Non template base class for mod pool.">mod_pool_base_t</a> {</div>
+<div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;<span class="keyword">public</span>:</div>
+<div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;    <span class="keyword">using</span> <a class="code" href="classmc_1_1mod__pool__base__t.html#a8536d3b7b0b7f32a5155702a59888aa8" title="value type">mod_pool_base_t::value_type</a>;</div>
+<div class="line"><a name="l00118"></a><span class="lineno"><a class="code" href="classmc_1_1mod__pool__t.html#a2e6919f7f2aca2ee642547d7d4c81ad0">  118</a></span>&#160;    <span class="keyword">typedef</span> <a class="code" href="classmc_1_1mod__pool__const__iterator.html" title="Const &#39;iterator&#39; that returns only one entry.">mod_pool_const_iterator</a> <a class="code" href="classmc_1_1mod__pool__t.html#a2e6919f7f2aca2ee642547d7d4c81ad0" title="const iterator type">const_iterator</a>;</div>
+<div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;</div>
+<div class="line"><a name="l00122"></a><span class="lineno"><a class="code" href="classmc_1_1mod__pool__t.html#a13cceea725df7f3b2402526f4f67e557">  122</a></span>&#160;    <a class="code" href="classmc_1_1mod__pool__t.html#a13cceea725df7f3b2402526f4f67e557" title="C&#39;tor.">mod_pool_t</a>(<span class="keyword">const</span> std::vector&lt;std::string&gt; &amp;addresses)</div>
+<div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160;        : <a class="code" href="classmc_1_1mod__pool__t.html#af625aa75c1d19052ff370649c6c81f28" title="count of available servers">max</a>(static_cast&lt;uint32_t&gt;(addresses.size())), <a class="code" href="classmc_1_1mod__pool__t.html#a6171bb0a566944e8d860a27cb66c74ff" title="hash functor">hashf</a>()</div>
+<div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160;    {</div>
+<div class="line"><a name="l00125"></a><span class="lineno">  125</span>&#160;        <span class="comment">// at least one address must be supplied</span></div>
+<div class="line"><a name="l00126"></a><span class="lineno">  126</span>&#160;        <span class="keywordflow">if</span> (addresses.empty()) <span class="keywordflow">throw</span> std::out_of_range(__PRETTY_FUNCTION__);</div>
+<div class="line"><a name="l00127"></a><span class="lineno">  127</span>&#160;    }</div>
+<div class="line"><a name="l00128"></a><span class="lineno">  128</span>&#160;</div>
+<div class="line"><a name="l00129"></a><span class="lineno">  129</span>&#160;    <span class="comment">/* Returns iterator that points to the first index of usable server.</span></div>
+<div class="line"><a name="l00130"></a><span class="lineno">  130</span>&#160;<span class="comment">     */</span></div>
+<div class="line"><a name="l00131"></a><span class="lineno"><a class="code" href="classmc_1_1mod__pool__t.html#aa8239cc90c6d06572f86fc4ff3906e73">  131</a></span>&#160;    <a class="code" href="classmc_1_1mod__pool__const__iterator.html" title="Const &#39;iterator&#39; that returns only one entry.">const_iterator</a> <a class="code" href="classmc_1_1mod__pool__t.html#aa8239cc90c6d06572f86fc4ff3906e73">choose</a>(<span class="keyword">const</span> std::string &amp;key)<span class="keyword"> const </span>{</div>
+<div class="line"><a name="l00132"></a><span class="lineno">  132</span>&#160;        <span class="keywordflow">return</span> <a class="code" href="classmc_1_1mod__pool__t.html#a2e6919f7f2aca2ee642547d7d4c81ad0" title="const iterator type">const_iterator</a>(<a class="code" href="classmc_1_1mod__pool__t.html#a6171bb0a566944e8d860a27cb66c74ff" title="hash functor">hashf</a>(key) % <a class="code" href="classmc_1_1mod__pool__t.html#af625aa75c1d19052ff370649c6c81f28" title="count of available servers">max</a>);</div>
+<div class="line"><a name="l00133"></a><span class="lineno">  133</span>&#160;    }</div>
+<div class="line"><a name="l00134"></a><span class="lineno">  134</span>&#160;</div>
+<div class="line"><a name="l00135"></a><span class="lineno">  135</span>&#160;    <span class="comment">/* Returns iterator that points to the first entry.</span></div>
+<div class="line"><a name="l00136"></a><span class="lineno">  136</span>&#160;<span class="comment">     */</span></div>
+<div class="line"><a name="l00137"></a><span class="lineno"><a class="code" href="classmc_1_1mod__pool__t.html#a00e24a126268d94837be30c5862f1806">  137</a></span>&#160;    <a class="code" href="classmc_1_1mod__pool__const__iterator.html" title="Const &#39;iterator&#39; that returns only one entry.">const_iterator</a> <a class="code" href="classmc_1_1mod__pool__t.html#a00e24a126268d94837be30c5862f1806">begin</a>()<span class="keyword"> const </span>{ <span class="keywordflow">return</span> <a class="code" href="classmc_1_1mod__pool__t.html#a2e6919f7f2aca2ee642547d7d4c81ad0" title="const iterator type">const_iterator</a>(0);}</div>
+<div class="line"><a name="l00138"></a><span class="lineno">  138</span>&#160;</div>
+<div class="line"><a name="l00141"></a><span class="lineno"><a class="code" href="classmc_1_1mod__pool__t.html#ac02b8a6744d894af72ca78f5e28fb352">  141</a></span>&#160;    <a class="code" href="classmc_1_1mod__pool__const__iterator.html" title="Const &#39;iterator&#39; that returns only one entry.">const_iterator</a> <a class="code" href="classmc_1_1mod__pool__t.html#ac02b8a6744d894af72ca78f5e28fb352" title="Returns iterator one past last entry.">end</a>()<span class="keyword"> const </span>{ <span class="keywordflow">return</span> <a class="code" href="classmc_1_1mod__pool__t.html#a2e6919f7f2aca2ee642547d7d4c81ad0" title="const iterator type">const_iterator</a>();}</div>
+<div class="line"><a name="l00142"></a><span class="lineno">  142</span>&#160;</div>
+<div class="line"><a name="l00143"></a><span class="lineno">  143</span>&#160;<span class="keyword">protected</span>:</div>
+<div class="line"><a name="l00144"></a><span class="lineno"><a class="code" href="classmc_1_1mod__pool__t.html#af625aa75c1d19052ff370649c6c81f28">  144</a></span>&#160;    <a class="code" href="classmc_1_1mod__pool__t.html#a8536d3b7b0b7f32a5155702a59888aa8" title="value type">value_type</a> <a class="code" href="classmc_1_1mod__pool__t.html#af625aa75c1d19052ff370649c6c81f28" title="count of available servers">max</a>;        </div>
+<div class="line"><a name="l00145"></a><span class="lineno"><a class="code" href="classmc_1_1mod__pool__t.html#a6171bb0a566944e8d860a27cb66c74ff">  145</a></span>&#160;    <a class="code" href="namespacemc.html#a091e37386b5b495c221673c47d06f6db" title="type of builtin hash functions">hash_function_t</a> <a class="code" href="classmc_1_1mod__pool__t.html#a6171bb0a566944e8d860a27cb66c74ff" title="hash functor">hashf</a>; </div>
+<div class="line"><a name="l00146"></a><span class="lineno">  146</span>&#160;};</div>
+<div class="line"><a name="l00147"></a><span class="lineno">  147</span>&#160;</div>
+<div class="line"><a name="l00150"></a><span class="lineno"><a class="code" href="namespacemc.html#a8b125613d3c40a95139e0fa0af7b920d">  150</a></span>&#160;<span class="keyword">inline</span> <span class="keywordtype">bool</span> <a class="code" href="namespacemc.html#ab3975fa587ae85c4845e1c3d5a7501eb" title="Comparison operator==.">operator==</a>(<span class="keyword">const</span> <a class="code" href="classmc_1_1mod__pool__const__iterator.html" title="Const &#39;iterator&#39; that returns only one entry.">mod_pool_const_iterator</a> &amp;lhs,</div>
+<div class="line"><a name="l00151"></a><span class="lineno">  151</span>&#160;                       <span class="keyword">const</span> <a class="code" href="classmc_1_1mod__pool__const__iterator.html" title="Const &#39;iterator&#39; that returns only one entry.">mod_pool_const_iterator</a> &amp;rhs)</div>
+<div class="line"><a name="l00152"></a><span class="lineno">  152</span>&#160;{</div>
+<div class="line"><a name="l00153"></a><span class="lineno">  153</span>&#160;    <span class="keywordflow">return</span> lhs.<a class="code" href="classmc_1_1mod__pool__const__iterator.html#a5ec98998452e33c62c74fa6131d5d55e" title="Returns true if iterators points to same place.">equal</a>(rhs);</div>
+<div class="line"><a name="l00154"></a><span class="lineno">  154</span>&#160;}</div>
+<div class="line"><a name="l00155"></a><span class="lineno">  155</span>&#160;</div>
+<div class="line"><a name="l00158"></a><span class="lineno"><a class="code" href="namespacemc.html#a2a9bd7328c81d05c4f2b926f74a4b303">  158</a></span>&#160;<span class="keyword">inline</span> <span class="keywordtype">bool</span> <a class="code" href="namespacemc.html#a84b7be8c8de46df7b0d73bac50e3dced" title="Comparison operator!=.">operator!=</a>(<span class="keyword">const</span> <a class="code" href="classmc_1_1mod__pool__const__iterator.html" title="Const &#39;iterator&#39; that returns only one entry.">mod_pool_const_iterator</a> &amp;lhs,</div>
+<div class="line"><a name="l00159"></a><span class="lineno">  159</span>&#160;                       <span class="keyword">const</span> <a class="code" href="classmc_1_1mod__pool__const__iterator.html" title="Const &#39;iterator&#39; that returns only one entry.">mod_pool_const_iterator</a> &amp;rhs)</div>
+<div class="line"><a name="l00160"></a><span class="lineno">  160</span>&#160;{</div>
+<div class="line"><a name="l00161"></a><span class="lineno">  161</span>&#160;    <span class="keywordflow">return</span> !lhs.<a class="code" href="classmc_1_1mod__pool__const__iterator.html#a5ec98998452e33c62c74fa6131d5d55e" title="Returns true if iterators points to same place.">equal</a>(rhs);</div>
+<div class="line"><a name="l00162"></a><span class="lineno">  162</span>&#160;}</div>
+<div class="line"><a name="l00163"></a><span class="lineno">  163</span>&#160;</div>
+<div class="line"><a name="l00164"></a><span class="lineno">  164</span>&#160;} <span class="comment">// namespace mc</span></div>
+<div class="line"><a name="l00165"></a><span class="lineno">  165</span>&#160;</div>
+<div class="line"><a name="l00166"></a><span class="lineno">  166</span>&#160;<span class="preprocessor">#endif </span><span class="comment">/* MCACHE_POOL_MOD_H */</span><span class="preprocessor"></span></div>
+<div class="line"><a name="l00167"></a><span class="lineno">  167</span>&#160;<span class="preprocessor"></span></div>
+</div><!-- fragment --></div><!-- contents -->
+</div><!-- doc-content -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="dir_d44c64559bbebec7f509842c48db8b23.html">include</a></li><li class="navelem"><a class="el" href="dir_c701a4f120b163bb41ca79c911b37da6.html">mcache</a></li><li class="navelem"><a class="el" href="dir_1e68edddb32dc1218675b8d7154329f9.html">pool</a></li><li class="navelem"><a class="el" href="mod_8h.html">mod.h</a></li>
+    <li class="footer">Generováno út 23. čec 2013 13.13:03 pro projekt libmcache-0.2.1 programem
+    <a href="http://www.doxygen.org/index.html">
+    <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.3.1 </li>
+  </ul>
+</div>
+</body>
+</html>

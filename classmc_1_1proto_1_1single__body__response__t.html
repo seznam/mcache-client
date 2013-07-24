@@ -1,0 +1,630 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.3.1"/>
+<title>libmcache-0.2.1: Dokumentace třídy mc::proto::single_body_response_t</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript">
+  $(document).ready(initResizable);
+  $(window).load(resizeHeight);
+</script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/search.js"></script>
+<script type="text/javascript">
+  $(document).ready(function() { searchBox.OnSelectItem(0); });
+</script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td style="padding-left: 0.5em;">
+   <div id="projectname">libmcache-0.2.1
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Generováno programem Doxygen 1.8.3.1 -->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "search",false,'Hledat');
+</script>
+  <div id="navrow1" class="tabs">
+    <ul class="tablist">
+      <li><a href="index.html"><span>Hlavní&#160;stránka</span></a></li>
+      <li><a href="namespaces.html"><span>Prostory&#160;jmen</span></a></li>
+      <li class="current"><a href="annotated.html"><span>Třídy</span></a></li>
+      <li><a href="files.html"><span>Soubory</span></a></li>
+      <li>
+        <div id="MSearchBox" class="MSearchBoxInactive">
+        <span class="left">
+          <img id="MSearchSelect" src="search/mag_sel.png"
+               onmouseover="return searchBox.OnSearchSelectShow()"
+               onmouseout="return searchBox.OnSearchSelectHide()"
+               alt=""/>
+          <input type="text" id="MSearchField" value="Hledat" accesskey="S"
+               onfocus="searchBox.OnSearchFieldFocus(true)" 
+               onblur="searchBox.OnSearchFieldFocus(false)" 
+               onkeyup="searchBox.OnSearchFieldChange(event)"/>
+          </span><span class="right">
+            <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><img id="MSearchCloseImg" border="0" src="search/close.png" alt=""/></a>
+          </span>
+        </div>
+      </li>
+    </ul>
+  </div>
+  <div id="navrow2" class="tabs2">
+    <ul class="tablist">
+      <li><a href="annotated.html"><span>Datové&#160;struktury</span></a></li>
+      <li><a href="classes.html"><span>Rejstřík&#160;datových&#160;struktur</span></a></li>
+      <li><a href="inherits.html"><span>Hierarchie&#160;tříd</span></a></li>
+      <li><a href="functions.html"><span>Datové&#160;položky</span></a></li>
+    </ul>
+  </div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+$(document).ready(function(){initNavTree('classmc_1_1proto_1_1single__body__response__t.html','');});
+</script>
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>Vše</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Třídy</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Prostory jmen</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Soubory</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Funkce</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Proměnné</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Definice typů</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Výčty</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(8)"><span class="SelectionMark">&#160;</span>Hodnoty výčtu</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(9)"><span class="SelectionMark">&#160;</span>Definice maker</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(10)"><span class="SelectionMark">&#160;</span>Stránky</a></div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div class="header">
+  <div class="summary">
+<a href="#pub-types">Veřejné typy</a> &#124;
+<a href="#pub-methods">Veřejné metody</a> &#124;
+<a href="#pro-attribs">Chráněné atributy</a> &#124;
+<a href="#pri-static-methods">Statické privátní metody</a>  </div>
+  <div class="headertitle">
+<div class="title">Dokumentace třídy mc::proto::single_body_response_t</div>  </div>
+</div><!--header-->
+<div class="contents">
+
+<p>Response for simple commands with body.  
+ <a href="classmc_1_1proto_1_1single__body__response__t.html#details">...</a></p>
+
+<p><code>#include &lt;<a class="el" href="response_8h_source.html">response.h</a>&gt;</code></p>
+<div class="dynheader">
+Diagram dědičnosti pro třídu mc::proto::single_body_response_t</div>
+<div class="dyncontent">
+<div class="center"><img src="classmc_1_1proto_1_1single__body__response__t__inherit__graph.png" border="0" usemap="#mc_1_1proto_1_1single__body__response__t_inherit__map" alt="Inheritance graph"/></div>
+<map name="mc_1_1proto_1_1single__body__response__t_inherit__map" id="mc_1_1proto_1_1single__body__response__t_inherit__map">
+<area shape="rect" id="node2" href="classmc_1_1proto_1_1single__response__t.html" title="Memcache server response holder." alt="" coords="5,6,197,34"/></map>
+<center><span class="legend">[<a target="top" href="graph_legend.html">vysvětlivky</a>]</span></center></div>
+<div class="dynheader">
+Diagram tříd pro mc::proto::single_body_response_t:</div>
+<div class="dyncontent">
+<div class="center"><img src="classmc_1_1proto_1_1single__body__response__t__coll__graph.png" border="0" usemap="#mc_1_1proto_1_1single__body__response__t_coll__map" alt="Collaboration graph"/></div>
+<map name="mc_1_1proto_1_1single__body__response__t_coll__map" id="mc_1_1proto_1_1single__body__response__t_coll__map">
+<area shape="rect" id="node2" href="classmc_1_1proto_1_1single__response__t.html" title="Memcache server response holder." alt="" coords="5,195,197,223"/><area shape="rect" id="node4" title="STL class." alt="" coords="61,102,141,130"/><area shape="rect" id="node6" title="STL class." alt="" coords="39,6,164,50"/></map>
+<center><span class="legend">[<a target="top" href="graph_legend.html">vysvětlivky</a>]</span></center></div>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-types"></a>
+Veřejné typy</h2></td></tr>
+<tr class="memitem:a7230e9ab806bf2ff309b4580fc42ae5d"><td class="memItemLeft" align="right" valign="top">typedef boost::function&lt; void(std::string <br class="typebreak"/>
+&amp;, const std::string &amp;) &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classmc_1_1proto_1_1single__body__response__t.html#a7230e9ab806bf2ff309b4580fc42ae5d">set_body_callback_t</a></td></tr>
+<tr class="memdesc:a7230e9ab806bf2ff309b4580fc42ae5d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Type of callback for setting the body.  <a href="#a7230e9ab806bf2ff309b4580fc42ae5d">...</a><br/></td></tr>
+<tr class="separator:a7230e9ab806bf2ff309b4580fc42ae5d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
+Veřejné metody</h2></td></tr>
+<tr class="memitem:a1bf00cfe85c79496146ce39568f2089a"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classmc_1_1proto_1_1single__body__response__t.html#a1bf00cfe85c79496146ce39568f2089a">single_body_response_t</a> (<a class="el" href="namespacemc_1_1proto_1_1resp.html#a35cad491b3eb41e5bec2e433b7922695">resp::response_code_t</a> <a class="el" href="classmc_1_1proto_1_1single__response__t.html#af01b17dfc413fa05160b05f3bb31eea6">status</a>, const std::string &amp;<a class="el" href="classmc_1_1proto_1_1single__response__t.html#a9924c348dd6c93c814c4c50a1ae689c1">aux</a>=std::string())</td></tr>
+<tr class="memdesc:a1bf00cfe85c79496146ce39568f2089a"><td class="mdescLeft">&#160;</td><td class="mdescRight">C'tor.  <a href="#a1bf00cfe85c79496146ce39568f2089a">...</a><br/></td></tr>
+<tr class="separator:a1bf00cfe85c79496146ce39568f2089a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1870dc2cb06e3253ffa57d2ad2d6ac60"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classmc_1_1proto_1_1single__body__response__t.html#a1870dc2cb06e3253ffa57d2ad2d6ac60">single_body_response_t</a> (<a class="el" href="namespacemc_1_1proto_1_1resp.html#a35cad491b3eb41e5bec2e433b7922695">resp::response_code_t</a> <a class="el" href="classmc_1_1proto_1_1single__response__t.html#af01b17dfc413fa05160b05f3bb31eea6">status</a>, std::size_t <a class="el" href="classmc_1_1proto_1_1single__body__response__t.html#a5878ed52216cce84abc9175310fa26d7">bytes</a>, <a class="el" href="classmc_1_1proto_1_1single__body__response__t.html#a7230e9ab806bf2ff309b4580fc42ae5d">set_body_callback_t</a> <a class="el" href="classmc_1_1proto_1_1single__body__response__t.html#aaeb27b1663d2e7415e03bb59ee390215">set_body_callback</a>=<a class="el" href="classmc_1_1proto_1_1single__body__response__t.html#ada00da0c2f8251b8f3052f794176703d">set_body_default</a>)</td></tr>
+<tr class="memdesc:a1870dc2cb06e3253ffa57d2ad2d6ac60"><td class="mdescLeft">&#160;</td><td class="mdescRight">C'tor.  <a href="#a1870dc2cb06e3253ffa57d2ad2d6ac60">...</a><br/></td></tr>
+<tr class="separator:a1870dc2cb06e3253ffa57d2ad2d6ac60"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aaeea40d99a6478e615ec1ac8379bb407"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classmc_1_1proto_1_1single__body__response__t.html#aaeea40d99a6478e615ec1ac8379bb407">set_body</a> (const std::string &amp;body)</td></tr>
+<tr class="memdesc:aaeea40d99a6478e615ec1ac8379bb407"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sets new commands body response.  <a href="#aaeea40d99a6478e615ec1ac8379bb407">...</a><br/></td></tr>
+<tr class="separator:aaeea40d99a6478e615ec1ac8379bb407"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa8a75122a228b27866f20203dc33d589"><td class="memItemLeft" align="right" valign="top">std::size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classmc_1_1proto_1_1single__body__response__t.html#aa8a75122a228b27866f20203dc33d589">expected_body_size</a> () const </td></tr>
+<tr class="memdesc:aa8a75122a228b27866f20203dc33d589"><td class="mdescLeft">&#160;</td><td class="mdescRight">Retutns command expected body size.  <a href="#aa8a75122a228b27866f20203dc33d589">...</a><br/></td></tr>
+<tr class="separator:aa8a75122a228b27866f20203dc33d589"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4d708184bcd5c37e0f04022193bd9e37"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classmc_1_1proto_1_1single__response__t.html#a4d708184bcd5c37e0f04022193bd9e37">operator bool</a> () const </td></tr>
+<tr class="memdesc:a4d708184bcd5c37e0f04022193bd9e37"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns true if not error occurred.  <a href="#a4d708184bcd5c37e0f04022193bd9e37">...</a><br/></td></tr>
+<tr class="separator:a4d708184bcd5c37e0f04022193bd9e37"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a552b00b0fa52d62400503fe3c3cd679c"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classmc_1_1proto_1_1error__t.html">error_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classmc_1_1proto_1_1single__response__t.html#a552b00b0fa52d62400503fe3c3cd679c">exception</a> () const </td></tr>
+<tr class="memdesc:a552b00b0fa52d62400503fe3c3cd679c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Creates new exceptions value from response code and response message.  <a href="#a552b00b0fa52d62400503fe3c3cd679c">...</a><br/></td></tr>
+<tr class="separator:a552b00b0fa52d62400503fe3c3cd679c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aac58b1ebc9ff367dd148a1ce6c5574ae"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classmc_1_1proto_1_1single__response__t.html#aac58b1ebc9ff367dd148a1ce6c5574ae">code</a> () const </td></tr>
+<tr class="memdesc:aac58b1ebc9ff367dd148a1ce6c5574ae"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns status code.  <a href="#aac58b1ebc9ff367dd148a1ce6c5574ae">...</a><br/></td></tr>
+<tr class="separator:aac58b1ebc9ff367dd148a1ce6c5574ae"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0c55fc1b56f19d1c01ba89d6b1c1b48c"><td class="memItemLeft" align="right" valign="top">const std::string &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classmc_1_1proto_1_1single__response__t.html#a0c55fc1b56f19d1c01ba89d6b1c1b48c">data</a> () const </td></tr>
+<tr class="memdesc:a0c55fc1b56f19d1c01ba89d6b1c1b48c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns error message or other additional data related to status.  <a href="#a0c55fc1b56f19d1c01ba89d6b1c1b48c">...</a><br/></td></tr>
+<tr class="separator:a0c55fc1b56f19d1c01ba89d6b1c1b48c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pro-attribs"></a>
+Chráněné atributy</h2></td></tr>
+<tr class="memitem:a5878ed52216cce84abc9175310fa26d7"><td class="memItemLeft" align="right" valign="top">std::size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classmc_1_1proto_1_1single__body__response__t.html#a5878ed52216cce84abc9175310fa26d7">bytes</a></td></tr>
+<tr class="memdesc:a5878ed52216cce84abc9175310fa26d7"><td class="mdescLeft">&#160;</td><td class="mdescRight">expected response body size  <a href="#a5878ed52216cce84abc9175310fa26d7">...</a><br/></td></tr>
+<tr class="separator:a5878ed52216cce84abc9175310fa26d7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aaeb27b1663d2e7415e03bb59ee390215"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classmc_1_1proto_1_1single__body__response__t.html#a7230e9ab806bf2ff309b4580fc42ae5d">set_body_callback_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classmc_1_1proto_1_1single__body__response__t.html#aaeb27b1663d2e7415e03bb59ee390215">set_body_callback</a></td></tr>
+<tr class="memdesc:aaeb27b1663d2e7415e03bb59ee390215"><td class="mdescLeft">&#160;</td><td class="mdescRight">callback for setting the body  <a href="#aaeb27b1663d2e7415e03bb59ee390215">...</a><br/></td></tr>
+<tr class="separator:aaeb27b1663d2e7415e03bb59ee390215"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af01b17dfc413fa05160b05f3bb31eea6"><td class="memItemLeft" align="right" valign="top"><a class="el" href="namespacemc_1_1proto_1_1resp.html#a35cad491b3eb41e5bec2e433b7922695">resp::response_code_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classmc_1_1proto_1_1single__response__t.html#af01b17dfc413fa05160b05f3bb31eea6">status</a></td></tr>
+<tr class="memdesc:af01b17dfc413fa05160b05f3bb31eea6"><td class="mdescLeft">&#160;</td><td class="mdescRight">status code  <a href="#af01b17dfc413fa05160b05f3bb31eea6">...</a><br/></td></tr>
+<tr class="separator:af01b17dfc413fa05160b05f3bb31eea6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9924c348dd6c93c814c4c50a1ae689c1"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classmc_1_1proto_1_1single__response__t.html#a9924c348dd6c93c814c4c50a1ae689c1">aux</a></td></tr>
+<tr class="memdesc:a9924c348dd6c93c814c4c50a1ae689c1"><td class="mdescLeft">&#160;</td><td class="mdescRight">response body/message  <a href="#a9924c348dd6c93c814c4c50a1ae689c1">...</a><br/></td></tr>
+<tr class="separator:a9924c348dd6c93c814c4c50a1ae689c1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-static-methods"></a>
+Statické privátní metody</h2></td></tr>
+<tr class="memitem:ada00da0c2f8251b8f3052f794176703d"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classmc_1_1proto_1_1single__body__response__t.html#ada00da0c2f8251b8f3052f794176703d">set_body_default</a> (std::string &amp;body, const std::string &amp;<a class="el" href="classmc_1_1proto_1_1single__response__t.html#a0c55fc1b56f19d1c01ba89d6b1c1b48c">data</a>)</td></tr>
+<tr class="memdesc:ada00da0c2f8251b8f3052f794176703d"><td class="mdescLeft">&#160;</td><td class="mdescRight">The default callback for setting the body.  <a href="#ada00da0c2f8251b8f3052f794176703d">...</a><br/></td></tr>
+<tr class="separator:ada00da0c2f8251b8f3052f794176703d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<a name="details" id="details"></a><h2 class="groupheader">Detailní popis</h2>
+<div class="textblock"><p>Response for simple commands with body. </p>
+
+<p>Definice je uvedena na řádku <a class="el" href="response_8h_source.html#l00066">66</a> v souboru <a class="el" href="response_8h_source.html">response.h</a>.</p>
+</div><h2 class="groupheader">Dokumentace k členským typům</h2>
+<a class="anchor" id="a7230e9ab806bf2ff309b4580fc42ae5d"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef boost::function&lt; void (std::string &amp;, const std::string &amp;) &gt; <a class="el" href="classmc_1_1proto_1_1single__body__response__t.html#a7230e9ab806bf2ff309b4580fc42ae5d">mc::proto::single_body_response_t::set_body_callback_t</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Type of callback for setting the body. </p>
+
+<p>Definice je uvedena na řádku <a class="el" href="response_8h_source.html#l00071">71</a> v souboru <a class="el" href="response_8h_source.html">response.h</a>.</p>
+
+</div>
+</div>
+<h2 class="groupheader">Dokumentace konstruktoru a destruktoru</h2>
+<a class="anchor" id="a1bf00cfe85c79496146ce39568f2089a"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">mc::proto::single_body_response_t::single_body_response_t </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="namespacemc_1_1proto_1_1resp.html#a35cad491b3eb41e5bec2e433b7922695">resp::response_code_t</a>&#160;</td>
+          <td class="paramname"><em>status</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const std::string &amp;&#160;</td>
+          <td class="paramname"><em>aux</em> = <code>std::string()</code>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>C'tor. </p>
+
+<p>Definice je uvedena na řádku <a class="el" href="response_8h_source.html#l00075">75</a> v souboru <a class="el" href="response_8h_source.html">response.h</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a1870dc2cb06e3253ffa57d2ad2d6ac60"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">mc::proto::single_body_response_t::single_body_response_t </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="namespacemc_1_1proto_1_1resp.html#a35cad491b3eb41e5bec2e433b7922695">resp::response_code_t</a>&#160;</td>
+          <td class="paramname"><em>status</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">std::size_t&#160;</td>
+          <td class="paramname"><em>bytes</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classmc_1_1proto_1_1single__body__response__t.html#a7230e9ab806bf2ff309b4580fc42ae5d">set_body_callback_t</a>&#160;</td>
+          <td class="paramname"><em>set_body_callback</em> = <code><a class="el" href="classmc_1_1proto_1_1single__body__response__t.html#ada00da0c2f8251b8f3052f794176703d">set_body_default</a></code>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>C'tor. </p>
+
+<p>Definice je uvedena na řádku <a class="el" href="response_8h_source.html#l00083">83</a> v souboru <a class="el" href="response_8h_source.html">response.h</a>.</p>
+
+</div>
+</div>
+<h2 class="groupheader">Dokumentace k metodám</h2>
+<a class="anchor" id="aac58b1ebc9ff367dd148a1ce6c5574ae"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">int mc::proto::single_response_t::code </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">inherited</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Returns status code. </p>
+
+<p>Definice je uvedena na řádku <a class="el" href="response_8h_source.html#l00053">53</a> v souboru <a class="el" href="response_8h_source.html">response.h</a>.</p>
+
+<p>Odkazuje se na <a class="el" href="response_8h_source.html#l00060">mc::proto::single_response_t::status</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a0c55fc1b56f19d1c01ba89d6b1c1b48c"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">const std::string&amp; mc::proto::single_response_t::data </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">inherited</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Returns error message or other additional data related to status. </p>
+
+<p>Definice je uvedena na řádku <a class="el" href="response_8h_source.html#l00057">57</a> v souboru <a class="el" href="response_8h_source.html">response.h</a>.</p>
+
+<p>Odkazuje se na <a class="el" href="response_8h_source.html#l00061">mc::proto::single_response_t::aux</a>.</p>
+
+<p>Používá se v <a class="el" href="response_8h_source.html#l00111">set_body_default()</a> a <a class="el" href="response_8h_source.html#l00181">mc::proto::single_retrival_response_t::set_body_default()</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a552b00b0fa52d62400503fe3c3cd679c"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classmc_1_1proto_1_1error__t.html">error_t</a> mc::proto::single_response_t::exception </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">inherited</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Creates new exceptions value from response code and response message. </p>
+
+<p>Definice je uvedena na řádku <a class="el" href="response_8h_source.html#l00049">49</a> v souboru <a class="el" href="response_8h_source.html">response.h</a>.</p>
+
+<p>Odkazuje se na <a class="el" href="response_8h_source.html#l00061">mc::proto::single_response_t::aux</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="aa8a75122a228b27866f20203dc33d589"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::size_t mc::proto::single_body_response_t::expected_body_size </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Retutns command expected body size. </p>
+
+<p>Definice je uvedena na řádku <a class="el" href="response_8h_source.html#l00102">102</a> v souboru <a class="el" href="response_8h_source.html">response.h</a>.</p>
+
+<p>Odkazuje se na <a class="el" href="response_8h_source.html#l00105">bytes</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a4d708184bcd5c37e0f04022193bd9e37"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">mc::proto::single_response_t::operator bool </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">inherited</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Returns true if not error occurred. </p>
+
+<p>Definice je uvedena na řádku <a class="el" href="response_8h_source.html#l00045">45</a> v souboru <a class="el" href="response_8h_source.html">response.h</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="aaeea40d99a6478e615ec1ac8379bb407"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void mc::proto::single_body_response_t::set_body </td>
+          <td>(</td>
+          <td class="paramtype">const std::string &amp;&#160;</td>
+          <td class="paramname"><em>body</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Sets new commands body response. </p>
+
+<p>Definice je uvedena na řádku <a class="el" href="response_8h_source.html#l00096">96</a> v souboru <a class="el" href="response_8h_source.html">response.h</a>.</p>
+
+<p>Odkazuje se na <a class="el" href="response_8h_source.html#l00061">mc::proto::single_response_t::aux</a> a <a class="el" href="response_8h_source.html#l00106">set_body_callback</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="ada00da0c2f8251b8f3052f794176703d"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static void mc::proto::single_body_response_t::set_body_default </td>
+          <td>(</td>
+          <td class="paramtype">std::string &amp;&#160;</td>
+          <td class="paramname"><em>body</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const std::string &amp;&#160;</td>
+          <td class="paramname"><em>data</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">static</span><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>The default callback for setting the body. </p>
+
+<p>Definice je uvedena na řádku <a class="el" href="response_8h_source.html#l00111">111</a> v souboru <a class="el" href="response_8h_source.html">response.h</a>.</p>
+
+<p>Odkazuje se na <a class="el" href="response_8h_source.html#l00057">mc::proto::single_response_t::data()</a>.</p>
+
+</div>
+</div>
+<h2 class="groupheader">Dokumentace k položkám</h2>
+<a class="anchor" id="a9924c348dd6c93c814c4c50a1ae689c1"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::string mc::proto::single_response_t::aux</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span><span class="mlabel">inherited</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>response body/message </p>
+
+<p>Definice je uvedena na řádku <a class="el" href="response_8h_source.html#l00061">61</a> v souboru <a class="el" href="response_8h_source.html">response.h</a>.</p>
+
+<p>Používá se v <a class="el" href="response_8h_source.html#l00057">mc::proto::single_response_t::data()</a>, <a class="el" href="response_8h_source.html#l00049">mc::proto::single_response_t::exception()</a>, <a class="el" href="response_8h_source.html#l00096">set_body()</a> a <a class="el" href="response_8h_source.html#l00163">mc::proto::single_retrival_response_t::set_body()</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a5878ed52216cce84abc9175310fa26d7"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::size_t mc::proto::single_body_response_t::bytes</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>expected response body size </p>
+
+<p>Definice je uvedena na řádku <a class="el" href="response_8h_source.html#l00105">105</a> v souboru <a class="el" href="response_8h_source.html">response.h</a>.</p>
+
+<p>Používá se v <a class="el" href="response_8h_source.html#l00102">expected_body_size()</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="aaeb27b1663d2e7415e03bb59ee390215"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classmc_1_1proto_1_1single__body__response__t.html#a7230e9ab806bf2ff309b4580fc42ae5d">set_body_callback_t</a> mc::proto::single_body_response_t::set_body_callback</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>callback for setting the body </p>
+
+<p>Definice je uvedena na řádku <a class="el" href="response_8h_source.html#l00106">106</a> v souboru <a class="el" href="response_8h_source.html">response.h</a>.</p>
+
+<p>Používá se v <a class="el" href="response_8h_source.html#l00096">set_body()</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="af01b17dfc413fa05160b05f3bb31eea6"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="namespacemc_1_1proto_1_1resp.html#a35cad491b3eb41e5bec2e433b7922695">resp::response_code_t</a> mc::proto::single_response_t::status</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span><span class="mlabel">inherited</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>status code </p>
+
+<p>Definice je uvedena na řádku <a class="el" href="response_8h_source.html#l00060">60</a> v souboru <a class="el" href="response_8h_source.html">response.h</a>.</p>
+
+<p>Používá se v <a class="el" href="response_8h_source.html#l00053">mc::proto::single_response_t::code()</a>.</p>
+
+</div>
+</div>
+<hr/>Dokumentace pro tuto třídu byla generována z následujícího souboru:<ul>
+<li>include/mcache/proto/<a class="el" href="response_8h_source.html">response.h</a></li>
+</ul>
+</div><!-- contents -->
+</div><!-- doc-content -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="namespacemc.html">mc</a></li><li class="navelem"><a class="el" href="namespacemc_1_1proto.html">proto</a></li><li class="navelem"><a class="el" href="classmc_1_1proto_1_1single__body__response__t.html">single_body_response_t</a></li>
+    <li class="footer">Generováno út 23. čec 2013 13.13:04 pro projekt libmcache-0.2.1 programem
+    <a href="http://www.doxygen.org/index.html">
+    <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.3.1 </li>
+  </ul>
+</div>
+</body>
+</html>

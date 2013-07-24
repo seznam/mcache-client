@@ -1,0 +1,632 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.3.1"/>
+<title>libmcache-0.2.1: Datové položky - Proměnné</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript">
+  $(document).ready(initResizable);
+  $(window).load(resizeHeight);
+</script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/search.js"></script>
+<script type="text/javascript">
+  $(document).ready(function() { searchBox.OnSelectItem(0); });
+</script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td style="padding-left: 0.5em;">
+   <div id="projectname">libmcache-0.2.1
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Generováno programem Doxygen 1.8.3.1 -->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "search",false,'Hledat');
+</script>
+  <div id="navrow1" class="tabs">
+    <ul class="tablist">
+      <li><a href="index.html"><span>Hlavní&#160;stránka</span></a></li>
+      <li><a href="namespaces.html"><span>Prostory&#160;jmen</span></a></li>
+      <li class="current"><a href="annotated.html"><span>Třídy</span></a></li>
+      <li><a href="files.html"><span>Soubory</span></a></li>
+      <li>
+        <div id="MSearchBox" class="MSearchBoxInactive">
+        <span class="left">
+          <img id="MSearchSelect" src="search/mag_sel.png"
+               onmouseover="return searchBox.OnSearchSelectShow()"
+               onmouseout="return searchBox.OnSearchSelectHide()"
+               alt=""/>
+          <input type="text" id="MSearchField" value="Hledat" accesskey="S"
+               onfocus="searchBox.OnSearchFieldFocus(true)" 
+               onblur="searchBox.OnSearchFieldFocus(false)" 
+               onkeyup="searchBox.OnSearchFieldChange(event)"/>
+          </span><span class="right">
+            <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><img id="MSearchCloseImg" border="0" src="search/close.png" alt=""/></a>
+          </span>
+        </div>
+      </li>
+    </ul>
+  </div>
+  <div id="navrow2" class="tabs2">
+    <ul class="tablist">
+      <li><a href="annotated.html"><span>Datové&#160;struktury</span></a></li>
+      <li><a href="classes.html"><span>Rejstřík&#160;datových&#160;struktur</span></a></li>
+      <li><a href="inherits.html"><span>Hierarchie&#160;tříd</span></a></li>
+      <li class="current"><a href="functions.html"><span>Datové&#160;položky</span></a></li>
+    </ul>
+  </div>
+  <div id="navrow3" class="tabs2">
+    <ul class="tablist">
+      <li><a href="functions.html"><span>Vše</span></a></li>
+      <li><a href="functions_func.html"><span>Funkce</span></a></li>
+      <li class="current"><a href="functions_vars.html"><span>Proměnné</span></a></li>
+      <li><a href="functions_type.html"><span>Definice&#160;typů</span></a></li>
+    </ul>
+  </div>
+  <div id="navrow4" class="tabs3">
+    <ul class="tablist">
+      <li><a href="#index_a"><span>a</span></a></li>
+      <li><a href="#index_b"><span>b</span></a></li>
+      <li><a href="#index_c"><span>c</span></a></li>
+      <li><a href="#index_d"><span>d</span></a></li>
+      <li><a href="#index_e"><span>e</span></a></li>
+      <li><a href="#index_f"><span>f</span></a></li>
+      <li><a href="#index_g"><span>g</span></a></li>
+      <li><a href="#index_h"><span>h</span></a></li>
+      <li><a href="#index_i"><span>i</span></a></li>
+      <li><a href="#index_k"><span>k</span></a></li>
+      <li><a href="#index_l"><span>l</span></a></li>
+      <li><a href="#index_m"><span>m</span></a></li>
+      <li><a href="#index_n"><span>n</span></a></li>
+      <li><a href="#index_o"><span>o</span></a></li>
+      <li><a href="#index_p"><span>p</span></a></li>
+      <li><a href="#index_q"><span>q</span></a></li>
+      <li><a href="#index_r"><span>r</span></a></li>
+      <li><a href="#index_s"><span>s</span></a></li>
+      <li><a href="#index_t"><span>t</span></a></li>
+      <li><a href="#index_v"><span>v</span></a></li>
+      <li><a href="#index_w"><span>w</span></a></li>
+    </ul>
+  </div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+$(document).ready(function(){initNavTree('functions_vars.html','');});
+</script>
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>Vše</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Třídy</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Prostory jmen</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Soubory</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Funkce</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Proměnné</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Definice typů</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Výčty</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(8)"><span class="SelectionMark">&#160;</span>Hodnoty výčtu</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(9)"><span class="SelectionMark">&#160;</span>Definice maker</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(10)"><span class="SelectionMark">&#160;</span>Stránky</a></div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div class="contents">
+&#160;
+
+<h3><a class="anchor" id="index_a"></a>- a -</h3><ul>
+<li>add_code
+: <a class="el" href="classmc_1_1proto_1_1bin_1_1api.html#a689263d3817d3fc484abb254393a8f99">mc::proto::bin::api</a>
+</li>
+<li>add_name
+: <a class="el" href="classmc_1_1proto_1_1txt_1_1api.html#aed67aba87921433f5d5c04ce5f7bd014">mc::proto::txt::api</a>
+</li>
+<li>addq_code
+: <a class="el" href="classmc_1_1proto_1_1bin_1_1api.html#a6e71656c3bdd453968f29ebb18d686d7">mc::proto::bin::api</a>
+</li>
+<li>addr
+: <a class="el" href="classmc_1_1io_1_1create__new__connection__pool__t.html#ac45747df6c0f52b5a914ae9dbf069709">mc::io::create_new_connection_pool_t&lt; connection_t &gt;</a>
+, <a class="el" href="classmc_1_1io_1_1udp_1_1connection__t_1_1pimple__connection__t.html#a83a6cad89df9065510823da8fd899025">mc::io::udp::connection_t::pimple_connection_t</a>
+, <a class="el" href="classmc_1_1io_1_1single__connection__pool__t.html#aeff9b43cda7bb80a201ab83170438289">mc::io::single_connection_pool_t&lt; connection_t &gt;</a>
+, <a class="el" href="classmc_1_1io_1_1lock_1_1caching__connection__pool__t.html#a471bca73406905e798c79b8e5dc8c237">mc::io::lock::caching_connection_pool_t&lt; connection_t &gt;</a>
+, <a class="el" href="classmc_1_1io_1_1tcp_1_1connection__t_1_1pimple__connection__t.html#a4f924796797ce8af65ef2028c22d075a">mc::io::tcp::connection_t::pimple_connection_t</a>
+</li>
+<li>append_code
+: <a class="el" href="classmc_1_1proto_1_1bin_1_1api.html#a8b1a1633fb72cbe6721d9abadc4e6e37">mc::proto::bin::api</a>
+</li>
+<li>append_name
+: <a class="el" href="classmc_1_1proto_1_1txt_1_1api.html#a6e0fd68cc1cd9aa4043e9942c7568e8a">mc::proto::txt::api</a>
+</li>
+<li>appendq_code
+: <a class="el" href="classmc_1_1proto_1_1bin_1_1api.html#a815978d472a4b48caf901a9cc881d9d6">mc::proto::bin::api</a>
+</li>
+<li>array
+: <a class="el" href="classmc_1_1thread_1_1shared__array__t.html#a8e5b3d3c76789c88806ff807308e2666">mc::thread::shared_array_t&lt; type_t &gt;</a>
+, <a class="el" href="classmc_1_1aux_1_1unitialized__array__t.html#a4f8fd6a89ca713e085fa289dedcc3b92">mc::aux::unitialized_array_t&lt; type_t &gt;</a>
+</li>
+<li>aux
+: <a class="el" href="classmc_1_1proto_1_1single__response__t.html#a9924c348dd6c93c814c4c50a1ae689c1">mc::proto::single_response_t</a>
+</li>
+</ul>
+
+
+<h3><a class="anchor" id="index_b"></a>- b -</h3><ul>
+<li>body_len
+: <a class="el" href="classmc_1_1proto_1_1bin_1_1command__t.html#ad1bb97062bd5092d271ca4010f93b500">mc::proto::bin::command_t</a>
+</li>
+<li>buffer
+: <a class="el" href="classmc_1_1io_1_1udp_1_1connection__t.html#ab7f9c6927064d9bb64fafd686b6d3ddd">mc::io::udp::connection_t</a>
+</li>
+<li>bytes
+: <a class="el" href="classmc_1_1proto_1_1single__body__response__t.html#a5878ed52216cce84abc9175310fa26d7">mc::proto::single_body_response_t</a>
+, <a class="el" href="classmc_1_1proto_1_1single__retrival__response__t.html#a92223a605934f6a47e2e1434b1b54c1d">mc::proto::single_retrival_response_t</a>
+</li>
+</ul>
+
+
+<h3><a class="anchor" id="index_c"></a>- c -</h3><ul>
+<li>cas
+: <a class="el" href="classmc_1_1result__t.html#a0d51ce49eaf9a0fb15617009b95781cd">mc::result_t</a>
+, <a class="el" href="classmc_1_1proto_1_1opts__t.html#a510dd90ec98fc8932e46a66120f6f3d3">mc::proto::opts_t</a>
+, <a class="el" href="classmc_1_1proto_1_1single__retrival__response__t.html#a87c281b8de3d3f70a17b894568fa26f8">mc::proto::single_retrival_response_t</a>
+</li>
+<li>cas_code
+: <a class="el" href="classmc_1_1proto_1_1bin_1_1api.html#a2e9912b74730ccb379c5a282437e9697">mc::proto::bin::api</a>
+</li>
+<li>cas_name
+: <a class="el" href="classmc_1_1proto_1_1txt_1_1api.html#ab18bfef3acd4e259adbf2b846fde750e">mc::proto::txt::api</a>
+</li>
+<li>connect
+: <a class="el" href="classmc_1_1io_1_1opts__t_1_1timeouts__t.html#ab32d91489290889fb7c93ecb214109f8">mc::io::opts_t::timeouts_t</a>
+</li>
+<li>connection
+: <a class="el" href="classmc_1_1proto_1_1command__parser__t.html#ae5a5526d83e427785eb5c7f69dd8b02a">mc::proto::command_parser_t&lt; connection_t &gt;</a>
+, <a class="el" href="classmc_1_1io_1_1single__connection__pool__t.html#a507db85dde79b638c32d5d83104b887d">mc::io::single_connection_pool_t&lt; connection_t &gt;</a>
+</li>
+<li>connections
+: <a class="el" href="classmc_1_1server__proxy__t.html#adf64a70a895e2ac4102c47a0045ecad8">mc::server_proxy_t&lt; lock_t, connections_t &gt;</a>
+</li>
+<li>count
+: <a class="el" href="classmc_1_1server__proxies__t.html#a25b57469a6bc35350651003106316a52">mc::server_proxies_t&lt; shared_templ_t, server_proxy_type &gt;</a>
+, <a class="el" href="classmc_1_1io_1_1udp_1_1packet__t.html#a61f49b396e78f593c0a2551cdce67b23">mc::io::udp::packet_t</a>
+</li>
+</ul>
+
+
+<h3><a class="anchor" id="index_d"></a>- d -</h3><ul>
+<li>data
+: <a class="el" href="classmc_1_1result__t.html#a3ecd594615c82e291e15a02bbff827b8">mc::result_t</a>
+, <a class="el" href="classmc_1_1proto_1_1bin_1_1storage__command__t.html#a5435d1cd7e478c881a2590a8182a9b96">mc::proto::bin::storage_command_t&lt; has_extras &gt;</a>
+, <a class="el" href="structtest_1_1packet__t.html#a6990877dcad6f9138e94e5a5205d077c">test::packet_t</a>
+, <a class="el" href="classmc_1_1proto_1_1txt_1_1storage__command__t.html#a128faa7cc5e5bc3305375fa12d960749">mc::proto::txt::storage_command_t</a>
+</li>
+<li>dead
+: <a class="el" href="classmc_1_1server__proxy__t_1_1shared__t.html#a91e8b998065d0ba39f5c5ca11f82c048">mc::server_proxy_t&lt; lock_t, connections_t &gt;::shared_t</a>
+</li>
+<li>deadline
+: <a class="el" href="classmc_1_1io_1_1tcp_1_1connection__t_1_1pimple__connection__t.html#a587221cf6e3e7e5aaa1e988fd3025013">mc::io::tcp::connection_t::pimple_connection_t</a>
+, <a class="el" href="classmc_1_1io_1_1udp_1_1connection__t_1_1pimple__connection__t.html#a89aae93ebe0c02c3454b5d1434a21aee">mc::io::udp::connection_t::pimple_connection_t</a>
+</li>
+<li>decr_name
+: <a class="el" href="classmc_1_1proto_1_1txt_1_1api.html#a5f03753a3003bb19b93fbf2fe2fea607">mc::proto::txt::api</a>
+</li>
+<li>decrement_code
+: <a class="el" href="classmc_1_1proto_1_1bin_1_1api.html#abb4a1f91043f8f6aeb69da9ea103e631">mc::proto::bin::api</a>
+</li>
+<li>decrementq_code
+: <a class="el" href="classmc_1_1proto_1_1bin_1_1api.html#ad46f0894e399ac0c63d9641c01cee961">mc::proto::bin::api</a>
+</li>
+<li>delete_code
+: <a class="el" href="classmc_1_1proto_1_1bin_1_1api.html#a4262c74d3ac1bfc6959bfa4f4eb5ab04">mc::proto::bin::api</a>
+</li>
+<li>deleteq_code
+: <a class="el" href="classmc_1_1proto_1_1bin_1_1api.html#a45bdc4204443d3780123fbf70ce1b58a">mc::proto::bin::api</a>
+</li>
+<li>delim
+: <a class="el" href="classtest_1_1validation__connection__t.html#ae2b069e28471b639b6d0bf03267084e2">test::validation_connection_t</a>
+</li>
+</ul>
+
+
+<h3><a class="anchor" id="index_e"></a>- e -</h3><ul>
+<li>enode
+: <a class="el" href="classmc_1_1consistent__hashing__pool__const__iterator.html#a96eb9e7465a7b51631aef711ded07a9f">mc::consistent_hashing_pool_const_iterator</a>
+</li>
+<li>expiration
+: <a class="el" href="classmc_1_1proto_1_1bin_1_1touch__command__t.html#a6dd661c862e7993af145a3cbdbf4c3b3">mc::proto::bin::touch_command_t</a>
+, <a class="el" href="classmc_1_1proto_1_1opts__t.html#aa2df55238a6d8e572ad1553366207a98">mc::proto::opts_t</a>
+</li>
+<li>extras_len
+: <a class="el" href="classmc_1_1proto_1_1bin_1_1command__t.html#a1d0946d680a3e064b578770832c558dc">mc::proto::bin::command_t</a>
+</li>
+<li>extras_length
+: <a class="el" href="classmc_1_1proto_1_1bin_1_1touch__command__t.html#a921bb41a42993c5d3e5e5a58e9cad672">mc::proto::bin::touch_command_t</a>
+, <a class="el" href="classmc_1_1proto_1_1bin_1_1incr__decr__command__t.html#ab17dc3547a202fa3ddfe57743cc7b7c4">mc::proto::bin::incr_decr_command_t</a>
+, <a class="el" href="classmc_1_1proto_1_1bin_1_1storage__command__t.html#ac2fc10e961338a26d3ac864ac0851ac6">mc::proto::bin::storage_command_t&lt; has_extras &gt;</a>
+</li>
+</ul>
+
+
+<h3><a class="anchor" id="index_f"></a>- f -</h3><ul>
+<li>fail_limit
+: <a class="el" href="classmc_1_1server__proxy__config__t.html#aae3a9a779d6f53fad0798949f5c25dcb">mc::server_proxy_config_t</a>
+, <a class="el" href="classmc_1_1server__proxy__t.html#abe7f42e0b746a40bd1ffa7db2e11a188">mc::server_proxy_t&lt; lock_t, connections_t &gt;</a>
+</li>
+<li>fails
+: <a class="el" href="classtest_1_1Checker__t.html#a96af938c08d57b385e75e3a6818eff82">test::Checker_t</a>
+, <a class="el" href="classmc_1_1server__proxy__t_1_1shared__t.html#aaa0433fad7d4647727cbd9d206346030">mc::server_proxy_t&lt; lock_t, connections_t &gt;::shared_t</a>
+</li>
+<li>flags
+: <a class="el" href="classmc_1_1result__t.html#afe73c333b0636ccc64660781c1265a95">mc::result_t</a>
+, <a class="el" href="classmc_1_1proto_1_1single__retrival__response__t.html#a0704e54a1e472fb62a4f34663ea60052">mc::proto::single_retrival_response_t</a>
+, <a class="el" href="classmc_1_1proto_1_1opts__t.html#ae854842c124d09a4354ff9387b5e5d58">mc::proto::opts_t</a>
+</li>
+<li>flush_code
+: <a class="el" href="classmc_1_1proto_1_1bin_1_1api.html#a55325ad6882637fd69a73c59bd4f5029">mc::proto::bin::api</a>
+</li>
+<li>flushq_code
+: <a class="el" href="classmc_1_1proto_1_1bin_1_1api.html#a10bc01f452f91e63411c29c3083aefe7">mc::proto::bin::api</a>
+</li>
+<li>footer_size
+: <a class="el" href="classmc_1_1proto_1_1txt_1_1retrieve__command__t.html#a74d2b7afed99006bb6cfe0b96e65249b">mc::proto::txt::retrieve_command_t</a>
+</li>
+<li>found
+: <a class="el" href="classmc_1_1result__t.html#a474725d8376259d495a987a34cc68acd">mc::result_t</a>
+</li>
+</ul>
+
+
+<h3><a class="anchor" id="index_g"></a>- g -</h3><ul>
+<li>get_code
+: <a class="el" href="classmc_1_1proto_1_1bin_1_1api.html#ab36d82ae09c5acfbf14bc36a3fba8127">mc::proto::bin::api</a>
+</li>
+<li>get_name
+: <a class="el" href="classmc_1_1proto_1_1txt_1_1api.html#ad18b94e0ffbfa9c4efdb594ce3b6b94c">mc::proto::txt::api</a>
+</li>
+<li>getk_code
+: <a class="el" href="classmc_1_1proto_1_1bin_1_1api.html#a1e83db4af5eeaf807cf278b139827b97">mc::proto::bin::api</a>
+</li>
+<li>getkq_code
+: <a class="el" href="classmc_1_1proto_1_1bin_1_1api.html#ab9447085c5eb9ff893780765a725ece9">mc::proto::bin::api</a>
+</li>
+<li>getq_code
+: <a class="el" href="classmc_1_1proto_1_1bin_1_1api.html#a95a7e63c85e2096d0308c5bafb8ec83e">mc::proto::bin::api</a>
+</li>
+<li>gets_code
+: <a class="el" href="classmc_1_1proto_1_1bin_1_1api.html#a326c68d155d96b483110e275cbed25b8">mc::proto::bin::api</a>
+</li>
+<li>gets_name
+: <a class="el" href="classmc_1_1proto_1_1txt_1_1api.html#a237063d690ad2053e6d4333a7ccda8ab">mc::proto::txt::api</a>
+</li>
+</ul>
+
+
+<h3><a class="anchor" id="index_h"></a>- h -</h3><ul>
+<li>h404_duration
+: <a class="el" href="classmc_1_1client__config__t.html#aaa71ebc5666ea72457b135eef77b3cd3">mc::client_config_t</a>
+, <a class="el" href="classmc_1_1client__template__t.html#a5a79f86d78e2ad6998a16ef71296f118">mc::client_template_t&lt; pool_t, server_proxies_t, impl &gt;</a>
+</li>
+<li>hashf
+: <a class="el" href="classmc_1_1consistent__hashing__pool__t.html#a366df9c4406db1680f9c6d930b10e82f">mc::consistent_hashing_pool_t&lt; hash_function_t &gt;</a>
+, <a class="el" href="classmc_1_1mod__pool__t.html#a6171bb0a566944e8d860a27cb66c74ff">mc::mod_pool_t&lt; hash_function_t &gt;</a>
+</li>
+</ul>
+
+
+<h3><a class="anchor" id="index_i"></a>- i -</h3><ul>
+<li>id
+: <a class="el" href="classmc_1_1io_1_1udp_1_1connection__t.html#a1cb09094d8aa5944aecbda57408efeb9">mc::io::udp::connection_t</a>
+, <a class="el" href="classmc_1_1io_1_1udp_1_1packet__t.html#a34a99e5a96f27c93b71311462fab025d">mc::io::udp::packet_t</a>
+</li>
+<li>incr_name
+: <a class="el" href="classmc_1_1proto_1_1txt_1_1api.html#ab20c7cc5d715699c17c9d13be0d3fc47">mc::proto::txt::api</a>
+</li>
+<li>increment_code
+: <a class="el" href="classmc_1_1proto_1_1bin_1_1api.html#a6ef391fe62f1dc6e91efb559d9bddb08">mc::proto::bin::api</a>
+</li>
+<li>incrementq_code
+: <a class="el" href="classmc_1_1proto_1_1bin_1_1api.html#a9e2d350a5192a46eba340cceecd469ac">mc::proto::bin::api</a>
+</li>
+<li>initial
+: <a class="el" href="classmc_1_1proto_1_1opts__t.html#a003f5a97a8b11630219971bbffb66b7f">mc::proto::opts_t</a>
+</li>
+<li>inode
+: <a class="el" href="classmc_1_1consistent__hashing__pool__const__iterator.html#a9af0eb2b961a5d55fa8004a7c14f1d87">mc::consistent_hashing_pool_const_iterator</a>
+</li>
+<li>input
+: <a class="el" href="classmc_1_1io_1_1udp_1_1connection__t_1_1pimple__connection__t.html#a0774a1be4eaac6082dc2e730378bf544">mc::io::udp::connection_t::pimple_connection_t</a>
+, <a class="el" href="classmc_1_1io_1_1tcp_1_1connection__t_1_1pimple__connection__t.html#ac4e0b18f8fa5db2e517534daa62a7785">mc::io::tcp::connection_t::pimple_connection_t</a>
+</li>
+<li>io_opts
+: <a class="el" href="classmc_1_1server__proxy__config__t.html#aaf8d4a9df98a49d27818e0e1580d5ddf">mc::server_proxy_config_t</a>
+</li>
+<li>ios
+: <a class="el" href="classmc_1_1io_1_1udp_1_1connection__t_1_1pimple__connection__t.html#ace067cf204182ad23295e1a6b96fe8d9">mc::io::udp::connection_t::pimple_connection_t</a>
+, <a class="el" href="classmc_1_1io_1_1tcp_1_1connection__t_1_1pimple__connection__t.html#aa7871afa195ca2644b5eb56003695937">mc::io::tcp::connection_t::pimple_connection_t</a>
+</li>
+</ul>
+
+
+<h3><a class="anchor" id="index_k"></a>- k -</h3><ul>
+<li>key
+: <a class="el" href="classmc_1_1proto_1_1bin_1_1retrieve__command__t.html#a9163875cecf8e78c7180be10e148a0be">mc::proto::bin::retrieve_command_t</a>
+, <a class="el" href="classmc_1_1proto_1_1bin_1_1storage__command__t.html#ae850042d97a10e249b41930c20321a0c">mc::proto::bin::storage_command_t&lt; has_extras &gt;</a>
+, <a class="el" href="classmc_1_1proto_1_1txt_1_1delete__command__t.html#a5115c7cbb53444da9c209053b878caf8">mc::proto::txt::delete_command_t</a>
+, <a class="el" href="classmc_1_1proto_1_1bin_1_1delete__command__t.html#a1fa66a800d02be2a11189c61741eac87">mc::proto::bin::delete_command_t</a>
+, <a class="el" href="classmc_1_1proto_1_1txt_1_1storage__command__t.html#a2b39ad8d42df84ac1e4fc1dfc0759dbc">mc::proto::txt::storage_command_t</a>
+, <a class="el" href="classmc_1_1proto_1_1txt_1_1retrieve__command__t.html#a27fbfc105d8892bb8ec86a35f668328a">mc::proto::txt::retrieve_command_t</a>
+, <a class="el" href="classmc_1_1proto_1_1bin_1_1touch__command__t.html#a6026a2ded4b43196c70e4d53e7828a05">mc::proto::bin::touch_command_t</a>
+, <a class="el" href="classmc_1_1proto_1_1txt_1_1incr__decr__command__t.html#a040133b6e4ea72340b5dc828aa3accc6">mc::proto::txt::incr_decr_command_t</a>
+, <a class="el" href="classmc_1_1proto_1_1bin_1_1incr__decr__command__t.html#a6baa1ff3b6ce9afc0a765ddd84ae8582">mc::proto::bin::incr_decr_command_t</a>
+</li>
+<li>key_len
+: <a class="el" href="classmc_1_1proto_1_1bin_1_1command__t.html#affc9a51cc9977160f4ed19fce83f1f95">mc::proto::bin::command_t</a>
+</li>
+</ul>
+
+
+<h3><a class="anchor" id="index_l"></a>- l -</h3><ul>
+<li>lock
+: <a class="el" href="classmc_1_1scope__guard__t.html#a4c791549d6c46a352141c824def10ec1">mc::scope_guard_t&lt; lock_t &gt;</a>
+, <a class="el" href="classmc_1_1server__proxy__t_1_1shared__t.html#a4eb5a9d9e9708fa53a1220dd2a2c1385">mc::server_proxy_t&lt; lock_t, connections_t &gt;::shared_t</a>
+</li>
+</ul>
+
+
+<h3><a class="anchor" id="index_m"></a>- m -</h3><ul>
+<li>m_data
+: <a class="el" href="classmc_1_1SpookyHash.html#abb26b57132f738a4aebd1a498c1cc8c6">mc::SpookyHash</a>
+</li>
+<li>m_length
+: <a class="el" href="classmc_1_1SpookyHash.html#aceaf1127399f120b9f3250a49bd2c623">mc::SpookyHash</a>
+</li>
+<li>m_remainder
+: <a class="el" href="classmc_1_1SpookyHash.html#a01cae3daf373a20a0430c690de323da1">mc::SpookyHash</a>
+</li>
+<li>m_state
+: <a class="el" href="classmc_1_1SpookyHash.html#a1142b5bdc5c927fc9088db7f4d85ced5">mc::SpookyHash</a>
+</li>
+<li>max
+: <a class="el" href="classmc_1_1mod__pool__t.html#af625aa75c1d19052ff370649c6c81f28">mc::mod_pool_t&lt; hash_function_t &gt;</a>
+</li>
+<li>max_connections_in_pool
+: <a class="el" href="classmc_1_1io_1_1opts__t.html#a43ea51e7e801bcd6767bed1db9501dfb">mc::io::opts_t</a>
+</li>
+<li>max_continues
+: <a class="el" href="classmc_1_1client__config__t.html#ac21685a9708b6e70067fc6afce778be7">mc::client_config_t</a>
+, <a class="el" href="classmc_1_1client__template__t.html#a7ccc81a3ff08d7e01a25d1682c81358a">mc::client_template_t&lt; pool_t, server_proxies_t, impl &gt;</a>
+</li>
+<li>msg
+: <a class="el" href="classmc_1_1error__t.html#a112aafbf3be418b5388107d4c81a3466">mc::error_t</a>
+</li>
+<li>mutex
+: <a class="el" href="classmc_1_1io_1_1lock_1_1caching__connection__pool__t.html#a10b18690e8cc34882ffae8f03918279b">mc::io::lock::caching_connection_pool_t&lt; connection_t &gt;</a>
+</li>
+</ul>
+
+
+<h3><a class="anchor" id="index_n"></a>- n -</h3><ul>
+<li>noop_code
+: <a class="el" href="classmc_1_1proto_1_1bin_1_1api.html#aebce72863b07a2be79e885b97c89f421">mc::proto::bin::api</a>
+</li>
+</ul>
+
+
+<h3><a class="anchor" id="index_o"></a>- o -</h3><ul>
+<li>opts
+: <a class="el" href="classmc_1_1io_1_1create__new__connection__pool__t.html#a38a5e86b322119d4c5f40b5569775a8b">mc::io::create_new_connection_pool_t&lt; connection_t &gt;</a>
+, <a class="el" href="classmc_1_1io_1_1udp_1_1connection__t_1_1pimple__connection__t.html#ac37fc3909b848ef125b12d0e1492d0db">mc::io::udp::connection_t::pimple_connection_t</a>
+, <a class="el" href="classmc_1_1io_1_1tcp_1_1connection__t_1_1pimple__connection__t.html#a72b06dab9948ad1d8f2d7f11767ba014">mc::io::tcp::connection_t::pimple_connection_t</a>
+, <a class="el" href="classmc_1_1proto_1_1txt_1_1storage__command__t.html#a08990822237a76974c1a83d0d07da48d">mc::proto::txt::storage_command_t</a>
+, <a class="el" href="classmc_1_1proto_1_1bin_1_1incr__decr__command__t.html#ab041fd93edec01e99116c2794ec051cb">mc::proto::bin::incr_decr_command_t</a>
+, <a class="el" href="classmc_1_1proto_1_1bin_1_1storage__command__t.html#a71ca68b105eafee0ae3cf65d321251b9">mc::proto::bin::storage_command_t&lt; has_extras &gt;</a>
+, <a class="el" href="classmc_1_1io_1_1lock_1_1caching__connection__pool__t.html#a996fb7337749b741541b1b12c9809684">mc::io::lock::caching_connection_pool_t&lt; connection_t &gt;</a>
+, <a class="el" href="classmc_1_1io_1_1single__connection__pool__t.html#a744ecadd2464a291d38140e5b9f7016b">mc::io::single_connection_pool_t&lt; connection_t &gt;</a>
+</li>
+</ul>
+
+
+<h3><a class="anchor" id="index_p"></a>- p -</h3><ul>
+<li>pool
+: <a class="el" href="classmc_1_1client__template__t.html#a087ad2b222af56faae1aac955c2c058a">mc::client_template_t&lt; pool_t, server_proxies_t, impl &gt;</a>
+</li>
+<li>prepend_code
+: <a class="el" href="classmc_1_1proto_1_1bin_1_1api.html#a6e312930203d8eb0f824622ce3e77039">mc::proto::bin::api</a>
+</li>
+<li>prepend_name
+: <a class="el" href="classmc_1_1proto_1_1txt_1_1api.html#aaa57438c872d59b98e82e2c2cdb969bc">mc::proto::txt::api</a>
+</li>
+<li>prependq_code
+: <a class="el" href="classmc_1_1proto_1_1bin_1_1api.html#a7defb3808c6442dc7c91a93c65b58099">mc::proto::bin::api</a>
+</li>
+<li>proxies
+: <a class="el" href="classmc_1_1client__template__t.html#ab5e2df3f3c40666e921a68b9cea975f3">mc::client_template_t&lt; pool_t, server_proxies_t, impl &gt;</a>
+, <a class="el" href="classmc_1_1server__proxies__t.html#a79f5b271b499dcc420d313000d769285">mc::server_proxies_t&lt; shared_templ_t, server_proxy_type &gt;</a>
+</li>
+</ul>
+
+
+<h3><a class="anchor" id="index_q"></a>- q -</h3><ul>
+<li>quit_code
+: <a class="el" href="classmc_1_1proto_1_1bin_1_1api.html#aeb47638dc65117aa2b085e93aa961735">mc::proto::bin::api</a>
+</li>
+<li>quitq_code
+: <a class="el" href="classmc_1_1proto_1_1bin_1_1api.html#adbb7f9e01a65fee0b2c7b0cf993f6437">mc::proto::bin::api</a>
+</li>
+</ul>
+
+
+<h3><a class="anchor" id="index_r"></a>- r -</h3><ul>
+<li>read
+: <a class="el" href="classmc_1_1io_1_1opts__t_1_1timeouts__t.html#a4c96bf8aa4a6844d107863cefd74c907">mc::io::opts_t::timeouts_t</a>
+</li>
+<li>region
+: <a class="el" href="classmc_1_1ipc_1_1shared__array__t.html#abcc0157dbc2b43b05cd8cc5a5a9c9b95">mc::ipc::shared_array_t&lt; type_t &gt;</a>
+</li>
+<li>replace_code
+: <a class="el" href="classmc_1_1proto_1_1bin_1_1api.html#a96b570077f5cfdc16dfb086a3d6228e2">mc::proto::bin::api</a>
+</li>
+<li>replace_name
+: <a class="el" href="classmc_1_1proto_1_1txt_1_1api.html#ae558f8d7885a045019de305a79b1b438">mc::proto::txt::api</a>
+</li>
+<li>replaceq_code
+: <a class="el" href="classmc_1_1proto_1_1bin_1_1api.html#a49b90cce0efa78d1438134ca257453f3">mc::proto::bin::api</a>
+</li>
+<li>request
+: <a class="el" href="classtest_1_1validation__connection__t.html#a8b90b0959b44c4f0534d2530ea8fb532">test::validation_connection_t</a>
+</li>
+<li>reserved
+: <a class="el" href="classmc_1_1io_1_1udp_1_1packet__t.html#afd293eeb5d4b7439982b4d97f8c7ea06">mc::io::udp::packet_t</a>
+</li>
+<li>responses
+: <a class="el" href="classtest_1_1validation__connection__t.html#a7f53d6804b4e96013b59957fc7fb2452">test::validation_connection_t</a>
+</li>
+<li>restoration
+: <a class="el" href="classmc_1_1server__proxy__t_1_1shared__t.html#abc8915fe1c0280540c77c1be685938c1">mc::server_proxy_t&lt; lock_t, connections_t &gt;::shared_t</a>
+</li>
+<li>restoration_interval
+: <a class="el" href="classmc_1_1server__proxy__config__t.html#a8392cf49e089d65c47610657ca4cbfc3">mc::server_proxy_config_t</a>
+, <a class="el" href="classmc_1_1server__proxy__t.html#abaa8831d3a486b7150e05c7aa843350b">mc::server_proxy_t&lt; lock_t, connections_t &gt;</a>
+</li>
+<li>ring
+: <a class="el" href="classmc_1_1consistent__hashing__pool__t.html#a5b925b98d475d9142e43f061ae251dc9">mc::consistent_hashing_pool_t&lt; hash_function_t &gt;</a>
+</li>
+</ul>
+
+
+<h3><a class="anchor" id="index_s"></a>- s -</h3><ul>
+<li>sc_blockSize
+: <a class="el" href="classmc_1_1SpookyHash.html#a364186b89d3327d13b5a9292e4ce4343">mc::SpookyHash</a>
+</li>
+<li>sc_bufSize
+: <a class="el" href="classmc_1_1SpookyHash.html#ad2b10f9e6058e67932363dff40cc2279">mc::SpookyHash</a>
+</li>
+<li>sc_const
+: <a class="el" href="classmc_1_1SpookyHash.html#ab50dd0ba2f932254b9d8ee4bb612205b">mc::SpookyHash</a>
+</li>
+<li>sc_numVars
+: <a class="el" href="classmc_1_1SpookyHash.html#afacacd222efa5501931988f5669ea43f">mc::SpookyHash</a>
+</li>
+<li>seq
+: <a class="el" href="classmc_1_1io_1_1udp_1_1packet__t.html#abd89581d33f47f60c6921270af79b5d2">mc::io::udp::packet_t</a>
+</li>
+<li>set_body
+: <a class="el" href="classmc_1_1proto_1_1bin_1_1touch__command__t.html#a77401f981bd6c8517c39698e540b2786">mc::proto::bin::touch_command_t</a>
+</li>
+<li>set_body_callback
+: <a class="el" href="classmc_1_1proto_1_1single__retrival__response__t.html#a98c83abf92e398d06c3997101ac9af48">mc::proto::single_retrival_response_t</a>
+, <a class="el" href="classmc_1_1proto_1_1single__body__response__t.html#aaeb27b1663d2e7415e03bb59ee390215">mc::proto::single_body_response_t</a>
+</li>
+<li>set_code
+: <a class="el" href="classmc_1_1proto_1_1bin_1_1api.html#a6e447a3c2aa6743b29726f522d3b4dc5">mc::proto::bin::api</a>
+</li>
+<li>set_name
+: <a class="el" href="classmc_1_1proto_1_1txt_1_1api.html#ac36505b08f77286d140a1a8bbaf24f49">mc::proto::txt::api</a>
+</li>
+<li>setq_code
+: <a class="el" href="classmc_1_1proto_1_1bin_1_1api.html#aa121d1678597be66cfbddde08f50ee43">mc::proto::bin::api</a>
+</li>
+<li>shared
+: <a class="el" href="classmc_1_1server__proxies__t.html#abefad17f9fd8591c3c76b99e06f56843">mc::server_proxies_t&lt; shared_templ_t, server_proxy_type &gt;</a>
+, <a class="el" href="classmc_1_1server__proxy__t.html#ac28704a451fc223991af184602ff2bba">mc::server_proxy_t&lt; lock_t, connections_t &gt;</a>
+</li>
+<li>snode
+: <a class="el" href="classmc_1_1consistent__hashing__pool__const__iterator.html#a882f0554d5d4999daa948c8b0cfe7c55">mc::consistent_hashing_pool_const_iterator</a>
+</li>
+<li>socket
+: <a class="el" href="classmc_1_1io_1_1udp_1_1connection__t.html#a4f5259d2e753248d0e1a0446fe69a69d">mc::io::udp::connection_t</a>
+, <a class="el" href="classmc_1_1io_1_1tcp_1_1connection__t_1_1pimple__connection__t.html#a733d7c29eafb7fb402f871bcb8e0224b">mc::io::tcp::connection_t::pimple_connection_t</a>
+, <a class="el" href="classmc_1_1io_1_1udp_1_1connection__t_1_1pimple__connection__t.html#acdf16321fbac881bdfdafc24b3339845">mc::io::udp::connection_t::pimple_connection_t</a>
+, <a class="el" href="classmc_1_1io_1_1tcp_1_1connection__t.html#adba70507f54b437ecf43ab91a7961efd">mc::io::tcp::connection_t</a>
+</li>
+<li>stack
+: <a class="el" href="classmc_1_1io_1_1lock_1_1caching__connection__pool__t.html#a903e235a2434bcd978bdb2245df66f46">mc::io::lock::caching_connection_pool_t&lt; connection_t &gt;</a>
+</li>
+<li>stat_code
+: <a class="el" href="classmc_1_1proto_1_1bin_1_1api.html#adfc8c60159b792b49fd08589652e8423">mc::proto::bin::api</a>
+</li>
+<li>status
+: <a class="el" href="classmc_1_1proto_1_1single__response__t.html#af01b17dfc413fa05160b05f3bb31eea6">mc::proto::single_response_t</a>
+</li>
+<li>stop
+: <a class="el" href="classmc_1_1consistent__hashing__pool__const__iterator.html#a19ef69f3e8d422e1f97094a0d2ea9fb0">mc::consistent_hashing_pool_const_iterator</a>
+, <a class="el" href="classmc_1_1mod__pool__const__iterator.html#ab784f6a54884be10db893bdad567c87d">mc::mod_pool_const_iterator</a>
+</li>
+</ul>
+
+
+<h3><a class="anchor" id="index_t"></a>- t -</h3><ul>
+<li>timeouted
+: <a class="el" href="classmc_1_1io_1_1tcp_1_1connection__t_1_1pimple__connection__t.html#afecfbf9f6e3689890296d53488f3055f">mc::io::tcp::connection_t::pimple_connection_t</a>
+, <a class="el" href="classmc_1_1io_1_1udp_1_1connection__t_1_1pimple__connection__t.html#ae622cd860346edf2a4005078ce0e0034">mc::io::udp::connection_t::pimple_connection_t</a>
+</li>
+<li>timeouts
+: <a class="el" href="classmc_1_1io_1_1opts__t.html#af6e0d5d5d6c8ba8f1ae93568599915a0">mc::io::opts_t</a>
+</li>
+<li>touch_code
+: <a class="el" href="classmc_1_1proto_1_1bin_1_1api.html#ae258851e50e0a2939bce8756c3afda63">mc::proto::bin::api</a>
+</li>
+<li>touch_name
+: <a class="el" href="classmc_1_1proto_1_1txt_1_1api.html#ad0c23db1c7a21ef68ff340933446a239">mc::proto::txt::api</a>
+</li>
+</ul>
+
+
+<h3><a class="anchor" id="index_v"></a>- v -</h3><ul>
+<li>value
+: <a class="el" href="classmc_1_1error__t.html#a37de112224bda80cdf659f09f31c65b8">mc::error_t</a>
+, <a class="el" href="classmc_1_1mod__pool__const__iterator.html#a62d14ec032ad226f9de06cd0661f17f0">mc::mod_pool_const_iterator</a>
+, <a class="el" href="classmc_1_1proto_1_1txt_1_1incr__decr__command__t.html#a812f279e66ca749cf74309f3a575e546">mc::proto::txt::incr_decr_command_t</a>
+, <a class="el" href="classfake__protobuf__t.html#aa74ad3a25863b4bea74aee0f5b010ad3">fake_protobuf_t</a>
+, <a class="el" href="classmc_1_1proto_1_1bin_1_1incr__decr__command__t.html#ac0d0ef4b8bc92ea6a445b5b6e8cc9597">mc::proto::bin::incr_decr_command_t</a>
+</li>
+<li>version_code
+: <a class="el" href="classmc_1_1proto_1_1bin_1_1api.html#a9a2ec14c1f949e599b67d7b3f30e2d6c">mc::proto::bin::api</a>
+</li>
+<li>virtual_nodes
+: <a class="el" href="classmc_1_1consistent__hashing__pool__config__t.html#a7261a4e01f97e8f7176b3766bfa43940">mc::consistent_hashing_pool_config_t</a>
+</li>
+</ul>
+
+
+<h3><a class="anchor" id="index_w"></a>- w -</h3><ul>
+<li>write
+: <a class="el" href="classmc_1_1io_1_1opts__t_1_1timeouts__t.html#a293563594eb2a471d461fd1b541e705b">mc::io::opts_t::timeouts_t</a>
+</li>
+</ul>
+</div><!-- contents -->
+</div><!-- doc-content -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="footer">Generováno út 23. čec 2013 13.13:04 pro projekt libmcache-0.2.1 programem
+    <a href="http://www.doxygen.org/index.html">
+    <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.3.1 </li>
+  </ul>
+</div>
+</body>
+</html>

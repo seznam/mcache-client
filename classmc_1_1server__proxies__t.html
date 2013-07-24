@@ -1,0 +1,560 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.3.1"/>
+<title>libmcache-0.2.1: Dokumentace šablony třídy mc::server_proxies_t&lt; shared_templ_t, server_proxy_type &gt;</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript">
+  $(document).ready(initResizable);
+  $(window).load(resizeHeight);
+</script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/search.js"></script>
+<script type="text/javascript">
+  $(document).ready(function() { searchBox.OnSelectItem(0); });
+</script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td style="padding-left: 0.5em;">
+   <div id="projectname">libmcache-0.2.1
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Generováno programem Doxygen 1.8.3.1 -->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "search",false,'Hledat');
+</script>
+  <div id="navrow1" class="tabs">
+    <ul class="tablist">
+      <li><a href="index.html"><span>Hlavní&#160;stránka</span></a></li>
+      <li><a href="namespaces.html"><span>Prostory&#160;jmen</span></a></li>
+      <li class="current"><a href="annotated.html"><span>Třídy</span></a></li>
+      <li><a href="files.html"><span>Soubory</span></a></li>
+      <li>
+        <div id="MSearchBox" class="MSearchBoxInactive">
+        <span class="left">
+          <img id="MSearchSelect" src="search/mag_sel.png"
+               onmouseover="return searchBox.OnSearchSelectShow()"
+               onmouseout="return searchBox.OnSearchSelectHide()"
+               alt=""/>
+          <input type="text" id="MSearchField" value="Hledat" accesskey="S"
+               onfocus="searchBox.OnSearchFieldFocus(true)" 
+               onblur="searchBox.OnSearchFieldFocus(false)" 
+               onkeyup="searchBox.OnSearchFieldChange(event)"/>
+          </span><span class="right">
+            <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><img id="MSearchCloseImg" border="0" src="search/close.png" alt=""/></a>
+          </span>
+        </div>
+      </li>
+    </ul>
+  </div>
+  <div id="navrow2" class="tabs2">
+    <ul class="tablist">
+      <li><a href="annotated.html"><span>Datové&#160;struktury</span></a></li>
+      <li><a href="classes.html"><span>Rejstřík&#160;datových&#160;struktur</span></a></li>
+      <li><a href="inherits.html"><span>Hierarchie&#160;tříd</span></a></li>
+      <li><a href="functions.html"><span>Datové&#160;položky</span></a></li>
+    </ul>
+  </div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+$(document).ready(function(){initNavTree('classmc_1_1server__proxies__t.html','');});
+</script>
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>Vše</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Třídy</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Prostory jmen</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Soubory</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Funkce</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Proměnné</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Definice typů</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Výčty</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(8)"><span class="SelectionMark">&#160;</span>Hodnoty výčtu</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(9)"><span class="SelectionMark">&#160;</span>Definice maker</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(10)"><span class="SelectionMark">&#160;</span>Stránky</a></div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div class="header">
+  <div class="summary">
+<a href="#pub-types">Veřejné typy</a> &#124;
+<a href="#pub-methods">Veřejné metody</a> &#124;
+<a href="#pri-types">Privátní typy</a> &#124;
+<a href="#pri-attribs">Privátní atributy</a>  </div>
+  <div class="headertitle">
+<div class="title">Dokumentace šablony třídy mc::server_proxies_t&lt; shared_templ_t, server_proxy_type &gt;</div>  </div>
+</div><!--header-->
+<div class="contents">
+
+<p>Vector of server proxies.  
+ <a href="classmc_1_1server__proxies__t.html#details">...</a></p>
+
+<p><code>#include &lt;<a class="el" href="server-proxies_8h_source.html">server-proxies.h</a>&gt;</code></p>
+<div class="dynheader">
+Diagram dědičnosti pro třídu mc::server_proxies_t&lt; shared_templ_t, server_proxy_type &gt;</div>
+<div class="dyncontent">
+<div class="center"><img src="classmc_1_1server__proxies__t__inherit__graph.png" border="0" usemap="#mc_1_1server__proxies__t_3_01shared__templ__t_00_01server__proxy__type_01_4_inherit__map" alt="Inheritance graph"/></div>
+<map name="mc_1_1server__proxies__t_3_01shared__templ__t_00_01server__proxy__type_01_4_inherit__map" id="mc_1_1server__proxies__t_3_01shared__templ__t_00_01server__proxy__type_01_4_inherit__map">
+</map>
+<center><span class="legend">[<a target="top" href="graph_legend.html">vysvětlivky</a>]</span></center></div>
+<div class="dynheader">
+Diagram tříd pro mc::server_proxies_t&lt; shared_templ_t, server_proxy_type &gt;:</div>
+<div class="dyncontent">
+<div class="center"><img src="classmc_1_1server__proxies__t__coll__graph.png" border="0" usemap="#mc_1_1server__proxies__t_3_01shared__templ__t_00_01server__proxy__type_01_4_coll__map" alt="Collaboration graph"/></div>
+<map name="mc_1_1server__proxies__t_3_01shared__templ__t_00_01server__proxy__type_01_4_coll__map" id="mc_1_1server__proxies__t_3_01shared__templ__t_00_01server__proxy__type_01_4_coll__map">
+<area shape="rect" id="node4" href="classmc_1_1aux_1_1unitialized__array__t.html" title="mc::aux::unitialized\l_array_t\&lt; server_proxy_t \&gt;" alt="" coords="585,55,767,99"/><area shape="rect" id="node6" href="classmc_1_1server__proxy__t.html" title="Memcache server proxy responsible for handling dead servers." alt="" coords="248,17,419,61"/><area shape="rect" id="node8" href="classmc_1_1server__proxy__t_1_1shared__t.html" title="Shared data with other threads/processes." alt="" coords="5,9,152,69"/><area shape="rect" id="node10" href="classmc_1_1aux_1_1unitialized__array__t.html" title="Array of unitialized values." alt="" coords="265,83,401,127"/></map>
+<center><span class="legend">[<a target="top" href="graph_legend.html">vysvětlivky</a>]</span></center></div>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-types"></a>
+Veřejné typy</h2></td></tr>
+<tr class="memitem:a4c0d0d33f2a7a4fe9538a994e9c70c00"><td class="memItemLeft" align="right" valign="top">typedef server_proxy_type&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classmc_1_1server__proxies__t.html#a4c0d0d33f2a7a4fe9538a994e9c70c00">server_proxy_t</a></td></tr>
+<tr class="separator:a4c0d0d33f2a7a4fe9538a994e9c70c00"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aef7eb28e80ffc22d10d905c9d2054155"><td class="memItemLeft" align="right" valign="top">typedef const <a class="el" href="classmc_1_1server__proxies__t.html#a4c0d0d33f2a7a4fe9538a994e9c70c00">server_proxy_t</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classmc_1_1server__proxies__t.html#aef7eb28e80ffc22d10d905c9d2054155">const_iterator</a></td></tr>
+<tr class="separator:aef7eb28e80ffc22d10d905c9d2054155"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9aef94e9cf790731fa1ac2ce3487445b"><td class="memItemLeft" align="right" valign="top">typedef <br class="typebreak"/>
+<a class="el" href="classmc_1_1server__proxy__t.html#a644a520e2ac3c55846d61736d7dcc4cc">server_proxy_t::server_proxy_config_type</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classmc_1_1server__proxies__t.html#a9aef94e9cf790731fa1ac2ce3487445b">server_proxy_config_t</a></td></tr>
+<tr class="separator:a9aef94e9cf790731fa1ac2ce3487445b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
+Veřejné metody</h2></td></tr>
+<tr class="memitem:a14be60430cf17c17a5c9762c7da6368c"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classmc_1_1server__proxies__t.html#a14be60430cf17c17a5c9762c7da6368c">server_proxies_t</a> (const std::vector&lt; std::string &gt; &amp;addresses, const <a class="el" href="classmc_1_1server__proxies__t.html#a9aef94e9cf790731fa1ac2ce3487445b">server_proxy_config_t</a> &amp;cfg=<a class="el" href="classmc_1_1server__proxies__t.html#a9aef94e9cf790731fa1ac2ce3487445b">server_proxy_config_t</a>())</td></tr>
+<tr class="memdesc:a14be60430cf17c17a5c9762c7da6368c"><td class="mdescLeft">&#160;</td><td class="mdescRight">C'tor.  <a href="#a14be60430cf17c17a5c9762c7da6368c">...</a><br/></td></tr>
+<tr class="separator:a14be60430cf17c17a5c9762c7da6368c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:acda09f224ae8cf58dcb8e0aa35b586c8"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classmc_1_1server__proxies__t.html#acda09f224ae8cf58dcb8e0aa35b586c8">~server_proxies_t</a> ()</td></tr>
+<tr class="memdesc:acda09f224ae8cf58dcb8e0aa35b586c8"><td class="mdescLeft">&#160;</td><td class="mdescRight">D'tor.  <a href="#acda09f224ae8cf58dcb8e0aa35b586c8">...</a><br/></td></tr>
+<tr class="separator:acda09f224ae8cf58dcb8e0aa35b586c8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:afa8bf8333550dff60670dd7bbb088062"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classmc_1_1server__proxies__t.html#a4c0d0d33f2a7a4fe9538a994e9c70c00">server_proxy_t</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classmc_1_1server__proxies__t.html#afa8bf8333550dff60670dd7bbb088062">operator[]</a> (std::size_t i)</td></tr>
+<tr class="memdesc:afa8bf8333550dff60670dd7bbb088062"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns server proxy at index i.  <a href="#afa8bf8333550dff60670dd7bbb088062">...</a><br/></td></tr>
+<tr class="separator:afa8bf8333550dff60670dd7bbb088062"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a30c89217bdde7e1562fac0f80a63db0e"><td class="memItemLeft" align="right" valign="top">const <a class="el" href="classmc_1_1server__proxies__t.html#a4c0d0d33f2a7a4fe9538a994e9c70c00">server_proxy_t</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classmc_1_1server__proxies__t.html#a30c89217bdde7e1562fac0f80a63db0e">begin</a> () const </td></tr>
+<tr class="separator:a30c89217bdde7e1562fac0f80a63db0e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a056ac9a6d2fdd51d1366e6d9d387bc10"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classmc_1_1server__proxies__t.html#aef7eb28e80ffc22d10d905c9d2054155">const_iterator</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classmc_1_1server__proxies__t.html#a056ac9a6d2fdd51d1366e6d9d387bc10">end</a> () const </td></tr>
+<tr class="memdesc:a056ac9a6d2fdd51d1366e6d9d387bc10"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns iterator one past last server proxy.  <a href="#a056ac9a6d2fdd51d1366e6d9d387bc10">...</a><br/></td></tr>
+<tr class="separator:a056ac9a6d2fdd51d1366e6d9d387bc10"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-types"></a>
+Privátní typy</h2></td></tr>
+<tr class="memitem:a471a8d1ff2357706d234fbb0a3e6a660"><td class="memItemLeft" align="right" valign="top">typedef <br class="typebreak"/>
+<a class="el" href="classmc_1_1aux_1_1unitialized__array__t.html">aux::unitialized_array_t</a><br class="typebreak"/>
+&lt; <a class="el" href="classmc_1_1server__proxies__t.html#a4c0d0d33f2a7a4fe9538a994e9c70c00">server_proxy_t</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classmc_1_1server__proxies__t.html#a471a8d1ff2357706d234fbb0a3e6a660">proxies_t</a></td></tr>
+<tr class="separator:a471a8d1ff2357706d234fbb0a3e6a660"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5914c3e46cdc97c320cedf64f5928f61"><td class="memItemLeft" align="right" valign="top">typedef shared_templ_t<br class="typebreak"/>
+&lt; typename <br class="typebreak"/>
+<a class="el" href="classmc_1_1server__proxy__t_1_1shared__t.html">server_proxy_t::shared_t</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classmc_1_1server__proxies__t.html#a5914c3e46cdc97c320cedf64f5928f61">shared_array_t</a></td></tr>
+<tr class="separator:a5914c3e46cdc97c320cedf64f5928f61"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-attribs"></a>
+Privátní atributy</h2></td></tr>
+<tr class="memitem:abefad17f9fd8591c3c76b99e06f56843"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classmc_1_1server__proxies__t.html#a5914c3e46cdc97c320cedf64f5928f61">shared_array_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classmc_1_1server__proxies__t.html#abefad17f9fd8591c3c76b99e06f56843">shared</a></td></tr>
+<tr class="memdesc:abefad17f9fd8591c3c76b99e06f56843"><td class="mdescLeft">&#160;</td><td class="mdescRight">shared data for proxies  <a href="#abefad17f9fd8591c3c76b99e06f56843">...</a><br/></td></tr>
+<tr class="separator:abefad17f9fd8591c3c76b99e06f56843"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a79f5b271b499dcc420d313000d769285"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classmc_1_1server__proxies__t.html#a471a8d1ff2357706d234fbb0a3e6a660">proxies_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classmc_1_1server__proxies__t.html#a79f5b271b499dcc420d313000d769285">proxies</a></td></tr>
+<tr class="memdesc:a79f5b271b499dcc420d313000d769285"><td class="mdescLeft">&#160;</td><td class="mdescRight">server proxies vector  <a href="#a79f5b271b499dcc420d313000d769285">...</a><br/></td></tr>
+<tr class="separator:a79f5b271b499dcc420d313000d769285"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a25b57469a6bc35350651003106316a52"><td class="memItemLeft" align="right" valign="top">std::size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classmc_1_1server__proxies__t.html#a25b57469a6bc35350651003106316a52">count</a></td></tr>
+<tr class="memdesc:a25b57469a6bc35350651003106316a52"><td class="mdescLeft">&#160;</td><td class="mdescRight">count of servers  <a href="#a25b57469a6bc35350651003106316a52">...</a><br/></td></tr>
+<tr class="separator:a25b57469a6bc35350651003106316a52"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<a name="details" id="details"></a><h2 class="groupheader">Detailní popis</h2>
+<div class="textblock"><h3>template&lt;template&lt; typename &gt; class shared_templ_t, typename server_proxy_type&gt;<br/>
+class mc::server_proxies_t&lt; shared_templ_t, server_proxy_type &gt;</h3>
+
+<p>Vector of server proxies. </p>
+
+<p>Definice je uvedena na řádku <a class="el" href="server-proxies_8h_source.html#l00140">140</a> v souboru <a class="el" href="server-proxies_8h_source.html">server-proxies.h</a>.</p>
+</div><h2 class="groupheader">Dokumentace k členským typům</h2>
+<a class="anchor" id="aef7eb28e80ffc22d10d905c9d2054155"></a>
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;template&lt; typename &gt; class shared_templ_t, typename server_proxy_type &gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef const <a class="el" href="classmc_1_1server__proxies__t.html#a4c0d0d33f2a7a4fe9538a994e9c70c00">server_proxy_t</a>* <a class="el" href="classmc_1_1server__proxies__t.html">mc::server_proxies_t</a>&lt; shared_templ_t, server_proxy_type &gt;::<a class="el" href="classmc_1_1server__proxies__t.html#aef7eb28e80ffc22d10d905c9d2054155">const_iterator</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Definice je uvedena na řádku <a class="el" href="server-proxies_8h_source.html#l00145">145</a> v souboru <a class="el" href="server-proxies_8h_source.html">server-proxies.h</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a471a8d1ff2357706d234fbb0a3e6a660"></a>
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;template&lt; typename &gt; class shared_templ_t, typename server_proxy_type &gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef <a class="el" href="classmc_1_1aux_1_1unitialized__array__t.html">aux::unitialized_array_t</a>&lt;<a class="el" href="classmc_1_1server__proxies__t.html#a4c0d0d33f2a7a4fe9538a994e9c70c00">server_proxy_t</a>&gt; <a class="el" href="classmc_1_1server__proxies__t.html">mc::server_proxies_t</a>&lt; shared_templ_t, server_proxy_type &gt;::<a class="el" href="classmc_1_1server__proxies__t.html#a471a8d1ff2357706d234fbb0a3e6a660">proxies_t</a></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Definice je uvedena na řádku <a class="el" href="server-proxies_8h_source.html#l00190">190</a> v souboru <a class="el" href="server-proxies_8h_source.html">server-proxies.h</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a9aef94e9cf790731fa1ac2ce3487445b"></a>
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;template&lt; typename &gt; class shared_templ_t, typename server_proxy_type &gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef <a class="el" href="classmc_1_1server__proxy__t.html#a644a520e2ac3c55846d61736d7dcc4cc">server_proxy_t::server_proxy_config_type</a> <a class="el" href="classmc_1_1server__proxies__t.html">mc::server_proxies_t</a>&lt; shared_templ_t, server_proxy_type &gt;::<a class="el" href="classmc_1_1server__proxies__t.html#a9aef94e9cf790731fa1ac2ce3487445b">server_proxy_config_t</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Definice je uvedena na řádku <a class="el" href="server-proxies_8h_source.html#l00148">148</a> v souboru <a class="el" href="server-proxies_8h_source.html">server-proxies.h</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a4c0d0d33f2a7a4fe9538a994e9c70c00"></a>
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;template&lt; typename &gt; class shared_templ_t, typename server_proxy_type &gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef server_proxy_type <a class="el" href="classmc_1_1server__proxies__t.html">mc::server_proxies_t</a>&lt; shared_templ_t, server_proxy_type &gt;::<a class="el" href="classmc_1_1server__proxies__t.html#a4c0d0d33f2a7a4fe9538a994e9c70c00">server_proxy_t</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Definice je uvedena na řádku <a class="el" href="server-proxies_8h_source.html#l00143">143</a> v souboru <a class="el" href="server-proxies_8h_source.html">server-proxies.h</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a5914c3e46cdc97c320cedf64f5928f61"></a>
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;template&lt; typename &gt; class shared_templ_t, typename server_proxy_type &gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef shared_templ_t&lt;typename <a class="el" href="classmc_1_1server__proxy__t_1_1shared__t.html">server_proxy_t::shared_t</a>&gt; <a class="el" href="classmc_1_1server__proxies__t.html">mc::server_proxies_t</a>&lt; shared_templ_t, server_proxy_type &gt;::<a class="el" href="classmc_1_1server__proxies__t.html#a5914c3e46cdc97c320cedf64f5928f61">shared_array_t</a></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Definice je uvedena na řádku <a class="el" href="server-proxies_8h_source.html#l00191">191</a> v souboru <a class="el" href="server-proxies_8h_source.html">server-proxies.h</a>.</p>
+
+</div>
+</div>
+<h2 class="groupheader">Dokumentace konstruktoru a destruktoru</h2>
+<a class="anchor" id="a14be60430cf17c17a5c9762c7da6368c"></a>
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;template&lt; typename &gt; class shared_templ_t, typename server_proxy_type &gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classmc_1_1server__proxies__t.html">mc::server_proxies_t</a>&lt; shared_templ_t, server_proxy_type &gt;::<a class="el" href="classmc_1_1server__proxies__t.html">server_proxies_t</a> </td>
+          <td>(</td>
+          <td class="paramtype">const std::vector&lt; std::string &gt; &amp;&#160;</td>
+          <td class="paramname"><em>addresses</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="classmc_1_1server__proxies__t.html#a9aef94e9cf790731fa1ac2ce3487445b">server_proxy_config_t</a> &amp;&#160;</td>
+          <td class="paramname"><em>cfg</em> = <code><a class="el" href="classmc_1_1server__proxies__t.html#a9aef94e9cf790731fa1ac2ce3487445b">server_proxy_config_t</a>()</code>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>C'tor. </p>
+
+<p>Definice je uvedena na řádku <a class="el" href="server-proxies_8h_source.html#l00152">152</a> v souboru <a class="el" href="server-proxies_8h_source.html">server-proxies.h</a>.</p>
+
+<p>Odkazuje se na <a class="el" href="server-proxies_8h_source.html#l00194">mc::server_proxies_t&lt; shared_templ_t, server_proxy_type &gt;::proxies</a> a <a class="el" href="server-proxies_8h_source.html#l00193">mc::server_proxies_t&lt; shared_templ_t, server_proxy_type &gt;::shared</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="acda09f224ae8cf58dcb8e0aa35b586c8"></a>
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;template&lt; typename &gt; class shared_templ_t, typename server_proxy_type &gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classmc_1_1server__proxies__t.html">mc::server_proxies_t</a>&lt; shared_templ_t, server_proxy_type &gt;::~<a class="el" href="classmc_1_1server__proxies__t.html">server_proxies_t</a> </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>D'tor. </p>
+
+<p>Definice je uvedena na řádku <a class="el" href="server-proxies_8h_source.html#l00171">171</a> v souboru <a class="el" href="server-proxies_8h_source.html">server-proxies.h</a>.</p>
+
+<p>Odkazuje se na <a class="el" href="server-proxies_8h_source.html#l00195">mc::server_proxies_t&lt; shared_templ_t, server_proxy_type &gt;::count</a> a <a class="el" href="server-proxies_8h_source.html#l00194">mc::server_proxies_t&lt; shared_templ_t, server_proxy_type &gt;::proxies</a>.</p>
+
+</div>
+</div>
+<h2 class="groupheader">Dokumentace k metodám</h2>
+<a class="anchor" id="a30c89217bdde7e1562fac0f80a63db0e"></a>
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;template&lt; typename &gt; class shared_templ_t, typename server_proxy_type &gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">const <a class="el" href="classmc_1_1server__proxies__t.html#a4c0d0d33f2a7a4fe9538a994e9c70c00">server_proxy_t</a>* <a class="el" href="classmc_1_1server__proxies__t.html">mc::server_proxies_t</a>&lt; shared_templ_t, server_proxy_type &gt;::begin </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Definice je uvedena na řádku <a class="el" href="server-proxies_8h_source.html#l00182">182</a> v souboru <a class="el" href="server-proxies_8h_source.html">server-proxies.h</a>.</p>
+
+<p>Odkazuje se na <a class="el" href="server-proxies_8h_source.html#l00194">mc::server_proxies_t&lt; shared_templ_t, server_proxy_type &gt;::proxies</a>.</p>
+
+<p>Používá se v <a class="el" href="client_8h_source.html#l00524">mc::client_template_t&lt; pool_t, server_proxies_t, impl &gt;::dump()</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a056ac9a6d2fdd51d1366e6d9d387bc10"></a>
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;template&lt; typename &gt; class shared_templ_t, typename server_proxy_type &gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classmc_1_1server__proxies__t.html#aef7eb28e80ffc22d10d905c9d2054155">const_iterator</a> <a class="el" href="classmc_1_1server__proxies__t.html">mc::server_proxies_t</a>&lt; shared_templ_t, server_proxy_type &gt;::end </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Returns iterator one past last server proxy. </p>
+
+<p>Definice je uvedena na řádku <a class="el" href="server-proxies_8h_source.html#l00186">186</a> v souboru <a class="el" href="server-proxies_8h_source.html">server-proxies.h</a>.</p>
+
+<p>Odkazuje se na <a class="el" href="server-proxies_8h_source.html#l00195">mc::server_proxies_t&lt; shared_templ_t, server_proxy_type &gt;::count</a> a <a class="el" href="server-proxies_8h_source.html#l00194">mc::server_proxies_t&lt; shared_templ_t, server_proxy_type &gt;::proxies</a>.</p>
+
+<p>Používá se v <a class="el" href="client_8h_source.html#l00524">mc::client_template_t&lt; pool_t, server_proxies_t, impl &gt;::dump()</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="afa8bf8333550dff60670dd7bbb088062"></a>
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;template&lt; typename &gt; class shared_templ_t, typename server_proxy_type &gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classmc_1_1server__proxies__t.html#a4c0d0d33f2a7a4fe9538a994e9c70c00">server_proxy_t</a>&amp; <a class="el" href="classmc_1_1server__proxies__t.html">mc::server_proxies_t</a>&lt; shared_templ_t, server_proxy_type &gt;::operator[] </td>
+          <td>(</td>
+          <td class="paramtype">std::size_t&#160;</td>
+          <td class="paramname"><em>i</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Returns server proxy at index i. </p>
+
+<p>Definice je uvedena na řádku <a class="el" href="server-proxies_8h_source.html#l00178">178</a> v souboru <a class="el" href="server-proxies_8h_source.html">server-proxies.h</a>.</p>
+
+<p>Odkazuje se na <a class="el" href="server-proxies_8h_source.html#l00194">mc::server_proxies_t&lt; shared_templ_t, server_proxy_type &gt;::proxies</a>.</p>
+
+</div>
+</div>
+<h2 class="groupheader">Dokumentace k položkám</h2>
+<a class="anchor" id="a25b57469a6bc35350651003106316a52"></a>
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;template&lt; typename &gt; class shared_templ_t, typename server_proxy_type &gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::size_t <a class="el" href="classmc_1_1server__proxies__t.html">mc::server_proxies_t</a>&lt; shared_templ_t, server_proxy_type &gt;::count</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>count of servers </p>
+
+<p>Definice je uvedena na řádku <a class="el" href="server-proxies_8h_source.html#l00195">195</a> v souboru <a class="el" href="server-proxies_8h_source.html">server-proxies.h</a>.</p>
+
+<p>Používá se v <a class="el" href="server-proxies_8h_source.html#l00186">mc::server_proxies_t&lt; shared_templ_t, server_proxy_type &gt;::end()</a> a <a class="el" href="server-proxies_8h_source.html#l00171">mc::server_proxies_t&lt; shared_templ_t, server_proxy_type &gt;::~server_proxies_t()</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a79f5b271b499dcc420d313000d769285"></a>
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;template&lt; typename &gt; class shared_templ_t, typename server_proxy_type &gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classmc_1_1server__proxies__t.html#a471a8d1ff2357706d234fbb0a3e6a660">proxies_t</a> <a class="el" href="classmc_1_1server__proxies__t.html">mc::server_proxies_t</a>&lt; shared_templ_t, server_proxy_type &gt;::proxies</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>server proxies vector </p>
+
+<p>Definice je uvedena na řádku <a class="el" href="server-proxies_8h_source.html#l00194">194</a> v souboru <a class="el" href="server-proxies_8h_source.html">server-proxies.h</a>.</p>
+
+<p>Používá se v <a class="el" href="server-proxies_8h_source.html#l00182">mc::server_proxies_t&lt; shared_templ_t, server_proxy_type &gt;::begin()</a>, <a class="el" href="server-proxies_8h_source.html#l00186">mc::server_proxies_t&lt; shared_templ_t, server_proxy_type &gt;::end()</a>, <a class="el" href="server-proxies_8h_source.html#l00178">mc::server_proxies_t&lt; shared_templ_t, server_proxy_type &gt;::operator[]()</a>, <a class="el" href="server-proxies_8h_source.html#l00152">mc::server_proxies_t&lt; shared_templ_t, server_proxy_type &gt;::server_proxies_t()</a> a <a class="el" href="server-proxies_8h_source.html#l00171">mc::server_proxies_t&lt; shared_templ_t, server_proxy_type &gt;::~server_proxies_t()</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="abefad17f9fd8591c3c76b99e06f56843"></a>
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;template&lt; typename &gt; class shared_templ_t, typename server_proxy_type &gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classmc_1_1server__proxies__t.html#a5914c3e46cdc97c320cedf64f5928f61">shared_array_t</a> <a class="el" href="classmc_1_1server__proxies__t.html">mc::server_proxies_t</a>&lt; shared_templ_t, server_proxy_type &gt;::shared</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>shared data for proxies </p>
+
+<p>Definice je uvedena na řádku <a class="el" href="server-proxies_8h_source.html#l00193">193</a> v souboru <a class="el" href="server-proxies_8h_source.html">server-proxies.h</a>.</p>
+
+<p>Používá se v <a class="el" href="server-proxies_8h_source.html#l00152">mc::server_proxies_t&lt; shared_templ_t, server_proxy_type &gt;::server_proxies_t()</a>.</p>
+
+</div>
+</div>
+<hr/>Dokumentace pro tuto třídu byla generována z následujícího souboru:<ul>
+<li>include/mcache/<a class="el" href="server-proxies_8h_source.html">server-proxies.h</a></li>
+</ul>
+</div><!-- contents -->
+</div><!-- doc-content -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="namespacemc.html">mc</a></li><li class="navelem"><a class="el" href="classmc_1_1server__proxies__t.html">server_proxies_t</a></li>
+    <li class="footer">Generováno út 23. čec 2013 13.13:04 pro projekt libmcache-0.2.1 programem
+    <a href="http://www.doxygen.org/index.html">
+    <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.3.1 </li>
+  </ul>
+</div>
+</body>
+</html>

@@ -1,0 +1,614 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.3.1"/>
+<title>libmcache-0.2.1: Dokumentace třídy mc::proto::txt::api</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript">
+  $(document).ready(initResizable);
+  $(window).load(resizeHeight);
+</script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/search.js"></script>
+<script type="text/javascript">
+  $(document).ready(function() { searchBox.OnSelectItem(0); });
+</script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td style="padding-left: 0.5em;">
+   <div id="projectname">libmcache-0.2.1
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Generováno programem Doxygen 1.8.3.1 -->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "search",false,'Hledat');
+</script>
+  <div id="navrow1" class="tabs">
+    <ul class="tablist">
+      <li><a href="index.html"><span>Hlavní&#160;stránka</span></a></li>
+      <li><a href="namespaces.html"><span>Prostory&#160;jmen</span></a></li>
+      <li class="current"><a href="annotated.html"><span>Třídy</span></a></li>
+      <li><a href="files.html"><span>Soubory</span></a></li>
+      <li>
+        <div id="MSearchBox" class="MSearchBoxInactive">
+        <span class="left">
+          <img id="MSearchSelect" src="search/mag_sel.png"
+               onmouseover="return searchBox.OnSearchSelectShow()"
+               onmouseout="return searchBox.OnSearchSelectHide()"
+               alt=""/>
+          <input type="text" id="MSearchField" value="Hledat" accesskey="S"
+               onfocus="searchBox.OnSearchFieldFocus(true)" 
+               onblur="searchBox.OnSearchFieldFocus(false)" 
+               onkeyup="searchBox.OnSearchFieldChange(event)"/>
+          </span><span class="right">
+            <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><img id="MSearchCloseImg" border="0" src="search/close.png" alt=""/></a>
+          </span>
+        </div>
+      </li>
+    </ul>
+  </div>
+  <div id="navrow2" class="tabs2">
+    <ul class="tablist">
+      <li><a href="annotated.html"><span>Datové&#160;struktury</span></a></li>
+      <li><a href="classes.html"><span>Rejstřík&#160;datových&#160;struktur</span></a></li>
+      <li><a href="inherits.html"><span>Hierarchie&#160;tříd</span></a></li>
+      <li><a href="functions.html"><span>Datové&#160;položky</span></a></li>
+    </ul>
+  </div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+$(document).ready(function(){initNavTree('classmc_1_1proto_1_1txt_1_1api.html','');});
+</script>
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>Vše</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Třídy</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Prostory jmen</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Soubory</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Funkce</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Proměnné</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Definice typů</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Výčty</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(8)"><span class="SelectionMark">&#160;</span>Hodnoty výčtu</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(9)"><span class="SelectionMark">&#160;</span>Definice maker</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(10)"><span class="SelectionMark">&#160;</span>Stránky</a></div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div class="header">
+  <div class="summary">
+<a href="#pub-types">Veřejné typy</a> &#124;
+<a href="#pri-static-attribs">Statické privátní atributy</a>  </div>
+  <div class="headertitle">
+<div class="title">Dokumentace třídy mc::proto::txt::api</div>  </div>
+</div><!--header-->
+<div class="contents">
+
+<p>Used as namespace with class behaviour for protocol api.  
+ <a href="classmc_1_1proto_1_1txt_1_1api.html#details">...</a></p>
+
+<p><code>#include &lt;<a class="el" href="txt_8h_source.html">txt.h</a>&gt;</code></p>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-types"></a>
+Veřejné typy</h2></td></tr>
+<tr class="memitem:af2830f7c40475872792e21160fd955f9"><td class="memItemLeft" align="right" valign="top">typedef <a class="el" href="classmc_1_1proto_1_1txt_1_1name__injector.html">name_injector</a><br class="typebreak"/>
+&lt; <a class="el" href="classmc_1_1proto_1_1txt_1_1retrieve__command__t.html">retrieve_command_t</a>,&amp;<a class="el" href="classmc_1_1proto_1_1txt_1_1api.html#ad18b94e0ffbfa9c4efdb594ce3b6b94c">get_name</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classmc_1_1proto_1_1txt_1_1api.html#af2830f7c40475872792e21160fd955f9">get_t</a></td></tr>
+<tr class="separator:af2830f7c40475872792e21160fd955f9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5559a82186121b9988267e81e234bdec"><td class="memItemLeft" align="right" valign="top">typedef <a class="el" href="classmc_1_1proto_1_1txt_1_1name__injector.html">name_injector</a><br class="typebreak"/>
+&lt; <a class="el" href="classmc_1_1proto_1_1txt_1_1retrieve__command__t.html">retrieve_command_t</a>,&amp;<a class="el" href="classmc_1_1proto_1_1txt_1_1api.html#a237063d690ad2053e6d4333a7ccda8ab">gets_name</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classmc_1_1proto_1_1txt_1_1api.html#a5559a82186121b9988267e81e234bdec">gets_t</a></td></tr>
+<tr class="separator:a5559a82186121b9988267e81e234bdec"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:afa4d8398534b68e7a87bf8c47cfea5f2"><td class="memItemLeft" align="right" valign="top">typedef <a class="el" href="classmc_1_1proto_1_1txt_1_1name__injector.html">name_injector</a><br class="typebreak"/>
+&lt; <a class="el" href="classmc_1_1proto_1_1txt_1_1storage__command__t.html">storage_command_t</a>,&amp;<a class="el" href="classmc_1_1proto_1_1txt_1_1api.html#ac36505b08f77286d140a1a8bbaf24f49">set_name</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classmc_1_1proto_1_1txt_1_1api.html#afa4d8398534b68e7a87bf8c47cfea5f2">set_t</a></td></tr>
+<tr class="separator:afa4d8398534b68e7a87bf8c47cfea5f2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2c5f40ab4e002ca50e92a17d5fbdfcdd"><td class="memItemLeft" align="right" valign="top">typedef <a class="el" href="classmc_1_1proto_1_1txt_1_1name__injector.html">name_injector</a><br class="typebreak"/>
+&lt; <a class="el" href="classmc_1_1proto_1_1txt_1_1storage__command__t.html">storage_command_t</a>,&amp;<a class="el" href="classmc_1_1proto_1_1txt_1_1api.html#aed67aba87921433f5d5c04ce5f7bd014">add_name</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classmc_1_1proto_1_1txt_1_1api.html#a2c5f40ab4e002ca50e92a17d5fbdfcdd">add_t</a></td></tr>
+<tr class="separator:a2c5f40ab4e002ca50e92a17d5fbdfcdd"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2cf07fc6f4237edc24b4f566e86bb0b9"><td class="memItemLeft" align="right" valign="top">typedef <a class="el" href="classmc_1_1proto_1_1txt_1_1name__injector.html">name_injector</a><br class="typebreak"/>
+&lt; <a class="el" href="classmc_1_1proto_1_1txt_1_1storage__command__t.html">storage_command_t</a>,&amp;<a class="el" href="classmc_1_1proto_1_1txt_1_1api.html#ae558f8d7885a045019de305a79b1b438">replace_name</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classmc_1_1proto_1_1txt_1_1api.html#a2cf07fc6f4237edc24b4f566e86bb0b9">replace_t</a></td></tr>
+<tr class="separator:a2cf07fc6f4237edc24b4f566e86bb0b9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a70054755b361096649a2a8a88bad3f9e"><td class="memItemLeft" align="right" valign="top">typedef <a class="el" href="classmc_1_1proto_1_1txt_1_1name__injector.html">name_injector</a><br class="typebreak"/>
+&lt; <a class="el" href="classmc_1_1proto_1_1txt_1_1storage__command__t.html">storage_command_t</a>,&amp;<a class="el" href="classmc_1_1proto_1_1txt_1_1api.html#a6e0fd68cc1cd9aa4043e9942c7568e8a">append_name</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classmc_1_1proto_1_1txt_1_1api.html#a70054755b361096649a2a8a88bad3f9e">append_t</a></td></tr>
+<tr class="separator:a70054755b361096649a2a8a88bad3f9e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5bc7c1115367bc8424cd91d5670040cd"><td class="memItemLeft" align="right" valign="top">typedef <a class="el" href="classmc_1_1proto_1_1txt_1_1name__injector.html">name_injector</a><br class="typebreak"/>
+&lt; <a class="el" href="classmc_1_1proto_1_1txt_1_1storage__command__t.html">storage_command_t</a>,&amp;<a class="el" href="classmc_1_1proto_1_1txt_1_1api.html#aaa57438c872d59b98e82e2c2cdb969bc">prepend_name</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classmc_1_1proto_1_1txt_1_1api.html#a5bc7c1115367bc8424cd91d5670040cd">prepend_t</a></td></tr>
+<tr class="separator:a5bc7c1115367bc8424cd91d5670040cd"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abc43a43c78e0c7bf51c8304e847823d9"><td class="memItemLeft" align="right" valign="top">typedef <a class="el" href="classmc_1_1proto_1_1txt_1_1name__injector.html">name_injector</a><br class="typebreak"/>
+&lt; <a class="el" href="classmc_1_1proto_1_1txt_1_1storage__command__t.html">storage_command_t</a>,&amp;<a class="el" href="classmc_1_1proto_1_1txt_1_1api.html#ab18bfef3acd4e259adbf2b846fde750e">cas_name</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classmc_1_1proto_1_1txt_1_1api.html#abc43a43c78e0c7bf51c8304e847823d9">cas_t</a></td></tr>
+<tr class="separator:abc43a43c78e0c7bf51c8304e847823d9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a54afcb9d171f0dea24a07b5572cfe89b"><td class="memItemLeft" align="right" valign="top">typedef <a class="el" href="classmc_1_1proto_1_1txt_1_1name__injector.html">name_injector</a><br class="typebreak"/>
+&lt; <a class="el" href="classmc_1_1proto_1_1txt_1_1incr__decr__command__t.html">incr_decr_command_t</a>,&amp;<a class="el" href="classmc_1_1proto_1_1txt_1_1api.html#ab20c7cc5d715699c17c9d13be0d3fc47">incr_name</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classmc_1_1proto_1_1txt_1_1api.html#a54afcb9d171f0dea24a07b5572cfe89b">incr_t</a></td></tr>
+<tr class="separator:a54afcb9d171f0dea24a07b5572cfe89b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af7521e43ab581988d19d385dec09d396"><td class="memItemLeft" align="right" valign="top">typedef <a class="el" href="classmc_1_1proto_1_1txt_1_1name__injector.html">name_injector</a><br class="typebreak"/>
+&lt; <a class="el" href="classmc_1_1proto_1_1txt_1_1incr__decr__command__t.html">incr_decr_command_t</a>,&amp;<a class="el" href="classmc_1_1proto_1_1txt_1_1api.html#a5f03753a3003bb19b93fbf2fe2fea607">decr_name</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classmc_1_1proto_1_1txt_1_1api.html#af7521e43ab581988d19d385dec09d396">decr_t</a></td></tr>
+<tr class="separator:af7521e43ab581988d19d385dec09d396"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abea1f011c3f9142603daa2cbb55471dd"><td class="memItemLeft" align="right" valign="top">typedef <a class="el" href="classmc_1_1proto_1_1txt_1_1name__injector.html">name_injector</a><br class="typebreak"/>
+&lt; <a class="el" href="classmc_1_1proto_1_1txt_1_1incr__decr__command__t.html">incr_decr_command_t</a>,&amp;<a class="el" href="classmc_1_1proto_1_1txt_1_1api.html#ad0c23db1c7a21ef68ff340933446a239">touch_name</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classmc_1_1proto_1_1txt_1_1api.html#abea1f011c3f9142603daa2cbb55471dd">touch_t</a></td></tr>
+<tr class="separator:abea1f011c3f9142603daa2cbb55471dd"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab8388a2076b93346d43740dde6098a03"><td class="memItemLeft" align="right" valign="top">typedef <a class="el" href="classmc_1_1proto_1_1txt_1_1delete__command__t.html">delete_command_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classmc_1_1proto_1_1txt_1_1api.html#ab8388a2076b93346d43740dde6098a03">delete_t</a></td></tr>
+<tr class="separator:ab8388a2076b93346d43740dde6098a03"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-static-attribs"></a>
+Statické privátní atributy</h2></td></tr>
+<tr class="memitem:ad18b94e0ffbfa9c4efdb594ce3b6b94c"><td class="memItemLeft" align="right" valign="top">static const char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classmc_1_1proto_1_1txt_1_1api.html#ad18b94e0ffbfa9c4efdb594ce3b6b94c">get_name</a></td></tr>
+<tr class="separator:ad18b94e0ffbfa9c4efdb594ce3b6b94c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a237063d690ad2053e6d4333a7ccda8ab"><td class="memItemLeft" align="right" valign="top">static const char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classmc_1_1proto_1_1txt_1_1api.html#a237063d690ad2053e6d4333a7ccda8ab">gets_name</a></td></tr>
+<tr class="separator:a237063d690ad2053e6d4333a7ccda8ab"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac36505b08f77286d140a1a8bbaf24f49"><td class="memItemLeft" align="right" valign="top">static const char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classmc_1_1proto_1_1txt_1_1api.html#ac36505b08f77286d140a1a8bbaf24f49">set_name</a></td></tr>
+<tr class="separator:ac36505b08f77286d140a1a8bbaf24f49"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aed67aba87921433f5d5c04ce5f7bd014"><td class="memItemLeft" align="right" valign="top">static const char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classmc_1_1proto_1_1txt_1_1api.html#aed67aba87921433f5d5c04ce5f7bd014">add_name</a></td></tr>
+<tr class="separator:aed67aba87921433f5d5c04ce5f7bd014"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae558f8d7885a045019de305a79b1b438"><td class="memItemLeft" align="right" valign="top">static const char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classmc_1_1proto_1_1txt_1_1api.html#ae558f8d7885a045019de305a79b1b438">replace_name</a></td></tr>
+<tr class="separator:ae558f8d7885a045019de305a79b1b438"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6e0fd68cc1cd9aa4043e9942c7568e8a"><td class="memItemLeft" align="right" valign="top">static const char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classmc_1_1proto_1_1txt_1_1api.html#a6e0fd68cc1cd9aa4043e9942c7568e8a">append_name</a></td></tr>
+<tr class="separator:a6e0fd68cc1cd9aa4043e9942c7568e8a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aaa57438c872d59b98e82e2c2cdb969bc"><td class="memItemLeft" align="right" valign="top">static const char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classmc_1_1proto_1_1txt_1_1api.html#aaa57438c872d59b98e82e2c2cdb969bc">prepend_name</a></td></tr>
+<tr class="separator:aaa57438c872d59b98e82e2c2cdb969bc"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab18bfef3acd4e259adbf2b846fde750e"><td class="memItemLeft" align="right" valign="top">static const char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classmc_1_1proto_1_1txt_1_1api.html#ab18bfef3acd4e259adbf2b846fde750e">cas_name</a></td></tr>
+<tr class="separator:ab18bfef3acd4e259adbf2b846fde750e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab20c7cc5d715699c17c9d13be0d3fc47"><td class="memItemLeft" align="right" valign="top">static const char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classmc_1_1proto_1_1txt_1_1api.html#ab20c7cc5d715699c17c9d13be0d3fc47">incr_name</a></td></tr>
+<tr class="separator:ab20c7cc5d715699c17c9d13be0d3fc47"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5f03753a3003bb19b93fbf2fe2fea607"><td class="memItemLeft" align="right" valign="top">static const char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classmc_1_1proto_1_1txt_1_1api.html#a5f03753a3003bb19b93fbf2fe2fea607">decr_name</a></td></tr>
+<tr class="separator:a5f03753a3003bb19b93fbf2fe2fea607"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad0c23db1c7a21ef68ff340933446a239"><td class="memItemLeft" align="right" valign="top">static const char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classmc_1_1proto_1_1txt_1_1api.html#ad0c23db1c7a21ef68ff340933446a239">touch_name</a></td></tr>
+<tr class="separator:ad0c23db1c7a21ef68ff340933446a239"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<a name="details" id="details"></a><h2 class="groupheader">Detailní popis</h2>
+<div class="textblock"><p>Used as namespace with class behaviour for protocol api. </p>
+
+<p>Definice je uvedena na řádku <a class="el" href="txt_8h_source.html#l00186">186</a> v souboru <a class="el" href="txt_8h_source.html">txt.h</a>.</p>
+</div><h2 class="groupheader">Dokumentace k členským typům</h2>
+<a class="anchor" id="a2c5f40ab4e002ca50e92a17d5fbdfcdd"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef <a class="el" href="classmc_1_1proto_1_1txt_1_1name__injector.html">name_injector</a>&lt;<a class="el" href="classmc_1_1proto_1_1txt_1_1storage__command__t.html">storage_command_t</a>, &amp;<a class="el" href="classmc_1_1proto_1_1txt_1_1api.html#aed67aba87921433f5d5c04ce5f7bd014">add_name</a>&gt; <a class="el" href="classmc_1_1proto_1_1txt_1_1api.html#a2c5f40ab4e002ca50e92a17d5fbdfcdd">mc::proto::txt::api::add_t</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Definice je uvedena na řádku <a class="el" href="txt_8h_source.html#l00206">206</a> v souboru <a class="el" href="txt_8h_source.html">txt.h</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a70054755b361096649a2a8a88bad3f9e"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef <a class="el" href="classmc_1_1proto_1_1txt_1_1name__injector.html">name_injector</a>&lt;<a class="el" href="classmc_1_1proto_1_1txt_1_1storage__command__t.html">storage_command_t</a>, &amp;<a class="el" href="classmc_1_1proto_1_1txt_1_1api.html#a6e0fd68cc1cd9aa4043e9942c7568e8a">append_name</a>&gt; <a class="el" href="classmc_1_1proto_1_1txt_1_1api.html#a70054755b361096649a2a8a88bad3f9e">mc::proto::txt::api::append_t</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Definice je uvedena na řádku <a class="el" href="txt_8h_source.html#l00208">208</a> v souboru <a class="el" href="txt_8h_source.html">txt.h</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="abc43a43c78e0c7bf51c8304e847823d9"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef <a class="el" href="classmc_1_1proto_1_1txt_1_1name__injector.html">name_injector</a>&lt;<a class="el" href="classmc_1_1proto_1_1txt_1_1storage__command__t.html">storage_command_t</a>, &amp;<a class="el" href="classmc_1_1proto_1_1txt_1_1api.html#ab18bfef3acd4e259adbf2b846fde750e">cas_name</a>&gt; <a class="el" href="classmc_1_1proto_1_1txt_1_1api.html#abc43a43c78e0c7bf51c8304e847823d9">mc::proto::txt::api::cas_t</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Definice je uvedena na řádku <a class="el" href="txt_8h_source.html#l00210">210</a> v souboru <a class="el" href="txt_8h_source.html">txt.h</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="af7521e43ab581988d19d385dec09d396"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef <a class="el" href="classmc_1_1proto_1_1txt_1_1name__injector.html">name_injector</a>&lt;<a class="el" href="classmc_1_1proto_1_1txt_1_1incr__decr__command__t.html">incr_decr_command_t</a>, &amp;<a class="el" href="classmc_1_1proto_1_1txt_1_1api.html#a5f03753a3003bb19b93fbf2fe2fea607">decr_name</a>&gt; <a class="el" href="classmc_1_1proto_1_1txt_1_1api.html#af7521e43ab581988d19d385dec09d396">mc::proto::txt::api::decr_t</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Definice je uvedena na řádku <a class="el" href="txt_8h_source.html#l00212">212</a> v souboru <a class="el" href="txt_8h_source.html">txt.h</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="ab8388a2076b93346d43740dde6098a03"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef <a class="el" href="classmc_1_1proto_1_1txt_1_1delete__command__t.html">delete_command_t</a> <a class="el" href="classmc_1_1proto_1_1txt_1_1api.html#ab8388a2076b93346d43740dde6098a03">mc::proto::txt::api::delete_t</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Definice je uvedena na řádku <a class="el" href="txt_8h_source.html#l00214">214</a> v souboru <a class="el" href="txt_8h_source.html">txt.h</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="af2830f7c40475872792e21160fd955f9"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef <a class="el" href="classmc_1_1proto_1_1txt_1_1name__injector.html">name_injector</a>&lt;<a class="el" href="classmc_1_1proto_1_1txt_1_1retrieve__command__t.html">retrieve_command_t</a>, &amp;<a class="el" href="classmc_1_1proto_1_1txt_1_1api.html#ad18b94e0ffbfa9c4efdb594ce3b6b94c">get_name</a>&gt; <a class="el" href="classmc_1_1proto_1_1txt_1_1api.html#af2830f7c40475872792e21160fd955f9">mc::proto::txt::api::get_t</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Definice je uvedena na řádku <a class="el" href="txt_8h_source.html#l00203">203</a> v souboru <a class="el" href="txt_8h_source.html">txt.h</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a5559a82186121b9988267e81e234bdec"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef <a class="el" href="classmc_1_1proto_1_1txt_1_1name__injector.html">name_injector</a>&lt;<a class="el" href="classmc_1_1proto_1_1txt_1_1retrieve__command__t.html">retrieve_command_t</a>, &amp;<a class="el" href="classmc_1_1proto_1_1txt_1_1api.html#a237063d690ad2053e6d4333a7ccda8ab">gets_name</a>&gt; <a class="el" href="classmc_1_1proto_1_1txt_1_1api.html#a5559a82186121b9988267e81e234bdec">mc::proto::txt::api::gets_t</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Definice je uvedena na řádku <a class="el" href="txt_8h_source.html#l00204">204</a> v souboru <a class="el" href="txt_8h_source.html">txt.h</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a54afcb9d171f0dea24a07b5572cfe89b"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef <a class="el" href="classmc_1_1proto_1_1txt_1_1name__injector.html">name_injector</a>&lt;<a class="el" href="classmc_1_1proto_1_1txt_1_1incr__decr__command__t.html">incr_decr_command_t</a>, &amp;<a class="el" href="classmc_1_1proto_1_1txt_1_1api.html#ab20c7cc5d715699c17c9d13be0d3fc47">incr_name</a>&gt; <a class="el" href="classmc_1_1proto_1_1txt_1_1api.html#a54afcb9d171f0dea24a07b5572cfe89b">mc::proto::txt::api::incr_t</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Definice je uvedena na řádku <a class="el" href="txt_8h_source.html#l00211">211</a> v souboru <a class="el" href="txt_8h_source.html">txt.h</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a5bc7c1115367bc8424cd91d5670040cd"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef <a class="el" href="classmc_1_1proto_1_1txt_1_1name__injector.html">name_injector</a>&lt;<a class="el" href="classmc_1_1proto_1_1txt_1_1storage__command__t.html">storage_command_t</a>, &amp;<a class="el" href="classmc_1_1proto_1_1txt_1_1api.html#aaa57438c872d59b98e82e2c2cdb969bc">prepend_name</a>&gt; <a class="el" href="classmc_1_1proto_1_1txt_1_1api.html#a5bc7c1115367bc8424cd91d5670040cd">mc::proto::txt::api::prepend_t</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Definice je uvedena na řádku <a class="el" href="txt_8h_source.html#l00209">209</a> v souboru <a class="el" href="txt_8h_source.html">txt.h</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a2cf07fc6f4237edc24b4f566e86bb0b9"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef <a class="el" href="classmc_1_1proto_1_1txt_1_1name__injector.html">name_injector</a>&lt;<a class="el" href="classmc_1_1proto_1_1txt_1_1storage__command__t.html">storage_command_t</a>, &amp;<a class="el" href="classmc_1_1proto_1_1txt_1_1api.html#ae558f8d7885a045019de305a79b1b438">replace_name</a>&gt; <a class="el" href="classmc_1_1proto_1_1txt_1_1api.html#a2cf07fc6f4237edc24b4f566e86bb0b9">mc::proto::txt::api::replace_t</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Definice je uvedena na řádku <a class="el" href="txt_8h_source.html#l00207">207</a> v souboru <a class="el" href="txt_8h_source.html">txt.h</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="afa4d8398534b68e7a87bf8c47cfea5f2"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef <a class="el" href="classmc_1_1proto_1_1txt_1_1name__injector.html">name_injector</a>&lt;<a class="el" href="classmc_1_1proto_1_1txt_1_1storage__command__t.html">storage_command_t</a>, &amp;<a class="el" href="classmc_1_1proto_1_1txt_1_1api.html#ac36505b08f77286d140a1a8bbaf24f49">set_name</a>&gt; <a class="el" href="classmc_1_1proto_1_1txt_1_1api.html#afa4d8398534b68e7a87bf8c47cfea5f2">mc::proto::txt::api::set_t</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Definice je uvedena na řádku <a class="el" href="txt_8h_source.html#l00205">205</a> v souboru <a class="el" href="txt_8h_source.html">txt.h</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="abea1f011c3f9142603daa2cbb55471dd"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef <a class="el" href="classmc_1_1proto_1_1txt_1_1name__injector.html">name_injector</a>&lt;<a class="el" href="classmc_1_1proto_1_1txt_1_1incr__decr__command__t.html">incr_decr_command_t</a>, &amp;<a class="el" href="classmc_1_1proto_1_1txt_1_1api.html#ad0c23db1c7a21ef68ff340933446a239">touch_name</a>&gt; <a class="el" href="classmc_1_1proto_1_1txt_1_1api.html#abea1f011c3f9142603daa2cbb55471dd">mc::proto::txt::api::touch_t</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Definice je uvedena na řádku <a class="el" href="txt_8h_source.html#l00213">213</a> v souboru <a class="el" href="txt_8h_source.html">txt.h</a>.</p>
+
+</div>
+</div>
+<h2 class="groupheader">Dokumentace k položkám</h2>
+<a class="anchor" id="aed67aba87921433f5d5c04ce5f7bd014"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">const char * mc::proto::txt::api::add_name</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Definice je uvedena na řádku <a class="el" href="txt_8h_source.html#l00192">192</a> v souboru <a class="el" href="txt_8h_source.html">txt.h</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a6e0fd68cc1cd9aa4043e9942c7568e8a"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">const char * mc::proto::txt::api::append_name</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Definice je uvedena na řádku <a class="el" href="txt_8h_source.html#l00194">194</a> v souboru <a class="el" href="txt_8h_source.html">txt.h</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="ab18bfef3acd4e259adbf2b846fde750e"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">const char * mc::proto::txt::api::cas_name</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Definice je uvedena na řádku <a class="el" href="txt_8h_source.html#l00196">196</a> v souboru <a class="el" href="txt_8h_source.html">txt.h</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a5f03753a3003bb19b93fbf2fe2fea607"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">const char * mc::proto::txt::api::decr_name</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Definice je uvedena na řádku <a class="el" href="txt_8h_source.html#l00198">198</a> v souboru <a class="el" href="txt_8h_source.html">txt.h</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="ad18b94e0ffbfa9c4efdb594ce3b6b94c"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">const char * mc::proto::txt::api::get_name</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Definice je uvedena na řádku <a class="el" href="txt_8h_source.html#l00189">189</a> v souboru <a class="el" href="txt_8h_source.html">txt.h</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a237063d690ad2053e6d4333a7ccda8ab"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">const char * mc::proto::txt::api::gets_name</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Definice je uvedena na řádku <a class="el" href="txt_8h_source.html#l00190">190</a> v souboru <a class="el" href="txt_8h_source.html">txt.h</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="ab20c7cc5d715699c17c9d13be0d3fc47"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">const char * mc::proto::txt::api::incr_name</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Definice je uvedena na řádku <a class="el" href="txt_8h_source.html#l00197">197</a> v souboru <a class="el" href="txt_8h_source.html">txt.h</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="aaa57438c872d59b98e82e2c2cdb969bc"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">const char * mc::proto::txt::api::prepend_name</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Definice je uvedena na řádku <a class="el" href="txt_8h_source.html#l00195">195</a> v souboru <a class="el" href="txt_8h_source.html">txt.h</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="ae558f8d7885a045019de305a79b1b438"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">const char * mc::proto::txt::api::replace_name</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Definice je uvedena na řádku <a class="el" href="txt_8h_source.html#l00193">193</a> v souboru <a class="el" href="txt_8h_source.html">txt.h</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="ac36505b08f77286d140a1a8bbaf24f49"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">const char * mc::proto::txt::api::set_name</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Definice je uvedena na řádku <a class="el" href="txt_8h_source.html#l00191">191</a> v souboru <a class="el" href="txt_8h_source.html">txt.h</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="ad0c23db1c7a21ef68ff340933446a239"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">const char * mc::proto::txt::api::touch_name</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Definice je uvedena na řádku <a class="el" href="txt_8h_source.html#l00199">199</a> v souboru <a class="el" href="txt_8h_source.html">txt.h</a>.</p>
+
+</div>
+</div>
+<hr/>Dokumentace pro tuto třídu byla generována z následujících souborů:<ul>
+<li>include/mcache/proto/<a class="el" href="txt_8h_source.html">txt.h</a></li>
+<li>src/proto/<a class="el" href="txt_8cc_source.html">txt.cc</a></li>
+</ul>
+</div><!-- contents -->
+</div><!-- doc-content -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="namespacemc.html">mc</a></li><li class="navelem"><a class="el" href="namespacemc_1_1proto.html">proto</a></li><li class="navelem"><a class="el" href="namespacemc_1_1proto_1_1txt.html">txt</a></li><li class="navelem"><a class="el" href="classmc_1_1proto_1_1txt_1_1api.html">api</a></li>
+    <li class="footer">Generováno út 23. čec 2013 13.13:04 pro projekt libmcache-0.2.1 programem
+    <a href="http://www.doxygen.org/index.html">
+    <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.3.1 </li>
+  </ul>
+</div>
+</body>
+</html>

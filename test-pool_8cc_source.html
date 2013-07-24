@@ -1,0 +1,280 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.3.1"/>
+<title>libmcache-0.2.1: Zdrojový soubor src/pool/test-pool.cc</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript">
+  $(document).ready(initResizable);
+  $(window).load(resizeHeight);
+</script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/search.js"></script>
+<script type="text/javascript">
+  $(document).ready(function() { searchBox.OnSelectItem(0); });
+</script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td style="padding-left: 0.5em;">
+   <div id="projectname">libmcache-0.2.1
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Generováno programem Doxygen 1.8.3.1 -->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "search",false,'Hledat');
+</script>
+  <div id="navrow1" class="tabs">
+    <ul class="tablist">
+      <li><a href="index.html"><span>Hlavní&#160;stránka</span></a></li>
+      <li><a href="namespaces.html"><span>Prostory&#160;jmen</span></a></li>
+      <li><a href="annotated.html"><span>Třídy</span></a></li>
+      <li class="current"><a href="files.html"><span>Soubory</span></a></li>
+      <li>
+        <div id="MSearchBox" class="MSearchBoxInactive">
+        <span class="left">
+          <img id="MSearchSelect" src="search/mag_sel.png"
+               onmouseover="return searchBox.OnSearchSelectShow()"
+               onmouseout="return searchBox.OnSearchSelectHide()"
+               alt=""/>
+          <input type="text" id="MSearchField" value="Hledat" accesskey="S"
+               onfocus="searchBox.OnSearchFieldFocus(true)" 
+               onblur="searchBox.OnSearchFieldFocus(false)" 
+               onkeyup="searchBox.OnSearchFieldChange(event)"/>
+          </span><span class="right">
+            <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><img id="MSearchCloseImg" border="0" src="search/close.png" alt=""/></a>
+          </span>
+        </div>
+      </li>
+    </ul>
+  </div>
+  <div id="navrow2" class="tabs2">
+    <ul class="tablist">
+      <li><a href="files.html"><span>Seznam&#160;souborů</span></a></li>
+      <li><a href="globals.html"><span>Globální&#160;symboly</span></a></li>
+    </ul>
+  </div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+$(document).ready(function(){initNavTree('test-pool_8cc_source.html','');});
+</script>
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>Vše</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Třídy</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Prostory jmen</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Soubory</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Funkce</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Proměnné</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Definice typů</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Výčty</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(8)"><span class="SelectionMark">&#160;</span>Hodnoty výčtu</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(9)"><span class="SelectionMark">&#160;</span>Definice maker</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(10)"><span class="SelectionMark">&#160;</span>Stránky</a></div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div class="header">
+  <div class="headertitle">
+<div class="title">test-pool.cc</div>  </div>
+</div><!--header-->
+<div class="contents">
+<a href="test-pool_8cc.html">Zobrazit dokumentaci tohoto souboru.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="comment">/*</span></div>
+<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="comment"> * FILE             $Id: $</span></div>
+<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="comment"> *</span></div>
+<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="comment"> * DESCRIPTION      Test program for libmcache: pool tests.</span></div>
+<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="comment"> *</span></div>
+<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="comment"> * PROJECT          Seznam memcache client.</span></div>
+<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="comment"> *</span></div>
+<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="comment"> * LICENSE          See COPYING</span></div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="comment"> *</span></div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="comment"> * AUTHOR           Michal Bukovsky &lt;michal.bukovsky@firma.seznam.cz&gt;</span></div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="comment"> *</span></div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="comment"> * Copyright (C) Seznam.cz a.s. 2012</span></div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;<span class="comment"> * All Rights Reserved</span></div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;<span class="comment"> *</span></div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;<span class="comment"> * HISTORY</span></div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;<span class="comment"> *       2012-09-19 (bukovsky)</span></div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;<span class="comment"> *                  First draft.</span></div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;<span class="comment"> */</span></div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;</div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;<span class="preprocessor">#include &lt;ctime&gt;</span></div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;<span class="preprocessor">#include &lt;cstdlib&gt;</span></div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;<span class="preprocessor">#include &lt;iostream&gt;</span></div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;<span class="preprocessor">#include &lt;algorithm&gt;</span></div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;<span class="preprocessor">#include &lt;boost/lambda/lambda.hpp&gt;</span></div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;<span class="preprocessor">#include &lt;boost/lambda/if.hpp&gt;</span></div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;<span class="preprocessor">#include &lt;cxxabi.h&gt;</span></div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;</div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="init_8h.html">mcache/init.h</a>&gt;</span></div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="include_2mcache_2error_8h.html">mcache/error.h</a>&gt;</span></div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="consistent-hashing_8h.html">mcache/pool/consistent-hashing.h</a>&gt;</span></div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="mod_8h.html">mcache/pool/mod.h</a>&gt;</span></div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="hash_8h.html">mcache/hash.h</a>&gt;</span></div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;</div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;<span class="keyword">namespace </span>test {</div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;</div>
+<div class="line"><a name="l00036"></a><span class="lineno"><a class="code" href="classtest_1_1fake__t.html">   36</a></span>&#160;<span class="keyword">class </span><a class="code" href="classtest_1_1fake__t.html">fake_t</a> {</div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;<span class="keyword">public</span>:</div>
+<div class="line"><a name="l00038"></a><span class="lineno"><a class="code" href="classtest_1_1fake__t.html#a6efe80d1f730a358b646ccc4cff366b4">   38</a></span>&#160;    uint32_t <a class="code" href="classtest_1_1fake__t.html#a6efe80d1f730a358b646ccc4cff366b4">operator()</a>(<span class="keyword">const</span> std::string &amp;str, uint32_t seed = 0)<span class="keyword"> const </span>{</div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;        <span class="keywordflow">if</span> (str == <span class="stringliteral">&quot;server1:11211&quot;</span>) <span class="keywordflow">return</span> seed + 1000;</div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;        <span class="keywordflow">if</span> (str == <span class="stringliteral">&quot;server2:11211&quot;</span>) <span class="keywordflow">return</span> seed + 10000;</div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;        <span class="keywordflow">if</span> (str == <span class="stringliteral">&quot;server3:11211&quot;</span>) <span class="keywordflow">return</span> seed + 100000;</div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;        <span class="keywordflow">if</span> (str == <span class="stringliteral">&quot;a&quot;</span>) <span class="keywordflow">return</span> 333;</div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;        <span class="keywordflow">if</span> (str == <span class="stringliteral">&quot;b&quot;</span>) <span class="keywordflow">return</span> 3333;</div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;        <span class="keywordflow">if</span> (str == <span class="stringliteral">&quot;c&quot;</span>) <span class="keywordflow">return</span> 33333;</div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;        <span class="keywordflow">throw</span> std::runtime_error(<span class="stringliteral">&quot;invalid key&quot;</span>);</div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;    }</div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;};</div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;</div>
+<div class="line"><a name="l00049"></a><span class="lineno"><a class="code" href="namespacetest.html#a49dbe426f011ad54ab1566a608f465e5">   49</a></span>&#160;<span class="keyword">typedef</span> <a class="code" href="classmc_1_1mod__pool__t.html" title="Pool that using mod without key traveling.">mc::mod_pool_t&lt;mc::murmur3_t&gt;</a> <a class="code" href="namespacetest.html#a49dbe426f011ad54ab1566a608f465e5">mod_pool_t</a>;</div>
+<div class="line"><a name="l00050"></a><span class="lineno"><a class="code" href="namespacetest.html#abf2d219e5f9aa2fdc9a39a7afecbc178">   50</a></span>&#160;<span class="keyword">typedef</span> <a class="code" href="classmc_1_1consistent__hashing__pool__t.html">mc::consistent_hashing_pool_t&lt;mc::murmur3_t&gt;</a> <a class="code" href="namespacetest.html#abf2d219e5f9aa2fdc9a39a7afecbc178">consistent_hashing_pool_t</a>;</div>
+<div class="line"><a name="l00051"></a><span class="lineno"><a class="code" href="namespacetest.html#ae0bc431dbf43bf5a4d884bad43f79d23">   51</a></span>&#160;<span class="keyword">typedef</span> <a class="code" href="classmc_1_1consistent__hashing__pool__t.html" title="Ketama implementation of consistent hashing.">mc::consistent_hashing_pool_t&lt;fake_t&gt;</a> <a class="code" href="namespacetest.html#ae0bc431dbf43bf5a4d884bad43f79d23">fake_consistent_hashing_pool_t</a>;</div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;</div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;<span class="keyword">template</span> &lt;<span class="keyword">typename</span> pool_t&gt;</div>
+<div class="line"><a name="l00054"></a><span class="lineno"><a class="code" href="namespacetest.html#a37487e9b09de4c0cfddd287e4915ced9">   54</a></span>&#160;<span class="keywordtype">bool</span> <a class="code" href="namespacetest.html#a37487e9b09de4c0cfddd287e4915ced9">throws_if_empty_addresses</a>() {</div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;    std::cout &lt;&lt; __PRETTY_FUNCTION__ &lt;&lt; <span class="stringliteral">&quot;: &quot;</span>;</div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;    std::vector&lt;std::string&gt; servers;</div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;    <span class="keywordflow">try</span> {</div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;        <span class="comment">// check whether empty pool throws</span></div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;        <a class="code" href="namespacemc_1_1thread.html#a760eb464891e853d75def7d8f1de7333">pool_t</a> p(servers);</div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;    } <span class="keywordflow">catch</span> (<span class="keyword">const</span> std::out_of_range &amp;) { <span class="keywordflow">return</span> <span class="keyword">true</span>;}</div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;    <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;}</div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;</div>
+<div class="line"><a name="l00064"></a><span class="lineno"><a class="code" href="namespacetest.html#a565a4d91f5b2d814da59459d68ee81f6">   64</a></span>&#160;<span class="keywordtype">bool</span> <a class="code" href="namespacetest.html#a565a4d91f5b2d814da59459d68ee81f6">mod_pool_iteration</a>() {</div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;    std::cout &lt;&lt; __PRETTY_FUNCTION__ &lt;&lt; <span class="stringliteral">&quot;: &quot;</span>;</div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;    std::vector&lt;std::string&gt; servers;</div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;    servers.push_back(<span class="stringliteral">&quot;server1:11211&quot;</span>);</div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;    servers.push_back(<span class="stringliteral">&quot;server2:11211&quot;</span>);</div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;    servers.push_back(<span class="stringliteral">&quot;server3:11211&quot;</span>);</div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;    <a class="code" href="classmc_1_1mod__pool__t.html" title="Pool that using mod without key traveling.">mod_pool_t</a> pool(servers);</div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;    <span class="comment">// checks whether choose() doesn&#39;t return end and if ++ operator returns end</span></div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;    <span class="keywordflow">return</span> pool.<a class="code" href="classmc_1_1mod__pool__t.html#aa8239cc90c6d06572f86fc4ff3906e73">choose</a>(<span class="stringliteral">&quot;b&quot;</span>) != pool.<a class="code" href="classmc_1_1mod__pool__t.html#ac02b8a6744d894af72ca78f5e28fb352" title="Returns iterator one past last entry.">end</a>() &amp;&amp; ++pool.<a class="code" href="classmc_1_1mod__pool__t.html#aa8239cc90c6d06572f86fc4ff3906e73">choose</a>(<span class="stringliteral">&quot;b&quot;</span>) == pool.<a class="code" href="classmc_1_1mod__pool__t.html#ac02b8a6744d894af72ca78f5e28fb352" title="Returns iterator one past last entry.">end</a>();</div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;}</div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;</div>
+<div class="line"><a name="l00075"></a><span class="lineno"><a class="code" href="namespacetest.html#a1dfd5bd942575ef402ece983d9d4510b">   75</a></span>&#160;<span class="keywordtype">bool</span> <a class="code" href="namespacetest.html#a1dfd5bd942575ef402ece983d9d4510b">consistent_hashing_pool_iteration</a>() {</div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;    std::cout &lt;&lt; __PRETTY_FUNCTION__ &lt;&lt; <span class="stringliteral">&quot;: &quot;</span>;</div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;    <span class="keyword">using</span> boost::lambda::_1;</div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;    <span class="keyword">using</span> boost::lambda::var;</div>
+<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;    <span class="keyword">using</span> boost::lambda::if_then;</div>
+<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;    <a class="code" href="classmc_1_1consistent__hashing__pool__config__t.html" title="Configuration for consistent hashing pool.">mc::consistent_hashing_pool_config_t</a> cfg;</div>
+<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;    cfg.<a class="code" href="classmc_1_1consistent__hashing__pool__config__t.html#a7261a4e01f97e8f7176b3766bfa43940" title="count of virtual nodes in ring">virtual_nodes</a> = 20;</div>
+<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;    std::vector&lt;std::string&gt; servers;</div>
+<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;    servers.push_back(<span class="stringliteral">&quot;server1:11211&quot;</span>);</div>
+<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;    servers.push_back(<span class="stringliteral">&quot;server2:11211&quot;</span>);</div>
+<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;    servers.push_back(<span class="stringliteral">&quot;server3:11211&quot;</span>);</div>
+<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;    <a class="code" href="classtest_1_1consistent__hashing__pool__t.html">consistent_hashing_pool_t</a> pool(servers, cfg);</div>
+<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;    <span class="comment">// checks if we go through all ring nodes then pool throws</span></div>
+<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;    std::size_t cnt = 0;</div>
+<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;    std::size_t cnt1 = 0;</div>
+<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;    std::size_t cnt2 = 0;</div>
+<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;    std::size_t cnt3 = 0;</div>
+<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;    <span class="comment">// checks whether servers distribution over the ring</span></div>
+<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;    <span class="comment">// and whether we const_iterator walks through all nodes double times</span></div>
+<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;    std::for_each(pool.<a class="code" href="classmc_1_1consistent__hashing__pool__t.html#ab9a39105a8f77389e8eb33d5caab9cac">begin</a>(), pool.<a class="code" href="classmc_1_1consistent__hashing__pool__t.html#a9c9f6abec331d7aeeb5a6e6d24d6122c" title="Returns iterator one past last entry in namespace ring.">end</a>(), ++var(cnt));</div>
+<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;    <span class="comment">// checks whether distribution ring contains node with zero index 40x</span></div>
+<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;    std::for_each(pool.<a class="code" href="classmc_1_1consistent__hashing__pool__t.html#ab9a39105a8f77389e8eb33d5caab9cac">begin</a>(), pool.<a class="code" href="classmc_1_1consistent__hashing__pool__t.html#a9c9f6abec331d7aeeb5a6e6d24d6122c" title="Returns iterator one past last entry in namespace ring.">end</a>(), if_then(_1 == 0, ++var(cnt1)));</div>
+<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;    <span class="comment">// dtto</span></div>
+<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;    std::for_each(pool.<a class="code" href="classmc_1_1consistent__hashing__pool__t.html#ab9a39105a8f77389e8eb33d5caab9cac">begin</a>(), pool.<a class="code" href="classmc_1_1consistent__hashing__pool__t.html#a9c9f6abec331d7aeeb5a6e6d24d6122c" title="Returns iterator one past last entry in namespace ring.">end</a>(), if_then(_1 == 1, ++var(cnt2)));</div>
+<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;    <span class="comment">// dtto</span></div>
+<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;    std::for_each(pool.<a class="code" href="classmc_1_1consistent__hashing__pool__t.html#ab9a39105a8f77389e8eb33d5caab9cac">begin</a>(), pool.<a class="code" href="classmc_1_1consistent__hashing__pool__t.html#a9c9f6abec331d7aeeb5a6e6d24d6122c" title="Returns iterator one past last entry in namespace ring.">end</a>(), if_then(_1 == 2, ++var(cnt3)));</div>
+<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;    <span class="keywordflow">return</span> (cnt == 120) &amp;&amp; (cnt1 == 40) &amp;&amp; (cnt2 == 40) &amp;&amp; (cnt3 == 40);</div>
+<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;}</div>
+<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;</div>
+<div class="line"><a name="l00104"></a><span class="lineno"><a class="code" href="namespacetest.html#ab17d041ba1cc6a058cfee7427c0dfd17">  104</a></span>&#160;<span class="keywordtype">bool</span> <a class="code" href="namespacetest.html#ab17d041ba1cc6a058cfee7427c0dfd17">consistent_hashing_pool_distribution</a>() {</div>
+<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;    std::cout &lt;&lt; __PRETTY_FUNCTION__ &lt;&lt; <span class="stringliteral">&quot;: &quot;</span>;</div>
+<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;    <a class="code" href="classmc_1_1consistent__hashing__pool__config__t.html" title="Configuration for consistent hashing pool.">mc::consistent_hashing_pool_config_t</a> cfg;</div>
+<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;    cfg.<a class="code" href="classmc_1_1consistent__hashing__pool__config__t.html#a7261a4e01f97e8f7176b3766bfa43940" title="count of virtual nodes in ring">virtual_nodes</a> = 3;</div>
+<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;    std::vector&lt;std::string&gt; servers;</div>
+<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;    servers.push_back(<span class="stringliteral">&quot;server1:11211&quot;</span>);</div>
+<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;    servers.push_back(<span class="stringliteral">&quot;server2:11211&quot;</span>);</div>
+<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;    servers.push_back(<span class="stringliteral">&quot;server3:11211&quot;</span>);</div>
+<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;    <a class="code" href="classmc_1_1consistent__hashing__pool__t.html" title="Ketama implementation of consistent hashing.">fake_consistent_hashing_pool_t</a> pool(servers, cfg);</div>
+<div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;    <span class="comment">// checks whether key distribution with fake hash functor is like:</span></div>
+<div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;    <span class="comment">// [1000] -&gt; 0</span></div>
+<div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160;    <span class="comment">// [2000] -&gt; 0</span></div>
+<div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;    <span class="comment">// [3000] -&gt; 0</span></div>
+<div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160;    <span class="comment">// [10000] -&gt; 1</span></div>
+<div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160;    <span class="comment">// [20000] -&gt; 1</span></div>
+<div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;    <span class="comment">// [30000] -&gt; 1</span></div>
+<div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160;    <span class="comment">// [100000] -&gt; 2</span></div>
+<div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160;    <span class="comment">// [200000] -&gt; 2</span></div>
+<div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160;    <span class="comment">// [300000] -&gt; 2</span></div>
+<div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160;    <a class="code" href="classmc_1_1consistent__hashing__pool__const__iterator.html" title="Const iterator for namespace ring.">fake_consistent_hashing_pool_t::const_iterator</a> iidx = pool.<a class="code" href="classmc_1_1consistent__hashing__pool__t.html#a1f74f150cc80a6e32f36c980511997da">choose</a>(<span class="stringliteral">&quot;a&quot;</span>);</div>
+<div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160;    <span class="keywordflow">if</span> ((*iidx != 0) || (*++iidx != 0) || (*++iidx != 0)) <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
+<div class="line"><a name="l00125"></a><span class="lineno">  125</span>&#160;    iidx = pool.<a class="code" href="classmc_1_1consistent__hashing__pool__t.html#a1f74f150cc80a6e32f36c980511997da">choose</a>(<span class="stringliteral">&quot;b&quot;</span>);</div>
+<div class="line"><a name="l00126"></a><span class="lineno">  126</span>&#160;    <span class="keywordflow">if</span> ((*iidx != 1) || (*++iidx != 1) || (*++iidx != 1)) <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
+<div class="line"><a name="l00127"></a><span class="lineno">  127</span>&#160;    iidx = pool.<a class="code" href="classmc_1_1consistent__hashing__pool__t.html#a1f74f150cc80a6e32f36c980511997da">choose</a>(<span class="stringliteral">&quot;c&quot;</span>);</div>
+<div class="line"><a name="l00128"></a><span class="lineno">  128</span>&#160;    <span class="keywordflow">if</span> ((*iidx != 2) || (*++iidx != 2) || (*++iidx != 2)) <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
+<div class="line"><a name="l00129"></a><span class="lineno">  129</span>&#160;    <span class="keywordflow">return</span> (*++iidx == 0) &amp;&amp; (*pool.<a class="code" href="classmc_1_1consistent__hashing__pool__t.html#a1f74f150cc80a6e32f36c980511997da">choose</a>(<span class="stringliteral">&quot;server1:11211&quot;</span>) == 0);</div>
+<div class="line"><a name="l00130"></a><span class="lineno">  130</span>&#160;}</div>
+<div class="line"><a name="l00131"></a><span class="lineno">  131</span>&#160;</div>
+<div class="line"><a name="l00132"></a><span class="lineno">  132</span>&#160;<span class="keyword">class </span>Checker_t {</div>
+<div class="line"><a name="l00133"></a><span class="lineno">  133</span>&#160;<span class="keyword">public</span>:</div>
+<div class="line"><a name="l00134"></a><span class="lineno"><a class="code" href="classtest_1_1Checker__t.html#a05a2005ecfba98db97cfc19489facb75">  134</a></span>&#160;    <a class="code" href="classtest_1_1Checker__t.html#a05a2005ecfba98db97cfc19489facb75">Checker_t</a>(): <a class="code" href="classtest_1_1Checker__t.html#a96af938c08d57b385e75e3a6818eff82">fails</a>() {}</div>
+<div class="line"><a name="l00135"></a><span class="lineno">  135</span>&#160;</div>
+<div class="line"><a name="l00136"></a><span class="lineno"><a class="code" href="classtest_1_1Checker__t.html#a9bbb4bdea65fd3694432d0ce05bfbb1a">  136</a></span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classtest_1_1Checker__t.html#a9bbb4bdea65fd3694432d0ce05bfbb1a">operator()</a>(<span class="keywordtype">bool</span> result) {</div>
+<div class="line"><a name="l00137"></a><span class="lineno">  137</span>&#160;        <a class="code" href="classtest_1_1Checker__t.html#a96af938c08d57b385e75e3a6818eff82">fails</a> += !result;</div>
+<div class="line"><a name="l00138"></a><span class="lineno">  138</span>&#160;        <span class="keywordflow">if</span> (result)</div>
+<div class="line"><a name="l00139"></a><span class="lineno">  139</span>&#160;            std::cout &lt;&lt; <span class="stringliteral">&quot;[01;32m&quot;</span> &lt;&lt; <span class="stringliteral">&quot;ok&quot;</span> &lt;&lt; <span class="stringliteral">&quot;[01;0m&quot;</span> &lt;&lt; std::endl;</div>
+<div class="line"><a name="l00140"></a><span class="lineno">  140</span>&#160;        <span class="keywordflow">else</span></div>
+<div class="line"><a name="l00141"></a><span class="lineno">  141</span>&#160;            std::cout &lt;&lt; <span class="stringliteral">&quot;[01;31m&quot;</span> &lt;&lt; <span class="stringliteral">&quot;fail&quot;</span> &lt;&lt; <span class="stringliteral">&quot;[01;0m&quot;</span> &lt;&lt; std::endl;</div>
+<div class="line"><a name="l00142"></a><span class="lineno">  142</span>&#160;    }</div>
+<div class="line"><a name="l00143"></a><span class="lineno">  143</span>&#160;</div>
+<div class="line"><a name="l00144"></a><span class="lineno">  144</span>&#160;    <span class="keywordtype">int</span> <a class="code" href="classtest_1_1Checker__t.html#a96af938c08d57b385e75e3a6818eff82">fails</a>;</div>
+<div class="line"><a name="l00145"></a><span class="lineno">  145</span>&#160;};</div>
+<div class="line"><a name="l00146"></a><span class="lineno">  146</span>&#160;</div>
+<div class="line"><a name="l00147"></a><span class="lineno">  147</span>&#160;} <span class="comment">// namespace test</span></div>
+<div class="line"><a name="l00148"></a><span class="lineno">  148</span>&#160;</div>
+<div class="line"><a name="l00149"></a><span class="lineno"><a class="code" href="test-pool_8cc.html#a2c3f6775325c30275d11c6abee2db6a0">  149</a></span>&#160;<span class="keywordtype">int</span> <a class="code" href="test-connection_8cc.html#a3c04138a5bfe5d72780bb7e82a18e627">main</a>(<span class="keywordtype">int</span>, <span class="keywordtype">char</span> **) {</div>
+<div class="line"><a name="l00150"></a><span class="lineno">  150</span>&#160;    <a class="code" href="namespacemc.html#a418d8a43f291ad6f3bfe5987a6a973a3" title="Initialize libmcache.">mc::init</a>();</div>
+<div class="line"><a name="l00151"></a><span class="lineno">  151</span>&#160;    <a class="code" href="classtest_1_1Checker__t.html">test::Checker_t</a> check;</div>
+<div class="line"><a name="l00152"></a><span class="lineno">  152</span>&#160;    check(test::throws_if_empty_addresses&lt;test::consistent_hashing_pool_t&gt;());</div>
+<div class="line"><a name="l00153"></a><span class="lineno">  153</span>&#160;    check(test::throws_if_empty_addresses&lt;test::mod_pool_t&gt;());</div>
+<div class="line"><a name="l00154"></a><span class="lineno">  154</span>&#160;    check(<a class="code" href="namespacetest.html#a565a4d91f5b2d814da59459d68ee81f6">test::mod_pool_iteration</a>());</div>
+<div class="line"><a name="l00155"></a><span class="lineno">  155</span>&#160;    check(<a class="code" href="namespacetest.html#a1dfd5bd942575ef402ece983d9d4510b">test::consistent_hashing_pool_iteration</a>());</div>
+<div class="line"><a name="l00156"></a><span class="lineno">  156</span>&#160;    check(<a class="code" href="namespacetest.html#ab17d041ba1cc6a058cfee7427c0dfd17">test::consistent_hashing_pool_distribution</a>());</div>
+<div class="line"><a name="l00157"></a><span class="lineno">  157</span>&#160;    <span class="keywordflow">return</span> check.<a class="code" href="classtest_1_1Checker__t.html#a96af938c08d57b385e75e3a6818eff82">fails</a>;</div>
+<div class="line"><a name="l00158"></a><span class="lineno">  158</span>&#160;}</div>
+<div class="line"><a name="l00159"></a><span class="lineno">  159</span>&#160;</div>
+<div class="line"><a name="l00160"></a><span class="lineno">  160</span>&#160;</div>
+</div><!-- fragment --></div><!-- contents -->
+</div><!-- doc-content -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_e2de76ba30642a92752881ffd21fbc7e.html">pool</a></li><li class="navelem"><a class="el" href="test-pool_8cc.html">test-pool.cc</a></li>
+    <li class="footer">Generováno út 23. čec 2013 13.13:03 pro projekt libmcache-0.2.1 programem
+    <a href="http://www.doxygen.org/index.html">
+    <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.3.1 </li>
+  </ul>
+</div>
+</body>
+</html>

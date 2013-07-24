@@ -1,0 +1,560 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.3.1"/>
+<title>libmcache-0.2.1: Dokumentace souboru src/error.h</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript">
+  $(document).ready(initResizable);
+  $(window).load(resizeHeight);
+</script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/search.js"></script>
+<script type="text/javascript">
+  $(document).ready(function() { searchBox.OnSelectItem(0); });
+</script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td style="padding-left: 0.5em;">
+   <div id="projectname">libmcache-0.2.1
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Generováno programem Doxygen 1.8.3.1 -->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "search",false,'Hledat');
+</script>
+  <div id="navrow1" class="tabs">
+    <ul class="tablist">
+      <li><a href="index.html"><span>Hlavní&#160;stránka</span></a></li>
+      <li><a href="namespaces.html"><span>Prostory&#160;jmen</span></a></li>
+      <li><a href="annotated.html"><span>Třídy</span></a></li>
+      <li class="current"><a href="files.html"><span>Soubory</span></a></li>
+      <li>
+        <div id="MSearchBox" class="MSearchBoxInactive">
+        <span class="left">
+          <img id="MSearchSelect" src="search/mag_sel.png"
+               onmouseover="return searchBox.OnSearchSelectShow()"
+               onmouseout="return searchBox.OnSearchSelectHide()"
+               alt=""/>
+          <input type="text" id="MSearchField" value="Hledat" accesskey="S"
+               onfocus="searchBox.OnSearchFieldFocus(true)" 
+               onblur="searchBox.OnSearchFieldFocus(false)" 
+               onkeyup="searchBox.OnSearchFieldChange(event)"/>
+          </span><span class="right">
+            <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><img id="MSearchCloseImg" border="0" src="search/close.png" alt=""/></a>
+          </span>
+        </div>
+      </li>
+    </ul>
+  </div>
+  <div id="navrow2" class="tabs2">
+    <ul class="tablist">
+      <li><a href="files.html"><span>Seznam&#160;souborů</span></a></li>
+      <li><a href="globals.html"><span>Globální&#160;symboly</span></a></li>
+    </ul>
+  </div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+$(document).ready(function(){initNavTree('src_2error_8h.html','');});
+</script>
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>Vše</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Třídy</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Prostory jmen</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Soubory</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Funkce</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Proměnné</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Definice typů</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Výčty</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(8)"><span class="SelectionMark">&#160;</span>Hodnoty výčtu</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(9)"><span class="SelectionMark">&#160;</span>Definice maker</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(10)"><span class="SelectionMark">&#160;</span>Stránky</a></div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div class="header">
+  <div class="summary">
+<a href="#namespaces">Prostory jmen</a> &#124;
+<a href="#define-members">Definice maker</a> &#124;
+<a href="#func-members">Funkce</a>  </div>
+  <div class="headertitle">
+<div class="title">Dokumentace souboru error.h</div>  </div>
+</div><!--header-->
+<div class="contents">
+<div class="textblock"><code>#include &lt;string&gt;</code><br/>
+<code>#include &quot;<a class="el" href="include_2mcache_2error_8h_source.html">mcache/error.h</a>&quot;</code><br/>
+<code>#include &quot;<a class="el" href="logger_8h_source.html">mcache/logger.h</a>&quot;</code><br/>
+</div><div class="textblock"><div class="dynheader">
+Graf závislostí na vkládaných souborech pro error.h:</div>
+<div class="dyncontent">
+<div class="center"><img src="src_2error_8h__incl.png" border="0" usemap="#src_2error_8h" alt=""/></div>
+<map name="src_2error_8h" id="src_2error_8h">
+<area shape="rect" id="node5" href="include_2mcache_2error_8h.html" title="mcache/error.h" alt="" coords="68,83,177,111"/><area shape="rect" id="node10" href="logger_8h.html" title="mcache/logger.h" alt="" coords="201,83,321,111"/></map>
+</div>
+</div><div class="textblock"><div class="dynheader">
+Následující graf ukazuje, které soubory přímo nebo nepřímo vkládají tento soubor:</div>
+<div class="dyncontent">
+<div class="center"><img src="src_2error_8h__dep__incl.png" border="0" usemap="#src_2error_8hdep" alt=""/></div>
+<map name="src_2error_8hdep" id="src_2error_8hdep">
+<area shape="rect" id="node3" href="connection_8cc.html" title="src/io/connection.cc" alt="" coords="5,83,144,111"/><area shape="rect" id="node5" href="logger_8cc.html" title="src/logger.cc" alt="" coords="168,83,264,111"/><area shape="rect" id="node7" href="aux_8h.html" title="src/proto/aux.h" alt="" coords="339,83,448,111"/><area shape="rect" id="node9" href="binary_8cc.html" title="src/proto/binary.cc" alt="" coords="245,161,376,189"/><area shape="rect" id="node11" href="txt_8cc.html" title="src/proto/txt.cc" alt="" coords="420,161,529,189"/><area shape="rect" id="node15" href="server-proxy_8cc.html" title="src/server&#45;proxy.cc" alt="" coords="523,83,656,111"/></map>
+</div>
+</div>
+<p><a href="src_2error_8h_source.html">Zobrazit zdrojový text tohoto souboru.</a></p>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="namespaces"></a>
+Prostory jmen</h2></td></tr>
+<tr class="memitem:namespacemc"><td class="memItemLeft" align="right" valign="top">namespace &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacemc.html">mc</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:namespacemc_1_1log"><td class="memItemLeft" align="right" valign="top">namespace &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacemc_1_1log.html">mc::log</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="define-members"></a>
+Definice maker</h2></td></tr>
+<tr class="memitem:af9ebb204d5d788dcc070d9f09b1a5081"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="src_2error_8h.html#af9ebb204d5d788dcc070d9f09b1a5081">LOG</a>(LEVEL, FORMAT...)</td></tr>
+<tr class="separator:af9ebb204d5d788dcc070d9f09b1a5081"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae686edcd964561455685518c9c8cdfb0"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="src_2error_8h.html#ae686edcd964561455685518c9c8cdfb0">DBG</a>(LEVEL, FORMAT...)</td></tr>
+<tr class="separator:ae686edcd964561455685518c9c8cdfb0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8bca47ffa50b1f3707192f3cd8869044"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="src_2error_8h.html#a8bca47ffa50b1f3707192f3cd8869044">INFO1</a></td></tr>
+<tr class="separator:a8bca47ffa50b1f3707192f3cd8869044"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2bdef2ee3ffb2f5ce1defd44cb880d46"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="src_2error_8h.html#a2bdef2ee3ffb2f5ce1defd44cb880d46">INFO2</a></td></tr>
+<tr class="separator:a2bdef2ee3ffb2f5ce1defd44cb880d46"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad4082716499e81802d15ca237f935024"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="src_2error_8h.html#ad4082716499e81802d15ca237f935024">INFO3</a></td></tr>
+<tr class="separator:ad4082716499e81802d15ca237f935024"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae480ac65684cb6acfa2085059d29f7de"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="src_2error_8h.html#ae480ac65684cb6acfa2085059d29f7de">INFO4</a></td></tr>
+<tr class="separator:ae480ac65684cb6acfa2085059d29f7de"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9e9ca2801cce18fac5c302a9a34c79dc"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="src_2error_8h.html#a9e9ca2801cce18fac5c302a9a34c79dc">WARN1</a></td></tr>
+<tr class="separator:a9e9ca2801cce18fac5c302a9a34c79dc"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a880892069611bc39e2b7e7bab8238b18"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="src_2error_8h.html#a880892069611bc39e2b7e7bab8238b18">WARN2</a></td></tr>
+<tr class="separator:a880892069611bc39e2b7e7bab8238b18"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aae3c22c486a6e46ce2dd2167b87b5223"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="src_2error_8h.html#aae3c22c486a6e46ce2dd2167b87b5223">WARN3</a></td></tr>
+<tr class="separator:aae3c22c486a6e46ce2dd2167b87b5223"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:afb384ad45053548e61a8d3640ea9a030"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="src_2error_8h.html#afb384ad45053548e61a8d3640ea9a030">WARN4</a></td></tr>
+<tr class="separator:afb384ad45053548e61a8d3640ea9a030"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a656307c1e7b2165fac1cf570c703cbf8"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="src_2error_8h.html#a656307c1e7b2165fac1cf570c703cbf8">ERR1</a></td></tr>
+<tr class="separator:a656307c1e7b2165fac1cf570c703cbf8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab8b7f37ec0d673d97352ca7f00d8e939"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="src_2error_8h.html#ab8b7f37ec0d673d97352ca7f00d8e939">ERR2</a></td></tr>
+<tr class="separator:ab8b7f37ec0d673d97352ca7f00d8e939"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad7a062abe5e5a47ca42e2bb34df8bb61"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="src_2error_8h.html#ad7a062abe5e5a47ca42e2bb34df8bb61">ERR3</a></td></tr>
+<tr class="separator:ad7a062abe5e5a47ca42e2bb34df8bb61"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a79b0ef62113da4312948acf44e06452f"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="src_2error_8h.html#a79b0ef62113da4312948acf44e06452f">ERR4</a></td></tr>
+<tr class="separator:a79b0ef62113da4312948acf44e06452f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad8f893b1c0f8dca05231b79cb59ff835"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="src_2error_8h.html#ad8f893b1c0f8dca05231b79cb59ff835">FATAL1</a></td></tr>
+<tr class="separator:ad8f893b1c0f8dca05231b79cb59ff835"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab82fca29f10b46307aee8638fbb92dc9"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="src_2error_8h.html#ab82fca29f10b46307aee8638fbb92dc9">FATAL2</a></td></tr>
+<tr class="separator:ab82fca29f10b46307aee8638fbb92dc9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aec77aba4153b26b348294abbfec79c86"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="src_2error_8h.html#aec77aba4153b26b348294abbfec79c86">FATAL3</a></td></tr>
+<tr class="separator:aec77aba4153b26b348294abbfec79c86"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3caaa5ab6e2c7b4133d430b4921707c0"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="src_2error_8h.html#a3caaa5ab6e2c7b4133d430b4921707c0">FATAL4</a></td></tr>
+<tr class="separator:a3caaa5ab6e2c7b4133d430b4921707c0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abddf9d52cd37589aea69c8a97255ec98"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="src_2error_8h.html#abddf9d52cd37589aea69c8a97255ec98">DBG1</a></td></tr>
+<tr class="separator:abddf9d52cd37589aea69c8a97255ec98"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5c788073350afe9c1b4481d6c577a6f8"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="src_2error_8h.html#a5c788073350afe9c1b4481d6c577a6f8">DBG2</a></td></tr>
+<tr class="separator:a5c788073350afe9c1b4481d6c577a6f8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a503f685483266010527d2a750a36c6ff"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="src_2error_8h.html#a503f685483266010527d2a750a36c6ff">DBG3</a></td></tr>
+<tr class="separator:a503f685483266010527d2a750a36c6ff"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad9069f7b49c7f9df60cdc72dd2953952"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="src_2error_8h.html#ad9069f7b49c7f9df60cdc72dd2953952">DBG4</a></td></tr>
+<tr class="separator:ad9069f7b49c7f9df60cdc72dd2953952"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
+Funkce</h2></td></tr>
+<tr class="memitem:a900eab6f35f5b53f50beb47e8f2ebfbd"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacemc_1_1log.html#a900eab6f35f5b53f50beb47e8f2ebfbd">mc::log::hexize</a> (const unsigned char ch)</td></tr>
+<tr class="memdesc:a900eab6f35f5b53f50beb47e8f2ebfbd"><td class="mdescLeft">&#160;</td><td class="mdescRight">Converts character to hex number stored in string.  <a href="#a900eab6f35f5b53f50beb47e8f2ebfbd">...</a><br/></td></tr>
+<tr class="separator:a900eab6f35f5b53f50beb47e8f2ebfbd"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4b64f60290f870d040895699b42d473a"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacemc_1_1log.html#a4b64f60290f870d040895699b42d473a">mc::log::escape</a> (const std::string &amp;str)</td></tr>
+<tr class="memdesc:a4b64f60290f870d040895699b42d473a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Converts binary characters in string to hex numbers.  <a href="#a4b64f60290f870d040895699b42d473a">...</a><br/></td></tr>
+<tr class="separator:a4b64f60290f870d040895699b42d473a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<h2 class="groupheader">Dokumentace k definicím maker</h2>
+<a class="anchor" id="ae686edcd964561455685518c9c8cdfb0"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define DBG</td>
+          <td>(</td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">LEVEL, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">FORMAT...&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Definice je uvedena na řádku <a class="el" href="src_2error_8h_source.html#l00045">45</a> v souboru <a class="el" href="src_2error_8h_source.html">error.h</a>.</p>
+
+<p>Používá se v <a class="el" href="connection_8cc_source.html#l00213">mc::io::tcp::connection_t::pimple_connection_t::copy_n()</a>, <a class="el" href="connection_8cc_source.html#l00510">mc::io::udp::connection_t::fill()</a>, <a class="el" href="connection_8cc_source.html#l00233">mc::io::tcp::connection_t::pimple_connection_t::handle_deadline()</a>, <a class="el" href="connection_8cc_source.html#l00440">mc::io::udp::connection_t::pimple_connection_t::handle_deadline()</a>, <a class="el" href="connection_8cc_source.html#l00092">mc::io::tcp::connection_t::pimple_connection_t::pimple_connection_t()</a>, <a class="el" href="connection_8cc_source.html#l00183">mc::io::tcp::connection_t::pimple_connection_t::read()</a>, <a class="el" href="connection_8cc_source.html#l00155">mc::io::tcp::connection_t::pimple_connection_t::read_until()</a>, <a class="el" href="connection_8cc_source.html#l00400">mc::io::udp::connection_t::pimple_connection_t::receive()</a>, <a class="el" href="connection_8cc_source.html#l00131">mc::io::tcp::connection_t::pimple_connection_t::write()</a> a <a class="el" href="connection_8cc_source.html#l00377">mc::io::udp::connection_t::pimple_connection_t::write()</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="abddf9d52cd37589aea69c8a97255ec98"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define DBG1</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Definice je uvedena na řádku <a class="el" href="src_2error_8h_source.html#l00069">69</a> v souboru <a class="el" href="src_2error_8h_source.html">error.h</a>.</p>
+
+<p>Používá se v <a class="el" href="connection_8cc_source.html#l00213">mc::io::tcp::connection_t::pimple_connection_t::copy_n()</a>, <a class="el" href="connection_8cc_source.html#l00510">mc::io::udp::connection_t::fill()</a>, <a class="el" href="connection_8cc_source.html#l00183">mc::io::tcp::connection_t::pimple_connection_t::read()</a>, <a class="el" href="connection_8cc_source.html#l00155">mc::io::tcp::connection_t::pimple_connection_t::read_until()</a>, <a class="el" href="connection_8cc_source.html#l00400">mc::io::udp::connection_t::pimple_connection_t::receive()</a>, <a class="el" href="connection_8cc_source.html#l00131">mc::io::tcp::connection_t::pimple_connection_t::write()</a> a <a class="el" href="connection_8cc_source.html#l00377">mc::io::udp::connection_t::pimple_connection_t::write()</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a5c788073350afe9c1b4481d6c577a6f8"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define DBG2</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Definice je uvedena na řádku <a class="el" href="src_2error_8h_source.html#l00070">70</a> v souboru <a class="el" href="src_2error_8h_source.html">error.h</a>.</p>
+
+<p>Používá se v <a class="el" href="connection_8cc_source.html#l00092">mc::io::tcp::connection_t::pimple_connection_t::pimple_connection_t()</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a503f685483266010527d2a750a36c6ff"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define DBG3</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Definice je uvedena na řádku <a class="el" href="src_2error_8h_source.html#l00071">71</a> v souboru <a class="el" href="src_2error_8h_source.html">error.h</a>.</p>
+
+<p>Používá se v <a class="el" href="connection_8cc_source.html#l00233">mc::io::tcp::connection_t::pimple_connection_t::handle_deadline()</a>, <a class="el" href="connection_8cc_source.html#l00440">mc::io::udp::connection_t::pimple_connection_t::handle_deadline()</a>, <a class="el" href="connection_8cc_source.html#l00092">mc::io::tcp::connection_t::pimple_connection_t::pimple_connection_t()</a>, <a class="el" href="connection_8cc_source.html#l00183">mc::io::tcp::connection_t::pimple_connection_t::read()</a>, <a class="el" href="connection_8cc_source.html#l00155">mc::io::tcp::connection_t::pimple_connection_t::read_until()</a>, <a class="el" href="connection_8cc_source.html#l00400">mc::io::udp::connection_t::pimple_connection_t::receive()</a>, <a class="el" href="connection_8cc_source.html#l00131">mc::io::tcp::connection_t::pimple_connection_t::write()</a> a <a class="el" href="connection_8cc_source.html#l00377">mc::io::udp::connection_t::pimple_connection_t::write()</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="ad9069f7b49c7f9df60cdc72dd2953952"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define DBG4</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Definice je uvedena na řádku <a class="el" href="src_2error_8h_source.html#l00072">72</a> v souboru <a class="el" href="src_2error_8h_source.html">error.h</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a656307c1e7b2165fac1cf570c703cbf8"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define ERR1</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Definice je uvedena na řádku <a class="el" href="src_2error_8h_source.html#l00059">59</a> v souboru <a class="el" href="src_2error_8h_source.html">error.h</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="ab8b7f37ec0d673d97352ca7f00d8e939"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define ERR2</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Definice je uvedena na řádku <a class="el" href="src_2error_8h_source.html#l00060">60</a> v souboru <a class="el" href="src_2error_8h_source.html">error.h</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="ad7a062abe5e5a47ca42e2bb34df8bb61"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define ERR3</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Definice je uvedena na řádku <a class="el" href="src_2error_8h_source.html#l00061">61</a> v souboru <a class="el" href="src_2error_8h_source.html">error.h</a>.</p>
+
+<p>Používá se v <a class="el" href="connection_8cc_source.html#l00233">mc::io::tcp::connection_t::pimple_connection_t::handle_deadline()</a> a <a class="el" href="connection_8cc_source.html#l00440">mc::io::udp::connection_t::pimple_connection_t::handle_deadline()</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a79b0ef62113da4312948acf44e06452f"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define ERR4</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Definice je uvedena na řádku <a class="el" href="src_2error_8h_source.html#l00062">62</a> v souboru <a class="el" href="src_2error_8h_source.html">error.h</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="ad8f893b1c0f8dca05231b79cb59ff835"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define FATAL1</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Definice je uvedena na řádku <a class="el" href="src_2error_8h_source.html#l00064">64</a> v souboru <a class="el" href="src_2error_8h_source.html">error.h</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="ab82fca29f10b46307aee8638fbb92dc9"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define FATAL2</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Definice je uvedena na řádku <a class="el" href="src_2error_8h_source.html#l00065">65</a> v souboru <a class="el" href="src_2error_8h_source.html">error.h</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="aec77aba4153b26b348294abbfec79c86"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define FATAL3</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Definice je uvedena na řádku <a class="el" href="src_2error_8h_source.html#l00066">66</a> v souboru <a class="el" href="src_2error_8h_source.html">error.h</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a3caaa5ab6e2c7b4133d430b4921707c0"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define FATAL4</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Definice je uvedena na řádku <a class="el" href="src_2error_8h_source.html#l00067">67</a> v souboru <a class="el" href="src_2error_8h_source.html">error.h</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a8bca47ffa50b1f3707192f3cd8869044"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define INFO1</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Definice je uvedena na řádku <a class="el" href="src_2error_8h_source.html#l00049">49</a> v souboru <a class="el" href="src_2error_8h_source.html">error.h</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a2bdef2ee3ffb2f5ce1defd44cb880d46"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define INFO2</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Definice je uvedena na řádku <a class="el" href="src_2error_8h_source.html#l00050">50</a> v souboru <a class="el" href="src_2error_8h_source.html">error.h</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="ad4082716499e81802d15ca237f935024"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define INFO3</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Definice je uvedena na řádku <a class="el" href="src_2error_8h_source.html#l00051">51</a> v souboru <a class="el" href="src_2error_8h_source.html">error.h</a>.</p>
+
+<p>Používá se v <a class="el" href="logger_8cc_source.html#l00069">mc::Initializer_t::Initializer_t()</a> a <a class="el" href="server-proxy_8cc_source.html#l00029">mc::aux::log_server_raise_zombie()</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="ae480ac65684cb6acfa2085059d29f7de"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define INFO4</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Definice je uvedena na řádku <a class="el" href="src_2error_8h_source.html#l00052">52</a> v souboru <a class="el" href="src_2error_8h_source.html">error.h</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="af9ebb204d5d788dcc070d9f09b1a5081"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define LOG</td>
+          <td>(</td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">LEVEL, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">FORMAT...&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Definice je uvedena na řádku <a class="el" href="src_2error_8h_source.html#l00030">30</a> v souboru <a class="el" href="src_2error_8h_source.html">error.h</a>.</p>
+
+<p>Používá se v <a class="el" href="connection_8cc_source.html#l00233">mc::io::tcp::connection_t::pimple_connection_t::handle_deadline()</a>, <a class="el" href="connection_8cc_source.html#l00440">mc::io::udp::connection_t::pimple_connection_t::handle_deadline()</a>, <a class="el" href="logger_8cc_source.html#l00069">mc::Initializer_t::Initializer_t()</a>, <a class="el" href="server-proxy_8cc_source.html#l00035">mc::aux::log_server_is_dead()</a> a <a class="el" href="server-proxy_8cc_source.html#l00029">mc::aux::log_server_raise_zombie()</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a9e9ca2801cce18fac5c302a9a34c79dc"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define WARN1</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Definice je uvedena na řádku <a class="el" href="src_2error_8h_source.html#l00054">54</a> v souboru <a class="el" href="src_2error_8h_source.html">error.h</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a880892069611bc39e2b7e7bab8238b18"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define WARN2</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Definice je uvedena na řádku <a class="el" href="src_2error_8h_source.html#l00055">55</a> v souboru <a class="el" href="src_2error_8h_source.html">error.h</a>.</p>
+
+<p>Používá se v <a class="el" href="server-proxy_8cc_source.html#l00035">mc::aux::log_server_is_dead()</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="aae3c22c486a6e46ce2dd2167b87b5223"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define WARN3</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Definice je uvedena na řádku <a class="el" href="src_2error_8h_source.html#l00056">56</a> v souboru <a class="el" href="src_2error_8h_source.html">error.h</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="afb384ad45053548e61a8d3640ea9a030"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define WARN4</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Definice je uvedena na řádku <a class="el" href="src_2error_8h_source.html#l00057">57</a> v souboru <a class="el" href="src_2error_8h_source.html">error.h</a>.</p>
+
+</div>
+</div>
+</div><!-- contents -->
+</div><!-- doc-content -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="src_2error_8h.html">error.h</a></li>
+    <li class="footer">Generováno út 23. čec 2013 13.13:04 pro projekt libmcache-0.2.1 programem
+    <a href="http://www.doxygen.org/index.html">
+    <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.3.1 </li>
+  </ul>
+</div>
+</body>
+</html>

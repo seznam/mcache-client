@@ -1,0 +1,9 @@
+<map id="Grafické zobrazení hierarchie tříd" name="Grafické zobrazení hierarchie tříd">
+<area shape="rect" id="node1" title="STL class." alt="" coords="5,109,109,137"/>
+<area shape="rect" id="node3" href="$classmc_1_1error__t.html" title="Base class for all errors in libmcache." alt="" coords="179,81,264,109"/>
+<area shape="rect" id="node11" title="STL class." alt="" coords="157,135,285,163"/>
+<area shape="rect" id="node5" href="$classmc_1_1io_1_1error__t.html" title="Base class for all errors in libmcache." alt="" coords="371,5,475,33"/>
+<area shape="rect" id="node7" href="$classmc_1_1out__of__servers__t.html" title="Exception for empty pool of servers." alt="" coords="349,55,496,83"/>
+<area shape="rect" id="node9" href="$classmc_1_1proto_1_1error__t.html" title="Base class for all errors in libmcache::proto." alt="" coords="360,106,485,134"/>
+<area shape="rect" id="node13" href="$classtest_1_1validation__connection__error__t.html" title="test::validation_connection\l_error_t" alt="" coords="333,157,512,201"/>
+</map>

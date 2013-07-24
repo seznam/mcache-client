@@ -1,0 +1,379 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.3.1"/>
+<title>libmcache-0.2.1: Dokumentace souboru src/io/connection.cc</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript">
+  $(document).ready(initResizable);
+  $(window).load(resizeHeight);
+</script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/search.js"></script>
+<script type="text/javascript">
+  $(document).ready(function() { searchBox.OnSelectItem(0); });
+</script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td style="padding-left: 0.5em;">
+   <div id="projectname">libmcache-0.2.1
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Generováno programem Doxygen 1.8.3.1 -->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "search",false,'Hledat');
+</script>
+  <div id="navrow1" class="tabs">
+    <ul class="tablist">
+      <li><a href="index.html"><span>Hlavní&#160;stránka</span></a></li>
+      <li><a href="namespaces.html"><span>Prostory&#160;jmen</span></a></li>
+      <li><a href="annotated.html"><span>Třídy</span></a></li>
+      <li class="current"><a href="files.html"><span>Soubory</span></a></li>
+      <li>
+        <div id="MSearchBox" class="MSearchBoxInactive">
+        <span class="left">
+          <img id="MSearchSelect" src="search/mag_sel.png"
+               onmouseover="return searchBox.OnSearchSelectShow()"
+               onmouseout="return searchBox.OnSearchSelectHide()"
+               alt=""/>
+          <input type="text" id="MSearchField" value="Hledat" accesskey="S"
+               onfocus="searchBox.OnSearchFieldFocus(true)" 
+               onblur="searchBox.OnSearchFieldFocus(false)" 
+               onkeyup="searchBox.OnSearchFieldChange(event)"/>
+          </span><span class="right">
+            <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><img id="MSearchCloseImg" border="0" src="search/close.png" alt=""/></a>
+          </span>
+        </div>
+      </li>
+    </ul>
+  </div>
+  <div id="navrow2" class="tabs2">
+    <ul class="tablist">
+      <li><a href="files.html"><span>Seznam&#160;souborů</span></a></li>
+      <li><a href="globals.html"><span>Globální&#160;symboly</span></a></li>
+    </ul>
+  </div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+$(document).ready(function(){initNavTree('connection_8cc.html','');});
+</script>
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>Vše</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Třídy</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Prostory jmen</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Soubory</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Funkce</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Proměnné</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Definice typů</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Výčty</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(8)"><span class="SelectionMark">&#160;</span>Hodnoty výčtu</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(9)"><span class="SelectionMark">&#160;</span>Definice maker</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(10)"><span class="SelectionMark">&#160;</span>Stránky</a></div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div class="header">
+  <div class="summary">
+<a href="#nested-classes">Datové struktry</a> &#124;
+<a href="#namespaces">Prostory jmen</a> &#124;
+<a href="#func-members">Funkce</a> &#124;
+<a href="#var-members">Proměnné</a>  </div>
+  <div class="headertitle">
+<div class="title">Dokumentace souboru connection.cc</div>  </div>
+</div><!--header-->
+<div class="contents">
+<div class="textblock"><code>#include &lt;string&gt;</code><br/>
+<code>#include &lt;boost/bind.hpp&gt;</code><br/>
+<code>#include &lt;boost/system/system_error.hpp&gt;</code><br/>
+<code>#include &lt;boost/algorithm/string/split.hpp&gt;</code><br/>
+<code>#include &lt;boost/range/algorithm_ext.hpp&gt;</code><br/>
+<code>#include &lt;boost/asio/deadline_timer.hpp&gt;</code><br/>
+<code>#include &lt;boost/asio/read_until.hpp&gt;</code><br/>
+<code>#include &lt;boost/asio/io_service.hpp&gt;</code><br/>
+<code>#include &lt;boost/asio/streambuf.hpp&gt;</code><br/>
+<code>#include &lt;boost/asio/connect.hpp&gt;</code><br/>
+<code>#include &lt;boost/asio/ip/tcp.hpp&gt;</code><br/>
+<code>#include &lt;boost/asio/ip/udp.hpp&gt;</code><br/>
+<code>#include &lt;boost/asio/write.hpp&gt;</code><br/>
+<code>#include &lt;boost/asio/read.hpp&gt;</code><br/>
+<code>#include &lt;boost/lambda/bind.hpp&gt;</code><br/>
+<code>#include &lt;boost/lambda/lambda.hpp&gt;</code><br/>
+<code>#include &lt;boost/make_shared.hpp&gt;</code><br/>
+<code>#include &lt;boost/noncopyable.hpp&gt;</code><br/>
+<code>#include &lt;boost/thread.hpp&gt;</code><br/>
+<code>#include &lt;arpa/inet.h&gt;</code><br/>
+<code>#include &quot;error.h&quot;</code><br/>
+<code>#include &quot;<a class="el" href="include_2mcache_2io_2error_8h_source.html">mcache/io/error.h</a>&quot;</code><br/>
+<code>#include &quot;<a class="el" href="murmur3_8h_source.html">mcache/hash/murmur3.h</a>&quot;</code><br/>
+<code>#include &quot;<a class="el" href="connection_8h_source.html">mcache/io/connection.h</a>&quot;</code><br/>
+</div><div class="textblock"><div class="dynheader">
+Graf závislostí na vkládaných souborech pro connection.cc:</div>
+<div class="dyncontent">
+<div class="center"><img src="connection_8cc__incl.png" border="0" usemap="#src_2io_2connection_8cc" alt=""/></div>
+<map name="src_2io_2connection_8cc" id="src_2io_2connection_8cc">
+<area shape="rect" id="node45" href="include_2mcache_2io_2error_8h.html" title="mcache/io/error.h" alt="" coords="357,91,483,119"/><area shape="rect" id="node52" href="murmur3_8h.html" title="mcache/hash/murmur3.h" alt="" coords="557,91,728,119"/><area shape="rect" id="node57" href="connection_8h.html" title="mcache/io/connection.h" alt="" coords="171,91,333,119"/><area shape="rect" id="node47" href="include_2mcache_2error_8h.html" title="mcache/error.h" alt="" coords="373,177,483,205"/><area shape="rect" id="node63" href="io_2opts_8h.html" title="mcache/io/opts.h" alt="" coords="5,177,128,205"/></map>
+</div>
+</div>
+<p><a href="connection_8cc_source.html">Zobrazit zdrojový text tohoto souboru.</a></p>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="nested-classes"></a>
+Datové struktry</h2></td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classmc_1_1io_1_1tcp_1_1connection__t_1_1pimple__connection__t.html">mc::io::tcp::connection_t::pimple_connection_t</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Pimple class for tcp connection.  <a href="classmc_1_1io_1_1tcp_1_1connection__t_1_1pimple__connection__t.html#details">...</a><br/></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classmc_1_1io_1_1udp_1_1packet__t.html">mc::io::udp::packet_t</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Header of the each udp packet.  <a href="classmc_1_1io_1_1udp_1_1packet__t.html#details">...</a><br/></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classmc_1_1io_1_1udp_1_1connection__t_1_1pimple__connection__t.html">mc::io::udp::connection_t::pimple_connection_t</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Pimple class for tcp connection.  <a href="classmc_1_1io_1_1udp_1_1connection__t_1_1pimple__connection__t.html#details">...</a><br/></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="namespaces"></a>
+Prostory jmen</h2></td></tr>
+<tr class="memitem:namespacemc"><td class="memItemLeft" align="right" valign="top">namespace &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacemc.html">mc</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:namespacemc_1_1io"><td class="memItemLeft" align="right" valign="top">namespace &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacemc_1_1io.html">mc::io</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:namespacemc_1_1io_1_1tcp"><td class="memItemLeft" align="right" valign="top">namespace &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacemc_1_1io_1_1tcp.html">mc::io::tcp</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:namespacemc_1_1io_1_1udp"><td class="memItemLeft" align="right" valign="top">namespace &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacemc_1_1io_1_1udp.html">mc::io::udp</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
+Funkce</h2></td></tr>
+<tr class="memitem:ab73c0498977b344be3c9cc54f9a29860"><td class="memItemLeft" align="right" valign="top">class <a class="el" href="classmc_1_1io_1_1udp_1_1packet__t.html">mc::io::udp::packet_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacemc_1_1io_1_1udp.html#ab73c0498977b344be3c9cc54f9a29860">mc::io::udp::__attribute__</a> ((packed))</td></tr>
+<tr class="separator:ab73c0498977b344be3c9cc54f9a29860"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abb2d86c88f5e7b1706ba13b7113eaa4b"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="connection_8cc.html#abb2d86c88f5e7b1706ba13b7113eaa4b">packet_t</a> ()</td></tr>
+<tr class="memdesc:abb2d86c88f5e7b1706ba13b7113eaa4b"><td class="mdescLeft">&#160;</td><td class="mdescRight">C'tor for one packet.  <a href="#abb2d86c88f5e7b1706ba13b7113eaa4b">...</a><br/></td></tr>
+<tr class="separator:abb2d86c88f5e7b1706ba13b7113eaa4b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a084138c941be34874782f50c7b811c64"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="connection_8cc.html#a084138c941be34874782f50c7b811c64">packet_t</a> (const char *raw)</td></tr>
+<tr class="memdesc:a084138c941be34874782f50c7b811c64"><td class="mdescLeft">&#160;</td><td class="mdescRight">C'tor.  <a href="#a084138c941be34874782f50c7b811c64">...</a><br/></td></tr>
+<tr class="separator:a084138c941be34874782f50c7b811c64"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae48e9bde7ceda378b387b01645bfdeb0"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="connection_8cc.html#ae48e9bde7ceda378b387b01645bfdeb0">operator+</a> (const std::string &amp;data) const </td></tr>
+<tr class="memdesc:ae48e9bde7ceda378b387b01645bfdeb0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Creates string that contains packet header and data.  <a href="#ae48e9bde7ceda378b387b01645bfdeb0">...</a><br/></td></tr>
+<tr class="separator:ae48e9bde7ceda378b387b01645bfdeb0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4a6f0f049d9aa09b863e2c16fc73637f"><td class="memItemLeft" align="right" valign="top">static uint16_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="connection_8cc.html#a4a6f0f049d9aa09b863e2c16fc73637f">generate_id</a> (const <a class="el" href="connection_8cc.html#a4fc3a0c58dfbd1e68224521185cb9384">boost::thread::id</a> &amp;tid)</td></tr>
+<tr class="memdesc:a4a6f0f049d9aa09b863e2c16fc73637f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Generate new id from thread id.  <a href="#a4a6f0f049d9aa09b863e2c16fc73637f">...</a><br/></td></tr>
+<tr class="separator:a4a6f0f049d9aa09b863e2c16fc73637f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="var-members"></a>
+Proměnné</h2></td></tr>
+<tr class="memitem:a4fc3a0c58dfbd1e68224521185cb9384"><td class="memItemLeft" align="right" valign="top">uint16_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="connection_8cc.html#a4fc3a0c58dfbd1e68224521185cb9384">id</a></td></tr>
+<tr class="memdesc:a4fc3a0c58dfbd1e68224521185cb9384"><td class="mdescLeft">&#160;</td><td class="mdescRight">req/resp id  <a href="#a4fc3a0c58dfbd1e68224521185cb9384">...</a><br/></td></tr>
+<tr class="separator:a4fc3a0c58dfbd1e68224521185cb9384"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0a97914b75ed3ab7d0e13d8b200d758a"><td class="memItemLeft" align="right" valign="top">uint16_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="connection_8cc.html#a0a97914b75ed3ab7d0e13d8b200d758a">seq</a></td></tr>
+<tr class="memdesc:a0a97914b75ed3ab7d0e13d8b200d758a"><td class="mdescLeft">&#160;</td><td class="mdescRight">sequence number  <a href="#a0a97914b75ed3ab7d0e13d8b200d758a">...</a><br/></td></tr>
+<tr class="separator:a0a97914b75ed3ab7d0e13d8b200d758a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af6a39bfc7e1dc3b6f9c997c1c43fa996"><td class="memItemLeft" align="right" valign="top">uint16_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="connection_8cc.html#af6a39bfc7e1dc3b6f9c997c1c43fa996">count</a></td></tr>
+<tr class="memdesc:af6a39bfc7e1dc3b6f9c997c1c43fa996"><td class="mdescLeft">&#160;</td><td class="mdescRight">total number of datagrams in message  <a href="#af6a39bfc7e1dc3b6f9c997c1c43fa996">...</a><br/></td></tr>
+<tr class="separator:af6a39bfc7e1dc3b6f9c997c1c43fa996"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5a6ed8c04a3db86066924b1a1bf4dad3"><td class="memItemLeft" align="right" valign="top">uint16_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="connection_8cc.html#a5a6ed8c04a3db86066924b1a1bf4dad3">reserved</a></td></tr>
+<tr class="memdesc:a5a6ed8c04a3db86066924b1a1bf4dad3"><td class="mdescLeft">&#160;</td><td class="mdescRight">reserved  <a href="#a5a6ed8c04a3db86066924b1a1bf4dad3">...</a><br/></td></tr>
+<tr class="separator:a5a6ed8c04a3db86066924b1a1bf4dad3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad49075c0faa2a3b793a72c632e3e9370"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classmc_1_1io_1_1udp_1_1connection__t_1_1pimple__connection__t.html">mc::io::udp::connection_t::pimple_connection_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacemc_1_1io_1_1udp.html#ad49075c0faa2a3b793a72c632e3e9370">mc::io::udp::__attribute__</a></td></tr>
+<tr class="separator:ad49075c0faa2a3b793a72c632e3e9370"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<h2 class="groupheader">Dokumentace funkcí</h2>
+<a class="anchor" id="a4a6f0f049d9aa09b863e2c16fc73637f"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static uint16_t __attribute__::generate_id </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="connection_8cc.html#a4fc3a0c58dfbd1e68224521185cb9384">boost::thread::id</a> &amp;&#160;</td>
+          <td class="paramname"><em>tid</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Generate new id from thread id. </p>
+
+<p>Definice je uvedena na řádku <a class="el" href="connection_8cc_source.html#l00355">355</a> v souboru <a class="el" href="connection_8cc_source.html">connection.cc</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="ae48e9bde7ceda378b387b01645bfdeb0"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::string __attribute__::operator+ </td>
+          <td>(</td>
+          <td class="paramtype">const std::string &amp;&#160;</td>
+          <td class="paramname"><em>data</em></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Creates string that contains packet header and data. </p>
+
+<p>Definice je uvedena na řádku <a class="el" href="connection_8cc_source.html#l00347">347</a> v souboru <a class="el" href="connection_8cc_source.html">connection.cc</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="abb2d86c88f5e7b1706ba13b7113eaa4b"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">__attribute__::packet_t </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>C'tor for one packet. </p>
+
+<p>Definice je uvedena na řádku <a class="el" href="connection_8cc_source.html#l00331">331</a> v souboru <a class="el" href="connection_8cc_source.html">connection.cc</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a084138c941be34874782f50c7b811c64"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">__attribute__::packet_t </td>
+          <td>(</td>
+          <td class="paramtype">const char *&#160;</td>
+          <td class="paramname"><em>raw</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">explicit</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>C'tor. </p>
+
+<p>Definice je uvedena na řádku <a class="el" href="connection_8cc_source.html#l00338">338</a> v souboru <a class="el" href="connection_8cc_source.html">connection.cc</a>.</p>
+
+<p>Odkazuje se na <a class="el" href="connection_8cc_source.html#l00464">mc::io::udp::connection_t::pimple_connection_t::deadline</a> a <a class="el" href="connection_8cc_source.html#l00440">mc::io::udp::connection_t::pimple_connection_t::handle_deadline()</a>.</p>
+
+</div>
+</div>
+<h2 class="groupheader">Dokumentace proměnných</h2>
+<a class="anchor" id="af6a39bfc7e1dc3b6f9c997c1c43fa996"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint16_t count</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>total number of datagrams in message </p>
+
+<p>Definice je uvedena na řádku <a class="el" href="connection_8cc_source.html#l00362">362</a> v souboru <a class="el" href="connection_8cc_source.html">connection.cc</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a4fc3a0c58dfbd1e68224521185cb9384"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint16_t id</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>req/resp id </p>
+
+<p>Definice je uvedena na řádku <a class="el" href="connection_8cc_source.html#l00360">360</a> v souboru <a class="el" href="connection_8cc_source.html">connection.cc</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a5a6ed8c04a3db86066924b1a1bf4dad3"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint16_t reserved</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>reserved </p>
+
+<p>Definice je uvedena na řádku <a class="el" href="connection_8cc_source.html#l00363">363</a> v souboru <a class="el" href="connection_8cc_source.html">connection.cc</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a0a97914b75ed3ab7d0e13d8b200d758a"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint16_t seq</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>sequence number </p>
+
+<p>Definice je uvedena na řádku <a class="el" href="connection_8cc_source.html#l00361">361</a> v souboru <a class="el" href="connection_8cc_source.html">connection.cc</a>.</p>
+
+</div>
+</div>
+</div><!-- contents -->
+</div><!-- doc-content -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_c184e51c84f2c3f0345bbc8a0d75d3e1.html">io</a></li><li class="navelem"><a class="el" href="connection_8cc.html">connection.cc</a></li>
+    <li class="footer">Generováno út 23. čec 2013 13.13:04 pro projekt libmcache-0.2.1 programem
+    <a href="http://www.doxygen.org/index.html">
+    <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.3.1 </li>
+  </ul>
+</div>
+</body>
+</html>

@@ -1,0 +1,1124 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.3.1"/>
+<title>libmcache-0.2.1: Dokumentace třídy mc::SpookyHash</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript">
+  $(document).ready(initResizable);
+  $(window).load(resizeHeight);
+</script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/search.js"></script>
+<script type="text/javascript">
+  $(document).ready(function() { searchBox.OnSelectItem(0); });
+</script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td style="padding-left: 0.5em;">
+   <div id="projectname">libmcache-0.2.1
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Generováno programem Doxygen 1.8.3.1 -->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "search",false,'Hledat');
+</script>
+  <div id="navrow1" class="tabs">
+    <ul class="tablist">
+      <li><a href="index.html"><span>Hlavní&#160;stránka</span></a></li>
+      <li><a href="namespaces.html"><span>Prostory&#160;jmen</span></a></li>
+      <li class="current"><a href="annotated.html"><span>Třídy</span></a></li>
+      <li><a href="files.html"><span>Soubory</span></a></li>
+      <li>
+        <div id="MSearchBox" class="MSearchBoxInactive">
+        <span class="left">
+          <img id="MSearchSelect" src="search/mag_sel.png"
+               onmouseover="return searchBox.OnSearchSelectShow()"
+               onmouseout="return searchBox.OnSearchSelectHide()"
+               alt=""/>
+          <input type="text" id="MSearchField" value="Hledat" accesskey="S"
+               onfocus="searchBox.OnSearchFieldFocus(true)" 
+               onblur="searchBox.OnSearchFieldFocus(false)" 
+               onkeyup="searchBox.OnSearchFieldChange(event)"/>
+          </span><span class="right">
+            <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><img id="MSearchCloseImg" border="0" src="search/close.png" alt=""/></a>
+          </span>
+        </div>
+      </li>
+    </ul>
+  </div>
+  <div id="navrow2" class="tabs2">
+    <ul class="tablist">
+      <li><a href="annotated.html"><span>Datové&#160;struktury</span></a></li>
+      <li><a href="classes.html"><span>Rejstřík&#160;datových&#160;struktur</span></a></li>
+      <li><a href="inherits.html"><span>Hierarchie&#160;tříd</span></a></li>
+      <li><a href="functions.html"><span>Datové&#160;položky</span></a></li>
+    </ul>
+  </div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+$(document).ready(function(){initNavTree('classmc_1_1SpookyHash.html','');});
+</script>
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>Vše</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Třídy</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Prostory jmen</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Soubory</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Funkce</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Proměnné</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Definice typů</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Výčty</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(8)"><span class="SelectionMark">&#160;</span>Hodnoty výčtu</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(9)"><span class="SelectionMark">&#160;</span>Definice maker</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(10)"><span class="SelectionMark">&#160;</span>Stránky</a></div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div class="header">
+  <div class="summary">
+<a href="#pub-methods">Veřejné metody</a> &#124;
+<a href="#pub-static-methods">Statické veřejné metody</a> &#124;
+<a href="#pri-static-methods">Statické privátní metody</a> &#124;
+<a href="#pri-attribs">Privátní atributy</a> &#124;
+<a href="#pri-static-attribs">Statické privátní atributy</a>  </div>
+  <div class="headertitle">
+<div class="title">Dokumentace třídy mc::SpookyHash</div>  </div>
+</div><!--header-->
+<div class="contents">
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
+Veřejné metody</h2></td></tr>
+<tr class="memitem:a57f098948a92a5f57df0473d7bc382cd"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classmc_1_1SpookyHash.html#a57f098948a92a5f57df0473d7bc382cd">Init</a> (<a class="el" href="namespacemc.html#adf0914886e4b6ff739d0b4ff881cccd5">uint64</a> seed1, <a class="el" href="namespacemc.html#adf0914886e4b6ff739d0b4ff881cccd5">uint64</a> seed2)</td></tr>
+<tr class="separator:a57f098948a92a5f57df0473d7bc382cd"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae7d47383cdbea96789ce24c5e93044e5"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classmc_1_1SpookyHash.html#ae7d47383cdbea96789ce24c5e93044e5">Update</a> (const void *message, size_t length)</td></tr>
+<tr class="separator:ae7d47383cdbea96789ce24c5e93044e5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af848f10bb469fca12934884f3e40b3fd"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classmc_1_1SpookyHash.html#af848f10bb469fca12934884f3e40b3fd">Final</a> (<a class="el" href="namespacemc.html#adf0914886e4b6ff739d0b4ff881cccd5">uint64</a> *hash1, <a class="el" href="namespacemc.html#adf0914886e4b6ff739d0b4ff881cccd5">uint64</a> *hash2)</td></tr>
+<tr class="separator:af848f10bb469fca12934884f3e40b3fd"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-static-methods"></a>
+Statické veřejné metody</h2></td></tr>
+<tr class="memitem:a22d756296a83077e1f7566decb276731"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classmc_1_1SpookyHash.html#a22d756296a83077e1f7566decb276731">Hash128</a> (const void *message, size_t length, <a class="el" href="namespacemc.html#adf0914886e4b6ff739d0b4ff881cccd5">uint64</a> *hash1, <a class="el" href="namespacemc.html#adf0914886e4b6ff739d0b4ff881cccd5">uint64</a> *hash2)</td></tr>
+<tr class="separator:a22d756296a83077e1f7566decb276731"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af03ef5c97fe3b32772beaaea449f88fe"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="namespacemc.html#adf0914886e4b6ff739d0b4ff881cccd5">uint64</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classmc_1_1SpookyHash.html#af03ef5c97fe3b32772beaaea449f88fe">Hash64</a> (const void *message, size_t length, <a class="el" href="namespacemc.html#adf0914886e4b6ff739d0b4ff881cccd5">uint64</a> seed)</td></tr>
+<tr class="separator:af03ef5c97fe3b32772beaaea449f88fe"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af430faf3355b087010956ccd751c45e9"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="namespacemc.html#aaf5c7a2ab1098b777883e32060ac64aa">uint32</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classmc_1_1SpookyHash.html#af430faf3355b087010956ccd751c45e9">Hash32</a> (const void *message, size_t length, <a class="el" href="namespacemc.html#aaf5c7a2ab1098b777883e32060ac64aa">uint32</a> seed)</td></tr>
+<tr class="separator:af430faf3355b087010956ccd751c45e9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a90c168aa76cca0de2a553f733843622c"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="spooky_8cc.html#a2eb6f9e0395b47b8d5e3eeae4fe0c116">INLINE</a> <a class="el" href="namespacemc.html#adf0914886e4b6ff739d0b4ff881cccd5">uint64</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classmc_1_1SpookyHash.html#a90c168aa76cca0de2a553f733843622c">Rot64</a> (<a class="el" href="namespacemc.html#adf0914886e4b6ff739d0b4ff881cccd5">uint64</a> x, int k)</td></tr>
+<tr class="separator:a90c168aa76cca0de2a553f733843622c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa6a1ad62c928b5b94969d8f5ae2a8591"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="spooky_8cc.html#a2eb6f9e0395b47b8d5e3eeae4fe0c116">INLINE</a> void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classmc_1_1SpookyHash.html#aa6a1ad62c928b5b94969d8f5ae2a8591">Mix</a> (const <a class="el" href="namespacemc.html#adf0914886e4b6ff739d0b4ff881cccd5">uint64</a> *data, <a class="el" href="namespacemc.html#adf0914886e4b6ff739d0b4ff881cccd5">uint64</a> &amp;s0, <a class="el" href="namespacemc.html#adf0914886e4b6ff739d0b4ff881cccd5">uint64</a> &amp;s1, <a class="el" href="namespacemc.html#adf0914886e4b6ff739d0b4ff881cccd5">uint64</a> &amp;s2, <a class="el" href="namespacemc.html#adf0914886e4b6ff739d0b4ff881cccd5">uint64</a> &amp;s3, <a class="el" href="namespacemc.html#adf0914886e4b6ff739d0b4ff881cccd5">uint64</a> &amp;s4, <a class="el" href="namespacemc.html#adf0914886e4b6ff739d0b4ff881cccd5">uint64</a> &amp;s5, <a class="el" href="namespacemc.html#adf0914886e4b6ff739d0b4ff881cccd5">uint64</a> &amp;s6, <a class="el" href="namespacemc.html#adf0914886e4b6ff739d0b4ff881cccd5">uint64</a> &amp;s7, <a class="el" href="namespacemc.html#adf0914886e4b6ff739d0b4ff881cccd5">uint64</a> &amp;s8, <a class="el" href="namespacemc.html#adf0914886e4b6ff739d0b4ff881cccd5">uint64</a> &amp;s9, <a class="el" href="namespacemc.html#adf0914886e4b6ff739d0b4ff881cccd5">uint64</a> &amp;s10, <a class="el" href="namespacemc.html#adf0914886e4b6ff739d0b4ff881cccd5">uint64</a> &amp;s11)</td></tr>
+<tr class="separator:aa6a1ad62c928b5b94969d8f5ae2a8591"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae01c5441e6d252361bccc492bcff90f0"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="spooky_8cc.html#a2eb6f9e0395b47b8d5e3eeae4fe0c116">INLINE</a> void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classmc_1_1SpookyHash.html#ae01c5441e6d252361bccc492bcff90f0">EndPartial</a> (<a class="el" href="namespacemc.html#adf0914886e4b6ff739d0b4ff881cccd5">uint64</a> &amp;h0, <a class="el" href="namespacemc.html#adf0914886e4b6ff739d0b4ff881cccd5">uint64</a> &amp;h1, <a class="el" href="namespacemc.html#adf0914886e4b6ff739d0b4ff881cccd5">uint64</a> &amp;h2, <a class="el" href="namespacemc.html#adf0914886e4b6ff739d0b4ff881cccd5">uint64</a> &amp;h3, <a class="el" href="namespacemc.html#adf0914886e4b6ff739d0b4ff881cccd5">uint64</a> &amp;h4, <a class="el" href="namespacemc.html#adf0914886e4b6ff739d0b4ff881cccd5">uint64</a> &amp;h5, <a class="el" href="namespacemc.html#adf0914886e4b6ff739d0b4ff881cccd5">uint64</a> &amp;h6, <a class="el" href="namespacemc.html#adf0914886e4b6ff739d0b4ff881cccd5">uint64</a> &amp;h7, <a class="el" href="namespacemc.html#adf0914886e4b6ff739d0b4ff881cccd5">uint64</a> &amp;h8, <a class="el" href="namespacemc.html#adf0914886e4b6ff739d0b4ff881cccd5">uint64</a> &amp;h9, <a class="el" href="namespacemc.html#adf0914886e4b6ff739d0b4ff881cccd5">uint64</a> &amp;h10, <a class="el" href="namespacemc.html#adf0914886e4b6ff739d0b4ff881cccd5">uint64</a> &amp;h11)</td></tr>
+<tr class="separator:ae01c5441e6d252361bccc492bcff90f0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab9e43d86635bbd5025af4c9183678f63"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="spooky_8cc.html#a2eb6f9e0395b47b8d5e3eeae4fe0c116">INLINE</a> void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classmc_1_1SpookyHash.html#ab9e43d86635bbd5025af4c9183678f63">End</a> (const <a class="el" href="namespacemc.html#adf0914886e4b6ff739d0b4ff881cccd5">uint64</a> *data, <a class="el" href="namespacemc.html#adf0914886e4b6ff739d0b4ff881cccd5">uint64</a> &amp;h0, <a class="el" href="namespacemc.html#adf0914886e4b6ff739d0b4ff881cccd5">uint64</a> &amp;h1, <a class="el" href="namespacemc.html#adf0914886e4b6ff739d0b4ff881cccd5">uint64</a> &amp;h2, <a class="el" href="namespacemc.html#adf0914886e4b6ff739d0b4ff881cccd5">uint64</a> &amp;h3, <a class="el" href="namespacemc.html#adf0914886e4b6ff739d0b4ff881cccd5">uint64</a> &amp;h4, <a class="el" href="namespacemc.html#adf0914886e4b6ff739d0b4ff881cccd5">uint64</a> &amp;h5, <a class="el" href="namespacemc.html#adf0914886e4b6ff739d0b4ff881cccd5">uint64</a> &amp;h6, <a class="el" href="namespacemc.html#adf0914886e4b6ff739d0b4ff881cccd5">uint64</a> &amp;h7, <a class="el" href="namespacemc.html#adf0914886e4b6ff739d0b4ff881cccd5">uint64</a> &amp;h8, <a class="el" href="namespacemc.html#adf0914886e4b6ff739d0b4ff881cccd5">uint64</a> &amp;h9, <a class="el" href="namespacemc.html#adf0914886e4b6ff739d0b4ff881cccd5">uint64</a> &amp;h10, <a class="el" href="namespacemc.html#adf0914886e4b6ff739d0b4ff881cccd5">uint64</a> &amp;h11)</td></tr>
+<tr class="separator:ab9e43d86635bbd5025af4c9183678f63"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6a2455f9f8432b5a578aa76a421ed1c3"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="spooky_8cc.html#a2eb6f9e0395b47b8d5e3eeae4fe0c116">INLINE</a> void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classmc_1_1SpookyHash.html#a6a2455f9f8432b5a578aa76a421ed1c3">ShortMix</a> (<a class="el" href="namespacemc.html#adf0914886e4b6ff739d0b4ff881cccd5">uint64</a> &amp;h0, <a class="el" href="namespacemc.html#adf0914886e4b6ff739d0b4ff881cccd5">uint64</a> &amp;h1, <a class="el" href="namespacemc.html#adf0914886e4b6ff739d0b4ff881cccd5">uint64</a> &amp;h2, <a class="el" href="namespacemc.html#adf0914886e4b6ff739d0b4ff881cccd5">uint64</a> &amp;h3)</td></tr>
+<tr class="separator:a6a2455f9f8432b5a578aa76a421ed1c3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2a819dafeb02165c9e59254ed92e841e"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="spooky_8cc.html#a2eb6f9e0395b47b8d5e3eeae4fe0c116">INLINE</a> void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classmc_1_1SpookyHash.html#a2a819dafeb02165c9e59254ed92e841e">ShortEnd</a> (<a class="el" href="namespacemc.html#adf0914886e4b6ff739d0b4ff881cccd5">uint64</a> &amp;h0, <a class="el" href="namespacemc.html#adf0914886e4b6ff739d0b4ff881cccd5">uint64</a> &amp;h1, <a class="el" href="namespacemc.html#adf0914886e4b6ff739d0b4ff881cccd5">uint64</a> &amp;h2, <a class="el" href="namespacemc.html#adf0914886e4b6ff739d0b4ff881cccd5">uint64</a> &amp;h3)</td></tr>
+<tr class="separator:a2a819dafeb02165c9e59254ed92e841e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-static-methods"></a>
+Statické privátní metody</h2></td></tr>
+<tr class="memitem:ab98614773bcf3ed949aca8323c2b7095"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classmc_1_1SpookyHash.html#ab98614773bcf3ed949aca8323c2b7095">Short</a> (const void *message, size_t length, <a class="el" href="namespacemc.html#adf0914886e4b6ff739d0b4ff881cccd5">uint64</a> *hash1, <a class="el" href="namespacemc.html#adf0914886e4b6ff739d0b4ff881cccd5">uint64</a> *hash2)</td></tr>
+<tr class="separator:ab98614773bcf3ed949aca8323c2b7095"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-attribs"></a>
+Privátní atributy</h2></td></tr>
+<tr class="memitem:abb26b57132f738a4aebd1a498c1cc8c6"><td class="memItemLeft" align="right" valign="top"><a class="el" href="namespacemc.html#adf0914886e4b6ff739d0b4ff881cccd5">uint64</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classmc_1_1SpookyHash.html#abb26b57132f738a4aebd1a498c1cc8c6">m_data</a> [2 *<a class="el" href="classmc_1_1SpookyHash.html#afacacd222efa5501931988f5669ea43f">sc_numVars</a>]</td></tr>
+<tr class="separator:abb26b57132f738a4aebd1a498c1cc8c6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1142b5bdc5c927fc9088db7f4d85ced5"><td class="memItemLeft" align="right" valign="top"><a class="el" href="namespacemc.html#adf0914886e4b6ff739d0b4ff881cccd5">uint64</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classmc_1_1SpookyHash.html#a1142b5bdc5c927fc9088db7f4d85ced5">m_state</a> [<a class="el" href="classmc_1_1SpookyHash.html#afacacd222efa5501931988f5669ea43f">sc_numVars</a>]</td></tr>
+<tr class="separator:a1142b5bdc5c927fc9088db7f4d85ced5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aceaf1127399f120b9f3250a49bd2c623"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classmc_1_1SpookyHash.html#aceaf1127399f120b9f3250a49bd2c623">m_length</a></td></tr>
+<tr class="separator:aceaf1127399f120b9f3250a49bd2c623"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a01cae3daf373a20a0430c690de323da1"><td class="memItemLeft" align="right" valign="top"><a class="el" href="namespacemc.html#a1848bf7ad293994d050fce1bf7baad65">uint8</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classmc_1_1SpookyHash.html#a01cae3daf373a20a0430c690de323da1">m_remainder</a></td></tr>
+<tr class="separator:a01cae3daf373a20a0430c690de323da1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-static-attribs"></a>
+Statické privátní atributy</h2></td></tr>
+<tr class="memitem:afacacd222efa5501931988f5669ea43f"><td class="memItemLeft" align="right" valign="top">static const size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classmc_1_1SpookyHash.html#afacacd222efa5501931988f5669ea43f">sc_numVars</a></td></tr>
+<tr class="separator:afacacd222efa5501931988f5669ea43f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a364186b89d3327d13b5a9292e4ce4343"><td class="memItemLeft" align="right" valign="top">static const size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classmc_1_1SpookyHash.html#a364186b89d3327d13b5a9292e4ce4343">sc_blockSize</a></td></tr>
+<tr class="separator:a364186b89d3327d13b5a9292e4ce4343"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad2b10f9e6058e67932363dff40cc2279"><td class="memItemLeft" align="right" valign="top">static const size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classmc_1_1SpookyHash.html#ad2b10f9e6058e67932363dff40cc2279">sc_bufSize</a></td></tr>
+<tr class="separator:ad2b10f9e6058e67932363dff40cc2279"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab50dd0ba2f932254b9d8ee4bb612205b"><td class="memItemLeft" align="right" valign="top">static const <a class="el" href="namespacemc.html#adf0914886e4b6ff739d0b4ff881cccd5">uint64</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classmc_1_1SpookyHash.html#ab50dd0ba2f932254b9d8ee4bb612205b">sc_const</a></td></tr>
+<tr class="separator:ab50dd0ba2f932254b9d8ee4bb612205b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<a name="details" id="details"></a><h2 class="groupheader">Detailní popis</h2>
+<div class="textblock">
+<p>Definice je uvedena na řádku <a class="el" href="spooky_8cc_source.html#l00071">71</a> v souboru <a class="el" href="spooky_8cc_source.html">spooky.cc</a>.</p>
+</div><h2 class="groupheader">Dokumentace k metodám</h2>
+<a class="anchor" id="ab9e43d86635bbd5025af4c9183678f63"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static <a class="el" href="spooky_8cc.html#a2eb6f9e0395b47b8d5e3eeae4fe0c116">INLINE</a> void mc::SpookyHash::End </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="namespacemc.html#adf0914886e4b6ff739d0b4ff881cccd5">uint64</a> *&#160;</td>
+          <td class="paramname"><em>data</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="namespacemc.html#adf0914886e4b6ff739d0b4ff881cccd5">uint64</a> &amp;&#160;</td>
+          <td class="paramname"><em>h0</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="namespacemc.html#adf0914886e4b6ff739d0b4ff881cccd5">uint64</a> &amp;&#160;</td>
+          <td class="paramname"><em>h1</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="namespacemc.html#adf0914886e4b6ff739d0b4ff881cccd5">uint64</a> &amp;&#160;</td>
+          <td class="paramname"><em>h2</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="namespacemc.html#adf0914886e4b6ff739d0b4ff881cccd5">uint64</a> &amp;&#160;</td>
+          <td class="paramname"><em>h3</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="namespacemc.html#adf0914886e4b6ff739d0b4ff881cccd5">uint64</a> &amp;&#160;</td>
+          <td class="paramname"><em>h4</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="namespacemc.html#adf0914886e4b6ff739d0b4ff881cccd5">uint64</a> &amp;&#160;</td>
+          <td class="paramname"><em>h5</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="namespacemc.html#adf0914886e4b6ff739d0b4ff881cccd5">uint64</a> &amp;&#160;</td>
+          <td class="paramname"><em>h6</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="namespacemc.html#adf0914886e4b6ff739d0b4ff881cccd5">uint64</a> &amp;&#160;</td>
+          <td class="paramname"><em>h7</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="namespacemc.html#adf0914886e4b6ff739d0b4ff881cccd5">uint64</a> &amp;&#160;</td>
+          <td class="paramname"><em>h8</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="namespacemc.html#adf0914886e4b6ff739d0b4ff881cccd5">uint64</a> &amp;&#160;</td>
+          <td class="paramname"><em>h9</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="namespacemc.html#adf0914886e4b6ff739d0b4ff881cccd5">uint64</a> &amp;&#160;</td>
+          <td class="paramname"><em>h10</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="namespacemc.html#adf0914886e4b6ff739d0b4ff881cccd5">uint64</a> &amp;&#160;</td>
+          <td class="paramname"><em>h11</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Definice je uvedena na řádku <a class="el" href="spooky_8cc_source.html#l00212">212</a> v souboru <a class="el" href="spooky_8cc_source.html">spooky.cc</a>.</p>
+
+<p>Odkazuje se na <a class="el" href="spooky_8cc_source.html#l00193">EndPartial()</a>.</p>
+
+<p>Používá se v <a class="el" href="spooky_8cc_source.html#l00612">Final()</a> a <a class="el" href="spooky_8cc_source.html#l00434">Hash128()</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="ae01c5441e6d252361bccc492bcff90f0"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static <a class="el" href="spooky_8cc.html#a2eb6f9e0395b47b8d5e3eeae4fe0c116">INLINE</a> void mc::SpookyHash::EndPartial </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="namespacemc.html#adf0914886e4b6ff739d0b4ff881cccd5">uint64</a> &amp;&#160;</td>
+          <td class="paramname"><em>h0</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="namespacemc.html#adf0914886e4b6ff739d0b4ff881cccd5">uint64</a> &amp;&#160;</td>
+          <td class="paramname"><em>h1</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="namespacemc.html#adf0914886e4b6ff739d0b4ff881cccd5">uint64</a> &amp;&#160;</td>
+          <td class="paramname"><em>h2</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="namespacemc.html#adf0914886e4b6ff739d0b4ff881cccd5">uint64</a> &amp;&#160;</td>
+          <td class="paramname"><em>h3</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="namespacemc.html#adf0914886e4b6ff739d0b4ff881cccd5">uint64</a> &amp;&#160;</td>
+          <td class="paramname"><em>h4</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="namespacemc.html#adf0914886e4b6ff739d0b4ff881cccd5">uint64</a> &amp;&#160;</td>
+          <td class="paramname"><em>h5</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="namespacemc.html#adf0914886e4b6ff739d0b4ff881cccd5">uint64</a> &amp;&#160;</td>
+          <td class="paramname"><em>h6</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="namespacemc.html#adf0914886e4b6ff739d0b4ff881cccd5">uint64</a> &amp;&#160;</td>
+          <td class="paramname"><em>h7</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="namespacemc.html#adf0914886e4b6ff739d0b4ff881cccd5">uint64</a> &amp;&#160;</td>
+          <td class="paramname"><em>h8</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="namespacemc.html#adf0914886e4b6ff739d0b4ff881cccd5">uint64</a> &amp;&#160;</td>
+          <td class="paramname"><em>h9</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="namespacemc.html#adf0914886e4b6ff739d0b4ff881cccd5">uint64</a> &amp;&#160;</td>
+          <td class="paramname"><em>h10</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="namespacemc.html#adf0914886e4b6ff739d0b4ff881cccd5">uint64</a> &amp;&#160;</td>
+          <td class="paramname"><em>h11</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Definice je uvedena na řádku <a class="el" href="spooky_8cc_source.html#l00193">193</a> v souboru <a class="el" href="spooky_8cc_source.html">spooky.cc</a>.</p>
+
+<p>Odkazuje se na <a class="el" href="spooky_8cc_source.html#l00139">Rot64()</a>.</p>
+
+<p>Používá se v <a class="el" href="spooky_8cc_source.html#l00212">End()</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="af848f10bb469fca12934884f3e40b3fd"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void mc::SpookyHash::Final </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="namespacemc.html#adf0914886e4b6ff739d0b4ff881cccd5">uint64</a> *&#160;</td>
+          <td class="paramname"><em>hash1</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="namespacemc.html#adf0914886e4b6ff739d0b4ff881cccd5">uint64</a> *&#160;</td>
+          <td class="paramname"><em>hash2</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Definice je uvedena na řádku <a class="el" href="spooky_8cc_source.html#l00612">612</a> v souboru <a class="el" href="spooky_8cc_source.html">spooky.cc</a>.</p>
+
+<p>Odkazuje se na <a class="el" href="spooky_8cc_source.html#l00212">End()</a>, <a class="el" href="spooky_8cc_source.html#l00316">m_data</a>, <a class="el" href="spooky_8cc_source.html#l00318">m_length</a>, <a class="el" href="spooky_8cc_source.html#l00319">m_remainder</a>, <a class="el" href="spooky_8cc_source.html#l00317">m_state</a>, <a class="el" href="spooky_8cc_source.html#l00157">Mix()</a>, <a class="el" href="spooky_8cc_source.html#l00302">sc_blockSize</a>, <a class="el" href="spooky_8cc_source.html#l00305">sc_bufSize</a>, <a class="el" href="spooky_8cc_source.html#l00299">sc_numVars</a> a <a class="el" href="spooky_8cc_source.html#l00328">Short()</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a22d756296a83077e1f7566decb276731"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void mc::SpookyHash::Hash128 </td>
+          <td>(</td>
+          <td class="paramtype">const void *&#160;</td>
+          <td class="paramname"><em>message</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">size_t&#160;</td>
+          <td class="paramname"><em>length</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="namespacemc.html#adf0914886e4b6ff739d0b4ff881cccd5">uint64</a> *&#160;</td>
+          <td class="paramname"><em>hash1</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="namespacemc.html#adf0914886e4b6ff739d0b4ff881cccd5">uint64</a> *&#160;</td>
+          <td class="paramname"><em>hash2</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Definice je uvedena na řádku <a class="el" href="spooky_8cc_source.html#l00434">434</a> v souboru <a class="el" href="spooky_8cc_source.html">spooky.cc</a>.</p>
+
+<p>Odkazuje se na <a class="el" href="spooky_8cc_source.html#l00322">ALLOW_UNALIGNED_READS</a>, <a class="el" href="spooky_8cc_source.html#l00212">End()</a>, <a class="el" href="spooky_8cc_source.html#l00157">Mix()</a>, <a class="el" href="spooky_8cc_source.html#l00302">sc_blockSize</a>, <a class="el" href="spooky_8cc_source.html#l00305">sc_bufSize</a>, <a class="el" href="spooky_8cc_source.html#l00314">sc_const</a>, <a class="el" href="spooky_8cc_source.html#l00299">sc_numVars</a> a <a class="el" href="spooky_8cc_source.html#l00328">Short()</a>.</p>
+
+<p>Používá se v <a class="el" href="spooky_8cc_source.html#l00099">Hash32()</a> a <a class="el" href="spooky_8cc_source.html#l00086">Hash64()</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="af430faf3355b087010956ccd751c45e9"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static <a class="el" href="namespacemc.html#aaf5c7a2ab1098b777883e32060ac64aa">uint32</a> mc::SpookyHash::Hash32 </td>
+          <td>(</td>
+          <td class="paramtype">const void *&#160;</td>
+          <td class="paramname"><em>message</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">size_t&#160;</td>
+          <td class="paramname"><em>length</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="namespacemc.html#aaf5c7a2ab1098b777883e32060ac64aa">uint32</a>&#160;</td>
+          <td class="paramname"><em>seed</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Definice je uvedena na řádku <a class="el" href="spooky_8cc_source.html#l00099">99</a> v souboru <a class="el" href="spooky_8cc_source.html">spooky.cc</a>.</p>
+
+<p>Odkazuje se na <a class="el" href="spooky_8cc_source.html#l00434">Hash128()</a>.</p>
+
+<p>Používá se v <a class="el" href="spooky_8cc_source.html#l00659">mc::spooky()</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="af03ef5c97fe3b32772beaaea449f88fe"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static <a class="el" href="namespacemc.html#adf0914886e4b6ff739d0b4ff881cccd5">uint64</a> mc::SpookyHash::Hash64 </td>
+          <td>(</td>
+          <td class="paramtype">const void *&#160;</td>
+          <td class="paramname"><em>message</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">size_t&#160;</td>
+          <td class="paramname"><em>length</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="namespacemc.html#adf0914886e4b6ff739d0b4ff881cccd5">uint64</a>&#160;</td>
+          <td class="paramname"><em>seed</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Definice je uvedena na řádku <a class="el" href="spooky_8cc_source.html#l00086">86</a> v souboru <a class="el" href="spooky_8cc_source.html">spooky.cc</a>.</p>
+
+<p>Odkazuje se na <a class="el" href="spooky_8cc_source.html#l00434">Hash128()</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a57f098948a92a5f57df0473d7bc382cd"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void mc::SpookyHash::Init </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="namespacemc.html#adf0914886e4b6ff739d0b4ff881cccd5">uint64</a>&#160;</td>
+          <td class="paramname"><em>seed1</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="namespacemc.html#adf0914886e4b6ff739d0b4ff881cccd5">uint64</a>&#160;</td>
+          <td class="paramname"><em>seed2</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Definice je uvedena na řádku <a class="el" href="spooky_8cc_source.html#l00498">498</a> v souboru <a class="el" href="spooky_8cc_source.html">spooky.cc</a>.</p>
+
+<p>Odkazuje se na <a class="el" href="spooky_8cc_source.html#l00318">m_length</a>, <a class="el" href="spooky_8cc_source.html#l00319">m_remainder</a> a <a class="el" href="spooky_8cc_source.html#l00317">m_state</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="aa6a1ad62c928b5b94969d8f5ae2a8591"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static <a class="el" href="spooky_8cc.html#a2eb6f9e0395b47b8d5e3eeae4fe0c116">INLINE</a> void mc::SpookyHash::Mix </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="namespacemc.html#adf0914886e4b6ff739d0b4ff881cccd5">uint64</a> *&#160;</td>
+          <td class="paramname"><em>data</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="namespacemc.html#adf0914886e4b6ff739d0b4ff881cccd5">uint64</a> &amp;&#160;</td>
+          <td class="paramname"><em>s0</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="namespacemc.html#adf0914886e4b6ff739d0b4ff881cccd5">uint64</a> &amp;&#160;</td>
+          <td class="paramname"><em>s1</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="namespacemc.html#adf0914886e4b6ff739d0b4ff881cccd5">uint64</a> &amp;&#160;</td>
+          <td class="paramname"><em>s2</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="namespacemc.html#adf0914886e4b6ff739d0b4ff881cccd5">uint64</a> &amp;&#160;</td>
+          <td class="paramname"><em>s3</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="namespacemc.html#adf0914886e4b6ff739d0b4ff881cccd5">uint64</a> &amp;&#160;</td>
+          <td class="paramname"><em>s4</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="namespacemc.html#adf0914886e4b6ff739d0b4ff881cccd5">uint64</a> &amp;&#160;</td>
+          <td class="paramname"><em>s5</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="namespacemc.html#adf0914886e4b6ff739d0b4ff881cccd5">uint64</a> &amp;&#160;</td>
+          <td class="paramname"><em>s6</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="namespacemc.html#adf0914886e4b6ff739d0b4ff881cccd5">uint64</a> &amp;&#160;</td>
+          <td class="paramname"><em>s7</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="namespacemc.html#adf0914886e4b6ff739d0b4ff881cccd5">uint64</a> &amp;&#160;</td>
+          <td class="paramname"><em>s8</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="namespacemc.html#adf0914886e4b6ff739d0b4ff881cccd5">uint64</a> &amp;&#160;</td>
+          <td class="paramname"><em>s9</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="namespacemc.html#adf0914886e4b6ff739d0b4ff881cccd5">uint64</a> &amp;&#160;</td>
+          <td class="paramname"><em>s10</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="namespacemc.html#adf0914886e4b6ff739d0b4ff881cccd5">uint64</a> &amp;&#160;</td>
+          <td class="paramname"><em>s11</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Definice je uvedena na řádku <a class="el" href="spooky_8cc_source.html#l00157">157</a> v souboru <a class="el" href="spooky_8cc_source.html">spooky.cc</a>.</p>
+
+<p>Odkazuje se na <a class="el" href="spooky_8cc_source.html#l00139">Rot64()</a>.</p>
+
+<p>Používá se v <a class="el" href="spooky_8cc_source.html#l00612">Final()</a>, <a class="el" href="spooky_8cc_source.html#l00434">Hash128()</a> a <a class="el" href="spooky_8cc_source.html#l00508">Update()</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a90c168aa76cca0de2a553f733843622c"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static <a class="el" href="spooky_8cc.html#a2eb6f9e0395b47b8d5e3eeae4fe0c116">INLINE</a> <a class="el" href="namespacemc.html#adf0914886e4b6ff739d0b4ff881cccd5">uint64</a> mc::SpookyHash::Rot64 </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="namespacemc.html#adf0914886e4b6ff739d0b4ff881cccd5">uint64</a>&#160;</td>
+          <td class="paramname"><em>x</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>k</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Definice je uvedena na řádku <a class="el" href="spooky_8cc_source.html#l00139">139</a> v souboru <a class="el" href="spooky_8cc_source.html">spooky.cc</a>.</p>
+
+<p>Používá se v <a class="el" href="spooky_8cc_source.html#l00193">EndPartial()</a>, <a class="el" href="spooky_8cc_source.html#l00157">Mix()</a>, <a class="el" href="spooky_8cc_source.html#l00269">ShortEnd()</a> a <a class="el" href="spooky_8cc_source.html#l00241">ShortMix()</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="ab98614773bcf3ed949aca8323c2b7095"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void mc::SpookyHash::Short </td>
+          <td>(</td>
+          <td class="paramtype">const void *&#160;</td>
+          <td class="paramname"><em>message</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">size_t&#160;</td>
+          <td class="paramname"><em>length</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="namespacemc.html#adf0914886e4b6ff739d0b4ff881cccd5">uint64</a> *&#160;</td>
+          <td class="paramname"><em>hash1</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="namespacemc.html#adf0914886e4b6ff739d0b4ff881cccd5">uint64</a> *&#160;</td>
+          <td class="paramname"><em>hash2</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Definice je uvedena na řádku <a class="el" href="spooky_8cc_source.html#l00328">328</a> v souboru <a class="el" href="spooky_8cc_source.html">spooky.cc</a>.</p>
+
+<p>Odkazuje se na <a class="el" href="spooky_8cc_source.html#l00322">ALLOW_UNALIGNED_READS</a>, <a class="el" href="spooky_8cc_source.html#l00314">sc_const</a>, <a class="el" href="spooky_8cc_source.html#l00299">sc_numVars</a>, <a class="el" href="spooky_8cc_source.html#l00269">ShortEnd()</a> a <a class="el" href="spooky_8cc_source.html#l00241">ShortMix()</a>.</p>
+
+<p>Používá se v <a class="el" href="spooky_8cc_source.html#l00612">Final()</a> a <a class="el" href="spooky_8cc_source.html#l00434">Hash128()</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a2a819dafeb02165c9e59254ed92e841e"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static <a class="el" href="spooky_8cc.html#a2eb6f9e0395b47b8d5e3eeae4fe0c116">INLINE</a> void mc::SpookyHash::ShortEnd </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="namespacemc.html#adf0914886e4b6ff739d0b4ff881cccd5">uint64</a> &amp;&#160;</td>
+          <td class="paramname"><em>h0</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="namespacemc.html#adf0914886e4b6ff739d0b4ff881cccd5">uint64</a> &amp;&#160;</td>
+          <td class="paramname"><em>h1</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="namespacemc.html#adf0914886e4b6ff739d0b4ff881cccd5">uint64</a> &amp;&#160;</td>
+          <td class="paramname"><em>h2</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="namespacemc.html#adf0914886e4b6ff739d0b4ff881cccd5">uint64</a> &amp;&#160;</td>
+          <td class="paramname"><em>h3</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Definice je uvedena na řádku <a class="el" href="spooky_8cc_source.html#l00269">269</a> v souboru <a class="el" href="spooky_8cc_source.html">spooky.cc</a>.</p>
+
+<p>Odkazuje se na <a class="el" href="spooky_8cc_source.html#l00139">Rot64()</a>.</p>
+
+<p>Používá se v <a class="el" href="spooky_8cc_source.html#l00328">Short()</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a6a2455f9f8432b5a578aa76a421ed1c3"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static <a class="el" href="spooky_8cc.html#a2eb6f9e0395b47b8d5e3eeae4fe0c116">INLINE</a> void mc::SpookyHash::ShortMix </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="namespacemc.html#adf0914886e4b6ff739d0b4ff881cccd5">uint64</a> &amp;&#160;</td>
+          <td class="paramname"><em>h0</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="namespacemc.html#adf0914886e4b6ff739d0b4ff881cccd5">uint64</a> &amp;&#160;</td>
+          <td class="paramname"><em>h1</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="namespacemc.html#adf0914886e4b6ff739d0b4ff881cccd5">uint64</a> &amp;&#160;</td>
+          <td class="paramname"><em>h2</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="namespacemc.html#adf0914886e4b6ff739d0b4ff881cccd5">uint64</a> &amp;&#160;</td>
+          <td class="paramname"><em>h3</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Definice je uvedena na řádku <a class="el" href="spooky_8cc_source.html#l00241">241</a> v souboru <a class="el" href="spooky_8cc_source.html">spooky.cc</a>.</p>
+
+<p>Odkazuje se na <a class="el" href="spooky_8cc_source.html#l00139">Rot64()</a>.</p>
+
+<p>Používá se v <a class="el" href="spooky_8cc_source.html#l00328">Short()</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="ae7d47383cdbea96789ce24c5e93044e5"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void mc::SpookyHash::Update </td>
+          <td>(</td>
+          <td class="paramtype">const void *&#160;</td>
+          <td class="paramname"><em>message</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">size_t&#160;</td>
+          <td class="paramname"><em>length</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Definice je uvedena na řádku <a class="el" href="spooky_8cc_source.html#l00508">508</a> v souboru <a class="el" href="spooky_8cc_source.html">spooky.cc</a>.</p>
+
+<p>Odkazuje se na <a class="el" href="spooky_8cc_source.html#l00322">ALLOW_UNALIGNED_READS</a>, <a class="el" href="spooky_8cc_source.html#l00316">m_data</a>, <a class="el" href="spooky_8cc_source.html#l00318">m_length</a>, <a class="el" href="spooky_8cc_source.html#l00319">m_remainder</a>, <a class="el" href="spooky_8cc_source.html#l00317">m_state</a>, <a class="el" href="spooky_8cc_source.html#l00157">Mix()</a>, <a class="el" href="spooky_8cc_source.html#l00302">sc_blockSize</a>, <a class="el" href="spooky_8cc_source.html#l00305">sc_bufSize</a>, <a class="el" href="spooky_8cc_source.html#l00314">sc_const</a> a <a class="el" href="spooky_8cc_source.html#l00299">sc_numVars</a>.</p>
+
+</div>
+</div>
+<h2 class="groupheader">Dokumentace k položkám</h2>
+<a class="anchor" id="abb26b57132f738a4aebd1a498c1cc8c6"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="namespacemc.html#adf0914886e4b6ff739d0b4ff881cccd5">uint64</a> mc::SpookyHash::m_data[2 *<a class="el" href="classmc_1_1SpookyHash.html#afacacd222efa5501931988f5669ea43f">sc_numVars</a>]</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Definice je uvedena na řádku <a class="el" href="spooky_8cc_source.html#l00316">316</a> v souboru <a class="el" href="spooky_8cc_source.html">spooky.cc</a>.</p>
+
+<p>Používá se v <a class="el" href="spooky_8cc_source.html#l00612">Final()</a> a <a class="el" href="spooky_8cc_source.html#l00508">Update()</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="aceaf1127399f120b9f3250a49bd2c623"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">size_t mc::SpookyHash::m_length</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Definice je uvedena na řádku <a class="el" href="spooky_8cc_source.html#l00318">318</a> v souboru <a class="el" href="spooky_8cc_source.html">spooky.cc</a>.</p>
+
+<p>Používá se v <a class="el" href="spooky_8cc_source.html#l00612">Final()</a>, <a class="el" href="spooky_8cc_source.html#l00498">Init()</a> a <a class="el" href="spooky_8cc_source.html#l00508">Update()</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a01cae3daf373a20a0430c690de323da1"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="namespacemc.html#a1848bf7ad293994d050fce1bf7baad65">uint8</a> mc::SpookyHash::m_remainder</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Definice je uvedena na řádku <a class="el" href="spooky_8cc_source.html#l00319">319</a> v souboru <a class="el" href="spooky_8cc_source.html">spooky.cc</a>.</p>
+
+<p>Používá se v <a class="el" href="spooky_8cc_source.html#l00612">Final()</a>, <a class="el" href="spooky_8cc_source.html#l00498">Init()</a> a <a class="el" href="spooky_8cc_source.html#l00508">Update()</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a1142b5bdc5c927fc9088db7f4d85ced5"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="namespacemc.html#adf0914886e4b6ff739d0b4ff881cccd5">uint64</a> mc::SpookyHash::m_state[<a class="el" href="classmc_1_1SpookyHash.html#afacacd222efa5501931988f5669ea43f">sc_numVars</a>]</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Definice je uvedena na řádku <a class="el" href="spooky_8cc_source.html#l00317">317</a> v souboru <a class="el" href="spooky_8cc_source.html">spooky.cc</a>.</p>
+
+<p>Používá se v <a class="el" href="spooky_8cc_source.html#l00612">Final()</a>, <a class="el" href="spooky_8cc_source.html#l00498">Init()</a> a <a class="el" href="spooky_8cc_source.html#l00508">Update()</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a364186b89d3327d13b5a9292e4ce4343"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">const size_t mc::SpookyHash::sc_blockSize</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Definice je uvedena na řádku <a class="el" href="spooky_8cc_source.html#l00302">302</a> v souboru <a class="el" href="spooky_8cc_source.html">spooky.cc</a>.</p>
+
+<p>Používá se v <a class="el" href="spooky_8cc_source.html#l00612">Final()</a>, <a class="el" href="spooky_8cc_source.html#l00434">Hash128()</a> a <a class="el" href="spooky_8cc_source.html#l00508">Update()</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="ad2b10f9e6058e67932363dff40cc2279"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">const size_t mc::SpookyHash::sc_bufSize</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Definice je uvedena na řádku <a class="el" href="spooky_8cc_source.html#l00305">305</a> v souboru <a class="el" href="spooky_8cc_source.html">spooky.cc</a>.</p>
+
+<p>Používá se v <a class="el" href="spooky_8cc_source.html#l00612">Final()</a>, <a class="el" href="spooky_8cc_source.html#l00434">Hash128()</a> a <a class="el" href="spooky_8cc_source.html#l00508">Update()</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="ab50dd0ba2f932254b9d8ee4bb612205b"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">const <a class="el" href="namespacemc.html#adf0914886e4b6ff739d0b4ff881cccd5">uint64</a> mc::SpookyHash::sc_const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Definice je uvedena na řádku <a class="el" href="spooky_8cc_source.html#l00314">314</a> v souboru <a class="el" href="spooky_8cc_source.html">spooky.cc</a>.</p>
+
+<p>Používá se v <a class="el" href="spooky_8cc_source.html#l00434">Hash128()</a>, <a class="el" href="spooky_8cc_source.html#l00328">Short()</a> a <a class="el" href="spooky_8cc_source.html#l00508">Update()</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="afacacd222efa5501931988f5669ea43f"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">const size_t mc::SpookyHash::sc_numVars</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Definice je uvedena na řádku <a class="el" href="spooky_8cc_source.html#l00299">299</a> v souboru <a class="el" href="spooky_8cc_source.html">spooky.cc</a>.</p>
+
+<p>Používá se v <a class="el" href="spooky_8cc_source.html#l00612">Final()</a>, <a class="el" href="spooky_8cc_source.html#l00434">Hash128()</a>, <a class="el" href="spooky_8cc_source.html#l00328">Short()</a> a <a class="el" href="spooky_8cc_source.html#l00508">Update()</a>.</p>
+
+</div>
+</div>
+<hr/>Dokumentace pro tuto třídu byla generována z následujícího souboru:<ul>
+<li>src/hash/<a class="el" href="spooky_8cc_source.html">spooky.cc</a></li>
+</ul>
+</div><!-- contents -->
+</div><!-- doc-content -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="namespacemc.html">mc</a></li><li class="navelem"><a class="el" href="classmc_1_1SpookyHash.html">SpookyHash</a></li>
+    <li class="footer">Generováno út 23. čec 2013 13.13:04 pro projekt libmcache-0.2.1 programem
+    <a href="http://www.doxygen.org/index.html">
+    <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.3.1 </li>
+  </ul>
+</div>
+</body>
+</html>

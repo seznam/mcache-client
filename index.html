@@ -1,0 +1,468 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.3.1"/>
+<title>libmcache-0.2.1: Klient pro memcached server</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript">
+  $(document).ready(initResizable);
+  $(window).load(resizeHeight);
+</script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/search.js"></script>
+<script type="text/javascript">
+  $(document).ready(function() { searchBox.OnSelectItem(0); });
+</script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td style="padding-left: 0.5em;">
+   <div id="projectname">libmcache-0.2.1
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Generováno programem Doxygen 1.8.3.1 -->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "search",false,'Hledat');
+</script>
+  <div id="navrow1" class="tabs">
+    <ul class="tablist">
+      <li class="current"><a href="index.html"><span>Hlavní&#160;stránka</span></a></li>
+      <li><a href="namespaces.html"><span>Prostory&#160;jmen</span></a></li>
+      <li><a href="annotated.html"><span>Třídy</span></a></li>
+      <li><a href="files.html"><span>Soubory</span></a></li>
+      <li>
+        <div id="MSearchBox" class="MSearchBoxInactive">
+        <span class="left">
+          <img id="MSearchSelect" src="search/mag_sel.png"
+               onmouseover="return searchBox.OnSearchSelectShow()"
+               onmouseout="return searchBox.OnSearchSelectHide()"
+               alt=""/>
+          <input type="text" id="MSearchField" value="Hledat" accesskey="S"
+               onfocus="searchBox.OnSearchFieldFocus(true)" 
+               onblur="searchBox.OnSearchFieldFocus(false)" 
+               onkeyup="searchBox.OnSearchFieldChange(event)"/>
+          </span><span class="right">
+            <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><img id="MSearchCloseImg" border="0" src="search/close.png" alt=""/></a>
+          </span>
+        </div>
+      </li>
+    </ul>
+  </div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+$(document).ready(function(){initNavTree('index.html','');});
+</script>
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>Vše</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Třídy</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Prostory jmen</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Soubory</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Funkce</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Proměnné</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Definice typů</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Výčty</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(8)"><span class="SelectionMark">&#160;</span>Hodnoty výčtu</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(9)"><span class="SelectionMark">&#160;</span>Definice maker</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(10)"><span class="SelectionMark">&#160;</span>Stránky</a></div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div class="header">
+  <div class="headertitle">
+<div class="title">Klient pro memcached server </div>  </div>
+</div><!--header-->
+<div class="contents">
+<div class="textblock"><h1><a class="anchor" id="quick"></a>
+V rychlosti</h1>
+<h2><a class="anchor" id="quick_ipc"></a>
+Multiprocesové prostředí</h2>
+<p>Příklad použití libmcache v multiprocesovém prostředí (např. MetaServer):</p>
+<div class="fragment"><div class="line"><span class="preprocessor">#include &lt;iostream&gt;</span></div>
+<div class="line"><span class="preprocessor">#include &lt;vector&gt;</span></div>
+<div class="line"><span class="preprocessor">#include &lt;string&gt;</span></div>
+<div class="line"></div>
+<div class="line"><span class="preprocessor">#include &lt;<a class="code" href="mcache_8h.html">mcache/mcache.h</a>&gt;</span></div>
+<div class="line"></div>
+<div class="line"><span class="keywordtype">int</span> <a class="code" href="test-connection_8cc.html#a3c04138a5bfe5d72780bb7e82a18e627">main</a>(<span class="keywordtype">int</span>, <span class="keywordtype">char</span> *[]) {</div>
+<div class="line">    <span class="comment">// inicializace knihovny (ideálně na začátku běhu)</span></div>
+<div class="line">    <a class="code" href="namespacemc.html#a418d8a43f291ad6f3bfe5987a6a973a3" title="Initialize libmcache.">mc::init</a>();</div>
+<div class="line"></div>
+<div class="line">    <span class="comment">// příprava seznamu adres serverů</span></div>
+<div class="line">    std::vector&lt;std::string&gt; servers;</div>
+<div class="line">    servers.push_back(<span class="stringliteral">&quot;memcache1:11211&quot;</span>);</div>
+<div class="line">    servers.push_back(<span class="stringliteral">&quot;memcache2:11211&quot;</span>);</div>
+<div class="line">    servers.push_back(<span class="stringliteral">&quot;memcache3:11211&quot;</span>);</div>
+<div class="line">    servers.push_back(<span class="stringliteral">&quot;memcache4:11211&quot;</span>);</div>
+<div class="line"></div>
+<div class="line">    <span class="comment">// vytvoření klienta (před childInit)</span></div>
+<div class="line">    <a class="code" href="classmc_1_1server__proxy__config__t.html" title="Configuration object for server proxy and connection objects.">mc::server_proxy_config_t</a> scfg;</div>
+<div class="line">    scfg.<a class="code" href="classmc_1_1server__proxy__config__t.html#aaf8d4a9df98a49d27818e0e1580d5ddf" title="io options">io_opts</a>.<a class="code" href="classmc_1_1io_1_1opts__t.html#af6e0d5d5d6c8ba8f1ae93568599915a0" title="connection timeouts">timeouts</a>.<a class="code" href="classmc_1_1io_1_1opts__t_1_1timeouts__t.html#ab32d91489290889fb7c93ecb214109f8" title="timeout to connect">connect</a> = 3000;</div>
+<div class="line">    scfg.<a class="code" href="classmc_1_1server__proxy__config__t.html#aaf8d4a9df98a49d27818e0e1580d5ddf" title="io options">io_opts</a>.<a class="code" href="classmc_1_1io_1_1opts__t.html#af6e0d5d5d6c8ba8f1ae93568599915a0" title="connection timeouts">timeouts</a>.<a class="code" href="classmc_1_1io_1_1opts__t_1_1timeouts__t.html#a293563594eb2a471d461fd1b541e705b" title="timeout to single write op">write</a> = 3000;</div>
+<div class="line">    scfg.<a class="code" href="classmc_1_1server__proxy__config__t.html#aaf8d4a9df98a49d27818e0e1580d5ddf" title="io options">io_opts</a>.<a class="code" href="classmc_1_1io_1_1opts__t.html#af6e0d5d5d6c8ba8f1ae93568599915a0" title="connection timeouts">timeouts</a>.<a class="code" href="classmc_1_1io_1_1opts__t_1_1timeouts__t.html#a4c96bf8aa4a6844d107863cefd74c907" title="timeout to single read op">read</a> = 3000;</div>
+<div class="line">    <a class="code" href="classmc_1_1client__template__t.html" title="Template of class for memcache clients.">mc::ipc::client_t</a> client(servers, scfg);</div>
+<div class="line"></div>
+<div class="line">    <span class="comment">// použití</span></div>
+<div class="line">    client.set(<span class="stringliteral">&quot;szn&quot;</span>, <span class="stringliteral">&quot;seznam.cz&quot;</span>);</div>
+<div class="line">    <span class="keywordflow">if</span> (!client.prepend(<span class="stringliteral">&quot;szn&quot;</span>, <span class="stringliteral">&quot;http://&quot;</span>)) <span class="keywordflow">throw</span> std::runtime_error(<span class="stringliteral">&quot;prepend&quot;</span>);</div>
+<div class="line">    <span class="keywordflow">if</span> (!client.append(<span class="stringliteral">&quot;szn&quot;</span>, <span class="stringliteral">&quot;/&quot;</span>)) <span class="keywordflow">throw</span> std::runtime_error(<span class="stringliteral">&quot;append&quot;</span>);</div>
+<div class="line">    <a class="code" href="classmc_1_1result__t.html" title="Result of all get commands.">mc::result_t</a> res = client.get(<span class="stringliteral">&quot;szn&quot;</span>);</div>
+<div class="line">    <span class="keywordflow">if</span> (res) std::cout &lt;&lt; res.<a class="code" href="classmc_1_1result__t.html#a3ecd594615c82e291e15a02bbff827b8" title="result data">data</a> &lt;&lt; std::endl;</div>
+<div class="line">}</div>
+</div><!-- fragment --><p>Tento kód vám připraví k používání pool memcache serverů s konzistetním hashováním a persistetním spojením na každý memcache server, které se zavírá po první io chybě. Pro komunikaci se bude používat binární protokol, který memcache podporuje od verze 1.3.</p>
+<p>Velice podobně se používá i python obal, který má to samé chování:</p>
+<div class="fragment"><div class="line"><span class="keyword">import</span> mcache</div>
+<div class="line"></div>
+<div class="line"><span class="preprocessor"># vytvoření klienta</span></div>
+<div class="line"><span class="preprocessor"></span>servers = [<span class="stringliteral">&quot;memcache1:11211&quot;</span>, <span class="stringliteral">&quot;memcache2:11211&quot;</span>, <span class="stringliteral">&quot;memcache3:11211&quot;</span>, <span class="stringliteral">&quot;memcache4:11211&quot;</span>]</div>
+<div class="line">opts = {<span class="stringliteral">&quot;connect_timeout&quot;</span>: 3000, <span class="stringliteral">&quot;read_timeout&quot;</span>: 3000, <span class="stringliteral">&quot;write_timeout&quot;</span>: 3000}</div>
+<div class="line">client = mcache.Client(servers, opts)</div>
+<div class="line"></div>
+<div class="line"><span class="preprocessor"># použití</span></div>
+<div class="line"><span class="preprocessor"></span>client.set(<span class="stringliteral">&quot;szn&quot;</span>, <span class="stringliteral">&quot;www.seznam.cz&quot;</span>)</div>
+<div class="line"><span class="keywordflow">if</span> not client.prepend(<span class="stringliteral">&quot;szn&quot;</span>, <span class="stringliteral">&quot;http://&quot;</span>): <span class="keyword">raise</span> RuntimeError(<span class="stringliteral">&quot;prepend&quot;</span>)</div>
+<div class="line">if not client.append(&quot;szn&quot;, &quot;/&quot;): raise RuntimeError(&quot;append&quot;)</div>
+<div class="line">print(client.get(&quot;szn&quot;)[&quot;data&quot;])</div>
+<div class="line">print(client.get(&quot;email&quot;, &quot;http:<span class="comment">//email.seznam.cz/&quot;)[&quot;data&quot;])</span></div>
+</div><!-- fragment --><p>Metoda get() bez defaultní hodnoty vrátí None, a nebo vyhodí vyjímku pokud není k dispozici žádný dostupný memcache server. Pokud je zadaná defaultní návratová hodnota, pak je jak v případě neexistence hodnoty, tak i v případě nedostupnosti serverů vrácena pod klíčem "data".</p>
+<h2><a class="anchor" id="quick_thread"></a>
+Multithreadové prostředí</h2>
+<p>Příklad použití libmcache v multithreadovém prostředí (např. MTD):</p>
+<div class="fragment"><div class="line"><span class="preprocessor">#include &lt;iostream&gt;</span></div>
+<div class="line"><span class="preprocessor">#include &lt;vector&gt;</span></div>
+<div class="line"><span class="preprocessor">#include &lt;string&gt;</span></div>
+<div class="line"></div>
+<div class="line"><span class="preprocessor">#include &lt;<a class="code" href="mcache_8h.html">mcache/mcache.h</a>&gt;</span></div>
+<div class="line"></div>
+<div class="line"><span class="keywordtype">int</span> <a class="code" href="test-connection_8cc.html#a3c04138a5bfe5d72780bb7e82a18e627">main</a>(<span class="keywordtype">int</span>, <span class="keywordtype">char</span> *[]) {</div>
+<div class="line">    <a class="code" href="namespacemc.html#a418d8a43f291ad6f3bfe5987a6a973a3" title="Initialize libmcache.">mc::init</a>();</div>
+<div class="line"></div>
+<div class="line">    <span class="comment">// příprava seznamu adres serverů</span></div>
+<div class="line">    std::vector&lt;std::string&gt; servers;</div>
+<div class="line">    servers.push_back(<span class="stringliteral">&quot;memcache1:11211&quot;</span>);</div>
+<div class="line">    servers.push_back(<span class="stringliteral">&quot;memcache2:11211&quot;</span>);</div>
+<div class="line">    servers.push_back(<span class="stringliteral">&quot;memcache3:11211&quot;</span>);</div>
+<div class="line">    servers.push_back(<span class="stringliteral">&quot;memcache4:11211&quot;</span>);</div>
+<div class="line"></div>
+<div class="line">    <span class="comment">// vytvoření klienta</span></div>
+<div class="line">    scfg.<a class="code" href="classmc_1_1server__proxy__config__t.html#aaf8d4a9df98a49d27818e0e1580d5ddf" title="io options">io_opts</a>.<a class="code" href="classmc_1_1io_1_1opts__t.html#af6e0d5d5d6c8ba8f1ae93568599915a0" title="connection timeouts">timeouts</a>.<a class="code" href="classmc_1_1io_1_1opts__t_1_1timeouts__t.html#ab32d91489290889fb7c93ecb214109f8" title="timeout to connect">connect</a> = 3000;</div>
+<div class="line">    scfg.<a class="code" href="classmc_1_1server__proxy__config__t.html#aaf8d4a9df98a49d27818e0e1580d5ddf" title="io options">io_opts</a>.<a class="code" href="classmc_1_1io_1_1opts__t.html#af6e0d5d5d6c8ba8f1ae93568599915a0" title="connection timeouts">timeouts</a>.<a class="code" href="classmc_1_1io_1_1opts__t_1_1timeouts__t.html#a293563594eb2a471d461fd1b541e705b" title="timeout to single write op">write</a> = 3000;</div>
+<div class="line">    scfg.<a class="code" href="classmc_1_1server__proxy__config__t.html#aaf8d4a9df98a49d27818e0e1580d5ddf" title="io options">io_opts</a>.<a class="code" href="classmc_1_1io_1_1opts__t.html#af6e0d5d5d6c8ba8f1ae93568599915a0" title="connection timeouts">timeouts</a>.<a class="code" href="classmc_1_1io_1_1opts__t_1_1timeouts__t.html#a4c96bf8aa4a6844d107863cefd74c907" title="timeout to single read op">read</a> = 3000;</div>
+<div class="line">    <a class="code" href="classmc_1_1client__template__t.html" title="Template of class for memcache clients.">mc::thread::client_t</a> client(servers, scfg);</div>
+<div class="line"></div>
+<div class="line">    <span class="comment">// použití</span></div>
+<div class="line">    client.set(<span class="stringliteral">&quot;szn&quot;</span>, <span class="stringliteral">&quot;seznam.cz&quot;</span>);</div>
+<div class="line">    <span class="keywordflow">if</span> (!client.prepend(<span class="stringliteral">&quot;szn&quot;</span>, <span class="stringliteral">&quot;http://&quot;</span>)) <span class="keywordflow">throw</span> std::runtime_error(<span class="stringliteral">&quot;prepend&quot;</span>);</div>
+<div class="line">    <span class="keywordflow">if</span> (!client.append(<span class="stringliteral">&quot;szn&quot;</span>, <span class="stringliteral">&quot;/&quot;</span>)) <span class="keywordflow">throw</span> std::runtime_error(<span class="stringliteral">&quot;append&quot;</span>);</div>
+<div class="line">    <a class="code" href="classmc_1_1result__t.html" title="Result of all get commands.">mc::result_t</a> res = client.get(<span class="stringliteral">&quot;szn&quot;</span>);</div>
+<div class="line">    <span class="keywordflow">if</span> (res) std::cout &lt;&lt; res.<a class="code" href="classmc_1_1result__t.html#a3ecd594615c82e291e15a02bbff827b8" title="result data">data</a> &lt;&lt; std::endl;</div>
+<div class="line">}</div>
+</div><!-- fragment --><p>Tento kód vám připraví k používání pool memcache serverů s konzistetním hashováním a cachí persistetních spojení na každý memcache server. Tyto spojení jsou udržovány otevření do první io chyby. Pro komunikaci se bude používat binární protokol, který memcache podporuje od verze 1.3.</p>
+<h1><a class="anchor" id="public_api"></a>
+Veřejné API</h1>
+<p>Knihovna obsahuje šablonu třídy mc::client_t jejíž defaultní instance pro obě používané prostředí (multiproceové a multithreadové), najdete v souboru <a class="el" href="mcache_8h.html">mcache/mcache.h</a>, kde jsou také natypedefovány veškeré konfigurační objekty a případné další typy, které by měli stačit pro běžné použití.</p>
+<p>Standardní instance nabízí tyto hlavní vlastnosti:</p>
+<ul>
+<li>consistent hashing ring</li>
+<li>sdílení informací o dead server srz procesy/thready</li>
+<li>automatickou obnovu dead serverů</li>
+<li>automatickou serializaci jak C++ tak i v pythonu</li>
+<li>binární protokol</li>
+<li>cachování socketů (multithread)</li>
+</ul>
+<p>Není podporován multiget z důvodů velice obtížné definice toho, jak by se měl choavt v případě výpadku jedno (či více) serverů z poolu.</p>
+<h2><a class="anchor" id="public_api_chr"></a>
+Konsistetní hashování</h2>
+<p>Konsistetní hashování je popsáno např. zde: <a href="http://en.wikipedia.org/wiki/Consistent_hashing">http://en.wikipedia.org/wiki/Consistent_hashing</a></p>
+<p>Obecně se jedná o to, že v případě výpadku jednoho serveru převezmou jeho práci do jeho obnovy ostatní servery v poolu. Implementaci lze nalézt v <a class="el" href="consistent-hashing_8h.html">include/mcache/pool/consistent-hashing.h</a>.</p>
+<h2><a class="anchor" id="public_api_dead"></a>
+Označování serverů za mrtvé a jejich obnova</h2>
+<p>Standardní implementace server_proxy_t obsahuje sdílenou mapu serverů, do které se client před každým voláním dívá, a pokud je server v této mapě označen za mrtvý, pak se přeskakuje na další. Maximální počet těchto hopů je limitován počtem serverů v poolu. Zárověn však jde i omezit konfigurační proměnou max_continues.</p>
+<p>Server je označen za mrtvý pokud dojde k síťové chybě a nebo chybě na úrovni protokolu, v tento okamžik je u něj i nasteven okamžik obnovy. Jakmile uplyne timeout pro obnovu, pak je náhodně jeden thread/proces vybrán, který provede na tento server požadavek, jako by normálně běžel, pokud projde server je označen jako živý. Pokud tento požadavek neprojde, pak je server pořád mrtvý a opět se za nakonfigurovaný interval zkusí jeho obnova. Tento systém lze ovlivňovat konfigurací <a class="el" href="index.html#config">Konfigurace</a>.</p>
+<h2><a class="anchor" id="public_api_proto"></a>
+Podporované protokoly</h2>
+<p>Memcache obsahuje binární protokol, který je o něco bezpečnější a prý i rychlejší (na straně serveru <a href="http://www.slideshare.net/tmaesaka/memcached-binary-protocol-in-a-nutshell-presentation">http://www.slideshare.net/tmaesaka/memcached-binary-protocol-in-a-nutshell-presentation</a>). Tato implementace obsahuje oba jak textový tak i binárná a tento se používá ve standardní instanci memcache clienta. Přepínat protokoly nelze za běhu.</p>
+<h2><a class="anchor" id="public_api_serial"></a>
+Automatická serializace</h2>
+<h3><a class="anchor" id="public_api_serial_cpp"></a>
+C++</h3>
+<p>C++ šablona třídy client_t podporuje automatickou serializaci hodnot pro všechny numerické typy, google protobuf objekty a do budoucna by měla přibýt i serializace pro FastRPC hodnoty. Použití je jednoduché:</p>
+<div class="fragment"><div class="line"><a class="code" href="classmc_1_1client__template__t.html" title="Template of class for memcache clients.">mc::ipc::client_t</a> client(addresses);</div>
+<div class="line"></div>
+<div class="line"><span class="comment">// protobuf</span></div>
+<div class="line">Protobuf_t proto;</div>
+<div class="line">client.set(<span class="stringliteral">&quot;3&quot;</span>, proto);</div>
+<div class="line"><a class="code" href="classmc_1_1result__t.html" title="Result of all get commands.">mc::result_t</a> res = client.get(<span class="stringliteral">&quot;3&quot;</span>);</div>
+<div class="line"><span class="keywordflow">if</span> (res) proto = res.<a class="code" href="classmc_1_1result__t.html#a4869b2f57205357f3f60f2268a00eb4b" title="Converts data to given type.">as</a>&lt;Protobuf_t&gt;();</div>
+<div class="line"></div>
+<div class="line"><span class="comment">// numeric</span></div>
+<div class="line">client.set(<span class="stringliteral">&quot;3&quot;</span>, 3);</div>
+<div class="line"><span class="keywordtype">int</span> i = client.get(<span class="stringliteral">&quot;3&quot;</span>).as&lt;<span class="keywordtype">int</span>&gt;();</div>
+</div><!-- fragment --><p>Pokud chcete přidat podporu pro nějaký váš typ, je potřeba vytvořit specializaci šablony třídy <a class="el" href="structmc_1_1aux_1_1cnv.html" title="Conversion class that are used as fallback for all conversions.">mc::aux::cnv</a> třeba takto:</p>
+<div class="fragment"><div class="line"><span class="keyword">namespace </span>ex {</div>
+<div class="line"></div>
+<div class="line"><span class="keyword">class </span>some_class_t {};</div>
+<div class="line"></div>
+<div class="line">} <span class="comment">// namespace ex</span></div>
+<div class="line"></div>
+<div class="line"><span class="keyword">namespace </span>mc {</div>
+<div class="line"><span class="keyword">namespace </span>aux {</div>
+<div class="line"></div>
+<div class="line"><span class="keyword">struct </span>cnv&lt;ex::some_class_t&gt; {</div>
+<div class="line">    <span class="keyword">static</span> ex::some_class_t as(<span class="keyword">const</span> std::string &amp;data) {</div>
+<div class="line">        <span class="keywordflow">return</span> ...;</div>
+<div class="line">    }</div>
+<div class="line">    <span class="keyword">static</span> std::string as(<span class="keyword">const</span> ex::some_class_t &amp;data) {</div>
+<div class="line">        <span class="keywordflow">return</span> ...;</div>
+<div class="line">    }</div>
+<div class="line">};</div>
+<div class="line"></div>
+<div class="line">} <span class="comment">// namespace aux</span></div>
+<div class="line">} <span class="comment">// namespace mc</span></div>
+</div><!-- fragment --><h3><a class="anchor" id="public_api_serial_py"></a>
+Python</h3>
+<p>V pythonu také funguje automatická serializace py objektů:</p>
+<div class="fragment"><div class="line">Client client([<span class="stringliteral">&quot;memcache:11211&quot;</span>])</div>
+<div class="line"></div>
+<div class="line"><span class="comment">// objekty obecne</span></div>
+<div class="line">data = {<span class="stringliteral">&quot;three&quot;</span>: 3}</div>
+<div class="line">client.set(<span class="stringliteral">&quot;three&quot;</span>, data)</div>
+<div class="line">data = client.get(<span class="stringliteral">&quot;three&quot;</span>)</div>
+<div class="line"></div>
+<div class="line"><span class="comment">// numeric</span></div>
+<div class="line">client.set(<span class="stringliteral">&quot;three&quot;</span>, 3)</div>
+<div class="line">i = client.get(<span class="stringliteral">&quot;three&quot;</span>)</div>
+<div class="line"></div>
+<div class="line"><span class="comment">// str</span></div>
+<div class="line">client.set(<span class="stringliteral">&quot;three&quot;</span>, <span class="stringliteral">&quot;3&quot;</span>)</div>
+<div class="line">s = client.get(<span class="stringliteral">&quot;three&quot;</span>)</div>
+<div class="line"></div>
+<div class="line"><span class="comment">// expiration</span></div>
+<div class="line">client.set(<span class="stringliteral">&quot;three&quot;</span>, <span class="stringliteral">&quot;3&quot;</span>, {<span class="stringliteral">&quot;expiration&quot;</span> : 10})</div>
+</div><!-- fragment --><p>Kde se rozlišují tři možnosti. Za prvé hodnotou může být string, pak se jako string uloží na server a tím to končí. Za druhé se může jednat o číslo, pak se toto číslo převede na ascii reprezentaci a toto uloží na server. Nakonec se může jednat o obecný python objekt, tento se pomocí pickle resp. cPickle modulu převede na string a tento uloží na server. Aby knihovna veděla co je na serveru uloženo (v jakém typu to má vrátit) zneužívají se horní tři bity flagu hodnot. Knihovna si hlídá, zda se je uživatel nesnaží nastavovat.</p>
+<h2><a class="anchor" id="public_api_cache_io"></a>
+Cache socketů</h2>
+<p>V multithreadovém prostředí dochází ke sdílení socketů na memcache servery standardně za pomoci lockfree struktury z knihovny tbb, pokud je tato v době sestavení knihovny(programu) k dispozici. Jinak se toto řeší standardními strukturami a mutexy.</p>
+<h2><a class="anchor" id="public_api_other"></a>
+Ostatní</h2>
+<p>Kromě těchto věcí si lze sestavit vlastní instanci šablony client_t, do které můžete zahrnout knihovnou implementovanou podporu UDP či hloupějšího poolu memcache serverů, který nepodporuje předávání práce na sousední.</p>
+<p>Clienta ostatně můžete rozšířit jakkoliv budete potřebovat viz. <a class="el" href="index.html#private_api">Interní API</a>.</p>
+<h2><a class="anchor" id="public_api_opts"></a>
+Parametry volání</h2>
+<p>Příkazy, které ukládají informace na serveru, jako jsou set, replace, ..., umožňují nastavit například čas expirace, flagy, ... Knihovna poskytuje takovéto rozhraní, pro jejich nastavení:</p>
+<div class="fragment"><div class="line">mc::opts_t opts;</div>
+<div class="line">opts.expiration = 300;</div>
+<div class="line">opts.flags = 0x01;</div>
+<div class="line">opts.cas = 1;</div>
+<div class="line">client.set(<span class="stringliteral">&quot;szn&quot;</span>, <span class="stringliteral">&quot;seznam.cz&quot;</span>, opts);</div>
+</div><!-- fragment --><p>V jazyce python, je použití obdobné, kdy se místo struktury používá slovník:</p>
+<div class="fragment"><div class="line">client.set(<span class="stringliteral">&quot;szn&quot;</span>, <span class="stringliteral">&quot;www.seznam.cz&quot;</span>, {<span class="stringliteral">&quot;flags&quot;</span>: 3, <span class="stringliteral">&quot;expiration&quot;</span>: 300, <span class="stringliteral">&quot;cas&quot;</span>: 1})</div>
+</div><!-- fragment --><h1><a class="anchor" id="config"></a>
+Konfigurace</h1>
+<p>Konfigurace standardní instance memcache clienta, kterou najdete v <a class="el" href="mcache_8h.html">mcache/mcache.h</a>, se dělí na tři části. Předávají se mu touto formou:</p>
+<div class="fragment"><div class="line"><a class="code" href="classmc_1_1consistent__hashing__pool__config__t.html" title="Configuration for consistent hashing pool.">mc::ipc::pool_config_t</a> pcfg;</div>
+<div class="line"><a class="code" href="classmc_1_1client__config__t.html" title="Configuration of the client class.">mc::ipc::client_config_t</a> ccfg;</div>
+<div class="line"><a class="code" href="classmc_1_1server__proxy__config__t.html" title="Configuration object for server proxy and connection objects.">mc::ipc::server_proxy_config_t</a> scfg;</div>
+<div class="line"></div>
+<div class="line"><a class="code" href="classmc_1_1client__template__t.html" title="Template of class for memcache clients.">mc::ipc::client_t</a> client(addresses, scfg, pcfg, ccfg);</div>
+</div><!-- fragment --><p>První část je vlastní konfigurace clienta, která definuje jeho chování v případě chyby:</p>
+ <div class="fragment"><div class="line"><span class="keyword">class </span><a class="code" href="namespacemc_1_1thread.html#a97bc05539e4b0bc4cb08e580065286f0">client_config_t</a> {</div>
+<div class="line"><span class="keyword">public</span>:</div>
+<div class="line">    <a class="code" href="namespacemc_1_1thread.html#a97bc05539e4b0bc4cb08e580065286f0">client_config_t</a>(uint32_t max_continues = 3, int64_t h404_duration = 300)</div>
+<div class="line">        : max_continues(max_continues), h404_duration(h404_duration)</div>
+<div class="line">    {}</div>
+<div class="line"></div>
+<div class="line">    uint32_t max_continues; </div>
+<div class="line">    int64_t h404_duration;  </div>
+<div class="line">};</div>
+</div><!-- fragment --></p>
+<p>Proměná max_continues definuje počet pokusů o provedení akce v případě síťové chyby na dalších memcache serverech. Proměná h404_duration definuje, jak dlouho v sekundách po obnově ze stavu dead primárního memcache serveru se bude zkoušet získat hodnotu z dalšího serveru v pořadí, v případě že tato není na primírním serveru nalezena.</p>
+<p>Další skupina proměných ovlivnuje siťovou vrstvu a je zabalena v této struktuře:</p>
+ <div class="fragment"><div class="line"><span class="keyword">class </span><a class="code" href="namespacemc_1_1thread.html#ac465f2e3c49e8ce342048c21472a5143">server_proxy_config_t</a> {</div>
+<div class="line"><span class="keyword">public</span>:</div>
+<div class="line">    <a class="code" href="namespacemc_1_1thread.html#ac465f2e3c49e8ce342048c21472a5143">server_proxy_config_t</a>(time_t restoration_interval = 60,</div>
+<div class="line">                          uint32_t fail_limit = 1,</div>
+<div class="line">                          io::opts_t io_opts = io::opts_t())</div>
+<div class="line">        : restoration_interval(restoration_interval), fail_limit(fail_limit),</div>
+<div class="line">          io_opts(io_opts)</div>
+<div class="line">    {}</div>
+<div class="line"></div>
+<div class="line">    time_t restoration_interval; </div>
+<div class="line">    uint32_t fail_limit;         </div>
+<div class="line">    io::opts_t io_opts;          </div>
+<div class="line">};</div>
+</div><!-- fragment --></p>
+<p>Kde proměná fail_limit říká po kolika síťových chybách bude daný memcache server prohlášen za mrtvý. Druhá proměná restoration_interval definuje interval za jak dlouho v sekundách se vyzkouší zda tento memcache server již funguje. No a vlastní IO proměnené popisuje tato struktura:</p>
+ <div class="fragment"><div class="line"><span class="keyword">class </span>opts_t {</div>
+<div class="line"><span class="keyword">public</span>:</div>
+<div class="line">    <span class="keyword">class </span>timeouts_t {</div>
+<div class="line">    <span class="keyword">public</span>:</div>
+<div class="line">        timeouts_t(uint64_t connect = 500,</div>
+<div class="line">                   uint64_t read = 1000,</div>
+<div class="line">                   uint64_t write = 1000)</div>
+<div class="line">            : connect(connect), read(read), write(write)</div>
+<div class="line">        {}</div>
+<div class="line"></div>
+<div class="line">        uint64_t connect; </div>
+<div class="line">        uint64_t read;    </div>
+<div class="line">        uint64_t write;   </div>
+<div class="line">    };</div>
+<div class="line"></div>
+<div class="line">    opts_t(): timeouts(), max_connections_in_pool(30) {}</div>
+<div class="line"></div>
+<div class="line">    opts_t(uint64_t connect, uint64_t read, uint64_t write)</div>
+<div class="line">        : timeouts(connect, read, write)</div>
+<div class="line">    {}</div>
+<div class="line"></div>
+<div class="line">    timeouts_t timeouts;              </div>
+<div class="line">    uint64_t max_connections_in_pool; </div>
+<div class="line">};</div>
+</div><!-- fragment --></p>
+<p>Kde struktura timeouts popisuje standarní nastavení timeoutů v řádu milisekund a proměná max_connections_in_pool definuje maximální počet konexí na jeden memcache server, které se cachují v io poolu. Tato proměná má význam pouze pro multithreadové prostředí, protože multiprocesovém prostředí není nabízen touto knihovnou žádný prostředek ke sdílení spojení na memcache server skrz procesy.</p>
+<p>Poslední proměné, které ovliňují vlastnosti knihovny jsou dané používaným poolem memcache serverů. Standardně je používán consistent hashing ring:</p>
+ <div class="fragment"><div class="line"><span class="keyword">class </span>consistent_hashing_pool_config_t {</div>
+<div class="line"><span class="keyword">public</span>:</div>
+<div class="line">    consistent_hashing_pool_config_t()</div>
+<div class="line">        : virtual_nodes(200)</div>
+<div class="line">    {}</div>
+<div class="line"></div>
+<div class="line">    uint32_t virtual_nodes; </div>
+<div class="line">};</div>
+</div><!-- fragment --></p>
+<p>Který obsahuje pouze jednu proměnou, která ovlivňuje počet virtuálních nodů pro každý nakonfigurovaný memcache server.</p>
+<h2><a class="anchor" id="config_python"></a>
+Nastavení v pythonu</h2>
+<p>Nastavení v pythonu kopíruje C++ proměné akorát se předává jako druhý parametr konstruktoru třídě Client ve formě slovníku, kde jsou hledány tyto položky:</p>
+<ul>
+<li>connect_timeout</li>
+<li>read_timeout</li>
+<li>write_timeout</li>
+<li>restoration_fail_limit</li>
+<li>restoration_interval</li>
+<li>virtual_nodes</li>
+<li>max_continues</li>
+<li>h404_duration</li>
+</ul>
+<h1><a class="anchor" id="private_api"></a>
+Interní API</h1>
+<p>Celá knihovna se snaží nabídnout co největší flexibilitu, tak aby si každý, kdo bude to potřebovat, mohl její chování co nejvíce upravit. Srdcem knihovny je šablona třídy mc::client_t, která má ntři parametry.</p>
+<div class="fragment"><div class="line"><span class="keyword">template</span> &lt;</div>
+<div class="line">    <span class="keyword">typename</span> <a class="code" href="namespacemc_1_1thread.html#a760eb464891e853d75def7d8f1de7333">pool_t</a>,</div>
+<div class="line">    <span class="keyword">typename</span> <a class="code" href="namespacemc_1_1thread.html#a3853349d61140d5e3473883854037670">server_proxies_t</a>,</div>
+<div class="line">    <span class="keyword">typename</span> impl</div>
+<div class="line">&gt; <span class="keyword">class </span>client_template_t;</div>
+</div><!-- fragment --><h2><a class="anchor" id="private_api_pool"></a>
+Memcache pool</h2>
+<p>První parametr je třída zajišťující výběr správného memcache serveru ze všech dostupných. Měla by mít takovéto rozhraní:</p>
+<div class="fragment"><div class="line"><span class="keyword">struct </span>some_pool_t {</div>
+<div class="line"><span class="keyword">public</span>:</div>
+<div class="line">    <span class="keyword">using</span> mod_pool_base_t::value_type;</div>
+<div class="line">    <span class="keyword">typedef</span> some_pool_const_iterator const_iterator;</div>
+<div class="line"></div>
+<div class="line">    const_iterator choose(<span class="keyword">const</span> std::string &amp;key) <span class="keyword">const</span>;</div>
+<div class="line">};</div>
+</div><!-- fragment --><p>Kde metoda choose() vrací iterátor, který ukazuje na index do pole memcache serverů, který vybrala pro tento klíč. Pokud dojde k chybě, a nebo je tento memcache server označen jako dead, pak se vrácený iterátor zkusí inkrementovat a vyzkouší se další server, na který ukazuje tento index.</p>
+<h2><a class="anchor" id="private_api_server_proxy"></a>
+Server proxy memcache serveru</h2>
+<p>Druhý parametr je třída server_proxies_t, která by měla držet vlastní server proxy na memcache server a zároveň nabízet sdílenou paměť pro implementaci označování serveru za mrtvý. Ve velké většině případů bude stačit standardní implementace v <a class="el" href="server-proxies_8h.html">include/mcache/server-proxies.h</a>. Třída by měla mít toto rozhraní:</p>
+<div class="fragment"><div class="line"><span class="keyword">class </span>some_server_proxies_t</div>
+<div class="line">public:</div>
+<div class="line">    typedef some_server_proxy_t <a class="code" href="namespacemc_1_1thread.html#a889efc7493441c864be22643aa22e7b4">server_proxy_t</a>;</div>
+<div class="line">    typedef some_server_proxy_config_t <a class="code" href="namespacemc_1_1thread.html#ac465f2e3c49e8ce342048c21472a5143">server_proxy_config_t</a>;</div>
+<div class="line"></div>
+<div class="line">    server_proxies_t(const std::vector&lt;std::string&gt; &amp;addresses,</div>
+<div class="line">                     const server_proxy_config_t &amp;cfg);</div>
+<div class="line"></div>
+<div class="line">    <a class="code" href="namespacemc_1_1thread.html#a889efc7493441c864be22643aa22e7b4">server_proxy_t</a> &amp;operator[](std::size_t i);</div>
+<div class="line">};</div>
+</div><!-- fragment --><p>O něco více může bát zajímavá výměna vlastní server_proxy_t (server_proxies_t je šablona), která je zodpovědná za vypínání, zapínání a vlastní zpracování dotazu na memcache server.</p>
+<div class="fragment"><div class="line"><span class="keyword">class </span>some_server_proxy_t {</div>
+<div class="line"><span class="keyword">public</span>:</div>
+<div class="line">    <span class="keyword">typedef</span> some_connection_ptr_t connection_ptr_t;</div>
+<div class="line">    <span class="keyword">typedef</span> some_connection_t connection_t;</div>
+<div class="line">    <span class="keyword">typedef</span> <a class="code" href="namespacemc_1_1thread.html#ac465f2e3c49e8ce342048c21472a5143">server_proxy_config_t</a> server_proxy_config_type;</div>
+<div class="line">    <span class="keyword">class </span>shared_t;</div>
+<div class="line"></div>
+<div class="line">    <a class="code" href="namespacemc_1_1thread.html#a889efc7493441c864be22643aa22e7b4">server_proxy_t</a>(<span class="keyword">const</span> std::string &amp;address,</div>
+<div class="line">                   shared_t *shared,</div>
+<div class="line">                   <span class="keyword">const</span> <a class="code" href="namespacemc_1_1thread.html#ac465f2e3c49e8ce342048c21472a5143">server_proxy_config_t</a> &amp;cfg);</div>
+<div class="line"></div>
+<div class="line">    <span class="keywordtype">bool</span> is_dead() <span class="keyword">const</span>;</div>
+<div class="line"></div>
+<div class="line">    <span class="keywordtype">bool</span> callable();</div>
+<div class="line"></div>
+<div class="line">    time_t lifespan() <span class="keyword">const</span>;</div>
+<div class="line"></div>
+<div class="line">    <span class="keyword">template</span> &lt;<span class="keyword">typename</span> command_t&gt;</div>
+<div class="line">    <span class="keyword">typename</span> command_t::response_t send(<span class="keyword">const</span> command_t &amp;command);</div>
+<div class="line">};</div>
+</div><!-- fragment --><p>Metoda callable() se volá před každým dotazem na daný memcache server. Tato by měla vracet true pokud je tento server živý, nebo pokud se tento dotaz má být pokusem o znovuoživení serveru. Metoda is_dead() se používá pro statické zjištění zda server žije. Metoda lifespan() by měla vracet uplynulou dobu od posledního obnovení a nakonec nejdůležitější je metoda send(), která odešle dotaz na server.</p>
+<p>Standardní server_proxy_t je opět šablona, které jde podstrčit vlastní implementaci spojení na server, standardně jsou dvě TCP a UDP implementace pomocí knihovny boost::asio. Spojení by mělo mít toto rozhraní:</p>
+<div class="fragment"><div class="line"><span class="keyword">class </span>some_connection_t {</div>
+<div class="line"><span class="keyword">public</span>:</div>
+<div class="line">    connection_t(<span class="keyword">const</span> std::string &amp;addr, opts_t opts);</div>
+<div class="line"></div>
+<div class="line">    <span class="keywordtype">void</span> write(<span class="keyword">const</span> std::string &amp;data);</div>
+<div class="line"></div>
+<div class="line">    std::string read(<span class="keyword">const</span> std::string &amp;delimiter);</div>
+<div class="line"></div>
+<div class="line">    std::string read(std::size_t bytes);</div>
+<div class="line">};</div>
+</div><!-- fragment --><p>Kde metoda write() zapíše požadavek na server. Metody read() čtou data do daného delimiteru, a to buď ve formě stringu, a nebo počtu bytů.</p>
+<p>Nakonec ji lze podstrčit nejen vlastní spojení, ale i trídu zodpovědnou za cache těchto spojení s tímto rozhraním:</p>
+<div class="fragment"><div class="line"><span class="keyword">class </span>some_connection_pool_t {</div>
+<div class="line"><span class="keyword">public</span>:</div>
+<div class="line">    <span class="keyword">typedef</span> some_connection_ptr_t connection_ptr_t;</div>
+<div class="line"></div>
+<div class="line">    connection_pool_t(<span class="keyword">const</span> std::string &amp;addr, opts_t opts);</div>
+<div class="line"></div>
+<div class="line">    connection_ptr_t pick();</div>
+<div class="line"></div>
+<div class="line">    <span class="keywordtype">void</span> <a class="code" href="namespacetest.html#a93e70d653bd477cb5e7ff1d8be8b742d">push_back</a>(connection_ptr_t &amp;tmp);</div>
+<div class="line"></div>
+<div class="line">    std::size_t size() <span class="keyword">const</span>;</div>
+<div class="line"></div>
+<div class="line">    <span class="keywordtype">void</span> clear();</div>
+<div class="line">};</div>
+</div><!-- fragment --><p>Kde je třeba implementovat ústřední metody pick(), která by měla vracet pointer na vybrané spojení. Vlastníkem tohoto spojení je buď nějaký chytrý pointer a nebo tato cache. Toto spojení nesmí po dobu zpracování dotazu mít k dispozici nikdo jiný (ani thread ani proces). Jakmile server_proxy_t přestane s tímto spojením pracovat, pak ho vrátí zpět do poolu pomocí metody <a class="el" href="namespacetest.html#a93e70d653bd477cb5e7ff1d8be8b742d">push_back()</a>. Nakonec metoda clear() by měla vyprázdnit celý pool, je volána ve chvíli, kdy je server označen za mrtvého a očekává se, že spojení jsou buď rozpadlá a nebo v nekonzistetním stavu...</p>
+<h2><a class="anchor" id="private_api_impl"></a>
+Protokoly</h2>
+<p>Posledním parametrem je třída definující implementaci protokolu, zde odkáži do souboru <a class="el" href="txt_8h.html">include/mcache/proto/txt.h</a>, který definuje třídy pro každý memcache příkaz a jeho parametry. </p>
+</div></div><!-- contents -->
+</div><!-- doc-content -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="footer">Generováno út 23. čec 2013 13.13:04 pro projekt libmcache-0.2.1 programem
+    <a href="http://www.doxygen.org/index.html">
+    <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.3.1 </li>
+  </ul>
+</div>
+</body>
+</html>

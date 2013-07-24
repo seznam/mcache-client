@@ -1,0 +1,13 @@
+<map id="include/mcache/init.h" name="include/mcache/init.h">
+<area shape="rect" id="node3" href="$mcache_8h.html" title="include/mcache/mcache.h" alt="" coords="5,91,181,119"/>
+<area shape="rect" id="node7" href="$init_8cc.html" title="src/init.cc" alt="" coords="205,91,283,119"/>
+<area shape="rect" id="node9" href="$test-connection_8cc.html" title="src/io/test&#45;connection.cc" alt="" coords="307,91,472,119"/>
+<area shape="rect" id="node11" href="$test-connections_8cc.html" title="src/io/test&#45;connections.cc" alt="" coords="496,91,667,119"/>
+<area shape="rect" id="node13" href="$test-consistent-hashing_8cc.html" title="src/pool/test&#45;consistent\l&#45;hashing.cc" alt="" coords="691,83,848,127"/>
+<area shape="rect" id="node15" href="$test-pool_8cc.html" title="src/pool/test&#45;pool.cc" alt="" coords="872,91,1013,119"/>
+<area shape="rect" id="node17" href="$test-binary_8cc.html" title="src/proto/test&#45;binary.cc" alt="" coords="1037,91,1195,119"/>
+<area shape="rect" id="node19" href="$test-txt_8cc.html" title="src/proto/test&#45;txt.cc" alt="" coords="1219,91,1355,119"/>
+<area shape="rect" id="node21" href="$test-server-proxy_8cc.html" title="src/test&#45;server&#45;proxy.cc" alt="" coords="1379,91,1539,119"/>
+<area shape="rect" id="node23" href="$test-synchronization_8cc.html" title="src/test&#45;synchronization.cc" alt="" coords="1563,91,1741,119"/>
+<area shape="rect" id="node5" href="$test-mcache_8cc.html" title="src/test&#45;mcache.cc" alt="" coords="27,177,160,205"/>
+</map>

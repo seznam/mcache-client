@@ -1,0 +1,289 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.3.1"/>
+<title>libmcache-0.2.1: Zdrojový soubor include/mcache/proto/txt.h</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript">
+  $(document).ready(initResizable);
+  $(window).load(resizeHeight);
+</script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/search.js"></script>
+<script type="text/javascript">
+  $(document).ready(function() { searchBox.OnSelectItem(0); });
+</script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td style="padding-left: 0.5em;">
+   <div id="projectname">libmcache-0.2.1
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Generováno programem Doxygen 1.8.3.1 -->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "search",false,'Hledat');
+</script>
+  <div id="navrow1" class="tabs">
+    <ul class="tablist">
+      <li><a href="index.html"><span>Hlavní&#160;stránka</span></a></li>
+      <li><a href="namespaces.html"><span>Prostory&#160;jmen</span></a></li>
+      <li><a href="annotated.html"><span>Třídy</span></a></li>
+      <li class="current"><a href="files.html"><span>Soubory</span></a></li>
+      <li>
+        <div id="MSearchBox" class="MSearchBoxInactive">
+        <span class="left">
+          <img id="MSearchSelect" src="search/mag_sel.png"
+               onmouseover="return searchBox.OnSearchSelectShow()"
+               onmouseout="return searchBox.OnSearchSelectHide()"
+               alt=""/>
+          <input type="text" id="MSearchField" value="Hledat" accesskey="S"
+               onfocus="searchBox.OnSearchFieldFocus(true)" 
+               onblur="searchBox.OnSearchFieldFocus(false)" 
+               onkeyup="searchBox.OnSearchFieldChange(event)"/>
+          </span><span class="right">
+            <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><img id="MSearchCloseImg" border="0" src="search/close.png" alt=""/></a>
+          </span>
+        </div>
+      </li>
+    </ul>
+  </div>
+  <div id="navrow2" class="tabs2">
+    <ul class="tablist">
+      <li><a href="files.html"><span>Seznam&#160;souborů</span></a></li>
+      <li><a href="globals.html"><span>Globální&#160;symboly</span></a></li>
+    </ul>
+  </div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+$(document).ready(function(){initNavTree('txt_8h_source.html','');});
+</script>
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>Vše</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Třídy</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Prostory jmen</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Soubory</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Funkce</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Proměnné</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Definice typů</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Výčty</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(8)"><span class="SelectionMark">&#160;</span>Hodnoty výčtu</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(9)"><span class="SelectionMark">&#160;</span>Definice maker</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(10)"><span class="SelectionMark">&#160;</span>Stránky</a></div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div class="header">
+  <div class="headertitle">
+<div class="title">txt.h</div>  </div>
+</div><!--header-->
+<div class="contents">
+<a href="txt_8h.html">Zobrazit dokumentaci tohoto souboru.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="comment">/*</span></div>
+<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="comment"> * FILE             $Id: $</span></div>
+<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="comment"> *</span></div>
+<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="comment"> * DESCRIPTION      Command serialization/deserialization: text protocol</span></div>
+<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="comment"> *                  implementation base class.</span></div>
+<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="comment"> *</span></div>
+<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="comment"> * PROJECT          Seznam memcache client.</span></div>
+<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="comment"> *</span></div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="comment"> * LICENSE          See COPYING</span></div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="comment"> *</span></div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="comment"> * AUTHOR           Michal Bukovsky &lt;michal.bukovsky@firma.seznam.cz&gt;</span></div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="comment"> *</span></div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;<span class="comment"> * Copyright (C) Seznam.cz a.s. 2012</span></div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;<span class="comment"> * All Rights Reserved</span></div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;<span class="comment"> *</span></div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;<span class="comment"> * HISTORY</span></div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;<span class="comment"> *       2012-09-24 (bukovsky)</span></div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;<span class="comment"> *                  First draft.</span></div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;<span class="comment"> */</span></div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;</div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;<span class="preprocessor">#ifndef MCACHE_PROTO_TXT_H</span></div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;<span class="preprocessor"></span><span class="preprocessor">#define MCACHE_PROTO_TXT_H</span></div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;<span class="preprocessor"></span></div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;<span class="preprocessor">#include &lt;string&gt;</span></div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;</div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="include_2mcache_2error_8h.html">mcache/error.h</a>&gt;</span></div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="proto_2opts_8h.html">mcache/proto/opts.h</a>&gt;</span></div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="response_8h.html">mcache/proto/response.h</a>&gt;</span></div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;</div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;<span class="keyword">namespace </span>mc {</div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;<span class="keyword">namespace </span>proto {</div>
+<div class="line"><a name="l00032"></a><span class="lineno"><a class="code" href="namespacemc_1_1proto_1_1txt.html">   32</a></span>&#160;<span class="keyword">namespace </span>txt {</div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;</div>
+<div class="line"><a name="l00036"></a><span class="lineno"><a class="code" href="classmc_1_1proto_1_1txt_1_1command__t.html">   36</a></span>&#160;<span class="keyword">class </span><a class="code" href="classmc_1_1proto_1_1txt_1_1command__t.html" title="Base class of all commands.">command_t</a> {</div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;<span class="keyword">public</span>:</div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;    <span class="comment">// majority of commands use single response</span></div>
+<div class="line"><a name="l00039"></a><span class="lineno"><a class="code" href="classmc_1_1proto_1_1txt_1_1command__t.html#a3f74e5d68ddea2f8b59250d071342c1d">   39</a></span>&#160;    <span class="keyword">typedef</span> <a class="code" href="classmc_1_1proto_1_1single__response__t.html" title="Memcache server response holder.">single_response_t</a> <a class="code" href="classmc_1_1proto_1_1txt_1_1command__t.html#a3f74e5d68ddea2f8b59250d071342c1d">response_t</a>;</div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;</div>
+<div class="line"><a name="l00043"></a><span class="lineno"><a class="code" href="classmc_1_1proto_1_1txt_1_1command__t.html#aa0a55fff010b3686a5a52016f47c0fd3">   43</a></span>&#160;    <span class="keyword">const</span> <span class="keywordtype">char</span> *<a class="code" href="classmc_1_1proto_1_1txt_1_1command__t.html#aa0a55fff010b3686a5a52016f47c0fd3" title="Returns txt protocol header delimiter.">header_delimiter</a>()<span class="keyword"> const </span>{ <span class="keywordflow">return</span> <span class="stringliteral">&quot;\r\n&quot;</span>;}</div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;</div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;    <a class="code" href="classmc_1_1proto_1_1txt_1_1command__t.html#a3f74e5d68ddea2f8b59250d071342c1d">response_t</a> <a class="code" href="classmc_1_1proto_1_1txt_1_1command__t.html#a7468103ec17d99922d5045c3a5355a36" title="Deserialize server error strings.">deserialize_header</a>(<span class="keyword">const</span> std::string &amp;header) <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;};</div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;</div>
+<div class="line"><a name="l00054"></a><span class="lineno"><a class="code" href="classmc_1_1proto_1_1txt_1_1retrieve__command__t.html">   54</a></span>&#160;<span class="keyword">class </span><a class="code" href="classmc_1_1proto_1_1txt_1_1retrieve__command__t.html" title="Base class for all retrieve commands.">retrieve_command_t</a>: <span class="keyword">public</span> <a class="code" href="classmc_1_1proto_1_1txt_1_1command__t.html" title="Base class of all commands.">command_t</a> {</div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;<span class="keyword">public</span>:</div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;    <span class="comment">// retrieval commands responses contains useless foother</span></div>
+<div class="line"><a name="l00057"></a><span class="lineno"><a class="code" href="classmc_1_1proto_1_1txt_1_1retrieve__command__t.html#a7777cd96503e043343aa339e3fe1f955">   57</a></span>&#160;    <span class="keyword">typedef</span> <a class="code" href="classmc_1_1proto_1_1single__retrival__response__t.html" title="Response for single retrieval commands.">single_retrival_response_t</a> <a class="code" href="classmc_1_1proto_1_1txt_1_1retrieve__command__t.html#a7777cd96503e043343aa339e3fe1f955">response_t</a>;</div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;</div>
+<div class="line"><a name="l00061"></a><span class="lineno"><a class="code" href="classmc_1_1proto_1_1txt_1_1retrieve__command__t.html#aa3e04609812434fb4adbb458e3d4fe83">   61</a></span>&#160;    <span class="keyword">explicit</span> <a class="code" href="classmc_1_1proto_1_1txt_1_1retrieve__command__t.html#aa3e04609812434fb4adbb458e3d4fe83" title="C&#39;tor.">retrieve_command_t</a>(<span class="keyword">const</span> std::string &amp;<a class="code" href="classmc_1_1proto_1_1txt_1_1retrieve__command__t.html#a27fbfc105d8892bb8ec86a35f668328a" title="for which key data should be retrieved">key</a>): key(key) {}</div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;</div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;    <a class="code" href="classmc_1_1proto_1_1txt_1_1retrieve__command__t.html#a7777cd96503e043343aa339e3fe1f955">response_t</a> <a class="code" href="classmc_1_1proto_1_1txt_1_1retrieve__command__t.html#aea93716d1e8a467cd62f4d1d11621ace" title="Deserialize responses for get and gets retrieve commands.">deserialize_header</a>(<span class="keyword">const</span> std::string &amp;header) <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;</div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;    <span class="keyword">static</span> <span class="keywordtype">void</span> <a class="code" href="classmc_1_1proto_1_1txt_1_1retrieve__command__t.html#a2dbafdb5d683a215d4a00de720027dad" title="The method for setting the body of response.">set_body</a>(uint32_t &amp;flags,</div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;                         std::string &amp;body,</div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;                         <span class="keyword">const</span> std::string &amp;data);</div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;</div>
+<div class="line"><a name="l00072"></a><span class="lineno"><a class="code" href="classmc_1_1proto_1_1txt_1_1retrieve__command__t.html#a27fbfc105d8892bb8ec86a35f668328a">   72</a></span>&#160;    <span class="keyword">const</span> std::string <a class="code" href="classmc_1_1proto_1_1txt_1_1retrieve__command__t.html#a27fbfc105d8892bb8ec86a35f668328a" title="for which key data should be retrieved">key</a>; </div>
+<div class="line"><a name="l00073"></a><span class="lineno"><a class="code" href="classmc_1_1proto_1_1txt_1_1retrieve__command__t.html#a74d2b7afed99006bb6cfe0b96e65249b">   73</a></span>&#160;    <span class="keyword">static</span> <span class="keyword">const</span> std::size_t <a class="code" href="classmc_1_1proto_1_1txt_1_1retrieve__command__t.html#a74d2b7afed99006bb6cfe0b96e65249b" title="sizeof(&quot;\r\nEND\r\n&quot;)">footer_size</a> = 7; </div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;</div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;<span class="keyword">protected</span>:</div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;    std::string <a class="code" href="classmc_1_1proto_1_1txt_1_1retrieve__command__t.html#af83ba1a2f8782bb63d201be22993feab" title="Serialize retrieve command.">serialize</a>(<span class="keyword">const</span> <span class="keywordtype">char</span> *name) <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;};</div>
+<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;</div>
+<div class="line"><a name="l00083"></a><span class="lineno"><a class="code" href="classmc_1_1proto_1_1txt_1_1storage__command__t.html">   83</a></span>&#160;<span class="keyword">class </span><a class="code" href="classmc_1_1proto_1_1txt_1_1storage__command__t.html" title="Base class for all storage commands.">storage_command_t</a>: <span class="keyword">public</span> <a class="code" href="classmc_1_1proto_1_1txt_1_1command__t.html" title="Base class of all commands.">command_t</a> {</div>
+<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;<span class="keyword">public</span>:</div>
+<div class="line"><a name="l00087"></a><span class="lineno"><a class="code" href="classmc_1_1proto_1_1txt_1_1storage__command__t.html#ad3ef6d15c84b4895cddd7b0da107d022">   87</a></span>&#160;    <a class="code" href="classmc_1_1proto_1_1txt_1_1storage__command__t.html#ad3ef6d15c84b4895cddd7b0da107d022" title="C&#39;tor.">storage_command_t</a>(<span class="keyword">const</span> std::string &amp;<a class="code" href="classmc_1_1proto_1_1txt_1_1storage__command__t.html#a2b39ad8d42df84ac1e4fc1dfc0759dbc" title="for which key data should be retrieved">key</a>,</div>
+<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;                      <span class="keyword">const</span> std::string &amp;<a class="code" href="classmc_1_1proto_1_1txt_1_1storage__command__t.html#a128faa7cc5e5bc3305375fa12d960749" title="data to store">data</a>,</div>
+<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;                      <span class="keyword">const</span> <a class="code" href="classmc_1_1proto_1_1opts__t.html" title="Storage commands options.">opts_t</a> &amp;<a class="code" href="classmc_1_1proto_1_1txt_1_1storage__command__t.html#a08990822237a76974c1a83d0d07da48d" title="command options">opts</a> = <a class="code" href="classmc_1_1proto_1_1opts__t.html" title="Storage commands options.">opts_t</a>())</div>
+<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;        : key(key), data(data), <a class="code" href="classmc_1_1proto_1_1txt_1_1storage__command__t.html#a08990822237a76974c1a83d0d07da48d" title="command options">opts</a>(<a class="code" href="classmc_1_1proto_1_1txt_1_1storage__command__t.html#a08990822237a76974c1a83d0d07da48d" title="command options">opts</a>)</div>
+<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;    {}</div>
+<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;</div>
+<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;    <a class="code" href="classmc_1_1proto_1_1txt_1_1command__t.html#a3f74e5d68ddea2f8b59250d071342c1d">response_t</a> <a class="code" href="classmc_1_1proto_1_1txt_1_1storage__command__t.html#a6c48eb807ef115e1fd18bc7fcd015b8f" title="Deserialize responses for get and gets retrieve commands.">deserialize_header</a>(<span class="keyword">const</span> std::string &amp;header) <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;</div>
+<div class="line"><a name="l00097"></a><span class="lineno"><a class="code" href="classmc_1_1proto_1_1txt_1_1storage__command__t.html#a2b39ad8d42df84ac1e4fc1dfc0759dbc">   97</a></span>&#160;    <span class="keyword">const</span> std::string <a class="code" href="classmc_1_1proto_1_1txt_1_1storage__command__t.html#a2b39ad8d42df84ac1e4fc1dfc0759dbc" title="for which key data should be retrieved">key</a>; </div>
+<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;</div>
+<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;<span class="keyword">protected</span>:</div>
+<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;    std::string <a class="code" href="classmc_1_1proto_1_1txt_1_1storage__command__t.html#a535841beed9889e19ced50d168b5c1cf" title="Serialize retrieve command.">serialize</a>(<span class="keyword">const</span> <span class="keywordtype">char</span> *name) <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;</div>
+<div class="line"><a name="l00104"></a><span class="lineno"><a class="code" href="classmc_1_1proto_1_1txt_1_1storage__command__t.html#a128faa7cc5e5bc3305375fa12d960749">  104</a></span>&#160;    <span class="keyword">const</span> std::string <a class="code" href="classmc_1_1proto_1_1txt_1_1storage__command__t.html#a128faa7cc5e5bc3305375fa12d960749" title="data to store">data</a>; </div>
+<div class="line"><a name="l00105"></a><span class="lineno"><a class="code" href="classmc_1_1proto_1_1txt_1_1storage__command__t.html#a08990822237a76974c1a83d0d07da48d">  105</a></span>&#160;    <span class="keyword">const</span> <a class="code" href="classmc_1_1proto_1_1opts__t.html" title="Storage commands options.">opts_t</a> <a class="code" href="classmc_1_1proto_1_1txt_1_1storage__command__t.html#a08990822237a76974c1a83d0d07da48d" title="command options">opts</a>;      </div>
+<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;};</div>
+<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;</div>
+<div class="line"><a name="l00110"></a><span class="lineno"><a class="code" href="classmc_1_1proto_1_1txt_1_1incr__decr__command__t.html">  110</a></span>&#160;<span class="keyword">class </span><a class="code" href="classmc_1_1proto_1_1txt_1_1incr__decr__command__t.html" title="Base class for incr and decr commands.">incr_decr_command_t</a>: <span class="keyword">public</span> <a class="code" href="classmc_1_1proto_1_1txt_1_1command__t.html" title="Base class of all commands.">command_t</a> {</div>
+<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;<span class="keyword">public</span>:</div>
+<div class="line"><a name="l00114"></a><span class="lineno"><a class="code" href="classmc_1_1proto_1_1txt_1_1incr__decr__command__t.html#abe64205a8ed16adc3d16f126dce01644">  114</a></span>&#160;    <a class="code" href="classmc_1_1proto_1_1txt_1_1incr__decr__command__t.html#abe64205a8ed16adc3d16f126dce01644" title="C&#39;tor.">incr_decr_command_t</a>(<span class="keyword">const</span> std::string &amp;<a class="code" href="classmc_1_1proto_1_1txt_1_1incr__decr__command__t.html#a040133b6e4ea72340b5dc828aa3accc6" title="for which key data should be retrieved">key</a>, uint64_t <a class="code" href="classmc_1_1proto_1_1txt_1_1incr__decr__command__t.html#a812f279e66ca749cf74309f3a575e546" title="amount by which the client wants to increase/decrease">value</a>,</div>
+<div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160;                        <span class="keyword">const</span> <a class="code" href="classmc_1_1proto_1_1opts__t.html" title="Storage commands options.">opts_t</a> &amp;opts = <a class="code" href="classmc_1_1proto_1_1opts__t.html" title="Storage commands options.">opts_t</a>())</div>
+<div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;        : key(key), value(value)</div>
+<div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160;    {</div>
+<div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160;        <span class="keywordflow">if</span> (opts.initial)</div>
+<div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;            <span class="keywordflow">throw</span> <a class="code" href="classmc_1_1error__t.html" title="Base class for all errors in libmcache.">mc::error_t</a>(<a class="code" href="namespacemc_1_1err.html#ad014dd8ce6d89923e5792ba10d99b8eda75de89c41394d3e8b44a6255c3f9fccf">err::bad_argument</a>, <span class="stringliteral">&quot;initial not allowed for txt&quot;</span>);</div>
+<div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160;    }</div>
+<div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160;</div>
+<div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160;    <a class="code" href="classmc_1_1proto_1_1txt_1_1command__t.html#a3f74e5d68ddea2f8b59250d071342c1d">response_t</a> <a class="code" href="classmc_1_1proto_1_1txt_1_1incr__decr__command__t.html#ac40cca9ebdbf0e5410d9fe8d97a9e502" title="Deserialize responses for get and gets retrieve commands.">deserialize_header</a>(<span class="keyword">const</span> std::string &amp;header) <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00125"></a><span class="lineno">  125</span>&#160;</div>
+<div class="line"><a name="l00126"></a><span class="lineno"><a class="code" href="classmc_1_1proto_1_1txt_1_1incr__decr__command__t.html#a040133b6e4ea72340b5dc828aa3accc6">  126</a></span>&#160;    <span class="keyword">const</span> std::string <a class="code" href="classmc_1_1proto_1_1txt_1_1incr__decr__command__t.html#a040133b6e4ea72340b5dc828aa3accc6" title="for which key data should be retrieved">key</a>; </div>
+<div class="line"><a name="l00127"></a><span class="lineno">  127</span>&#160;</div>
+<div class="line"><a name="l00128"></a><span class="lineno">  128</span>&#160;<span class="keyword">protected</span>:</div>
+<div class="line"><a name="l00131"></a><span class="lineno">  131</span>&#160;    std::string <a class="code" href="classmc_1_1proto_1_1txt_1_1incr__decr__command__t.html#a6e4e7541a93ce09a461c97c6b1653969" title="Serialize retrieve command.">serialize</a>(<span class="keyword">const</span> <span class="keywordtype">char</span> *name) <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00132"></a><span class="lineno">  132</span>&#160;</div>
+<div class="line"><a name="l00133"></a><span class="lineno"><a class="code" href="classmc_1_1proto_1_1txt_1_1incr__decr__command__t.html#a812f279e66ca749cf74309f3a575e546">  133</a></span>&#160;    uint64_t <a class="code" href="classmc_1_1proto_1_1txt_1_1incr__decr__command__t.html#a812f279e66ca749cf74309f3a575e546" title="amount by which the client wants to increase/decrease">value</a>;  </div>
+<div class="line"><a name="l00134"></a><span class="lineno">  134</span>&#160;};</div>
+<div class="line"><a name="l00135"></a><span class="lineno">  135</span>&#160;</div>
+<div class="line"><a name="l00138"></a><span class="lineno"><a class="code" href="classmc_1_1proto_1_1txt_1_1delete__command__t.html">  138</a></span>&#160;<span class="keyword">class </span><a class="code" href="classmc_1_1proto_1_1txt_1_1delete__command__t.html" title="Base class for incr and decr commands.">delete_command_t</a>: <span class="keyword">public</span> <a class="code" href="classmc_1_1proto_1_1txt_1_1command__t.html" title="Base class of all commands.">command_t</a> {</div>
+<div class="line"><a name="l00139"></a><span class="lineno">  139</span>&#160;<span class="keyword">public</span>:</div>
+<div class="line"><a name="l00142"></a><span class="lineno"><a class="code" href="classmc_1_1proto_1_1txt_1_1delete__command__t.html#ae6b6a80e5e598f0788432353b3e92dfe">  142</a></span>&#160;    <span class="keyword">explicit</span> <a class="code" href="classmc_1_1proto_1_1txt_1_1delete__command__t.html#ae6b6a80e5e598f0788432353b3e92dfe" title="C&#39;tor.">delete_command_t</a>(<span class="keyword">const</span> std::string &amp;<a class="code" href="classmc_1_1proto_1_1txt_1_1delete__command__t.html#a5115c7cbb53444da9c209053b878caf8" title="for which key data should be retrieved">key</a>): key(key) {}</div>
+<div class="line"><a name="l00143"></a><span class="lineno">  143</span>&#160;</div>
+<div class="line"><a name="l00146"></a><span class="lineno">  146</span>&#160;    <a class="code" href="classmc_1_1proto_1_1txt_1_1command__t.html#a3f74e5d68ddea2f8b59250d071342c1d">response_t</a> <a class="code" href="classmc_1_1proto_1_1txt_1_1delete__command__t.html#af876886f3605cf470795b9981bb8fa0d" title="Deserialize responses for get and gets retrieve commands.">deserialize_header</a>(<span class="keyword">const</span> std::string &amp;header) <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00147"></a><span class="lineno">  147</span>&#160;</div>
+<div class="line"><a name="l00150"></a><span class="lineno">  150</span>&#160;    std::string <a class="code" href="classmc_1_1proto_1_1txt_1_1delete__command__t.html#a5fb28892759db2b9c54ea8159273e2e2" title="Serialize retrieve command.">serialize</a>() <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00151"></a><span class="lineno">  151</span>&#160;</div>
+<div class="line"><a name="l00152"></a><span class="lineno"><a class="code" href="classmc_1_1proto_1_1txt_1_1delete__command__t.html#a5115c7cbb53444da9c209053b878caf8">  152</a></span>&#160;    <span class="keyword">const</span> std::string <a class="code" href="classmc_1_1proto_1_1txt_1_1delete__command__t.html#a5115c7cbb53444da9c209053b878caf8" title="for which key data should be retrieved">key</a>; </div>
+<div class="line"><a name="l00153"></a><span class="lineno">  153</span>&#160;};</div>
+<div class="line"><a name="l00154"></a><span class="lineno">  154</span>&#160;</div>
+<div class="line"><a name="l00157"></a><span class="lineno">  157</span>&#160;<span class="keyword">template</span> &lt;<span class="keyword">typename</span> parent_t, const <span class="keywordtype">char</span> **name&gt;</div>
+<div class="line"><a name="l00158"></a><span class="lineno"><a class="code" href="classmc_1_1proto_1_1txt_1_1name__injector.html">  158</a></span>&#160;<span class="keyword">class </span><a class="code" href="classmc_1_1proto_1_1txt_1_1name__injector.html" title="Injects name to particular command class.">name_injector</a>: <span class="keyword">public</span> parent_t {</div>
+<div class="line"><a name="l00159"></a><span class="lineno">  159</span>&#160;<span class="keyword">public</span>:</div>
+<div class="line"><a name="l00162"></a><span class="lineno">  162</span>&#160;    <span class="keyword">template</span> &lt;<span class="keyword">typename</span> type0_t&gt;</div>
+<div class="line"><a name="l00163"></a><span class="lineno"><a class="code" href="classmc_1_1proto_1_1txt_1_1name__injector.html#adeebcb1f248b0b01fc0c7f6a4a11cb9b">  163</a></span>&#160;    <a class="code" href="classmc_1_1proto_1_1txt_1_1name__injector.html#adeebcb1f248b0b01fc0c7f6a4a11cb9b" title="C&#39;tor.">name_injector</a>(<span class="keyword">const</span> type0_t &amp;val0): parent_t(val0) {}</div>
+<div class="line"><a name="l00164"></a><span class="lineno">  164</span>&#160;</div>
+<div class="line"><a name="l00167"></a><span class="lineno">  167</span>&#160;    <span class="keyword">template</span> &lt;<span class="keyword">typename</span> type0_t, <span class="keyword">typename</span> type1_t&gt;</div>
+<div class="line"><a name="l00168"></a><span class="lineno"><a class="code" href="classmc_1_1proto_1_1txt_1_1name__injector.html#a406e397d5fd668dcd0f4f743e98973e4">  168</a></span>&#160;    <a class="code" href="classmc_1_1proto_1_1txt_1_1name__injector.html#adeebcb1f248b0b01fc0c7f6a4a11cb9b" title="C&#39;tor.">name_injector</a>(<span class="keyword">const</span> type0_t &amp;val0, <span class="keyword">const</span> type1_t &amp;val1)</div>
+<div class="line"><a name="l00169"></a><span class="lineno">  169</span>&#160;        : parent_t(val0, val1)</div>
+<div class="line"><a name="l00170"></a><span class="lineno">  170</span>&#160;    {}</div>
+<div class="line"><a name="l00171"></a><span class="lineno">  171</span>&#160;</div>
+<div class="line"><a name="l00174"></a><span class="lineno">  174</span>&#160;    <span class="keyword">template</span> &lt;<span class="keyword">typename</span> type0_t, <span class="keyword">typename</span> type1_t, <span class="keyword">typename</span> type2_t&gt;</div>
+<div class="line"><a name="l00175"></a><span class="lineno"><a class="code" href="classmc_1_1proto_1_1txt_1_1name__injector.html#aa577775559d722dd4745df9e45099327">  175</a></span>&#160;    <a class="code" href="classmc_1_1proto_1_1txt_1_1name__injector.html#adeebcb1f248b0b01fc0c7f6a4a11cb9b" title="C&#39;tor.">name_injector</a>(<span class="keyword">const</span> type0_t &amp;val0, <span class="keyword">const</span> type1_t &amp;val1, <span class="keyword">const</span> type2_t &amp;val2)</div>
+<div class="line"><a name="l00176"></a><span class="lineno">  176</span>&#160;        : parent_t(val0, val1, val2)</div>
+<div class="line"><a name="l00177"></a><span class="lineno">  177</span>&#160;    {}</div>
+<div class="line"><a name="l00178"></a><span class="lineno">  178</span>&#160;</div>
+<div class="line"><a name="l00181"></a><span class="lineno"><a class="code" href="classmc_1_1proto_1_1txt_1_1name__injector.html#af63ed273a3817ad5ca6d5dc8d2981362">  181</a></span>&#160;    std::string <a class="code" href="classmc_1_1proto_1_1txt_1_1name__injector.html#af63ed273a3817ad5ca6d5dc8d2981362" title="Injects name of command to parent serialize method.">serialize</a>()<span class="keyword"> const </span>{ <span class="keywordflow">return</span> parent_t::serialize(*name);}</div>
+<div class="line"><a name="l00182"></a><span class="lineno">  182</span>&#160;};</div>
+<div class="line"><a name="l00183"></a><span class="lineno">  183</span>&#160;</div>
+<div class="line"><a name="l00186"></a><span class="lineno"><a class="code" href="classmc_1_1proto_1_1txt_1_1api.html">  186</a></span>&#160;<span class="keyword">class </span><a class="code" href="classmc_1_1proto_1_1txt_1_1api.html" title="Used as namespace with class behaviour for protocol api.">api</a> {</div>
+<div class="line"><a name="l00187"></a><span class="lineno">  187</span>&#160;<span class="keyword">private</span>:</div>
+<div class="line"><a name="l00188"></a><span class="lineno">  188</span>&#160;    <span class="comment">// commands name</span></div>
+<div class="line"><a name="l00189"></a><span class="lineno"><a class="code" href="classmc_1_1proto_1_1txt_1_1api.html#ad18b94e0ffbfa9c4efdb594ce3b6b94c">  189</a></span>&#160;    <span class="keyword">static</span> <span class="keyword">const</span> <span class="keywordtype">char</span> *<a class="code" href="classmc_1_1proto_1_1txt_1_1api.html#ad18b94e0ffbfa9c4efdb594ce3b6b94c">get_name</a>;</div>
+<div class="line"><a name="l00190"></a><span class="lineno"><a class="code" href="classmc_1_1proto_1_1txt_1_1api.html#a237063d690ad2053e6d4333a7ccda8ab">  190</a></span>&#160;    <span class="keyword">static</span> <span class="keyword">const</span> <span class="keywordtype">char</span> *<a class="code" href="classmc_1_1proto_1_1txt_1_1api.html#a237063d690ad2053e6d4333a7ccda8ab">gets_name</a>;</div>
+<div class="line"><a name="l00191"></a><span class="lineno"><a class="code" href="classmc_1_1proto_1_1txt_1_1api.html#ac36505b08f77286d140a1a8bbaf24f49">  191</a></span>&#160;    <span class="keyword">static</span> <span class="keyword">const</span> <span class="keywordtype">char</span> *<a class="code" href="classmc_1_1proto_1_1txt_1_1api.html#ac36505b08f77286d140a1a8bbaf24f49">set_name</a>;</div>
+<div class="line"><a name="l00192"></a><span class="lineno"><a class="code" href="classmc_1_1proto_1_1txt_1_1api.html#aed67aba87921433f5d5c04ce5f7bd014">  192</a></span>&#160;    <span class="keyword">static</span> <span class="keyword">const</span> <span class="keywordtype">char</span> *<a class="code" href="classmc_1_1proto_1_1txt_1_1api.html#aed67aba87921433f5d5c04ce5f7bd014">add_name</a>;</div>
+<div class="line"><a name="l00193"></a><span class="lineno"><a class="code" href="classmc_1_1proto_1_1txt_1_1api.html#ae558f8d7885a045019de305a79b1b438">  193</a></span>&#160;    <span class="keyword">static</span> <span class="keyword">const</span> <span class="keywordtype">char</span> *<a class="code" href="classmc_1_1proto_1_1txt_1_1api.html#ae558f8d7885a045019de305a79b1b438">replace_name</a>;</div>
+<div class="line"><a name="l00194"></a><span class="lineno"><a class="code" href="classmc_1_1proto_1_1txt_1_1api.html#a6e0fd68cc1cd9aa4043e9942c7568e8a">  194</a></span>&#160;    <span class="keyword">static</span> <span class="keyword">const</span> <span class="keywordtype">char</span> *<a class="code" href="classmc_1_1proto_1_1txt_1_1api.html#a6e0fd68cc1cd9aa4043e9942c7568e8a">append_name</a>;</div>
+<div class="line"><a name="l00195"></a><span class="lineno"><a class="code" href="classmc_1_1proto_1_1txt_1_1api.html#aaa57438c872d59b98e82e2c2cdb969bc">  195</a></span>&#160;    <span class="keyword">static</span> <span class="keyword">const</span> <span class="keywordtype">char</span> *<a class="code" href="classmc_1_1proto_1_1txt_1_1api.html#aaa57438c872d59b98e82e2c2cdb969bc">prepend_name</a>;</div>
+<div class="line"><a name="l00196"></a><span class="lineno"><a class="code" href="classmc_1_1proto_1_1txt_1_1api.html#ab18bfef3acd4e259adbf2b846fde750e">  196</a></span>&#160;    <span class="keyword">static</span> <span class="keyword">const</span> <span class="keywordtype">char</span> *<a class="code" href="classmc_1_1proto_1_1txt_1_1api.html#ab18bfef3acd4e259adbf2b846fde750e">cas_name</a>;</div>
+<div class="line"><a name="l00197"></a><span class="lineno"><a class="code" href="classmc_1_1proto_1_1txt_1_1api.html#ab20c7cc5d715699c17c9d13be0d3fc47">  197</a></span>&#160;    <span class="keyword">static</span> <span class="keyword">const</span> <span class="keywordtype">char</span> *<a class="code" href="classmc_1_1proto_1_1txt_1_1api.html#ab20c7cc5d715699c17c9d13be0d3fc47">incr_name</a>;</div>
+<div class="line"><a name="l00198"></a><span class="lineno"><a class="code" href="classmc_1_1proto_1_1txt_1_1api.html#a5f03753a3003bb19b93fbf2fe2fea607">  198</a></span>&#160;    <span class="keyword">static</span> <span class="keyword">const</span> <span class="keywordtype">char</span> *<a class="code" href="classmc_1_1proto_1_1txt_1_1api.html#a5f03753a3003bb19b93fbf2fe2fea607">decr_name</a>;</div>
+<div class="line"><a name="l00199"></a><span class="lineno"><a class="code" href="classmc_1_1proto_1_1txt_1_1api.html#ad0c23db1c7a21ef68ff340933446a239">  199</a></span>&#160;    <span class="keyword">static</span> <span class="keyword">const</span> <span class="keywordtype">char</span> *<a class="code" href="classmc_1_1proto_1_1txt_1_1api.html#ad0c23db1c7a21ef68ff340933446a239">touch_name</a>;</div>
+<div class="line"><a name="l00200"></a><span class="lineno">  200</span>&#160;</div>
+<div class="line"><a name="l00201"></a><span class="lineno">  201</span>&#160;<span class="keyword">public</span>:</div>
+<div class="line"><a name="l00202"></a><span class="lineno">  202</span>&#160;    <span class="comment">// protocol api table</span></div>
+<div class="line"><a name="l00203"></a><span class="lineno"><a class="code" href="classmc_1_1proto_1_1txt_1_1api.html#af2830f7c40475872792e21160fd955f9">  203</a></span>&#160;    <span class="keyword">typedef</span> <a class="code" href="classmc_1_1proto_1_1txt_1_1name__injector.html" title="Injects name to particular command class.">name_injector&lt;retrieve_command_t, &amp;get_name&gt;</a> <a class="code" href="classmc_1_1proto_1_1txt_1_1api.html#af2830f7c40475872792e21160fd955f9">get_t</a>;</div>
+<div class="line"><a name="l00204"></a><span class="lineno"><a class="code" href="classmc_1_1proto_1_1txt_1_1api.html#a5559a82186121b9988267e81e234bdec">  204</a></span>&#160;    <span class="keyword">typedef</span> <a class="code" href="classmc_1_1proto_1_1txt_1_1name__injector.html" title="Injects name to particular command class.">name_injector&lt;retrieve_command_t, &amp;gets_name&gt;</a> <a class="code" href="classmc_1_1proto_1_1txt_1_1api.html#a5559a82186121b9988267e81e234bdec">gets_t</a>;</div>
+<div class="line"><a name="l00205"></a><span class="lineno"><a class="code" href="classmc_1_1proto_1_1txt_1_1api.html#afa4d8398534b68e7a87bf8c47cfea5f2">  205</a></span>&#160;    <span class="keyword">typedef</span> <a class="code" href="classmc_1_1proto_1_1txt_1_1name__injector.html" title="Injects name to particular command class.">name_injector&lt;storage_command_t, &amp;set_name&gt;</a> <a class="code" href="classmc_1_1proto_1_1txt_1_1api.html#afa4d8398534b68e7a87bf8c47cfea5f2">set_t</a>;</div>
+<div class="line"><a name="l00206"></a><span class="lineno"><a class="code" href="classmc_1_1proto_1_1txt_1_1api.html#a2c5f40ab4e002ca50e92a17d5fbdfcdd">  206</a></span>&#160;    <span class="keyword">typedef</span> <a class="code" href="classmc_1_1proto_1_1txt_1_1name__injector.html" title="Injects name to particular command class.">name_injector&lt;storage_command_t, &amp;add_name&gt;</a> <a class="code" href="classmc_1_1proto_1_1txt_1_1api.html#a2c5f40ab4e002ca50e92a17d5fbdfcdd">add_t</a>;</div>
+<div class="line"><a name="l00207"></a><span class="lineno"><a class="code" href="classmc_1_1proto_1_1txt_1_1api.html#a2cf07fc6f4237edc24b4f566e86bb0b9">  207</a></span>&#160;    <span class="keyword">typedef</span> <a class="code" href="classmc_1_1proto_1_1txt_1_1name__injector.html" title="Injects name to particular command class.">name_injector&lt;storage_command_t, &amp;replace_name&gt;</a> <a class="code" href="classmc_1_1proto_1_1txt_1_1api.html#a2cf07fc6f4237edc24b4f566e86bb0b9">replace_t</a>;</div>
+<div class="line"><a name="l00208"></a><span class="lineno"><a class="code" href="classmc_1_1proto_1_1txt_1_1api.html#a70054755b361096649a2a8a88bad3f9e">  208</a></span>&#160;    <span class="keyword">typedef</span> <a class="code" href="classmc_1_1proto_1_1txt_1_1name__injector.html" title="Injects name to particular command class.">name_injector&lt;storage_command_t, &amp;append_name&gt;</a> <a class="code" href="classmc_1_1proto_1_1txt_1_1api.html#a70054755b361096649a2a8a88bad3f9e">append_t</a>;</div>
+<div class="line"><a name="l00209"></a><span class="lineno"><a class="code" href="classmc_1_1proto_1_1txt_1_1api.html#a5bc7c1115367bc8424cd91d5670040cd">  209</a></span>&#160;    <span class="keyword">typedef</span> <a class="code" href="classmc_1_1proto_1_1txt_1_1name__injector.html" title="Injects name to particular command class.">name_injector&lt;storage_command_t, &amp;prepend_name&gt;</a> <a class="code" href="classmc_1_1proto_1_1txt_1_1api.html#a5bc7c1115367bc8424cd91d5670040cd">prepend_t</a>;</div>
+<div class="line"><a name="l00210"></a><span class="lineno"><a class="code" href="classmc_1_1proto_1_1txt_1_1api.html#abc43a43c78e0c7bf51c8304e847823d9">  210</a></span>&#160;    <span class="keyword">typedef</span> <a class="code" href="classmc_1_1proto_1_1txt_1_1name__injector.html" title="Injects name to particular command class.">name_injector&lt;storage_command_t, &amp;cas_name&gt;</a> <a class="code" href="classmc_1_1proto_1_1txt_1_1api.html#abc43a43c78e0c7bf51c8304e847823d9">cas_t</a>;</div>
+<div class="line"><a name="l00211"></a><span class="lineno"><a class="code" href="classmc_1_1proto_1_1txt_1_1api.html#a54afcb9d171f0dea24a07b5572cfe89b">  211</a></span>&#160;    <span class="keyword">typedef</span> <a class="code" href="classmc_1_1proto_1_1txt_1_1name__injector.html" title="Injects name to particular command class.">name_injector&lt;incr_decr_command_t, &amp;incr_name&gt;</a> <a class="code" href="classmc_1_1proto_1_1txt_1_1api.html#a54afcb9d171f0dea24a07b5572cfe89b">incr_t</a>;</div>
+<div class="line"><a name="l00212"></a><span class="lineno"><a class="code" href="classmc_1_1proto_1_1txt_1_1api.html#af7521e43ab581988d19d385dec09d396">  212</a></span>&#160;    <span class="keyword">typedef</span> <a class="code" href="classmc_1_1proto_1_1txt_1_1name__injector.html" title="Injects name to particular command class.">name_injector&lt;incr_decr_command_t, &amp;decr_name&gt;</a> <a class="code" href="classmc_1_1proto_1_1txt_1_1api.html#af7521e43ab581988d19d385dec09d396">decr_t</a>;</div>
+<div class="line"><a name="l00213"></a><span class="lineno"><a class="code" href="classmc_1_1proto_1_1txt_1_1api.html#abea1f011c3f9142603daa2cbb55471dd">  213</a></span>&#160;    <span class="keyword">typedef</span> <a class="code" href="classmc_1_1proto_1_1txt_1_1name__injector.html" title="Injects name to particular command class.">name_injector&lt;incr_decr_command_t, &amp;touch_name&gt;</a> <a class="code" href="classmc_1_1proto_1_1txt_1_1api.html#abea1f011c3f9142603daa2cbb55471dd">touch_t</a>;</div>
+<div class="line"><a name="l00214"></a><span class="lineno"><a class="code" href="classmc_1_1proto_1_1txt_1_1api.html#ab8388a2076b93346d43740dde6098a03">  214</a></span>&#160;    <span class="keyword">typedef</span> <a class="code" href="classmc_1_1proto_1_1txt_1_1delete__command__t.html" title="Base class for incr and decr commands.">delete_command_t</a> <a class="code" href="classmc_1_1proto_1_1txt_1_1api.html#ab8388a2076b93346d43740dde6098a03">delete_t</a>;</div>
+<div class="line"><a name="l00215"></a><span class="lineno">  215</span>&#160;};</div>
+<div class="line"><a name="l00216"></a><span class="lineno">  216</span>&#160;</div>
+<div class="line"><a name="l00217"></a><span class="lineno">  217</span>&#160;} <span class="comment">// namespace txt</span></div>
+<div class="line"><a name="l00218"></a><span class="lineno">  218</span>&#160;} <span class="comment">// namespace proto</span></div>
+<div class="line"><a name="l00219"></a><span class="lineno">  219</span>&#160;} <span class="comment">// namespace mc</span></div>
+<div class="line"><a name="l00220"></a><span class="lineno">  220</span>&#160;</div>
+<div class="line"><a name="l00221"></a><span class="lineno">  221</span>&#160;<span class="preprocessor">#endif </span><span class="comment">/* MCACHE_PROTO_TXT_H */</span><span class="preprocessor"></span></div>
+<div class="line"><a name="l00222"></a><span class="lineno">  222</span>&#160;<span class="preprocessor"></span></div>
+</div><!-- fragment --></div><!-- contents -->
+</div><!-- doc-content -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="dir_d44c64559bbebec7f509842c48db8b23.html">include</a></li><li class="navelem"><a class="el" href="dir_c701a4f120b163bb41ca79c911b37da6.html">mcache</a></li><li class="navelem"><a class="el" href="dir_84777a308867e0e56d7d5618302100d2.html">proto</a></li><li class="navelem"><a class="el" href="txt_8h.html">txt.h</a></li>
+    <li class="footer">Generováno út 23. čec 2013 13.13:03 pro projekt libmcache-0.2.1 programem
+    <a href="http://www.doxygen.org/index.html">
+    <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.3.1 </li>
+  </ul>
+</div>
+</body>
+</html>

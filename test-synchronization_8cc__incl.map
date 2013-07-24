@@ -1,0 +1,12 @@
+<map id="src/test&#45;synchronization.cc" name="src/test&#45;synchronization.cc">
+<area shape="rect" id="node17" href="$lock_8h.html" title="mcache/lock.h" alt="" coords="1648,161,1755,189"/>
+<area shape="rect" id="node23" href="$init_8h.html" title="mcache/init.h" alt="" coords="2196,83,2297,111"/>
+<area shape="rect" id="node25" href="$include_2mcache_2error_8h.html" title="mcache/error.h" alt="" coords="587,331,696,359"/>
+<area shape="rect" id="node30" href="$include_2mcache_2io_2error_8h.html" title="mcache/io/error.h" alt="" coords="713,161,839,189"/>
+<area shape="rect" id="node33" href="$server-proxy_8h.html" title="mcache/server&#45;proxy.h" alt="" coords="1153,83,1308,111"/>
+<area shape="rect" id="node60" href="$server-proxies_8h.html" title="mcache/server&#45;proxies.h" alt="" coords="415,161,583,189"/>
+<area shape="rect" id="node40" href="$io_2opts_8h.html" title="mcache/io/opts.h" alt="" coords="1169,161,1292,189"/>
+<area shape="rect" id="node44" href="$response_8h.html" title="mcache/proto/response.h" alt="" coords="1316,161,1489,189"/>
+<area shape="rect" id="node53" href="$parser_8h.html" title="mcache/proto/parser.h" alt="" coords="940,161,1095,189"/>
+<area shape="rect" id="node50" href="$include_2mcache_2proto_2error_8h.html" title="mcache/proto/error.h" alt="" coords="1211,246,1355,274"/>
+</map>

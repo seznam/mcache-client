@@ -1,0 +1,204 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.3.1"/>
+<title>libmcache-0.2.1: Zdrojový soubor include/mcache/io/connection.h</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript">
+  $(document).ready(initResizable);
+  $(window).load(resizeHeight);
+</script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/search.js"></script>
+<script type="text/javascript">
+  $(document).ready(function() { searchBox.OnSelectItem(0); });
+</script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td style="padding-left: 0.5em;">
+   <div id="projectname">libmcache-0.2.1
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Generováno programem Doxygen 1.8.3.1 -->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "search",false,'Hledat');
+</script>
+  <div id="navrow1" class="tabs">
+    <ul class="tablist">
+      <li><a href="index.html"><span>Hlavní&#160;stránka</span></a></li>
+      <li><a href="namespaces.html"><span>Prostory&#160;jmen</span></a></li>
+      <li><a href="annotated.html"><span>Třídy</span></a></li>
+      <li class="current"><a href="files.html"><span>Soubory</span></a></li>
+      <li>
+        <div id="MSearchBox" class="MSearchBoxInactive">
+        <span class="left">
+          <img id="MSearchSelect" src="search/mag_sel.png"
+               onmouseover="return searchBox.OnSearchSelectShow()"
+               onmouseout="return searchBox.OnSearchSelectHide()"
+               alt=""/>
+          <input type="text" id="MSearchField" value="Hledat" accesskey="S"
+               onfocus="searchBox.OnSearchFieldFocus(true)" 
+               onblur="searchBox.OnSearchFieldFocus(false)" 
+               onkeyup="searchBox.OnSearchFieldChange(event)"/>
+          </span><span class="right">
+            <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><img id="MSearchCloseImg" border="0" src="search/close.png" alt=""/></a>
+          </span>
+        </div>
+      </li>
+    </ul>
+  </div>
+  <div id="navrow2" class="tabs2">
+    <ul class="tablist">
+      <li><a href="files.html"><span>Seznam&#160;souborů</span></a></li>
+      <li><a href="globals.html"><span>Globální&#160;symboly</span></a></li>
+    </ul>
+  </div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+$(document).ready(function(){initNavTree('connection_8h_source.html','');});
+</script>
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>Vše</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Třídy</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Prostory jmen</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Soubory</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Funkce</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Proměnné</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Definice typů</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Výčty</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(8)"><span class="SelectionMark">&#160;</span>Hodnoty výčtu</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(9)"><span class="SelectionMark">&#160;</span>Definice maker</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(10)"><span class="SelectionMark">&#160;</span>Stránky</a></div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div class="header">
+  <div class="headertitle">
+<div class="title">connection.h</div>  </div>
+</div><!--header-->
+<div class="contents">
+<a href="connection_8h.html">Zobrazit dokumentaci tohoto souboru.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="comment">/*</span></div>
+<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="comment"> * FILE             $Id: $</span></div>
+<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="comment"> *</span></div>
+<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="comment"> * DESCRIPTION      I/O object for communication with memcache server.</span></div>
+<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="comment"> *</span></div>
+<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="comment"> * PROJECT          Seznam memcache client.</span></div>
+<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="comment"> *</span></div>
+<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="comment"> * LICENSE          See COPYING</span></div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="comment"> *</span></div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="comment"> * AUTHOR           Michal Bukovsky &lt;michal.bukovsky@firma.seznam.cz&gt;</span></div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="comment"> *</span></div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="comment"> * Copyright (C) Seznam.cz a.s. 2012</span></div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;<span class="comment"> * All Rights Reserved</span></div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;<span class="comment"> *</span></div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;<span class="comment"> * HISTORY</span></div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;<span class="comment"> *       2012-09-19 (bukovsky)</span></div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;<span class="comment"> *                  First draft.</span></div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;<span class="comment"> */</span></div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;</div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;<span class="preprocessor">#ifndef MCACHE_IO_CONNECTION_H</span></div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;<span class="preprocessor"></span><span class="preprocessor">#define MCACHE_IO_CONNECTION_H</span></div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;<span class="preprocessor"></span></div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;<span class="preprocessor">#include &lt;string&gt;</span></div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;<span class="preprocessor">#include &lt;boost/shared_ptr.hpp&gt;</span></div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;</div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="include_2mcache_2error_8h.html">mcache/error.h</a>&gt;</span></div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="io_2opts_8h.html">mcache/io/opts.h</a>&gt;</span></div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;</div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;<span class="keyword">namespace </span>mc {</div>
+<div class="line"><a name="l00030"></a><span class="lineno"><a class="code" href="namespacemc_1_1io.html">   30</a></span>&#160;<span class="keyword">namespace </span>io {</div>
+<div class="line"><a name="l00031"></a><span class="lineno"><a class="code" href="namespacemc_1_1io_1_1tcp.html">   31</a></span>&#160;<span class="keyword">namespace </span>tcp {</div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;</div>
+<div class="line"><a name="l00036"></a><span class="lineno"><a class="code" href="classmc_1_1io_1_1tcp_1_1connection__t.html">   36</a></span>&#160;<span class="keyword">class </span><a class="code" href="classmc_1_1io_1_1tcp_1_1connection__t.html" title="I/O object that holds one tcp socket to memcache server and provides interface for sending and retrie...">connection_t</a> {</div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;<span class="keyword">public</span>:</div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;    <a class="code" href="classmc_1_1io_1_1tcp_1_1connection__t.html#ac3d43edc98a9a19ee21d4a01ee8afaee" title="C&#39;tor.">connection_t</a>(<span class="keyword">const</span> std::string &amp;addr, <a class="code" href="classmc_1_1io_1_1opts__t.html" title="Connection options.">opts_t</a> opts);</div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;</div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classmc_1_1io_1_1tcp_1_1connection__t.html#a0588de227ea8df8c67e70e059627c75c" title="Sends all data to server.">write</a>(<span class="keyword">const</span> std::string &amp;data);</div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;</div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;    std::string <a class="code" href="classmc_1_1io_1_1tcp_1_1connection__t.html#a9d693058d05444af77af7ff692c2bd16" title="Reads data till delimiter and returns it.">read</a>(<span class="keyword">const</span> std::string &amp;delimiter);</div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;</div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;    std::string <a class="code" href="classmc_1_1io_1_1tcp_1_1connection__t.html#a9d693058d05444af77af7ff692c2bd16" title="Reads data till delimiter and returns it.">read</a>(std::size_t bytes);</div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;</div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;<span class="keyword">protected</span>:</div>
+<div class="line"><a name="l00057"></a><span class="lineno"><a class="code" href="classmc_1_1io_1_1tcp_1_1connection__t.html#a5265be571fca93abd6525c8327d83b13">   57</a></span>&#160;    <span class="keyword">class </span><a class="code" href="classmc_1_1io_1_1tcp_1_1connection__t_1_1pimple__connection__t.html" title="Pimple class for tcp connection.">pimple_connection_t</a>;</div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;</div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;    <span class="comment">// shortcut</span></div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;    <span class="keyword">typedef</span> boost::shared_ptr&lt;pimple_connection_t&gt; <a class="code" href="classmc_1_1io_1_1tcp_1_1connection__t.html#a5265be571fca93abd6525c8327d83b13">pimple_connection_ptr_t</a>;</div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;</div>
+<div class="line"><a name="l00062"></a><span class="lineno"><a class="code" href="classmc_1_1io_1_1tcp_1_1connection__t.html#adba70507f54b437ecf43ab91a7961efd">   62</a></span>&#160;    <a class="code" href="classmc_1_1io_1_1tcp_1_1connection__t.html#a5265be571fca93abd6525c8327d83b13">pimple_connection_ptr_t</a> <a class="code" href="classmc_1_1io_1_1tcp_1_1connection__t.html#adba70507f54b437ecf43ab91a7961efd" title="hides i/o implementation">socket</a>; </div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;};</div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;</div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;} <span class="comment">// namespace tcp</span></div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;</div>
+<div class="line"><a name="l00067"></a><span class="lineno"><a class="code" href="namespacemc_1_1io_1_1udp.html">   67</a></span>&#160;<span class="keyword">namespace </span>udp {</div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;</div>
+<div class="line"><a name="l00072"></a><span class="lineno"><a class="code" href="classmc_1_1io_1_1udp_1_1connection__t.html">   72</a></span>&#160;<span class="keyword">class </span><a class="code" href="classmc_1_1io_1_1udp_1_1connection__t.html" title="I/O object that holds one udp socket to memcache server and provides interface for sending and retrie...">connection_t</a> {</div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;<span class="keyword">public</span>:</div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;    <a class="code" href="classmc_1_1io_1_1udp_1_1connection__t.html#a77153ee7bf122d82500889d2f7f5e78e" title="C&#39;tor.">connection_t</a>(<span class="keyword">const</span> std::string &amp;addr, <a class="code" href="classmc_1_1io_1_1opts__t.html" title="Connection options.">opts_t</a> opts);</div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;</div>
+<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classmc_1_1io_1_1udp_1_1connection__t.html#aceb1d48e3ebd68ad51233c7454dc5241" title="Sends all data to server.">write</a>(<span class="keyword">const</span> std::string &amp;data);</div>
+<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;</div>
+<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;    std::string <a class="code" href="classmc_1_1io_1_1udp_1_1connection__t.html#a04df194bf00ee6ed4a2701d1a03c82b2" title="Reads data till delimiter and returns it.">read</a>(<span class="keyword">const</span> std::string &amp;delimiter);</div>
+<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;</div>
+<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;    std::string <a class="code" href="classmc_1_1io_1_1udp_1_1connection__t.html#a04df194bf00ee6ed4a2701d1a03c82b2" title="Reads data till delimiter and returns it.">read</a>(std::size_t bytes);</div>
+<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;</div>
+<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;<span class="keyword">protected</span>:</div>
+<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classmc_1_1io_1_1udp_1_1connection__t.html#ac991f9da4c4e1670ee157d92ee92fa7c" title="Fill buffer from datagrams.">fill</a>();</div>
+<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;</div>
+<div class="line"><a name="l00097"></a><span class="lineno"><a class="code" href="classmc_1_1io_1_1udp_1_1connection__t.html#af2314f6e38eb4ce464809acea1a61f8f">   97</a></span>&#160;    <span class="keyword">class </span><a class="code" href="classmc_1_1io_1_1udp_1_1connection__t_1_1pimple__connection__t.html" title="Pimple class for tcp connection.">pimple_connection_t</a>;</div>
+<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;</div>
+<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;    <span class="comment">// shortcut</span></div>
+<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;    <span class="keyword">typedef</span> boost::shared_ptr&lt;pimple_connection_t&gt; <a class="code" href="classmc_1_1io_1_1udp_1_1connection__t.html#af2314f6e38eb4ce464809acea1a61f8f">pimple_connection_ptr_t</a>;</div>
+<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;</div>
+<div class="line"><a name="l00102"></a><span class="lineno"><a class="code" href="classmc_1_1io_1_1udp_1_1connection__t.html#a4f5259d2e753248d0e1a0446fe69a69d">  102</a></span>&#160;    <a class="code" href="classmc_1_1io_1_1udp_1_1connection__t.html#af2314f6e38eb4ce464809acea1a61f8f">pimple_connection_ptr_t</a> <a class="code" href="classmc_1_1io_1_1udp_1_1connection__t.html#a4f5259d2e753248d0e1a0446fe69a69d" title="hides i/o implementation">socket</a>; </div>
+<div class="line"><a name="l00103"></a><span class="lineno"><a class="code" href="classmc_1_1io_1_1udp_1_1connection__t.html#ab7f9c6927064d9bb64fafd686b6d3ddd">  103</a></span>&#160;    std::string <a class="code" href="classmc_1_1io_1_1udp_1_1connection__t.html#ab7f9c6927064d9bb64fafd686b6d3ddd" title="buffer for incoming dat">buffer</a>;             </div>
+<div class="line"><a name="l00104"></a><span class="lineno"><a class="code" href="classmc_1_1io_1_1udp_1_1connection__t.html#a1cb09094d8aa5944aecbda57408efeb9">  104</a></span>&#160;    uint16_t <a class="code" href="classmc_1_1io_1_1udp_1_1connection__t.html#a1cb09094d8aa5944aecbda57408efeb9" title="dgram identifier">id</a>;                    </div>
+<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;};</div>
+<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;</div>
+<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;} <span class="comment">// namespace udp</span></div>
+<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;} <span class="comment">// namespace io</span></div>
+<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;} <span class="comment">// namespace mc</span></div>
+<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;</div>
+<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;<span class="preprocessor">#endif </span><span class="comment">/* MCACHE_IO_CONNECTION_H */</span><span class="preprocessor"></span></div>
+<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;<span class="preprocessor"></span></div>
+</div><!-- fragment --></div><!-- contents -->
+</div><!-- doc-content -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="dir_d44c64559bbebec7f509842c48db8b23.html">include</a></li><li class="navelem"><a class="el" href="dir_c701a4f120b163bb41ca79c911b37da6.html">mcache</a></li><li class="navelem"><a class="el" href="dir_ab2ac47c7ef6d5c0c7368c65c0e63ef5.html">io</a></li><li class="navelem"><a class="el" href="connection_8h.html">connection.h</a></li>
+    <li class="footer">Generováno út 23. čec 2013 13.13:03 pro projekt libmcache-0.2.1 programem
+    <a href="http://www.doxygen.org/index.html">
+    <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.3.1 </li>
+  </ul>
+</div>
+</body>
+</html>

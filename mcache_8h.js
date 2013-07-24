@@ -1,0 +1,27 @@
+var mcache_8h =
+[
+    [ "client_config_t", "mcache_8h.html#a97bc05539e4b0bc4cb08e580065286f0", null ],
+    [ "client_config_t", "mcache_8h.html#a90b960844290f1277c161b2d3aa5564d", null ],
+    [ "client_config_t", "mcache_8h.html#a99653da685d099641e73bbefd72f0c68", null ],
+    [ "client_t", "mcache_8h.html#a6f404a8027c09a6f49f6fd41c8bdab4b", null ],
+    [ "client_t", "mcache_8h.html#a49402cc4f5785075bcac894fb9d34c7c", null ],
+    [ "client_t", "mcache_8h.html#aa26b772eb1795be1c383b8853c00a999", null ],
+    [ "connections_t", "mcache_8h.html#ac470a7bc4940a2fc9a37ff5521bb0a84", null ],
+    [ "connections_t", "mcache_8h.html#a42712b1d22226695cf455b6c7351635f", null ],
+    [ "connections_t", "mcache_8h.html#a5b0271893f998387186b913b95678751", null ],
+    [ "pool_config_t", "mcache_8h.html#a9377d7c13d2c4a8f7fa6ac51afc097c4", null ],
+    [ "pool_config_t", "mcache_8h.html#a793e25036b7ed1ee6b0bf2a6ffc1f155", null ],
+    [ "pool_config_t", "mcache_8h.html#a88db1f0160aedcd71441fd84752bab9e", null ],
+    [ "pool_t", "mcache_8h.html#a760eb464891e853d75def7d8f1de7333", null ],
+    [ "pool_t", "mcache_8h.html#afba1367f5ef273e1a6093368b21436a6", null ],
+    [ "pool_t", "mcache_8h.html#a7e87fb490634577ecfb85be6bde6780d", null ],
+    [ "server_proxies_t", "mcache_8h.html#a3853349d61140d5e3473883854037670", null ],
+    [ "server_proxies_t", "mcache_8h.html#a9add5a28d82f508b28f20dcdd85a3fcf", null ],
+    [ "server_proxies_t", "mcache_8h.html#a01861e05f0e68eaf46ac8f922d474281", null ],
+    [ "server_proxy_config_t", "mcache_8h.html#ac465f2e3c49e8ce342048c21472a5143", null ],
+    [ "server_proxy_config_t", "mcache_8h.html#ab9364ca40d2670398ccf9f4b09051e1e", null ],
+    [ "server_proxy_config_t", "mcache_8h.html#afc6445c825a630101aa6dcc694e357b9", null ],
+    [ "server_proxy_t", "mcache_8h.html#a889efc7493441c864be22643aa22e7b4", null ],
+    [ "server_proxy_t", "mcache_8h.html#a654b08689dd2f842c4c5a8fb2b64c60a", null ],
+    [ "server_proxy_t", "mcache_8h.html#a8f0fc971d04c90fe5cfafd521e3186db", null ]
+];

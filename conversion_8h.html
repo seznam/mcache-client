@@ -1,0 +1,243 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.3.1"/>
+<title>libmcache-0.2.1: Dokumentace souboru include/mcache/conversion.h</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript">
+  $(document).ready(initResizable);
+  $(window).load(resizeHeight);
+</script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/search.js"></script>
+<script type="text/javascript">
+  $(document).ready(function() { searchBox.OnSelectItem(0); });
+</script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td style="padding-left: 0.5em;">
+   <div id="projectname">libmcache-0.2.1
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Generováno programem Doxygen 1.8.3.1 -->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "search",false,'Hledat');
+</script>
+  <div id="navrow1" class="tabs">
+    <ul class="tablist">
+      <li><a href="index.html"><span>Hlavní&#160;stránka</span></a></li>
+      <li><a href="namespaces.html"><span>Prostory&#160;jmen</span></a></li>
+      <li><a href="annotated.html"><span>Třídy</span></a></li>
+      <li class="current"><a href="files.html"><span>Soubory</span></a></li>
+      <li>
+        <div id="MSearchBox" class="MSearchBoxInactive">
+        <span class="left">
+          <img id="MSearchSelect" src="search/mag_sel.png"
+               onmouseover="return searchBox.OnSearchSelectShow()"
+               onmouseout="return searchBox.OnSearchSelectHide()"
+               alt=""/>
+          <input type="text" id="MSearchField" value="Hledat" accesskey="S"
+               onfocus="searchBox.OnSearchFieldFocus(true)" 
+               onblur="searchBox.OnSearchFieldFocus(false)" 
+               onkeyup="searchBox.OnSearchFieldChange(event)"/>
+          </span><span class="right">
+            <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><img id="MSearchCloseImg" border="0" src="search/close.png" alt=""/></a>
+          </span>
+        </div>
+      </li>
+    </ul>
+  </div>
+  <div id="navrow2" class="tabs2">
+    <ul class="tablist">
+      <li><a href="files.html"><span>Seznam&#160;souborů</span></a></li>
+      <li><a href="globals.html"><span>Globální&#160;symboly</span></a></li>
+    </ul>
+  </div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+$(document).ready(function(){initNavTree('conversion_8h.html','');});
+</script>
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>Vše</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Třídy</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Prostory jmen</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Soubory</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Funkce</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Proměnné</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Definice typů</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Výčty</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(8)"><span class="SelectionMark">&#160;</span>Hodnoty výčtu</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(9)"><span class="SelectionMark">&#160;</span>Definice maker</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(10)"><span class="SelectionMark">&#160;</span>Stránky</a></div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div class="header">
+  <div class="summary">
+<a href="#nested-classes">Datové struktry</a> &#124;
+<a href="#namespaces">Prostory jmen</a> &#124;
+<a href="#func-members">Funkce</a>  </div>
+  <div class="headertitle">
+<div class="title">Dokumentace souboru conversion.h</div>  </div>
+</div><!--header-->
+<div class="contents">
+<div class="textblock"><code>#include &lt;cstdio&gt;</code><br/>
+<code>#include &lt;limits&gt;</code><br/>
+<code>#include &lt;cstdlib&gt;</code><br/>
+<code>#include &lt;boost/utility/enable_if.hpp&gt;</code><br/>
+<code>#include &lt;boost/type_traits/is_integral.hpp&gt;</code><br/>
+<code>#include &lt;boost/type_traits/is_float.hpp&gt;</code><br/>
+<code>#include &lt;<a class="el" href="include_2mcache_2error_8h_source.html">mcache/error.h</a>&gt;</code><br/>
+<code>#include &lt;<a class="el" href="has-member_8h_source.html">mcache/has-member.h</a>&gt;</code><br/>
+</div><div class="textblock"><div class="dynheader">
+Graf závislostí na vkládaných souborech pro conversion.h:</div>
+<div class="dyncontent">
+<div class="center"><img src="conversion_8h__incl.png" border="0" usemap="#include_2mcache_2conversion_8h" alt=""/></div>
+<map name="include_2mcache_2conversion_8h" id="include_2mcache_2conversion_8h">
+<area shape="rect" id="node15" href="include_2mcache_2error_8h.html" title="mcache/error.h" alt="" coords="789,91,899,119"/><area shape="rect" id="node21" href="has-member_8h.html" title="mcache/has&#45;member.h" alt="" coords="608,91,765,119"/></map>
+</div>
+</div><div class="textblock"><div class="dynheader">
+Následující graf ukazuje, které soubory přímo nebo nepřímo vkládají tento soubor:</div>
+<div class="dyncontent">
+<div class="center"><img src="conversion_8h__dep__incl.png" border="0" usemap="#include_2mcache_2conversion_8hdep" alt=""/></div>
+<map name="include_2mcache_2conversion_8hdep" id="include_2mcache_2conversion_8hdep">
+<area shape="rect" id="node3" href="client_8h.html" title="include/mcache/client.h" alt="" coords="21,83,181,111"/><area shape="rect" id="node5" href="mcache_8h.html" title="include/mcache/mcache.h" alt="" coords="13,161,189,189"/><area shape="rect" id="node7" href="test-mcache_8cc.html" title="src/test&#45;mcache.cc" alt="" coords="35,238,168,266"/></map>
+</div>
+</div>
+<p><a href="conversion_8h_source.html">Zobrazit zdrojový text tohoto souboru.</a></p>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="nested-classes"></a>
+Datové struktry</h2></td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structmc_1_1aux_1_1cnv.html">mc::aux::cnv&lt; type_t, typename &gt;</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Conversion class that are used as fallback for all conversions.  <a href="structmc_1_1aux_1_1cnv.html#details">...</a><br/></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structmc_1_1aux_1_1cnv_3_01integral__t_00_01typename_01boost_1_1enable__if_3_01boost_1_1is__inteeb7396d24800850850ed13fee82961f6.html">mc::aux::cnv&lt; integral_t, typename boost::enable_if&lt; boost::is_integral&lt; integral_t &gt; &gt;::type &gt;</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Conversions for integral types.  <a href="structmc_1_1aux_1_1cnv_3_01integral__t_00_01typename_01boost_1_1enable__if_3_01boost_1_1is__inteeb7396d24800850850ed13fee82961f6.html#details">...</a><br/></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structmc_1_1aux_1_1cnv_3_01float__t_00_01typename_01boost_1_1enable__if_3_01boost_1_1is__float_327bfe102ef05a4f9b03f56daf352ccfa.html">mc::aux::cnv&lt; float_t, typename boost::enable_if&lt; boost::is_float&lt; float_t &gt; &gt;::type &gt;</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Conversions for float types.  <a href="structmc_1_1aux_1_1cnv_3_01float__t_00_01typename_01boost_1_1enable__if_3_01boost_1_1is__float_327bfe102ef05a4f9b03f56daf352ccfa.html#details">...</a><br/></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structmc_1_1aux_1_1cnv_3_01frpc__value__t_00_01typename_01boost_1_1enable__if__c_3_01has__marsha11f548b132edd4de1a5f1cc58ec935e3.html">mc::aux::cnv&lt; frpc_value_t, typename boost::enable_if_c&lt; has_marshallToFRPCBinaryStream&lt; frpc_value_t &gt;::value &gt;::type &gt;</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Conversions for FRPC values.  <a href="structmc_1_1aux_1_1cnv_3_01frpc__value__t_00_01typename_01boost_1_1enable__if__c_3_01has__marsha11f548b132edd4de1a5f1cc58ec935e3.html#details">...</a><br/></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structmc_1_1aux_1_1cnv_3_01protobuf__t_00_01typename_01boost_1_1enable__if__c_3_01has__Serializee58f941de865f6551e2b4a954bd36252.html">mc::aux::cnv&lt; protobuf_t, typename boost::enable_if_c&lt; has_SerializeToString&lt; protobuf_t &gt;::value &amp;&amp;has_ParseFromString&lt; protobuf_t &gt;::value &gt;::type &gt;</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Conversions for FRPC values.  <a href="structmc_1_1aux_1_1cnv_3_01protobuf__t_00_01typename_01boost_1_1enable__if__c_3_01has__Serializee58f941de865f6551e2b4a954bd36252.html#details">...</a><br/></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="namespaces"></a>
+Prostory jmen</h2></td></tr>
+<tr class="memitem:namespacemc"><td class="memItemLeft" align="right" valign="top">namespace &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacemc.html">mc</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:namespacemc_1_1aux"><td class="memItemLeft" align="right" valign="top">namespace &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacemc_1_1aux.html">mc::aux</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
+Funkce</h2></td></tr>
+<tr class="memitem:a17a5a24ce34b97e6788e2916aa4d1025"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacemc_1_1aux.html#a17a5a24ce34b97e6788e2916aa4d1025">mc::aux::MCACHE_HAS_MEMBER</a> (as)</td></tr>
+<tr class="separator:a17a5a24ce34b97e6788e2916aa4d1025"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8668cf04f614f833915cb412eae61b2c"><td class="memTemplParams" colspan="2">template&lt;typename &gt; </td></tr>
+<tr class="memitem:a8668cf04f614f833915cb412eae61b2c"><td class="memTemplItemLeft" align="right" valign="top">const char *&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacemc_1_1aux.html#a8668cf04f614f833915cb412eae61b2c">mc::aux::format</a> ()</td></tr>
+<tr class="memdesc:a8668cf04f614f833915cb412eae61b2c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Fallback uninplemented function.  <a href="#a8668cf04f614f833915cb412eae61b2c">...</a><br/></td></tr>
+<tr class="separator:a8668cf04f614f833915cb412eae61b2c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa65ab80531b831fe00b2b587df800e44"><td class="memTemplParams" colspan="2">template&lt;&gt; </td></tr>
+<tr class="memitem:aa65ab80531b831fe00b2b587df800e44"><td class="memTemplItemLeft" align="right" valign="top">const char *&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacemc_1_1aux.html#aa65ab80531b831fe00b2b587df800e44">mc::aux::format&lt; bool &gt;</a> ()</td></tr>
+<tr class="memdesc:aa65ab80531b831fe00b2b587df800e44"><td class="mdescLeft">&#160;</td><td class="mdescRight">format for special int types  <a href="#aa65ab80531b831fe00b2b587df800e44">...</a><br/></td></tr>
+<tr class="separator:aa65ab80531b831fe00b2b587df800e44"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8b7b6c7a4c3f170181d8339fe17012cf"><td class="memTemplParams" colspan="2">template&lt;&gt; </td></tr>
+<tr class="memitem:a8b7b6c7a4c3f170181d8339fe17012cf"><td class="memTemplItemLeft" align="right" valign="top">const char *&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacemc_1_1aux.html#a8b7b6c7a4c3f170181d8339fe17012cf">mc::aux::format&lt; char &gt;</a> ()</td></tr>
+<tr class="separator:a8b7b6c7a4c3f170181d8339fe17012cf"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4b1b62c4daa068d148f11463380eaee1"><td class="memTemplParams" colspan="2">template&lt;&gt; </td></tr>
+<tr class="memitem:a4b1b62c4daa068d148f11463380eaee1"><td class="memTemplItemLeft" align="right" valign="top">const char *&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacemc_1_1aux.html#a4b1b62c4daa068d148f11463380eaee1">mc::aux::format&lt; wchar_t &gt;</a> ()</td></tr>
+<tr class="separator:a4b1b62c4daa068d148f11463380eaee1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a30642470404d32c7fe728b88e6db533d"><td class="memTemplParams" colspan="2">template&lt;&gt; </td></tr>
+<tr class="memitem:a30642470404d32c7fe728b88e6db533d"><td class="memTemplItemLeft" align="right" valign="top">const char *&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacemc_1_1aux.html#a30642470404d32c7fe728b88e6db533d">mc::aux::format&lt; int8_t &gt;</a> ()</td></tr>
+<tr class="memdesc:a30642470404d32c7fe728b88e6db533d"><td class="mdescLeft">&#160;</td><td class="mdescRight">format for signed int types  <a href="#a30642470404d32c7fe728b88e6db533d">...</a><br/></td></tr>
+<tr class="separator:a30642470404d32c7fe728b88e6db533d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:afdb200843b70df802e4abf38866f5497"><td class="memTemplParams" colspan="2">template&lt;&gt; </td></tr>
+<tr class="memitem:afdb200843b70df802e4abf38866f5497"><td class="memTemplItemLeft" align="right" valign="top">const char *&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacemc_1_1aux.html#afdb200843b70df802e4abf38866f5497">mc::aux::format&lt; int16_t &gt;</a> ()</td></tr>
+<tr class="separator:afdb200843b70df802e4abf38866f5497"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3bba67254544fb86c9a4455750d6b388"><td class="memTemplParams" colspan="2">template&lt;&gt; </td></tr>
+<tr class="memitem:a3bba67254544fb86c9a4455750d6b388"><td class="memTemplItemLeft" align="right" valign="top">const char *&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacemc_1_1aux.html#a3bba67254544fb86c9a4455750d6b388">mc::aux::format&lt; int32_t &gt;</a> ()</td></tr>
+<tr class="separator:a3bba67254544fb86c9a4455750d6b388"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a94d4b516d947843aa6e504e412506c4b"><td class="memTemplParams" colspan="2">template&lt;&gt; </td></tr>
+<tr class="memitem:a94d4b516d947843aa6e504e412506c4b"><td class="memTemplItemLeft" align="right" valign="top">const char *&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacemc_1_1aux.html#a94d4b516d947843aa6e504e412506c4b">mc::aux::format&lt; int64_t &gt;</a> ()</td></tr>
+<tr class="separator:a94d4b516d947843aa6e504e412506c4b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8b6a03496316a1b3c650ccd0cd67f6d6"><td class="memTemplParams" colspan="2">template&lt;&gt; </td></tr>
+<tr class="memitem:a8b6a03496316a1b3c650ccd0cd67f6d6"><td class="memTemplItemLeft" align="right" valign="top">const char *&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacemc_1_1aux.html#a8b6a03496316a1b3c650ccd0cd67f6d6">mc::aux::format&lt; long long int &gt;</a> ()</td></tr>
+<tr class="separator:a8b6a03496316a1b3c650ccd0cd67f6d6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4e29c62522f09db15923140148acee10"><td class="memTemplParams" colspan="2">template&lt;&gt; </td></tr>
+<tr class="memitem:a4e29c62522f09db15923140148acee10"><td class="memTemplItemLeft" align="right" valign="top">const char *&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacemc_1_1aux.html#a4e29c62522f09db15923140148acee10">mc::aux::format&lt; uint8_t &gt;</a> ()</td></tr>
+<tr class="memdesc:a4e29c62522f09db15923140148acee10"><td class="mdescLeft">&#160;</td><td class="mdescRight">format for unsigned int types  <a href="#a4e29c62522f09db15923140148acee10">...</a><br/></td></tr>
+<tr class="separator:a4e29c62522f09db15923140148acee10"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4506e06d33fa70bc668f1ff6e69fc04d"><td class="memTemplParams" colspan="2">template&lt;&gt; </td></tr>
+<tr class="memitem:a4506e06d33fa70bc668f1ff6e69fc04d"><td class="memTemplItemLeft" align="right" valign="top">const char *&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacemc_1_1aux.html#a4506e06d33fa70bc668f1ff6e69fc04d">mc::aux::format&lt; uint16_t &gt;</a> ()</td></tr>
+<tr class="separator:a4506e06d33fa70bc668f1ff6e69fc04d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a23f9de094bd4f25ca7b4bb77feb0050e"><td class="memTemplParams" colspan="2">template&lt;&gt; </td></tr>
+<tr class="memitem:a23f9de094bd4f25ca7b4bb77feb0050e"><td class="memTemplItemLeft" align="right" valign="top">const char *&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacemc_1_1aux.html#a23f9de094bd4f25ca7b4bb77feb0050e">mc::aux::format&lt; uint32_t &gt;</a> ()</td></tr>
+<tr class="separator:a23f9de094bd4f25ca7b4bb77feb0050e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0db56c05df1aed5364e3f0feec49c445"><td class="memTemplParams" colspan="2">template&lt;&gt; </td></tr>
+<tr class="memitem:a0db56c05df1aed5364e3f0feec49c445"><td class="memTemplItemLeft" align="right" valign="top">const char *&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacemc_1_1aux.html#a0db56c05df1aed5364e3f0feec49c445">mc::aux::format&lt; uint64_t &gt;</a> ()</td></tr>
+<tr class="separator:a0db56c05df1aed5364e3f0feec49c445"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8ba3a7ef89a92cdcde657f50007a4681"><td class="memTemplParams" colspan="2">template&lt;&gt; </td></tr>
+<tr class="memitem:a8ba3a7ef89a92cdcde657f50007a4681"><td class="memTemplItemLeft" align="right" valign="top">const char *&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacemc_1_1aux.html#a8ba3a7ef89a92cdcde657f50007a4681">mc::aux::format&lt; unsigned long long int &gt;</a> ()</td></tr>
+<tr class="separator:a8ba3a7ef89a92cdcde657f50007a4681"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4617aecf6eb54549c91c3016460e367a"><td class="memTemplParams" colspan="2">template&lt;&gt; </td></tr>
+<tr class="memitem:a4617aecf6eb54549c91c3016460e367a"><td class="memTemplItemLeft" align="right" valign="top">const char *&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacemc_1_1aux.html#a4617aecf6eb54549c91c3016460e367a">mc::aux::format&lt; float &gt;</a> ()</td></tr>
+<tr class="memdesc:a4617aecf6eb54549c91c3016460e367a"><td class="mdescLeft">&#160;</td><td class="mdescRight">format for float types  <a href="#a4617aecf6eb54549c91c3016460e367a">...</a><br/></td></tr>
+<tr class="separator:a4617aecf6eb54549c91c3016460e367a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab5c20d79756db11b6ccda4f46359cab2"><td class="memTemplParams" colspan="2">template&lt;&gt; </td></tr>
+<tr class="memitem:ab5c20d79756db11b6ccda4f46359cab2"><td class="memTemplItemLeft" align="right" valign="top">const char *&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacemc_1_1aux.html#ab5c20d79756db11b6ccda4f46359cab2">mc::aux::format&lt; double &gt;</a> ()</td></tr>
+<tr class="separator:ab5c20d79756db11b6ccda4f46359cab2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4acb1bf1f724883e480e232571477625"><td class="memTemplParams" colspan="2">template&lt;&gt; </td></tr>
+<tr class="memitem:a4acb1bf1f724883e480e232571477625"><td class="memTemplItemLeft" align="right" valign="top">const char *&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacemc_1_1aux.html#a4acb1bf1f724883e480e232571477625">mc::aux::format&lt; long double &gt;</a> ()</td></tr>
+<tr class="separator:a4acb1bf1f724883e480e232571477625"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a80b2fda96de46a5e3c5f090763fc7962"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacemc_1_1aux.html#a80b2fda96de46a5e3c5f090763fc7962">mc::aux::MCACHE_HAS_MEMBER</a> (marshallToFRPCBinaryStream)</td></tr>
+<tr class="memdesc:a80b2fda96de46a5e3c5f090763fc7962"><td class="mdescLeft">&#160;</td><td class="mdescRight">Macros for detection of FRPC::Value_t types.  <a href="#a80b2fda96de46a5e3c5f090763fc7962">...</a><br/></td></tr>
+<tr class="separator:a80b2fda96de46a5e3c5f090763fc7962"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a36619d2cfde758569859cb3d91eec82f"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacemc_1_1aux.html#a36619d2cfde758569859cb3d91eec82f">mc::aux::MCACHE_HAS_MEMBER</a> (SerializeToString)</td></tr>
+<tr class="memdesc:a36619d2cfde758569859cb3d91eec82f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Macros for detection of FRPC::Value_t types.  <a href="#a36619d2cfde758569859cb3d91eec82f">...</a><br/></td></tr>
+<tr class="separator:a36619d2cfde758569859cb3d91eec82f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad58d8f6211c2389326fef99735caebe3"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacemc_1_1aux.html#ad58d8f6211c2389326fef99735caebe3">mc::aux::MCACHE_HAS_MEMBER</a> (ParseFromString)</td></tr>
+<tr class="separator:ad58d8f6211c2389326fef99735caebe3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+</div><!-- contents -->
+</div><!-- doc-content -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="dir_d44c64559bbebec7f509842c48db8b23.html">include</a></li><li class="navelem"><a class="el" href="dir_c701a4f120b163bb41ca79c911b37da6.html">mcache</a></li><li class="navelem"><a class="el" href="conversion_8h.html">conversion.h</a></li>
+    <li class="footer">Generováno út 23. čec 2013 13.13:03 pro projekt libmcache-0.2.1 programem
+    <a href="http://www.doxygen.org/index.html">
+    <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.3.1 </li>
+  </ul>
+</div>
+</body>
+</html>

@@ -1,0 +1,283 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.3.1"/>
+<title>libmcache-0.2.1: Zdrojový soubor src/test-mcache.cc</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript">
+  $(document).ready(initResizable);
+  $(window).load(resizeHeight);
+</script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/search.js"></script>
+<script type="text/javascript">
+  $(document).ready(function() { searchBox.OnSelectItem(0); });
+</script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td style="padding-left: 0.5em;">
+   <div id="projectname">libmcache-0.2.1
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Generováno programem Doxygen 1.8.3.1 -->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "search",false,'Hledat');
+</script>
+  <div id="navrow1" class="tabs">
+    <ul class="tablist">
+      <li><a href="index.html"><span>Hlavní&#160;stránka</span></a></li>
+      <li><a href="namespaces.html"><span>Prostory&#160;jmen</span></a></li>
+      <li><a href="annotated.html"><span>Třídy</span></a></li>
+      <li class="current"><a href="files.html"><span>Soubory</span></a></li>
+      <li>
+        <div id="MSearchBox" class="MSearchBoxInactive">
+        <span class="left">
+          <img id="MSearchSelect" src="search/mag_sel.png"
+               onmouseover="return searchBox.OnSearchSelectShow()"
+               onmouseout="return searchBox.OnSearchSelectHide()"
+               alt=""/>
+          <input type="text" id="MSearchField" value="Hledat" accesskey="S"
+               onfocus="searchBox.OnSearchFieldFocus(true)" 
+               onblur="searchBox.OnSearchFieldFocus(false)" 
+               onkeyup="searchBox.OnSearchFieldChange(event)"/>
+          </span><span class="right">
+            <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><img id="MSearchCloseImg" border="0" src="search/close.png" alt=""/></a>
+          </span>
+        </div>
+      </li>
+    </ul>
+  </div>
+  <div id="navrow2" class="tabs2">
+    <ul class="tablist">
+      <li><a href="files.html"><span>Seznam&#160;souborů</span></a></li>
+      <li><a href="globals.html"><span>Globální&#160;symboly</span></a></li>
+    </ul>
+  </div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+$(document).ready(function(){initNavTree('test-mcache_8cc_source.html','');});
+</script>
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>Vše</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Třídy</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Prostory jmen</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Soubory</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Funkce</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Proměnné</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Definice typů</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Výčty</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(8)"><span class="SelectionMark">&#160;</span>Hodnoty výčtu</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(9)"><span class="SelectionMark">&#160;</span>Definice maker</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(10)"><span class="SelectionMark">&#160;</span>Stránky</a></div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div class="header">
+  <div class="headertitle">
+<div class="title">test-mcache.cc</div>  </div>
+</div><!--header-->
+<div class="contents">
+<a href="test-mcache_8cc.html">Zobrazit dokumentaci tohoto souboru.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="comment">/*</span></div>
+<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="comment"> * FILE             $Id: $</span></div>
+<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="comment"> *</span></div>
+<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="comment"> * DESCRIPTION      Test program for libmcache.</span></div>
+<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="comment"> *</span></div>
+<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="comment"> * PROJECT          Seznam memcache client.</span></div>
+<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="comment"> *</span></div>
+<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="comment"> * LICENSE          See COPYING</span></div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="comment"> *</span></div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="comment"> * AUTHOR           Michal Bukovsky &lt;michal.bukovsky@firma.seznam.cz&gt;</span></div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="comment"> *</span></div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="comment"> * Copyright (C) Seznam.cz a.s. 2012</span></div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;<span class="comment"> * All Rights Reserved</span></div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;<span class="comment"> *</span></div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;<span class="comment"> * HISTORY</span></div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;<span class="comment"> *       2012-09-16 (bukovsky)</span></div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;<span class="comment"> *                  First draft.</span></div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;<span class="comment"> */</span></div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;</div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;<span class="preprocessor">#include &lt;ctime&gt;</span></div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;<span class="preprocessor">#include &lt;vector&gt;</span></div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;<span class="preprocessor">#include &lt;cstdlib&gt;</span></div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;<span class="preprocessor">#include &lt;iostream&gt;</span></div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;<span class="preprocessor">#include &lt;algorithm&gt;</span></div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;<span class="preprocessor">#include &lt;boost/lambda/lambda.hpp&gt;</span></div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;</div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="mcache_8h.html">mcache/mcache.h</a>&gt;</span></div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;</div>
+<div class="line"><a name="l00029"></a><span class="lineno"><a class="code" href="classfake__protobuf__t.html">   29</a></span>&#160;<span class="keyword">class </span><a class="code" href="classfake__protobuf__t.html">fake_protobuf_t</a> {</div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;<span class="keyword">public</span>:</div>
+<div class="line"><a name="l00031"></a><span class="lineno"><a class="code" href="classfake__protobuf__t.html#a72b8242c15bbeadd707b23c9c8886a24">   31</a></span>&#160;    <span class="keywordtype">bool</span> <a class="code" href="classfake__protobuf__t.html#a72b8242c15bbeadd707b23c9c8886a24">SerializeToString</a>(std::string &amp;result)<span class="keyword"> const </span>{</div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;        result = <a class="code" href="classfake__protobuf__t.html#aa74ad3a25863b4bea74aee0f5b010ad3">value</a>;</div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;        <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;    }</div>
+<div class="line"><a name="l00035"></a><span class="lineno"><a class="code" href="classfake__protobuf__t.html#a7d833353a7e84d88a87b056528c40fd1">   35</a></span>&#160;    <span class="keywordtype">bool</span> <a class="code" href="classfake__protobuf__t.html#a7d833353a7e84d88a87b056528c40fd1">ParseFromString</a>(<span class="keyword">const</span> std::string &amp;data) {</div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;        <a class="code" href="classfake__protobuf__t.html#aa74ad3a25863b4bea74aee0f5b010ad3">value</a> = data;</div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;        <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;    }</div>
+<div class="line"><a name="l00039"></a><span class="lineno"><a class="code" href="classfake__protobuf__t.html#adebd25ebb48e14bba77cbfc5db741fe4">   39</a></span>&#160;    <span class="keywordtype">bool</span> <a class="code" href="classfake__protobuf__t.html#adebd25ebb48e14bba77cbfc5db741fe4">IsInitialized</a>()<span class="keyword"> const </span>{ <span class="keywordflow">return</span> <span class="keyword">true</span>;}</div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;</div>
+<div class="line"><a name="l00041"></a><span class="lineno"><a class="code" href="classfake__protobuf__t.html#aa74ad3a25863b4bea74aee0f5b010ad3">   41</a></span>&#160;    std::string <a class="code" href="classfake__protobuf__t.html#aa74ad3a25863b4bea74aee0f5b010ad3">value</a>;</div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;};</div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;</div>
+<div class="line"><a name="l00044"></a><span class="lineno"><a class="code" href="classfrpc__value__t.html">   44</a></span>&#160;<span class="keyword">class </span><a class="code" href="classfrpc__value__t.html">frpc_value_t</a> {</div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;<span class="keyword">public</span>:</div>
+<div class="line"><a name="l00046"></a><span class="lineno"><a class="code" href="classfrpc__value__t.html#a5fc0ecd81bb02d72d0e67550f9615bdf">   46</a></span>&#160;    std::string <a class="code" href="classfrpc__value__t.html#a5fc0ecd81bb02d72d0e67550f9615bdf">marshallToFRPCBinaryStream</a>()<span class="keyword"> const </span>{ <span class="keywordflow">return</span> <span class="stringliteral">&quot;&quot;</span>;}</div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;};</div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;</div>
+<div class="line"><a name="l00049"></a><span class="lineno"><a class="code" href="classfrpc__pool__t.html">   49</a></span>&#160;<span class="keyword">class </span><a class="code" href="classfrpc__pool__t.html">frpc_pool_t</a> {</div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;<span class="keyword">public</span>:</div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;    <span class="keyword">const</span> <a class="code" href="classfrpc__value__t.html">frpc_value_t</a> &amp;</div>
+<div class="line"><a name="l00052"></a><span class="lineno"><a class="code" href="classfrpc__pool__t.html#a7a5b8f8dbb82e3fc480de2f82dbe6e85">   52</a></span>&#160;    <a class="code" href="classfrpc__pool__t.html#a7a5b8f8dbb82e3fc480de2f82dbe6e85">demarshallFromFRPCBinaryStream</a>(<span class="keyword">const</span> std::string &amp;) {</div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;        <span class="keywordflow">return</span> *(<span class="keyword">new</span> <a class="code" href="classfrpc__value__t.html">frpc_value_t</a>());</div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;    }</div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;};</div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;</div>
+<div class="line"><a name="l00057"></a><span class="lineno"><a class="code" href="classbad__t.html">   57</a></span>&#160;<span class="keyword">class </span><a class="code" href="classbad__t.html">bad_t</a> {</div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;<span class="keyword">public</span>:</div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;};</div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;</div>
+<div class="line"><a name="l00061"></a><span class="lineno"><a class="code" href="test-mcache_8cc.html#a3c04138a5bfe5d72780bb7e82a18e627">   61</a></span>&#160;<span class="keywordtype">int</span> <a class="code" href="test-connection_8cc.html#a3c04138a5bfe5d72780bb7e82a18e627">main</a>(<span class="keywordtype">int</span> argc, <span class="keywordtype">char</span> **argv) {</div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;    <a class="code" href="namespacemc.html#a418d8a43f291ad6f3bfe5987a6a973a3" title="Initialize libmcache.">mc::init</a>();</div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;    <span class="keyword">using</span> boost::lambda::_1;</div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;</div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;    <span class="comment">// params</span></div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;    <span class="keywordflow">if</span> (argc &lt; 2) {</div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;        std::cerr &lt;&lt; <span class="stringliteral">&quot;Usage: &quot;</span> &lt;&lt; argv[0] &lt;&lt; <span class="stringliteral">&quot; server:port&quot;</span> &lt;&lt; std::endl;</div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;        <span class="keywordflow">return</span> EXIT_FAILURE;</div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;    }</div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;</div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;    <span class="comment">// prepare client params</span></div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;    std::vector&lt;std::string&gt; servers;</div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;    std::copy(argv + 1, argv + argc, std::back_inserter(servers));</div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;</div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;    <span class="comment">// client</span></div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;    <a class="code" href="classmc_1_1client__template__t.html" title="Template of class for memcache clients.">mc::thread::client_t</a> client(servers);</div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;</div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;    <span class="keywordflow">try</span> {</div>
+<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;</div>
+<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;        client.<a class="code" href="classmc_1_1client__template__t.html#a377d1bc5fc3af1e76093f604fbcb01b9" title="Call &#39;set&#39; command on appropriate memcache server.">set</a>(<span class="stringliteral">&quot;three&quot;</span>, (<span class="keywordtype">char</span>)3);</div>
+<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;        client.<a class="code" href="classmc_1_1client__template__t.html#a377d1bc5fc3af1e76093f604fbcb01b9" title="Call &#39;set&#39; command on appropriate memcache server.">set</a>(<span class="stringliteral">&quot;three&quot;</span>, (<span class="keywordtype">wchar_t</span>)3);</div>
+<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;        client.<a class="code" href="classmc_1_1client__template__t.html#a377d1bc5fc3af1e76093f604fbcb01b9" title="Call &#39;set&#39; command on appropriate memcache server.">set</a>(<span class="stringliteral">&quot;three&quot;</span>, (<span class="keywordtype">unsigned</span> <span class="keywordtype">wchar_t</span>)3);</div>
+<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;        client.<a class="code" href="classmc_1_1client__template__t.html#a377d1bc5fc3af1e76093f604fbcb01b9" title="Call &#39;set&#39; command on appropriate memcache server.">set</a>(<span class="stringliteral">&quot;three&quot;</span>, (<span class="keywordtype">unsigned</span> <span class="keywordtype">char</span>)3);</div>
+<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;        client.<a class="code" href="classmc_1_1client__template__t.html#a377d1bc5fc3af1e76093f604fbcb01b9" title="Call &#39;set&#39; command on appropriate memcache server.">set</a>(<span class="stringliteral">&quot;three&quot;</span>, (<span class="keywordtype">signed</span> <span class="keywordtype">int</span>)3);</div>
+<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;        client.<a class="code" href="classmc_1_1client__template__t.html#a377d1bc5fc3af1e76093f604fbcb01b9" title="Call &#39;set&#39; command on appropriate memcache server.">set</a>(<span class="stringliteral">&quot;three&quot;</span>, (<span class="keywordtype">bool</span>)3);</div>
+<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;        client.<a class="code" href="classmc_1_1client__template__t.html#a377d1bc5fc3af1e76093f604fbcb01b9" title="Call &#39;set&#39; command on appropriate memcache server.">set</a>(<span class="stringliteral">&quot;three&quot;</span>, (int8_t)3);</div>
+<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;        client.<a class="code" href="classmc_1_1client__template__t.html#a377d1bc5fc3af1e76093f604fbcb01b9" title="Call &#39;set&#39; command on appropriate memcache server.">set</a>(<span class="stringliteral">&quot;three&quot;</span>, (int16_t)3);</div>
+<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;        client.<a class="code" href="classmc_1_1client__template__t.html#a377d1bc5fc3af1e76093f604fbcb01b9" title="Call &#39;set&#39; command on appropriate memcache server.">set</a>(<span class="stringliteral">&quot;three&quot;</span>, (int32_t)3);</div>
+<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;        client.<a class="code" href="classmc_1_1client__template__t.html#a377d1bc5fc3af1e76093f604fbcb01b9" title="Call &#39;set&#39; command on appropriate memcache server.">set</a>(<span class="stringliteral">&quot;three&quot;</span>, (int64_t)3);</div>
+<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;        client.<a class="code" href="classmc_1_1client__template__t.html#a377d1bc5fc3af1e76093f604fbcb01b9" title="Call &#39;set&#39; command on appropriate memcache server.">set</a>(<span class="stringliteral">&quot;three&quot;</span>, (uint8_t)3);</div>
+<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;        client.<a class="code" href="classmc_1_1client__template__t.html#a377d1bc5fc3af1e76093f604fbcb01b9" title="Call &#39;set&#39; command on appropriate memcache server.">set</a>(<span class="stringliteral">&quot;three&quot;</span>, (uint16_t)3);</div>
+<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;        client.<a class="code" href="classmc_1_1client__template__t.html#a377d1bc5fc3af1e76093f604fbcb01b9" title="Call &#39;set&#39; command on appropriate memcache server.">set</a>(<span class="stringliteral">&quot;three&quot;</span>, (uint32_t)3);</div>
+<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;        client.<a class="code" href="classmc_1_1client__template__t.html#a377d1bc5fc3af1e76093f604fbcb01b9" title="Call &#39;set&#39; command on appropriate memcache server.">set</a>(<span class="stringliteral">&quot;three&quot;</span>, (uint64_t)3);</div>
+<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;</div>
+<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;        client.<a class="code" href="classmc_1_1client__template__t.html#a377d1bc5fc3af1e76093f604fbcb01b9" title="Call &#39;set&#39; command on appropriate memcache server.">set</a>(<span class="stringliteral">&quot;three&quot;</span>, (<span class="keywordtype">unsigned</span> <span class="keywordtype">long</span> <span class="keywordtype">long</span> <span class="keywordtype">int</span>)3);</div>
+<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;        client.<a class="code" href="classmc_1_1client__template__t.html#a377d1bc5fc3af1e76093f604fbcb01b9" title="Call &#39;set&#39; command on appropriate memcache server.">set</a>(<span class="stringliteral">&quot;three&quot;</span>, (<span class="keywordtype">long</span> <span class="keywordtype">long</span> <span class="keywordtype">int</span>)3);</div>
+<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;</div>
+<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;        client.<a class="code" href="classmc_1_1client__template__t.html#a377d1bc5fc3af1e76093f604fbcb01b9" title="Call &#39;set&#39; command on appropriate memcache server.">set</a>(<span class="stringliteral">&quot;three&quot;</span>, (<span class="keywordtype">float</span>)3);</div>
+<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;        client.<a class="code" href="classmc_1_1client__template__t.html#a377d1bc5fc3af1e76093f604fbcb01b9" title="Call &#39;set&#39; command on appropriate memcache server.">set</a>(<span class="stringliteral">&quot;three&quot;</span>, (<span class="keywordtype">double</span>)3);</div>
+<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;        client.<a class="code" href="classmc_1_1client__template__t.html#a377d1bc5fc3af1e76093f604fbcb01b9" title="Call &#39;set&#39; command on appropriate memcache server.">set</a>(<span class="stringliteral">&quot;three&quot;</span>, (<span class="keywordtype">long</span> <span class="keywordtype">double</span>)3);</div>
+<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;</div>
+<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;        <a class="code" href="classfake__protobuf__t.html">fake_protobuf_t</a> protobuf;</div>
+<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;        protobuf.<a class="code" href="classfake__protobuf__t.html#aa74ad3a25863b4bea74aee0f5b010ad3">value</a> = <span class="stringliteral">&quot;three&quot;</span>;</div>
+<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;        client.<a class="code" href="classmc_1_1client__template__t.html#a377d1bc5fc3af1e76093f604fbcb01b9" title="Call &#39;set&#39; command on appropriate memcache server.">set</a>(<span class="stringliteral">&quot;three&quot;</span>, protobuf);</div>
+<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;        client.<a class="code" href="classmc_1_1client__template__t.html#af4b751cd523bb7a8bf43464faca560e2" title="Call &#39;get&#39; command on appropriate memcache server.">get</a>(<span class="stringliteral">&quot;three&quot;</span>).<a class="code" href="classmc_1_1result__t.html#a4869b2f57205357f3f60f2268a00eb4b" title="Converts data to given type.">as</a>&lt;<a class="code" href="classfake__protobuf__t.html">fake_protobuf_t</a>&gt;();</div>
+<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;</div>
+<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;        client.<a class="code" href="classmc_1_1client__template__t.html#af4b751cd523bb7a8bf43464faca560e2" title="Call &#39;get&#39; command on appropriate memcache server.">get</a>(<span class="stringliteral">&quot;three&quot;</span>).<a class="code" href="classmc_1_1result__t.html#a4869b2f57205357f3f60f2268a00eb4b" title="Converts data to given type.">as</a>&lt;std::string&gt;();</div>
+<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;</div>
+<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;        <a class="code" href="classfrpc__pool__t.html">frpc_pool_t</a> pool;</div>
+<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;        <a class="code" href="classfrpc__value__t.html">frpc_value_t</a> fvalue;</div>
+<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;        client.<a class="code" href="classmc_1_1client__template__t.html#a377d1bc5fc3af1e76093f604fbcb01b9" title="Call &#39;set&#39; command on appropriate memcache server.">set</a>(<span class="stringliteral">&quot;three&quot;</span>, fvalue);</div>
+<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;        client.<a class="code" href="classmc_1_1client__template__t.html#af4b751cd523bb7a8bf43464faca560e2" title="Call &#39;get&#39; command on appropriate memcache server.">get</a>(<span class="stringliteral">&quot;three&quot;</span>).<a class="code" href="classmc_1_1result__t.html#a4869b2f57205357f3f60f2268a00eb4b" title="Converts data to given type.">as</a>&lt;<a class="code" href="classfrpc__value__t.html">frpc_value_t</a>&gt;(pool);</div>
+<div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;</div>
+<div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;        <span class="comment">//bad_t bad;</span></div>
+<div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160;        <span class="comment">//client.set(&quot;three&quot;, bad);</span></div>
+<div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;</div>
+<div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160;        <span class="keywordtype">char</span> x[3] = {<span class="charliteral">&#39;b&#39;</span>, <span class="charliteral">&#39;b&#39;</span>, <span class="charliteral">&#39;\0&#39;</span>};</div>
+<div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160;        client.<a class="code" href="classmc_1_1client__template__t.html#a377d1bc5fc3af1e76093f604fbcb01b9" title="Call &#39;set&#39; command on appropriate memcache server.">set</a>(<span class="stringliteral">&quot;three&quot;</span>, x);</div>
+<div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;</div>
+<div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160;        <span class="keyword">volatile</span> <span class="keywordtype">int</span> prdel = 3;</div>
+<div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160;        client.<a class="code" href="classmc_1_1client__template__t.html#a377d1bc5fc3af1e76093f604fbcb01b9" title="Call &#39;set&#39; command on appropriate memcache server.">set</a>(<span class="stringliteral">&quot;three&quot;</span>, prdel);</div>
+<div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160;</div>
+<div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160;        <span class="keyword">const</span> <span class="keywordtype">int</span> prdel1 = 3;</div>
+<div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160;        client.<a class="code" href="classmc_1_1client__template__t.html#a377d1bc5fc3af1e76093f604fbcb01b9" title="Call &#39;set&#39; command on appropriate memcache server.">set</a>(<span class="stringliteral">&quot;three&quot;</span>, prdel1);</div>
+<div class="line"><a name="l00125"></a><span class="lineno">  125</span>&#160;</div>
+<div class="line"><a name="l00126"></a><span class="lineno">  126</span>&#160;        client.<a class="code" href="classmc_1_1client__template__t.html#ad521b5106ec42720634802ffd0c93d2f" title="Call &#39;add&#39; command on appropriate memcache server.">add</a>(<span class="stringliteral">&quot;three&quot;</span>, <span class="stringliteral">&quot;3&quot;</span>);</div>
+<div class="line"><a name="l00127"></a><span class="lineno">  127</span>&#160;        client.<a class="code" href="classmc_1_1client__template__t.html#ad521b5106ec42720634802ffd0c93d2f" title="Call &#39;add&#39; command on appropriate memcache server.">add</a>(<span class="stringliteral">&quot;tyhree&quot;</span>, <span class="stringliteral">&quot;3&quot;</span>);</div>
+<div class="line"><a name="l00128"></a><span class="lineno">  128</span>&#160;</div>
+<div class="line"><a name="l00129"></a><span class="lineno">  129</span>&#160;        client.<a class="code" href="classmc_1_1client__template__t.html#adc9a5d53ae681591b57d3240cb55d3e3" title="Call &#39;prepend&#39; command on appropriate memcache server.">prepend</a>(<span class="stringliteral">&quot;three&quot;</span>, <span class="stringliteral">&quot;3&quot;</span>);</div>
+<div class="line"><a name="l00130"></a><span class="lineno">  130</span>&#160;        client.<a class="code" href="classmc_1_1client__template__t.html#adc9a5d53ae681591b57d3240cb55d3e3" title="Call &#39;prepend&#39; command on appropriate memcache server.">prepend</a>(<span class="stringliteral">&quot;txhree&quot;</span>, <span class="stringliteral">&quot;3&quot;</span>);</div>
+<div class="line"><a name="l00131"></a><span class="lineno">  131</span>&#160;        client.<a class="code" href="classmc_1_1client__template__t.html#a5957ae227da24c703e1ef6e5788bc219" title="Call &#39;append&#39; command on appropriate memcache server.">append</a>(<span class="stringliteral">&quot;three&quot;</span>, <span class="stringliteral">&quot;3&quot;</span>);</div>
+<div class="line"><a name="l00132"></a><span class="lineno">  132</span>&#160;        client.<a class="code" href="classmc_1_1client__template__t.html#a5957ae227da24c703e1ef6e5788bc219" title="Call &#39;append&#39; command on appropriate memcache server.">append</a>(<span class="stringliteral">&quot;txhree&quot;</span>, <span class="stringliteral">&quot;3&quot;</span>);</div>
+<div class="line"><a name="l00133"></a><span class="lineno">  133</span>&#160;</div>
+<div class="line"><a name="l00134"></a><span class="lineno">  134</span>&#160;        <a class="code" href="classmc_1_1result__t.html" title="Result of all get commands.">mc::result_t</a> res = client.<a class="code" href="classmc_1_1client__template__t.html#a5d77aa6b0e1b49f6c581033ef96f5a0b" title="Call &#39;gets&#39; command on appropriate memcache server.">gets</a>(<span class="stringliteral">&quot;three&quot;</span>);</div>
+<div class="line"><a name="l00135"></a><span class="lineno">  135</span>&#160;        client.<a class="code" href="classmc_1_1client__template__t.html#ad3f6ef4eaf7b884b86e64456b81c4eda" title="Call &#39;delete&#39; command on appropriate memcache server.">del</a>(<span class="stringliteral">&quot;txhree&quot;</span>);</div>
+<div class="line"><a name="l00136"></a><span class="lineno">  136</span>&#160;        client.<a class="code" href="classmc_1_1client__template__t.html#a560e4e185b66a3b0b328d7ee8c3aebe1" title="Call &#39;cas&#39; command on appropriate memcache server.">cas</a>(<span class="stringliteral">&quot;txhree&quot;</span>, <span class="stringliteral">&quot;3&quot;</span>, mc::opts_t(0, 0, res.<a class="code" href="classmc_1_1result__t.html#a0d51ce49eaf9a0fb15617009b95781cd" title="cas identifier of data">cas</a>));</div>
+<div class="line"><a name="l00137"></a><span class="lineno">  137</span>&#160;        <span class="keywordflow">try</span> {</div>
+<div class="line"><a name="l00138"></a><span class="lineno">  138</span>&#160;            client.<a class="code" href="classmc_1_1client__template__t.html#a560e4e185b66a3b0b328d7ee8c3aebe1" title="Call &#39;cas&#39; command on appropriate memcache server.">cas</a>(<span class="stringliteral">&quot;three&quot;</span>, <span class="stringliteral">&quot;3&quot;</span>, mc::opts_t(0, 0, res.<a class="code" href="classmc_1_1result__t.html#a0d51ce49eaf9a0fb15617009b95781cd" title="cas identifier of data">cas</a> - 1));</div>
+<div class="line"><a name="l00139"></a><span class="lineno">  139</span>&#160;            <span class="keywordflow">throw</span> 3;</div>
+<div class="line"><a name="l00140"></a><span class="lineno">  140</span>&#160;        } <span class="keywordflow">catch</span> (<span class="keyword">const</span> <a class="code" href="classmc_1_1proto_1_1error__t.html" title="Base class for all errors in libmcache::proto.">mc::proto::error_t</a> &amp;e) {</div>
+<div class="line"><a name="l00141"></a><span class="lineno">  141</span>&#160;            <span class="keywordflow">if</span> (e.<a class="code" href="classmc_1_1error__t.html#ab5366c530d2b993cf6c58c8995ad9008" title="Returns error code.">code</a>() != <a class="code" href="namespacemc_1_1proto_1_1resp.html#a35cad491b3eb41e5bec2e433b7922695ac6bfcf2ed1e341b7759d872f3b3c86ac">mc::proto::resp::exists</a>) <span class="keywordflow">throw</span>;</div>
+<div class="line"><a name="l00142"></a><span class="lineno">  142</span>&#160;        }</div>
+<div class="line"><a name="l00143"></a><span class="lineno">  143</span>&#160;</div>
+<div class="line"><a name="l00144"></a><span class="lineno">  144</span>&#160;        client.<a class="code" href="classmc_1_1client__template__t.html#aaf060dc54d6eea998642d8663dd38d7d" title="Call &#39;incr&#39; command on appropriate memcache server.">incr</a>(<span class="stringliteral">&quot;three&quot;</span>);</div>
+<div class="line"><a name="l00145"></a><span class="lineno">  145</span>&#160;        client.<a class="code" href="classmc_1_1client__template__t.html#af4b5369c6fdfa4d08f60fb26686b93c0" title="Call &#39;decr&#39; command on appropriate memcache server.">decr</a>(<span class="stringliteral">&quot;three&quot;</span>);</div>
+<div class="line"><a name="l00146"></a><span class="lineno">  146</span>&#160;</div>
+<div class="line"><a name="l00147"></a><span class="lineno">  147</span>&#160;        client.<a class="code" href="classmc_1_1client__template__t.html#ad3f6ef4eaf7b884b86e64456b81c4eda" title="Call &#39;delete&#39; command on appropriate memcache server.">del</a>(<span class="stringliteral">&quot;three&quot;</span>);</div>
+<div class="line"><a name="l00148"></a><span class="lineno">  148</span>&#160;        client.<a class="code" href="classmc_1_1client__template__t.html#ad3f6ef4eaf7b884b86e64456b81c4eda" title="Call &#39;delete&#39; command on appropriate memcache server.">del</a>(<span class="stringliteral">&quot;tzhree&quot;</span>);</div>
+<div class="line"><a name="l00149"></a><span class="lineno">  149</span>&#160;</div>
+<div class="line"><a name="l00150"></a><span class="lineno">  150</span>&#160;        <span class="keywordflow">if</span> (client.<a class="code" href="classmc_1_1client__template__t.html#af4b751cd523bb7a8bf43464faca560e2" title="Call &#39;get&#39; command on appropriate memcache server.">get</a>(<span class="stringliteral">&quot;three&quot;</span>)) <span class="keywordflow">throw</span> 3;</div>
+<div class="line"><a name="l00151"></a><span class="lineno">  151</span>&#160;        client.<a class="code" href="classmc_1_1client__template__t.html#af4b751cd523bb7a8bf43464faca560e2" title="Call &#39;get&#39; command on appropriate memcache server.">get</a>(<span class="stringliteral">&quot;aaaa&quot;</span>).<a class="code" href="classmc_1_1result__t.html#a4869b2f57205357f3f60f2268a00eb4b" title="Converts data to given type.">as</a>&lt;<span class="keywordtype">int</span>&gt;();</div>
+<div class="line"><a name="l00152"></a><span class="lineno">  152</span>&#160;        <span class="comment">//std::cout &lt;&lt; client.dump() &lt;&lt; std::endl;</span></div>
+<div class="line"><a name="l00153"></a><span class="lineno">  153</span>&#160;</div>
+<div class="line"><a name="l00154"></a><span class="lineno">  154</span>&#160;    } <span class="keywordflow">catch</span> (<span class="keyword">const</span> std::exception &amp;e) {</div>
+<div class="line"><a name="l00155"></a><span class="lineno">  155</span>&#160;        std::cerr &lt;&lt; <span class="stringliteral">&quot;ERROR: &quot;</span> &lt;&lt; e.what() &lt;&lt; std::endl;</div>
+<div class="line"><a name="l00156"></a><span class="lineno">  156</span>&#160;</div>
+<div class="line"><a name="l00157"></a><span class="lineno">  157</span>&#160;    } <span class="keywordflow">catch</span> (...) {</div>
+<div class="line"><a name="l00158"></a><span class="lineno">  158</span>&#160;        std::cerr &lt;&lt; <span class="stringliteral">&quot;ERROR: unknown exception&quot;</span> &lt;&lt; std::endl;</div>
+<div class="line"><a name="l00159"></a><span class="lineno">  159</span>&#160;        <span class="keywordflow">return</span> EXIT_FAILURE;</div>
+<div class="line"><a name="l00160"></a><span class="lineno">  160</span>&#160;    }</div>
+<div class="line"><a name="l00161"></a><span class="lineno">  161</span>&#160;    <span class="keywordflow">return</span> EXIT_SUCCESS;</div>
+<div class="line"><a name="l00162"></a><span class="lineno">  162</span>&#160;}</div>
+<div class="line"><a name="l00163"></a><span class="lineno">  163</span>&#160;</div>
+</div><!-- fragment --></div><!-- contents -->
+</div><!-- doc-content -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="test-mcache_8cc.html">test-mcache.cc</a></li>
+    <li class="footer">Generováno út 23. čec 2013 13.13:03 pro projekt libmcache-0.2.1 programem
+    <a href="http://www.doxygen.org/index.html">
+    <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.3.1 </li>
+  </ul>
+</div>
+</body>
+</html>

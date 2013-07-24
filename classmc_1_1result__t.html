@@ -1,0 +1,481 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.3.1"/>
+<title>libmcache-0.2.1: Dokumentace třídy mc::result_t</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript">
+  $(document).ready(initResizable);
+  $(window).load(resizeHeight);
+</script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/search.js"></script>
+<script type="text/javascript">
+  $(document).ready(function() { searchBox.OnSelectItem(0); });
+</script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td style="padding-left: 0.5em;">
+   <div id="projectname">libmcache-0.2.1
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Generováno programem Doxygen 1.8.3.1 -->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "search",false,'Hledat');
+</script>
+  <div id="navrow1" class="tabs">
+    <ul class="tablist">
+      <li><a href="index.html"><span>Hlavní&#160;stránka</span></a></li>
+      <li><a href="namespaces.html"><span>Prostory&#160;jmen</span></a></li>
+      <li class="current"><a href="annotated.html"><span>Třídy</span></a></li>
+      <li><a href="files.html"><span>Soubory</span></a></li>
+      <li>
+        <div id="MSearchBox" class="MSearchBoxInactive">
+        <span class="left">
+          <img id="MSearchSelect" src="search/mag_sel.png"
+               onmouseover="return searchBox.OnSearchSelectShow()"
+               onmouseout="return searchBox.OnSearchSelectHide()"
+               alt=""/>
+          <input type="text" id="MSearchField" value="Hledat" accesskey="S"
+               onfocus="searchBox.OnSearchFieldFocus(true)" 
+               onblur="searchBox.OnSearchFieldFocus(false)" 
+               onkeyup="searchBox.OnSearchFieldChange(event)"/>
+          </span><span class="right">
+            <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><img id="MSearchCloseImg" border="0" src="search/close.png" alt=""/></a>
+          </span>
+        </div>
+      </li>
+    </ul>
+  </div>
+  <div id="navrow2" class="tabs2">
+    <ul class="tablist">
+      <li><a href="annotated.html"><span>Datové&#160;struktury</span></a></li>
+      <li><a href="classes.html"><span>Rejstřík&#160;datových&#160;struktur</span></a></li>
+      <li><a href="inherits.html"><span>Hierarchie&#160;tříd</span></a></li>
+      <li><a href="functions.html"><span>Datové&#160;položky</span></a></li>
+    </ul>
+  </div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+$(document).ready(function(){initNavTree('classmc_1_1result__t.html','');});
+</script>
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>Vše</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Třídy</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Prostory jmen</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Soubory</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Funkce</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Proměnné</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Definice typů</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Výčty</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(8)"><span class="SelectionMark">&#160;</span>Hodnoty výčtu</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(9)"><span class="SelectionMark">&#160;</span>Definice maker</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(10)"><span class="SelectionMark">&#160;</span>Stránky</a></div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div class="header">
+  <div class="summary">
+<a href="#pub-methods">Veřejné metody</a> &#124;
+<a href="#pub-attribs">Datové položky</a> &#124;
+<a href="#pri-types">Privátní typy</a> &#124;
+<a href="#pri-methods">Privátní metody</a>  </div>
+  <div class="headertitle">
+<div class="title">Dokumentace třídy mc::result_t</div>  </div>
+</div><!--header-->
+<div class="contents">
+
+<p>Result of all get commands.  
+ <a href="classmc_1_1result__t.html#details">...</a></p>
+
+<p><code>#include &lt;<a class="el" href="client_8h_source.html">client.h</a>&gt;</code></p>
+<div class="dynheader">
+Diagram tříd pro mc::result_t:</div>
+<div class="dyncontent">
+<div class="center"><img src="classmc_1_1result__t__coll__graph.png" border="0" usemap="#mc_1_1result__t_coll__map" alt="Collaboration graph"/></div>
+<map name="mc_1_1result__t_coll__map" id="mc_1_1result__t_coll__map">
+<area shape="rect" id="node2" title="STL class." alt="" coords="28,102,108,130"/><area shape="rect" id="node4" title="STL class." alt="" coords="5,6,131,50"/></map>
+<center><span class="legend">[<a target="top" href="graph_legend.html">vysvětlivky</a>]</span></center></div>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
+Veřejné metody</h2></td></tr>
+<tr class="memitem:ad1120dcbcb8218f3bf12c11d818f7e13"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classmc_1_1result__t.html#ad1120dcbcb8218f3bf12c11d818f7e13">result_t</a> (bool <a class="el" href="classmc_1_1result__t.html#a474725d8376259d495a987a34cc68acd">found</a>)</td></tr>
+<tr class="memdesc:ad1120dcbcb8218f3bf12c11d818f7e13"><td class="mdescLeft">&#160;</td><td class="mdescRight">C'tor.  <a href="#ad1120dcbcb8218f3bf12c11d818f7e13">...</a><br/></td></tr>
+<tr class="separator:ad1120dcbcb8218f3bf12c11d818f7e13"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa4f7dd508d9ec67c2b75b615fc758648"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classmc_1_1result__t.html#aa4f7dd508d9ec67c2b75b615fc758648">result_t</a> (const std::string &amp;<a class="el" href="classmc_1_1result__t.html#a3ecd594615c82e291e15a02bbff827b8">data</a>, uint32_t <a class="el" href="classmc_1_1result__t.html#afe73c333b0636ccc64660781c1265a95">flags</a>, uint64_t <a class="el" href="classmc_1_1result__t.html#a0d51ce49eaf9a0fb15617009b95781cd">cas</a>=0)</td></tr>
+<tr class="memdesc:aa4f7dd508d9ec67c2b75b615fc758648"><td class="mdescLeft">&#160;</td><td class="mdescRight">C'tor.  <a href="#aa4f7dd508d9ec67c2b75b615fc758648">...</a><br/></td></tr>
+<tr class="separator:aa4f7dd508d9ec67c2b75b615fc758648"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4869b2f57205357f3f60f2268a00eb4b"><td class="memTemplParams" colspan="2">template&lt;typename type_t &gt; </td></tr>
+<tr class="memitem:a4869b2f57205357f3f60f2268a00eb4b"><td class="memTemplItemLeft" align="right" valign="top">type_t&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="classmc_1_1result__t.html#a4869b2f57205357f3f60f2268a00eb4b">as</a> () const </td></tr>
+<tr class="memdesc:a4869b2f57205357f3f60f2268a00eb4b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Converts data to given type.  <a href="#a4869b2f57205357f3f60f2268a00eb4b">...</a><br/></td></tr>
+<tr class="separator:a4869b2f57205357f3f60f2268a00eb4b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac1957cc0281dc0a527cb41e97debd702"><td class="memTemplParams" colspan="2">template&lt;typename type_t , typename aux_t &gt; </td></tr>
+<tr class="memitem:ac1957cc0281dc0a527cb41e97debd702"><td class="memTemplItemLeft" align="right" valign="top">type_t&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="classmc_1_1result__t.html#ac1957cc0281dc0a527cb41e97debd702">as</a> (aux_t aux) const </td></tr>
+<tr class="memdesc:ac1957cc0281dc0a527cb41e97debd702"><td class="mdescLeft">&#160;</td><td class="mdescRight">Converts data to given type.  <a href="#ac1957cc0281dc0a527cb41e97debd702">...</a><br/></td></tr>
+<tr class="separator:ac1957cc0281dc0a527cb41e97debd702"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae4f4c0a721fe619c10c4786eba8d7290"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classmc_1_1result__t.html#ae4f4c0a721fe619c10c4786eba8d7290">operator unspecified_bool_type</a> () const </td></tr>
+<tr class="memdesc:ae4f4c0a721fe619c10c4786eba8d7290"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns true if data was found on server.  <a href="#ae4f4c0a721fe619c10c4786eba8d7290">...</a><br/></td></tr>
+<tr class="separator:ae4f4c0a721fe619c10c4786eba8d7290"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-attribs"></a>
+Datové položky</h2></td></tr>
+<tr class="memitem:a474725d8376259d495a987a34cc68acd"><td class="memItemLeft" align="right" valign="top">const bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classmc_1_1result__t.html#a474725d8376259d495a987a34cc68acd">found</a></td></tr>
+<tr class="memdesc:a474725d8376259d495a987a34cc68acd"><td class="mdescLeft">&#160;</td><td class="mdescRight">true if data was found on server  <a href="#a474725d8376259d495a987a34cc68acd">...</a><br/></td></tr>
+<tr class="separator:a474725d8376259d495a987a34cc68acd"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3ecd594615c82e291e15a02bbff827b8"><td class="memItemLeft" align="right" valign="top">const std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classmc_1_1result__t.html#a3ecd594615c82e291e15a02bbff827b8">data</a></td></tr>
+<tr class="memdesc:a3ecd594615c82e291e15a02bbff827b8"><td class="mdescLeft">&#160;</td><td class="mdescRight">result data  <a href="#a3ecd594615c82e291e15a02bbff827b8">...</a><br/></td></tr>
+<tr class="separator:a3ecd594615c82e291e15a02bbff827b8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:afe73c333b0636ccc64660781c1265a95"><td class="memItemLeft" align="right" valign="top">const uint32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classmc_1_1result__t.html#afe73c333b0636ccc64660781c1265a95">flags</a></td></tr>
+<tr class="memdesc:afe73c333b0636ccc64660781c1265a95"><td class="mdescLeft">&#160;</td><td class="mdescRight">flags for data stored on server  <a href="#afe73c333b0636ccc64660781c1265a95">...</a><br/></td></tr>
+<tr class="separator:afe73c333b0636ccc64660781c1265a95"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0d51ce49eaf9a0fb15617009b95781cd"><td class="memItemLeft" align="right" valign="top">const uint64_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classmc_1_1result__t.html#a0d51ce49eaf9a0fb15617009b95781cd">cas</a></td></tr>
+<tr class="memdesc:a0d51ce49eaf9a0fb15617009b95781cd"><td class="mdescLeft">&#160;</td><td class="mdescRight">cas identifier of data  <a href="#a0d51ce49eaf9a0fb15617009b95781cd">...</a><br/></td></tr>
+<tr class="separator:a0d51ce49eaf9a0fb15617009b95781cd"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-types"></a>
+Privátní typy</h2></td></tr>
+<tr class="memitem:a98f7f5397dc3f99be829b7dbdecefa10"><td class="memItemLeft" align="right" valign="top">typedef void(result_t::*&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classmc_1_1result__t.html#a98f7f5397dc3f99be829b7dbdecefa10">unspecified_bool_type</a> )()</td></tr>
+<tr class="separator:a98f7f5397dc3f99be829b7dbdecefa10"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-methods"></a>
+Privátní metody</h2></td></tr>
+<tr class="memitem:a6dc098f9929fc19bebe41dadce55eafc"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classmc_1_1result__t.html#a6dc098f9929fc19bebe41dadce55eafc">unspecified_bool_method</a> ()</td></tr>
+<tr class="separator:a6dc098f9929fc19bebe41dadce55eafc"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<a name="details" id="details"></a><h2 class="groupheader">Detailní popis</h2>
+<div class="textblock"><p>Result of all get commands. </p>
+
+<p>Definice je uvedena na řádku <a class="el" href="client_8h_source.html#l00045">45</a> v souboru <a class="el" href="client_8h_source.html">client.h</a>.</p>
+</div><h2 class="groupheader">Dokumentace k členským typům</h2>
+<a class="anchor" id="a98f7f5397dc3f99be829b7dbdecefa10"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef void(result_t::* mc::result_t::unspecified_bool_type)()</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Definice je uvedena na řádku <a class="el" href="client_8h_source.html#l00049">49</a> v souboru <a class="el" href="client_8h_source.html">client.h</a>.</p>
+
+</div>
+</div>
+<h2 class="groupheader">Dokumentace konstruktoru a destruktoru</h2>
+<a class="anchor" id="ad1120dcbcb8218f3bf12c11d818f7e13"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">mc::result_t::result_t </td>
+          <td>(</td>
+          <td class="paramtype">bool&#160;</td>
+          <td class="paramname"><em>found</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">explicit</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>C'tor. </p>
+
+<p>Definice je uvedena na řádku <a class="el" href="client_8h_source.html#l00054">54</a> v souboru <a class="el" href="client_8h_source.html">client.h</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="aa4f7dd508d9ec67c2b75b615fc758648"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">mc::result_t::result_t </td>
+          <td>(</td>
+          <td class="paramtype">const std::string &amp;&#160;</td>
+          <td class="paramname"><em>data</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint32_t&#160;</td>
+          <td class="paramname"><em>flags</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint64_t&#160;</td>
+          <td class="paramname"><em>cas</em> = <code>0</code>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>C'tor. </p>
+
+<p>Definice je uvedena na řádku <a class="el" href="client_8h_source.html#l00058">58</a> v souboru <a class="el" href="client_8h_source.html">client.h</a>.</p>
+
+</div>
+</div>
+<h2 class="groupheader">Dokumentace k metodám</h2>
+<a class="anchor" id="a4869b2f57205357f3f60f2268a00eb4b"></a>
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename type_t &gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">type_t mc::result_t::as </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Converts data to given type. </p>
+
+<p>Definice je uvedena na řádku <a class="el" href="client_8h_source.html#l00069">69</a> v souboru <a class="el" href="client_8h_source.html">client.h</a>.</p>
+
+<p>Odkazuje se na <a class="el" href="client_8h_source.html#l00087">data</a>.</p>
+
+<p>Používá se v <a class="el" href="test-mcache_8cc_source.html#l00061">main()</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="ac1957cc0281dc0a527cb41e97debd702"></a>
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename type_t , typename aux_t &gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">type_t mc::result_t::as </td>
+          <td>(</td>
+          <td class="paramtype">aux_t&#160;</td>
+          <td class="paramname"><em>aux</em></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Converts data to given type. </p>
+
+<p>Definice je uvedena na řádku <a class="el" href="client_8h_source.html#l00074">74</a> v souboru <a class="el" href="client_8h_source.html">client.h</a>.</p>
+
+<p>Odkazuje se na <a class="el" href="client_8h_source.html#l00087">data</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="ae4f4c0a721fe619c10c4786eba8d7290"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">mc::result_t::operator <a class="el" href="classmc_1_1result__t.html#a98f7f5397dc3f99be829b7dbdecefa10">unspecified_bool_type</a> </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Returns true if data was found on server. </p>
+
+<p>Definice je uvedena na řádku <a class="el" href="client_8h_source.html#l00082">82</a> v souboru <a class="el" href="client_8h_source.html">client.h</a>.</p>
+
+<p>Odkazuje se na <a class="el" href="client_8h_source.html#l00086">found</a> a <a class="el" href="client_8h_source.html#l00048">unspecified_bool_method()</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a6dc098f9929fc19bebe41dadce55eafc"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void mc::result_t::unspecified_bool_method </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Definice je uvedena na řádku <a class="el" href="client_8h_source.html#l00048">48</a> v souboru <a class="el" href="client_8h_source.html">client.h</a>.</p>
+
+<p>Používá se v <a class="el" href="client_8h_source.html#l00082">operator unspecified_bool_type()</a>.</p>
+
+</div>
+</div>
+<h2 class="groupheader">Dokumentace k položkám</h2>
+<a class="anchor" id="a0d51ce49eaf9a0fb15617009b95781cd"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">const uint64_t mc::result_t::cas</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>cas identifier of data </p>
+
+<p>Definice je uvedena na řádku <a class="el" href="client_8h_source.html#l00089">89</a> v souboru <a class="el" href="client_8h_source.html">client.h</a>.</p>
+
+<p>Používá se v <a class="el" href="test-mcache_8cc_source.html#l00061">main()</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a3ecd594615c82e291e15a02bbff827b8"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">const std::string mc::result_t::data</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>result data </p>
+
+<p>Definice je uvedena na řádku <a class="el" href="client_8h_source.html#l00087">87</a> v souboru <a class="el" href="client_8h_source.html">client.h</a>.</p>
+
+<p>Používá se v <a class="el" href="client_8h_source.html#l00069">as()</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="afe73c333b0636ccc64660781c1265a95"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">const uint32_t mc::result_t::flags</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>flags for data stored on server </p>
+
+<p>Definice je uvedena na řádku <a class="el" href="client_8h_source.html#l00088">88</a> v souboru <a class="el" href="client_8h_source.html">client.h</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a474725d8376259d495a987a34cc68acd"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">const bool mc::result_t::found</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>true if data was found on server </p>
+
+<p>Definice je uvedena na řádku <a class="el" href="client_8h_source.html#l00086">86</a> v souboru <a class="el" href="client_8h_source.html">client.h</a>.</p>
+
+<p>Používá se v <a class="el" href="client_8h_source.html#l00082">operator unspecified_bool_type()</a>.</p>
+
+</div>
+</div>
+<hr/>Dokumentace pro tuto třídu byla generována z následujícího souboru:<ul>
+<li>include/mcache/<a class="el" href="client_8h_source.html">client.h</a></li>
+</ul>
+</div><!-- contents -->
+</div><!-- doc-content -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="namespacemc.html">mc</a></li><li class="navelem"><a class="el" href="classmc_1_1result__t.html">result_t</a></li>
+    <li class="footer">Generováno út 23. čec 2013 13.13:04 pro projekt libmcache-0.2.1 programem
+    <a href="http://www.doxygen.org/index.html">
+    <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.3.1 </li>
+  </ul>
+</div>
+</body>
+</html>

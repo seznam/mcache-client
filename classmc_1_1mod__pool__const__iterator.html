@@ -1,0 +1,584 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.3.1"/>
+<title>libmcache-0.2.1: Dokumentace třídy mc::mod_pool_const_iterator</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript">
+  $(document).ready(initResizable);
+  $(window).load(resizeHeight);
+</script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/search.js"></script>
+<script type="text/javascript">
+  $(document).ready(function() { searchBox.OnSelectItem(0); });
+</script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td style="padding-left: 0.5em;">
+   <div id="projectname">libmcache-0.2.1
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Generováno programem Doxygen 1.8.3.1 -->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "search",false,'Hledat');
+</script>
+  <div id="navrow1" class="tabs">
+    <ul class="tablist">
+      <li><a href="index.html"><span>Hlavní&#160;stránka</span></a></li>
+      <li><a href="namespaces.html"><span>Prostory&#160;jmen</span></a></li>
+      <li class="current"><a href="annotated.html"><span>Třídy</span></a></li>
+      <li><a href="files.html"><span>Soubory</span></a></li>
+      <li>
+        <div id="MSearchBox" class="MSearchBoxInactive">
+        <span class="left">
+          <img id="MSearchSelect" src="search/mag_sel.png"
+               onmouseover="return searchBox.OnSearchSelectShow()"
+               onmouseout="return searchBox.OnSearchSelectHide()"
+               alt=""/>
+          <input type="text" id="MSearchField" value="Hledat" accesskey="S"
+               onfocus="searchBox.OnSearchFieldFocus(true)" 
+               onblur="searchBox.OnSearchFieldFocus(false)" 
+               onkeyup="searchBox.OnSearchFieldChange(event)"/>
+          </span><span class="right">
+            <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><img id="MSearchCloseImg" border="0" src="search/close.png" alt=""/></a>
+          </span>
+        </div>
+      </li>
+    </ul>
+  </div>
+  <div id="navrow2" class="tabs2">
+    <ul class="tablist">
+      <li><a href="annotated.html"><span>Datové&#160;struktury</span></a></li>
+      <li><a href="classes.html"><span>Rejstřík&#160;datových&#160;struktur</span></a></li>
+      <li><a href="inherits.html"><span>Hierarchie&#160;tříd</span></a></li>
+      <li><a href="functions.html"><span>Datové&#160;položky</span></a></li>
+    </ul>
+  </div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+$(document).ready(function(){initNavTree('classmc_1_1mod__pool__const__iterator.html','');});
+</script>
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>Vše</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Třídy</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Prostory jmen</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Soubory</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Funkce</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Proměnné</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Definice typů</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Výčty</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(8)"><span class="SelectionMark">&#160;</span>Hodnoty výčtu</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(9)"><span class="SelectionMark">&#160;</span>Definice maker</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(10)"><span class="SelectionMark">&#160;</span>Stránky</a></div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div class="header">
+  <div class="summary">
+<a href="#pub-types">Veřejné typy</a> &#124;
+<a href="#pub-methods">Veřejné metody</a> &#124;
+<a href="#pro-methods">Chráněné metody</a> &#124;
+<a href="#pro-attribs">Chráněné atributy</a>  </div>
+  <div class="headertitle">
+<div class="title">Dokumentace třídy mc::mod_pool_const_iterator</div>  </div>
+</div><!--header-->
+<div class="contents">
+
+<p>Const 'iterator' that returns only one entry.  
+ <a href="classmc_1_1mod__pool__const__iterator.html#details">...</a></p>
+
+<p><code>#include &lt;<a class="el" href="mod_8h_source.html">mod.h</a>&gt;</code></p>
+<div class="dynheader">
+Diagram dědičnosti pro třídu mc::mod_pool_const_iterator</div>
+<div class="dyncontent">
+<div class="center"><img src="classmc_1_1mod__pool__const__iterator__inherit__graph.png" border="0" usemap="#mc_1_1mod__pool__const__iterator_inherit__map" alt="Inheritance graph"/></div>
+<map name="mc_1_1mod__pool__const__iterator_inherit__map" id="mc_1_1mod__pool__const__iterator_inherit__map">
+</map>
+<center><span class="legend">[<a target="top" href="graph_legend.html">vysvětlivky</a>]</span></center></div>
+<div class="dynheader">
+Diagram tříd pro mc::mod_pool_const_iterator:</div>
+<div class="dyncontent">
+<div class="center"><img src="classmc_1_1mod__pool__const__iterator__coll__graph.png" border="0" usemap="#mc_1_1mod__pool__const__iterator_coll__map" alt="Collaboration graph"/></div>
+<map name="mc_1_1mod__pool__const__iterator_coll__map" id="mc_1_1mod__pool__const__iterator_coll__map">
+</map>
+<center><span class="legend">[<a target="top" href="graph_legend.html">vysvětlivky</a>]</span></center></div>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-types"></a>
+Veřejné typy</h2></td></tr>
+<tr class="memitem:afb8d7eb77c1143539da3e3ceed404195"><td class="memItemLeft" align="right" valign="top">typedef <br class="typebreak"/>
+<a class="el" href="namespacemc.html#a9daa07b6457d67728789d082082cf065">mod_pool_const_iterator_parent_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classmc_1_1mod__pool__const__iterator.html#afb8d7eb77c1143539da3e3ceed404195">parent_t</a></td></tr>
+<tr class="separator:afb8d7eb77c1143539da3e3ceed404195"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a59c5c3679e9308555d7b304f51de3894"><td class="memItemLeft" align="right" valign="top">typedef parent_t::reference&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classmc_1_1mod__pool__const__iterator.html#a59c5c3679e9308555d7b304f51de3894">reference</a></td></tr>
+<tr class="separator:a59c5c3679e9308555d7b304f51de3894"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9c375208eb44f6f898d9ac5e84f10dfc"><td class="memItemLeft" align="right" valign="top">typedef parent_t::pointer&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classmc_1_1mod__pool__const__iterator.html#a9c375208eb44f6f898d9ac5e84f10dfc">pointer</a></td></tr>
+<tr class="separator:a9c375208eb44f6f898d9ac5e84f10dfc"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab9ed42930fbf617a692ece41d379f3ab"><td class="memItemLeft" align="right" valign="top">typedef parent_t::value_type&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classmc_1_1mod__pool__const__iterator.html#ab9ed42930fbf617a692ece41d379f3ab">value_type</a></td></tr>
+<tr class="separator:ab9ed42930fbf617a692ece41d379f3ab"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
+Veřejné metody</h2></td></tr>
+<tr class="memitem:a82fcadcae67dc351aad535de7daa0fa7"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classmc_1_1mod__pool__const__iterator.html#a82fcadcae67dc351aad535de7daa0fa7">mod_pool_const_iterator</a> (<a class="el" href="classmc_1_1mod__pool__const__iterator.html#ab9ed42930fbf617a692ece41d379f3ab">value_type</a> <a class="el" href="classmc_1_1mod__pool__const__iterator.html#a62d14ec032ad226f9de06cd0661f17f0">value</a>)</td></tr>
+<tr class="memdesc:a82fcadcae67dc351aad535de7daa0fa7"><td class="mdescLeft">&#160;</td><td class="mdescRight">C'tor.  <a href="#a82fcadcae67dc351aad535de7daa0fa7">...</a><br/></td></tr>
+<tr class="separator:a82fcadcae67dc351aad535de7daa0fa7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5d3f40ecef5354ddc467bd401b305530"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classmc_1_1mod__pool__const__iterator.html#a5d3f40ecef5354ddc467bd401b305530">mod_pool_const_iterator</a> ()</td></tr>
+<tr class="memdesc:a5d3f40ecef5354ddc467bd401b305530"><td class="mdescLeft">&#160;</td><td class="mdescRight">C'tor.  <a href="#a5d3f40ecef5354ddc467bd401b305530">...</a><br/></td></tr>
+<tr class="separator:a5d3f40ecef5354ddc467bd401b305530"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3dfae79aa42159e3c367a3232d88df36"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classmc_1_1mod__pool__const__iterator.html#a59c5c3679e9308555d7b304f51de3894">reference</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classmc_1_1mod__pool__const__iterator.html#a3dfae79aa42159e3c367a3232d88df36">operator*</a> () const </td></tr>
+<tr class="memdesc:a3dfae79aa42159e3c367a3232d88df36"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns reference to current value.  <a href="#a3dfae79aa42159e3c367a3232d88df36">...</a><br/></td></tr>
+<tr class="separator:a3dfae79aa42159e3c367a3232d88df36"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aea37556f3d10671eaf5eb8b01fadaa1d"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classmc_1_1mod__pool__const__iterator.html#a9c375208eb44f6f898d9ac5e84f10dfc">pointer</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classmc_1_1mod__pool__const__iterator.html#aea37556f3d10671eaf5eb8b01fadaa1d">operator-&gt;</a> () const </td></tr>
+<tr class="memdesc:aea37556f3d10671eaf5eb8b01fadaa1d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns pointer to current value.  <a href="#aea37556f3d10671eaf5eb8b01fadaa1d">...</a><br/></td></tr>
+<tr class="separator:aea37556f3d10671eaf5eb8b01fadaa1d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7621700c8ca32992dc37165d9389680a"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classmc_1_1mod__pool__const__iterator.html">mod_pool_const_iterator</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classmc_1_1mod__pool__const__iterator.html#a7621700c8ca32992dc37165d9389680a">operator++</a> ()</td></tr>
+<tr class="memdesc:a7621700c8ca32992dc37165d9389680a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Moves to next item.  <a href="#a7621700c8ca32992dc37165d9389680a">...</a><br/></td></tr>
+<tr class="separator:a7621700c8ca32992dc37165d9389680a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aac4430e5c24d94ae5ef42461e80db36a"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classmc_1_1mod__pool__const__iterator.html">mod_pool_const_iterator</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classmc_1_1mod__pool__const__iterator.html#aac4430e5c24d94ae5ef42461e80db36a">operator++</a> (int)</td></tr>
+<tr class="memdesc:aac4430e5c24d94ae5ef42461e80db36a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns iterator to current item and moves to next one.  <a href="#aac4430e5c24d94ae5ef42461e80db36a">...</a><br/></td></tr>
+<tr class="separator:aac4430e5c24d94ae5ef42461e80db36a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5ec98998452e33c62c74fa6131d5d55e"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classmc_1_1mod__pool__const__iterator.html#a5ec98998452e33c62c74fa6131d5d55e">equal</a> (const <a class="el" href="classmc_1_1mod__pool__const__iterator.html">mod_pool_const_iterator</a> &amp;other) const </td></tr>
+<tr class="memdesc:a5ec98998452e33c62c74fa6131d5d55e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns true if iterators points to same place.  <a href="#a5ec98998452e33c62c74fa6131d5d55e">...</a><br/></td></tr>
+<tr class="separator:a5ec98998452e33c62c74fa6131d5d55e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pro-methods"></a>
+Chráněné metody</h2></td></tr>
+<tr class="memitem:abfb13646c688f68a73cba20e666b2eec"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classmc_1_1mod__pool__const__iterator.html#a59c5c3679e9308555d7b304f51de3894">reference</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classmc_1_1mod__pool__const__iterator.html#abfb13646c688f68a73cba20e666b2eec">dereference</a> () const </td></tr>
+<tr class="memdesc:abfb13646c688f68a73cba20e666b2eec"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns reference to current value.  <a href="#abfb13646c688f68a73cba20e666b2eec">...</a><br/></td></tr>
+<tr class="separator:abfb13646c688f68a73cba20e666b2eec"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8d2f1e731d2648b5b90129a9f196432f"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classmc_1_1mod__pool__const__iterator.html#a8d2f1e731d2648b5b90129a9f196432f">increment</a> ()</td></tr>
+<tr class="memdesc:a8d2f1e731d2648b5b90129a9f196432f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Stops iteration.  <a href="#a8d2f1e731d2648b5b90129a9f196432f">...</a><br/></td></tr>
+<tr class="separator:a8d2f1e731d2648b5b90129a9f196432f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pro-attribs"></a>
+Chráněné atributy</h2></td></tr>
+<tr class="memitem:a62d14ec032ad226f9de06cd0661f17f0"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classmc_1_1mod__pool__const__iterator.html#ab9ed42930fbf617a692ece41d379f3ab">value_type</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classmc_1_1mod__pool__const__iterator.html#a62d14ec032ad226f9de06cd0661f17f0">value</a></td></tr>
+<tr class="memdesc:a62d14ec032ad226f9de06cd0661f17f0"><td class="mdescLeft">&#160;</td><td class="mdescRight">iterator value  <a href="#a62d14ec032ad226f9de06cd0661f17f0">...</a><br/></td></tr>
+<tr class="separator:a62d14ec032ad226f9de06cd0661f17f0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab784f6a54884be10db893bdad567c87d"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classmc_1_1mod__pool__const__iterator.html#ab784f6a54884be10db893bdad567c87d">stop</a></td></tr>
+<tr class="memdesc:ab784f6a54884be10db893bdad567c87d"><td class="mdescLeft">&#160;</td><td class="mdescRight">sentinel  <a href="#ab784f6a54884be10db893bdad567c87d">...</a><br/></td></tr>
+<tr class="separator:ab784f6a54884be10db893bdad567c87d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<a name="details" id="details"></a><h2 class="groupheader">Detailní popis</h2>
+<div class="textblock"><p>Const 'iterator' that returns only one entry. </p>
+
+<p>Definice je uvedena na řádku <a class="el" href="mod_8h_source.html#l00047">47</a> v souboru <a class="el" href="mod_8h_source.html">mod.h</a>.</p>
+</div><h2 class="groupheader">Dokumentace k členským typům</h2>
+<a class="anchor" id="afb8d7eb77c1143539da3e3ceed404195"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef <a class="el" href="namespacemc.html#a9daa07b6457d67728789d082082cf065">mod_pool_const_iterator_parent_t</a> <a class="el" href="classmc_1_1mod__pool__const__iterator.html#afb8d7eb77c1143539da3e3ceed404195">mc::mod_pool_const_iterator::parent_t</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Definice je uvedena na řádku <a class="el" href="mod_8h_source.html#l00050">50</a> v souboru <a class="el" href="mod_8h_source.html">mod.h</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a9c375208eb44f6f898d9ac5e84f10dfc"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef parent_t::pointer <a class="el" href="classmc_1_1mod__pool__const__iterator.html#a9c375208eb44f6f898d9ac5e84f10dfc">mc::mod_pool_const_iterator::pointer</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Definice je uvedena na řádku <a class="el" href="mod_8h_source.html#l00052">52</a> v souboru <a class="el" href="mod_8h_source.html">mod.h</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a59c5c3679e9308555d7b304f51de3894"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef parent_t::reference <a class="el" href="classmc_1_1mod__pool__const__iterator.html#a59c5c3679e9308555d7b304f51de3894">mc::mod_pool_const_iterator::reference</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Definice je uvedena na řádku <a class="el" href="mod_8h_source.html#l00051">51</a> v souboru <a class="el" href="mod_8h_source.html">mod.h</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="ab9ed42930fbf617a692ece41d379f3ab"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef parent_t::value_type <a class="el" href="classmc_1_1mod__pool__const__iterator.html#ab9ed42930fbf617a692ece41d379f3ab">mc::mod_pool_const_iterator::value_type</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Definice je uvedena na řádku <a class="el" href="mod_8h_source.html#l00053">53</a> v souboru <a class="el" href="mod_8h_source.html">mod.h</a>.</p>
+
+</div>
+</div>
+<h2 class="groupheader">Dokumentace konstruktoru a destruktoru</h2>
+<a class="anchor" id="a82fcadcae67dc351aad535de7daa0fa7"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">mc::mod_pool_const_iterator::mod_pool_const_iterator </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="classmc_1_1mod__pool__const__iterator.html#ab9ed42930fbf617a692ece41d379f3ab">value_type</a>&#160;</td>
+          <td class="paramname"><em>value</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">explicit</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>C'tor. </p>
+
+<p>Definice je uvedena na řádku <a class="el" href="mod_8h_source.html#l00057">57</a> v souboru <a class="el" href="mod_8h_source.html">mod.h</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a5d3f40ecef5354ddc467bd401b305530"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">mc::mod_pool_const_iterator::mod_pool_const_iterator </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>C'tor. </p>
+
+<p>Definice je uvedena na řádku <a class="el" href="mod_8h_source.html#l00063">63</a> v souboru <a class="el" href="mod_8h_source.html">mod.h</a>.</p>
+
+</div>
+</div>
+<h2 class="groupheader">Dokumentace k metodám</h2>
+<a class="anchor" id="abfb13646c688f68a73cba20e666b2eec"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classmc_1_1mod__pool__const__iterator.html#a59c5c3679e9308555d7b304f51de3894">reference</a> mc::mod_pool_const_iterator::dereference </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Returns reference to current value. </p>
+
+<p>Definice je uvedena na řádku <a class="el" href="mod_8h_source.html#l00099">99</a> v souboru <a class="el" href="mod_8h_source.html">mod.h</a>.</p>
+
+<p>Odkazuje se na <a class="el" href="mod_8h_source.html#l00105">value</a>.</p>
+
+<p>Používá se v <a class="el" href="mod_8h_source.html#l00067">operator*()</a> a <a class="el" href="mod_8h_source.html#l00071">operator-&gt;()</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a5ec98998452e33c62c74fa6131d5d55e"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool mc::mod_pool_const_iterator::equal </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="classmc_1_1mod__pool__const__iterator.html">mod_pool_const_iterator</a> &amp;&#160;</td>
+          <td class="paramname"><em>other</em></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Returns true if iterators points to same place. </p>
+
+<p>Definice je uvedena na řádku <a class="el" href="mod_8h_source.html#l00090">90</a> v souboru <a class="el" href="mod_8h_source.html">mod.h</a>.</p>
+
+<p>Odkazuje se na <a class="el" href="mod_8h_source.html#l00106">stop</a> a <a class="el" href="mod_8h_source.html#l00105">value</a>.</p>
+
+<p>Používá se v <a class="el" href="mod_8h_source.html#l00158">mc::operator!=()</a> a <a class="el" href="mod_8h_source.html#l00150">mc::operator==()</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a8d2f1e731d2648b5b90129a9f196432f"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void mc::mod_pool_const_iterator::increment </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Stops iteration. </p>
+
+<p>Definice je uvedena na řádku <a class="el" href="mod_8h_source.html#l00103">103</a> v souboru <a class="el" href="mod_8h_source.html">mod.h</a>.</p>
+
+<p>Odkazuje se na <a class="el" href="mod_8h_source.html#l00106">stop</a>.</p>
+
+<p>Používá se v <a class="el" href="mod_8h_source.html#l00075">operator++()</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a3dfae79aa42159e3c367a3232d88df36"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classmc_1_1mod__pool__const__iterator.html#a59c5c3679e9308555d7b304f51de3894">reference</a> mc::mod_pool_const_iterator::operator* </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Returns reference to current value. </p>
+
+<p>Definice je uvedena na řádku <a class="el" href="mod_8h_source.html#l00067">67</a> v souboru <a class="el" href="mod_8h_source.html">mod.h</a>.</p>
+
+<p>Odkazuje se na <a class="el" href="mod_8h_source.html#l00099">dereference()</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a7621700c8ca32992dc37165d9389680a"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classmc_1_1mod__pool__const__iterator.html">mod_pool_const_iterator</a>&amp; mc::mod_pool_const_iterator::operator++ </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Moves to next item. </p>
+
+<p>Definice je uvedena na řádku <a class="el" href="mod_8h_source.html#l00075">75</a> v souboru <a class="el" href="mod_8h_source.html">mod.h</a>.</p>
+
+<p>Odkazuje se na <a class="el" href="mod_8h_source.html#l00103">increment()</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="aac4430e5c24d94ae5ef42461e80db36a"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classmc_1_1mod__pool__const__iterator.html">mod_pool_const_iterator</a> mc::mod_pool_const_iterator::operator++ </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Returns iterator to current item and moves to next one. </p>
+
+<p>Definice je uvedena na řádku <a class="el" href="mod_8h_source.html#l00082">82</a> v souboru <a class="el" href="mod_8h_source.html">mod.h</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="aea37556f3d10671eaf5eb8b01fadaa1d"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classmc_1_1mod__pool__const__iterator.html#a9c375208eb44f6f898d9ac5e84f10dfc">pointer</a> mc::mod_pool_const_iterator::operator-&gt; </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Returns pointer to current value. </p>
+
+<p>Definice je uvedena na řádku <a class="el" href="mod_8h_source.html#l00071">71</a> v souboru <a class="el" href="mod_8h_source.html">mod.h</a>.</p>
+
+<p>Odkazuje se na <a class="el" href="mod_8h_source.html#l00099">dereference()</a>.</p>
+
+</div>
+</div>
+<h2 class="groupheader">Dokumentace k položkám</h2>
+<a class="anchor" id="ab784f6a54884be10db893bdad567c87d"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool mc::mod_pool_const_iterator::stop</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>sentinel </p>
+
+<p>Definice je uvedena na řádku <a class="el" href="mod_8h_source.html#l00106">106</a> v souboru <a class="el" href="mod_8h_source.html">mod.h</a>.</p>
+
+<p>Používá se v <a class="el" href="mod_8h_source.html#l00090">equal()</a> a <a class="el" href="mod_8h_source.html#l00103">increment()</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a62d14ec032ad226f9de06cd0661f17f0"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classmc_1_1mod__pool__const__iterator.html#ab9ed42930fbf617a692ece41d379f3ab">value_type</a> mc::mod_pool_const_iterator::value</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>iterator value </p>
+
+<p>Definice je uvedena na řádku <a class="el" href="mod_8h_source.html#l00105">105</a> v souboru <a class="el" href="mod_8h_source.html">mod.h</a>.</p>
+
+<p>Používá se v <a class="el" href="mod_8h_source.html#l00099">dereference()</a> a <a class="el" href="mod_8h_source.html#l00090">equal()</a>.</p>
+
+</div>
+</div>
+<hr/>Dokumentace pro tuto třídu byla generována z následujícího souboru:<ul>
+<li>include/mcache/pool/<a class="el" href="mod_8h_source.html">mod.h</a></li>
+</ul>
+</div><!-- contents -->
+</div><!-- doc-content -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="namespacemc.html">mc</a></li><li class="navelem"><a class="el" href="classmc_1_1mod__pool__const__iterator.html">mod_pool_const_iterator</a></li>
+    <li class="footer">Generováno út 23. čec 2013 13.13:04 pro projekt libmcache-0.2.1 programem
+    <a href="http://www.doxygen.org/index.html">
+    <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.3.1 </li>
+  </ul>
+</div>
+</body>
+</html>

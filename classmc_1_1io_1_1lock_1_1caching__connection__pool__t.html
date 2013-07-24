@@ -1,0 +1,521 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.3.1"/>
+<title>libmcache-0.2.1: Dokumentace šablony třídy mc::io::lock::caching_connection_pool_t&lt; connection_t &gt;</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript">
+  $(document).ready(initResizable);
+  $(window).load(resizeHeight);
+</script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/search.js"></script>
+<script type="text/javascript">
+  $(document).ready(function() { searchBox.OnSelectItem(0); });
+</script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td style="padding-left: 0.5em;">
+   <div id="projectname">libmcache-0.2.1
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Generováno programem Doxygen 1.8.3.1 -->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "search",false,'Hledat');
+</script>
+  <div id="navrow1" class="tabs">
+    <ul class="tablist">
+      <li><a href="index.html"><span>Hlavní&#160;stránka</span></a></li>
+      <li><a href="namespaces.html"><span>Prostory&#160;jmen</span></a></li>
+      <li class="current"><a href="annotated.html"><span>Třídy</span></a></li>
+      <li><a href="files.html"><span>Soubory</span></a></li>
+      <li>
+        <div id="MSearchBox" class="MSearchBoxInactive">
+        <span class="left">
+          <img id="MSearchSelect" src="search/mag_sel.png"
+               onmouseover="return searchBox.OnSearchSelectShow()"
+               onmouseout="return searchBox.OnSearchSelectHide()"
+               alt=""/>
+          <input type="text" id="MSearchField" value="Hledat" accesskey="S"
+               onfocus="searchBox.OnSearchFieldFocus(true)" 
+               onblur="searchBox.OnSearchFieldFocus(false)" 
+               onkeyup="searchBox.OnSearchFieldChange(event)"/>
+          </span><span class="right">
+            <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><img id="MSearchCloseImg" border="0" src="search/close.png" alt=""/></a>
+          </span>
+        </div>
+      </li>
+    </ul>
+  </div>
+  <div id="navrow2" class="tabs2">
+    <ul class="tablist">
+      <li><a href="annotated.html"><span>Datové&#160;struktury</span></a></li>
+      <li><a href="classes.html"><span>Rejstřík&#160;datových&#160;struktur</span></a></li>
+      <li><a href="inherits.html"><span>Hierarchie&#160;tříd</span></a></li>
+      <li><a href="functions.html"><span>Datové&#160;položky</span></a></li>
+    </ul>
+  </div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+$(document).ready(function(){initNavTree('classmc_1_1io_1_1lock_1_1caching__connection__pool__t.html','');});
+</script>
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>Vše</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Třídy</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Prostory jmen</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Soubory</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Funkce</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Proměnné</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Definice typů</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Výčty</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(8)"><span class="SelectionMark">&#160;</span>Hodnoty výčtu</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(9)"><span class="SelectionMark">&#160;</span>Definice maker</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(10)"><span class="SelectionMark">&#160;</span>Stránky</a></div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div class="header">
+  <div class="summary">
+<a href="#pub-types">Veřejné typy</a> &#124;
+<a href="#pub-methods">Veřejné metody</a> &#124;
+<a href="#pro-attribs">Chráněné atributy</a>  </div>
+  <div class="headertitle">
+<div class="title">Dokumentace šablony třídy mc::io::lock::caching_connection_pool_t&lt; connection_t &gt;</div>  </div>
+</div><!--header-->
+<div class="contents">
+
+<p>Locking pool that are caching connections up to max count.  
+ <a href="classmc_1_1io_1_1lock_1_1caching__connection__pool__t.html#details">...</a></p>
+
+<p><code>#include &lt;<a class="el" href="connections_8h_source.html">connections.h</a>&gt;</code></p>
+<div class="dynheader">
+Diagram tříd pro mc::io::lock::caching_connection_pool_t&lt; connection_t &gt;:</div>
+<div class="dyncontent">
+<div class="center"><img src="classmc_1_1io_1_1lock_1_1caching__connection__pool__t__coll__graph.png" border="0" usemap="#mc_1_1io_1_1lock_1_1caching__connection__pool__t_3_01connection__t_01_4_coll__map" alt="Collaboration graph"/></div>
+<map name="mc_1_1io_1_1lock_1_1caching__connection__pool__t_3_01connection__t_01_4_coll__map" id="mc_1_1io_1_1lock_1_1caching__connection__pool__t_3_01connection__t_01_4_coll__map">
+<area shape="rect" id="node2" href="classmc_1_1io_1_1opts__t.html" title="Connection options." alt="" coords="69,217,171,245"/><area shape="rect" id="node4" href="classmc_1_1io_1_1opts__t_1_1timeouts__t.html" title="Timeouts collection." alt="" coords="5,107,176,135"/><area shape="rect" id="node6" title="STL class." alt="" coords="223,217,303,245"/><area shape="rect" id="node8" title="STL class." alt="" coords="200,99,325,143"/><area shape="rect" id="node12" title="STL class." alt="" coords="349,107,459,135"/></map>
+<center><span class="legend">[<a target="top" href="graph_legend.html">vysvětlivky</a>]</span></center></div>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-types"></a>
+Veřejné typy</h2></td></tr>
+<tr class="memitem:ae2b0eec3a702b74c1c784ea4c04f6059"><td class="memItemLeft" align="right" valign="top">typedef boost::shared_ptr<br class="typebreak"/>
+&lt; connection_t &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classmc_1_1io_1_1lock_1_1caching__connection__pool__t.html#ae2b0eec3a702b74c1c784ea4c04f6059">connection_ptr_t</a></td></tr>
+<tr class="separator:ae2b0eec3a702b74c1c784ea4c04f6059"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
+Veřejné metody</h2></td></tr>
+<tr class="memitem:ae88ac774c8f59634f7295023cb060a55"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classmc_1_1io_1_1lock_1_1caching__connection__pool__t.html#ae88ac774c8f59634f7295023cb060a55">caching_connection_pool_t</a> (const std::string &amp;<a class="el" href="classmc_1_1io_1_1lock_1_1caching__connection__pool__t.html#a471bca73406905e798c79b8e5dc8c237">addr</a>, <a class="el" href="classmc_1_1io_1_1opts__t.html">opts_t</a> <a class="el" href="classmc_1_1io_1_1lock_1_1caching__connection__pool__t.html#a996fb7337749b741541b1b12c9809684">opts</a>)</td></tr>
+<tr class="memdesc:ae88ac774c8f59634f7295023cb060a55"><td class="mdescLeft">&#160;</td><td class="mdescRight">C'tor.  <a href="#ae88ac774c8f59634f7295023cb060a55">...</a><br/></td></tr>
+<tr class="separator:ae88ac774c8f59634f7295023cb060a55"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a872eca897efa47fe205184a0a665f7cc"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classmc_1_1io_1_1lock_1_1caching__connection__pool__t.html#ae2b0eec3a702b74c1c784ea4c04f6059">connection_ptr_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classmc_1_1io_1_1lock_1_1caching__connection__pool__t.html#a872eca897efa47fe205184a0a665f7cc">pick</a> ()</td></tr>
+<tr class="memdesc:a872eca897efa47fe205184a0a665f7cc"><td class="mdescLeft">&#160;</td><td class="mdescRight">Removes connection from pool or creates new one and gives it to caller.  <a href="#a872eca897efa47fe205184a0a665f7cc">...</a><br/></td></tr>
+<tr class="separator:a872eca897efa47fe205184a0a665f7cc"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a50becd4b6dcf093c8d00b373f7535249"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classmc_1_1io_1_1lock_1_1caching__connection__pool__t.html#a50becd4b6dcf093c8d00b373f7535249">push_back</a> (<a class="el" href="classmc_1_1io_1_1lock_1_1caching__connection__pool__t.html#ae2b0eec3a702b74c1c784ea4c04f6059">connection_ptr_t</a> &amp;tmp)</td></tr>
+<tr class="memdesc:a50becd4b6dcf093c8d00b373f7535249"><td class="mdescLeft">&#160;</td><td class="mdescRight">Push connection back to pool.  <a href="#a50becd4b6dcf093c8d00b373f7535249">...</a><br/></td></tr>
+<tr class="separator:a50becd4b6dcf093c8d00b373f7535249"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af5228e593f22b1bed2d77d5fab852ae2"><td class="memItemLeft" align="right" valign="top">std::size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classmc_1_1io_1_1lock_1_1caching__connection__pool__t.html#af5228e593f22b1bed2d77d5fab852ae2">size</a> () const </td></tr>
+<tr class="memdesc:af5228e593f22b1bed2d77d5fab852ae2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns count of connections in pool.  <a href="#af5228e593f22b1bed2d77d5fab852ae2">...</a><br/></td></tr>
+<tr class="separator:af5228e593f22b1bed2d77d5fab852ae2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a21272a7ef1ad983f65a28b9730d7525e"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classmc_1_1io_1_1lock_1_1caching__connection__pool__t.html#a21272a7ef1ad983f65a28b9730d7525e">clear</a> ()</td></tr>
+<tr class="memdesc:a21272a7ef1ad983f65a28b9730d7525e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Destroys all connection found at stack.  <a href="#a21272a7ef1ad983f65a28b9730d7525e">...</a><br/></td></tr>
+<tr class="separator:a21272a7ef1ad983f65a28b9730d7525e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a16d2d64fc651c2fefb93225fff0614a8"><td class="memItemLeft" align="right" valign="top">const std::string &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classmc_1_1io_1_1lock_1_1caching__connection__pool__t.html#a16d2d64fc651c2fefb93225fff0614a8">server_name</a> () const </td></tr>
+<tr class="memdesc:a16d2d64fc651c2fefb93225fff0614a8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns server address.  <a href="#a16d2d64fc651c2fefb93225fff0614a8">...</a><br/></td></tr>
+<tr class="separator:a16d2d64fc651c2fefb93225fff0614a8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pro-attribs"></a>
+Chráněné atributy</h2></td></tr>
+<tr class="memitem:a471bca73406905e798c79b8e5dc8c237"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classmc_1_1io_1_1lock_1_1caching__connection__pool__t.html#a471bca73406905e798c79b8e5dc8c237">addr</a></td></tr>
+<tr class="memdesc:a471bca73406905e798c79b8e5dc8c237"><td class="mdescLeft">&#160;</td><td class="mdescRight">destination address  <a href="#a471bca73406905e798c79b8e5dc8c237">...</a><br/></td></tr>
+<tr class="separator:a471bca73406905e798c79b8e5dc8c237"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a996fb7337749b741541b1b12c9809684"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classmc_1_1io_1_1opts__t.html">opts_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classmc_1_1io_1_1lock_1_1caching__connection__pool__t.html#a996fb7337749b741541b1b12c9809684">opts</a></td></tr>
+<tr class="memdesc:a996fb7337749b741541b1b12c9809684"><td class="mdescLeft">&#160;</td><td class="mdescRight">io options  <a href="#a996fb7337749b741541b1b12c9809684">...</a><br/></td></tr>
+<tr class="separator:a996fb7337749b741541b1b12c9809684"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a10b18690e8cc34882ffae8f03918279b"><td class="memItemLeft" align="right" valign="top">boost::mutex&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classmc_1_1io_1_1lock_1_1caching__connection__pool__t.html#a10b18690e8cc34882ffae8f03918279b">mutex</a></td></tr>
+<tr class="memdesc:a10b18690e8cc34882ffae8f03918279b"><td class="mdescLeft">&#160;</td><td class="mdescRight">pool mutex  <a href="#a10b18690e8cc34882ffae8f03918279b">...</a><br/></td></tr>
+<tr class="separator:a10b18690e8cc34882ffae8f03918279b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a903e235a2434bcd978bdb2245df66f46"><td class="memItemLeft" align="right" valign="top">std::stack&lt; <a class="el" href="classmc_1_1io_1_1lock_1_1caching__connection__pool__t.html#ae2b0eec3a702b74c1c784ea4c04f6059">connection_ptr_t</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classmc_1_1io_1_1lock_1_1caching__connection__pool__t.html#a903e235a2434bcd978bdb2245df66f46">stack</a></td></tr>
+<tr class="memdesc:a903e235a2434bcd978bdb2245df66f46"><td class="mdescLeft">&#160;</td><td class="mdescRight">stack of available connections  <a href="#a903e235a2434bcd978bdb2245df66f46">...</a><br/></td></tr>
+<tr class="separator:a903e235a2434bcd978bdb2245df66f46"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<a name="details" id="details"></a><h2 class="groupheader">Detailní popis</h2>
+<div class="textblock"><h3>template&lt;typename connection_t&gt;<br/>
+class mc::io::lock::caching_connection_pool_t&lt; connection_t &gt;</h3>
+
+<p>Locking pool that are caching connections up to max count. </p>
+
+<p>Definice je uvedena na řádku <a class="el" href="connections_8h_source.html#l00207">207</a> v souboru <a class="el" href="connections_8h_source.html">connections.h</a>.</p>
+</div><h2 class="groupheader">Dokumentace k členským typům</h2>
+<a class="anchor" id="ae2b0eec3a702b74c1c784ea4c04f6059"></a>
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename connection_t &gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef boost::shared_ptr&lt;connection_t&gt; <a class="el" href="classmc_1_1io_1_1lock_1_1caching__connection__pool__t.html">mc::io::lock::caching_connection_pool_t</a>&lt; connection_t &gt;::<a class="el" href="classmc_1_1io_1_1lock_1_1caching__connection__pool__t.html#ae2b0eec3a702b74c1c784ea4c04f6059">connection_ptr_t</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Definice je uvedena na řádku <a class="el" href="connections_8h_source.html#l00210">210</a> v souboru <a class="el" href="connections_8h_source.html">connections.h</a>.</p>
+
+</div>
+</div>
+<h2 class="groupheader">Dokumentace konstruktoru a destruktoru</h2>
+<a class="anchor" id="ae88ac774c8f59634f7295023cb060a55"></a>
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename connection_t &gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classmc_1_1io_1_1lock_1_1caching__connection__pool__t.html">mc::io::lock::caching_connection_pool_t</a>&lt; connection_t &gt;::<a class="el" href="classmc_1_1io_1_1lock_1_1caching__connection__pool__t.html">caching_connection_pool_t</a> </td>
+          <td>(</td>
+          <td class="paramtype">const std::string &amp;&#160;</td>
+          <td class="paramname"><em>addr</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classmc_1_1io_1_1opts__t.html">opts_t</a>&#160;</td>
+          <td class="paramname"><em>opts</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">explicit</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>C'tor. </p>
+
+<p>Definice je uvedena na řádku <a class="el" href="connections_8h_source.html#l00215">215</a> v souboru <a class="el" href="connections_8h_source.html">connections.h</a>.</p>
+
+</div>
+</div>
+<h2 class="groupheader">Dokumentace k metodám</h2>
+<a class="anchor" id="a21272a7ef1ad983f65a28b9730d7525e"></a>
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename connection_t &gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void <a class="el" href="classmc_1_1io_1_1lock_1_1caching__connection__pool__t.html">mc::io::lock::caching_connection_pool_t</a>&lt; connection_t &gt;::clear </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Destroys all connection found at stack. </p>
+
+<p>Definice je uvedena na řádku <a class="el" href="connections_8h_source.html#l00250">250</a> v souboru <a class="el" href="connections_8h_source.html">connections.h</a>.</p>
+
+<p>Odkazuje se na <a class="el" href="connections_8h_source.html#l00262">mc::io::lock::caching_connection_pool_t&lt; connection_t &gt;::mutex</a> a <a class="el" href="connections_8h_source.html#l00263">mc::io::lock::caching_connection_pool_t&lt; connection_t &gt;::stack</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a872eca897efa47fe205184a0a665f7cc"></a>
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename connection_t &gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classmc_1_1io_1_1lock_1_1caching__connection__pool__t.html#ae2b0eec3a702b74c1c784ea4c04f6059">connection_ptr_t</a> <a class="el" href="classmc_1_1io_1_1lock_1_1caching__connection__pool__t.html">mc::io::lock::caching_connection_pool_t</a>&lt; connection_t &gt;::pick </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Removes connection from pool or creates new one and gives it to caller. </p>
+<p>The caller is responsible for returning it using push_back method as soon as he stops using it. </p>
+
+<p>Definice je uvedena na řádku <a class="el" href="connections_8h_source.html#l00223">223</a> v souboru <a class="el" href="connections_8h_source.html">connections.h</a>.</p>
+
+<p>Odkazuje se na <a class="el" href="connections_8h_source.html#l00260">mc::io::lock::caching_connection_pool_t&lt; connection_t &gt;::addr</a>, <a class="el" href="connections_8h_source.html#l00262">mc::io::lock::caching_connection_pool_t&lt; connection_t &gt;::mutex</a>, <a class="el" href="connections_8h_source.html#l00261">mc::io::lock::caching_connection_pool_t&lt; connection_t &gt;::opts</a> a <a class="el" href="connections_8h_source.html#l00263">mc::io::lock::caching_connection_pool_t&lt; connection_t &gt;::stack</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a50becd4b6dcf093c8d00b373f7535249"></a>
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename connection_t &gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void <a class="el" href="classmc_1_1io_1_1lock_1_1caching__connection__pool__t.html">mc::io::lock::caching_connection_pool_t</a>&lt; connection_t &gt;::push_back </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="classmc_1_1io_1_1lock_1_1caching__connection__pool__t.html#ae2b0eec3a702b74c1c784ea4c04f6059">connection_ptr_t</a> &amp;&#160;</td>
+          <td class="paramname"><em>tmp</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Push connection back to pool. </p>
+<p>XXX: Given ptr is invalid (empty) after the call. </p>
+
+<p>Definice je uvedena na řádku <a class="el" href="connections_8h_source.html#l00235">235</a> v souboru <a class="el" href="connections_8h_source.html">connections.h</a>.</p>
+
+<p>Odkazuje se na <a class="el" href="io_2opts_8h_source.html#l00060">mc::io::opts_t::max_connections_in_pool</a>, <a class="el" href="connections_8h_source.html#l00262">mc::io::lock::caching_connection_pool_t&lt; connection_t &gt;::mutex</a>, <a class="el" href="connections_8h_source.html#l00261">mc::io::lock::caching_connection_pool_t&lt; connection_t &gt;::opts</a> a <a class="el" href="connections_8h_source.html#l00263">mc::io::lock::caching_connection_pool_t&lt; connection_t &gt;::stack</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a16d2d64fc651c2fefb93225fff0614a8"></a>
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename connection_t &gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">const std::string&amp; <a class="el" href="classmc_1_1io_1_1lock_1_1caching__connection__pool__t.html">mc::io::lock::caching_connection_pool_t</a>&lt; connection_t &gt;::server_name </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Returns server address. </p>
+
+<p>Definice je uvedena na řádku <a class="el" href="connections_8h_source.html#l00257">257</a> v souboru <a class="el" href="connections_8h_source.html">connections.h</a>.</p>
+
+<p>Odkazuje se na <a class="el" href="connections_8h_source.html#l00260">mc::io::lock::caching_connection_pool_t&lt; connection_t &gt;::addr</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="af5228e593f22b1bed2d77d5fab852ae2"></a>
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename connection_t &gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::size_t <a class="el" href="classmc_1_1io_1_1lock_1_1caching__connection__pool__t.html">mc::io::lock::caching_connection_pool_t</a>&lt; connection_t &gt;::size </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Returns count of connections in pool. </p>
+
+<p>Definice je uvedena na řádku <a class="el" href="connections_8h_source.html#l00243">243</a> v souboru <a class="el" href="connections_8h_source.html">connections.h</a>.</p>
+
+<p>Odkazuje se na <a class="el" href="connections_8h_source.html#l00262">mc::io::lock::caching_connection_pool_t&lt; connection_t &gt;::mutex</a> a <a class="el" href="connections_8h_source.html#l00263">mc::io::lock::caching_connection_pool_t&lt; connection_t &gt;::stack</a>.</p>
+
+</div>
+</div>
+<h2 class="groupheader">Dokumentace k položkám</h2>
+<a class="anchor" id="a471bca73406905e798c79b8e5dc8c237"></a>
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename connection_t &gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::string <a class="el" href="classmc_1_1io_1_1lock_1_1caching__connection__pool__t.html">mc::io::lock::caching_connection_pool_t</a>&lt; connection_t &gt;::addr</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>destination address </p>
+
+<p>Definice je uvedena na řádku <a class="el" href="connections_8h_source.html#l00260">260</a> v souboru <a class="el" href="connections_8h_source.html">connections.h</a>.</p>
+
+<p>Používá se v <a class="el" href="connections_8h_source.html#l00223">mc::io::lock::caching_connection_pool_t&lt; connection_t &gt;::pick()</a> a <a class="el" href="connections_8h_source.html#l00257">mc::io::lock::caching_connection_pool_t&lt; connection_t &gt;::server_name()</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a10b18690e8cc34882ffae8f03918279b"></a>
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename connection_t &gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">boost::mutex <a class="el" href="classmc_1_1io_1_1lock_1_1caching__connection__pool__t.html">mc::io::lock::caching_connection_pool_t</a>&lt; connection_t &gt;::mutex</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>pool mutex </p>
+
+<p>Definice je uvedena na řádku <a class="el" href="connections_8h_source.html#l00262">262</a> v souboru <a class="el" href="connections_8h_source.html">connections.h</a>.</p>
+
+<p>Používá se v <a class="el" href="connections_8h_source.html#l00250">mc::io::lock::caching_connection_pool_t&lt; connection_t &gt;::clear()</a>, <a class="el" href="connections_8h_source.html#l00223">mc::io::lock::caching_connection_pool_t&lt; connection_t &gt;::pick()</a>, <a class="el" href="connections_8h_source.html#l00235">mc::io::lock::caching_connection_pool_t&lt; connection_t &gt;::push_back()</a> a <a class="el" href="connections_8h_source.html#l00243">mc::io::lock::caching_connection_pool_t&lt; connection_t &gt;::size()</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a996fb7337749b741541b1b12c9809684"></a>
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename connection_t &gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classmc_1_1io_1_1opts__t.html">opts_t</a> <a class="el" href="classmc_1_1io_1_1lock_1_1caching__connection__pool__t.html">mc::io::lock::caching_connection_pool_t</a>&lt; connection_t &gt;::opts</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>io options </p>
+
+<p>Definice je uvedena na řádku <a class="el" href="connections_8h_source.html#l00261">261</a> v souboru <a class="el" href="connections_8h_source.html">connections.h</a>.</p>
+
+<p>Používá se v <a class="el" href="connections_8h_source.html#l00223">mc::io::lock::caching_connection_pool_t&lt; connection_t &gt;::pick()</a> a <a class="el" href="connections_8h_source.html#l00235">mc::io::lock::caching_connection_pool_t&lt; connection_t &gt;::push_back()</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a903e235a2434bcd978bdb2245df66f46"></a>
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename connection_t &gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::stack&lt;<a class="el" href="classmc_1_1io_1_1lock_1_1caching__connection__pool__t.html#ae2b0eec3a702b74c1c784ea4c04f6059">connection_ptr_t</a>&gt; <a class="el" href="classmc_1_1io_1_1lock_1_1caching__connection__pool__t.html">mc::io::lock::caching_connection_pool_t</a>&lt; connection_t &gt;::stack</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>stack of available connections </p>
+
+<p>Definice je uvedena na řádku <a class="el" href="connections_8h_source.html#l00263">263</a> v souboru <a class="el" href="connections_8h_source.html">connections.h</a>.</p>
+
+<p>Používá se v <a class="el" href="connections_8h_source.html#l00250">mc::io::lock::caching_connection_pool_t&lt; connection_t &gt;::clear()</a>, <a class="el" href="connections_8h_source.html#l00223">mc::io::lock::caching_connection_pool_t&lt; connection_t &gt;::pick()</a>, <a class="el" href="connections_8h_source.html#l00235">mc::io::lock::caching_connection_pool_t&lt; connection_t &gt;::push_back()</a> a <a class="el" href="connections_8h_source.html#l00243">mc::io::lock::caching_connection_pool_t&lt; connection_t &gt;::size()</a>.</p>
+
+</div>
+</div>
+<hr/>Dokumentace pro tuto třídu byla generována z následujícího souboru:<ul>
+<li>include/mcache/io/<a class="el" href="connections_8h_source.html">connections.h</a></li>
+</ul>
+</div><!-- contents -->
+</div><!-- doc-content -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="namespacemc.html">mc</a></li><li class="navelem"><a class="el" href="namespacemc_1_1io.html">io</a></li><li class="navelem"><a class="el" href="namespacemc_1_1io_1_1lock.html">lock</a></li><li class="navelem"><a class="el" href="classmc_1_1io_1_1lock_1_1caching__connection__pool__t.html">caching_connection_pool_t</a></li>
+    <li class="footer">Generováno út 23. čec 2013 13.13:04 pro projekt libmcache-0.2.1 programem
+    <a href="http://www.doxygen.org/index.html">
+    <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.3.1 </li>
+  </ul>
+</div>
+</body>
+</html>

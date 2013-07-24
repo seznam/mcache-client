@@ -1,0 +1,11 @@
+<map id="include/mcache/proto/parser.h" name="include/mcache/proto/parser.h">
+<area shape="rect" id="node3" href="$server-proxy_8h.html" title="include/mcache/server\l&#45;proxy.h" alt="" coords="280,99,435,143"/>
+<area shape="rect" id="node15" href="$test-connection_8cc.html" title="src/io/test&#45;connection.cc" alt="" coords="459,107,624,135"/>
+<area shape="rect" id="node17" href="$test-binary_8cc.html" title="src/proto/test&#45;binary.cc" alt="" coords="648,107,805,135"/>
+<area shape="rect" id="node19" href="$test-txt_8cc.html" title="src/proto/test&#45;txt.cc" alt="" coords="829,107,965,135"/>
+<area shape="rect" id="node5" href="$mcache_8h.html" title="include/mcache/mcache.h" alt="" coords="5,193,181,221"/>
+<area shape="rect" id="node9" href="$server-proxy_8cc.html" title="src/server&#45;proxy.cc" alt="" coords="205,193,339,221"/>
+<area shape="rect" id="node11" href="$test-server-proxy_8cc.html" title="src/test&#45;server&#45;proxy.cc" alt="" coords="363,193,523,221"/>
+<area shape="rect" id="node13" href="$test-synchronization_8cc.html" title="src/test&#45;synchronization.cc" alt="" coords="547,193,725,221"/>
+<area shape="rect" id="node7" href="$test-mcache_8cc.html" title="src/test&#45;mcache.cc" alt="" coords="27,270,160,298"/>
+</map>

@@ -1,0 +1,218 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.3.1"/>
+<title>libmcache-0.2.1: Dokumentace souboru src/pool/test-pool.cc</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript">
+  $(document).ready(initResizable);
+  $(window).load(resizeHeight);
+</script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/search.js"></script>
+<script type="text/javascript">
+  $(document).ready(function() { searchBox.OnSelectItem(0); });
+</script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td style="padding-left: 0.5em;">
+   <div id="projectname">libmcache-0.2.1
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Generováno programem Doxygen 1.8.3.1 -->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "search",false,'Hledat');
+</script>
+  <div id="navrow1" class="tabs">
+    <ul class="tablist">
+      <li><a href="index.html"><span>Hlavní&#160;stránka</span></a></li>
+      <li><a href="namespaces.html"><span>Prostory&#160;jmen</span></a></li>
+      <li><a href="annotated.html"><span>Třídy</span></a></li>
+      <li class="current"><a href="files.html"><span>Soubory</span></a></li>
+      <li>
+        <div id="MSearchBox" class="MSearchBoxInactive">
+        <span class="left">
+          <img id="MSearchSelect" src="search/mag_sel.png"
+               onmouseover="return searchBox.OnSearchSelectShow()"
+               onmouseout="return searchBox.OnSearchSelectHide()"
+               alt=""/>
+          <input type="text" id="MSearchField" value="Hledat" accesskey="S"
+               onfocus="searchBox.OnSearchFieldFocus(true)" 
+               onblur="searchBox.OnSearchFieldFocus(false)" 
+               onkeyup="searchBox.OnSearchFieldChange(event)"/>
+          </span><span class="right">
+            <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><img id="MSearchCloseImg" border="0" src="search/close.png" alt=""/></a>
+          </span>
+        </div>
+      </li>
+    </ul>
+  </div>
+  <div id="navrow2" class="tabs2">
+    <ul class="tablist">
+      <li><a href="files.html"><span>Seznam&#160;souborů</span></a></li>
+      <li><a href="globals.html"><span>Globální&#160;symboly</span></a></li>
+    </ul>
+  </div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+$(document).ready(function(){initNavTree('test-pool_8cc.html','');});
+</script>
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>Vše</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Třídy</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Prostory jmen</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Soubory</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Funkce</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Proměnné</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Definice typů</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Výčty</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(8)"><span class="SelectionMark">&#160;</span>Hodnoty výčtu</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(9)"><span class="SelectionMark">&#160;</span>Definice maker</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(10)"><span class="SelectionMark">&#160;</span>Stránky</a></div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div class="header">
+  <div class="summary">
+<a href="#nested-classes">Datové struktry</a> &#124;
+<a href="#namespaces">Prostory jmen</a> &#124;
+<a href="#typedef-members">Definice typů</a> &#124;
+<a href="#func-members">Funkce</a>  </div>
+  <div class="headertitle">
+<div class="title">Dokumentace souboru test-pool.cc</div>  </div>
+</div><!--header-->
+<div class="contents">
+<div class="textblock"><code>#include &lt;ctime&gt;</code><br/>
+<code>#include &lt;cstdlib&gt;</code><br/>
+<code>#include &lt;iostream&gt;</code><br/>
+<code>#include &lt;algorithm&gt;</code><br/>
+<code>#include &lt;boost/lambda/lambda.hpp&gt;</code><br/>
+<code>#include &lt;boost/lambda/if.hpp&gt;</code><br/>
+<code>#include &lt;cxxabi.h&gt;</code><br/>
+<code>#include &lt;<a class="el" href="init_8h_source.html">mcache/init.h</a>&gt;</code><br/>
+<code>#include &lt;<a class="el" href="include_2mcache_2error_8h_source.html">mcache/error.h</a>&gt;</code><br/>
+<code>#include &lt;<a class="el" href="consistent-hashing_8h_source.html">mcache/pool/consistent-hashing.h</a>&gt;</code><br/>
+<code>#include &lt;<a class="el" href="mod_8h_source.html">mcache/pool/mod.h</a>&gt;</code><br/>
+<code>#include &lt;<a class="el" href="hash_8h_source.html">mcache/hash.h</a>&gt;</code><br/>
+</div><div class="textblock"><div class="dynheader">
+Graf závislostí na vkládaných souborech pro test-pool.cc:</div>
+<div class="dyncontent">
+<div class="center"><img src="test-pool_8cc__incl.png" border="0" usemap="#src_2pool_2test-pool_8cc" alt=""/></div>
+<map name="src_2pool_2test-pool_8cc" id="src_2pool_2test-pool_8cc">
+<area shape="rect" id="node17" href="init_8h.html" title="mcache/init.h" alt="" coords="819,91,920,119"/><area shape="rect" id="node19" href="include_2mcache_2error_8h.html" title="mcache/error.h" alt="" coords="845,177,955,205"/><area shape="rect" id="node25" href="consistent-hashing_8h.html" title="mcache/pool/consistent\l&#45;hashing.h" alt="" coords="995,83,1155,127"/><area shape="rect" id="node38" href="mod_8h.html" title="mcache/pool/mod.h" alt="" coords="1200,91,1339,119"/><area shape="rect" id="node44" href="hash_8h.html" title="mcache/hash.h" alt="" coords="1556,91,1668,119"/><area shape="rect" id="node46" href="jenkins_8h.html" title="mcache/hash/jenkins.h" alt="" coords="1715,177,1872,205"/><area shape="rect" id="node50" href="murmur3_8h.html" title="mcache/hash/murmur3.h" alt="" coords="1896,177,2067,205"/><area shape="rect" id="node54" href="city_8h.html" title="mcache/hash/city.h" alt="" coords="1373,177,1509,205"/><area shape="rect" id="node58" href="spooky_8h.html" title="mcache/hash/spooky.h" alt="" coords="1533,177,1691,205"/></map>
+</div>
+</div>
+<p><a href="test-pool_8cc_source.html">Zobrazit zdrojový text tohoto souboru.</a></p>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="nested-classes"></a>
+Datové struktry</h2></td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classtest_1_1fake__t.html">test::fake_t</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classtest_1_1Checker__t.html">test::Checker_t</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="namespaces"></a>
+Prostory jmen</h2></td></tr>
+<tr class="memitem:namespacetest"><td class="memItemLeft" align="right" valign="top">namespace &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacetest.html">test</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="typedef-members"></a>
+Definice typů</h2></td></tr>
+<tr class="memitem:a49dbe426f011ad54ab1566a608f465e5"><td class="memItemLeft" align="right" valign="top">typedef <a class="el" href="classmc_1_1mod__pool__t.html">mc::mod_pool_t</a><br class="typebreak"/>
+&lt; <a class="el" href="classmc_1_1murmur3__t.html">mc::murmur3_t</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacetest.html#a49dbe426f011ad54ab1566a608f465e5">test::mod_pool_t</a></td></tr>
+<tr class="separator:a49dbe426f011ad54ab1566a608f465e5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abf2d219e5f9aa2fdc9a39a7afecbc178"><td class="memItemLeft" align="right" valign="top">typedef <br class="typebreak"/>
+<a class="el" href="classmc_1_1consistent__hashing__pool__t.html">mc::consistent_hashing_pool_t</a><br class="typebreak"/>
+&lt; <a class="el" href="classmc_1_1murmur3__t.html">mc::murmur3_t</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacetest.html#abf2d219e5f9aa2fdc9a39a7afecbc178">test::consistent_hashing_pool_t</a></td></tr>
+<tr class="separator:abf2d219e5f9aa2fdc9a39a7afecbc178"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae0bc431dbf43bf5a4d884bad43f79d23"><td class="memItemLeft" align="right" valign="top">typedef <br class="typebreak"/>
+<a class="el" href="classmc_1_1consistent__hashing__pool__t.html">mc::consistent_hashing_pool_t</a><br class="typebreak"/>
+&lt; fake_t &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacetest.html#ae0bc431dbf43bf5a4d884bad43f79d23">test::fake_consistent_hashing_pool_t</a></td></tr>
+<tr class="separator:ae0bc431dbf43bf5a4d884bad43f79d23"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
+Funkce</h2></td></tr>
+<tr class="memitem:a37487e9b09de4c0cfddd287e4915ced9"><td class="memTemplParams" colspan="2">template&lt;typename pool_t &gt; </td></tr>
+<tr class="memitem:a37487e9b09de4c0cfddd287e4915ced9"><td class="memTemplItemLeft" align="right" valign="top">bool&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacetest.html#a37487e9b09de4c0cfddd287e4915ced9">test::throws_if_empty_addresses</a> ()</td></tr>
+<tr class="separator:a37487e9b09de4c0cfddd287e4915ced9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a565a4d91f5b2d814da59459d68ee81f6"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacetest.html#a565a4d91f5b2d814da59459d68ee81f6">test::mod_pool_iteration</a> ()</td></tr>
+<tr class="separator:a565a4d91f5b2d814da59459d68ee81f6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1dfd5bd942575ef402ece983d9d4510b"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacetest.html#a1dfd5bd942575ef402ece983d9d4510b">test::consistent_hashing_pool_iteration</a> ()</td></tr>
+<tr class="separator:a1dfd5bd942575ef402ece983d9d4510b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab17d041ba1cc6a058cfee7427c0dfd17"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacetest.html#ab17d041ba1cc6a058cfee7427c0dfd17">test::consistent_hashing_pool_distribution</a> ()</td></tr>
+<tr class="separator:ab17d041ba1cc6a058cfee7427c0dfd17"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2c3f6775325c30275d11c6abee2db6a0"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="test-pool_8cc.html#a2c3f6775325c30275d11c6abee2db6a0">main</a> (int, char **)</td></tr>
+<tr class="separator:a2c3f6775325c30275d11c6abee2db6a0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<h2 class="groupheader">Dokumentace funkcí</h2>
+<a class="anchor" id="a2c3f6775325c30275d11c6abee2db6a0"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int main </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname">, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">char **&#160;</td>
+          <td class="paramname">&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Definice je uvedena na řádku <a class="el" href="test-pool_8cc_source.html#l00149">149</a> v souboru <a class="el" href="test-pool_8cc_source.html">test-pool.cc</a>.</p>
+
+<p>Odkazuje se na <a class="el" href="test-pool_8cc_source.html#l00104">test::consistent_hashing_pool_distribution()</a>, <a class="el" href="test-pool_8cc_source.html#l00075">test::consistent_hashing_pool_iteration()</a>, <a class="el" href="test-connections_8cc_source.html#l00143">test::Checker_t::fails</a>, <a class="el" href="init_8cc_source.html#l00035">mc::init()</a> a <a class="el" href="test-pool_8cc_source.html#l00064">test::mod_pool_iteration()</a>.</p>
+
+</div>
+</div>
+</div><!-- contents -->
+</div><!-- doc-content -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_e2de76ba30642a92752881ffd21fbc7e.html">pool</a></li><li class="navelem"><a class="el" href="test-pool_8cc.html">test-pool.cc</a></li>
+    <li class="footer">Generováno út 23. čec 2013 13.13:04 pro projekt libmcache-0.2.1 programem
+    <a href="http://www.doxygen.org/index.html">
+    <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.3.1 </li>
+  </ul>
+</div>
+</body>
+</html>
