@@ -395,8 +395,8 @@ public:
 
 private:
     boost::shared_ptr<impl_t> client; //!< memcache client
-    boost::python::object loads;                 //!< pickle.loads function
-    boost::python::object dumps;                 //!< pickle.dumps function
+    boost::python::object loads;      //!< pickle.loads function
+    boost::python::object dumps;      //!< pickle.dumps function
 };
 
 /** Allow converts python 'bytes' type to std::string.
