@@ -430,8 +430,6 @@ public:
         if (MC_PyBytes_AsStringAndSize(o, &buffer, &size) == -1)
             throw boost::python::error_already_set();
 
-        new char[111];
-
         // grab pointer to memory into which to construct the new std::string
         void *storage = ((boost::python::converter
                           ::rvalue_from_python_storage<std::string> *)data)
