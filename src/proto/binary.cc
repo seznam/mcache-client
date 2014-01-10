@@ -362,6 +362,36 @@ std::string touch_command_t::serialize(uint8_t code) const {
     return result;
 }
 
+flush_all_command_t::response_t
+flush_all_command_t::deserialize_header(const std::string &header) const {
+    // reject empty response
+    if (header.empty()) return response_t(resp::empty, "empty response");
+
+    // parse header && check protocol magic
+    header_t hdr(header);
+    if (hdr.magic != header_t::response_magic)
+        return response_t(resp::unrecognized, "bad magic in response");
+
+    // check status
+    if (!hdr.status) return response_t(resp::ok);
+    return response_t(translate_status_to_response(hdr.status), hdr.body_len);
+}
+
+std::string flush_all_command_t::serialize() const {
+    // prepare request
+    header_t hdr(key_len, body_len, extras_len);
+    hdr.opcode = api::flush_code;
+    hdr.prepare_serialization();
+    std::string result(reinterpret_cast<char *>(&hdr), sizeof(hdr));
+
+    // extras
+    uint32_t expire = htonl(static_cast<uint32_t>(expiration));
+    result += std::string(reinterpret_cast<char *>(&expire), sizeof(expire));
+
+    // accomplish request
+    return result;
+}
+
 } // namespace bin
 } // namespace proto
 } // namespace mc

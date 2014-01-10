@@ -90,7 +90,7 @@ public:
         : key(key), data(data), opts(opts)
     {}
 
-    /** Deserialize responses for get and gets retrieve commands.
+    /** Deserialize responses for set, add, .. storage commands.
      */
     response_t deserialize_header(const std::string &header) const;
 
@@ -119,7 +119,7 @@ public:
             throw mc::error_t(err::bad_argument, "initial not allowed for txt");
     }
 
-    /** Deserialize responses for get and gets retrieve commands.
+    /** Deserialize responses for incr and decr commands.
      */
     response_t deserialize_header(const std::string &header) const;
 
@@ -133,7 +133,7 @@ protected:
     uint64_t value;  //!< amount by which the client wants to increase/decrease
 };
 
-/** Base class for incr and decr commands.
+/** Class that implements delete command.
  */
 class delete_command_t: public command_t {
 public:
@@ -141,7 +141,7 @@ public:
      */
     explicit delete_command_t(const std::string &key): key(key) {}
 
-    /** Deserialize responses for get and gets retrieve commands.
+    /** Deserialize responses for delete command.
      */
     response_t deserialize_header(const std::string &header) const;
 
@@ -150,6 +150,25 @@ public:
     std::string serialize() const;
 
     const std::string key; //!< for which key data should be retrieved
+};
+
+/** Class that implements flush_all command.
+ */
+class flush_all_command_t: public command_t {
+public:
+    /** C'tor.
+     */
+    explicit flush_all_command_t(uint32_t expiration): expiration(expiration) {}
+
+    /** Deserialize responses for flush_all command.
+     */
+    response_t deserialize_header(const std::string &header) const;
+
+    /** Serialize retrieve command.
+     */
+    std::string serialize() const;
+
+    uint32_t expiration; //!< when data should expire in seconds from now
 };
 
 /** Injects name to particular command class.
@@ -212,6 +231,7 @@ public:
     typedef name_injector<incr_decr_command_t, &decr_name> decr_t;
     typedef name_injector<incr_decr_command_t, &touch_name> touch_t;
     typedef delete_command_t delete_t;
+    typedef flush_all_command_t flush_all_t;
 };
 
 } // namespace txt

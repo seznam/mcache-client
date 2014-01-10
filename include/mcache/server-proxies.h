@@ -143,6 +143,8 @@ public:
     typedef server_proxy_type server_proxy_t;
     // publish server proxy iterator
     typedef const server_proxy_t *const_iterator;
+    // publish server proxy iterator
+    typedef server_proxy_t *iterator;
     // publish server proxy type
     typedef typename server_proxy_t::server_proxy_config_type
             server_proxy_config_t;
@@ -177,13 +179,21 @@ public:
      */
     server_proxy_t &operator[](std::size_t i) { return proxies[i];}
 
+    /* Returns const iterator that points to the first server proxy.
+     */
+    const_iterator begin() const { return &proxies[0];}
+
+    /** Returns const iterator one past last server proxy.
+     */
+    const_iterator end() const { return &proxies[count - 1] + 1;}
+
     /* Returns iterator that points to the first server proxy.
      */
-    const server_proxy_t *begin() const { return &proxies[0];}
+    iterator begin() { return &proxies[0];}
 
     /** Returns iterator one past last server proxy.
      */
-    const_iterator end() const { return &proxies[count - 1] + 1;}
+    iterator end() { return &proxies[count - 1] + 1;}
 
 private:
     // shortcuts

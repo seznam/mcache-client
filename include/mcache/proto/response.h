@@ -102,7 +102,7 @@ public:
     inline std::size_t expected_body_size() const { return bytes;}
 
 protected:
-    std::size_t bytes;  //!< expected response body size
+    std::size_t bytes;                     //!< expected response body size
     set_body_callback_t set_body_callback; //!< callback for setting the body
 
 private:

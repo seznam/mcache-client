@@ -51,7 +51,9 @@ private:
 public:
     /** C'tor.
      */
-    explicit result_t(bool found): found(found), data(), flags(), cas() {}
+    explicit result_t(bool found, const std::string &data = std::string())
+        : found(found), data(data), flags(), cas()
+    {}
 
     /** C'tor.
      */
@@ -397,6 +399,28 @@ public:
         }
     }
 
+    /** Call 'flush_all' command on all servers.
+     * @param expiration when data should expire in seconds from now.
+     */
+    result_t flush_all(uint32_t expiration = 0) {
+        typedef std::vector<typename impl::flush_all_t::response_t> responses_t;
+        responses_t responses = run_all(typename impl::flush_all_t(expiration));
+        uint32_t errs = 0;
+        std::string descs;
+        for (typename responses_t::const_iterator
+                iresponse = responses.begin(),
+                eresponse = responses.end();
+                iresponse != eresponse; ++iresponse)
+        {
+            if (iresponse->code() != proto::resp::ok) {
+                ++errs;
+                if (!descs.empty()) descs += ", ";
+                descs += "<" + iresponse->data() + ">";
+            }
+        }
+        return result_t(!errs, descs);
+    }
+
     //////////////// AUTO DESERIALIZATION MEMCACHE CLIENT API /////////////////
 
     // this code uses template magic so if you are confused with it you can
@@ -581,6 +605,35 @@ protected:
         }
         if (out_of_servers) throw out_of_servers_t();
         return typename command_t::response_t(proto::resp::not_found);
+    }
+
+    /** Serialize command and send it to all servers.
+     * @param command memcache protocol command.
+     * @return memcache server response.
+     */
+    template <typename command_t>
+    std::vector<typename command_t::response_t>
+    run_all(const command_t &command) {
+        std::vector<typename command_t::response_t> responses;
+        for (typename server_proxies_t::iterator
+                iserver = proxies.begin(),
+                eserver = proxies.end();
+                iserver != eserver; ++iserver)
+        {
+            // check if choosed server node is dead
+            typedef typename server_proxies_t::server_proxy_t server_proxy_t;
+            server_proxy_t &server = *iserver;
+            if (server.callable()) {
+                // send command to server and wait till response arrive
+                responses.push_back(server.send(command));
+
+            } else {
+                // for dead server create fake response
+                typedef typename command_t::response_t response_t;
+                responses.push_back(response_t(proto::resp::error, "dead"));
+            }
+        }
+        return responses;
     }
 
     pool_t pool;                  //!< idxs that represents key distribution

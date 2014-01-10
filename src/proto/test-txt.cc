@@ -709,6 +709,78 @@ bool del_command_not_found() {
     return connection.empty();
 }
 
+bool flush_all_command_empty() {
+    std::cout << __PRETTY_FUNCTION__ << ": ";
+
+    // prepare request and response
+    api::flush_all_t command(0);
+    const char request[] = "flush_all\r\n";
+    const char header[] = "";
+    validation_connection_t connection(request, header, false);
+
+    // execute command
+    try {
+        command_parser_t parser(connection);
+        if (parser.send(command).code() != mc::proto::resp::empty)
+            return false;
+    } catch (const std::exception &) { return false;}
+    return connection.empty();
+}
+
+bool flush_all_command_unrecognized() {
+    std::cout << __PRETTY_FUNCTION__ << ": ";
+
+    // prepare request and response
+    api::flush_all_t command(3);
+    const char request[] = "flush_all 3\r\n";
+    const char header[] = "invalid-response\r\n";
+    validation_connection_t connection(request, header);
+
+    // execute command
+    try {
+        command_parser_t parser(connection);
+        if (parser.send(command).code() != mc::proto::resp::unrecognized)
+            return false;
+    } catch (const std::exception &) { return false;}
+    return connection.empty();
+}
+
+bool flush_all_command_error() {
+    std::cout << __PRETTY_FUNCTION__ << ": ";
+
+    // prepare request and response
+    api::flush_all_t command(0);
+    const char request[] = "flush_all\r\n";
+    const char header[] = "ERROR\r\n";
+    validation_connection_t connection(request, header);
+
+    // execute command
+    try {
+        command_parser_t parser(connection);
+        if (parser.send(command).code() != mc::proto::resp::error)
+            return false;
+    } catch (const std::exception &) { return false;}
+    return connection.empty();
+}
+
+bool flush_all_command_ok() {
+    std::cout << __PRETTY_FUNCTION__ << ": ";
+
+    // prepare request and response
+    api::flush_all_t command(3);
+    const char request[] = "flush_all 3\r\n";
+    const char header[] = "OK\r\n";
+    validation_connection_t connection(request, header);
+
+    // execute command
+    try {
+        command_parser_t parser(connection);
+        if (parser.send(command).code() != mc::proto::resp::ok)
+            return false;
+    } catch (const std::exception &) { return false;}
+    return connection.empty();
+}
+
 class Checker_t {
 public:
     Checker_t(): fails() {}
@@ -772,6 +844,12 @@ int main(int, char **) {
     check(test::del_command_error());
     check(test::del_command_ok());
     check(test::del_command_not_found());
+
+    // flush_all
+    check(test::flush_all_command_empty());
+    check(test::flush_all_command_unrecognized());
+    check(test::flush_all_command_error());
+    check(test::flush_all_command_ok());
 
     return check.fails;
 }

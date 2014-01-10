@@ -1032,6 +1032,78 @@ bool touch_command_ok() {
     return connection.empty();
 }
 
+bool flush_all_command_empty() {
+    std::cout << __PRETTY_FUNCTION__ << ": ";
+
+    // prepare request and response
+    api::flush_all_t command(0xdeadbeef);
+    packet_t request(8, 0, "", "\xde\xad\xbe\xef");
+    packet_t response;
+    validation_connection_t connection(request, response);
+
+    // execute command
+    try {
+        command_parser_t parser(connection);
+        if (parser.send(command).code() != mc::proto::resp::empty)
+            return false;
+    } catch (const std::exception &) { return false;}
+    return connection.empty();
+}
+
+bool flush_all_command_unrecognized() {
+    std::cout << __PRETTY_FUNCTION__ << ": ";
+
+    // prepare request and response
+    api::flush_all_t command(0xdeadbeef);
+    packet_t request(8, 0, "", "\xde\xad\xbe\xef");
+    packet_t response(true);
+    validation_connection_t connection(request, response);
+
+    // execute command
+    try {
+        command_parser_t parser(connection);
+        if (parser.send(command).code() != mc::proto::resp::unrecognized)
+            return false;
+    } catch (const std::exception &) { return false;}
+    return connection.empty();
+}
+
+bool flush_all_command_error() {
+    std::cout << __PRETTY_FUNCTION__ << ": ";
+
+    // prepare request and response
+    api::flush_all_t command(0xdeadbeef);
+    packet_t request(8, 0, "", "\xde\xad\xbe\xef");
+    packet_t response(28, 0x81, 0);
+    validation_connection_t connection(request, response);
+
+    // execute command
+    try {
+        command_parser_t parser(connection);
+        if (parser.send(command).code() != mc::proto::resp::error)
+            return false;
+    } catch (const std::exception &) { return false;}
+    return connection.empty();
+}
+
+bool flush_all_command_ok() {
+    std::cout << __PRETTY_FUNCTION__ << ": ";
+
+    // prepare request and response
+    api::flush_all_t command(0xdeadbeef);
+    packet_t request(8, 0, "", "\xde\xad\xbe\xef");
+    packet_t response(28, 0x00, 0);
+    validation_connection_t connection(request, response);
+
+    // execute command
+    try {
+        command_parser_t parser(connection);
+        if (parser.send(command).code() != mc::proto::resp::ok)
+            return false;
+    } catch (const std::exception &) { return false;}
+    return connection.empty();
+}
+
 class Checker_t {
 public:
     Checker_t(): fails() {}
@@ -1103,6 +1175,12 @@ int main(int, char **) {
     check(test::touch_command_unrecognized());
     check(test::touch_command_error());
     check(test::touch_command_ok());
+
+    // flush_all
+    check(test::touch_command_empty());
+    check(test::touch_command_unrecognized());
+    check(test::touch_command_error());
+    check(test::flush_all_command_ok());
 
     return check.fails;
 }

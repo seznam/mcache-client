@@ -72,7 +72,7 @@ deserialize_value_resp(const std::string &header) {
 
 command_t::response_t
 command_t::deserialize_header(const std::string &header) const {
-    // try parse general errors (my childs ensures that header is not empty)
+    // try parse general errors (my children ensure that header is not empty)
     switch (header[0]) {
     case 'E':
         if (boost::starts_with(header, "ERROR"))
@@ -233,7 +233,6 @@ delete_command_t::deserialize_header(const std::string &header) const {
 
     // header does not recognized, try global errors
     return response_t(command_t::deserialize_header(header));
-
 }
 
 std::string delete_command_t::serialize() const {
@@ -242,6 +241,32 @@ std::string delete_command_t::serialize() const {
     std::string result;
     result.append("delete ").append(key).append(header_delimiter());
     return result;
+}
+
+flush_all_command_t::response_t
+flush_all_command_t::deserialize_header(const std::string &header) const {
+    // reject empty response
+    if (header.empty()) return response_t(resp::empty, "empty response");
+    //
+    // try parse retrieve responses
+    switch (header[0]) {
+    case 'O':
+        if (boost::starts_with(header, "OK"))
+            return response_t(resp::ok);
+        break;
+    }
+
+    // there are global errors only
+    return response_t(command_t::deserialize_header(header));
+}
+
+std::string flush_all_command_t::serialize() const {
+    // flush_all [<expiration>] [noreply]\r\n
+    std::ostringstream os;
+    os << "flush_all";
+    if (expiration) os << ' ' << expiration;
+    os << header_delimiter();
+    return os.str();
 }
 
 // command names

@@ -105,7 +105,7 @@ public:
         key(key), data(data), opts(opts)
     {}
 
-    /** Deserialize responses for get and gets retrieve commands.
+    /** Deserialize responses for set, add, .. storage commands.
      */
     response_t deserialize_header(const std::string &header) const;
 
@@ -138,7 +138,7 @@ public:
           key(key), value(value), opts(opts)
     {}
 
-    /** Deserialize responses for get and gets retrieve commands.
+    /** Deserialize responses for incr and decr commands.
      */
     response_t deserialize_header(const std::string &header) const;
 
@@ -160,7 +160,7 @@ private:
     static const std::size_t extras_length = 20;
 };
 
-/** class for delete command
+/** Class that implements delete command.
  */
 class delete_command_t: public command_t {
 public:
@@ -169,9 +169,10 @@ public:
     explicit delete_command_t(const std::string &key):
         command_t(static_cast <uint16_t>(key.size()),
                   static_cast <uint32_t>(key.size())),
-        key(key) {}
+        key(key)
+    {}
 
-    /** Deserialize responses for get and gets retrieve commands.
+    /** Deserialize responses for delete command.
      */
     response_t deserialize_header(const std::string &header) const;
 
@@ -182,7 +183,7 @@ public:
     const std::string key; //!< for which key data should be retrieved
 };
 
-/** Class for delete command.
+/** Class that implements touch command.
  */
 class touch_command_t: public command_t {
 public:
@@ -195,7 +196,7 @@ public:
           key(key), expiration(expiration)
     {}
 
-    /** Deserialize responses for get and gets retrieve commands.
+    /** Deserialize responses for touch command.
      */
     response_t deserialize_header(const std::string &) const;
 
@@ -212,6 +213,35 @@ private:
     /** The length of extras. */
     static const std::size_t extras_length = 4;
     static response_t::set_body_callback_t set_body;
+};
+
+/** Class that implements flush_all command.
+ */
+class flush_all_command_t: public command_t {
+public:
+    /** C'tor.
+     */
+    explicit flush_all_command_t(time_t expiration)
+        : command_t(static_cast <uint16_t>(0),
+                    static_cast <uint32_t>(0 + extras_length),
+                    static_cast <uint8_t>(extras_length)),
+          expiration(expiration)
+    {}
+
+    /** Deserialize responses for flush_all command.
+     */
+    response_t deserialize_header(const std::string &) const;
+
+    /** Serialize retrieve command.
+     */
+    std::string serialize() const;
+
+protected:
+    time_t expiration;  //!< new expiration value
+
+private:
+    /** The length of extras. */
+    static const std::size_t extras_length = 4;
 };
 
 /** Injects name to particular command class.
@@ -293,6 +323,7 @@ public:
     typedef op_code_injector<incr_decr_command_t, decrement_code> decr_t;
     typedef op_code_injector<touch_command_t, touch_code> touch_t;
     typedef delete_command_t delete_t;
+    typedef flush_all_command_t flush_all_t;
 };
 
 } // namespace bin
