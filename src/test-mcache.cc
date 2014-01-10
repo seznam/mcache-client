@@ -73,7 +73,12 @@ int main(int argc, char **argv) {
     std::copy(argv + 1, argv + argc, std::back_inserter(servers));
 
     // client
-    mc::thread::client_t client(servers);
+    //mc::thread::client_t client(servers);
+    mc::client_template_t<
+        mc::thread::pool_t,
+        mc::thread::server_proxies_t,
+        mc::proto::txt::api
+    > client(servers);
 
     try {
 
@@ -150,6 +155,11 @@ int main(int argc, char **argv) {
         if (client.get("three")) throw 3;
         client.get("aaaa").as<int>();
         //std::cout << client.dump() << std::endl;
+
+        {
+            mc::result_t res = client.flush_all(3);
+            if (!res) std::cout << res.data << std::endl;
+        }
 
     } catch (const std::exception &e) {
         std::cerr << "ERROR: " << e.what() << std::endl;
