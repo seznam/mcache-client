@@ -3,7 +3,8 @@ Maintainer: Michal Bukovsky <michal.bukovsky@firma.seznam.cz>
 Section: python
 Priority: optional
 Build-Depends: python-all-dev, debhelper (>= 7), python-support (>= 0.8.4),
-               libboost-python1.50-dev, szn-libmcache-dev
+               libboost-python1.50-dev | libboost-python1.54-dev,
+               szn-libmcache-dev
 Standards-Version: 3.8.4
 
 Package: szn-python-mcache
