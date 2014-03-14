@@ -145,10 +145,10 @@ AC_CHECK_LIB(boost_system-mt, main, BOOST_SYSTEM=-lboost_system-mt, [
 
 # check for boost threads
 AC_LANG_CPLUSPLUS
-AC_CHECK_HEADER([boost/thread.hpp], [], AC_MSG_ERROR([boost thread headers missing], 1))
-AC_CHECK_LIB(boost_thread-mt, main, , [
-    AC_CHECK_LIB(boost_thread, main, , [
-        AC_MSG_ERROR([boost thread library missing], 1)])])
+AC_CHECK_HEADER([boost/thread.hpp], [], AC_MSG_WARN([boost thread headers missing]))
+AC_CHECK_LIB(boost_thread-mt, main, BOOST_THREAD=-lboost_thread-mt, [
+    AC_CHECK_LIB(boost_thread, main, BOOST_THREAD=-lboost_thread,
+                 [AC_MSG_WARN([boost thread library missing])])])
 
 # check fore readline
 AC_LANG_C
@@ -166,12 +166,16 @@ AS_IF([test "x$has_tbb" = "xno"], [
        ], [])
 ], [])
 
+LIBMCACHE_EXTRA_LIBS="$BOOST_SYSTEM $BOOST_THREAD"
+
 GIT_REVISION="`git describe --all --dirty --long --abbrev=40`"
 
 AC_SUBST(GIT_REVISION)
 AC_SUBST(VERSION_INFO)
 AC_SUBST(BOOST_SYSTEM)
+AC_SUBST(BOOST_THREAD)
 AC_SUBST(READLINE_LIB)
+AC_SUBST(LIBMCACHE_EXTRA_LIBS)
 
 # for tests
 AC_SEARCH_LIBS(dlopen, dl)
