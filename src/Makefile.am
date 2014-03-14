@@ -46,31 +46,36 @@ EXTRA_PROGRAMS = test-mcache test-pool test-consistent-hashing                 \
 		 test-synchronization test-binary
 
 test_mcache_SOURCES = test-mcache.cc
-test_mcache_LDADD = libmcache.la @BOOST_SYSTEM@ @LIBTBB_LIBS@
+test_mcache_LDADD = libmcache.la @BOOST_SYSTEM@ @BOOST_THREAD@ @LIBTBB_LIBS@
 
 test_pool_SOURCES = pool/test-pool.cc
-test_pool_LDADD = libmcache.la @BOOST_SYSTEM@ @LIBTBB_LIBS@
+test_pool_LDADD = libmcache.la @BOOST_SYSTEM@ @BOOST_THREAD@ @LIBTBB_LIBS@
 
 test_consistent_hashing_SOURCES = pool/test-consistent-hashing.cc
-test_consistent_hashing_LDADD = libmcache.la @BOOST_SYSTEM@ @LIBTBB_LIBS@
+test_consistent_hashing_LDADD = libmcache.la @BOOST_SYSTEM@ @BOOST_THREAD@     \
+				@LIBTBB_LIBS@
 
 test_server_proxy_SOURCES = test-server-proxy.cc
-test_server_proxy_LDADD = libmcache.la @BOOST_SYSTEM@ @LIBTBB_LIBS@
+test_server_proxy_LDADD = libmcache.la @BOOST_SYSTEM@ @BOOST_THREAD@           \
+			  @LIBTBB_LIBS@
 
 test_connections_SOURCES = io/test-connections.cc
-test_connections_LDADD = libmcache.la @BOOST_SYSTEM@ @LIBTBB_LIBS@
+test_connections_LDADD = libmcache.la @BOOST_SYSTEM@ @BOOST_THREAD@            \
+			 @LIBTBB_LIBS@
 
 test_connection_SOURCES = io/test-connection.cc
-test_connection_LDADD = libmcache.la @BOOST_SYSTEM@ @READLINE_LIB@ @LIBTBB_LIBS@
+test_connection_LDADD = libmcache.la @BOOST_SYSTEM@ @READLINE_LIB@             \
+			@BOOST_THREAD@ @LIBTBB_LIBS@
 
 test_txt_SOURCES = proto/test-txt.cc
-test_txt_LDADD = libmcache.la @BOOST_SYSTEM@ @LIBTBB_LIBS@
+test_txt_LDADD = libmcache.la @BOOST_SYSTEM@ @BOOST_THREAD@ @LIBTBB_LIBS@
 
 test_synchronization_SOURCES = test-synchronization.cc
-test_synchronization_LDADD = libmcache.la @BOOST_SYSTEM@ @LIBTBB_LIBS@
+test_synchronization_LDADD = libmcache.la @BOOST_SYSTEM@ @BOOST_THREAD@        \
+			     @LIBTBB_LIBS@
 
 test_binary_SOURCES = proto/test-binary.cc
-test_binary_LDADD = libmcache.la @BOOST_SYSTEM@ @LIBTBB_LIBS@
+test_binary_LDADD = libmcache.la @BOOST_SYSTEM@ @BOOST_THREAD@ @LIBTBB_LIBS@
 
 AM_COLOR_TESTS = always
 

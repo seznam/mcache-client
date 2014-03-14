@@ -8,6 +8,6 @@ Description: Memcache client library.
 Version: @PACKAGE_VERSION@
 Requires:
 URL: [not yet]
-Libs: -L${libdir} -lmcache
+Libs: -L${libdir} -lmcache @LIBMCACHE_EXTRA_LIBS@
 Libs.private:
 Cflags: -I${includedir}
