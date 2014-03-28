@@ -2,6 +2,7 @@
 
 You can install client from source by typing:
 
+$ autoreconf -if
 $ ./configure
 $ make
 $ make install
