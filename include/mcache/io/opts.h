@@ -52,8 +52,12 @@ public:
 
     /** C'tor.
      */
-    opts_t(uint64_t connect, uint64_t read, uint64_t write)
-        : timeouts(connect, read, write)
+    opts_t(uint64_t connect,
+           uint64_t read,
+           uint64_t write,
+           uint64_t max_connections_in_pool = 30)
+        : timeouts(connect, read, write),
+          max_connections_in_pool(max_connections_in_pool)
     {}
 
     timeouts_t timeouts;              //!< connection timeouts
