@@ -1,3 +1,9 @@
+szn-libmcache (0.2.4) UNRELEASED; urgency=low
+
+  * fixed protobuf serialization
+
+ -- Martin Smutek <martin.smutek@firma.seznam.cz>  Wed, 14 May 2014 10:39:44 +0200
+
 szn-libmcache (0.2.3) unstable; urgency=low
 
   * fixed uninitialized value in io::opts
