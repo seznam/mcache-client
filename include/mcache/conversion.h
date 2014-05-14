@@ -145,16 +145,16 @@ struct cnv<
     }
 };
 
-/// Macros for detection of FRPC::Value_t types.
+/// Macros for detection of Protobuf types.
 MCACHE_HAS_MEMBER(SerializeToString);
 MCACHE_HAS_MEMBER(ParseFromString);
 
-/** Conversions for FRPC values. That allows this code:
+/** Conversions for google protobuf. That allows this code:
  *
- * FRPC::Pool_t pool;
- * FRPC::Value_t &fvalue = pool.Int(3);
- * client.set("key", fvalue);
- * FRPC::Int_t &fint = FRPC::Int(client.get("key").as<FRPC::Value_t>(pool));
+ *  Protobuf_t proto;
+ *  client.set("3", proto);
+ *  mc::result_t res = client.get("3");
+ *  if (res) proto = res.as<Protobuf_t>();
  */
 template <typename protobuf_t>
 struct cnv<
@@ -172,7 +172,7 @@ struct cnv<
     }
     static std::string as(const protobuf_t &protobuf) {
         std::string data;
-        if (!protobuf.IsInitialized() || !protobuf.SerializeToString(data))
+        if (!protobuf.IsInitialized() || !protobuf.SerializeToString(&data))
             throw error_t(err::bad_argument, "can't serialize protobuf");
         return data;
     }

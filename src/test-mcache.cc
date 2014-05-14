@@ -28,8 +28,8 @@
 
 class fake_protobuf_t {
 public:
-    bool SerializeToString(std::string &result) const {
-        result = value;
+    bool SerializeToString(std::string *result) const {
+        *result = value;
         return true;
     }
     bool ParseFromString(const std::string &data) {
