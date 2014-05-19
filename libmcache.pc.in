@@ -6,7 +6,7 @@ includedir=@includedir@
 Name: libmcache
 Description: Memcache client library.
 Version: @PACKAGE_VERSION@
-Requires:
+Requires: tbb
 URL: [not yet]
 Libs: -L${libdir} -lmcache @LIBMCACHE_EXTRA_LIBS@
 Libs.private:
