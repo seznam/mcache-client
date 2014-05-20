@@ -5,12 +5,17 @@ Build-Depends: debhelper (>= 7.0.50), autotools-dev, pkg-config,
                dh-autoreconf, git, libtbb-dev,
                libboost1.50-dev | libboost1.54-dev,
                libboost-thread1.50-dev | libboost-thread1.54-dev,
-               libboost-system1.50-dev | libboost-system1.54-dev 
+               libboost-system1.50-dev | libboost-system1.54-dev
 Standards-Version: 3.8.4
 
 Package: szn-libmcache-dev
 Section: libdevel
 Architecture: any
+Depends: autotools-dev, pkg-config,
+         libtbb-dev,
+         libboost1.50-dev | libboost1.54-dev,
+         libboost-thread1.50-dev | libboost-thread1.54-dev,
+         libboost-system1.50-dev | libboost-system1.54-dev
 Description:
  Memcache client library.
 
