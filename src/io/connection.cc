@@ -112,10 +112,11 @@ public:
         set_deadline(opts.timeouts.connect);
         boost::system::error_code ec = asio::error::would_block;
         asio::async_connect(socket, iendpoint, var(ec) = _1);
-        do { ios.run_one();} while (ec == asio::error::would_block);
+        do { ios.run_one();}
+        while ((ec == asio::error::would_block) && (!handle_deadline()));
 
         // check whether socket is connected
-        if (ec || !socket.is_open()) {
+        if (ec || !socket.is_open() || timeouted) {
             if (!timeouted) throw io::error_t(err::io_error, ec.message());
             throw io::error_t(err::timeout, "can't connect due to timeout"
                               ": dst=" + addr);
@@ -136,10 +137,11 @@ public:
         set_deadline(opts.timeouts.write);
         boost::system::error_code ec = asio::error::would_block;
         asio::async_write(socket, asio::buffer(data), var(ec) = _1);
-        do { ios.run_one();} while (ec == asio::error::would_block);
+        do { ios.run_one();}
+        while ((ec == asio::error::would_block) && (!handle_deadline()));
 
         // check whether data was written
-        if (ec) {
+        if (ec || timeouted) {
             if (!timeouted) throw io::error_t(err::io_error, ec.message());
             throw io::error_t(err::timeout, "can't write due to timeout"
                               ": dst=" + addr);
@@ -164,10 +166,11 @@ public:
         boost::system::error_code ec = asio::error::would_block;
         asio::async_read_until(socket, input, delimiter,
                                (var(ec) = _1, var(size) = _2));
-        do { ios.run_one();} while (ec == asio::error::would_block);
+        do { ios.run_one();}
+        while ((ec == asio::error::would_block) && (!handle_deadline()));
 
         // check whether data was read
-        if (ec) {
+        if (ec || timeouted) {
             if (!timeouted) throw io::error_t(err::io_error, ec.message());
             throw io::error_t(err::timeout, "can't read due to timeout"
                               ": dst=" + addr);
@@ -194,10 +197,11 @@ public:
         boost::system::error_code ec = asio::error::would_block;
         asio::async_read(socket, input, asio::transfer_at_least(transfer),
                          var(ec) = _1);
-        do { ios.run_one();} while (ec == asio::error::would_block);
+        do { ios.run_one();}
+        while ((ec == asio::error::would_block) && (!handle_deadline()));
 
         // check whether data was read
-        if (ec) {
+        if (ec || timeouted) {
             if (!timeouted) throw io::error_t(err::io_error, ec.message());
             throw io::error_t(err::timeout, "can't read due to timeout"
                               ": dst=" + addr);
@@ -229,8 +233,9 @@ private:
 
     /** Checks whether the deadline has passed and if not schedule new async
      * wait.
+     *  @return true if timed out
      */
-    void handle_deadline() {
+    bool handle_deadline() {
         // check whether timeout expired
         if (deadline.expires_at() <= asio::deadline_timer::traits_type::now()) {
             DBG(DBG3, "Connection timeouted: server=%s", addr.c_str());
@@ -249,6 +254,7 @@ private:
         }
         // schedule new async op
         deadline.async_wait(boost::bind(&this_t::handle_deadline, this));
+        return timeouted;
     }
 
     std::string addr;              //!< destination address
@@ -358,10 +364,11 @@ public:
         set_deadline(opts.timeouts.connect);
         boost::system::error_code ec = asio::error::would_block;
         asio::async_connect(socket, iendpoint, var(ec) = _1);
-        do { ios.run_one();} while (ec == asio::error::would_block);
+        do { ios.run_one();}
+        while ((ec == asio::error::would_block) && (!handle_deadline()));
 
         // check whether socket is connected
-        if (ec || !socket.is_open()) {
+        if (ec || !socket.is_open() || timeouted) {
             if (!timeouted) throw io::error_t(err::io_error, ec.message());
             throw io::error_t(err::timeout, "can't connect due to timeout"
                               ": dst=" + addr);
@@ -382,10 +389,11 @@ public:
         set_deadline(opts.timeouts.write);
         boost::system::error_code ec = asio::error::would_block;
         socket.async_send(asio::buffer(data), var(ec) = _1);
-        do { ios.run_one();} while (ec == asio::error::would_block);
+        do { ios.run_one();}
+        while ((ec == asio::error::would_block) && (!handle_deadline()));
 
         // check whether data was written
-        if (ec) {
+        if (ec || timeouted) {
             if (!timeouted) throw io::error_t(err::io_error, ec.message());
             throw io::error_t(err::timeout, "can't write due to timeout"
                               ": dst=" + addr);
@@ -407,10 +415,11 @@ public:
         boost::system::error_code ec = asio::error::would_block;
         socket.async_receive(boost::asio::buffer(b, sizeof(b)),
                              (var(ec) = _1, var(size) = _2));
-        do { ios.run_one();} while (ec == asio::error::would_block);
+        do { ios.run_one();}
+        while ((ec == asio::error::would_block) && (!handle_deadline()));
 
         // check whether data was read
-        if (ec) {
+        if (ec || timeouted) {
             if (!timeouted) throw io::error_t(err::io_error, ec.message());
             throw io::error_t(err::timeout, "can't read due to timeout"
                               ": dst=" + addr);
@@ -436,8 +445,9 @@ private:
 
     /** Checks whether the deadline has passed and if not schedule new async
      * wait.
+     *  @return true if timed out
      */
-    void handle_deadline() {
+    bool handle_deadline() {
         // check whether timeout expired
         if (deadline.expires_at() <= asio::deadline_timer::traits_type::now()) {
             DBG(DBG3, "Connection timeouted: server=%s", addr.c_str());
@@ -456,6 +466,7 @@ private:
         }
         // schedule new async op
         deadline.async_wait(boost::bind(&this_t::handle_deadline, this));
+        return timeouted;
     }
 
     std::string addr;              //!< destination address
