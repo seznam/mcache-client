@@ -382,7 +382,7 @@ public:
             .def("get", &client_t::getd)
             .def("gets", &client_t::gets)
             .def("gets", &client_t::getsd)
-            .def("incr", &client_t::incr)
+            .def("incr", &client_t::incrio)
             .def("incr", &client_t::incr)
             .def("incr", &client_t::incri)
             .def("decr", &client_t::decrio)
