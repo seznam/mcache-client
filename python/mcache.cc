@@ -376,7 +376,7 @@ public:
             .def("prepend", &client_t::prepend)
             .def("prepend", &client_t::prependo)
             .def("append", &client_t::append)
-            .def("append", &client_t::append)
+            .def("append", &client_t::appendo)
             .def("cas", &client_t::cas)
             .def("get", &client_t::get)
             .def("get", &client_t::getd)
