@@ -388,7 +388,6 @@ public:
             .def("decr", &client_t::decrio)
             .def("decr", &client_t::decr)
             .def("decr", &client_t::decri)
-            .def("decr", &client_t::decrio)
             .def("touch", &client_t::touch)
             .def("delete", &client_t::del);
     }
