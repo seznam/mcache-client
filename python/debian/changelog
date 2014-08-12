@@ -1,3 +1,9 @@
+mcache (0.2.5) unstable; urgency=low
+
+  * fix in method mappings
+
+ -- Michal Bukovsky <michal.bukovsky@firma.seznam.cz>  Tue, 12 Aug 2014 16:12:11 +0200
+
 mcache (0.2.4) unstable; urgency=low
 
   * new base library
