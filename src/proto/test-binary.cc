@@ -1177,9 +1177,9 @@ int main(int, char **) {
     check(test::touch_command_ok());
 
     // flush_all
-    check(test::touch_command_empty());
-    check(test::touch_command_unrecognized());
-    check(test::touch_command_error());
+    check(test::flush_all_command_empty());
+    check(test::flush_all_command_unrecognized());
+    check(test::flush_all_command_error());
     check(test::flush_all_command_ok());
 
     return check.fails;

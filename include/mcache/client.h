@@ -376,7 +376,7 @@ public:
         typename impl::touch_t::response_t
             response = run(typename impl::touch_t(key, exp));
         switch (response.code()) {
-        case proto::resp::ok: return true;
+        case proto::resp::touched: return true;
         case proto::resp::not_found: return false;
         default: throw response.exception();
         }
