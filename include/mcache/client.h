@@ -29,6 +29,7 @@
 #include <boost/utility/enable_if.hpp>
 #include <boost/type_traits/remove_cv.hpp>
 #include <boost/bind.hpp>
+#include <boost/ref.hpp>
 
 #include <mcache/error.h>
 #include <mcache/proto/opts.h>
@@ -295,6 +296,37 @@ public:
         case proto::resp::not_found: return false;
         default: throw response.exception();
         }
+    }
+
+    /** Apply functor to variable in memcache
+     * @param key key for data
+     * @param fn transformation functor
+     * @param iters number of iterations limit
+     * @return the value before update
+     */
+    template<typename fn_t>
+    std::string atomic_update(const std::string &key, fn_t fn,
+            const opts_t &opts = opts_t(), uint32_t iters = 64)
+    {
+        for (;iters;--iters) {
+            mc::result_t res = gets(key);
+            if (!res) {
+                if (!add(key, boost::unwrap_ref(fn)(std::string()), opts))
+                    continue;
+                return std::string();
+            }
+
+            mc::proto::opts_t ocas = opts;
+            ocas.cas = res.cas;
+
+            try {
+                if (cas(key, boost::unwrap_ref(fn)(res.data), ocas))
+                    return res.data;
+            } catch(const mc::proto::error_t &e) {
+                if (e.code() != mc::proto::resp::exists) throw;
+            }
+        }
+        throw error_t(err::unable_cas, "max iterations reached");
     }
 
     /** Call 'get' command on appropriate memcache server.
