@@ -33,6 +33,7 @@ enum error_code_t {
     not_found          = 404,
     method_not_allowed = 405,
     bad_argument       = 406,
+    unable_cas         = 407,
     internal_error     = 500,
 };
 

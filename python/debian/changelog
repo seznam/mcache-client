@@ -1,3 +1,9 @@
+mcache (0.2.7) unstable; urgency=low
+
+  * recompilation
+
+ -- Michal Bukovsky <michal.bukovsky@firma.seznam.cz>  Tue,  9 Sep 2014 13:58:18 +0200
+
 mcache (0.2.6) unstable; urgency=low
 
   * fixed ok result in touch command
