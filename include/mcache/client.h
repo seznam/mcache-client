@@ -25,6 +25,7 @@
 #include <limits>
 #include <iterator>
 #include <algorithm>
+#include <assert.h>
 #include <boost/noncopyable.hpp>
 #include <boost/utility/enable_if.hpp>
 #include <boost/type_traits/remove_cv.hpp>
@@ -40,6 +41,8 @@ namespace mc {
 
 // push options into mc namespace
 using proto::opts_t;
+
+bool is_initialized();
 
 /** Result of all get commands.
  */
@@ -594,6 +597,7 @@ protected:
     template <typename command_t>
     typename command_t::response_t
     run(const command_t &command, bool h404 = false) {
+        assert(mc::is_initialized());
         // we will never have this count of servers
         typename pool_t::value_type
             prev = std::numeric_limits<typename pool_t::value_type>::max();
