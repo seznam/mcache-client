@@ -67,6 +67,7 @@ public:
     union {
         uint64_t cas;     //!< unique identifier retrieved from gets
         uint64_t initial; //!< the initial value for incr/decr
+        uint64_t iters;   //!< iterations for atomic_update
     };
 };
 
