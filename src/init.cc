@@ -39,5 +39,9 @@ void init() {
     initialized = true;
 }
 
+bool is_initialized() {
+    return initialized;
+}
+
 } // namespace mc
 
