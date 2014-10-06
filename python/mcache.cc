@@ -92,6 +92,39 @@ static void set_from(type_t &res,
     if (dict.contains(name)) res = boost::python::extract<type_t>(dict[name]);
 }
 
+
+template <typename client_t>
+class atomic_update_fn_t {
+public:
+    atomic_update_fn_t(client_t *client,
+            boost::python::object fn) :
+        client(client), fn(fn)
+    {}
+
+    std::pair<std::string, uint32_t>
+    operator()(const std::string &data, uint32_t flags) {
+        boost::python::object newdata;
+
+        if (data.empty() && flags == 0) {
+            newdata = fn(boost::python::object());
+        } else {
+            boost::python::object pydata =
+                client->data_from_string(data, flags);
+            newdata = fn(pydata);
+        }
+
+        std::pair<std::string, uint32_t> rv;
+        mc::opts_t o;
+        rv.first = client->to_string(newdata, o);
+        rv.second = o.flags;
+        return rv;
+    }
+
+    client_t *client;
+    boost::python::object fn;
+};
+
+
 } // namespace
 
 /** Python wrapper around memcache client.
@@ -99,6 +132,8 @@ static void set_from(type_t &res,
 template <typename impl_t>
 class client_t {
 public:
+
+
     /** Flags that are used as type mark.
      */
     enum {
@@ -190,7 +225,41 @@ public:
         return std::string(boost::python::extract<std::string>(dumps(data)));
     }
 
+
+    boost::python::object
+    data_from_string(const std::pair<std::string, uint32_t> &result) {
+        return data_from_string(result.first, result.second);
+    }
+
     /** Converts string fetched from memcache server to python object.
+     */
+    boost::python::object
+    data_from_string(const std::string &data, uint32_t flags) {
+        boost::python::object rv;
+        switch (flags & MASK) {
+        case PICKLED:
+            rv = loads(as_python_bytes(data));
+            break;
+        case DOUBLE:
+            rv = boost::python::object(aux::cnv<double>::as(data));
+            break;
+#if PY_VERSION_HEX < 0x03000000
+        case INTEGER:
+            rv = boost::python::object(aux::cnv<int32_t>::as(data));
+            break;
+#endif /* PY_VERSION_HEX */
+        case LONG:
+            rv = boost::python::object(aux::cnv<int64_t>::as(data));
+            break;
+        case STRING:
+        default:
+            rv = boost::python::object(data);
+            break;
+        }
+        return rv;
+    }
+
+    /** Converts string fetched from memcache server to python result object.
      */
     boost::python::object
     from_string(mc::result_t result,
@@ -200,27 +269,8 @@ public:
         if (!result) return not_found(def);
 
         // extract data
-        boost::python::object data;
-        switch (result.flags & MASK) {
-        case PICKLED:
-            data = loads(as_python_bytes(result.data));
-            break;
-        case DOUBLE:
-            data = boost::python::object(aux::cnv<double>::as(result.data));
-            break;
-#if PY_VERSION_HEX < 0x03000000
-        case INTEGER:
-            data = boost::python::object(aux::cnv<int32_t>::as(result.data));
-            break;
-#endif /* PY_VERSION_HEX */
-        case LONG:
-            data = boost::python::object(aux::cnv<int64_t>::as(result.data));
-            break;
-        case STRING:
-        default:
-            data = boost::python::object(result.data);
-            break;
-        }
+        boost::python::object data =
+            data_from_string(result.data, result.flags);
 
         // return result
         boost::python::dict dict;
@@ -355,6 +405,23 @@ public:
     }
 
     bool del(const std::string &key) { return client->del(key);}
+
+    boost::python::object atomic_updateo(const std::string &key,
+            boost::python::object fn, const opts_t &opts) {
+
+        atomic_update_fn_t<client_t<impl_t> > pyfn(this, fn);
+
+        std::pair<std::string, uint32_t> rv =
+            client-> template atomic_update(key, pyfn, opts);
+
+        return data_from_string(rv);
+    }
+
+    boost::python::object atomic_update(const std::string &key,
+            boost::python::object fn) {
+        return atomic_updateo(key, fn, opts_t());
+    }
+
     // @}
 
     /** Register client object methods.
@@ -389,7 +456,9 @@ public:
             .def("decr", &client_t::decr)
             .def("decr", &client_t::decri)
             .def("touch", &client_t::touch)
-            .def("delete", &client_t::del);
+            .def("delete", &client_t::del)
+            .def("atomic_update", &client_t::atomic_update)
+            .def("atomic_update", &client_t::atomic_updateo);
     }
 
 private:
@@ -473,6 +542,7 @@ public:
         set_from(expiration, dict, "expiration");
         set_from(flags, dict, "flags");
         if (dict.contains("cas")) set_from(cas, dict, "cas");
+        else if (dict.contains("iters")) set_from(cas, dict, "iters");
         else set_from(cas, dict, "initial");
 
         // grab pointer to memory into which to construct the new mc::opts_t

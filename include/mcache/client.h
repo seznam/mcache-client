@@ -305,26 +305,38 @@ public:
      * @param key key for data
      * @param fn transformation functor
      * @param iters number of iterations limit
-     * @return the value before update
+     * @return the value after update
      */
     template<typename fn_t>
-    std::string atomic_update(const std::string &key, fn_t fn,
-            const opts_t &opts = opts_t(), uint32_t iters = 64)
+    std::pair<std::string, uint32_t> atomic_update(const std::string &key,
+            fn_t fn, const opts_t &opts = opts_t())
     {
+        typedef std::pair<std::string, uint32_t> cbres_t;
+
+        uint64_t iters = opts.iters;
+        if (iters == 0) iters = 64;
+
         for (;iters;--iters) {
             mc::result_t res = gets(key);
             if (!res) {
-                if (!add(key, boost::unwrap_ref(fn)(std::string()), opts))
+                mc::proto::opts_t oadd = opts;
+                cbres_t cbres = boost::unwrap_ref(fn)(std::string(), 0);
+                oadd.flags = cbres.second;
+                if (!add(key, cbres.first, oadd)) {
                     continue;
-                return std::string();
+                }
+                return cbres;
             }
 
             mc::proto::opts_t ocas = opts;
             ocas.cas = res.cas;
 
             try {
-                if (cas(key, boost::unwrap_ref(fn)(res.data), ocas))
-                    return res.data;
+                cbres_t cbres = boost::unwrap_ref(fn)(res.data, res.flags);
+                ocas.flags = cbres.second;
+
+                if (cas(key, cbres.first, ocas))
+                    return cbres;
             } catch(const mc::proto::error_t &e) {
                 if (e.code() != mc::proto::resp::exists) throw;
             }
