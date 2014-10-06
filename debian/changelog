@@ -1,3 +1,10 @@
+szn-libmcache (0.2.8) unstable; urgency=low
+
+  * Merge pull request #16 from smrt28/master
+  * Merge pull request #15 from smrt28/init-assert
+
+ -- Michal Bukovsky <michal.bukovsky@firma.seznam.cz>  Mon, 06 Oct 2014 09:21:11 +0100
+
 szn-libmcache (0.2.7) unstable; urgency=low
 
   * add atomic_update
