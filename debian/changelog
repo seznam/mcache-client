@@ -1,3 +1,11 @@
+szn-libmcache (0.2.9) unstable; urgency=low
+
+  * c++11 is allowed by default and can be disabled by --disable-cxx11
+  * add NDEBUG due to assert for non debug builds
+  * #! python0.2.8
+
+ -- Michal Bukovsky <michal.bukovsky@firma.seznam.cz>  Thu, 23 Jul 2015 10:00:53 +0100
+
 szn-libmcache (0.2.8) unstable; urgency=low
 
   * Merge pull request #16 from smrt28/master
