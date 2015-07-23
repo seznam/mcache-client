@@ -14,6 +14,8 @@
 #       2012-09-16 (bukovsky)
 #                  First version
 
+ACLOCAL_AMFLAGS = -I m4
+
 SUBDIRS = src doc                                                              \
           include/mcache/pool                                                  \
 	  include/mcache/hash                                                  \
