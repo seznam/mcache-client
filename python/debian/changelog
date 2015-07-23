@@ -1,3 +1,9 @@
+mcache (0.2.9) unstable; urgency=low
+
+  * python binding c++11
+
+ -- Michal Bukovsky <michal.bukovsky@firma.seznam.cz>  Thu, 23 Jul 2015 10:10:06 +0100
+
 mcache (0.2.8) unstable; urgency=low
 
 
