@@ -57,5 +57,6 @@ setup(name='mcache',
                              extra_compile_args=['-W',
                                                  '-Wall',
                                                  '-Wextra',
-                                                 '-Wconversion'])])
+                                                 '-Wconversion',
+                                                 '-std=c++11'])])
 
