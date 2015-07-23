@@ -26,8 +26,11 @@ AM_SILENT_RULES([yes])
 # install autotools scripts to build-aux dir
 AC_CONFIG_AUX_DIR([build-aux])
 
+# macros from http://www.gnu.org/software/autoconf-archive/The-Macros.html
+AC_CONFIG_MACRO_DIR([m4])
+
 # initialize automake(use AC_INIT's arguments)
-AM_INIT_AUTOMAKE(-Wall foreign color-tests)
+AM_INIT_AUTOMAKE(-Wall -Wno-portability foreign color-tests)
 
 # tell autoconf where to find sources
 AC_CONFIG_SRCDIR([src/mcache.cc])
@@ -121,6 +124,28 @@ AC_ARG_ENABLE([debug], AS_HELP_STRING([--enable-debug], [Enable the debuging log
         [CPPFLAGS="${CPPFLAGS} -UDEBUG -DNDEBUG=1"],
         [CPPFLAGS="${CPPFLAGS} -DDEBUG=1 -UNDEBUG"])
 ])
+
+AC_ARG_ENABLE(cxx11, AS_HELP_STRING([--enable-cxx11], [compile with c++11 standard]), [
+    case "${enableval}" in
+        no)
+            AC_MSG_NOTICE([disabling c++11.])
+            CXX11="optional"
+        ;;
+        yes)
+            AC_MSG_NOTICE([enabling c++11.])
+            CXX11="mandatory"
+        ;;
+        *)
+            AC_MSG_ERROR([Say yes or no to --enable-cxx11.])
+        ;;
+    esac
+], [
+    CXX11="mandatory"
+])
+
+AS_IF([test x$CXX11 == xmandatory], [
+AX_CXX_COMPILE_STDCXX_11([noext], [mandatory])], [
+AX_CXX_COMPILE_STDCXX_11([noext], [optional])])
 
 # check pkgconfig
 PKG_PROG_PKG_CONFIG

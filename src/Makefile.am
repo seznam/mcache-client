@@ -20,6 +20,8 @@ gitver = $(shell git describe --all --dirty --long --abbrev=40)
 AM_CPPFLAGS = -DGIT_REVISION="\"Configure=@GIT_REVISION@,Make=$(gitver)\""     \
               -DGIT_REVISION_N="\"$(gitver)\""                                 \
               -I@top_builddir@ -I@top_srcdir@/src -I$(top_srcdir)/include      \
+	      -DBOOST_ASIO_DISABLE_MOVE -DBOOST_ASIO_DISABLE_STD_ARRAY         \
+	      -DBOOST_ASIO_DISABLE_STD_ATOMIC -DBOOST_ASIO_DISABLE_STD_CHRONO  \
 	      @LIBTBB_CFLAGS@
 
 
