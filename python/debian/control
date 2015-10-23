@@ -3,14 +3,21 @@ Maintainer: Michal Bukovsky <michal.bukovsky@firma.seznam.cz>
 Section: python
 Priority: optional
 Build-Depends: python-all-dev, debhelper (>= 7), python-support (>= 0.8.4),
-               libboost-python1.50-dev | libboost-python1.54-dev,
-               szn-libmcache-dev
+               libboost-python1.50-dev | libboost-python1.54-dev | libboost-python1.55-dev,
+               szn-libmcache-dev, python3-all-dev, python3-setuptools,
+               python-setuptools, dh-python
 Standards-Version: 3.8.4
 
 Package: szn-python-mcache
 Architecture: any
 Depends: ${misc:Depends}, ${python:Depends}, ${shlibs:Depends}
-XB-Python-Version: ${python:Versions}
 Provides: ${python:Provides}
 Description: Python wrapper around libmcache - memcache client library
+
+Package: szn-python3-mcache
+Architecture: any
+Depends: ${misc:Depends}, ${python3:Depends}, ${shlibs:Depends}
+Provides: ${python3:Provides}
+Description: Python3 wrapper around libmcache - memcache client library
+
 

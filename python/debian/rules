@@ -12,6 +12,8 @@ unexport CXXFLAGS
 unexport FFLAGS
 unexport LDFLAGS
 
+export DH_VERBOSE=1
+
 %:
-	dh $@ --buildsystem=python_distutils
+	dh $@ --with python2,python3 --buildsystem=pybuild
 
