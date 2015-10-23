@@ -1,3 +1,9 @@
+mcache (0.2.10) unstable; urgency=low
+
+  * fix py3 building
+
+ -- Michal Bukovsky <michal.bukovsky@firma.seznam.cz>  Fri, 23 Oct 2015 12:51:29 +0100
+
 mcache (0.2.9) unstable; urgency=low
 
   * python binding c++11
