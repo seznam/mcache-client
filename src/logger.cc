@@ -72,7 +72,6 @@ public:
             mc::logger = (mc::log_function_t)(dbglog);
         } else {
             mc::logger = (mc::log_function_t)(stderrLogger);
-            LOG(INFO3, "DbgLog not found, using stderr logger.");
         }
     }
 } initializer;
