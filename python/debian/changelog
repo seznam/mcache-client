@@ -12,6 +12,7 @@ mcache (0.2.9) unstable; urgency=low
 
 mcache (0.2.8) unstable; urgency=low
 
+  * recompilation
 
  -- Michal Bukovsky <michal.bukovsky@firma.seznam.cz>  Mon, 06 Oct 2014 09:29:55 +0100
 
