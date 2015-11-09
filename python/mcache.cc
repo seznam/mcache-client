@@ -28,6 +28,7 @@
 #include <mcache/init.h>
 #include <mcache/mcache.h>
 #include <mcache/conversion.h>
+#include <mcache/logger.h>
 
 // The documentation isn't great, but the name 'borrowed' is a hint.  Using
 // borrowed instructs boost.python that the PyObject * is a borrowed
@@ -124,6 +125,50 @@ public:
     boost::python::object fn;
 };
 
+static boost::python::object loggerfn;
+static log_function_t default_loggerfn;
+
+static void logger(int,
+                  const char *file,
+                  const char *function,
+                  int line,
+                  const char *format, ...)
+{
+    if (!loggerfn) return;
+    va_list valist;
+    va_start(valist, format);
+
+    // log time and pid -- ignore error
+    time_t lt = 0;
+    time(&lt);
+    char strtime[21] = "notime";
+    struct tm ltm;
+    strftime(strtime, sizeof(strtime),
+             "%Y/%m/%d %H:%M:%S", localtime_r(&lt, &ltm));
+    fprintf(stderr, "%s [%d] ", strtime, getpid());
+
+    // log information
+    vfprintf(stderr, format, valist);
+
+    char buf[2048];
+
+    // log place
+    snprintf(buf, sizeof(buf), " {%s:%s():%d}\n", file, function, line);
+
+    va_end(valist);
+
+    loggerfn(std::string(buf));
+}
+
+static void set_logger(boost::python::object fn) {
+    loggerfn = fn;
+    mc::logger = logger;
+}
+
+static void set_default_logger() {
+    mc::logger = default_loggerfn;
+    loggerfn = boost::python::object();
+}
 
 } // namespace
 
@@ -557,7 +602,6 @@ public:
         data->convertible = storage;
     }
 };
-
 } // namespace py
 } // namespace mc
 
@@ -567,5 +611,7 @@ BOOST_PYTHON_MODULE(mcache) {
     mc::py::opts_from_python_dict();
     mc::py::client_t<mc::ipc::client_t>::define("Client");
     mc::py::client_t<mc::ipc::udp::client_t>::define("UDPClient");
+    boost::python::def("set_logger", mc::py::set_logger);
+    boost::python::def("set_default_logger", mc::py::set_default_logger);
+    mc::py::default_loggerfn = mc::logger;
 }
-
