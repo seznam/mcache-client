@@ -133,7 +133,6 @@ template <typename impl_t>
 class client_t {
 public:
 
-
     /** Flags that are used as type mark.
      */
     enum {
@@ -269,8 +268,8 @@ public:
         if (!result) return not_found(def);
 
         // extract data
-        boost::python::object data =
-            data_from_string(result.data, result.flags);
+        boost::python::object
+            data = data_from_string(result.data, result.flags);
 
         // return result
         boost::python::dict dict;
@@ -376,8 +375,9 @@ public:
 
     boost::python::object incrio(const std::string &key,
                                  uint64_t inc,
-                                 const opts_t &opts)
+                                 opts_t opts)
     {
+        opts.flags |= LONG;
         std::pair<uint64_t, bool> pair = client->incr(key, inc, opts);
         if (!pair.second) return boost::python::object();
         return boost::python::object(pair.first);
@@ -393,8 +393,9 @@ public:
 
     boost::python::object decrio(const std::string &key,
                                  uint64_t dec,
-                                 const opts_t &opts)
+                                 opts_t opts)
     {
+        opts.flags |= LONG;
         std::pair<uint64_t, bool> pair = client->decr(key, dec, opts);
         if (!pair.second) return boost::python::object();
         return boost::python::object(pair.first);
