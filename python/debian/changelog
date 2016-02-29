@@ -1,3 +1,10 @@
+mcache (0.2.11) unstable; urgency=low
+
+  * incr/decr marks record as number
+  * build fixes
+
+ -- Michal Bukovsky <michal.bukovsky@firma.seznam.cz>  Mon, 29 Feb 2016 12:34:46 +0100
+
 mcache (0.2.10) unstable; urgency=low
 
   * fix py3 building
