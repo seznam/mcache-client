@@ -92,39 +92,6 @@ static void set_from(type_t &res,
     if (dict.contains(name)) res = boost::python::extract<type_t>(dict[name]);
 }
 
-
-template <typename client_t>
-class atomic_update_fn_t {
-public:
-    atomic_update_fn_t(client_t *client,
-            boost::python::object fn) :
-        client(client), fn(fn)
-    {}
-
-    std::pair<std::string, uint32_t>
-    operator()(const std::string &data, uint32_t flags) {
-        boost::python::object newdata;
-
-        if (data.empty() && flags == 0) {
-            newdata = fn(boost::python::object());
-        } else {
-            boost::python::object pydata =
-                client->data_from_string(data, flags);
-            newdata = fn(pydata);
-        }
-
-        std::pair<std::string, uint32_t> rv;
-        mc::opts_t o;
-        rv.first = client->to_string(newdata, o);
-        rv.second = o.flags;
-        return rv;
-    }
-
-    client_t *client;
-    boost::python::object fn;
-};
-
-
 } // namespace
 
 /** Python wrapper around memcache client.
@@ -224,7 +191,8 @@ public:
         return std::string(boost::python::extract<std::string>(dumps(data)));
     }
 
-
+    /** Just a shortcut.
+     */
     boost::python::object
     data_from_string(const std::pair<std::string, uint32_t> &result) {
         return data_from_string(result.first, result.second);
@@ -268,8 +236,7 @@ public:
         if (!result) return not_found(def);
 
         // extract data
-        boost::python::object
-            data = data_from_string(result.data, result.flags);
+        auto data = data_from_string(result.data, result.flags);
 
         // return result
         boost::python::dict dict;
@@ -355,14 +322,14 @@ public:
     getd(const std::string &key, boost::python::object def) {
         try {
             return from_string(client->get(key), def);
-        } catch (const mc::out_of_servers_t &) { return  not_found(def);}
+        } catch (const mc::out_of_servers_t &) { return not_found(def);}
     }
 
     boost::python::object
     getsd(const std::string &key, boost::python::object def) {
         try {
             return from_string(client->gets(key), def);
-        } catch (const mc::out_of_servers_t &) { return  not_found(def);}
+        } catch (const mc::out_of_servers_t &) { return not_found(def);}
     }
 
     boost::python::object incr(const std::string &key) {
@@ -407,22 +374,27 @@ public:
 
     bool del(const std::string &key) { return client->del(key);}
 
-    boost::python::object atomic_updateo(const std::string &key,
-            boost::python::object fn, const opts_t &opts) {
-
-        atomic_update_fn_t<client_t<impl_t> > pyfn(this, fn);
-
-        std::pair<std::string, uint32_t> rv =
-            client-> template atomic_update(key, pyfn, opts);
-
-        return data_from_string(rv);
-    }
-
-    boost::python::object atomic_update(const std::string &key,
-            boost::python::object fn) {
+    boost::python::object
+    atomic_update(const std::string &key, boost::python::object fn) {
         return atomic_updateo(key, fn, opts_t());
     }
 
+    boost::python::object
+    atomic_updateo(const std::string &key,
+                   boost::python::object callback,
+                   const opts_t &opts)
+    {
+        boost::python::object res;
+        client->atomic_update(key,
+        [&] (const std::string &data, uint32_t flags) {
+            mc::opts_t res_opts;
+            res = (data.empty() && !flags)?
+                  callback(boost::python::object()):
+                  callback(data_from_string(data, flags));
+            return std::make_pair(to_string(res, res_opts), res_opts.flags);
+        }, opts);
+        return res;
+    }
     // @}
 
     /** Register client object methods.
