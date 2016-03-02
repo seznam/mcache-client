@@ -303,42 +303,31 @@ public:
 
     /** Apply functor to variable in memcache
      * @param key key for data
-     * @param fn transformation functor
+     * @param callback transformation functor
      * @param iters number of iterations limit
      * @return the value after update
      */
-    template<typename fn_t>
-    std::pair<std::string, uint32_t> atomic_update(const std::string &key,
-            fn_t fn, const opts_t &opts = opts_t())
+    template <typename callback_t>
+    std::pair<std::string, uint32_t>
+    atomic_update(const std::string &key,
+                  callback_t callback,
+                  const opts_t &opts = opts_t())
     {
-        typedef std::pair<std::string, uint32_t> cbres_t;
-
-        uint64_t iters = opts.iters;
-        if (iters == 0) iters = 64;
-
-        for (;iters;--iters) {
-            mc::result_t res = gets(key);
-            if (!res) {
-                mc::proto::opts_t oadd = opts;
-                cbres_t cbres = boost::unwrap_ref(fn)(std::string(), 0);
-                oadd.flags = cbres.second;
-                if (!add(key, cbres.first, oadd)) {
-                    continue;
+        for (uint64_t iters = opts.iters? opts.iters: 64; iters; --iters) {
+            if (auto res = gets(key)) {
+                // try compare and swap command
+                auto new_data = callback(res.data, res.flags);
+                mc::opts_t cas_opts(opts.expiration, new_data.second, res.cas);
+                try {
+                    if (cas(key, new_data.first, cas_opts)) return new_data;
+                } catch(const mc::proto::error_t &e) {
+                    if (e.code() != mc::proto::resp::exists) throw;
                 }
-                return cbres;
-            }
-
-            mc::proto::opts_t ocas = opts;
-            ocas.cas = res.cas;
-
-            try {
-                cbres_t cbres = boost::unwrap_ref(fn)(res.data, res.flags);
-                ocas.flags = cbres.second;
-
-                if (cas(key, cbres.first, ocas))
-                    return cbres;
-            } catch(const mc::proto::error_t &e) {
-                if (e.code() != mc::proto::resp::exists) throw;
+            } else {
+                // cas failed we try add new key
+                auto new_data = callback(std::string(), 0);
+                mc::opts_t add_opts(opts.expiration, new_data.second);
+                if (add(key, new_data.first, add_opts)) return new_data;
             }
         }
         throw error_t(err::unable_cas, "max iterations reached");
