@@ -35,11 +35,11 @@ SRC = mcache.cc logger.cc error.cc init.cc server-proxy.cc                     \
                                                                                \
       io/connection.cc                                                         \
                                                                                \
-      proto/txt.cc proto/binary.cc                                             \
+      proto/txt.cc proto/binary.cc proto/zlib.cc                               \
                                                                                \
       hash/city.cc hash/jenkins.cc hash/murmur3.cc hash/spooky.cc
 
-libmcache_la_LIBADD = @LIBTBB_LIBS@
+libmcache_la_LIBADD = @LIBTBB_LIBS@ @ZLIB_LIBS@
 libmcache_la_LDFLAGS = @VERSION_INFO@
 libmcache_la_SOURCES = $(SRC)
 

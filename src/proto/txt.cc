@@ -123,13 +123,18 @@ std::string retrieve_command_t::serialize(const char *name) const {
     return result;
 }
 
-void retrieve_command_t::set_body(uint32_t &,
+void retrieve_command_t::set_body(uint32_t &flags,
                                   std::string &body,
-                                  const std::string &data) {
-    body = data;
-    body.resize(body.size() - footer_size);
-}
+                                  const std::string &data)
+{
+    if (flags & opts_t::compress) {
+        body = zlib::uncompress(data, 0, data.size() - footer_size);
 
+    } else {
+        body = data;
+        body.resize(body.size() - footer_size);
+    }
+}
 
 storage_command_t::response_t
 storage_command_t::deserialize_header(const std::string &header) const {

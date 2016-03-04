@@ -62,6 +62,10 @@ public:
         : expiration(expiration), flags(flags), cas(cas)
     {}
 
+    // builtin flags - uses lower bits of upper uint16_t since python uses
+    // upper bits of upper uint16_t
+    enum { compress = 0x00010000, builtin_mask = compress};
+
     time_t expiration;    //!< expiration time (secs from now at server)
     uint32_t flags;       //!< flags for held value on server
     union {

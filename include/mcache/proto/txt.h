@@ -26,6 +26,7 @@
 #include <mcache/error.h>
 #include <mcache/proto/opts.h>
 #include <mcache/proto/response.h>
+#include <mcache/proto/zlib.h>
 
 namespace mc {
 namespace proto {
@@ -87,7 +88,9 @@ public:
     storage_command_t(const std::string &key,
                       const std::string &data,
                       const opts_t &opts = opts_t())
-        : key(key), data(data), opts(opts)
+        : key(key),
+          data(opts.flags & opts.compress? zlib::compress(data): data),
+          opts(opts)
     {}
 
     /** Deserialize responses for set, add, .. storage commands.
