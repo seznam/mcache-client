@@ -296,14 +296,14 @@ bool get_command_found_flags() {
     // prepare request and response
     api::get_t command("3");
     const char request[] = "get 3\r\n";
-    const char header[] = "VALUE 3 123456 3\r\n";
+    const char header[] = "VALUE 3 12345 3\r\n";
     const char body[] = "abc\r\nEND\r\n";
     validation_connection_t connection(request, header, body);
 
     // execute command
     try {
         command_parser_t parser(connection);
-        if (parser.send(command).flags != 123456) return false;
+        if (parser.send(command).flags != 12345) return false;
     } catch (const std::exception &) { return false;}
     return connection.empty();
 }
@@ -314,7 +314,7 @@ bool get_command_gets() {
     // prepare request and response
     api::gets_t command("3");
     const char request[] = "gets 3\r\n";
-    const char header[] = "VALUE 3 123456 3 333\r\n";
+    const char header[] = "VALUE 3 12345 3 333\r\n";
     const char body[] = "abc\r\nEND\r\n";
     validation_connection_t connection(request, header, body);
 

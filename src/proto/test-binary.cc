@@ -470,7 +470,7 @@ bool get_command_found() {
     // prepare request and response
     api::get_t command("3");
     packet_t request(0, 0, "3");
-    packet_t response(0, 0x00, 0, "", "3333", "abc");
+    packet_t response(0, 0x00, 0, "", "3233", "abc");
     validation_connection_t connection(request, response);
 
     // execute command
@@ -507,7 +507,7 @@ bool get_command_found_with_key() {
     // prepare request and response
     api::get_t command("3");
     packet_t request(0, 0, "3");
-    packet_t response(0, 0x00, 0, "3", "3333", "abc");
+    packet_t response(0, 0x00, 0, "3", "3233", "abc");
     validation_connection_t connection(request, response);
 
     // execute command
@@ -526,13 +526,13 @@ bool get_command_found_flags() {
     // prepare request and response
     api::get_t command("3");
     packet_t request(0, 0, "3");
-    packet_t response(0, 0x00, 123456, "", "\xde\xad\xbe\xef", "abc");
+    packet_t response(0, 0x00, 123456, "", "\xca\xfe\xba\xbe", "abc");
     validation_connection_t connection(request, response);
 
     // execute command
     try {
         command_parser_t parser(connection);
-        if (parser.send(command).flags != 0xdeadbeef) return false;
+        if (parser.send(command).flags != 0xcafebabe) return false;
     } catch (const std::exception &) { return false;}
     return connection.empty();
 }
@@ -543,7 +543,7 @@ bool get_command_gets() {
     // prepare request and response
     api::gets_t command("3");
     packet_t request(0, 0, "3");
-    packet_t response(0, 0x00, 333, "", "3333", "abc");
+    packet_t response(0, 0x00, 333, "", "3233", "abc");
     validation_connection_t connection(request, response);
 
     // execute command
@@ -558,8 +558,8 @@ bool set_command_empty() {
     std::cout << __PRETTY_FUNCTION__ << ": ";
 
     // prepare request and response
-    api::set_t command("3", "abc", mc::proto::opts_t(0x0badcafe, 0xdeadbeef));
-    packet_t request(1, 0, "3", "\xde\xad\xbe\xef\x0b\xad\xca\xfe", "abc");
+    api::set_t command("3", "abc", mc::proto::opts_t(0x0badcafe, 0xcafebabe));
+    packet_t request(1, 0, "3", "\xca\xfe\xba\xbe\x0b\xad\xca\xfe", "abc");
     packet_t response;
     validation_connection_t connection(request, response);
 
@@ -576,8 +576,8 @@ bool set_command_unrecognized() {
     std::cout << __PRETTY_FUNCTION__ << ": ";
 
     // prepare request and response
-    api::set_t command("3", "abc", mc::proto::opts_t(0x0badcafe, 0xdeadbeef));
-    packet_t request(1, 0, "3", "\xde\xad\xbe\xef\x0b\xad\xca\xfe", "abc");
+    api::set_t command("3", "abc", mc::proto::opts_t(0x0badcafe, 0xcafebabe));
+    packet_t request(1, 0, "3", "\xca\xfe\xba\xbe\x0b\xad\xca\xfe", "abc");
     packet_t response(true);
     validation_connection_t connection(request, response);
 
@@ -594,8 +594,8 @@ bool set_command_error() {
     std::cout << __PRETTY_FUNCTION__ << ": ";
 
     // prepare request and response
-    api::set_t command("3", "abc", mc::proto::opts_t(0x0badcafe, 0xdeadbeef));
-    packet_t request(1, 0, "3", "\xde\xad\xbe\xef\x0b\xad\xca\xfe", "abc");
+    api::set_t command("3", "abc", mc::proto::opts_t(0x0badcafe, 0xcafebabe));
+    packet_t request(1, 0, "3", "\xca\xfe\xba\xbe\x0b\xad\xca\xfe", "abc");
     packet_t response(1, 0x81, 0, "", "error desc");
     validation_connection_t connection(request, response);
 
@@ -612,8 +612,8 @@ bool set_command_ok() {
     std::cout << __PRETTY_FUNCTION__ << ": ";
 
     // prepare request and response
-    api::set_t command("3", "abc", mc::proto::opts_t(0x0badcafe, 0xdeadbeef));
-    packet_t request(1, 0, "3", "\xde\xad\xbe\xef\x0b\xad\xca\xfe", "abc");
+    api::set_t command("3", "abc", mc::proto::opts_t(0x0badcafe, 0xcafebabe));
+    packet_t request(1, 0, "3", "\xca\xfe\xba\xbe\x0b\xad\xca\xfe", "abc");
     packet_t response(1, 0x00, 0);
     validation_connection_t connection(request, response);
 
@@ -630,8 +630,8 @@ bool set_command_not_stored() {
     std::cout << __PRETTY_FUNCTION__ << ": ";
 
     // prepare request and response
-    api::set_t command("3", "abc", mc::proto::opts_t(0x0badcafe, 0xdeadbeef));
-    packet_t request(1, 0, "3", "\xde\xad\xbe\xef\x0b\xad\xca\xfe", "abc");
+    api::set_t command("3", "abc", mc::proto::opts_t(0x0badcafe, 0xcafebabe));
+    packet_t request(1, 0, "3", "\xca\xfe\xba\xbe\x0b\xad\xca\xfe", "abc");
     packet_t response(1, 0x05, 0);
     validation_connection_t connection(request, response);
 
@@ -648,8 +648,8 @@ bool set_command_exists() {
     std::cout << __PRETTY_FUNCTION__ << ": ";
 
     // prepare request and response
-    api::set_t command("3", "abc", mc::proto::opts_t(0x0badcafe, 0xdeadbeef));
-    packet_t request(1, 0, "3", "\xde\xad\xbe\xef\x0b\xad\xca\xfe", "abc");
+    api::set_t command("3", "abc", mc::proto::opts_t(0x0badcafe, 0xcafebabe));
+    packet_t request(1, 0, "3", "\xca\xfe\xba\xbe\x0b\xad\xca\xfe", "abc");
     packet_t response(1, 0x02, 0);
     validation_connection_t connection(request, response);
 
@@ -666,8 +666,8 @@ bool set_command_not_found() {
     std::cout << __PRETTY_FUNCTION__ << ": ";
 
     // prepare request and response
-    api::set_t command("3", "abc", mc::proto::opts_t(0x0badcafe, 0xdeadbeef));
-    packet_t request(1, 0, "3", "\xde\xad\xbe\xef\x0b\xad\xca\xfe", "abc");
+    api::set_t command("3", "abc", mc::proto::opts_t(0x0badcafe, 0xcafebabe));
+    packet_t request(1, 0, "3", "\xca\xfe\xba\xbe\x0b\xad\xca\xfe", "abc");
     packet_t response(1, 0x01, 0);
     validation_connection_t connection(request, response);
 
