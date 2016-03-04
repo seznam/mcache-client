@@ -1,3 +1,20 @@
+szn-libmcache (0.2.12) unstable; urgency=low
+
+  * you can ask for compression of data via 0x10000 flag now
+  * clean code
+  * clean code
+  * #! python0.2.11
+  * incr/decr marks record as number
+  * build fixes
+  * #! python0.2.10
+  * fix py3 building
+  * #! added dependency on boost1.55
+  * don't log after startup
+  * #! python0.2.9
+  * python binding c++11
+
+ -- Michal Bukovsky <michal.bukovsky@firma.seznam.cz>  Fri, 04 Mar 2016 10:48:36 +0100
+
 szn-libmcache (0.2.9) unstable; urgency=low
 
   * c++11 is allowed by default and can be disabled by --disable-cxx11
