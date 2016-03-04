@@ -42,6 +42,8 @@ namespace mc {
 // push options into mc namespace
 using proto::opts_t;
 
+/** Returns true if library is initialized.
+ */
 bool is_initialized();
 
 /** Result of all get commands.
@@ -129,7 +131,10 @@ public:
                       const client_config_t ccfg = client_config_t())
         : pool(addresses), proxies(addresses),
           max_continues(ccfg.max_continues), h404_duration(ccfg.h404_duration)
-    {}
+    {
+        if (!is_initialized())
+            throw error_t(err::internal_error, "mc::init() hasn't been called");
+    }
 
     /** C'tor.
      */
@@ -139,7 +144,10 @@ public:
                       const client_config_t ccfg = client_config_t())
         : pool(addresses), proxies(addresses, scfg),
           max_continues(ccfg.max_continues), h404_duration(ccfg.h404_duration)
-    {}
+    {
+        if (!is_initialized())
+            throw error_t(err::internal_error, "mc::init() hasn't been called");
+    }
 
     /** C'tor.
      */
@@ -150,7 +158,10 @@ public:
                       const client_config_t ccfg = client_config_t())
         : pool(addresses, pcfg), proxies(addresses, scfg),
           max_continues(ccfg.max_continues), h404_duration(ccfg.h404_duration)
-    {}
+    {
+        if (!is_initialized())
+            throw error_t(err::internal_error, "mc::init() hasn't been called");
+    }
 
     ///////////////////// STANDARD MEMCACHE CLIENT API ////////////////////////
 

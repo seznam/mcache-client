@@ -187,10 +187,12 @@ void retrieve_command_t::set_body(uint32_t &flags,
                                   const std::string &data,
                                   uint16_t key_len)
 {
-    std::copy(data.begin(), data.begin() + sizeof(flags),
-              reinterpret_cast<char *>(&flags));
-    flags = ntohl(flags);
-    body = data.substr(sizeof(flags) + key_len);
+    flags = ntohl(*reinterpret_cast<const uint32_t *>(data.data()));
+    if (flags & opts_t::compress) {
+        body = zlib::uncompress(data, sizeof(flags) + key_len);
+    } else {
+        body = data.substr(sizeof(flags) + key_len);
+    }
 }
 
 template <bool has_extras>

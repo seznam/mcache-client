@@ -17,5 +17,5 @@
 
 includedir = @includedir@/mcache/proto
 
-include_HEADERS = binary.h error.h opts.h parser.h response.h txt.h
+include_HEADERS = binary.h error.h opts.h parser.h response.h txt.h zlib.h
 

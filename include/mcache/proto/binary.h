@@ -26,6 +26,7 @@
 
 #include <mcache/proto/opts.h>
 #include <mcache/proto/response.h>
+#include <mcache/proto/zlib.h>
 
 namespace mc {
 namespace proto {
@@ -96,14 +97,16 @@ public:
     /** C'tor.
      */
     storage_command_t(const std::string &key,
-                      const std::string &data,
+                      const std::string &in_data,
                       const opts_t &opts = opts_t())
-        : command_t(static_cast <uint16_t>(key.size()),
-                    static_cast <uint32_t>(key.size() + data.size()
-                                           + (has_extras? extras_length: 0)),
-                    static_cast <uint8_t>(has_extras? extras_length: 0)),
-        key(key), data(data), opts(opts)
-    {}
+        : command_t(static_cast<uint16_t>(key.size()), 0,
+                    static_cast<uint8_t>(has_extras? extras_length: 0)),
+          key(key),
+          data(opts.flags & opts.compress? zlib::compress(in_data): in_data),
+          opts(opts)
+    {
+        body_len = static_cast<uint32_t>(key_len + data.size() + extras_len);
+    }
 
     /** Deserialize responses for set, add, .. storage commands.
      */

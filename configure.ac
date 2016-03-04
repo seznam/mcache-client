@@ -180,6 +180,11 @@ AC_LANG_C
 AC_CHECK_HEADER([readline/readline.h], [AC_DEFINE([HAVE_READLINE_H], [1])], [])
 AC_CHECK_LIB(readline, main, [READLINE_LIB="-lreadline"], [])
 
+# check fore zlib
+AC_LANG_C
+AC_CHECK_HEADER([zlib.h], [], AC_MSG_WARN([zlib headers missing]))
+AC_CHECK_LIB(z, main, [ZLIB_LIBS=-lz], [AC_MSG_WARN([zlib library missing])])
+
 ## Check for LIBTBB
 AC_LANG_CPLUSPLUS
 PKG_CHECK_MODULES([LIBTBB], [tbb >= 2.0], [has_tbb=yes AC_DEFINE([HAVE_LIBTBB])], [has_tbb=no])
@@ -191,7 +196,7 @@ AS_IF([test "x$has_tbb" = "xno"], [
        ], [])
 ], [])
 
-LIBMCACHE_EXTRA_LIBS="$BOOST_SYSTEM $BOOST_THREAD"
+LIBMCACHE_EXTRA_LIBS="$BOOST_SYSTEM $BOOST_THREAD $ZLIB_LIBS"
 
 GIT_REVISION="`git describe --all --dirty --long --abbrev=40`"
 
@@ -201,6 +206,7 @@ AC_SUBST(BOOST_SYSTEM)
 AC_SUBST(BOOST_THREAD)
 AC_SUBST(READLINE_LIB)
 AC_SUBST(LIBMCACHE_EXTRA_LIBS)
+AC_SUBST(ZLIB_LIBS)
 
 # for tests
 AC_SEARCH_LIBS(dlopen, dl)

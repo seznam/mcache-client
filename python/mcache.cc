@@ -518,6 +518,18 @@ public:
         else if (dict.contains("iters")) set_from(cas, dict, "iters");
         else set_from(cas, dict, "initial");
 
+        // throw if flags has set bits used flags by the library
+        if (flags & mc::opts_t::builtin_mask) {
+            throw mc::error_t(mc::err::bad_argument,
+                              "some lower bits of upper uint16_t of the "
+                              "flags are used by mcache python wrapper");
+        }
+
+        // auto compress feature
+        if (dict.contains("compress"))
+            if (boost::python::extract<bool>(dict["compress"]))
+                flags |= mc::opts_t::compress;
+
         // grab pointer to memory into which to construct the new mc::opts_t
         void *storage = ((boost::python::converter
                           ::rvalue_from_python_storage<mc::opts_t> *)data)
