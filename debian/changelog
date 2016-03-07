@@ -1,3 +1,11 @@
+szn-libmcache (0.2.13) unstable; urgency=low
+
+  * fix references
+  * #! python0.2.12
+  * test fixed
+
+ -- Michal Bukovsky <michal.bukovsky@firma.seznam.cz>  Mon, 07 Mar 2016 12:12:39 +0100
+
 szn-libmcache (0.2.12) unstable; urgency=low
 
   * you can ask for compression of data via 0x10000 flag now
