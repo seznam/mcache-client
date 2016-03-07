@@ -321,9 +321,10 @@ public:
     template <typename callback_t>
     std::pair<std::string, uint32_t>
     atomic_update(const std::string &key,
-                  callback_t callback,
+                  callback_t callback_ref,
                   const opts_t &opts = opts_t())
     {
+        auto &callback = boost::unwrap_ref(callback_ref);
         for (uint64_t iters = opts.iters? opts.iters: 64; iters; --iters) {
             if (auto res = gets(key)) {
                 // try compare and swap command
