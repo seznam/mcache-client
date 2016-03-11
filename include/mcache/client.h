@@ -312,6 +312,7 @@ public:
         }
     }
 
+#if __cplusplus >= 201103L
     /** Apply functor to variable in memcache
      * @param key key for data
      * @param callback transformation functor
@@ -344,6 +345,7 @@ public:
         }
         throw error_t(err::unable_cas, "max iterations reached");
     }
+#endif /* __cplusplus */
 
     /** Call 'get' command on appropriate memcache server.
      * @param key key for data.
