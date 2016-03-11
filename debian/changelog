@@ -1,3 +1,10 @@
+szn-libmcache (0.2.14) unstable; urgency=low
+
+  * atomic_update only for c++11
+  * add zlib1g-dev
+
+ -- Michal Bukovsky <michal.bukovsky@firma.seznam.cz>  Fri, 11 Mar 2016 06:56:28 +0100
+
 szn-libmcache (0.2.13) unstable; urgency=low
 
   * fix references
