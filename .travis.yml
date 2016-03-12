@@ -8,7 +8,8 @@ addons:
             - boost-latest
         packages:
             - libboost1.55-all-dev
+            - libtbb2
 install:
     - autoreconf --install --force
-test:
+script:
     - make check
