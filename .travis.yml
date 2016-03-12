@@ -2,7 +2,13 @@ language: cpp
 compiler:
     - clang
     - gcc
+addons:
+    apt:
+        sources:
+            - boost-latest
+        packages:
+            - libboost1.55-all-dev
 install:
     - autoreconf --install --force
-    - ./configure
+test:
     - make check
