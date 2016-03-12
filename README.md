@@ -14,7 +14,7 @@ C++ implementation of memcache client that support this features:
 
 ## Connect the servers and do some simple operation
 
-You can compose your client class as you wish. Look at the mc::client template
+You can compose your client class as you wish. Look at the mc::client_t template
 in the mcache/client.h. You can choose connection class and server pool classes
 that match your needs. But if you didn't want to care about it then you can use
 default composition that you can find in the mcache/mcache.h header file. Next
