@@ -3,4 +3,6 @@ compiler:
     - clang
     - gcc
 install:
-    - make
+    - autoreconf --install --force
+    - ./configure
+    - make check
