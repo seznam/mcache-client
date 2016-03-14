@@ -1,0 +1,15 @@
+language: cpp
+compiler:
+    - gcc
+addons:
+    apt:
+        sources:
+            - boost-latest
+        packages:
+            - libboost1.55-all-dev
+            - libtbb-dev
+install:
+    - autoreconf --install --force
+script:
+    - ./configure
+    - make check

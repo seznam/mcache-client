@@ -12,7 +12,9 @@ C++ implementation of memcache client that support this features:
  * includes optional zlib compression,
  * python module.
 
-## Connect the servers some simple operation
+ [![tests](https://travis-ci.org/burlog/mcache-client.svg?branch=master)](https://travis-ci.org/burlog/mcache-client)
+
+## Connect the servers and do some simple operation
 
 You can compose your client class as you wish. Look at the mc::client template
 in the mcache/client.h. You can choose connection class and server pool classes
