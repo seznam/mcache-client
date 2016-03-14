@@ -151,7 +151,7 @@ AX_CXX_COMPILE_STDCXX_11([noext], [optional])])
 PKG_PROG_PKG_CONFIG
 
 # Doxygen support.
-DX_INIT_DOXYGEN([$PACKAGE_NAME])
+DX_INIT_DOXYGEN([$PACKAGE_NAME], [$(top_srcdir)/doc/Doxyfile.in])
 DX_HTML_FEATURE(ON)
 DX_CHM_FEATURE(OFF)
 DX_CHI_FEATURE(OFF)
@@ -214,7 +214,6 @@ AC_SEARCH_LIBS(dlopen, dl)
 # Write config.status and the Makefile
 AC_CONFIG_FILES([Makefile
                  src/Makefile
-                 doc/Makefile
                  doc/Doxyfile
                  include/mcache/Makefile
                  include/mcache/pool/Makefile
@@ -225,4 +224,3 @@ AC_CONFIG_FILES([Makefile
                  libmcache.pc])
 
 AC_OUTPUT()
-

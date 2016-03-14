@@ -16,7 +16,7 @@
 
 ACLOCAL_AMFLAGS = -I m4
 
-SUBDIRS = src doc                                                              \
+SUBDIRS = src                                                                  \
           include/mcache/pool                                                  \
 	  include/mcache/hash                                                  \
 	  include/mcache/io                                                    \
@@ -26,6 +26,6 @@ SUBDIRS = src doc                                                              \
 pkgconfigdir = @libdir@/pkgconfig
 pkgconfig_DATA = libmcache.pc
 
-doxygen:
-	$(MAKE) --directory=doc doxygen-doc
+@DX_RULES@
 
+MOSTLYCLEANFILES = $(DX_CLEANFILES)
