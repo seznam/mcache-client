@@ -272,6 +272,6 @@ try:
     client.set("three", "3", {"expiration" : 10})
 
 except RuntimeError as e:
-    print e
+    print(e)
 ```
 
