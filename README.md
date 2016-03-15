@@ -250,21 +250,28 @@ python objects like you can see in following example.
 ```python
 import mcache
 
-client = mcache.Client(["memcache:11211"])
+try:
+    client = mcache.Client(["memcache:11211"])
 
-// objects
-client.set("three", {"three": 3})
-data = client.get("three")["data"]
+    // objects
+    client.set("three", {"three": 3})
+    data = client.get("three")["data"]
 
-// numbers
-client.set("three", 3)
-i = client.get("three")["data"]
+    // numbers
+    client.set("three", 3)
+    i = client.get("three")["data"]
+    print("the value for the key:", data["data"])
+    print("the flags for the value:", data["flags"])
+    print("the cas for gets() command:", data["cas"])
 
-// strings
-client.set("three", "3")
-s = client.get("three")["data"]
+    // strings
+    client.set("three", "3")
+    s = client.get("three")["data"]
 
-// options
-client.set("three", "3", {"expiration" : 10})
+    // options
+    client.set("three", "3", {"expiration" : 10})
+
+except RuntimeError as e:
+    print e
 ```
 
