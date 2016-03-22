@@ -38,7 +38,9 @@ boost_python = 'boost_python-py%d%d' % (version[0], version[1])
 if os.system(pattern.replace('XXX', boost_python)) != 0:
     boost_python = 'boost_python-%d.%d' % (version[0], version[1])
     if os.system(pattern.replace('XXX', boost_python)) != 0:
-        print('can\'t find boost_python library')
+        boost_python = 'boost_python'
+        if os.system(pattern.replace('XXX', boost_python)) != 0:
+            print('can\'t find boost_python library')
 print('checking boost_python library name: ' + boost_python)
 
 # initialize setup
@@ -53,8 +55,8 @@ setup(name='mcache',
                              libraries=[boost_python,
                                         'boost_system',
                                         'boost_thread',
-                                        'z',
-                                        'mcache'],
+                                        'mcache',
+                                        'z'],
                              extra_compile_args=['-W',
                                                  '-Wall',
                                                  '-Wextra',
