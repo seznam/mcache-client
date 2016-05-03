@@ -1,22 +1,9 @@
-szn-libmcache (0.2.14) stable; urgency=low
+szn-libmcache (0.2.14) unstable; urgency=low
 
-  * don't create connection under lock
-  * doc
-  * doc
-  * Change doxygen documentation build a bit.
-  * travis
-  * travis
-  * travis
-  * travis
-  * travis
-  * travis
-  * travis.yml
-  * doc
-  * doc
   * atomic_update only for c++11
   * add zlib1g-dev
 
- -- Michal Bukovsky <michal.bukovsky@firma.seznam.cz>  Tue, 03 May 2016 16:54:17 +0100
+ -- Michal Bukovsky <michal.bukovsky@firma.seznam.cz>  Fri, 11 Mar 2016 06:56:28 +0100
 
 szn-libmcache (0.2.13) unstable; urgency=low
 
