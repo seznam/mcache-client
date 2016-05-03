@@ -1,3 +1,9 @@
+szn-libmcache (0.2.15) stable; urgency=low
+
+  * #! v0.2.14
+
+ -- Michal Bukovsky <michal.bukovsky@firma.seznam.cz>  Tue, 03 May 2016 17:09:36 +0100
+
 szn-libmcache (0.2.14) unstable; urgency=low
 
   * atomic_update only for c++11
