@@ -221,12 +221,15 @@ public:
      * soon as he stops using it.
      */
     connection_ptr_t pick() {
-        boost::mutex::scoped_lock guard(mutex);
-        if (stack.empty())
-            return boost::make_shared<connection_t>(addr, opts);
-        connection_ptr_t tmp = stack.top();
-        stack.pop();
-        return tmp;
+        {
+            boost::mutex::scoped_lock guard(mutex);
+            if (!stack.empty()) {
+                connection_ptr_t tmp = stack.top();
+                stack.pop();
+                return tmp;
+            }
+        }
+        return boost::make_shared<connection_t>(addr, opts);
     }
 
     /** Push connection back to pool.
