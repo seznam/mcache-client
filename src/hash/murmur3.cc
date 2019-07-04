@@ -23,6 +23,7 @@
 #include "mcache/hash/murmur3.h"
 
 // Disable implicit-fallthrough for this file
+#pragma GCC diagnostic ignored "-Wpragmas"
 #pragma GCC diagnostic ignored "-Wunknown-warning-option"
 #pragma GCC diagnostic ignored "-Wimplicit-fallthrough="
 

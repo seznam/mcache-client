@@ -28,7 +28,6 @@ extern "C" {
 #endif
 
 // Make clang happy with unused-const-variables
-#pragma GCC diagnostic ignored "-Wunknown-pragmas"
 #pragma GCC diagnostic ignored "-Wunused-const-variable"
 
 /// compiled in package version info
