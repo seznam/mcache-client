@@ -38,32 +38,15 @@ AC_CONFIG_SRCDIR([src/mcache.cc])
 dnl This forces debian autoconf to use version 2.53
 AC_PREREQ(2.50)
 
+# replace autotools original defaults
+: ${CXXFLAGS="-W -Wall -Wextra -Wconversion -Wno-sign-conversion -fPIC -fno-omit-frame-pointer -g -ggdb -std=c++14"}
+: ${LDFLAGS="-pthread -rdynamic"}
+
 # disable so
 AC_DISABLE_SHARED
 
 # initialize libtool
 AC_PROG_LIBTOOL
-
-# Replace autotools original defaults.
-AC_LANG(C)
-AC_RUN_IFELSE(
-[AC_LANG_PROGRAM([],[
-    # if (defined(sun) || defined(__sun)) && (defined(__SVR4) || defined(__svr4__))
-        return 1;
-    #else
-        return 0;
-    #endif])], [
-    AC_MSG_CHECKING([whether to use -pthreads -m64 flags])
-    AC_MSG_RESULT([no solaris defines found using empty flags])
-    CXXFLAGS="-W -Wall -Wextra -Wconversion -fPIC"
-    LDFLAGS="-pthread -rdynamic"
-], [
-    AC_MSG_CHECKING([whether to use -pthreads -m64 flags])
-    AC_MSG_RESULT([solaris defines found using "-m64 -pthreads" flags])
-    CXXFLAGS="-W -Wall -Wextra -Wconversion -m64 -pthreads -fPIC"
-    LDFLAGS="-m64 -pthreads -rdynamic -L/usr/lib/amd64 -L/usr/local/lib/amd64"
-    libdir='${exec_prefix}/lib/amd64'
-])
 
 # Add a test for a compiler.
 AC_PROG_CC
@@ -124,28 +107,6 @@ AC_ARG_ENABLE([debug], AS_HELP_STRING([--enable-debug], [Enable the debuging log
         [CPPFLAGS="${CPPFLAGS} -UDEBUG -DNDEBUG=1"],
         [CPPFLAGS="${CPPFLAGS} -DDEBUG=1 -UNDEBUG"])
 ])
-
-AC_ARG_ENABLE(cxx11, AS_HELP_STRING([--enable-cxx11], [compile with c++11 standard]), [
-    case "${enableval}" in
-        no)
-            AC_MSG_NOTICE([disabling c++11.])
-            CXX11="optional"
-        ;;
-        yes)
-            AC_MSG_NOTICE([enabling c++11.])
-            CXX11="mandatory"
-        ;;
-        *)
-            AC_MSG_ERROR([Say yes or no to --enable-cxx11.])
-        ;;
-    esac
-], [
-    CXX11="mandatory"
-])
-
-AS_IF([test x$CXX11 == xmandatory], [
-AX_CXX_COMPILE_STDCXX_11([noext], [mandatory])], [
-AX_CXX_COMPILE_STDCXX_11([noext], [optional])])
 
 # check pkgconfig
 PKG_PROG_PKG_CONFIG
