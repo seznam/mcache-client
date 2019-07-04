@@ -22,6 +22,10 @@
 
 #include "mcache/hash/murmur3.h"
 
+// Disable implicit-fallthrough for this file
+#pragma GCC diagnostic ignored "-Wunknown-warning-option"
+#pragma GCC diagnostic ignored "-Wimplicit-fallthrough="
+
 namespace mc {
 
 //-----------------------------------------------------------------------------
@@ -381,4 +385,3 @@ void MurmurHash3_x64_128 ( const void * key, const int len,
 //-----------------------------------------------------------------------------
 
 } // namespace mc
-

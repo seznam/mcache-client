@@ -27,6 +27,10 @@ extern "C" {
 #define GIT_REVISION "UNKNOWN"
 #endif
 
+// Make clang happy with unused-const-variables
+#pragma GCC diagnostic ignored "-Wunknown-pragmas"
+#pragma GCC diagnostic ignored "-Wunused-const-variable"
+
 /// compiled in package version info
 const char MCACHE_PACKAGE_VERSION_SYMBOL[] = PACKAGE_VERSION;
 
@@ -39,4 +43,3 @@ const char *mcache_present() {
 }
 
 } // extern "C"
-

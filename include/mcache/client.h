@@ -639,7 +639,7 @@ protected:
                         out_of_servers = false;
                         break;
                     }
-                    // pass
+                    [[gnu::fallthrough]];
                 default: return response;
                 }
             }
@@ -689,4 +689,3 @@ protected:
 } // namespace mc
 
 #endif /* MCACHE_CLIENT_H */
-
