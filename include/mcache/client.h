@@ -49,11 +49,6 @@ bool is_initialized();
 /** Result of all get commands.
  */
 class result_t {
-private:
-    // private method for semi-safe bool conversion
-    void unspecified_bool_method() {}
-    typedef void (result_t::*unspecified_bool_type)();
-
 public:
     /** C'tor.
      */
@@ -85,10 +80,8 @@ public:
 
     ///////////////////// STANDARD MEMCACHE CLIENT API ////////////////////////
 
-    /** Returns true if data was found on server.
-     */
-    operator unspecified_bool_type() const {
-        return found? &result_t::unspecified_bool_method: 0x0;
+    explicit operator bool() const {
+        return found;
     }
 
     const bool found;       //!< true if data was found on server
@@ -646,7 +639,7 @@ protected:
                         out_of_servers = false;
                         break;
                     }
-                    // pass
+                    [[gnu::fallthrough]];
                 default: return response;
                 }
             }
@@ -696,4 +689,3 @@ protected:
 } // namespace mc
 
 #endif /* MCACHE_CLIENT_H */
-
