@@ -148,7 +148,7 @@ AC_CHECK_LIB(z, main, [ZLIB_LIBS=-lz], [AC_MSG_WARN([zlib library missing])])
 
 ## Check for LIBTBB
 AC_LANG_CPLUSPLUS
-PKG_CHECK_MODULES([LIBTBB], [tbb >= 2.0], [has_tbb=yes AC_DEFINE([HAVE_LIBTBB])], [has_tbb=no])
+PKG_CHECK_MODULES([LIBTBB], [tbb], [has_tbb=yes AC_DEFINE([HAVE_LIBTBB])], [has_tbb=no])
 # for debian system with older tbb which does not support pkg_config
 AS_IF([test "x$has_tbb" = "xno"], [
        AC_CHECK_HEADERS([tbb/concurrent_queue.h], [has_tbb_include=yes], [])
@@ -157,7 +157,7 @@ AS_IF([test "x$has_tbb" = "xno"], [
        ], [])
 ], [])
 
-LIBMCACHE_EXTRA_LIBS="$BOOST_SYSTEM $BOOST_THREAD $ZLIB_LIBS"
+LIBMCACHE_EXTRA_LIBS="$BOOST_SYSTEM $BOOST_THREAD $ZLIB_LIBS $LIBTBB_LIBS"
 
 GIT_REVISION="`git describe --all --dirty --long --abbrev=40`"
 
