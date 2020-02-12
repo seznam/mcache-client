@@ -16,7 +16,7 @@
 #
 
 # initialize autoconf
-AC_INIT([libmcache], [0.2.15], [michal.bukovsky@firma.seznam.cz])
+AC_INIT([libmcache], [0.2.16], [michal.bukovsky@firma.seznam.cz])
 VERSION_INFO="-version-info 0:0:0"
 
 # Enable silent builds (disable with --disable-silent-rules)

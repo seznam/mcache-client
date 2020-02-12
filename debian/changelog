@@ -1,3 +1,14 @@
+szn-libmcache (0.2.16) stable; urgency=low
+
+  * fix tbb linking
+  * warning second try
+  * warnings
+  * compiling using c++14
+  * better changelog
+  * #! python0.2.15
+
+ -- Michal Bukovsky <michal.bukovsky@firma.seznam.cz>  Wed, 12 Feb 2020 17:39:00 +0100
+
 szn-libmcache (0.2.15) stable; urgency=low
 
   * #! v0.2.14
