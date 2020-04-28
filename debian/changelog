@@ -1,3 +1,9 @@
+szn-libmcache (1.0.1) stable; urgency=low
+
+  * libboost1.62-dev
+
+ -- Michal Bukovský <burlog@seznam.cz>  Tue, 28 Apr 2020 11:48:10 +0100
+
 szn-libmcache (1.0.0) stable; urgency=low
 
   * typpo
