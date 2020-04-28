@@ -67,7 +67,7 @@ public:
 
     /** C'tor.
      */
-    opts_t(seconds_t expiration = 0s, uint31_t flags = 0, uint64_t cas = 0)
+    opts_t(seconds_t expiration = 0s, uint32_t flags = 0, uint64_t cas = 0)
         : expiration(expiration), flags(flags), cas(cas)
     {}
 
