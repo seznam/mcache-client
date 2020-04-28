@@ -241,7 +241,7 @@ private:
             timeouted = true;
         }
         // schedule new async op
-        deadline.async_wait([&] (auto &&) {handle_deadline();});
+        deadline.async_wait([&] (auto &&) {this->handle_deadline();});
     }
 
     std::string addr;              //!< destination address
@@ -447,7 +447,7 @@ private:
             timeouted = true;
         }
         // schedule new async op
-        deadline.async_wait([&] (auto &&) {handle_deadline();});
+        deadline.async_wait([&] (auto &&) {this->handle_deadline();});
     }
 
     std::string addr;              //!< destination address
