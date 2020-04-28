@@ -20,9 +20,8 @@
 
 #include <ctime>
 #include <string>
+#include <thread>
 #include <iostream>
-#include <boost/bind.hpp>
-#include <boost/thread.hpp>
 #include <sys/types.h>
 #include <sys/wait.h>
 
@@ -60,7 +59,7 @@ public:
 template <typename connection_t>
 class connections_t {
 public:
-    typedef boost::shared_ptr<connection_t> connection_ptr_t;
+    typedef std::shared_ptr<connection_t> connection_ptr_t;
     connections_t(const std::string &, const mc::io::opts_t &) {}
     connection_ptr_t pick() { return connection_ptr_t(new connection_t());}
     void push_back(connection_ptr_t) {}
@@ -85,10 +84,7 @@ bool sharing_dead_server_thread() {
     proxies_t proxies(servers, cfg);
 
     // run
-    boost::thread_group threads;
-    threads.create_thread(boost::bind(&server_proxy_t::send<fake_command_t>,
-                                      &proxies[1], fake_command_t()));
-    threads.join_all();
+    std::thread([&] () {proxies[1].send(fake_command_t());}).join();
     return proxies[1].is_dead();
 }
 
@@ -103,11 +99,10 @@ bool sharing_lock_thread() {
 
     // run
     mc::thread::lock_t lock;
-    boost::thread_group threads;
-    threads.create_thread(boost::bind(&sharing_lock_thread_helper, &lock));
+    std::thread thread([&] () {sharing_lock_thread_helper(&lock);});
     ::sleep(1);
     bool result = !lock.try_lock();
-    threads.join_all();
+    thread.join();
     return result;
 }
 
