@@ -1,3 +1,10 @@
+szn-libmcache (1.0.0) stable; urgency=low
+
+  * typpo
+  * c++14, using std::chrono for time related stuff
+
+ -- Michal Bukovský <burlog@seznam.cz>  Tue, 28 Apr 2020 11:43:09 +0100
+
 szn-libmcache (0.2.17) stable; urgency=low
 
   * boost
