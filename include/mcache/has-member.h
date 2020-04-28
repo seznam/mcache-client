@@ -20,8 +20,7 @@
 #ifndef MCACHE_HAS_MEMBER_H
 #define MCACHE_HAS_MEMBER_H
 
-#include <boost/utility/enable_if.hpp>
-#include <boost/type_traits/is_class.hpp>
+#include <type_traits>
 
 namespace mc {
 namespace aux {
@@ -59,10 +58,7 @@ public:                                                                        \
                                                                                \
 /* Specialization for non-class types that can't contains member... */         \
 template <typename Type_t>                                                     \
-class has_ ## MEMBER<                                                          \
-          Type_t,                                                              \
-          typename boost::disable_if<boost::is_class<Type_t> >::type           \
-      > {                                                                      \
+class has_ ## MEMBER<Type_t, std::enable_if_t<!std::is_class<Type_t>::value>> {\
 public:                                                                        \
     enum { value = 0};                                                         \
 }                                                                              \

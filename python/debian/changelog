@@ -1,3 +1,9 @@
+mcache (0.2.15) stable; urgency=low
+
+  * rebuild with lib v0.2.15
+
+ -- Michal Bukovsky <michal.bukovsky@firma.seznam.cz>  Tue, 03 May 2016 17:16:03 +0100
+
 mcache (0.2.12) unstable; urgency=low
 
   * you can ask for compression of data via 0x10000 flag now

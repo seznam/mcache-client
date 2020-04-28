@@ -23,6 +23,7 @@
 
 #include <ctime>
 #include <string>
+#include <atomic>
 #include <inttypes.h>
 
 #include <mcache/lock.h>
@@ -30,26 +31,28 @@
 #include <mcache/io/error.h>
 #include <mcache/proto/response.h>
 #include <mcache/proto/parser.h>
+#include <mcache/time-units.h>
 
 namespace mc {
 namespace aux {
 
 /** Just push line to log.
  */
-void log_server_raise_zombie(const std::string &srv, time_t restoration);
+void log_server_raise_zombie(const std::string &srv,
+                             seconds_t restoration_interval);
 
 /** Just push line to log.
  */
 void log_server_is_dead(const std::string &srv,
                         uint32_t fail_limit,
-                        time_t restoration,
+                        seconds_t restoration_interval,
                         const std::string &reason);
 
 /** Composes string with info about current server proxy state.
  */
 std::string make_state_string(const std::string &srv,
                               std::size_t connections,
-                              time_t restoration,
+                              seconds_t restoration_interval,
                               uint32_t fails,
                               uint32_t dead);
 
@@ -61,16 +64,16 @@ class server_proxy_config_t {
 public:
     /** C'tor.
      */
-    server_proxy_config_t(time_t restoration_interval = 60,
+    server_proxy_config_t(seconds_t restoration_interval = 60s,
                           uint32_t fail_limit = 1,
                           io::opts_t io_opts = io::opts_t())
         : restoration_interval(restoration_interval), fail_limit(fail_limit),
           io_opts(io_opts)
     {}
 
-    time_t restoration_interval; //!< time when reconnect is scheduled
-    uint32_t fail_limit;         //!< count of fails after that srv become dead
-    io::opts_t io_opts;          //!< io options
+    seconds_t restoration_interval; //!< time when reconnect is scheduled
+    uint32_t fail_limit;            //!< # of fails after that srv become dead
+    io::opts_t io_opts;             //!< io options
 };
 
 /** Memcache server proxy responsible for handling dead servers.
@@ -91,12 +94,14 @@ public:
     public:
         /** C'tor.
          */
-        shared_t(): restoration(), dead(false), fails(), lock() {}
+        shared_t()
+            : restoration(time_point_t::min()), dead(false), fails(), lock()
+        {}
 
-        volatile time_t restoration; //!< time when reconnect is scheduled
-        volatile uint32_t dead;      //!< true if server is dead
-        volatile uint32_t fails;     //!< current count of fails
-        lock_t lock;                 //!< lock for reconnect critical sections
+        std::atomic<time_point_t> restoration; //!< when reconnect is scheduled
+        std::atomic<uint32_t> dead;            //!< true if server is dead
+        std::atomic<uint32_t> fails;           //!< current count of fails
+        lock_t lock;                           //!< for reconnect critical sec
     };
 
     /** C'tor.
@@ -122,15 +127,15 @@ public:
         if (!shared->dead) return true;
 
         // check wether we shloud try make dead server alive
-        time_t now = ::time(0x0);
-        if (now < shared->restoration) return false;
+        auto now = std::chrono::system_clock::now();
+        if (now < shared->restoration.load()) return false;
 
         // if we don't get lock returns immediately
         scope_guard_t<lock_t> guard(shared->lock);
         if (!guard.try_lock()) return false;
 
         // we got lock, enlarge dead timeout and return true
-        shared->restoration = now + restoration_interval;
+        shared->restoration.store(now + restoration_interval);
         aux::log_server_raise_zombie(connections.server_name(),
                                      restoration_interval);
         return true;
@@ -138,9 +143,9 @@ public:
 
     /** Returns time duration since last dead mark.
      */
-    time_t lifespan() const {
-        time_t now = ::time(0x0);
-        if (!shared->restoration) return now;
+    auto lifespan() const {
+        auto now = std::chrono::system_clock::now();
+        if (shared->restoration == time_point_t::min()) return now;
         return std::max(now - (shared->restoration - restoration_interval), 0l);
     }
 
@@ -171,8 +176,9 @@ public:
             scope_guard_t<lock_t> guard(shared->lock);
             if (guard.try_lock()) {
                 if (++shared->fails >= fail_limit) {
+                    auto now = std::chrono::system_clock::now();
                     connections.clear();
-                    shared->restoration = ::time(0x0) + restoration_interval;
+                    shared->restoration = now + restoration_interval;
                     shared->dead = true;
                     aux::log_server_is_dead(connections.server_name(),
                                             fail_limit,
@@ -198,10 +204,10 @@ public:
     }
 
 protected:
-    time_t restoration_interval; //!< timeout for dead server
-    uint32_t fail_limit;         //!< count of fails after that srv become dead
-    shared_t *shared;            //!< shared data with other threads
-    connections_t connections;   //!< connections pool
+    seconds_t restoration_interval; //!< timeout for dead server
+    uint32_t fail_limit;            //!< # of fails after that srv become dead
+    shared_t *shared;               //!< shared data with other threads
+    connections_t connections;      //!< connections pool
 };
 
 } // namespace mc

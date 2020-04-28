@@ -21,8 +21,6 @@
 #include <cstdlib>
 #include <iostream>
 #include <algorithm>
-#include <boost/lambda/lambda.hpp>
-#include <boost/lambda/if.hpp>
 #include <cxxabi.h>
 
 #include <mcache/init.h>
@@ -61,7 +59,6 @@ std::string rand_string() {
 
 int main(int, char **) {
     mc::init();
-    using boost::lambda::_1;
 
     // prepare servers
     std::vector<std::string> servers;
@@ -89,8 +86,8 @@ int main(int, char **) {
             ++distribution[idx];
     }
     std::cout << "Distribution of keys over servers: \n";
-    std::for_each(distribution.begin(), distribution.end(),
-                  std::cout << _1 << '\n');
+    for (auto &d: distribution)
+        std::cout << d << '\n';
 
     // remove server3 from pool
     pool.remove("server3:11211");
@@ -111,11 +108,11 @@ int main(int, char **) {
     std::cout << "After removing `server3' "
               << changed << " (" << changed / ((values.size() / 100)) << "%)"
               << " keys shall migrate to other server: \n";
-    std::for_each(distribution.begin(), distribution.end(),
-                  std::cout << _1 << '\n');
+    for (auto &d: distribution)
+        std::cout << d << '\n';
     std::cout << "New destinations: \n";
-    std::for_each(migrated.begin(), migrated.end(),
-                  std::cout << _1 << '\n');
+    for (auto &d: distribution)
+        std::cout << d << '\n';
 
     // try add server
     distribution.push_back(0);
@@ -139,11 +136,11 @@ int main(int, char **) {
     std::cout << "After adding `server9' "
               << changed << " (" << changed / ((values.size() / 100)) << "%)"
               << " keys shall migrate to other server: \n";
-    std::for_each(distribution.begin(), distribution.end(),
-                  std::cout << _1 << '\n');
+    for (auto &d: distribution)
+        std::cout << d << '\n';
     std::cout << "New destinations: \n";
-    std::for_each(migrated.begin(), migrated.end(),
-                  std::cout << _1 << '\n');
+    for (auto &d: distribution)
+        std::cout << d << '\n';
 
     //std::cout << pool.dump() << std::endl;
 

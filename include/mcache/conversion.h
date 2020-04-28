@@ -23,9 +23,6 @@
 #include <cstdio>
 #include <limits>
 #include <cstdlib>
-#include <boost/utility/enable_if.hpp>
-#include <boost/type_traits/is_integral.hpp>
-#include <boost/type_traits/is_float.hpp>
 
 #include <mcache/error.h>
 #include <mcache/has-member.h>
@@ -86,7 +83,7 @@ struct cnv {};
 template <typename integral_t>
 struct cnv<
            integral_t,
-           typename boost::enable_if<boost::is_integral<integral_t> >::type
+           std::enable_if_t<std::is_integral<integral_t>::value>
        > {
     static integral_t as(const std::string &data) {
         return static_cast<integral_t>(::atoll(data.c_str()));
@@ -107,7 +104,7 @@ struct cnv<
 template <typename float_t>
 struct cnv<
            float_t,
-           typename boost::enable_if<boost::is_float<float_t> >::type
+           std::enable_if_t<std::is_floating_point<float_t>::value>
        > {
     static float_t as(const std::string &data) {
         return static_cast<float_t>(::strtold(data.c_str(), 0));
@@ -132,9 +129,7 @@ MCACHE_HAS_MEMBER(marshallToFRPCBinaryStream);
 template <typename frpc_value_t>
 struct cnv<
            frpc_value_t,
-           typename boost::enable_if_c<
-               has_marshallToFRPCBinaryStream<frpc_value_t>::value
-           >::type
+           std::enable_if_t<has_marshallToFRPCBinaryStream<frpc_value_t>::value>
        > {
     template <typename pool_t>
     static const frpc_value_t &as(pool_t &pool, const std::string &data) {
@@ -159,10 +154,10 @@ MCACHE_HAS_MEMBER(ParseFromString);
 template <typename protobuf_t>
 struct cnv<
            protobuf_t,
-           typename boost::enable_if_c<
+           std::enable_if_t<
                has_SerializeToString<protobuf_t>::value
                && has_ParseFromString<protobuf_t>::value
-           >::type
+           >
        > {
     static protobuf_t as(const std::string &data) {
         protobuf_t protobuf;

@@ -21,10 +21,9 @@
 #define MCACHE_IO_CONNECTIONS_H
 
 #include <stack>
+#include <memory>
+#include <mutex>
 #include <inttypes.h>
-#include <boost/shared_ptr.hpp>
-#include <boost/make_shared.hpp>
-#include <boost/thread/mutex.hpp>
 
 #if HAVE_LIBTBB
 #include <tbb/concurrent_queue.h>
@@ -43,7 +42,7 @@ template <typename connection_t>
 class create_new_connection_pool_t {
 public:
     // defines pointer to connection type
-    typedef boost::shared_ptr<connection_t> connection_ptr_t;
+    using connection_ptr_t = std::shared_ptr<connection_t>;
 
     /** C'tor.
      */
@@ -55,7 +54,7 @@ public:
     /** Creates new connection.
      */
     connection_ptr_t pick() {
-        return boost::make_shared<connection_t>(addr, opts);
+        return std::make_shared<connection_t>(addr, opts);
     }
 
     /** Push connection back to pool.
@@ -87,7 +86,7 @@ template <typename connection_t>
 class single_connection_pool_t {
 public:
     // defines pointer to connection type
-    typedef boost::shared_ptr<connection_t> connection_ptr_t;
+    using connection_ptr_t = std::shared_ptr<connection_t>;
 
     /** C'tor.
      */
@@ -101,7 +100,7 @@ public:
      * soon as he stops using it.
      */
     connection_ptr_t pick() {
-        if (!connection) return boost::make_shared<connection_t>(addr, opts);
+        if (!connection) return std::make_shared<connection_t>(addr, opts);
         connection_ptr_t tmp = connection;
         connection.reset();
         return tmp;
@@ -142,7 +141,7 @@ template <typename connection_t>
 class caching_connection_pool_t {
 public:
     // defines pointer to connection type
-    typedef boost::shared_ptr<connection_t> connection_ptr_t;
+    typedef std::shared_ptr<connection_t> connection_ptr_t;
 
     /** C'tor.
      */
@@ -160,7 +159,7 @@ public:
     connection_ptr_t pick() {
         connection_ptr_t tmp;
         if (queue.try_pop(tmp)) return tmp;
-        return boost::make_shared<connection_t>(addr, opts);
+        return std::make_shared<connection_t>(addr, opts);
     }
 
     /** Push connection back to pool.
@@ -178,7 +177,7 @@ public:
     /** Destroys all connection found at queue.
      */
     void clear() {
-        boost::mutex::scoped_lock guard(mutex);
+        std::lock_guard<std::mutex> guard(mutex);
         queue.clear();
     }
 
@@ -190,7 +189,7 @@ protected:
     // shortcut
     typedef tbb::concurrent_bounded_queue<connection_ptr_t> queue_t;
 
-    boost::mutex mutex; //!< pool mutex
+    std::mutex mutex;   //!< pool mutex
     std::string addr;   //!< destination address
     opts_t opts;        //!< io options
     queue_t queue;      //!< queue of available connections
@@ -207,7 +206,7 @@ template <typename connection_t>
 class caching_connection_pool_t {
 public:
     // defines pointer to connection type
-    typedef boost::shared_ptr<connection_t> connection_ptr_t;
+    using connection_ptr_t = std::shared_ptr<connection_t>;
 
     /** C'tor.
      */
@@ -222,21 +221,21 @@ public:
      */
     connection_ptr_t pick() {
         {
-            boost::mutex::scoped_lock guard(mutex);
+            std::lock_guard<std::mutex> guard(mutex);
             if (!stack.empty()) {
                 connection_ptr_t tmp = stack.top();
                 stack.pop();
                 return tmp;
             }
         }
-        return boost::make_shared<connection_t>(addr, opts);
+        return std::make_shared<connection_t>(addr, opts);
     }
 
     /** Push connection back to pool.
      * XXX: Given ptr is invalid (empty) after the call.
      */
     void push_back(connection_ptr_t &tmp) {
-        boost::mutex::scoped_lock guard(mutex);
+        std::lock_guard<std::mutex> guard(mutex);
         if (stack.size() < opts.max_connections_in_pool) stack.push(tmp);
         tmp.reset();
     }
@@ -244,14 +243,14 @@ public:
     /** Returns count of connections in pool.
      */
     std::size_t size() const {
-        boost::mutex::scoped_lock guard(mutex);
+        std::lock_guard<std::mutex> guard(mutex);
         return stack.size();
     }
 
     /** Destroys all connection found at stack.
      */
     void clear() {
-        boost::mutex::scoped_lock guard(mutex);
+        std::lock_guard<std::mutex> guard(mutex);
         while (!stack.empty()) stack.pop();
     }
 
@@ -262,7 +261,7 @@ public:
 protected:
     std::string addr;                   //!< destination address
     opts_t opts;                        //!< io options
-    boost::mutex mutex;                 //!< pool mutex
+    std::mutex mutex;                   //!< pool mutex
     std::stack<connection_ptr_t> stack; //!< stack of available connections
 };
 

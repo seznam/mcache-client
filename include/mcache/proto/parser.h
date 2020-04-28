@@ -21,16 +21,24 @@
 #define MCACHE_PROTO_PARSER_H
 
 #include <string>
-#include <boost/utility/enable_if.hpp>
-#include <boost/mpl/has_xxx.hpp>
+
+#include <iostream>
 
 namespace mc {
 namespace proto {
 namespace aux {
 
-/** Defines metafunction that recognize classes with body tag.
- */
-BOOST_MPL_HAS_XXX_TRAIT_DEF(body_tag);
+template <typename, typename = bool>
+struct has_set_body {static constexpr bool value = false;};
+
+template <typename response_t>
+struct has_set_body<
+    response_t,
+    decltype(
+        std::declval<response_t>().set_body(std::declval<std::string>()),
+        true
+    )
+> {static constexpr bool value = true;};
 
 } // namespace aux
 
@@ -75,17 +83,20 @@ protected:
     /** Response expects body so retrieve and parse it.
      */
     template <typename response_t>
-    typename boost::enable_if<aux::has_body_tag<response_t>, void>::type
+    std::enable_if_t<aux::has_set_body<response_t>::value>
     deserialize_body(response_t &response) {
         std::size_t body_size = response.expected_body_size();
         if (body_size) response.set_body(connection->read(body_size));
+        std::cout << "muck" << std::endl;
     }
 
     /** Does nothing.
      */
     template <typename response_t>
-    typename boost::disable_if<aux::has_body_tag<response_t>, void>::type
-    deserialize_body(response_t &) {}
+    std::enable_if_t<!aux::has_set_body<response_t>::value>
+    deserialize_body(response_t &) {
+        std::cout << "fuck" << std::endl;
+    }
 
     connection_t *connection; //!< wire to server
 };

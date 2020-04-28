@@ -21,8 +21,8 @@
 #define MCACHE_PROTO_RESPONSE_H
 
 #include <string>
-#include <inttypes.h>
-#include <boost/function.hpp>
+#include <functional>
+#include <cstdint>
 
 #include <mcache/proto/error.h>
 
@@ -66,7 +66,7 @@ protected:
 class single_body_response_t: public single_response_t {
 public:
     /** Type of callback for setting the body. */
-    typedef boost::function<
+    typedef std::function<
                 void (std::string &, const std::string &)
             > set_body_callback_t;
 
@@ -87,9 +87,6 @@ public:
         : single_response_t(status, std::string()),
           bytes(bytes), set_body_callback(set_body_callback)
     {}
-
-    // mark that this response expects body
-    class body_tag;
 
     /** Sets new commands body response.
      */
@@ -118,7 +115,7 @@ private:
 class single_retrival_response_t: public single_response_t {
 public:
     /** Type of callback for setting the body and flags sometimes. */
-    typedef boost::function<
+    typedef std::function<
                 void (uint32_t &, std::string &, const std::string &)
             > set_body_callback_t;
 
@@ -154,9 +151,6 @@ public:
         : single_response_t(resp),
           flags(), cas(), bytes(), set_body_callback(set_body_default)
     {}
-
-    // mark that this response expects body
-    class body_tag;
 
     /** Sets new retrieval commands body response.
      */

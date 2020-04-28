@@ -26,16 +26,13 @@
 #include <iterator>
 #include <algorithm>
 #include <assert.h>
-#include <boost/noncopyable.hpp>
-#include <boost/utility/enable_if.hpp>
-#include <boost/type_traits/remove_cv.hpp>
-#include <boost/bind.hpp>
-#include <boost/ref.hpp>
 
 #include <mcache/error.h>
 #include <mcache/proto/opts.h>
 #include <mcache/proto/response.h>
 #include <mcache/conversion.h>
+#include <mcache/fallthrough.h>
+#include <mcache/time-units.h>
 
 namespace mc {
 
@@ -49,11 +46,6 @@ bool is_initialized();
 /** Result of all get commands.
  */
 class result_t {
-private:
-    // private method for semi-safe bool conversion
-    void unspecified_bool_method() {}
-    typedef void (result_t::*unspecified_bool_type)();
-
 public:
     /** C'tor.
      */
@@ -85,10 +77,8 @@ public:
 
     ///////////////////// STANDARD MEMCACHE CLIENT API ////////////////////////
 
-    /** Returns true if data was found on server.
-     */
-    operator unspecified_bool_type() const {
-        return found? &result_t::unspecified_bool_method: 0x0;
+    explicit operator bool() const {
+        return found;
     }
 
     const bool found;       //!< true if data was found on server
@@ -109,12 +99,21 @@ template <> inline std::string result_t::as<std::string>() const { return data;}
  */
 class client_config_t {
 public:
-    client_config_t(uint32_t max_continues = 3, int64_t h404_duration = 300)
+    client_config_t(uint32_t max_continues = 3)
+        : max_continues(max_continues), h404_duration(300)
+    {}
+
+    [[deprecated("give std::chrono::seconds as second argument")]]
+    client_config_t(uint32_t max_continues, int64_t h404_duration)
         : max_continues(max_continues), h404_duration(h404_duration)
     {}
 
-    uint32_t max_continues; //!< max continues in client loop
-    int64_t h404_duration;  //!< duration limit for handlig 404 for get
+    client_config_t(uint32_t max_continues, seconds_t h404_duration)
+        : max_continues(max_continues), h404_duration(h404_duration)
+    {}
+
+    uint32_t max_continues;  //!< max continues in client loop
+    seconds_t h404_duration; //!< duration limit for handlig 404 for get
 };
 
 /** Template of class for memcache clients.
@@ -123,7 +122,7 @@ template <
     typename pool_t,
     typename server_proxies_t,
     typename impl
-> class client_template_t: public boost::noncopyable {
+> class client_template_t {
 public:
     /** C'tor.
      */
@@ -162,6 +161,10 @@ public:
         if (!is_initialized())
             throw error_t(err::internal_error, "mc::init() hasn't been called");
     }
+
+    // don't copy
+    client_template_t(const client_template_t &) = delete;
+    client_template_t &operator=(const client_template_t &) = delete;
 
     ///////////////////// STANDARD MEMCACHE CLIENT API ////////////////////////
 
@@ -322,10 +325,9 @@ public:
     template <typename callback_t>
     std::pair<std::string, uint32_t>
     atomic_update(const std::string &key,
-                  callback_t callback_ref,
+                  callback_t &&callback,
                   const opts_t &opts = opts_t())
     {
-        auto &callback = boost::unwrap_ref(callback_ref);
         for (uint64_t iters = opts.iters? opts.iters: 64; iters; --iters) {
             if (auto res = gets(key)) {
                 // try compare and swap command
@@ -484,15 +486,14 @@ public:
      * @param opts storage commands options.
      */
     template <typename type_t>
-    typename boost::enable_if_c<
+    typename std::enable_if<
         aux::has_as<aux::cnv<type_t> >::value,
         void
     >::type set(const std::string &key,
                 const type_t &data,
                 const opts_t &opts = opts_t())
     {
-        typedef typename boost::remove_cv<type_t>::type bare_type_t;
-        set(key, aux::cnv<bare_type_t>::as(data), opts);
+        set(key, aux::cnv<std::decay_t<type_t>>::as(data), opts);
     }
 
     /** Call 'add' command on appropriate memcache server.
@@ -502,15 +503,14 @@ public:
      * @return true if value was added.
      */
     template <typename type_t>
-    typename boost::enable_if_c<
+    typename std::enable_if<
         aux::has_as<aux::cnv<type_t> >::value,
         bool
     >::type add(const std::string &key,
                 const type_t &data,
                 const opts_t &opts = opts_t())
     {
-        typedef typename boost::remove_cv<type_t>::type bare_type_t;
-        return add(key, aux::cnv<bare_type_t>::as(data), opts);
+        return add(key, aux::cnv<std::decay_t<type_t>>::as(data), opts);
     }
 
     /** Call 'replace' command on appropriate memcache server.
@@ -520,15 +520,14 @@ public:
      * @return true if value was replaced.
      */
     template <typename type_t>
-    typename boost::enable_if_c<
+    typename std::enable_if<
         aux::has_as<aux::cnv<type_t> >::value,
         bool
     >::type replace(const std::string &key,
                     const type_t &data,
                     const opts_t &opts = opts_t())
     {
-        typedef typename boost::remove_cv<type_t>::type bare_type_t;
-        return replace(key, aux::cnv<bare_type_t>::as(data), opts);
+        return replace(key, aux::cnv<std::decay_t<type_t>>::as(data), opts);
     }
 
     /** Call 'prepend' command on appropriate memcache server.
@@ -538,15 +537,14 @@ public:
      * @return true if value was prepended.
      */
     template <typename type_t>
-    typename boost::enable_if_c<
+    typename std::enable_if<
         aux::has_as<aux::cnv<type_t> >::value,
         bool
     >::type prepend(const std::string &key,
                     const type_t &data,
                     const opts_t &opts = opts_t())
     {
-        typedef typename boost::remove_cv<type_t>::type bare_type_t;
-        return prepend(key, aux::cnv<bare_type_t>::as(data), opts);
+        return prepend(key, aux::cnv<std::decay_t<type_t>>::as(data), opts);
     }
 
     /** Call 'append' command on appropriate memcache server.
@@ -556,15 +554,14 @@ public:
      * @return true if value was appended.
      */
     template <typename type_t>
-    typename boost::enable_if_c<
+    typename std::enable_if<
         aux::has_as<aux::cnv<type_t> >::value,
         bool
     >::type append(const std::string &key,
                    const type_t &data,
                    const opts_t &opts = opts_t())
     {
-        typedef typename boost::remove_cv<type_t>::type bare_type_t;
-        return append(key, aux::cnv<bare_type_t>::as(data), opts);
+        return append(key, aux::cnv<std::decay_t<type_t>>::as(data), opts);
     }
 
     /** Call 'cas' command on appropriate memcache server. For more complex
@@ -578,15 +575,14 @@ public:
      * @throws identifier is invalid.
      */
     template <typename type_t>
-    typename boost::enable_if_c<
+    typename std::enable_if<
         aux::has_as<aux::cnv<type_t> >::value,
         bool
     >::type cas(const std::string &key,
                 const type_t &data,
                 const opts_t &opts = opts_t())
     {
-        typedef typename boost::remove_cv<type_t>::type bare_type_t;
-        return cas(key, aux::cnv<bare_type_t>::as(data), opts);
+        return cas(key, aux::cnv<std::decay_t<type_t>>::as(data), opts);
     }
 
 #endif // MCACHE_DISABLE_SERIALIZATION_API
@@ -596,11 +592,9 @@ public:
     /** Dumps current state of pool to string.
      */
     std::string dump() const {
-        typedef typename server_proxies_t::server_proxy_t server_proxy_t;
         std::vector<std::string> proxies_state;
-        std::transform(proxies.begin(), proxies.end(),
-                       std::back_inserter(proxies_state),
-                       boost::bind(&server_proxy_t::state, _1));
+        for (auto &proxy: proxies)
+            proxies_state.push_back(proxy.state());
         return pool.dump(proxies_state);
     }
 
@@ -631,8 +625,7 @@ protected:
             prev = *iidx;
 
             // check if choosed server node is dead
-            typedef typename server_proxies_t::server_proxy_t server_proxy_t;
-            server_proxy_t &server = proxies[*iidx];
+            auto &server = proxies[*iidx];
             if (server.callable()) {
                 // send command to server and wait till response arrive
                 typename command_t::response_t response = server.send(command);
@@ -646,7 +639,7 @@ protected:
                         out_of_servers = false;
                         break;
                     }
-                    // pass
+                    MCACHE_FALLTHROUGH;
                 default: return response;
                 }
             }
@@ -687,13 +680,12 @@ protected:
         return responses;
     }
 
-    pool_t pool;                  //!< idxs that represents key distribution
-    server_proxies_t proxies;     //!< i/o objects for memcache servers
-    const uint32_t max_continues; //!< max continues in client loop
-    const int64_t h404_duration;  //!< duration limit for handlig 404 for get
+    pool_t pool;                   //!< idxs that represents key distribution
+    server_proxies_t proxies;      //!< i/o objects for memcache servers
+    const uint32_t max_continues;  //!< max continues in client loop
+    const seconds_t h404_duration; //!< duration limit for handlig 404 for get
 };
 
 } // namespace mc
 
 #endif /* MCACHE_CLIENT_H */
-

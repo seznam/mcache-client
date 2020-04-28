@@ -22,7 +22,6 @@
 #include <cstdlib>
 #include <iostream>
 #include <algorithm>
-#include <boost/lambda/lambda.hpp>
 
 #include <mcache/mcache.h>
 
@@ -60,7 +59,6 @@ public:
 
 int main(int argc, char **argv) {
     mc::init();
-    using boost::lambda::_1;
 
     // params
     if (argc < 2) {

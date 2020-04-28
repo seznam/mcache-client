@@ -20,7 +20,7 @@
 #ifndef MCACHE_IO_OPTS_H
 #define MCACHE_IO_OPTS_H
 
-#include <inttypes.h>
+#include <mcache/time-units.h>
 
 namespace mc {
 namespace io {
@@ -35,15 +35,54 @@ public:
     public:
         /** C'tor.
          */
-        timeouts_t(uint64_t connect = 500,
-                   uint64_t read = 1000,
-                   uint64_t write = 1000)
+        timeouts_t()
+            : connect(500ms), read(1000ms), write(1000ms)
+        {}
+
+        /** C'tor.
+         */
+        [[deprecated("convert agrs to std::chrono::milliseconds")]]
+        timeouts_t(uint64_t connect)
+            : connect(connect), read(1000ms), write(1000ms)
+        {}
+
+        /** C'tor.
+         */
+        [[deprecated("convert agrs to std::chrono::milliseconds")]]
+        timeouts_t(uint64_t connect, uint64_t read)
+            : connect(connect), read(read), write(1000ms)
+        {}
+
+        /** C'tor.
+         */
+        [[deprecated("convert agrs to std::chrono::milliseconds")]]
+        timeouts_t(uint64_t connect, uint64_t read, uint64_t write)
             : connect(connect), read(read), write(write)
         {}
 
-        uint64_t connect; //!< timeout to connect
-        uint64_t read;    //!< timeout to single read op
-        uint64_t write;   //!< timeout to single write op
+        /** C'tor.
+         */
+        timeouts_t(milliseconds_t connect)
+            : connect(connect), read(1000ms), write(1000ms)
+        {}
+
+        /** C'tor.
+         */
+        timeouts_t(milliseconds_t connect, milliseconds_t read)
+            : connect(connect), read(read), write(1000ms)
+        {}
+
+        /** C'tor.
+         */
+        timeouts_t(milliseconds_t connect,
+                   milliseconds_t read,
+                   milliseconds_t write)
+            : connect(connect), read(read), write(write)
+        {}
+
+        milliseconds_t connect; //!< timeout to connect
+        milliseconds_t read;    //!< timeout to single read op
+        milliseconds_t write;   //!< timeout to single write op
     };
 
     /** C'tor.
@@ -52,9 +91,22 @@ public:
 
     /** C'tor.
      */
+    [[deprecated("convert agrs to std::chrono::milliseconds")]]
     opts_t(uint64_t connect,
            uint64_t read,
            uint64_t write,
+           uint64_t max_connections_in_pool = 30)
+        : timeouts(milliseconds_t(connect),
+                   milliseconds_t(read),
+                   milliseconds_t(write)),
+          max_connections_in_pool(max_connections_in_pool)
+    {}
+
+    /** C'tor.
+     */
+    opts_t(milliseconds_t connect,
+           milliseconds_t read,
+           milliseconds_t write,
            uint64_t max_connections_in_pool = 30)
         : timeouts(connect, read, write),
           max_connections_in_pool(max_connections_in_pool)

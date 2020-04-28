@@ -20,7 +20,7 @@
 #ifndef MCACHE_LOCK_H
 #define MCACHE_LOCK_H
 
-#include <boost/thread/mutex.hpp>
+#include <mutex>
 #include <boost/interprocess/sync/interprocess_mutex.hpp>
 
 namespace mc {
@@ -60,8 +60,8 @@ public:
 
 namespace thread {
 
-/// boost thread mutex is suitable itself
-typedef boost::mutex lock_t;
+/// std thread mutex is suitable itself
+typedef std::mutex lock_t;
 
 } // namespace thread
 

@@ -21,8 +21,6 @@
 #include <cstdlib>
 #include <iostream>
 #include <algorithm>
-#include <boost/lambda/lambda.hpp>
-#include <boost/lambda/if.hpp>
 #include <cxxabi.h>
 
 #include <mcache/init.h>
@@ -74,9 +72,6 @@ bool mod_pool_iteration() {
 
 bool consistent_hashing_pool_iteration() {
     std::cout << __PRETTY_FUNCTION__ << ": ";
-    using boost::lambda::_1;
-    using boost::lambda::var;
-    using boost::lambda::if_then;
     mc::consistent_hashing_pool_config_t cfg;
     cfg.virtual_nodes = 20;
     std::vector<std::string> servers;
@@ -91,13 +86,13 @@ bool consistent_hashing_pool_iteration() {
     std::size_t cnt3 = 0;
     // checks whether servers distribution over the ring
     // and whether we const_iterator walks through all nodes double times
-    std::for_each(pool.begin(), pool.end(), ++var(cnt));
+    for (auto &server: pool) if (server < 100) ++cnt;
     // checks whether distribution ring contains node with zero index 40x
-    std::for_each(pool.begin(), pool.end(), if_then(_1 == 0, ++var(cnt1)));
+    for (auto &server: pool) if (server == 0) ++cnt1;
     // dtto
-    std::for_each(pool.begin(), pool.end(), if_then(_1 == 1, ++var(cnt2)));
+    for (auto &server: pool) if (server == 1) ++cnt2;
     // dtto
-    std::for_each(pool.begin(), pool.end(), if_then(_1 == 2, ++var(cnt3)));
+    for (auto &server: pool) if (server == 2) ++cnt3;
     return (cnt == 120) && (cnt1 == 40) && (cnt2 == 40) && (cnt3 == 40);
 }
 
