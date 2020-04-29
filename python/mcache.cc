@@ -536,7 +536,7 @@ public:
                         ->storage.bytes;
 
         // in-place construct the new mc::opts_t
-        new (storage) mc::opts_t(expiration, flags, cas);
+        new (storage) mc::opts_t(mc::seconds_t(expiration), flags, cas);
 
         // stash the memory chunk pointer for later use by boost.python
         data->convertible = storage;

@@ -2,10 +2,10 @@ Source: mcache
 Maintainer: Michal Bukovsky <michal.bukovsky@firma.seznam.cz>
 Section: python
 Priority: optional
-Build-Depends: python-all-dev, debhelper (>= 9~), python-support (>= 0.8.4),
-               libboost-python1.50-dev | libboost-python1.54-dev | libboost-python1.55-dev,
+Build-Depends: python-all-dev, debhelper (>= 9~),
+               libboost-python1.50-dev | libboost-python1.54-dev | libboost-python1.55-dev | libboost-python1.62-dev | libboost-python1.67-dev,
                szn-libmcache-dev, python3-all-dev, python3-setuptools,
-               python-setuptools, dh-python
+               python-setuptools, dh-python, zlib1g-dev
 Standards-Version: 3.8.4
 
 Package: szn-python-mcache

@@ -22,8 +22,6 @@
 
 #include <string>
 
-#include <iostream>
-
 namespace mc {
 namespace proto {
 namespace aux {
@@ -87,16 +85,13 @@ protected:
     deserialize_body(response_t &response) {
         std::size_t body_size = response.expected_body_size();
         if (body_size) response.set_body(connection->read(body_size));
-        std::cout << "muck" << std::endl;
     }
 
     /** Does nothing.
      */
     template <typename response_t>
     std::enable_if_t<!aux::has_set_body<response_t>::value>
-    deserialize_body(response_t &) {
-        std::cout << "fuck" << std::endl;
-    }
+    deserialize_body(response_t &) {}
 
     connection_t *connection; //!< wire to server
 };

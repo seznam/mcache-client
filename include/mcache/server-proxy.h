@@ -116,7 +116,7 @@ public:
 
     /** Returns true if server is dead.
      */
-    bool is_dead() const { return shared->dead;}
+    bool is_dead() const { return shared->dead.load();}
 
     /** Returns true if server isn't dead or if we should try make server
      * alive. It is expected that caller call send() method immediately after
@@ -124,7 +124,7 @@ public:
      */
     bool callable() {
         // if server is not marked dead return immediately
-        if (!shared->dead) return true;
+        if (!shared->dead.load()) return true;
 
         // check wether we shloud try make dead server alive
         auto now = std::chrono::system_clock::now();
@@ -143,10 +143,12 @@ public:
 
     /** Returns time duration since last dead mark.
      */
-    auto lifespan() const {
+    seconds_t lifespan() const {
         auto now = std::chrono::system_clock::now();
-        if (shared->restoration == time_point_t::min()) return now;
-        return std::max(now - (shared->restoration - restoration_interval), 0l);
+        if (shared->restoration.load() == time_point_t::min())
+            return seconds_since_epoch(now);
+        auto result = now - (shared->restoration.load() - restoration_interval);
+        return std::max(std::chrono::duration_cast<seconds_t>(result), 0s);
     }
 
     /** Call command on server and process server connection errors.
@@ -162,8 +164,8 @@ public:
             connection_ptr_t connection = connections.pick();
             proto::command_parser_t<connection_t> parser(*connection);
             response_t response = parser.send(command);
-            shared->dead = false;
-            shared->fails = 0;
+            shared->dead.store(false);
+            shared->fails.store(0);
 
             // if command does not understand repsonse then does not return the
             // connection to pool (the connection will be closed)
@@ -178,8 +180,8 @@ public:
                 if (++shared->fails >= fail_limit) {
                     auto now = std::chrono::system_clock::now();
                     connections.clear();
-                    shared->restoration = now + restoration_interval;
-                    shared->dead = true;
+                    shared->restoration.store(now + restoration_interval);
+                    shared->dead.store(true);
                     aux::log_server_is_dead(connections.server_name(),
                                             fail_limit,
                                             restoration_interval,
@@ -198,9 +200,9 @@ public:
     std::string state() const {
         return aux::make_state_string(connections.server_name(),
                                       connections.size(),
-                                      shared->restoration,
-                                      shared->fails,
-                                      shared->dead);
+                                      shared->restoration.load(),
+                                      shared->fails.load(),
+                                      shared->dead.load());
     }
 
 protected:
