@@ -1,3 +1,9 @@
+mcache (1.0.1) stable; urgency=low
+
+  * boost
+
+ -- Michal Bukovský <burlog@seznam.cz>  Wed, 29 Apr 2020 09:47:44 +0100
+
 mcache (1.0.0) stable; urgency=low
 
   * version='0.2.15'
