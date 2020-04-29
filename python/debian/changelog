@@ -1,3 +1,11 @@
+mcache (1.0.0) stable; urgency=low
+
+  * version='0.2.15'
+  * python module
+  * better changelog
+
+ -- Michal Bukovský <burlog@seznam.cz>  Wed, 29 Apr 2020 09:43:31 +0100
+
 mcache (0.2.15) stable; urgency=low
 
   * rebuild with lib v0.2.15

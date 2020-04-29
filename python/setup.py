@@ -46,7 +46,7 @@ print('checking boost_python library name: ' + boost_python)
 
 # initialize setup
 setup(name='mcache',
-      version='0.2.15',
+      version='1.0.0',
       description='Python wrapper around libmcache - memcache client library',
       author='Michal Bukovsky',
       author_email='michal.bukovsky@firma.seznam.cz',
