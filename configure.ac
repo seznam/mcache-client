@@ -16,7 +16,7 @@
 #
 
 # initialize autoconf
-AC_INIT([libmcache], [1.0.2], [michal.bukovsky@firma.seznam.cz])
+AC_INIT([libmcache], [1.0.4], [michal.bukovsky@firma.seznam.cz])
 VERSION_INFO="-version-info 0:0:0"
 
 # Enable silent builds (disable with --disable-silent-rules)
@@ -39,8 +39,8 @@ dnl This forces debian autoconf to use version 2.53
 AC_PREREQ(2.50)
 
 # replace autotools original defaults
-: ${CXXFLAGS="-W -Wall -Wextra -Wconversion -Wno-sign-conversion -fPIC -fno-omit-frame-pointer -g -ggdb -std=c++14"}
-: ${LDFLAGS="-pthread -rdynamic"}
+CXXFLAGS="$CXXFLAGS -W -Wall -Wextra -Wconversion -Wno-sign-conversion -fPIC -fno-omit-frame-pointer -g -ggdb -std=c++14"
+LDFLAGS="$LDFLAGS -pthread -rdynamic"
 
 # disable so
 AC_DISABLE_SHARED

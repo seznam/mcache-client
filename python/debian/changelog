@@ -1,3 +1,35 @@
+mcache (1.0.4) stable; urgency=low
+
+  * zlib1g-dev
+
+ -- Michal Bukovský <burlog@seznam.cz>  Wed, 29 Apr 2020 10:14:19 +0100
+
+mcache (1.0.3) stable; urgency=low
+
+  * building
+
+ -- Michal Bukovský <burlog@seznam.cz>  Wed, 29 Apr 2020 10:09:33 +0100
+
+mcache (1.0.2) stable; urgency=low
+
+  * remove python-support
+
+ -- Michal Bukovský <burlog@seznam.cz>  Wed, 29 Apr 2020 09:53:22 +0100
+
+mcache (1.0.1) stable; urgency=low
+
+  * boost
+
+ -- Michal Bukovský <burlog@seznam.cz>  Wed, 29 Apr 2020 09:47:44 +0100
+
+mcache (1.0.0) stable; urgency=low
+
+  * version='0.2.15'
+  * python module
+  * better changelog
+
+ -- Michal Bukovský <burlog@seznam.cz>  Wed, 29 Apr 2020 09:43:31 +0100
+
 mcache (0.2.15) stable; urgency=low
 
   * rebuild with lib v0.2.15
