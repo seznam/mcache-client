@@ -1,3 +1,9 @@
+mcache (1.0.3) stable; urgency=low
+
+  * building
+
+ -- Michal Bukovský <burlog@seznam.cz>  Wed, 29 Apr 2020 10:09:33 +0100
+
 mcache (1.0.2) stable; urgency=low
 
   * remove python-support
