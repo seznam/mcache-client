@@ -439,7 +439,7 @@ public:
 
     bool callable();
 
-    time_t lifespan() const;
+    time_point_t lifespan() const;
 
     template <typename command_t>
     typename command_t::response_t send(const command_t &command);

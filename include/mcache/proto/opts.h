@@ -24,6 +24,8 @@
 #include <string>
 #include <inttypes.h>
 
+#include <mcache/time-units.h>
+
 namespace mc {
 namespace proto {
 
@@ -58,7 +60,14 @@ class opts_t {
 public:
     /** C'tor.
      */
-    opts_t(time_t expiration = 0, uint32_t flags = 0, uint64_t cas = 0)
+    [[deprecated("use std::chrono::seconds(X) as first argument")]]
+    opts_t(time_t expiration, uint32_t flags = 0, uint64_t cas = 0)
+        : expiration(expiration), flags(flags), cas(cas)
+    {}
+
+    /** C'tor.
+     */
+    opts_t(seconds_t expiration = 0s, uint32_t flags = 0, uint64_t cas = 0)
         : expiration(expiration), flags(flags), cas(cas)
     {}
 
@@ -66,7 +75,7 @@ public:
     // upper bits of upper uint16_t
     enum { compress = 0x00010000, builtin_mask = compress};
 
-    time_t expiration;    //!< expiration time (secs from now at server)
+    seconds_t expiration; //!< expiration time (secs from now at server)
     uint32_t flags;       //!< flags for held value on server
     union {
         uint64_t cas;     //!< unique identifier retrieved from gets

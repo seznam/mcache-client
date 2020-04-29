@@ -172,7 +172,7 @@ std::string storage_command_t::serialize(const char *name) const {
     os << name << ' '
        << key << ' '
        << opts.flags << ' '
-       << opts.expiration << ' '
+       << opts.expiration.count() << ' '
        << data.size();
     if (opts.cas) os << ' ' << opts.cas;
     os << header_delimiter() << data << header_delimiter();

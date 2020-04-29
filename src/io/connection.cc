@@ -18,7 +18,7 @@
  */
 
 #include <string>
-#include <boost/bind.hpp>
+#include <thread>
 #include <boost/system/system_error.hpp>
 #include <boost/algorithm/string/split.hpp>
 #include <boost/range/algorithm_ext.hpp>
@@ -31,11 +31,6 @@
 #include <boost/asio/ip/udp.hpp>
 #include <boost/asio/write.hpp>
 #include <boost/asio/read.hpp>
-#include <boost/lambda/bind.hpp>
-#include <boost/lambda/lambda.hpp>
-#include <boost/make_shared.hpp>
-#include <boost/noncopyable.hpp>
-#include <boost/thread.hpp>
 #include <arpa/inet.h>
 
 #include "error.h"
@@ -54,9 +49,8 @@ namespace {
  */
 static std::pair<std::string, std::string>
 parse_address(const std::string &addr) {
-    using boost::lambda::_1;
     std::vector<std::string> parts;
-    boost::split(parts, addr, _1 == ':');
+    boost::split(parts, addr, [] (auto c) {return c == ':';});
     if (parts.size() != 2)
         throw error_t(err::argument, "invalid destination address: " + addr);
     return std::make_pair(parts[0], parts[1]);
@@ -74,11 +68,6 @@ static std::string dump(const asio::streambuf &buf) {
 } // namespace
 
 namespace tcp {
-
-// push _1 and var to current namespace
-using boost::lambda::_1;
-using boost::lambda::_2;
-using boost::lambda::var;
 
 /** Pimple class for tcp connection.
  */
@@ -111,7 +100,8 @@ public:
         // launch async connect
         set_deadline(opts.timeouts.connect);
         boost::system::error_code ec = asio::error::would_block;
-        asio::async_connect(socket, iendpoint, var(ec) = _1);
+        asio::async_connect(socket, iendpoint,
+                            [&] (auto &&v, auto &&) {ec = v;});
         do { ios.run_one();} while (ec == asio::error::would_block);
 
         // check whether socket is connected
@@ -135,7 +125,8 @@ public:
         // launch async write
         set_deadline(opts.timeouts.write);
         boost::system::error_code ec = asio::error::would_block;
-        asio::async_write(socket, asio::buffer(data), var(ec) = _1);
+        asio::async_write(socket, asio::buffer(data),
+                          [&] (auto &&v, auto &&) {ec = v;});
         do { ios.run_one();} while (ec == asio::error::would_block);
 
         // check whether data was written
@@ -163,7 +154,7 @@ public:
         set_deadline(opts.timeouts.read);
         boost::system::error_code ec = asio::error::would_block;
         asio::async_read_until(socket, input, delimiter,
-                               (var(ec) = _1, var(size) = _2));
+                               [&] (auto &&v, auto &&s) {ec = v, size = s;});
         do { ios.run_one();} while (ec == asio::error::would_block);
 
         // check whether data was read
@@ -193,7 +184,7 @@ public:
         std::size_t transfer = count - input.size();
         boost::system::error_code ec = asio::error::would_block;
         asio::async_read(socket, input, asio::transfer_at_least(transfer),
-                         var(ec) = _1);
+                         [&] (auto &&v, auto &&) {ec = v;});
         do { ios.run_one();} while (ec == asio::error::would_block);
 
         // check whether data was read
@@ -222,9 +213,11 @@ private:
     /** Set new deadline timeout.
      * @param milli timeout in milliseconds.
      */
-    void set_deadline(uint64_t milli) {
+    void set_deadline(milliseconds_t timeout) {
         timeouted = false;
-        deadline.expires_from_now(boost::posix_time::milliseconds(milli));
+        deadline.expires_from_now(
+            boost::posix_time::milliseconds(timeout.count())
+        );
     }
 
     /** Checks whether the deadline has passed and if not schedule new async
@@ -248,7 +241,7 @@ private:
             timeouted = true;
         }
         // schedule new async op
-        deadline.async_wait(boost::bind(&this_t::handle_deadline, this));
+        deadline.async_wait([&] (auto &&) {this->handle_deadline();});
     }
 
     std::string addr;              //!< destination address
@@ -261,7 +254,7 @@ private:
 };
 
 connection_t::connection_t(const std::string &addr, opts_t opts)
-    : socket(boost::make_shared<pimple_connection_t>(addr, opts))
+    : socket(std::make_shared<pimple_connection_t>(addr, opts))
 {}
 
 void connection_t::write(const std::string &data) {
@@ -280,11 +273,6 @@ std::string connection_t::read(std::size_t bytes) {
 
 namespace udp {
 
-// push _1 and var to current namespace
-using boost::lambda::_1;
-using boost::lambda::_2;
-using boost::lambda::var;
-
 /** Header of the each udp packet.
  */
 class packet_t {
@@ -292,7 +280,7 @@ public:
     /** C'tor for one packet.
      */
     packet_t()
-        : id(generate_id(boost::this_thread::get_id())),
+        : id(generate_id(std::this_thread::get_id())),
           seq(htons(1)), count(htons(1)), reserved()
     {}
 
@@ -315,7 +303,7 @@ public:
 
     /** Generate new id from thread id.
      */
-    static uint16_t generate_id(const boost::thread::id &tid) {
+    static uint16_t generate_id(const std::thread::id &tid) {
         return uint16_t(murmur3(&tid, sizeof(tid), ::rand()));
                         //uint32_t(::time(0x0) * ::getpid())));
     }
@@ -357,7 +345,8 @@ public:
         // launch async connect
         set_deadline(opts.timeouts.connect);
         boost::system::error_code ec = asio::error::would_block;
-        asio::async_connect(socket, iendpoint, var(ec) = _1);
+        asio::async_connect(socket, iendpoint,
+                            [&] (auto &&v, auto &&) {ec = v;});
         do { ios.run_one();} while (ec == asio::error::would_block);
 
         // check whether socket is connected
@@ -381,7 +370,8 @@ public:
         // launch async write
         set_deadline(opts.timeouts.write);
         boost::system::error_code ec = asio::error::would_block;
-        socket.async_send(asio::buffer(data), var(ec) = _1);
+        socket.async_send(asio::buffer(data),
+                          [&] (auto &&v, auto &&) {ec = v;});
         do { ios.run_one();} while (ec == asio::error::would_block);
 
         // check whether data was written
@@ -406,7 +396,7 @@ public:
         set_deadline(opts.timeouts.read);
         boost::system::error_code ec = asio::error::would_block;
         socket.async_receive(boost::asio::buffer(b, sizeof(b)),
-                             (var(ec) = _1, var(size) = _2));
+                             [&] (auto &&v, auto &&s) {ec = v, size = s;});
         do { ios.run_one();} while (ec == asio::error::would_block);
 
         // check whether data was read
@@ -429,9 +419,11 @@ private:
     /** Set new deadline timeout.
      * @param milli timeout in milliseconds.
      */
-    void set_deadline(uint64_t milli) {
+    void set_deadline(milliseconds_t timeout) {
         timeouted = false;
-        deadline.expires_from_now(boost::posix_time::milliseconds(milli));
+        deadline.expires_from_now(
+            boost::posix_time::milliseconds(timeout.count())
+        );
     }
 
     /** Checks whether the deadline has passed and if not schedule new async
@@ -455,7 +447,7 @@ private:
             timeouted = true;
         }
         // schedule new async op
-        deadline.async_wait(boost::bind(&this_t::handle_deadline, this));
+        deadline.async_wait([&] (auto &&) {this->handle_deadline();});
     }
 
     std::string addr;              //!< destination address
@@ -468,7 +460,7 @@ private:
 };
 
 connection_t::connection_t(const std::string &addr, opts_t opts)
-    : socket(boost::make_shared<pimple_connection_t>(addr, opts)),
+    : socket(std::make_shared<pimple_connection_t>(addr, opts)),
       buffer(), id()
 {}
 

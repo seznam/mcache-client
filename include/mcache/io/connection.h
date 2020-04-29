@@ -21,7 +21,7 @@
 #define MCACHE_IO_CONNECTION_H
 
 #include <string>
-#include <boost/shared_ptr.hpp>
+#include <memory>
 
 #include <mcache/error.h>
 #include <mcache/io/opts.h>
@@ -57,7 +57,7 @@ protected:
     class pimple_connection_t;
 
     // shortcut
-    typedef boost::shared_ptr<pimple_connection_t> pimple_connection_ptr_t;
+    using pimple_connection_ptr_t = std::shared_ptr<pimple_connection_t>;
 
     pimple_connection_ptr_t socket; //!< hides i/o implementation
 };
@@ -97,7 +97,7 @@ protected:
     class pimple_connection_t;
 
     // shortcut
-    typedef boost::shared_ptr<pimple_connection_t> pimple_connection_ptr_t;
+    using pimple_connection_ptr_t = std::shared_ptr<pimple_connection_t>;
 
     pimple_connection_ptr_t socket; //!< hides i/o implementation
     std::string buffer;             //!< buffer for incoming dat

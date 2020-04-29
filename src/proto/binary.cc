@@ -19,7 +19,6 @@
  */
 
 #include <endian.h>
-#include <boost/bind.hpp>
 #include <arpa/inet.h>
 #include <sstream>
 #include <map>
@@ -163,11 +162,14 @@ retrieve_command_t::deserialize_header(const std::string &header) const {
 
     // check response status
     if (!hdr.status) {
+        using std::placeholders::_1;
+        using std::placeholders::_2;
+        using std::placeholders::_3;
         // the response should have uint32_t flags in extras.
         if (hdr.extras_len != sizeof(uint32_t))
             return response_t(resp::invalid, "bad extras length");
         return response_t(0, hdr.body_len, hdr.cas,
-                          boost::bind(set_body, _1, _2, _3, hdr.key_len));
+                          std::bind(set_body, _1, _2, _3, hdr.key_len));
     }
     return response_t(translate_status_to_response(hdr.status), hdr.body_len);
 }
@@ -228,7 +230,7 @@ std::string storage_command_t<true>::serialize(uint8_t code) const {
     result += std::string(reinterpret_cast<char *>(&flags), sizeof(flags));
 
     // append expiration; we use flags for expiration too
-    flags = htonl(static_cast<uint32_t>(opts.expiration));
+    flags = htonl(static_cast<uint32_t>(opts.expiration.count()));
     result += std::string(reinterpret_cast<char *>(&flags), sizeof(flags));
 
     // accomplish request
@@ -285,7 +287,7 @@ std::string incr_decr_command_t::serialize(uint8_t code) const {
     result += std::string(reinterpret_cast<char *>(&val), sizeof(val));
     val = htobe64(opts.initial);
     result += std::string(reinterpret_cast<char *>(&val), sizeof(val));
-    uint32_t expire = htonl(static_cast<uint32_t>(opts.expiration));
+    uint32_t expire = htonl(static_cast<uint32_t>(opts.expiration.count()));
     result += std::string(reinterpret_cast<char *>(&expire), sizeof(expire));
 
     // accomplish request
@@ -356,7 +358,7 @@ std::string touch_command_t::serialize(uint8_t code) const {
     std::string result(reinterpret_cast<char *>(&hdr), sizeof(hdr));
 
     // extras
-    uint32_t expire = htonl(static_cast<uint32_t>(expiration));
+    uint32_t expire = htonl(static_cast<uint32_t>(expiration.count()));
     result += std::string(reinterpret_cast<char *>(&expire), sizeof(expire));
 
     // accomplish request
@@ -387,7 +389,7 @@ std::string flush_all_command_t::serialize() const {
     std::string result(reinterpret_cast<char *>(&hdr), sizeof(hdr));
 
     // extras
-    uint32_t expire = htonl(static_cast<uint32_t>(expiration));
+    uint32_t expire = htonl(static_cast<uint32_t>(expiration.count()));
     result += std::string(reinterpret_cast<char *>(&expire), sizeof(expire));
 
     // accomplish request

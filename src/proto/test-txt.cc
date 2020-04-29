@@ -18,13 +18,12 @@
  */
 
 #include <ctime>
+#include <vector>
 #include <cstdlib>
 #include <iostream>
 #include <stdexcept>
 #include <algorithm>
 #include <boost/algorithm/string/predicate.hpp>
-#include <boost/lambda/lambda.hpp>
-#include <boost/lambda/if.hpp>
 #include <cxxabi.h>
 
 #include <mcache/init.h>

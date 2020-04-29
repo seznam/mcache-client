@@ -23,7 +23,6 @@
 #include <string>
 #include <cctype>
 #include <algorithm>
-#include <boost/bind.hpp>
 
 #include "error.h"
 #include "mcache/error.h"
@@ -45,8 +44,7 @@ inline void check_key(const std::string &key) {
     // check chars
     std::string::const_iterator
         ierr = std::find_if(key.begin(), key.end(),
-                            boost::bind(::isspace, _1)
-                            || boost::bind(::iscntrl, _1));
+                            [] (char c) {return ::isspace(c) || iscntrl(c);});
     if (ierr != key.end())
         throw mc::error_t(err::bad_argument, "key contains invalid chars");
 }

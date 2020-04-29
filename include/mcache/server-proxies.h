@@ -23,7 +23,6 @@
 #include <string>
 #include <vector>
 #include <inttypes.h>
-#include <boost/noncopyable.hpp>
 #include <boost/interprocess/anonymous_shared_memory.hpp>
 
 #include <mcache/error.h>
@@ -137,7 +136,7 @@ private:
 template <
     template <typename> class shared_templ_t,
     typename server_proxy_type
-> class server_proxies_t: public boost::noncopyable {
+> class server_proxies_t {
 public:
     // publish server proxy type
     typedef server_proxy_type server_proxy_t;
@@ -167,6 +166,10 @@ public:
             new (&proxies[i]) server_proxy_t(*iaddr, &shared[i], cfg);
         }
     }
+
+    // don't copy
+    server_proxies_t(const server_proxies_t &) = delete;
+    server_proxies_t &operator=(const server_proxies_t &) = delete;
 
     /** D'tor.
      */

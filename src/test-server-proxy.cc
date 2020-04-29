@@ -21,13 +21,14 @@
 #include <cstdlib>
 #include <iostream>
 #include <algorithm>
-#include <boost/lambda/lambda.hpp>
-#include <boost/shared_ptr.hpp>
 
 #include <mcache/init.h>
 #include <mcache/server-proxy.h>
 
 namespace test {
+
+using std::chrono_literals::operator""s;
+using std::chrono_literals::operator""ms;
 
 class fake_command_t {
 public:
@@ -62,7 +63,7 @@ public:
 template <typename connection_t>
 class connections_t {
 public:
-    typedef boost::shared_ptr<connection_t> connection_ptr_t;
+    typedef std::shared_ptr<connection_t> connection_ptr_t;
     connections_t(const std::string &, const mc::io::opts_t &) {}
     connection_ptr_t pick() { return connection_ptr_t(new connection_t());}
     void push_back(connection_ptr_t) {}
@@ -73,7 +74,7 @@ public:
 template <typename connection_t>
 class throw_in_push_back_connections_t {
 public:
-    typedef boost::shared_ptr<connection_t> connection_ptr_t;
+    typedef std::shared_ptr<connection_t> connection_ptr_t;
     throw_in_push_back_connections_t(const std::string &,
                                      const mc::io::opts_t &) {}
     connection_ptr_t pick() { return connection_ptr_t(new connection_t());}
@@ -91,10 +92,10 @@ bool server_proxy_mark_dead() {
             > server_proxy_t;
 
     mc::server_proxy_config_t cfg;
-    cfg.restoration_interval = 3;
-    cfg.io_opts.timeouts.connect = 300;
-    cfg.io_opts.timeouts.read = 300;
-    cfg.io_opts.timeouts.write = 400;
+    cfg.restoration_interval = 3s;
+    cfg.io_opts.timeouts.connect = 300ms;
+    cfg.io_opts.timeouts.read = 300ms;
+    cfg.io_opts.timeouts.write = 400ms;
     server_proxy_t::shared_t shared;
     server_proxy_t proxy("server1:11211", &shared, cfg);
 
@@ -115,11 +116,11 @@ bool server_proxy_fail_limit() {
             > server_proxy_t;
 
     mc::server_proxy_config_t cfg;
-    cfg.restoration_interval = 3;
+    cfg.restoration_interval = 3s;
     cfg.fail_limit = 3;
-    cfg.io_opts.timeouts.connect = 300;
-    cfg.io_opts.timeouts.read = 300;
-    cfg.io_opts.timeouts.write = 400;
+    cfg.io_opts.timeouts.connect = 300ms;
+    cfg.io_opts.timeouts.read = 300ms;
+    cfg.io_opts.timeouts.write = 400ms;
     server_proxy_t::shared_t shared;
     server_proxy_t proxy("server1:11211", &shared, cfg);
 
@@ -144,10 +145,10 @@ bool server_proxy_raise_zombie() {
             > server_proxy_t;
 
     mc::server_proxy_config_t cfg;
-    cfg.restoration_interval = 1;
-    cfg.io_opts.timeouts.connect = 300;
-    cfg.io_opts.timeouts.read = 300;
-    cfg.io_opts.timeouts.write = 400;
+    cfg.restoration_interval = 1s;
+    cfg.io_opts.timeouts.connect = 300ms;
+    cfg.io_opts.timeouts.read = 300ms;
+    cfg.io_opts.timeouts.write = 400ms;
     server_proxy_t::shared_t shared;
     server_proxy_t proxy("server1:11211", &shared, cfg);
 
@@ -175,10 +176,10 @@ bool server_proxy_not_recover_bad_connection() {
             > server_proxy_t;
 
     mc::server_proxy_config_t cfg;
-    cfg.restoration_interval = 1;
-    cfg.io_opts.timeouts.connect = 300;
-    cfg.io_opts.timeouts.read = 300;
-    cfg.io_opts.timeouts.write = 400;
+    cfg.restoration_interval = 1s;
+    cfg.io_opts.timeouts.connect = 300ms;
+    cfg.io_opts.timeouts.read = 300ms;
+    cfg.io_opts.timeouts.write = 400ms;
     server_proxy_t::shared_t shared;
     server_proxy_t proxy("server1:11211", &shared, cfg);
 

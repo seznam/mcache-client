@@ -41,6 +41,8 @@ static const char *HEX = "0123456789abcdef";
 
 } // namespace helper
 
+using std::chrono_literals::operator""s;
+
 /** Converts character to hex number stored in string.
  * @param ch binary character.
  * @return hex number.
@@ -558,7 +560,7 @@ bool set_command_empty() {
     std::cout << __PRETTY_FUNCTION__ << ": ";
 
     // prepare request and response
-    api::set_t command("3", "abc", mc::proto::opts_t(0x0badcafe, 0xcafebabe));
+    api::set_t command("3", "abc", mc::proto::opts_t(0x0badcafes, 0xcafebabe));
     packet_t request(1, 0, "3", "\xca\xfe\xba\xbe\x0b\xad\xca\xfe", "abc");
     packet_t response;
     validation_connection_t connection(request, response);
@@ -576,7 +578,7 @@ bool set_command_unrecognized() {
     std::cout << __PRETTY_FUNCTION__ << ": ";
 
     // prepare request and response
-    api::set_t command("3", "abc", mc::proto::opts_t(0x0badcafe, 0xcafebabe));
+    api::set_t command("3", "abc", mc::proto::opts_t(0x0badcafes, 0xcafebabe));
     packet_t request(1, 0, "3", "\xca\xfe\xba\xbe\x0b\xad\xca\xfe", "abc");
     packet_t response(true);
     validation_connection_t connection(request, response);
@@ -594,7 +596,7 @@ bool set_command_error() {
     std::cout << __PRETTY_FUNCTION__ << ": ";
 
     // prepare request and response
-    api::set_t command("3", "abc", mc::proto::opts_t(0x0badcafe, 0xcafebabe));
+    api::set_t command("3", "abc", mc::proto::opts_t(0x0badcafes, 0xcafebabe));
     packet_t request(1, 0, "3", "\xca\xfe\xba\xbe\x0b\xad\xca\xfe", "abc");
     packet_t response(1, 0x81, 0, "", "error desc");
     validation_connection_t connection(request, response);
@@ -612,7 +614,7 @@ bool set_command_ok() {
     std::cout << __PRETTY_FUNCTION__ << ": ";
 
     // prepare request and response
-    api::set_t command("3", "abc", mc::proto::opts_t(0x0badcafe, 0xcafebabe));
+    api::set_t command("3", "abc", mc::proto::opts_t(0x0badcafes, 0xcafebabe));
     packet_t request(1, 0, "3", "\xca\xfe\xba\xbe\x0b\xad\xca\xfe", "abc");
     packet_t response(1, 0x00, 0);
     validation_connection_t connection(request, response);
@@ -630,7 +632,7 @@ bool set_command_not_stored() {
     std::cout << __PRETTY_FUNCTION__ << ": ";
 
     // prepare request and response
-    api::set_t command("3", "abc", mc::proto::opts_t(0x0badcafe, 0xcafebabe));
+    api::set_t command("3", "abc", mc::proto::opts_t(0x0badcafes, 0xcafebabe));
     packet_t request(1, 0, "3", "\xca\xfe\xba\xbe\x0b\xad\xca\xfe", "abc");
     packet_t response(1, 0x05, 0);
     validation_connection_t connection(request, response);
@@ -648,7 +650,7 @@ bool set_command_exists() {
     std::cout << __PRETTY_FUNCTION__ << ": ";
 
     // prepare request and response
-    api::set_t command("3", "abc", mc::proto::opts_t(0x0badcafe, 0xcafebabe));
+    api::set_t command("3", "abc", mc::proto::opts_t(0x0badcafes, 0xcafebabe));
     packet_t request(1, 0, "3", "\xca\xfe\xba\xbe\x0b\xad\xca\xfe", "abc");
     packet_t response(1, 0x02, 0);
     validation_connection_t connection(request, response);
@@ -666,7 +668,7 @@ bool set_command_not_found() {
     std::cout << __PRETTY_FUNCTION__ << ": ";
 
     // prepare request and response
-    api::set_t command("3", "abc", mc::proto::opts_t(0x0badcafe, 0xcafebabe));
+    api::set_t command("3", "abc", mc::proto::opts_t(0x0badcafes, 0xcafebabe));
     packet_t request(1, 0, "3", "\xca\xfe\xba\xbe\x0b\xad\xca\xfe", "abc");
     packet_t response(1, 0x01, 0);
     validation_connection_t connection(request, response);
@@ -685,7 +687,7 @@ bool cas_command_ok() {
 
     // prepare request and response
     char eigth_zeros[] = {'\0', '\0', '\0', '\0', '\0', '\0', '\0', '\0'};
-    mc::proto::opts_t opts(0, 0, 0xdeadc0de);
+    mc::proto::opts_t opts(0s, 0, 0xdeadc0de);
     api::set_t command("3", "abc", opts);
     packet_t request(1, 0xdeadc0de, "3", std::string(eigth_zeros, 8), "abc");
     packet_t response(1, 0x00, 0);
@@ -705,7 +707,7 @@ bool cas_command_exists() {
 
     // prepare request and response
     char eigth_zeros[] = {'\0', '\0', '\0', '\0', '\0', '\0', '\0', '\0'};
-    mc::proto::opts_t opts(0, 0, 0xdeadc0de);
+    mc::proto::opts_t opts(0s, 0, 0xdeadc0de);
     api::set_t command("3", "abc", opts);
     packet_t request(1, 0xdeadc0de, "3", std::string(eigth_zeros, 8), "abc");
     packet_t response(1, 0x02, 0);
@@ -724,7 +726,7 @@ bool prepend_command_ok() {
     std::cout << __PRETTY_FUNCTION__ << ": ";
 
     // prepare request and response
-    api::prepend_t command("3", "abc", mc::proto::opts_t(0x0badcafe));
+    api::prepend_t command("3", "abc", mc::proto::opts_t(0x0badcafes));
     packet_t request(15, 0, "3", "", "abc");
     packet_t response(15, 0x00, 0);
     validation_connection_t connection(request, response);
@@ -742,7 +744,7 @@ bool incr_command_empty() {
     std::cout << __PRETTY_FUNCTION__ << ": ";
 
     // prepare request and response
-    mc::proto::opts_t opts(0x0badcafe, 0, 0xdeadc0de);
+    mc::proto::opts_t opts(0x0badcafes, 0, 0xdeadc0de);
     std::string extras("\x00\x00\x00\x00\xde\xad\xbe\xef"
                        "\x00\x00\x00\x00\xde\xad\xc0\xde"
                        "\x0b\xad\xca\xfe", 20);
@@ -764,7 +766,7 @@ bool incr_command_unrecognized() {
     std::cout << __PRETTY_FUNCTION__ << ": ";
 
     // prepare request and response
-    mc::proto::opts_t opts(0x0badcafe, 0, 0xdeadc0de);
+    mc::proto::opts_t opts(0x0badcafes, 0, 0xdeadc0de);
     std::string extras("\x00\x00\x00\x00\xde\xad\xbe\xef"
                        "\x00\x00\x00\x00\xde\xad\xc0\xde"
                        "\x0b\xad\xca\xfe", 20);
@@ -786,7 +788,7 @@ bool incr_command_error() {
     std::cout << __PRETTY_FUNCTION__ << ": ";
 
     // prepare request and response
-    mc::proto::opts_t opts(0x0badcafe, 0, 0xdeadc0de);
+    mc::proto::opts_t opts(0x0badcafes, 0, 0xdeadc0de);
     std::string extras("\x00\x00\x00\x00\xde\xad\xbe\xef"
                        "\x00\x00\x00\x00\xde\xad\xc0\xde"
                        "\x0b\xad\xca\xfe", 20);
@@ -808,7 +810,7 @@ bool incr_command_bad_body() {
     std::cout << __PRETTY_FUNCTION__ << ": ";
 
     // prepare request and response
-    mc::proto::opts_t opts(0x0badcafe, 0, 0xdeadc0de);
+    mc::proto::opts_t opts(0x0badcafes, 0, 0xdeadc0de);
     std::string extras("\x00\x00\x00\x00\xde\xad\xbe\xef"
                        "\x00\x00\x00\x00\xde\xad\xc0\xde"
                        "\x0b\xad\xca\xfe", 20);
@@ -830,7 +832,7 @@ bool incr_command_ok() {
     std::cout << __PRETTY_FUNCTION__ << ": ";
 
     // prepare request and response
-    mc::proto::opts_t opts(0x0badcafe, 0, 0xdeadc0de);
+    mc::proto::opts_t opts(0x0badcafes, 0, 0xdeadc0de);
     std::string extras("\x00\x00\x00\x00\xde\xad\xbe\xef"
                        "\x00\x00\x00\x00\xde\xad\xc0\xde"
                        "\x0b\xad\xca\xfe", 20);
@@ -852,7 +854,7 @@ bool incr_command_not_found() {
     std::cout << __PRETTY_FUNCTION__ << ": ";
 
     // prepare request and response
-    mc::proto::opts_t opts(0x0badcafe, 0, 0xdeadc0de);
+    mc::proto::opts_t opts(0x0badcafes, 0, 0xdeadc0de);
     std::string extras("\x00\x00\x00\x00\xde\xad\xbe\xef"
                        "\x00\x00\x00\x00\xde\xad\xc0\xde"
                        "\x0b\xad\xca\xfe", 20);
@@ -964,7 +966,7 @@ bool touch_command_empty() {
     std::cout << __PRETTY_FUNCTION__ << ": ";
 
     // prepare request and response
-    api::touch_t command("3", 0xdeadbeef);
+    api::touch_t command("3", 0xdeadbeefs);
     packet_t request(28, 0, "3", "\xde\xad\xbe\xef");
     packet_t response;
     validation_connection_t connection(request, response);
@@ -982,7 +984,7 @@ bool touch_command_unrecognized() {
     std::cout << __PRETTY_FUNCTION__ << ": ";
 
     // prepare request and response
-    api::touch_t command("3", 0xdeadbeef);
+    api::touch_t command("3", 0xdeadbeefs);
     packet_t request(28, 0, "3", "\xde\xad\xbe\xef");
     packet_t response(true);
     validation_connection_t connection(request, response);
@@ -1000,7 +1002,7 @@ bool touch_command_error() {
     std::cout << __PRETTY_FUNCTION__ << ": ";
 
     // prepare request and response
-    api::touch_t command("3", 0xdeadbeef);
+    api::touch_t command("3", 0xdeadbeefs);
     packet_t request(28, 0, "3", "\xde\xad\xbe\xef");
     packet_t response(28, 0x81, 0);
     validation_connection_t connection(request, response);
@@ -1018,7 +1020,7 @@ bool touch_command_ok() {
     std::cout << __PRETTY_FUNCTION__ << ": ";
 
     // prepare request and response
-    api::touch_t command("3", 0xdeadbeef);
+    api::touch_t command("3", 0xdeadbeefs);
     packet_t request(28, 0, "3", "\xde\xad\xbe\xef");
     packet_t response(28, 0x00, 0);
     validation_connection_t connection(request, response);
@@ -1036,7 +1038,7 @@ bool flush_all_command_empty() {
     std::cout << __PRETTY_FUNCTION__ << ": ";
 
     // prepare request and response
-    api::flush_all_t command(0xdeadbeef);
+    api::flush_all_t command(0xdeadbeefs);
     packet_t request(8, 0, "", "\xde\xad\xbe\xef");
     packet_t response;
     validation_connection_t connection(request, response);
@@ -1054,7 +1056,7 @@ bool flush_all_command_unrecognized() {
     std::cout << __PRETTY_FUNCTION__ << ": ";
 
     // prepare request and response
-    api::flush_all_t command(0xdeadbeef);
+    api::flush_all_t command(0xdeadbeefs);
     packet_t request(8, 0, "", "\xde\xad\xbe\xef");
     packet_t response(true);
     validation_connection_t connection(request, response);
@@ -1072,7 +1074,7 @@ bool flush_all_command_error() {
     std::cout << __PRETTY_FUNCTION__ << ": ";
 
     // prepare request and response
-    api::flush_all_t command(0xdeadbeef);
+    api::flush_all_t command(0xdeadbeefs);
     packet_t request(8, 0, "", "\xde\xad\xbe\xef");
     packet_t response(28, 0x81, 0);
     validation_connection_t connection(request, response);
@@ -1090,7 +1092,7 @@ bool flush_all_command_ok() {
     std::cout << __PRETTY_FUNCTION__ << ": ";
 
     // prepare request and response
-    api::flush_all_t command(0xdeadbeef);
+    api::flush_all_t command(0xdeadbeefs);
     packet_t request(8, 0, "", "\xde\xad\xbe\xef");
     packet_t response(28, 0x00, 0);
     validation_connection_t connection(request, response);

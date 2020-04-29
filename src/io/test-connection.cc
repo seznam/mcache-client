@@ -17,15 +17,14 @@
  *                  First draft.
  */
 
+#include <map>
 #include <ctime>
 #include <cstdlib>
+#include <sstream>
 #include <iostream>
 #include <algorithm>
-#include <boost/lambda/lambda.hpp>
-#include <boost/shared_ptr.hpp>
+#include <functional>
 #include <boost/algorithm/string/trim.hpp>
-#include <boost/algorithm/string/predicate.hpp>
-#include <boost/function.hpp>
 
 #ifdef HAVE_READLINE_H
 #include <readline/readline.h>
@@ -42,22 +41,24 @@
 
 namespace {
 
+using std::chrono_literals::operator""s;
+
 class dispatcher_t {
 public:
-    typedef std::map<
-                std::string,
-                boost::function<bool (mc::io::tcp::connection_t &,
-                                      const std::string &)>
-            > handlers_t;
+    using handlers_t = std::map<
+        std::string,
+        std::function<bool (mc::io::tcp::connection_t &, const std::string &)>
+    >;
 
     handlers_t::value_type::second_type
     operator[](const std::string &cmd) const {
-        using boost::lambda::constant;
         handlers_t::const_iterator ihandler = handlers.find(cmd);
-        if (ihandler != handlers.end()) return ihandler->second;
-        return ((std::cout << constant("unknown command: ")
-                           << constant(cmd) << '\n'),
-                constant(false));
+        if (ihandler != handlers.end())
+            return ihandler->second;
+        return [=] (auto &&, auto &&) {
+            std::cout << "unknown command: " << cmd << '\n';
+            return false;
+        };
     }
 
     void insert(const std::string &cmd,
@@ -105,13 +106,12 @@ public:
         uint32_t flags = 0;
         uint64_t cas = 0;
         is >> key >> data >> expiration >> flags >> cas;
-        mc::proto::opts_t opts(expiration, flags, cas);
+        mc::proto::opts_t opts(mc::seconds_t(expiration), flags, cas);
 
         // run
         typedef mc::proto::command_parser_t<mc::io::tcp::connection_t> parser_t;
         parser_t parser(connection);
-        typename command_t::response_t response =
-            parser.send(command_t(key, data, opts));
+        auto response = parser.send(command_t(key, data, opts));
         if (!response) throw response.exception();
         std::cout << "response = {" << std::endl
                   << "    status = " << response.code() << std::endl
@@ -136,7 +136,7 @@ public:
         // run
         typedef mc::proto::command_parser_t<mc::io::tcp::connection_t> parser_t;
         parser_t parser(connection);
-        mc::proto::opts_t opts(0, 0, initial);
+        mc::proto::opts_t opts(0s, 0, initial);
         typename command_t::response_t
             response = parser.send(command_t(key, value, opts));
         if (!response) throw response.exception();
@@ -157,7 +157,7 @@ public:
         // parse
         std::istringstream is(line);
         std::string key;
-        time_t value = 0;
+        uint64_t value = 0;
         is >> key >> value;
 
         // run
@@ -239,9 +239,6 @@ HELP[] = "help\t\t\t\t\tprints this help\n"
 
 int main(int argc, char **argv) {
     mc::init();
-    using boost::lambda::_1;
-    using boost::lambda::_2;
-    using boost::lambda::constant;
 
     // read destionation address
     std::string dst;
@@ -262,6 +259,7 @@ int main(int argc, char **argv) {
         } else if (strcmp(argv[2], "-t") == 0) {
             binary = false;
             dst = argv[1];
+        }
 
     } else if (argc == 2) dst = argv[1];
 
@@ -275,10 +273,10 @@ int main(int argc, char **argv) {
 
     // prepare dispatch table
     dispatcher_t dispatcher;
-    dispatcher.insert("quit", constant(true));
-    dispatcher.insert("q", constant(true));
-    dispatcher.insert("exit", constant(true));
-    dispatcher.insert("help", (std::cout << constant(HELP), constant(false)));
+    dispatcher.insert("quit", [] (auto &&, auto &&) {return true;});
+    dispatcher.insert("q", [] (auto &&, auto &&) {return true;});
+    dispatcher.insert("exit", [] (auto &&, auto &&) {return true;});
+    dispatcher.insert("help", [] (auto &&, auto &&) {std::cout << HELP; return false;});
     if (binary) register_methods<mc::proto::bin::api>(dispatcher);
     else register_methods<mc::proto::txt::api>(dispatcher);
 

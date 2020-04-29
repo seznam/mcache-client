@@ -24,6 +24,7 @@
 #include <arpa/inet.h>
 #include <string>
 
+#include <mcache/time-units.h>
 #include <mcache/proto/opts.h>
 #include <mcache/proto/response.h>
 #include <mcache/proto/zlib.h>
@@ -192,7 +193,17 @@ class touch_command_t: public command_t {
 public:
     /** C'tor.
      */
+    [[deprecated("use std::chrono::seconds(X) as second argument")]]
     touch_command_t(const std::string &key, time_t expiration)
+        : command_t(static_cast <uint16_t>(key.size()),
+                    static_cast <uint32_t>(key.size() + extras_length),
+                    static_cast <uint8_t>(extras_length)),
+          key(key), expiration(expiration)
+    {}
+
+    /** C'tor.
+     */
+    touch_command_t(const std::string &key, seconds_t expiration)
         : command_t(static_cast <uint16_t>(key.size()),
                     static_cast <uint32_t>(key.size() + extras_length),
                     static_cast <uint8_t>(extras_length)),
@@ -210,7 +221,7 @@ public:
     const std::string key; //!< for which key the expiration should be changed
 
 protected:
-    time_t expiration;  //!< new expiration value
+    seconds_t expiration;  //!< new expiration value
 
 private:
     /** The length of extras. */
@@ -224,7 +235,17 @@ class flush_all_command_t: public command_t {
 public:
     /** C'tor.
      */
+    [[deprecated("use std::chrono::seconds(X) as second argument")]]
     explicit flush_all_command_t(time_t expiration)
+        : command_t(static_cast <uint16_t>(0),
+                    static_cast <uint32_t>(0 + extras_length),
+                    static_cast <uint8_t>(extras_length)),
+          expiration(expiration)
+    {}
+
+    /** C'tor.
+     */
+    explicit flush_all_command_t(seconds_t expiration)
         : command_t(static_cast <uint16_t>(0),
                     static_cast <uint32_t>(0 + extras_length),
                     static_cast <uint8_t>(extras_length)),
@@ -240,7 +261,7 @@ public:
     std::string serialize() const;
 
 protected:
-    time_t expiration;  //!< new expiration value
+    seconds_t expiration;  //!< new expiration value
 
 private:
     /** The length of extras. */
