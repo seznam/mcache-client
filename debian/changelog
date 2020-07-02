@@ -1,3 +1,21 @@
+szn-libmcache (1.0.5) stable; urgency=low
+
+  * make mutex mutable (#38)
+  * #! python1.0.5
+  * fix extracting timeouts
+  * #! python1.0.4
+  * zlib1g-dev
+  * #! python1.0.3
+  * building
+  * #! python1.0.2
+  * remove python-support
+  * #! python1.0.1
+  * boost
+  * #! python1.0.0
+  * version='0.2.15'
+
+ -- Michal Bukovský <burlog@seznam.cz>  Thu, 02 Jul 2020 12:37:49 +0100
+
 szn-libmcache (1.0.4) stable; urgency=low
 
   * python module
