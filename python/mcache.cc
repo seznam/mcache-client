@@ -63,7 +63,7 @@ namespace {
 
 /** Tries import module and if module was not found then None is returned.
  */
-static boost::python::object try_import(const char *module) {
+boost::python::object try_import(const char *module) {
     try {
         return boost::python::import(module);
 
@@ -76,7 +76,7 @@ static boost::python::object try_import(const char *module) {
 
 /** Returns std::string as python 'bytes' object.
  */
-static boost::python::object as_python_bytes(const std::string &bytes) {
+boost::python::object as_python_bytes(const std::string &bytes) {
     boost::python::handle<>
         handle(MC_PyBytes_FromStringAndSize(bytes.data(), bytes.size()));
     return boost::python::object(handle);
@@ -85,11 +85,39 @@ static boost::python::object as_python_bytes(const std::string &bytes) {
 /** Sets result from entry in dict if exists.
  */
 template <typename type_t>
-static void set_from(type_t &res,
-                     const boost::python::object &dict,
-                     const char *name)
-{
-    if (dict.contains(name)) res = boost::python::extract<type_t>(dict[name]);
+void set_from(
+    type_t &res,
+    const boost::python::object &dict,
+    const char *name
+) {
+    if (dict.contains(name))
+        res = boost::python::extract<type_t>(dict[name]);
+}
+
+/** Sets result from entry in dict if exists.
+ */
+void set_from(
+    std::chrono::duration<int64_t, std::milli> &res,
+    const boost::python::object &dict,
+    const char *name
+) {
+    if (dict.contains(name))
+        res = std::chrono::duration<int64_t, std::milli>(
+            boost::python::extract<int64_t>(dict[name])
+        );
+}
+
+/** Sets result from entry in dict if exists.
+ */
+void set_from(
+    std::chrono::duration<int64_t> &res,
+    const boost::python::object &dict,
+    const char *name
+) {
+    if (dict.contains(name))
+        res = std::chrono::duration<int64_t>(
+            boost::python::extract<int64_t>(dict[name])
+        );
 }
 
 } // namespace
