@@ -189,10 +189,10 @@ protected:
     // shortcut
     typedef tbb::concurrent_bounded_queue<connection_ptr_t> queue_t;
 
-    std::mutex mutex;   //!< pool mutex
-    std::string addr;   //!< destination address
-    opts_t opts;        //!< io options
-    queue_t queue;      //!< queue of available connections
+    mutable std::mutex mutex; //!< pool mutex
+    std::string addr;         //!< destination address
+    opts_t opts;              //!< io options
+    queue_t queue;            //!< queue of available connections
 };
 #endif /* HAVE_LIBTBB */
 
@@ -261,7 +261,7 @@ public:
 protected:
     std::string addr;                   //!< destination address
     opts_t opts;                        //!< io options
-    std::mutex mutex;                   //!< pool mutex
+    mutable std::mutex mutex;           //!< pool mutex
     std::stack<connection_ptr_t> stack; //!< stack of available connections
 };
 
