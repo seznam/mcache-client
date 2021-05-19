@@ -181,7 +181,6 @@ AC_CONFIG_FILES([Makefile
                  include/mcache/hash/Makefile
                  include/mcache/io/Makefile
                  include/mcache/proto/Makefile
-                 version
                  libmcache.pc])
 
 AC_OUTPUT()
