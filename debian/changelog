@@ -1,3 +1,11 @@
+szn-libmcache (1.0.6) stable; urgency=low
+
+  * deps
+  * fix
+  * remove version.in
+
+ -- Michal Bukovský <burlog@seznam.cz>  Thu, 04 Nov 2021 19:35:34 +0100
+
 szn-libmcache (1.0.5) stable; urgency=low
 
   * make mutex mutable (#38)
