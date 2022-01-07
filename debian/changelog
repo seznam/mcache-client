@@ -1,3 +1,9 @@
+szn-libmcache (1.0.7) stable; urgency=low
+
+  * some typedeps
+
+ -- Michal Bukovský <burlog@seznam.cz>  Fri, 07 Jan 2022 14:57:51 +0100
+
 szn-libmcache (1.0.6) stable; urgency=low
 
   * deps
