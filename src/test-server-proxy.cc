@@ -21,6 +21,7 @@
 #include <cstdlib>
 #include <iostream>
 #include <algorithm>
+#include <memory>
 
 #include <mcache/init.h>
 #include <mcache/server-proxy.h>
@@ -216,4 +217,3 @@ int main(int, char **) {
     check(test::server_proxy_not_recover_bad_connection());
     return check.fails;
 }
-

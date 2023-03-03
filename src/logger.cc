@@ -21,6 +21,7 @@
 #include <string>
 #include <cstdarg>
 #include <dlfcn.h>
+#include <time.h>
 #include <cstdio>
 
 #include "error.h"
@@ -77,4 +78,3 @@ public:
 } initializer;
 
 } // namespace mc
-
