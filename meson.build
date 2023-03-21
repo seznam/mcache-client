@@ -2,8 +2,9 @@ project('libmcache', 'cpp',
        version: '1.0.5',
        default_options: [
          'cpp_std=c++14',
-          'warning_level=3',
-          'buildtype=debugoptimized'
+         'warning_level=3',
+         'buildtype=debugoptimized',
+         'wrap_mode=nofallback'
        ])
 
 pkg = import('pkgconfig')
