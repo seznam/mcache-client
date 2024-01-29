@@ -10,9 +10,7 @@ project('libmcache', 'cpp',
 pkg = import('pkgconfig')
 
 lib_deps = [
-  dependency('boost-system'),
-  dependency('boost-thread'),
-  dependency('readline'),
+  dependency('boost', modules: ['system', 'thread']),
   dependency('zlib'),
   dependency('tbb')
 ]
@@ -97,40 +95,30 @@ test_pool = executable('test-pool', 'src/pool/test-pool.cc',
 
 test_server_proxy = executable('test-server-proxy',
                                'src/test-server-proxy.cc',
-                               link_with: lib,
-                               dependencies: lib_deps,
-                               include_directories: test_inc)
+                               dependencies: libmcache_dep)
 
 test_connections = executable('test-connections',
                               'src/io/test-connections.cc',
-                              link_with: lib,
-                              dependencies: lib_deps,
-                              include_directories: test_inc)
+                              dependencies: libmcache_dep)
+
+readline = dependency('readline')
 
 test_connection = executable('test-connection',
                              'src/io/test-connection.cc',
-                             link_with: lib,
-                             dependencies: lib_deps,
-                             include_directories: test_inc)
+                             dependencies: [libmcache_dep, readline])
 
 test_txt = executable('test-txt',
                       'src/proto/test-txt.cc',
-                      link_with: lib,
-                      dependencies: lib_deps,
-                      include_directories: test_inc)
+                      dependencies: libmcache_dep)
 
 test_synchronization = executable('test-synchronization',
                                   'src/test-synchronization.cc',
-                                  link_with: lib,
-                                  dependencies: lib_deps,
-                                  include_directories: test_inc)
+                                  dependencies: libmcache_dep)
 
 
 test_binary = executable('test-binary',
                          'src/proto/test-binary.cc',
-                         link_with: lib,
-                         dependencies: lib_deps,
-                         include_directories: test_inc)
+                         dependencies: libmcache_dep)
 
 test('test-pool', test_pool)
 test('test-server-proxy', test_server_proxy)
