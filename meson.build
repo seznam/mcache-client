@@ -26,21 +26,7 @@ add_project_arguments('-DGIT_REVISION="' + git_rev + '"', language: 'cpp')
 add_project_arguments('-DHAVE_READLINE_H', language: 'cpp')
 add_project_arguments('-DHAVE_LIBTBB', language: 'cpp')
 
-headers = files('''
-    include/mcache/client.h
-    include/mcache/error.h
-    include/mcache/hash.h
-    include/mcache/init.h
-    include/mcache/lock.h
-    include/mcache/logger.h
-    include/mcache/mcache.h
-    include/mcache/server-proxies.h
-    include/mcache/server-proxy.h
-    include/mcache/conversion.h
-    include/mcache/has-member.h
-    include/mcache/time-units.h
-    include/mcache/fallthrough.h
-'''.split())
+subdir('include')
 
 sources = files('''
     src/mcache.cc
