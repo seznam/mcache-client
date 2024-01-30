@@ -26,6 +26,12 @@ add_project_arguments('-DGIT_REVISION="' + git_rev + '"', language: 'cpp')
 add_project_arguments('-DHAVE_READLINE_H', language: 'cpp')
 add_project_arguments('-DHAVE_LIBTBB', language: 'cpp')
 
+# asio stuff
+add_project_arguments('-DBOOST_ASIO_DISABLE_MOVE', language : 'cpp')
+add_project_arguments('-DBOOST_ASIO_DISABLE_STD_ARRAY', language : 'cpp')
+add_project_arguments('-DBOOST_ASIO_DISABLE_STD_ATOMIC', language : 'cpp')
+add_project_arguments('-DBOOST_ASIO_DISABLE_STD_CHRONO', language : 'cpp')
+
 subdir('include')
 
 sources = files('''
