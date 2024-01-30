@@ -27,22 +27,24 @@
 
 namespace mc {
 
-#define LOG(LEVEL, FORMAT...) do {                                        \
-    if (mc::logger)                                                       \
-        (*mc::logger)(LEVEL, __FILE__, __FUNCTION__, __LINE__, FORMAT);   \
+#define LOG(LEVEL, ...) do {                                                   \
+        if (mc::logger)                                                        \
+            (*mc::logger)(LEVEL, __FILE__, __FUNCTION__, __LINE__,             \
+                          __VA_ARGS__);                                        \
 } while (false)
 
 #ifdef DEBUG
 #ifdef DBG
 #undef DBG
 #endif
-#define DBG(LEVEL, FORMAT...) do {                                        \
-    if (mc::logger)                                                       \
-        (*mc::logger)(LEVEL, __FILE__, __FUNCTION__, __LINE__, FORMAT);   \
+#define DBG(LEVEL, ...) do {                                                   \
+        if (mc::logger)                                                        \
+            (*mc::logger)(LEVEL, __FILE__, __FUNCTION__, __LINE__,             \
+                          __VA_ARGS__);                                        \
 } while (false)
 #else
 #ifndef DBG
-#define DBG(LEVEL, FORMAT...) {}
+#define DBG(LEVEL, ...) {}
 #endif
 #endif
 
@@ -99,4 +101,3 @@ inline std::string escape(const std::string &str) {
 } // namespace mc
 
 #endif /* MCACHE_SRC_ERROR_H */
-

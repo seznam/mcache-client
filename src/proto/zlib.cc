@@ -19,6 +19,8 @@
 
 #include <vector>
 #include <limits>
+#include <cstdint>
+
 #include <zlib.h>
 
 #include "mcache/error.h"
@@ -86,4 +88,3 @@ uncompress(const std::string &data,
 } // namespace zlib
 } // namespace proto
 } // namespace mc
-

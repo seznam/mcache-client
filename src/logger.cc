@@ -21,7 +21,9 @@
 #include <string>
 #include <cstdarg>
 #include <dlfcn.h>
+#include <time.h>
 #include <cstdio>
+#include <ctime>
 
 #include "error.h"
 #include "mcache/logger.h"
@@ -77,4 +79,3 @@ public:
 } initializer;
 
 } // namespace mc
-

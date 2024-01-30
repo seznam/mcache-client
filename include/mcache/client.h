@@ -124,6 +124,9 @@ template <
     typename impl
 > class client_template_t {
 public:
+    // types
+    typedef impl api;
+
     /** C'tor.
      */
     client_template_t(const std::vector<std::string> &addresses,
