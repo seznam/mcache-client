@@ -23,6 +23,7 @@
 #include <dlfcn.h>
 #include <time.h>
 #include <cstdio>
+#include <ctime>
 
 #include "error.h"
 #include "mcache/logger.h"
