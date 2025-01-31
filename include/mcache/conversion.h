@@ -173,6 +173,40 @@ struct cnv<
     }
 };
 
+namespace aux {
+
+struct placeholder_t {};
+
+} // namespace aux
+
+/** Implement those two methods and you can use automatic conversion.
+ */
+std::string to_mcache(aux::placeholder_t);
+void from_mcache(const std::string &, aux::placeholder_t &);
+
+/** Uses to_mcache/from_mcache for conversions.
+ */
+template <typename type_t>
+struct cnv<
+           type_t,
+           decltype(
+               to_mcache(std::declval<type_t>()),
+               from_mcache(
+                   std::declval<std::string>(),
+                   std::declval<type_t &>()
+               )
+           )
+       > {
+    static type_t as(const std::string &data) {
+        type_t result;
+        from_mcache(data, result);
+        return result;
+    }
+    static std::string as(const type_t &data) {
+        return to_mcache(data);
+    }
+};
+
 } // namespace aux
 } // namespace mc
 
