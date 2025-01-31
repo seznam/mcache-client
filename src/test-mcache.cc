@@ -82,7 +82,6 @@ int main(int argc, char **argv) {
 
         client.set("three", (char)3);
         client.set("three", (wchar_t)3);
-        client.set("three", (unsigned wchar_t)3);
         client.set("three", (unsigned char)3);
         client.set("three", (signed int)3);
         client.set("three", (bool)3);

@@ -20,7 +20,7 @@
 #include <ctime>
 #include <cstdlib>
 #include <iostream>
-#include <algorithm>
+#include <memory>
 
 #include <mcache/init.h>
 #include <mcache/server-proxy.h>

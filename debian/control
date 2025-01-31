@@ -1,8 +1,13 @@
 Source: szn-libmcache
 Priority: extra
 Maintainer: Michal Bukovsky <michal.bukovsky@firma.seznam.cz>
-Build-Depends: debhelper (>= 9~), autotools-dev, pkg-config,
-               dh-autoreconf, git, libtbb-dev, zlib1g-dev,
+Build-Depends: debhelper (>= 9~),
+               build-essential,
+               pkg-config,
+               meson,
+               git,
+               libtbb-dev,
+               zlib1g-dev,
                libboost-dev,
                libboost-thread-dev,
                libboost-system-dev
@@ -11,8 +16,11 @@ Standards-Version: 3.8.4
 Package: szn-libmcache-dev
 Section: libdevel
 Architecture: any
-Depends: autotools-dev, pkg-config,
+Depends: meson,
+         build-essential,
+         pkg-config,
          libtbb-dev,
+         zlib1g-dev,
          libboost-dev,
          libboost-thread-dev,
          libboost-system-dev

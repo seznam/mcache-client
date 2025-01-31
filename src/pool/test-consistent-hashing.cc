@@ -36,7 +36,7 @@ class consistent_hashing_pool_t:
 {
 public:
     consistent_hashing_pool_t(const std::vector<std::string> &addresses)
-        : mc::consistent_hashing_pool_t<mc::murmur3_t>(addresses, 200)
+        : mc::consistent_hashing_pool_t<mc::murmur3_t>(addresses)
     {}
 
     void remove(const std::string &addr) {
