@@ -18,12 +18,11 @@
  */
 
 #include <unistd.h>
-#include <string>
 #include <cstdarg>
 #include <dlfcn.h>
 #include <cstdio>
+#include <ctime>
 
-#include "error.h"
 #include "mcache/logger.h"
 
 namespace mc {

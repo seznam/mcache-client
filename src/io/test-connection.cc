@@ -22,16 +22,11 @@
 #include <cstdlib>
 #include <sstream>
 #include <iostream>
-#include <algorithm>
 #include <functional>
 #include <boost/algorithm/string/trim.hpp>
 
-#ifdef HAVE_READLINE_H
 #include <readline/readline.h>
 #include <readline/history.h>
-#else
-#error install libreadline and reconfigure
-#endif /* HAVE_READLINE_H */
 
 #include <mcache/init.h>
 #include <mcache/io/connection.h>

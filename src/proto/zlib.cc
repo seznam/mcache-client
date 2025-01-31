@@ -17,6 +17,7 @@
  *                  First draft.
  */
 
+#include <cstdint>
 #include <vector>
 #include <limits>
 #include <zlib.h>
