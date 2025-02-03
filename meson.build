@@ -10,6 +10,11 @@ project(
   ]
 )
 
+add_project_arguments('-DBOOST_ASIO_DISABLE_MOVE', language : 'cpp')
+add_project_arguments('-DBOOST_ASIO_DISABLE_STD_ARRAY', language : 'cpp')
+add_project_arguments('-DBOOST_ASIO_DISABLE_STD_ATOMIC', language : 'cpp')
+add_project_arguments('-DBOOST_ASIO_DISABLE_STD_CHRONO', language : 'cpp')
+
 dependencies = [
   dependency('threads'),
   dependency('dl', required: false),
