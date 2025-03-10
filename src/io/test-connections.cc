@@ -88,7 +88,6 @@ bool connections_get() {
     return false;
 }
 
-
 template <typename connections_t>
 bool connections_capacity() {
     std::cout << __PRETTY_FUNCTION__ << ": ";
