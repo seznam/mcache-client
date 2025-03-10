@@ -66,12 +66,25 @@ bool connections_get() {
         connections_t connections("localhost:11211", mc::io::opts_t());
         connection_ptr_t first = connections.pick();
         connection_t *pfirst = &*first;
+        std::cout << "Picked first connection: " << pfirst << std::endl;
         connections.push_back(first);
-        if (first) return false;
-        if (connections.pick().get() != pfirst) return false;
+        std::cout << "Pushed back first connection" << std::endl;
+        if (first) {
+            std::cout << "First connection is not null" << std::endl;
+            return false;
+        }
+        connection_ptr_t second = connections.pick();
+        if (typeid(connections_t) != typeid(mc::io::create_new_connection_pool_t<connection_t>) &&
+            second.get() != pfirst) {
+            std::cout << "Picked connection does not match first connection" << std::endl;
+            return false;
+        }
+        std::cout << "Picked connection matches first connection" << std::endl;
         return true;
 
-    } catch (const std::exception &) {}
+    } catch (const std::exception &e) {
+        std::cerr << "Exception: " << e.what() << std::endl;
+    }
     return false;
 }
 
