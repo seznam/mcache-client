@@ -24,7 +24,6 @@
 #include <boost/range/algorithm_ext.hpp>
 #include <boost/asio/deadline_timer.hpp>
 #include <boost/asio/read_until.hpp>
-#include <boost/asio/io_service.hpp>
 #include <boost/asio/streambuf.hpp>
 #include <boost/asio/connect.hpp>
 #include <boost/asio/ip/tcp.hpp>
@@ -60,7 +59,8 @@ parse_address(const std::string &addr) {
 /** Dumps buffer data and escape nonprinable characters.
  */
 static std::string dump(const asio::streambuf &buf) {
-    std::string result(asio::buffer_cast<const char *>(buf.data()), buf.size());
+    std::string result(static_cast<const char *>(buf.data().data()),
+                       buf.data().size());
     return log::escape(result);
 }
 #endif
@@ -79,7 +79,7 @@ public:
     /** C'tor: connect the socket to server.
      */
     pimple_connection_t(const std::string &addr, const opts_t &opts)
-        : addr(addr), ios(), socket(ios), deadline(ios), input(),
+        : addr(addr), context(), socket(context), deadline(context), input(),
           timeouted(false), opts(opts)
     {
         // prepare deadline timer
@@ -88,21 +88,23 @@ public:
 
         // resolve endpoints
         std::pair<std::string, std::string> dest = parse_address(addr);
-        asio::ip::tcp::resolver::query query(dest.first, dest.second);
-        asio::ip::tcp::resolver::iterator
-            iendpoint = asio::ip::tcp::resolver(ios).resolve(query);
+        asio::ip::tcp::endpoint endpoint(asio::ip::make_address(dest.first),
+                                         static_cast<asio::ip::port_type>(std::stoi(dest.second)));
+        auto executor = context.get_executor();
+
+        auto addrs = asio::ip::tcp::resolver(executor).resolve(endpoint);
 
         // nice log
         DBG(DBG2, "Resolved address of memcache server: server=%s, address=%s",
                   addr.c_str(),
-                  iendpoint->endpoint().address().to_string().c_str());
+                  addrs.begin()->endpoint().address().to_string().c_str());
 
         // launch async connect
         set_deadline(opts.timeouts.connect);
         boost::system::error_code ec = asio::error::would_block;
-        asio::async_connect(socket, iendpoint,
+        asio::async_connect(socket, addrs,
                             [&] (auto &&v, auto &&) {ec = v;});
-        do { ios.run_one();} while (ec == asio::error::would_block);
+        do { context.run_one();} while (ec == asio::error::would_block);
 
         // check whether socket is connected
         if (ec || !socket.is_open()) {
@@ -112,7 +114,7 @@ public:
         }
         DBG(DBG3, "Connected to memcache server: server=%s, address=%s",
                   addr.c_str(),
-                  iendpoint->endpoint().address().to_string().c_str());
+                  addrs.begin()->endpoint().address().to_string().c_str());
     }
 
     /** Writes data to socket. All data has been written when method returns.
@@ -127,7 +129,7 @@ public:
         boost::system::error_code ec = asio::error::would_block;
         asio::async_write(socket, asio::buffer(data),
                           [&] (auto &&v, auto &&) {ec = v;});
-        do { ios.run_one();} while (ec == asio::error::would_block);
+        do { context.run_one();} while (ec == asio::error::would_block);
 
         // check whether data was written
         if (ec) {
@@ -155,7 +157,7 @@ public:
         boost::system::error_code ec = asio::error::would_block;
         asio::async_read_until(socket, input, delimiter,
                                [&] (auto &&v, auto &&s) {ec = v, size = s;});
-        do { ios.run_one();} while (ec == asio::error::would_block);
+        do { context.run_one();} while (ec == asio::error::would_block);
 
         // check whether data was read
         if (ec) {
@@ -185,7 +187,7 @@ public:
         boost::system::error_code ec = asio::error::would_block;
         asio::async_read(socket, input, asio::transfer_at_least(transfer),
                          [&] (auto &&v, auto &&) {ec = v;});
-        do { ios.run_one();} while (ec == asio::error::would_block);
+        do { context.run_one();} while (ec == asio::error::would_block);
 
         // check whether data was read
         if (ec) {
@@ -202,7 +204,7 @@ private:
     /** Returns first bytes from input stream up to given count.
      */
     std::string copy_n(asio::streambuf &stream, std::size_t count) const {
-         const char *ptr = asio::buffer_cast<const char *>(stream.data());
+        const char *ptr = static_cast<const char *>(stream.data().data());
          std::string result(ptr, ptr + count);
          stream.consume(count);
          DBG(DBG1, "Read data from input stream: count=%zd, buffer=%s",
@@ -245,7 +247,7 @@ private:
     }
 
     std::string addr;              //!< destination address
-    asio::io_service ios;          //!< i/o controller
+    asio::io_context context;      //!< i/o context
     asio::ip::tcp::socket socket;  //!< i/o socket
     asio::deadline_timer deadline; //!< timeout timer
     asio::streambuf input;         //!< input buffer for incoming data
@@ -314,7 +316,7 @@ public:
     uint16_t reserved; //!< reserved
 } __attribute__((packed));
 
-/** Pimple class for tcp connection.
+/** Pimple class for udp connection.
  */
 class connection_t::pimple_connection_t: public boost::noncopyable {
 public:
@@ -324,7 +326,7 @@ public:
     /** C'tor: connect the socket to server.
      */
     pimple_connection_t(const std::string &addr, const opts_t &opts)
-        : addr(addr), ios(), socket(ios), deadline(ios), input(),
+        : addr(addr), context(), socket(context), deadline(context), input(),
           timeouted(false), opts(opts)
     {
         // prepare deadline timer
@@ -333,21 +335,23 @@ public:
 
         // resolve endpoints
         std::pair<std::string, std::string> dest = parse_address(addr);
-        asio::ip::udp::resolver::query query(dest.first, dest.second);
-        asio::ip::udp::resolver::iterator
-            iendpoint = asio::ip::udp::resolver(ios).resolve(query);
+        asio::ip::udp::endpoint endpoint(asio::ip::make_address(dest.first),
+                                         static_cast<asio::ip::port_type>(std::stoi(dest.second)));
+        auto executor = context.get_executor();
+
+        auto addrs = asio::ip::udp::resolver(executor).resolve(endpoint);
 
         // nice log
         DBG(DBG2, "Resolved address of memcache server: server=%s, address=%s",
                   addr.c_str(),
-                  iendpoint->endpoint().address().to_string().c_str());
+                  addrs.begin()->endpoint().address().to_string().c_str());
 
         // launch async connect
         set_deadline(opts.timeouts.connect);
         boost::system::error_code ec = asio::error::would_block;
-        asio::async_connect(socket, iendpoint,
+        asio::async_connect(socket, addrs,
                             [&] (auto &&v, auto &&) {ec = v;});
-        do { ios.run_one();} while (ec == asio::error::would_block);
+        do { context.run_one();} while (ec == asio::error::would_block);
 
         // check whether socket is connected
         if (ec || !socket.is_open()) {
@@ -357,7 +361,7 @@ public:
         }
         DBG(DBG3, "Connected to memcache server: server=%s, address=%s",
                   addr.c_str(),
-                  iendpoint->endpoint().address().to_string().c_str());
+                  addrs.begin()->endpoint().address().to_string().c_str());
     }
 
     /** Writes data to socket. All data has been written when method returns.
@@ -372,7 +376,7 @@ public:
         boost::system::error_code ec = asio::error::would_block;
         socket.async_send(asio::buffer(data),
                           [&] (auto &&v, auto &&) {ec = v;});
-        do { ios.run_one();} while (ec == asio::error::would_block);
+        do { context.run_one();} while (ec == asio::error::would_block);
 
         // check whether data was written
         if (ec) {
@@ -397,7 +401,7 @@ public:
         boost::system::error_code ec = asio::error::would_block;
         socket.async_receive(boost::asio::buffer(b, sizeof(b)),
                              [&] (auto &&v, auto &&s) {ec = v, size = s;});
-        do { ios.run_one();} while (ec == asio::error::would_block);
+        do { context.run_one();} while (ec == asio::error::would_block);
 
         // check whether data was read
         if (ec) {
@@ -451,7 +455,7 @@ private:
     }
 
     std::string addr;              //!< destination address
-    asio::io_service ios;          //!< i/o controller
+    asio::io_context context;          //!< i/o controller
     asio::ip::udp::socket socket;  //!< i/o socket
     asio::deadline_timer deadline; //!< timeout timer
     asio::streambuf input;         //!< input buffer for incoming data
@@ -525,4 +529,3 @@ void connection_t::fill() {
 } // namespace udp
 } // namespace io
 } // namespace mc
-
