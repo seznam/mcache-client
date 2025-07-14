@@ -19,6 +19,7 @@
 
 #include <string>
 #include <thread>
+#include <cstdint>
 #include <boost/system/system_error.hpp>
 #include <boost/algorithm/string/split.hpp>
 #include <boost/range/algorithm_ext.hpp>
@@ -104,7 +105,7 @@ public:
         std::pair<std::string, std::string> dest = parse_address(addr);
 #if BOOST_VERSION > 107300
         asio::ip::tcp::endpoint endpoint(asio::ip::make_address(dest.first),
-                                         static_cast<asio::ip::port_type>(std::stoi(dest.second)));
+                                         static_cast<uint_least16_t>(std::stoi(dest.second)));
         auto executor = context.get_executor();
 
         auto addrs = asio::ip::tcp::resolver(executor).resolve(endpoint);
@@ -400,7 +401,7 @@ public:
         std::pair<std::string, std::string> dest = parse_address(addr);
 #if BOOST_VERSION > 107300
         asio::ip::udp::endpoint endpoint(asio::ip::make_address(dest.first),
-                                         static_cast<asio::ip::port_type>(std::stoi(dest.second)));
+                                         static_cast<uint_least16_t>(std::stoi(dest.second)));
         auto executor = context.get_executor();
 
         auto addrs = asio::ip::udp::resolver(executor).resolve(endpoint);
