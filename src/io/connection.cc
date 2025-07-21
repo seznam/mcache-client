@@ -51,7 +51,7 @@ namespace {
 
 /** Splits address string to server, port pair.
  */
-static std::pair<std::string, std::string>
+std::pair<std::string, std::string>
 parse_address(const std::string &addr) {
     std::vector<std::string> parts;
     boost::split(parts, addr, [] (auto c) {return c == ':';});
@@ -63,17 +63,17 @@ parse_address(const std::string &addr) {
 #ifdef DEBUG
 /** Dumps buffer data and escape nonprinable characters.
  */
-static std::string dump(const asio::streambuf &buf) {
+std::string dump(const asio::streambuf &buf) {
 #if BOOST_VERSION > 107300
-    std::string result(static_cast<const char *>(buf.data().data()),
-                       buf.data().size());
+    auto size = buf.data().size();
+    std::string result(static_cast<const char *>(buf.data().data()), size);
 #else
-    std::string result(asio::buffer_cast<const char *>(buf.data()), buf.size());
-#endif
-
+    auto size = buf.size();
+    std::string result(asio::buffer_cast<const char *>(buf.data()), size);
+#endif /* BOOST_VERSION > 107300 */
     return log::escape(result);
 }
-#endif
+#endif /* DEBUG */
 
 } // namespace
 
@@ -84,60 +84,44 @@ namespace tcp {
 class connection_t::pimple_connection_t: public boost::noncopyable {
 public:
     // shortcut
-    typedef pimple_connection_t this_t;
+    using this_t = pimple_connection_t;
+#if BOOST_VERSION > 107300
+    using io_context_t = asio::io_context;
+#else
+    using io_context_t = asio::io_service;
+#endif /* BOOST_VERSION > 107300 */
 
     /** C'tor: connect the socket to server.
      */
     pimple_connection_t(const std::string &addr, const opts_t &opts)
-#if BOOST_VERSION > 107300
-        : addr(addr), context(), socket(context), deadline(context), input(),
-          timeouted(false), opts(opts)
-#else
-        : addr(addr), ios(), socket(ios), deadline(ios), input(),
-          timeouted(false), opts(opts)
-#endif
+        : addr(addr), socket(ios), deadline(ios), opts(opts)
     {
         // prepare deadline timer
         deadline.expires_at(boost::posix_time::pos_infin);
         handle_deadline();
 
         // resolve endpoints
-        std::pair<std::string, std::string> dest = parse_address(addr);
+        auto [host, service] = parse_address(addr);
 #if BOOST_VERSION > 107300
-        asio::ip::tcp::endpoint endpoint(asio::ip::make_address(dest.first),
-                                         static_cast<uint_least16_t>(std::stoi(dest.second)));
-        auto executor = context.get_executor();
-
-        auto addrs = asio::ip::tcp::resolver(executor).resolve(endpoint);
+        auto executor = ios.get_executor();
+        auto addrs = asio::ip::tcp::resolver(executor).resolve(host, service);
+        auto iendpoint = addrs.begin();
 #else
         asio::ip::tcp::resolver::query query(dest.first, dest.second);
-        asio::ip::tcp::resolver::iterator
-            iendpoint = asio::ip::tcp::resolver(ios).resolve(query);
+        auto iendpoint = asio::ip::tcp::resolver(ios).resolve(query);
+        auto &addrs = iendpoint; // for compatibility with asio::async_connect
 #endif
 
         // nice log
-#if BOOST_VERSION > 107300
-        DBG(DBG2, "Resolved address of memcache server: server=%s, address=%s",
-                  addr.c_str(),
-                  addrs.begin()->endpoint().address().to_string().c_str());
-#else
         DBG(DBG2, "Resolved address of memcache server: server=%s, address=%s",
                   addr.c_str(),
                   iendpoint->endpoint().address().to_string().c_str());
-#endif
 
         // launch async connect
         set_deadline(opts.timeouts.connect);
         boost::system::error_code ec = asio::error::would_block;
-#if BOOST_VERSION > 107300
-        asio::async_connect(socket, addrs,
-                            [&] (auto &&v, auto &&) {ec = v;});
-        do { context.run_one();} while (ec == asio::error::would_block);
-#else
-        asio::async_connect(socket, iendpoint,
-                            [&] (auto &&v, auto &&) {ec = v;});
+        asio::async_connect(socket, addrs, [&] (auto &&v, auto &&) {ec = v;});
         do { ios.run_one();} while (ec == asio::error::would_block);
-#endif
 
         // check whether socket is connected
         if (ec || !socket.is_open()) {
@@ -145,15 +129,9 @@ public:
             throw io::error_t(err::timeout, "can't connect due to timeout"
                               ": dst=" + addr);
         }
-#if BOOST_VERSION > 107300
-        DBG(DBG3, "Connected to memcache server: server=%s, address=%s",
-                  addr.c_str(),
-                  addrs.begin()->endpoint().address().to_string().c_str());
-#else
         DBG(DBG3, "Connected to memcache server: server=%s, address=%s",
                   addr.c_str(),
                   iendpoint->endpoint().address().to_string().c_str());
-#endif
     }
 
     /** Writes data to socket. All data has been written when method returns.
@@ -168,11 +146,7 @@ public:
         boost::system::error_code ec = asio::error::would_block;
         asio::async_write(socket, asio::buffer(data),
                           [&] (auto &&v, auto &&) {ec = v;});
-#if BOOST_VERSION > 107300
-        do { context.run_one();} while (ec == asio::error::would_block);
-#else
         do { ios.run_one();} while (ec == asio::error::would_block);
-#endif
 
         // check whether data was written
         if (ec) {
@@ -195,16 +169,12 @@ public:
                   input.size(), dump(input).c_str());
 
         // launch async read
-        std::size_t size;
+        std::size_t size = 0;
         set_deadline(opts.timeouts.read);
         boost::system::error_code ec = asio::error::would_block;
         asio::async_read_until(socket, input, delimiter,
                                [&] (auto &&v, auto &&s) {ec = v, size = s;});
-#if BOOST_VERSION > 107300
-        do { context.run_one();} while (ec == asio::error::would_block);
-#else
         do { ios.run_one();} while (ec == asio::error::would_block);
-#endif
 
         // check whether data was read
         if (ec) {
@@ -234,11 +204,7 @@ public:
         boost::system::error_code ec = asio::error::would_block;
         asio::async_read(socket, input, asio::transfer_at_least(transfer),
                          [&] (auto &&v, auto &&) {ec = v;});
-#if BOOST_VERSION > 107300
-        do { context.run_one();} while (ec == asio::error::would_block);
-#else
         do { ios.run_one();} while (ec == asio::error::would_block);
-#endif
 
         // check whether data was read
         if (ec) {
@@ -254,7 +220,7 @@ public:
 private:
     /** Returns first bytes from input stream up to given count.
      */
-    std::string copy_n(asio::streambuf &stream, std::size_t count) const {
+    static std::string copy_n(asio::streambuf &stream, std::size_t count) {
 #if BOOST_VERSION > 107300
          const char *ptr = static_cast<const char *>(stream.data().data());
 #else
@@ -302,15 +268,11 @@ private:
     }
 
     std::string addr;              //!< destination address
-#if BOOST_VERSION > 107300
-    asio::io_context context;      //!< i/o context
-#else
-    asio::io_service ios;          //!< i/o controller
-#endif
+    io_context_t ios;              //!< i/o context
     asio::ip::tcp::socket socket;  //!< i/o socket
     asio::deadline_timer deadline; //!< timeout timer
     asio::streambuf input;         //!< input buffer for incoming data
-    bool timeouted;                //!< true if socket timeouted
+    bool timeouted = false;        //!< true if socket timeouted
     opts_t opts;                   //!< connection options
 };
 
@@ -380,60 +342,44 @@ public:
 class connection_t::pimple_connection_t: public boost::noncopyable {
 public:
     // shortcut
-    typedef pimple_connection_t this_t;
+    using this_t = pimple_connection_t;
+#if BOOST_VERSION > 107300
+    using io_context_t = asio::io_context;
+#else
+    using io_context_t = asio::io_service;
+#endif /* BOOST_VERSION > 107300 */
 
     /** C'tor: connect the socket to server.
      */
     pimple_connection_t(const std::string &addr, const opts_t &opts)
-#if BOOST_VERSION > 107300
-        : addr(addr), context(), socket(context), deadline(context), input(),
-          timeouted(false), opts(opts)
-#else
-        : addr(addr), ios(), socket(ios), deadline(ios), input(),
-          timeouted(false), opts(opts)
-#endif
+        : addr(addr), socket(ios), deadline(ios), opts(opts)
     {
         // prepare deadline timer
         deadline.expires_at(boost::posix_time::pos_infin);
         handle_deadline();
 
         // resolve endpoints
-        std::pair<std::string, std::string> dest = parse_address(addr);
+        auto [host, service] = parse_address(addr);
 #if BOOST_VERSION > 107300
-        asio::ip::udp::endpoint endpoint(asio::ip::make_address(dest.first),
-                                         static_cast<uint_least16_t>(std::stoi(dest.second)));
-        auto executor = context.get_executor();
-
-        auto addrs = asio::ip::udp::resolver(executor).resolve(endpoint);
+        auto executor = ios.get_executor();
+        auto addrs = asio::ip::udp::resolver(executor).resolve(host, service);
+        auto iendpoint = addrs.begin();
 #else
         asio::ip::udp::resolver::query query(dest.first, dest.second);
-        asio::ip::udp::resolver::iterator
-            iendpoint = asio::ip::udp::resolver(ios).resolve(query);
+        auto iendpoint = asio::ip::udp::resolver(ios).resolve(query);
+        auto &addrs = iendpoint; // for compatibility with asio::async_connect
 #endif
 
         // nice log
-#if BOOST_VERSION > 107300
-        DBG(DBG2, "Resolved address of memcache server: server=%s, address=%s",
-                  addr.c_str(),
-                  addrs.begin()->endpoint().address().to_string().c_str());
-#else
         DBG(DBG2, "Resolved address of memcache server: server=%s, address=%s",
                   addr.c_str(),
                   iendpoint->endpoint().address().to_string().c_str());
-#endif
 
         // launch async connect
         set_deadline(opts.timeouts.connect);
         boost::system::error_code ec = asio::error::would_block;
-#if BOOST_VERSION > 107300
-        asio::async_connect(socket, addrs,
-                            [&] (auto &&v, auto &&) {ec = v;});
-        do { context.run_one();} while (ec == asio::error::would_block);
-#else
-        asio::async_connect(socket, iendpoint,
-                            [&] (auto &&v, auto &&) {ec = v;});
+        asio::async_connect(socket, addrs, [&] (auto &&v, auto &&) {ec = v;});
         do { ios.run_one();} while (ec == asio::error::would_block);
-#endif
 
         // check whether socket is connected
         if (ec || !socket.is_open()) {
@@ -441,15 +387,9 @@ public:
             throw io::error_t(err::timeout, "can't connect due to timeout"
                               ": dst=" + addr);
         }
-#if BOOST_VERSION > 107300
-        DBG(DBG3, "Connected to memcache server: server=%s, address=%s",
-                  addr.c_str(),
-                  addrs.begin()->endpoint().address().to_string().c_str());
-#else
         DBG(DBG3, "Connected to memcache server: server=%s, address=%s",
                   addr.c_str(),
                   iendpoint->endpoint().address().to_string().c_str());
-#endif
     }
 
     /** Writes data to socket. All data has been written when method returns.
@@ -464,11 +404,7 @@ public:
         boost::system::error_code ec = asio::error::would_block;
         socket.async_send(asio::buffer(data),
                           [&] (auto &&v, auto &&) {ec = v;});
-#if BOOST_VERSION > 107300
-        do { context.run_one();} while (ec == asio::error::would_block);
-#else
         do { ios.run_one();} while (ec == asio::error::would_block);
-#endif
 
         // check whether data was written
         if (ec) {
@@ -493,11 +429,7 @@ public:
         boost::system::error_code ec = asio::error::would_block;
         socket.async_receive(boost::asio::buffer(b, sizeof(b)),
                              [&] (auto &&v, auto &&s) {ec = v, size = s;});
-#if BOOST_VERSION > 107300
-        do { context.run_one();} while (ec == asio::error::would_block);
-#else
         do { ios.run_one();} while (ec == asio::error::would_block);
-#endif
 
         // check whether data was read
         if (ec) {
@@ -551,11 +483,7 @@ private:
     }
 
     std::string addr;              //!< destination address
-#if BOOST_VERSION > 107300
-    asio::io_context context;      //!< i/o context
-#else
-    asio::io_service ios;          //!< i/o controller
-#endif
+    io_context_t ios;              //!< i/o controller
     asio::ip::udp::socket socket;  //!< i/o socket
     asio::deadline_timer deadline; //!< timeout timer
     asio::streambuf input;         //!< input buffer for incoming data
