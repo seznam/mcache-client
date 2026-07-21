@@ -1,3 +1,19 @@
+szn-libmcache (1.0.15) stable; urgency=low
+
+  * gate BOOST_ASIO_DISABLE_* macros behind boost_asio_legacy_abi option
+  * The four -DBOOST_ASIO_DISABLE_* macros change the ABI/layout of Boost.Asio
+  * internal types. When libmcache is deep-built into a binary alongside
+  * libmime (which gates the same macros behind boost_asio_legacy_abi, default
+  * off), the unconditional definitions here force a legacy asio ABI while
+  * libmime uses the modern one, producing an ODR violation and reads of
+  * uninitialised asio scheduler fields.
+  * Gate the macros behind a yielding boost_asio_legacy_abi option (default
+  * off = modern ABI), matching libmime, so a parent project can select one
+  * consistent ABI for all subprojects.
+  * Co-authored-by: Copilot <223556219+Copilot@users.noreply.github.com>
+
+ -- Michal Bukovsky <michal.bukovsky@firma.seznam.cz>  Tue, 21 Jul 2026 15:56:48 +0200
+
 szn-libmcache (1.0.14) stable; urgency=low
 
   * fix: new boost::asio

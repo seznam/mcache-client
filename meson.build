@@ -1,7 +1,7 @@
 project(
   'libmcache',
   'cpp',
-  version: '1.0.14',
+  version: '1.0.15',
   default_options : [
     'cpp_std=c++17',
     'warning_level=2',
